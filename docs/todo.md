@@ -25,6 +25,7 @@
 - [x] 绑定域名
 - [ ] 公开 repo
 - [ ] 显示最后修改时间
+- [ ] GitHub repo 添加 README
 
 ### 参考链接
 [https://shafish.cn/blog/mkdocs/](https://shafish.cn/blog/mkdocs/)<br/>
