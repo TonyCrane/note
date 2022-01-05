@@ -8,6 +8,9 @@ copyright: Copyright &copy; 2022 <a href="https://github.com/TonyCrane"  target=
 theme: 
   name: 'material'
   language: 'zh'
+  icon: 
+    logo: material/notebook-outline
+  custom_dir: overrides
   features:
     - navigation.tracking # 在url中使用标题定位锚点
     - navigation.tabs
@@ -17,14 +20,63 @@ theme:
   font:
     text: JetBrains Mono
     code: JetBrains Mono
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
 
 markdown_extensions:
+  - toc:
+      permalink: true
   - pymdownx.highlight:
       anchor_linenums: true
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.superfences
-  - pymdownx.tasklist
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.tabbed
+  - pymdownx.tilde
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/TonyCrane/
+    - icon: fontawesome/solid/rss
+      link: https://blog.tonycrane.cc/
+    - icon: fontawesome/solid/home
+      link: https://tonycrane.cc/
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css
+  - css/tasklist.css
+  - css/custom.css
+
+extra_javascript:
+  # - https://unpkg.com/mermaid@8.13.3/dist/mermaid.min.js
+  - https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js
+  - js/katex.js
+
+plugins:
+  - search
+  - git-revision-date-localized:
+      type: datetime
+      timezone: Asia/Shanghai
+      locale: zh
+      enable_creation_date: true
 
 nav:
   - Home:
