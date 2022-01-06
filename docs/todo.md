@@ -30,6 +30,7 @@
 - [x] 代码块背景和博客同步
 - [ ] 代码配色方案和博客同步
 - [x] 自动暗色
+- [ ] 添加 icons 和 emojis
 
 ### 参考链接
 [https://shafish.cn/blog/mkdocs/](https://shafish.cn/blog/mkdocs/)<br/>
