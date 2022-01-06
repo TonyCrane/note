@@ -35,7 +35,7 @@
     - 版本信息（version information）版本7后才有，在左下分割线上侧，右上分割线左侧
     - 数据及纠错码区域
 
-![](/assets/images/CTF/qrcode/structure.png)
+![](/assets/images/ctf/qrcode/structure.png)
 
 ## 数据编码（7.4）
 
@@ -130,7 +130,7 @@ $$ B=M+C+10\times\lfloor\frac{D}{3}\rfloor+R $$
 
 数字字母模式（Alphanumeric mode）下支持的编码字符有45个，把它们从0编号至44。其中 0-9 对应数字 0-9，10-35 对应字母 A-Z，36-44 对应9个符号：
 
-![](/assets/images/CTF/qrcode/alnum.png)
+![](/assets/images/ctf/qrcode/alnum.png)
 
 输入的字符先按照上表转换为数值，然后分为两个一组，每一组内把 第一个数值 × 45 + 第二个数值，再转换为长度为 11 bits 的二进制串（最大为 44×45+44=2024 -> `11111101000`）。如果字符长度为奇数，则会剩余出一个字符，需要将其值转换为长度为 6 bits 的二进制串（最大为 11 -> `101100`）
 
@@ -161,7 +161,7 @@ $$B=M+C+11\times\lfloor\frac{D}{2}\rfloor+6\times(D\bmod 2)$$
 字节模式（Byte mode）下把每个字符根据 Latin-1（ISO/IEC 8859-1）编码成 8 bits（1字节），直接接在字节模式标识符 `0100` 和数量标识符（长度由 7.4.1 第二个表规定）的后面。
 
 ??? abstract "Latin-1"
-    ![Latin-1](/assets/images/CTF/qrcode/Latin-1.png)
+    ![Latin-1](/assets/images/ctf/qrcode/Latin-1.png)
 
 字节模式下的比特流长度：
 
@@ -177,7 +177,7 @@ $$B=M+C+8\times D$$
 
 一个二维码的数据流中也可以使用多种模式，且不需要特别表示。更换新的模式时只需要正常添加 模式标识符+数量标识符+数据 即可
 
-![](/assets/images/CTF/qrcode/multi.png)
+![](/assets/images/ctf/qrcode/multi.png)
 
 ??? note "**例子**"
     原始数据：123测试
@@ -284,7 +284,7 @@ def alpha(k):
 
 文档里给了一个感觉比较晦涩难懂的图来展示生成纠错码的过程：
 
-![](/assets/images/CTF/qrcode/ecgen.png)
+![](/assets/images/ctf/qrcode/ecgen.png)
 
 不是很容易理解，于是找了另一篇文章：[https://blog.csdn.net/ljm1995/article/details/88819664](https://blog.csdn.net/ljm1995/article/details/88819664)
 
@@ -356,7 +356,7 @@ $$188x^6+247x^5+62x^4+248x^3+53x^2+170x+224$$
 
 比如 5-H 版本的序列，需要分为 4 块，前两块是 11 个数据字、22 个纠错字，后两块是 12 个数据字、22 个纠错字：
 
-![](/assets/images/CTF/qrcode/a.png)
+![](/assets/images/ctf/qrcode/a.png)
 
 最后的序列就是 $D_1,D_{12},D_{23},D_{35},\cdots,D_{45},D_{34},D_{46},E_1,E_{23},\cdots,E_{88}$
 
@@ -372,15 +372,15 @@ $$188x^6+247x^5+62x^4+248x^3+53x^2+170x+224$$
 
 ??? abstract "具体规则"
 
-    ![](/assets/images/CTF/qrcode/Untitled%206.png)
+    ![](/assets/images/ctf/qrcode/Untitled%206.png)
 
-    ![](/assets/images/CTF/qrcode/Untitled%207.png)
+    ![](/assets/images/ctf/qrcode/Untitled%207.png)
 
-    ![](/assets/images/CTF/qrcode/Untitled%208.png)
+    ![](/assets/images/ctf/qrcode/Untitled%208.png)
 
-    ![](/assets/images/CTF/qrcode/Untitled%209.png)
+    ![](/assets/images/ctf/qrcode/Untitled%209.png)
 
-    ![](/assets/images/CTF/qrcode/Untitled%2010.png)
+    ![](/assets/images/ctf/qrcode/Untitled%2010.png)
 
 ### 掩码遮盖（7.8）
 
@@ -388,7 +388,7 @@ $$188x^6+247x^5+62x^4+248x^3+53x^2+170x+224$$
 
 QR 码一共有 8 种掩码，每个掩码有一个 3 bits 的编号，和一个生成公式。这个公式用来生成掩码图样，以左上为原点，向右、下为正方向，坐标满足这个公式的点在图样中是黑色（1），不满足的是白色（0）。在版本 1 中的掩码图像表现为：
 
-![](/assets/images/CTF/qrcode/Untitled%2011.png)
+![](/assets/images/ctf/qrcode/Untitled%2011.png)
 
 进行掩码操作就是把除去功能图案和版本信息、格式信息之外的数据部分每一块的值与掩码图样异或
 
@@ -435,7 +435,7 @@ QRCode 的格式信息是 15 bits 的序列，其中前 5 位是数据，后 10 
     
 因为 5 bits 的数据一共只有 32 种情况，所以附录 C 中直接给出了完整的表格：
 
-![Table C.1 全部可能格式信息](/assets/images/CTF/qrcode/TableC1.png)
+![Table C.1 全部可能格式信息](/assets/images/ctf/qrcode/TableC1.png)
     
 **纠错**：最多可以纠正 3 bits 的错误，先把格式信息异或 `101010000010010` 得到原始序列，然后与 Table C.1 中的有效格式信息进行对比，如果找不到说明有错误。此时仅选择 Table C.1 中与错误格式信息相差比特最少的一个作为纠正后的格式信息即可，如果相差少于等于 3 个比特，则视为纠正成功
 
@@ -443,7 +443,7 @@ QRCode 的格式信息是 15 bits 的序列，其中前 5 位是数据，后 10 
 
 左上角的格式信息区域填充一份完整的格式信息（最高位在左），左下角和右上角合起来是一份完整的格式信息（最高位在左下角的最下，最低位在右上角的最右）。并且左下角的格式信息上方（位置`(4V+9,8)`）有一块始终是黑色：
 
-![](/assets/images/CTF/qrcode/Untitled%2018.png)
+![](/assets/images/ctf/qrcode/Untitled%2018.png)
 
 ### 版本信息（7.10）
 
@@ -459,7 +459,7 @@ QRCode 的格式信息是 15 bits 的序列，其中前 5 位是数据，后 10 
 
 因为只有 34 个版本有版本信息，所以也就只有 34 种有效的版本信息序列，附录 D 的 Table D.1 中给出了完整的 34 个版本信息序列
 
-![Table D.1 全部有效版本信息序列](/assets/images/CTF/qrcode/TableD1.png)
+![Table D.1 全部有效版本信息序列](/assets/images/ctf/qrcode/TableD1.png)
 
 和格式信息一样，纠错时对照表格选择相差比特数最小的即可。并且版本信息也只能纠正小于等于 3 个错误
 
@@ -469,7 +469,7 @@ QRCode 的格式信息是 15 bits 的序列，其中前 5 位是数据，后 10 
 
 按照下图顺序填入即可：
 
-![](/assets/images/CTF/qrcode/Untitled%2020.png)
+![](/assets/images/ctf/qrcode/Untitled%2020.png)
 
 ## 解码（11、Annex B）
 

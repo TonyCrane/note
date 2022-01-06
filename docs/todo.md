@@ -13,15 +13,15 @@
 - [x] tasklist 样式
 - [ ] 搬运博客
     - [x] 二维码
-    - [ ] Haskell
-    - [ ] hackergame writeup
+    - [x] Haskell
+    - [x] hackergame writeup
+    - [ ] 搬几个比赛的 writeup
 - [ ] 建立 writeup 分区
-- [ ] 建立 计算机 分区
+- [x] 建立 计算机 分区
 - [ ] 部署到云服务器
 - [x] 左上角 logo
 - [ ] 完善 css
 - [ ] 完善图片链接
-- [ ] 版权信息 CC 协议
 - [x] 绑定域名
 - [ ] 公开 repo
 - [x] 显示最后修改时间
@@ -30,7 +30,10 @@
 - [x] 代码块背景和博客同步
 - [ ] 代码配色方案和博客同步
 - [x] 自动暗色
-- [ ] 添加 icons 和 emojis
+- [x] 添加 icons 和 emojis :smile: :material-account-circle: :octicons-repo-push-16:
+- [x] 右侧 toc 深度调整
+- [x] 左侧 nav 深度调整
+- [ ] 为每个分区添加 index
 
 ### 参考链接
 [https://shafish.cn/blog/mkdocs/](https://shafish.cn/blog/mkdocs/)<br/>
