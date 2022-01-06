@@ -12,13 +12,13 @@
 - [x] 链接 GitHub 仓库
 - [x] tasklist 样式
 - [ ] 搬运博客
-    - [ ] 二维码
+    - [x] 二维码
     - [ ] Haskell
     - [ ] hackergame writeup
 - [ ] 建立 writeup 分区
 - [ ] 建立 计算机 分区
 - [ ] 部署到云服务器
-- [ ] 左上角 logo
+- [x] 左上角 logo
 - [ ] 完善 css
 - [ ] 完善图片链接
 - [ ] 版权信息 CC 协议
@@ -26,6 +26,10 @@
 - [ ] 公开 repo
 - [x] 显示最后修改时间
 - [ ] GitHub repo 添加 README
+- [x] 手机端颜色问题
+- [x] 代码块背景和博客同步
+- [ ] 代码配色方案和博客同步
+- [x] 自动暗色
 
 ### 参考链接
 [https://shafish.cn/blog/mkdocs/](https://shafish.cn/blog/mkdocs/)<br/>
