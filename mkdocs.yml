@@ -12,8 +12,10 @@ theme:
     logo: material/notebook-outline
   custom_dir: overrides
   features:
+    - content.code.annotate
     - navigation.tracking # 在url中使用标题定位锚点
     - navigation.tabs
+    # - navigation.indexes # nav栏隐藏index
     # - navigation.sections # nav节点缩进
     # - navigation.expand # 不折叠左侧nav节点
     - navigation.top # 一键回顶部
@@ -38,6 +40,8 @@ markdown_extensions:
       permalink: true
       toc_depth: 3
   - admonition
+  - attr_list
+  - md_in_html
   - sane_lists
   - pymdownx.highlight:
       anchor_linenums: true
@@ -52,7 +56,8 @@ markdown_extensions:
   - pymdownx.details
   - pymdownx.magiclink
   - pymdownx.mark
-  - pymdownx.tabbed
+  - pymdownx.tabbed:
+      alternate_style: true 
   - pymdownx.tilde
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
@@ -95,6 +100,7 @@ nav:
     - TODO: todo.md
   - Computer Science:
     - Programming Language:
+      - C/C++: cs/pl/c_cpp.md
       - Haskell: cs/pl/haskell.md
   - CTF:
     - QRCode: ctf/qrcode.md
