@@ -10,6 +10,11 @@
     const preferSupported = window.matchMedia("(prefers-color-scheme)").media !== "not all"
     let scheme = localStorage.getItem("data-md-color-scheme")
     let prefers = localStorage.getItem("data-md-prefers-color-scheme")
+    let oldversion = localStorage.getItem("/.__palette")
+
+    if (oldversion) {
+      localStorage.removeItem("/.__palette")
+    }
 
     if (!scheme) {
       scheme = "slate"

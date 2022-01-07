@@ -16,7 +16,7 @@
     - [x] Haskell
     - [x] hackergame writeup
     - [ ] 搬几个比赛的 writeup
-- [ ] 建立 writeup 分区
+- [x] 建立 writeup 分区
 - [x] 建立 计算机 分区
 - [ ] 部署到云服务器
 - [x] 左上角 logo
@@ -34,6 +34,9 @@
 - [x] 右侧 toc 深度调整
 - [x] 左侧 nav 深度调整
 - [ ] 为每个分区添加 index
+- [x] 访问统计
+    - [x] Google Analytics
+    - [x] 百度统计
 
 ### 参考链接
 [https://shafish.cn/blog/mkdocs/](https://shafish.cn/blog/mkdocs/)<br/>
