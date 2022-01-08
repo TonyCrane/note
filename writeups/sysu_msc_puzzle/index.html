@@ -1,0 +1,1707 @@
+
+  <!doctype html>
+  <html lang="zh" class="no-js">
+    <head>
+      
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+          <meta name="description" content="鹤翔万里（TonyCrane）的笔记本">
+        
+        
+        
+          <link rel="canonical" href="https://note.tonycrane.cc/writeups/sysu_msc_puzzle/">
+        
+        <link rel="icon" href="../../assets/images/favicon.png">
+        <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
+      
+      
+        
+          <title>SYSU MSC Puzzle - 鹤翔万里的笔记本</title>
+        
+      
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
+        
+          
+          <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+          
+        
+      
+      
+      
+        
+          
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,400,400i,700%7CJetBrains+Mono&display=fallback">
+          <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+        
+      
+      
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+      
+        <link rel="stylesheet" href="../../css/tasklist.css">
+      
+        <link rel="stylesheet" href="../../css/custom.css">
+      
+      <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      
+        
+  
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c273de7f67d992cb6aef08c3ddf09bb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
+
+
+      
+      
+    </head>
+    
+    
+      
+      
+        
+      
+      
+      
+      
+      <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    
+      <script src="../../js/scheme.js" type="text/javascript"></script>
+      
+      
+        <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      
+      <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+      <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+      <label class="md-overlay" for="__drawer"></label>
+      <div data-md-component="skip">
+        
+          
+          <a href="#sysu-msc-puzzle-2021-writeup" class="md-skip">
+            跳转至
+          </a>
+        
+      </div>
+      <div data-md-component="announce">
+        
+      </div>
+      
+      
+        
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="鹤翔万里的笔记本" class="md-header__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            鹤翔万里的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              SYSU MSC Puzzle
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      <div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+          <a
+            href="javascript:toggleScheme();"
+            title="Light mode"
+            class="light-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="Dark mode"
+            class="dark-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="System preference"
+            class="system-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07 19.07 3.5m-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13.51 1.67m-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87.4 1.31M19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35-2.53-2.2m4.33-2.7 1.15-2.77 2.2 2.54-3.35.23m1.15-4.96-1.14-2.78 3.34.24-2.2 2.54M9.63 18.93l2.77 1.15-2.53 2.19-.24-3.34z"/></svg>
+          </a>
+           <a
+            href="javascript:toggleScheme();"
+            title="Unknown scheme"
+            class="unknown-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"/></svg>
+          </a>
+      </div>
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/TonyCrane/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+      
+      <div class="md-container" data-md-component="container">
+        
+        
+          
+            
+              
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cs/" class="md-tabs__link">
+        Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ctf/" class="md-tabs__link">
+        CTF
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Writeups
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+            
+          
+        
+        <main class="md-main" data-md-component="main">
+          <div class="md-main__inner md-grid">
+            
+              
+                
+                <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+                      
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="鹤翔万里的笔记本" class="md-nav__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
+
+    </a>
+    鹤翔万里的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/TonyCrane/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Home</a>
+          
+            <label for="__nav_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../todo/" class="md-nav__link">
+        TODO
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/">Computer Science</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer Science" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/pl/">Programming Language</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Programming Language" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Language
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/pl/c_cpp/" class="md-nav__link">
+        C/C++
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/pl/haskell/" class="md-nav__link">
+        Haskell
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ctf/">CTF</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="CTF" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CTF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctf/qrcode/" class="md-nav__link">
+        QRCode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Writeups</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Writeups" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          SYSU MSC Puzzle
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        SYSU MSC Puzzle
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    你好！勇士
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    老古董
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    躲在墙后
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    隐身药水
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    完形填空
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    去问导航
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    世间万物的答案
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    我的咖啡
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    设计师
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    监听电话
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    一张图片
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    数字序列
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    未知信号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    又一张图片
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    盲人数学家
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    最小的语言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    一个传说
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    时间商人
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    追踪目标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    紧急唤醒
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emojis" class="md-nav__link">
+    Emojis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    简易加密
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    图像处理大师
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    混乱的二维码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hackergame2021/" class="md-nav__link">
+        Hackergame 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../d0g3/" class="md-nav__link">
+        第四届“安洵杯”
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bytectf2021_final/" class="md-nav__link">
+        ByteCTF 2021 Final
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sctf2021/" class="md-nav__link">
+        SCTF 2021
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                    </div>
+                  </div>
+                </div>
+              
+              
+                
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+                      
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    你好！勇士
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    老古董
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    躲在墙后
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    隐身药水
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    完形填空
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    去问导航
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    世间万物的答案
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    我的咖啡
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    设计师
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    监听电话
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    一张图片
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    数字序列
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    未知信号
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    又一张图片
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    盲人数学家
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    最小的语言
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    一个传说
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    时间商人
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    追踪目标
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    紧急唤醒
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#emojis" class="md-nav__link">
+    Emojis
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    简易加密
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    图像处理大师
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    混乱的二维码
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                    </div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+<a href="https://github.com/TonyCrane/note/tree/master/docs/writeups/sysu_msc_puzzle.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="sysu-msc-puzzle-2021-writeup">SYSU MSC Puzzle 2021 Writeup<a class="headerlink" href="#sysu-msc-puzzle-2021-writeup" title="Permanent link">&para;</a></h1>
+<blockquote>
+<p>MSC Puzzle 是由中山大学 MSClub 与中山大学 W4terDr0p 战队联合举办的趣味性解谜游戏</p>
+</blockquote>
+<p>基本上都是 GZTime 出的题，算到 CTF 里就都是 misc 类，一共 24 道题，下面是简要的 writeup：</p>
+<hr />
+<h2 id="_1">你好！勇士<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>宣传海报和首页都有，flag：<code>msc{He1lo_Wor1d}</code></p>
+<hr />
+<h2 id="_2">老古董<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><code>-.-. --- -.. . --- ..-. - .... . .---- ----. - .... -.-. . -. - ..- .-. -.--</code></p>
+<p>摩尔斯电码，根据首页的说明在单词间加上下划线得到 flag：<code>msc{CODE_OF_THE_19TH_CENTURY}</code></p>
+<hr />
+<h2 id="_3">躲在墙后<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>打开 DevTools 看 Console，flag：<code>msc{Wow_Y0u_f1nd_me}</code></p>
+<hr />
+<h2 id="_4">隐身药水<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>打开 DevTools 看代码，有一个 display: none 的 flag：<code>msc{Inv1sibility_P0tiOn}</code></p>
+<hr />
+<h2 id="_5">完形填空<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>We, the rustling leaves, <br/>
+have a voice that answers the storms,<br/>
+but who are you so silent?<br/>
+<br/>
+I am <strong><em>_</em></strong>____.</p>
+</blockquote>
+<p>搜索这段诗歌得到空缺内容，格式化一下得到 flag：<code>msc{a_mere_flower}</code></p>
+<hr />
+<h2 id="_6">去问导航<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>去找那个地方吧！👻.👾.sysums.club</p>
+</blockquote>
+<p>并且可以发现有一个 display: none 的 TXT 字样</p>
+<p>链接直接转到的地址是 <code>http://xn--9q8h.xn--dr8h.sysums.club/</code></p>
+<p>所以用 dig 命令查询一下这个域名的 TXT 记录就可以了
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="__codelineno-0-1"></a>dig xn--9q8h.xn--dr8h.sysums.club txt
+</code></pre></div>
+flag：<code>msc{Domain_w1th_IDNs}</code></p>
+<hr />
+<h2 id="_7">世间万物的答案<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>The answer to the ultimate question of life, the universe, and everything<br/>
+equals to<br/>
+A^3 + B^3 + C^3<br/>
+勇士，这道题的答案是 msc{A+B+C}</p>
+</blockquote>
+<p>世间万物的答案即指 42，然后搜索得到 </p>
+<div class="arithmatex">\[
+-80538738812075974^3 + 80435758145817515^3+ 12602123297335631^3 = 42
+\]</div>
+<p>所以 flag：<code>msc{12499142631077172}</code></p>
+<hr />
+<h2 id="_8">我的咖啡<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>我们的酒馆采用最新的 HTCPCP/1.0 协议为您提供服务！<br/>
+“嘿，酒保！我的咖啡呢？”<br/>
+“在做了！”<br/>
+该死，我忘了让他少加点牛奶，我得立刻让他停下！</p>
+</blockquote>
+<p>搜索 HTCPCP/1.0 （超文本咖啡壶）协议，停止加入牛奶的请求是 WHEN，所以 flag：<code>msc{WHEN}</code></p>
+<hr />
+<h2 id="_9">设计师<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>「我想要这个字小一点的同时大一点」</p>
+<p>ww91igfYzsb0AguGyMvZDcbKzxnPz25LCIekBxnJE1qWxZrUB3rOzxjFqMfZzty0Fq==</p>
+</blockquote>
+<p>大写转小写，小写转大写，然后 base64 解码，得到 flag：<code>msc{T0_4nother_Base64}</code></p>
+<hr />
+<h2 id="_10">监听电话<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><a href="https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/phone.mp3">https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/phone.mp3</a></p>
+</blockquote>
+<p>是一串电话的拨号音，放到 Au 里面看频谱，把对应按键抄下来就行了，具体是什么记不得了</p>
+<hr />
+<h2 id="_11">一张图片<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><a href="https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/msc.png">https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/msc.png</a></p>
+</blockquote>
+<p>stegsolve 打开，在 red 0 可以清晰看到 flag：<code>msc{Text_Hidd3n_Und6r_The_1mage}</code>
+<img alt="" src="/assets/images/writeups/sysu_msc_puzzle/a_picture.png" width="50%" /></p>
+<hr />
+<h2 id="_12">数字序列<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>..., 22, 30, 42, 56, ? , 101, 135, 176, 231, 297, ...<br/>
+..., 72, 81, 90, 100, 110, ?, 132, 144, 156, 169, ...<br/>
+..., 43, 47, 55, 67, 79, ?, 123, 155, 171, 175, ...<br/>
+..., 891, 9805, 25, 527, 23, ?, 17, 37, 131, 43, ...<br/>
+..., 58, 51, 89, 28, 97, ?, 30, 103, 107, 62, ...<br/>
+..., 20, 26, 36, 50, 60, ?, 135, 138, 248, 315, ...<br/>
+..., 2, 1, 9, 35, 77, ?, 91, 49, 15, 2, ...<br/>
+..., 49, 62, 70, 77, 91, ?, 103, 107, 115, 122, ...<br/>
+..., 8, 26, 60, ?, 196, 308, 456, 645, 880, 1166, ...</p>
+</blockquote>
+<p>直接分别粘贴到 <a href="http://oeis.org/">OEIS</a> 中，得到需要填的数字：</p>
+<p><code>77 121 95 83 101 114 105 101 115</code></p>
+<p>看数字范围挺规整，ASCII 转换一下得到 flag：<code>msc{My_Series}</code></p>
+<hr />
+<h2 id="_13">未知信号<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><a href="https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/signal.mp3">https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/signal.mp3</a><br/>
+我觉得，这里面有蹊跷！你知道二十世纪五六十年代的电视是使用摄像管和电子监视器制成的吗？</p>
+</blockquote>
+<p>所以应该是 SSTV（慢扫描电视）传输图片，用手机软件 Robot36 就可以转换，得到：
+<img alt="" src="/assets/images/writeups/sysu_msc_puzzle/SSTV.jpg" /></p>
+<p>扫描得到 flag：<code>msc{SSTV_transfer_image}</code></p>
+<hr />
+<h2 id="_14">又一张图片<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p><a href="https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/msc2.png">https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/msc2.png</a></p>
+</blockquote>
+<p>还是扔到 stegsolve 里，在 red0 green0 blue0 分别能看到文字，合起来是
+<code>密码是 p455w0rd</code>
+<img alt="" src="/assets/images/writeups/sysu_msc_puzzle/picture2.png" width="50%" /></p>
+<p>binwalk 可以发现这个 png 里偏移 <code>0xC23A</code> 后面藏了一个 zip，提取出来用密码解压得到一个 svg 文件</p>
+<p>浏览器打开之后发现有一个白色矩形，删掉它就能看到 flag：<code>msc{svg_The_vectors}</code></p>
+<p><img alt="" src="/assets/images/writeups/sysu_msc_puzzle/picture2_2.png" /></p>
+<hr />
+<h2 id="_15">盲人数学家<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>⠸⠩⠮⠰⠤⠆⠘⠆⠐⠷⠭⠘⠒⠐⠉⠕⠎⠹⠭⠌⠆⠼⠬⠹⠂⠌⠆⠼⠾⠜⠲⠤⠭⠘⠆⠐⠻⠙⠭⠸⠱</p>
+<p>Tip: 将结果四舍五入保留 7 位小数，并用_替换小数点后提交</p>
+</blockquote>
+<p>对照教程 <a href="https://nemeth.aphtech.org/">https://nemeth.aphtech.org/</a> 学习，转换公式：</p>
+<p><img alt="" src="/assets/images/writeups/sysu_msc_puzzle/meth_dark.jpg#only-dark" />
+<img alt="" src="/assets/images/writeups/sysu_msc_puzzle/meth_light.jpg#only-light" /></p>
+<div class="arithmatex">\[
+\int_{-2}^2(x^3\cos\frac{x}{2}+\frac{1}{2})\sqrt{4-x^2}\mathrm dx = \pi \approx 3.1415927
+\]</div>
+<p>所以 flag：<code>msc{3_1415927}</code></p>
+<hr />
+<h2 id="_16">最小的语言<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>勇士，据说这个世界在很久远的时候有一位凯撒大帝，在他离世的时候，为这个世界创造了一种最小的语言，我们都不敢读出它的名称……<br/>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="__codelineno-1-1"></a><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+</span><span class="nt">.</span><span class="nb">++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++</span><span class="nt">.</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">--</span><span class="nt">.</span><span class="nb">-------</span><span class="nt">.</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nt">.</span><span class="nb">----</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++</span><span class="nt">.</span><span class="nb">++</span><span class="nt">.</span><span class="nb">+++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">---------------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-----------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">--</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">----------</span><span class="nt">.</span><span class="nb">++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">---------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nt">.</span><span class="nb">--</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nt">.</span><span class="nb">-----</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nt">.</span><span class="nb">+++</span><span class="nt">.</span><span class="nb">++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">----------</span><span class="nt">.</span><span class="nb">---</span><span class="nt">..</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-</span><span class="nt">.</span><span class="nb">------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">------------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nt">.</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++++</span><span class="nt">.</span><span class="nb">++++</span><span class="nt">.</span><span class="nb">++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">----------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">---------</span><span class="nt">.</span><span class="nb">-----</span><span class="nt">.</span><span class="nb">++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nt">..</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nt">.</span><span class="nb">-------</span><span class="nt">.</span><span class="nb">-------</span><span class="nt">.</span><span class="nb">--------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nt">.</span><span class="nb">-----</span><span class="nt">..</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-</span><span class="nt">.</span><span class="nb">++++</span><span class="nt">.</span><span class="nb">+++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">------</span><span class="nt">.</span><span class="nb">++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-----------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nt">.</span><span class="nb">----</span><span class="nt">.</span><span class="nb">------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nt">..</span><span class="nv">&lt;</span><span class="nb">++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nt">.</span><span class="nb">--</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nt">.</span><span class="nb">---------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nt">.</span><span class="nb">+++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">----------------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nt">.</span><span class="nb">+++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nt">.</span><span class="nb">++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++++++++++</span><span class="nt">.</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">--</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-----</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nt">.</span><span class="nb">-----</span><span class="nt">.</span><span class="nb">-</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">-------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nt">..</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">------------</span><span class="nt">.</span><span class="nb">-------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++++++</span><span class="nt">.</span><span class="nb">++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++</span><span class="nt">.</span><span class="nb">----</span><span class="nt">.</span><span class="nb">-------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">---</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">----</span><span class="nt">.</span><span class="nb">++++++</span><span class="nt">..</span><span class="nb">+</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">--------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">-----------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">---------</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">----------</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="nb">+++++++</span><span class="k">[</span><span class="nb">-</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nv">&lt;</span><span class="k">]</span><span class="nv">&gt;</span><span class="nb">+++++++</span><span class="nt">.</span><span class="nv">&lt;</span><span class="c"></span>
+</code></pre></div></p>
+</blockquote>
+<p>brainfuck 输出得到：<code>=WYxy^WXArn(qs|p!-k&lt;~&lt;X4i;A[!n97zu4Yru{@=={qkw+78tx~[94:*By66&amp;@U&lt;5.&amp;;66&amp;:047V@D[,r:60}55^{yX&lt;3@u~.sv/m4(]i)1pV!op[(Z:54f/ssgt(!XZ|xq|ouuv+@|!=u</code></p>
+<p>根据题面的凯撒，可以推测是 ASCII 偏移，然后把输出限制在 [33, 126] 中（ASCII可见字符），第 54 次偏移的结果：<code>v24ST923zMIaLNWKZfFuYu3mDtz6ZIrpUPm4MPVyvvVLFRdpqOSY6rmsc{Too_y0ung_too_simp1y}6eMsoiXnn9VT3ulyPYgNQhHma8DbjK1ZJK6a5snmAhNNBOaZ35WSLWJPPQdyWZvP</code></p>
+<p>中间就是 flag：<code>msc{Too_y0ung_too_simp1y}</code></p>
+<hr />
+<h2 id="_17">一个传说<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>“勇士，我听过一个古老的传说……”<br/>
+“请讲！”<br/>
+「1024×768 大小的图片，可以轻松藏下 786432 个地址。」<br/>
+<a href="https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/justcolor.png">https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/justcolor.png</a></p>
+</blockquote>
+<p>一个纯色文件，根据题面可以推测是读取 rgba 值作为 ip 地址</p>
+<p>所以写个脚本读一下 <code class="highlight"><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">;</span><span class="nb">print</span><span class="p">(</span><span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;justcolor.png&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span></code>，得到 ip 地址：116.63.166.50</p>
+<p>访问得到 flag：<code>msc{Hide_IP_in_RGBA}</code></p>
+<hr />
+<h2 id="_18">时间商人<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>你发现了一块布满苔藓的石板，上面刻着下面的几个字：<br/>
+&emsp;⊧ã⊷¬§×ãˆ𝔎<br/>
+你看不懂，但大受震撼。<br/>
+路边有个神秘的黑衣商人，他自称能为你提供帮助，但是有一个苛刻的条件：你必须在每天凌晨四点的第一个八分钟内过来找他，他才能给你提供线索。</p>
+</blockquote>
+<p>调整时间到凌晨四点的第一个八分钟内，得到 hint：<code>商人看着你，什么话也没说，给你递了一张纸条，上面写着：charref。</code></p>
+<p>搜索得到字符对照表：<a href="https://dev.w3.org/html5/html-author/charref">https://dev.w3.org/html5/html-author/charref</a></p>
+<p>然后依次搜索这些字符，首字母拼起来就是 flag：<code>msc{mainstacK}</code></p>
+<hr />
+<h2 id="_19">追踪目标<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>一张通缉令贴在村口的公告牌上，据说捕获到了盗贼下一次要作案的地方，但没人看得懂。<br/>
+7PMM399R+FQ2<br/>
+“哦，你只需要用**********就能得到答案”<br/>
+“哦！收到！”<br/>
+“你知道 The simplest way to talk about location 吗？”<br/>
+“知道……原来你就是想要那三个单词啊”</p>
+</blockquote>
+<p>直接使用<a href="https://map.what3words.com/flux.tank.pitch">三词地址</a>调成英文搜索 <code>7PMM399R+FQ2</code> 得到位置的三个单词 <code>///flux.tank.pitch</code></p>
+<p>所以 flag：<code>msc{flux_tank_pitch}</code></p>
+<hr />
+<h2 id="_20">紧急唤醒<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>问题</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">Crypto.Util.number</span> <span class="kn">import</span><span class="o">*</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="__codelineno-2-3"></a><span class="n">p</span> <span class="o">=</span> <span class="mh">0xbb1a21ab46e16672a6dfe537c5d03121252685a1a72fab827ed14d61caa80f68b9bda9fb0d9651719ab099d05fd0da03443a50106533f1034a81e280cd3e85fd</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="__codelineno-2-4"></a><span class="n">q</span> <span class="o">=</span> <span class="mh">0x85eed89c104292b715a45ec8a1c3328506b429c2b7477c9ab094313fcf0020ba7352b102608cab79bde92978aedb052a546fb289c453feac87ee791ba1019579</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="__codelineno-2-6"></a><span class="n">n</span> <span class="o">=</span> <span class="n">p</span> <span class="o">*</span> <span class="n">q</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="__codelineno-2-7"></a><span class="n">e</span> <span class="o">=</span> <span class="mh">0x10001</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="__codelineno-2-9"></a><span class="n">answer</span> <span class="o">=</span> <span class="sa">b</span><span class="s1">&#39;something you dont know&#39;</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="__codelineno-2-10"></a><span class="n">m</span> <span class="o">=</span> <span class="n">bytes_to_long</span><span class="p">(</span><span class="n">answer</span><span class="p">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="__codelineno-2-12"></a><span class="n">c</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">m</span><span class="p">,</span><span class="n">e</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="__codelineno-2-13"></a><span class="c1"># c = 0x17c7af1ec9c020eb9d8f26049f002b58f93591a817ebff4c00e9e46254261db54a2c2d086dd0f532994329faf2133b1c7002913b187f898d87c8093b2290440e927 78956c60b92f27e3dc4d15b4c79f97b79bca253b0b4542375c37f8e37e1f8e38d728634133376eacd2c448aa523b2eda0b4c5f2af47250147f4193d58596c</span>
+</code></pre></div>
+</details>
+<p>基础的 RSA，计算出 d 然后解密就可以得到 flag：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="__codelineno-3-1"></a><span class="n">d</span> <span class="o">=</span> <span class="nb">pow</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="p">(</span><span class="n">p</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">q</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="__codelineno-3-2"></a><span class="nb">print</span><span class="p">(</span><span class="n">long_to_bytes</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">d</span><span class="p">,</span> <span class="n">n</span><span class="p">)))</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="__codelineno-3-3"></a><span class="c1"># b&#39;msc{W0w_You_know_H0w_to_d3crypt_the_RSA}&#39;</span>
+</code></pre></div></p>
+<hr />
+<h2 id="emojis">Emojis<a class="headerlink" href="#emojis" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>“这是一串 <code>EMOJI</code>，里面会藏着什么样的信息呢？”<br/>
+🙃💵🌿🎤🚪🌏🐎🥋🚫😆✅😊👉👣📂⏩😆🌿🌪😎🍵☃📂🚹👌🏹🐎🌿😀👣🏎😍😆🍴✅👁✅✅😆🕹🔬🐍🎅✖🌪👣🚹💧🍴💵🍍🌪✉👁🚪🔪⏩💧🎃🥋🕹🍎😊ℹ</p>
+<p>哦对了，我要的是忽略误差后的数字哦~</p>
+</blockquote>
+<p>DevTools 里可以看到 display: none 的 aes？所以应该是使用 <a href="https://aghorler.github.io/emoji-aes/">emoji-aes</a></p>
+<p>根据题面中的全大写、代码块包裹的 <code>EMOJI</code>，可以推测出 key 就是 EMOJI，解密得到：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="__codelineno-4-1"></a>ORANGE
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="__codelineno-4-2"></a>RED
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="__codelineno-4-3"></a>YELLOW
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="__codelineno-4-4"></a>GREEN
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="__codelineno-4-5"></a>GOLD
+</code></pre></div></p>
+<p>根据颜色以及题面中的“忽略误差”猜测是五色环电阻，转换得到忽略误差后是 32400000 欧姆，所以 flag：<code>msc{32400000}</code></p>
+<hr />
+<h2 id="_21">简易加密<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>据说这是一种极其普遍的加密方法……<br/>
+而且任何人都可以解密……<br/>
+或许……你可以听到来自答案的声音……<br/>
+<a href="https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/msc.enc">https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/msc.enc</a></p>
+</blockquote>
+<p>任何人都可以解密的简易加密，可以猜测是异或，然后打开看十六进制发现很多 <code>0x66</code>，所以考虑全部异或 <code>0x66</code>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="__codelineno-5-1"></a><span class="kn">import</span> <span class="nn">struct</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="__codelineno-5-2"></a><span class="n">res</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="__codelineno-5-3"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;msc.enc&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="__codelineno-5-4"></a>    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="__codelineno-5-5"></a>        <span class="n">c</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="__codelineno-5-6"></a>        <span class="k">if</span> <span class="ow">not</span> <span class="n">c</span><span class="p">:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="__codelineno-5-7"></a>            <span class="k">break</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="__codelineno-5-8"></a>        <span class="n">res</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">ord</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">^</span> <span class="mh">0x66</span><span class="p">)</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="__codelineno-5-10"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;res.bin&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="__codelineno-5-11"></a>    <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="__codelineno-5-12"></a>        <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s2">&quot;B&quot;</span><span class="p">,</span> <span class="n">each</span><span class="p">))</span>
+</code></pre></div>
+得到的 res.bin 中可以很容易发现 <code>FL Keys</code> 和一些键名，用 fl 或者库乐队等软件打开就可以看到 flag：<code>msc{The_xor_midi_GIFT}</code></p>
+<hr />
+<h2 id="_22">图像处理大师<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>你就是图像处理大师！<br/>
+所以帮我找到藏在图片里的秘密吧！哦对了，这里还有一张小纸条，应该能帮到你（<br/>
+<code>0.8560967955058971 17.682512473330895</code><br/>
+<a href="https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/cv.zip">https://mscpuzzle.oss-cn-guangzhou.aliyuncs.com/2021/cv.zip</a></p>
+</blockquote>
+<details class="question">
+<summary>题目代码</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="__codelineno-6-1"></a><span class="kn">import</span> <span class="nn">cv2</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="__codelineno-6-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="__codelineno-6-4"></a><span class="k">def</span> <span class="nf">mapping</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">down</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">tp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">):</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="__codelineno-6-5"></a>    <span class="n">data_max</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="__codelineno-6-6"></a>    <span class="n">data_min</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="__codelineno-6-7"></a>    <span class="n">interval</span> <span class="o">=</span> <span class="n">data_max</span> <span class="o">-</span> <span class="n">data_min</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="__codelineno-6-8"></a>    <span class="n">new_interval</span> <span class="o">=</span> <span class="n">up</span> <span class="o">-</span> <span class="n">down</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="__codelineno-6-9"></a>    <span class="n">new_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">data_min</span><span class="p">)</span> <span class="o">*</span> <span class="n">new_interval</span> <span class="o">/</span> <span class="n">interval</span> <span class="o">+</span> <span class="n">down</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="__codelineno-6-10"></a>    <span class="n">new_data</span> <span class="o">=</span> <span class="n">new_data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="__codelineno-6-11"></a>    <span class="k">return</span> <span class="n">new_data</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="__codelineno-6-13"></a><span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="n">img</span><span class="p">):</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="__codelineno-6-14"></a>    <span class="n">fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fft2</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="__codelineno-6-15"></a>    <span class="n">fft</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">fftshift</span><span class="p">(</span><span class="n">fft</span><span class="p">)</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="__codelineno-6-16"></a>    <span class="n">m</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">fft</span><span class="p">))</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="__codelineno-6-17"></a>    <span class="n">p</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">angle</span><span class="p">(</span><span class="n">fft</span><span class="p">)</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="__codelineno-6-18"></a>    <span class="k">return</span> <span class="n">m</span><span class="p">,</span> <span class="n">p</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="__codelineno-6-19"></a>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="__codelineno-6-20"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="__codelineno-6-21"></a>    <span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;answer.png&#39;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="__codelineno-6-22"></a>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="__codelineno-6-23"></a>    <span class="n">m</span><span class="p">,</span> <span class="n">p</span> <span class="o">=</span> <span class="n">fft</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="__codelineno-6-24"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">m</span><span class="o">.</span><span class="n">min</span><span class="p">(),</span> <span class="n">m</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="__codelineno-6-25"></a>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="__codelineno-6-26"></a>    <span class="n">new_img1</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="__codelineno-6-27"></a>    <span class="n">new_img2</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="__codelineno-6-28"></a>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="__codelineno-6-29"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cv1.png&#39;</span><span class="p">,</span> <span class="n">new_img1</span><span class="p">)</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="__codelineno-6-30"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;cv2.png&#39;</span><span class="p">,</span> <span class="n">new_img2</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p>一个 FFT，直接把代码逆回去就好了：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="__codelineno-7-1"></a><span class="kn">import</span> <span class="nn">cv2</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="__codelineno-7-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="__codelineno-7-4"></a><span class="k">def</span> <span class="nf">mapping</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">down</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">up</span><span class="o">=</span><span class="mi">255</span><span class="p">,</span> <span class="n">tp</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">):</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="__codelineno-7-5"></a>    <span class="n">data_max</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="__codelineno-7-6"></a>    <span class="n">data_min</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">min</span><span class="p">()</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="__codelineno-7-7"></a>    <span class="n">interval</span> <span class="o">=</span> <span class="n">data_max</span> <span class="o">-</span> <span class="n">data_min</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="__codelineno-7-8"></a>    <span class="n">new_interval</span> <span class="o">=</span> <span class="n">up</span> <span class="o">-</span> <span class="n">down</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="__codelineno-7-9"></a>    <span class="n">new_data</span> <span class="o">=</span> <span class="p">(</span><span class="n">data</span> <span class="o">-</span> <span class="n">data_min</span><span class="p">)</span> <span class="o">*</span> <span class="n">new_interval</span> <span class="o">/</span> <span class="n">interval</span> <span class="o">+</span> <span class="n">down</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="__codelineno-7-10"></a>    <span class="n">new_data</span> <span class="o">=</span> <span class="n">new_data</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">tp</span><span class="p">)</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="__codelineno-7-11"></a>    <span class="k">return</span> <span class="n">new_data</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="__codelineno-7-13"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="__codelineno-7-14"></a>    <span class="n">img1</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;cv1.png&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="__codelineno-7-15"></a>    <span class="n">img2</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;cv2.png&quot;</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">IMREAD_GRAYSCALE</span><span class="p">)</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="__codelineno-7-17"></a>    <span class="n">m</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="mf">0.8560967955058971</span><span class="p">,</span> <span class="mf">17.682512473330895</span><span class="p">)</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="__codelineno-7-18"></a>    <span class="n">p</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">(</span><span class="n">img2</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="__codelineno-7-19"></a>    <span class="n">res</span> <span class="o">=</span> <span class="n">m</span> <span class="o">*</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">p</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1</span><span class="n">j</span><span class="p">)</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="__codelineno-7-21"></a>    <span class="n">ishift</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifftshift</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="__codelineno-7-22"></a>    <span class="n">iimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">fft</span><span class="o">.</span><span class="n">ifft2</span><span class="p">(</span><span class="n">ishift</span><span class="p">)</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="__codelineno-7-23"></a>    <span class="n">iimg</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">iimg</span><span class="p">)</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="__codelineno-7-24"></a>    <span class="n">iimg</span> <span class="o">=</span> <span class="n">mapping</span><span class="p">(</span><span class="n">iimg</span><span class="p">)</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="__codelineno-7-25"></a>    <span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;answer.png&#39;</span><span class="p">,</span> <span class="n">iimg</span><span class="p">)</span>
+</code></pre></div></p>
+<details class="success">
+<summary>flag: msc{The_master_of_cv}</summary>
+<p><img alt="" src="/assets/images/writeups/sysu_msc_puzzle/answer.png" /></p>
+</details>
+<hr />
+<h2 id="_23">混乱的二维码<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h2>
+<blockquote>
+<p>你好！勇士，你走到这里已经证明了你的实力！<br/>
+我本该给你的是一张记录着答案的二维码，但由于在传输过程中我们忘记标注每一行的顺序了，导致我们收到了这样的数据……勇士，你能还原出它的原始模样吗？</p>
+</blockquote>
+<details class="question">
+<summary>题目</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="__codelineno-8-1"></a><span class="p">[</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="__codelineno-8-2"></a>  <span class="s2">&quot;10111010111000011000001011101&quot;</span><span class="p">,</span> <span class="s2">&quot;00111010110010101000000000010&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="__codelineno-8-3"></a>  <span class="s2">&quot;11100001101100100001011010110&quot;</span><span class="p">,</span> <span class="s2">&quot;10000010000111101111111111101&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="__codelineno-8-4"></a>  <span class="s2">&quot;10111010000010001000001011101&quot;</span><span class="p">,</span> <span class="s2">&quot;01110011010111001001011100001&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="__codelineno-8-5"></a>  <span class="s2">&quot;10101101110101001110000110010&quot;</span><span class="p">,</span> <span class="s2">&quot;10111010111010111110001011101&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="__codelineno-8-6"></a>  <span class="s2">&quot;10010100110101101111100111110&quot;</span><span class="p">,</span> <span class="s2">&quot;10111110011101011000011010111&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="__codelineno-8-7"></a>  <span class="s2">&quot;11001010001011011000000001000&quot;</span><span class="p">,</span> <span class="s2">&quot;10111010100101100111111110100&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="__codelineno-8-8"></a>  <span class="s2">&quot;10000010110010110100100011001&quot;</span><span class="p">,</span> <span class="s2">&quot;11111110101010101010101111111&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="__codelineno-8-9"></a>  <span class="s2">&quot;10111010001100010100110110111&quot;</span><span class="p">,</span> <span class="s2">&quot;11111110101101010101110110000&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="__codelineno-8-10"></a>  <span class="s2">&quot;00000000100100100101100011100&quot;</span><span class="p">,</span> <span class="s2">&quot;00000000111001101011011111001&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="__codelineno-8-11"></a>  <span class="s2">&quot;11111100100110010010001011110&quot;</span><span class="p">,</span> <span class="s2">&quot;00010001110001001101110001010&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="__codelineno-8-12"></a>  <span class="s2">&quot;10000010111110001101101000001&quot;</span><span class="p">,</span> <span class="s2">&quot;11001110110110010101100100001&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="__codelineno-8-13"></a>  <span class="s2">&quot;11011110111101111101111110100&quot;</span><span class="p">,</span> <span class="s2">&quot;11111110100010100101101011100&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="__codelineno-8-14"></a>  <span class="s2">&quot;00000000011111011001100000000&quot;</span><span class="p">,</span> <span class="s2">&quot;10111010111001000110010100010&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="__codelineno-8-15"></a>  <span class="s2">&quot;11111110101110011001001111111&quot;</span><span class="p">,</span> <span class="s2">&quot;10000010001100011010101000001&quot;</span><span class="p">,</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="__codelineno-8-16"></a>  <span class="s2">&quot;10011111111101000101110010111&quot;</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="__codelineno-8-17"></a><span class="p">]</span>
+</code></pre></div>
+</details>
+<p>把这些值输入到 csv 中，然后 Excel 打开，调一调格式，开始按照二维码的规则（三个定位点，对齐图样、时序图样等）来确定可以确定的行，结果：
+<img alt="" src="/assets/images/writeups/sysu_msc_puzzle/qrcode1.png#only-light" />
+<img alt="" src="/assets/images/writeups/sysu_msc_puzzle/qrcode2.png#only-dark" /></p>
+<p>上面有 2 行顺序不确定，中间有 11 行顺序不确定（其中由于时序图样的原因，所以相当于有 5 行顺序不确定和 6 行顺序不确定），所以总共有 <code>2*5!*6! = 172800</code> 种可能，所以可以枚举了。可以使用 pyzbar 这个包来自动解二维码</p>
+<p>改一改 GZTime 2021 祥云杯的 <a href="https://blog.gztime.cc/posts/2021/eee18328/#shuffle-code-Misc">writeup</a> 里的代码：</p>
+<details class="note">
+<summary>代码</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="__codelineno-9-1"></a><span class="n">data</span> <span class="o">=</span> <span class="p">[</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="__codelineno-9-2"></a>    <span class="s2">&quot;11111110101110011001001111111&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="__codelineno-9-3"></a>    <span class="s2">&quot;10000010111110001101101000001&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="__codelineno-9-4"></a>    <span class="s2">&quot;10111010111010111110001011101&quot;</span><span class="p">,</span> <span class="c1"># &lt;- 这两行需要手动调换各跑一次</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="__codelineno-9-5"></a>    <span class="s2">&quot;10111010000010001000001011101&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="__codelineno-9-6"></a>    <span class="s2">&quot;10111010111000011000001011101&quot;</span><span class="p">,</span> <span class="c1"># &lt;- 这两行需要手动调换各跑一次</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="__codelineno-9-7"></a>    <span class="s2">&quot;10000010001100011010101000001&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="__codelineno-9-8"></a>    <span class="s2">&quot;11111110101010101010101111111&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="__codelineno-9-9"></a>    <span class="s2">&quot;00000000011111011001100000000&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="__codelineno-9-10"></a>    <span class="s2">&quot;10011111111101000101110010111&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="__codelineno-9-11"></a>    <span class="s2">&quot;11100001101100100001011010110&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="__codelineno-9-12"></a>    <span class="s2">&quot;00111010110010101000000000010&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="__codelineno-9-13"></a>    <span class="s2">&quot;10101101110101001110000110010&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="__codelineno-9-14"></a>    <span class="s2">&quot;01110011010111001001011100001&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="__codelineno-9-15"></a>    <span class="s2">&quot;10010100110101101111100111110&quot;</span><span class="p">,</span> 
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="__codelineno-9-16"></a>    <span class="s2">&quot;10111110011101011000011010111&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="__codelineno-9-17"></a>    <span class="s2">&quot;00000000111001101011011111001&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="__codelineno-9-18"></a>    <span class="s2">&quot;11001010001011011000000001000&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="__codelineno-9-19"></a>    <span class="s2">&quot;11111100100110010010001011110&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="__codelineno-9-20"></a>    <span class="s2">&quot;11001110110110010101100100001&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="__codelineno-9-21"></a>    <span class="s2">&quot;00010001110001001101110001010&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="__codelineno-9-22"></a>    <span class="s2">&quot;11011110111101111101111110100&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="__codelineno-9-23"></a>    <span class="s2">&quot;00000000100100100101100011100&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="__codelineno-9-24"></a>    <span class="s2">&quot;11111110100010100101101011100&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="__codelineno-9-25"></a>    <span class="s2">&quot;10000010110010110100100011001&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="__codelineno-9-26"></a>    <span class="s2">&quot;10111010100101100111111110100&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="__codelineno-9-27"></a>    <span class="s2">&quot;10111010111001000110010100010&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="__codelineno-9-28"></a>    <span class="s2">&quot;10111010001100010100110110111&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="__codelineno-9-29"></a>    <span class="s2">&quot;10000010000111101111111111101&quot;</span><span class="p">,</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="__codelineno-9-30"></a>    <span class="s2">&quot;11111110101101010101110110000&quot;</span>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="__codelineno-9-31"></a><span class="p">]</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="__codelineno-9-32"></a>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="__codelineno-9-33"></a><span class="kn">import</span> <span class="nn">pyzbar.pyzbar</span> <span class="k">as</span> <span class="nn">pyzbar</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="__codelineno-9-34"></a><span class="kn">from</span> <span class="nn">itertools</span> <span class="kn">import</span> <span class="n">permutations</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="__codelineno-9-35"></a><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">ImageDraw</span> <span class="k">as</span> <span class="n">draw</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="__codelineno-9-36"></a><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="__codelineno-9-37"></a><span class="kn">from</span> <span class="nn">tqdm</span> <span class="kn">import</span> <span class="n">tqdm</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38" href="__codelineno-9-38"></a>
+<a id="__codelineno-9-39" name="__codelineno-9-39" href="__codelineno-9-39"></a><span class="n">shuffle_1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">19</span><span class="p">]</span>
+<a id="__codelineno-9-40" name="__codelineno-9-40" href="__codelineno-9-40"></a><span class="n">shuffle_2</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">18</span><span class="p">]</span>
+<a id="__codelineno-9-41" name="__codelineno-9-41" href="__codelineno-9-41"></a>
+<a id="__codelineno-9-42" name="__codelineno-9-42" href="__codelineno-9-42"></a><span class="n">head</span> <span class="o">=</span> <span class="n">data</span><span class="p">[:</span><span class="mi">9</span><span class="p">]</span>
+<a id="__codelineno-9-43" name="__codelineno-9-43" href="__codelineno-9-43"></a><span class="n">tail</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="mi">20</span><span class="p">:]</span>
+<a id="__codelineno-9-44" name="__codelineno-9-44" href="__codelineno-9-44"></a>
+<a id="__codelineno-9-45" name="__codelineno-9-45" href="__codelineno-9-45"></a><span class="k">def</span> <span class="nf">body</span><span class="p">(</span><span class="n">body_1</span><span class="p">,</span> <span class="n">body_2</span><span class="p">):</span> <span class="c1"># 获取中间部分的一种排列</span>
+<a id="__codelineno-9-46" name="__codelineno-9-46" href="__codelineno-9-46"></a>    <span class="n">body</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-9-47" name="__codelineno-9-47" href="__codelineno-9-47"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+<a id="__codelineno-9-48" name="__codelineno-9-48" href="__codelineno-9-48"></a>        <span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">body_1</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<a id="__codelineno-9-49" name="__codelineno-9-49" href="__codelineno-9-49"></a>        <span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">body_2</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<a id="__codelineno-9-50" name="__codelineno-9-50" href="__codelineno-9-50"></a>    <span class="n">body</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">body_1</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+<a id="__codelineno-9-51" name="__codelineno-9-51" href="__codelineno-9-51"></a>    <span class="k">return</span> <span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">body</span><span class="p">]</span>
+<a id="__codelineno-9-52" name="__codelineno-9-52" href="__codelineno-9-52"></a>
+<a id="__codelineno-9-53" name="__codelineno-9-53" href="__codelineno-9-53"></a><span class="k">def</span> <span class="nf">draw_img</span><span class="p">(</span><span class="n">data</span><span class="p">):</span> <span class="c1"># 生成二维码图片</span>
+<a id="__codelineno-9-54" name="__codelineno-9-54" href="__codelineno-9-54"></a>    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">==</span> <span class="mi">29</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">==</span> <span class="mi">29</span>
+<a id="__codelineno-9-55" name="__codelineno-9-55" href="__codelineno-9-55"></a>    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s1">&#39;RGB&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mi">31</span><span class="p">,</span> <span class="mi">31</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
+<a id="__codelineno-9-56" name="__codelineno-9-56" href="__codelineno-9-56"></a>    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<a id="__codelineno-9-57" name="__codelineno-9-57" href="__codelineno-9-57"></a>        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">pixel</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<a id="__codelineno-9-58" name="__codelineno-9-58" href="__codelineno-9-58"></a>            <span class="n">img</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">j</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span> <span class="k">if</span> <span class="n">pixel</span> <span class="o">==</span> <span class="s2">&quot;1&quot;</span> <span class="k">else</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">,</span><span class="mi">255</span><span class="p">))</span>
+<a id="__codelineno-9-59" name="__codelineno-9-59" href="__codelineno-9-59"></a>    <span class="k">return</span> <span class="n">img</span>
+<a id="__codelineno-9-60" name="__codelineno-9-60" href="__codelineno-9-60"></a>
+<a id="__codelineno-9-61" name="__codelineno-9-61" href="__codelineno-9-61"></a><span class="k">with</span> <span class="n">tqdm</span><span class="p">(</span><span class="n">total</span><span class="o">=</span><span class="mi">86400</span><span class="p">)</span> <span class="k">as</span> <span class="n">pbar</span><span class="p">:</span>
+<a id="__codelineno-9-62" name="__codelineno-9-62" href="__codelineno-9-62"></a>    <span class="k">for</span> <span class="n">body_1</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="n">shuffle_1</span><span class="p">):</span>
+<a id="__codelineno-9-63" name="__codelineno-9-63" href="__codelineno-9-63"></a>        <span class="k">for</span> <span class="n">body_2</span> <span class="ow">in</span> <span class="n">permutations</span><span class="p">(</span><span class="n">shuffle_2</span><span class="p">):</span>
+<a id="__codelineno-9-64" name="__codelineno-9-64" href="__codelineno-9-64"></a>            <span class="n">im</span> <span class="o">=</span> <span class="n">draw_img</span><span class="p">(</span><span class="n">head</span> <span class="o">+</span> <span class="n">body</span><span class="p">(</span><span class="n">body_1</span><span class="p">,</span> <span class="n">body_2</span><span class="p">)</span> <span class="o">+</span> <span class="n">tail</span><span class="p">)</span>
+<a id="__codelineno-9-65" name="__codelineno-9-65" href="__codelineno-9-65"></a>            <span class="n">barcodes</span> <span class="o">=</span> <span class="n">pyzbar</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<a id="__codelineno-9-66" name="__codelineno-9-66" href="__codelineno-9-66"></a>            <span class="n">pbar</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-9-67" name="__codelineno-9-67" href="__codelineno-9-67"></a>            <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">barcodes</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">):</span>
+<a id="__codelineno-9-68" name="__codelineno-9-68" href="__codelineno-9-68"></a>                <span class="k">continue</span>
+<a id="__codelineno-9-69" name="__codelineno-9-69" href="__codelineno-9-69"></a>
+<a id="__codelineno-9-70" name="__codelineno-9-70" href="__codelineno-9-70"></a>            <span class="k">for</span> <span class="n">barcode</span> <span class="ow">in</span> <span class="n">barcodes</span><span class="p">:</span>
+<a id="__codelineno-9-71" name="__codelineno-9-71" href="__codelineno-9-71"></a>                <span class="n">barcodeData</span> <span class="o">=</span> <span class="n">barcode</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span>
+<a id="__codelineno-9-72" name="__codelineno-9-72" href="__codelineno-9-72"></a>                <span class="nb">print</span><span class="p">(</span><span class="n">barcodeData</span><span class="p">)</span>
+<a id="__codelineno-9-73" name="__codelineno-9-73" href="__codelineno-9-73"></a>                <span class="n">plt</span><span class="o">.</span><span class="n">imshow</span><span class="p">(</span><span class="n">im</span><span class="p">)</span>
+<a id="__codelineno-9-74" name="__codelineno-9-74" href="__codelineno-9-74"></a>                <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<p>可以跑出可解的二维码和 flag：</p>
+<details class="success">
+<summary>flag：msc{You_ar3_g0od_4t_QR_Code}</summary>
+<p><img alt="" src="/assets/images/writeups/sysu_msc_puzzle/qrcode.png" /></p>
+</details>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年1月8日 18:06:47</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年1月8日 18:06:47</span>
+      
+    
+  </small>
+</div>
+
+                
+              </article>
+            </div>
+          </div>
+          
+            <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+              回到页面顶部
+            </a>
+          
+        </main>
+        
+          <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: Writeups" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              Writeups
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../hackergame2021/" class="md-footer__link md-footer__link--next" aria-label="下一页: Hackergame 2021" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              Hackergame 2021
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 <a href="https://github.com/TonyCrane"  target="_blank" rel="noopener">TonyCrane</a>
+    </div>
+  
+  
+    Powered by
+    <a href="https://www.mkdocs.org/" target="_blank" rel="noopener">
+      MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material
+    </a>
+    modified by
+    <a href="https://github.com/TonyCrane" target="_blank" rel="noopener">
+      TonyCrane
+    </a>
+  
+</div>
+  
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/TonyCrane/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://blog.tonycrane.cc/" target="_blank" rel="noopener" title="blog.tonycrane.cc" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://tonycrane.cc/" target="_blank" rel="noopener" title="tonycrane.cc" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+        
+      </div>
+      <div class="md-dialog" data-md-component="dialog">
+        <div class="md-dialog__inner md-typeset"></div>
+      </div>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../../assets/javascripts/workers/search.361d90f1.min.js"}</script>
+      
+      
+        <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+        
+          <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+        
+          <script src="../../js/katex.js"></script>
+        
+      
+    </body>
+  </html>
+  
