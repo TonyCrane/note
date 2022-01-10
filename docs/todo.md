@@ -32,16 +32,17 @@
 - [x] 添加 icons 和 emojis :smile: :material-account-circle: :octicons-repo-push-16:
 - [x] 右侧 toc 深度调整
 - [x] 左侧 nav 深度调整
-- [ ] 为每个分区添加 index
-    - [ ] Home 
-    - [ ] cs
-    - [ ] cs/pl 
-    - [ ] ctf
+- [x] 为每个分区添加 index
+    - [x] cs
+    - [x] cs/pl 
+    - [x] ctf
     - [x] writeups
 - [x] 访问统计
     - [x] Google Analytics
     - [x] 百度统计
-- [ ] 搬一些 notion 上的 misc kb
+- [x] 搬一些 notion 上的 misc kb
+- [x] 把 yml 弄干净一点
+- [x] 写一下 mkdocs 用法
 
 ### 参考链接
 [https://shafish.cn/blog/mkdocs/](https://shafish.cn/blog/mkdocs/)<br/>

@@ -13,55 +13,44 @@ theme:
   custom_dir: overrides
   features:
     - content.code.annotate
-    - navigation.tracking # 在url中使用标题定位锚点
+    - navigation.tracking
     - navigation.tabs
-    - navigation.indexes # nav栏隐藏index
-    # - navigation.sections # nav节点缩进
-    # - navigation.expand # 不折叠左侧nav节点
-    - navigation.top # 一键回顶部
+    - navigation.indexes
+    - navigation.top
   font:
     text: JetBrains Mono
     code: JetBrains Mono
   palette:
     - scheme: default
-  #   - media: "(prefers-color-scheme: light)"
-  #     scheme: default
-  #     toggle:
-  #       icon: material/weather-sunny
-  #       name: Switch to dark mode
-  #   - media: "(prefers-color-scheme: dark)"
-  #     scheme: slate
-  #     toggle:
-  #       icon: material/weather-night
-  #       name: Switch to light mode
 
 markdown_extensions:
   - toc:
       permalink: true
       toc_depth: 3
-  - admonition
   - attr_list
   - md_in_html
   - sane_lists
-  - pymdownx.highlight:
-      anchor_linenums: true
-  - pymdownx.inlinehilite
-  - pymdownx.snippets
-  - pymdownx.superfences
-  - pymdownx.tasklist:
-      custom_checkbox: true
-  - pymdownx.arithmatex:
-      generic: true
+  - admonition
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
   - pymdownx.critic
   - pymdownx.details
+  - pymdownx.snippets
   - pymdownx.magiclink
-  - pymdownx.mark
-  - pymdownx.tabbed:
-      alternate_style: true 
-  - pymdownx.tilde
+  - pymdownx.superfences
+  - pymdownx.inlinehilite
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.tabbed:
+      alternate_style: true 
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.arithmatex:
+      generic: true
 
 extra:
   social:
@@ -81,10 +70,9 @@ extra_css:
   - css/custom.css
 
 extra_javascript:
-  # - https://unpkg.com/mermaid@8.13.3/dist/mermaid.min.js
   - https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js
   - js/katex.js
-  # - js/scheme.js # this is in template 'base.html'
+  # js/scheme.js # this is in template 'base.html'
 
 plugins:
   - search
@@ -106,11 +94,23 @@ nav:
       - Haskell: cs/pl/haskell.md
   - CTF:
     - ctf/index.md
+    - Steganography:
+      - ctf/steg/index.md
+      - Image Steganography: ctf/steg/image.md
+      - Audio Steganography: ctf/steg/audio.md
+    - Sandbox Escapes: 
+      - ctf/escapes/index.md
+      - Python Sandbox Escape: ctf/escapes/pysandbox.md
+    - Coding & Cipher: ctf/coding.md
     - QRCode: ctf/qrcode.md
+    - Esolang: ctf/esolang.md
   - Writeups:
     - writeups/index.md
-    - SYSU MSC Puzzle: writeups/sysu_msc_puzzle.md
-    - Hackergame 2021: writeups/hackergame2021.md
+    - SYSU MSC Puzzle 2021: writeups/sysu_msc_puzzle.md
+    - USTC Hackergame 2021: writeups/hackergame2021.md
     - 第四届“安洵杯”: writeups/d0g3.md
     - ByteCTF 2021 Final: writeups/bytectf2021_final.md
     - SCTF 2021: writeups/sctf2021.md
+  - Miscellaneous:
+    - misc/index.md
+    - mkdocs: misc/mkdocs.md
