@@ -22,9 +22,9 @@
 - [x] 左上角 logo
 - [x] 完善 css
 - [x] 绑定域名
-- [ ] 公开 repo
+- [x] 公开 repo
 - [x] 显示最后修改时间
-- [ ] GitHub repo 添加 README
+- [x] GitHub repo 添加 README
 - [x] 手机端颜色问题
 - [x] 代码块背景和博客同步
 - [ ] 代码配色方案和博客同步
