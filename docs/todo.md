@@ -6,7 +6,7 @@
 - [x] h1 h2 的 font-weight（貌似手机上没问题？）
 - [x] 行距
 - [x] 修公式渲染
-- [ ] 主页、关于
+- [x] 主页、关于
 - [x] 页脚版权信息
 - [x] 页脚联系方式
 - [x] 链接 GitHub 仓库
@@ -43,9 +43,3 @@
 - [x] 搬一些 notion 上的 misc kb
 - [x] 把 yml 弄干净一点
 - [x] 写一下 mkdocs 用法
-
-### 参考链接
-[https://shafish.cn/blog/mkdocs/](https://shafish.cn/blog/mkdocs/)<br/>
-[pymdownx 的文档配置](https://github.com/facelessuser/pymdown-extensions/blob/main/docs/src/mkdocs.yml)<br/>
-[以前写的文章](https://blog.tonycrane.cc/p/ce42b873.html)<br/>
-[pymdownx 文档](https://facelessuser.github.io/pymdown-extensions/extensions/arithmatex/)
