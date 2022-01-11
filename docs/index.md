@@ -1,7 +1,5 @@
 ---
 hide:
-    - navigation
-    - toc
     - date
 home: true
 ---
