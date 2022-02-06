@@ -3,8 +3,8 @@
 !!! abstract 
     SVG（Scalable Vector Graphics）是一种基于 XML 描述矢量图形的图片格式
     
-    现行标准是 SVG 2：https://www.w3.org/TR/SVG/<br/>
-    但 SVG 1.1 仍然常用，标准：https://www.w3.org/TR/SVG11/，区别：https://www.w3.org/TR/SVG/changes.html
+    现行标准是 {~~SVG 2：https://www.w3.org/TR/SVG/~>SVG 1.1：https://www.w3.org/TR/SVG11/~~}<br/>
+    SVG 2 仍在 CR 阶段，区别：https://www.w3.org/TR/SVG/changes.html
 
     [REC-SVG11-20110816.pdf](https://www.w3.org/TR/SVG11/REC-SVG11-20110816.pdf)
 
