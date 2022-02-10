@@ -11,3 +11,5 @@
     - [Haskell](pl/haskell)
 - [Web 相关](web)
     - [SVG](web/svg)
+- [RegEx 正则表达式](regex)
+- [Unicode 统一码](unicode)
