@@ -2,7 +2,8 @@
 
 > MSC Puzzle 是由中山大学 MSClub 与中山大学 W4terDr0p 战队联合举办的趣味性解谜游戏
 
-基本上都是 GZTime 出的题，算到 CTF 里就都是 misc 类，一共 24 道题，下面是简要的 writeup：
+!!! abstract
+    基本上都是 GZTime 出的题，算到 CTF 里就都是 misc 类，一共 24 道题，下面是简要的 writeup：
 
 ---
 

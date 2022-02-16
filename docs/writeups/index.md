@@ -14,3 +14,6 @@
 - [第四届“安洵杯”网络安全挑战赛](d0g3)
 - [ByteCTF 2021 Final](bytectf2021_final)
 - [SCTF 2021](sctf2021)
+
+### 2022
+- [VNCTF 2022](vnctf2022)

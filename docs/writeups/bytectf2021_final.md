@@ -1,6 +1,7 @@
 # ByteCTF 2021 Final Writeup
 
-这场比赛 misc AK 了，还挺爽的
+!!! abstract
+    这场比赛 misc AK 了，还挺爽的
 
 ---
 
