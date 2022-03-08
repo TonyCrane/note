@@ -8,6 +8,7 @@
 ---
 
 ## Ranma½
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 打开 flag 十六进制，是一个非标准的 UTF-8 编码，也就是部分可以一个字节表示一个字符的，写成了符合 UTF-8 编码原理的两个字节，导致编辑器无法正常读取（但是 vim 能读取）
 
@@ -27,6 +28,7 @@
 ---
 
 ## wordle
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 wordle 游戏，要求 512 局全部猜对
 
@@ -316,6 +318,7 @@ return hex(id)[2:].zfill(5), answer
 
 
 ## the Ohio State University
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 题目提供了 .osz 文件，是 osu! 游戏谱面的压缩文件，可以通过游戏直接打开，或者解压获得素材文件<br/>
 在osu官网搜索到对应的谱面并下载：https://osu.ppy.sh/beatmapsets/1235288#mania/2568956
@@ -339,6 +342,7 @@ BASIC 难度谱面文件有一行差异：`WAVPassword: MisoilePunch`<br/>
 ---
 
 ## Nanomaze
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 是 nano 复刻的 revomaze green 迷宫
 

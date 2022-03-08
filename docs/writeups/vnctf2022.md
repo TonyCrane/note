@@ -10,6 +10,8 @@
 ---
 
 ## GameV4.0
+![](https://img.shields.io/badge/-WEB-blueviolet?style=flat-square)
+
 web 类型的签到题
 
 开始还去认真地玩了这个游戏，然后打完 flag 关也没有看到 flag，就去翻了源码<br/>
@@ -22,6 +24,8 @@ base64 解码，然后 URL 解码，得到：flag: `VNCTF{Welcome_to_VNCTF2022}`
 ---
 
 ## gocalc0
+![](https://img.shields.io/badge/-WEB-blueviolet?style=flat-square)
+
 看样子是非预期了
 
 点进 flag 在这里，里面说 flag is in your session，打开 cookies 发现：
@@ -33,6 +37,8 @@ base64 解码后发现里面还有一段 base64，继续解码，就有 flag 了
 ---
 
 ## ezmath
+![](https://img.shields.io/badge/-CRYPTO-orange?style=flat-square)
+
 一道没什么含金量的 crypto
 
 题目问第 x 个满足 $(2^n-1)\equiv 0\pmod{15}$ 的 n，并且在一分钟之内回答 777 次<br/>
@@ -41,6 +47,8 @@ base64 解码后发现里面还有一段 base64，继续解码，就有 flag 了
 ---
 
 ## BabyMaze
+![](https://img.shields.io/badge/-REVERSE-inactive?style=flat-square)
+
 一道 python 的 rev
 
 直接 uncompyle6 发现卡死，然后 marshal+dis 读取字节码反编译
@@ -174,11 +182,8 @@ for i in range(31):
 
 ---
 
-后面是 misc
-
----
-
 ## 仔细找找
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 ??? question "题目"
     ![](/assets/images/writeups/vnctf2022/zxzz.png)
@@ -200,6 +205,8 @@ img.show()
 ---
 
 ## Strange flag
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 一个流量包，wireshark 打开，追踪最后一个 TCP 流<br/>
 读一下请求，发现是进入到了 flag 目录下执行了 tree 命令
 
@@ -265,6 +272,8 @@ for each in tree:
 ---
 
 ## prize wheel
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 > 差一点，最后的图片逆过去的思路完全错了
 
 首先给了一个 exe，开始也没意识到这个是抽奖，规则也没看，随便跑了跑就拿到了压缩包密码 `f6a623a2c577de3b46c079267d4bdd6e`<br/>
@@ -361,6 +370,8 @@ for each in tree:
 ---
 
 ## simple macos
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 > 也是差一点，看错隐写的图片文件了，做了半天做不出来
 
 macOS 取证，给的压缩包是 System 和 Users 文件夹的一部分<br/>

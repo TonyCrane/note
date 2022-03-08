@@ -8,6 +8,8 @@
 -----
 
 ## 签到
+![](https://img.shields.io/badge/-WEB-blueviolet?style=flat-square)
+
 > 为了能让大家顺利签到，命题组把每一秒的 flag 都记录下来制成了日记本的一页。你只需要打开日记，翻到 Hackergame 2021 比赛进行期间的任何一页就能得到 flag！
 
 很明确，进入网址后一直点 Next 翻到比赛时间就好了（误
@@ -19,6 +21,8 @@
 -----
 
 ## 进制十六——参上
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 ![](/assets/images/writeups/hackergame2021/hex_editor.png)
 也很明确，直接把右侧挡住的 flag 部分对应左边的十六进制数换算成十进制，然后根据 ASCII 码转成字符。或者直接把左侧抄进 Hex Friend 也可以直接得到右侧的flag。
 
@@ -27,6 +31,8 @@
 -----
 
 ## 去吧！追寻自由的电波
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 > 当然，如果只是这样还远远不够。遵依史称“老爹”的上古先贤的至理名言，必须要“用魔法打败魔法”。X 同学向上级申请到了科大西区同步辐射实验室设备的使用权限，以此打通次元空间，借助到另一个平行宇宙中 Z 同学的法力进行数据对冲，方才于乱中搏得一丝机会，将 flag 用无线电的形式发射了出去。
 > 
 > 考虑到信息的鲁棒性，X 同学使用了无线电中惯用的方法来区分字符串中读音相近的字母。即使如此，打破次元的强大能量扭曲了时空，使得最终接受到的录音的速度有所改变。
@@ -45,6 +51,8 @@
 -----
 
 ## 猫咪问答 Pro Max
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 五道刁钻的题目，但是还是好查到的，题目里也说了“解出谜题不需要是科大在校学生”
 
 > 1. 2017 年，中科大信息安全俱乐部（SEC@USTC）并入中科大 Linux 用户协会（USTCLUG）。目前，信息安全俱乐部的域名（sec.ustc.edu.cn）已经无法访问，但你能找到信息安全俱乐部的社团章程在哪一天的会员代表大会上通过的吗？
@@ -85,6 +93,8 @@
 -----
 
 ## 卖瓜
+![](https://img.shields.io/badge/-WEB-blueviolet?style=flat-square)
+
 题目里比较重要的话就是：
 > 补充说明：当称的数字变为浮点数而不是整数时，HQ 不会认可最终的称重结果。
 
@@ -100,6 +110,8 @@
 -----
 
 ## 透明的文件
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 > 一个透明的文件，用于在终端中展示一个五颜六色的 flag。
 > 
 > 可能是在 cmd.exe 等劣质终端中被长期使用的原因，这个文件失去了一些重要成分，变成了一堆乱码，也不会再显示出 flag 了。
@@ -114,6 +126,8 @@
 -----
 
 ## 旅行照片
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 > 你的学长决定来一场说走就走的旅行。通过他发给你的照片来看，他应该是在酒店住下了。
 > 
 > 从照片来看，酒店似乎在小区的一栋高楼里，附近还有一家 KFC 分店。突然，你意识到照片里透露出来的信息比表面上看起来的要多。
@@ -149,6 +163,8 @@
 -----
 
 ## FLAG 助力大红包
+![](https://img.shields.io/badge/-WEB-blueviolet?style=flat-square)
+
 > 参与活动，助力抽奖！集满 1 个 flag，即可提取 1 个 flag。
 > 
 > 恭喜你积攒到 0.5…… 个 flag， 
@@ -189,6 +205,8 @@ with tqdm(total=256) as pbar:
 -----
 
 ## Amnesia 
+![](https://img.shields.io/badge/-REVERSE-inactive?style=flat-square)
+
 ### 轻度失忆
 > 你的程序只需要输出字符串 Hello, world!（结尾有无换行均可）并正常结束。
 > 
@@ -231,6 +249,7 @@ printf(str);
 -----
 
 ## 图之上的信息
+![](https://img.shields.io/badge/-WEB-blueviolet?style=flat-square)
 
 > 小 T 听说 GraphQL 是一种特别的 API 设计模式，也是 RESTful API 的有力竞争者，所以他写了个小网站来实验这项技术。
 > 
@@ -275,6 +294,8 @@ query { user(id: 1) { privateEmail, } }
 -----
 
 ## Easy RSA 
+![](https://img.shields.io/badge/-CRYPTO-orange?style=flat-square)
+
 > 自从 Hackergame 2018 公然揭露了大整数可以被神童口算分解的事实，RSA 在 hackergame 中已经只能处于低分值的地位了。如果不在其名称前面加上 Easy 这个单词，似乎就会显得完全对不起其他题目。
 > 
 > 更何况，在本题的附件中，你还获得了构造 p 和 q 的方式。数理基础扎实的你应该可以轻松解决这些问题吧。
@@ -410,6 +431,8 @@ print(int.to_bytes(m, 30, byteorder="big"))
 -----
 
 ## 加密的 U 盘
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 （本来挺好做的一道题，怎么题给的提示我就硬是没领会到）
 > 这是一个关于 LUKS (Linux Unified Key Setup) 的故事。
 > 
@@ -469,6 +492,7 @@ Verify passphrase:
 -----
 
 ## 赛博厨房
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 > 虽然这是你的餐厅，但只有机器人可以在厨房工作。机器人精确地按照程序工作，在厨房中移动，从物品源取出食材，按照菜谱的顺序把食材依次放入锅内。
 > 
@@ -546,6 +570,8 @@ Verify passphrase:
 -----
 
 ## Micro World
+![](https://img.shields.io/badge/-REVERSE-inactive?style=flat-square)
+
 > 宇宙中某一片极其微小的区域里的粒子被一股神秘力量初始化设置成了 flag 的形状，程序忠实地记录了一段时间之后这片区域的粒子运动情况。
 
 拿到了 exe 文件，看起来挺精致，运行起来是一些点运动碰撞的场景<br/>
@@ -612,6 +638,8 @@ for item in list_:
 -----
 
 ## 阵列恢复大师
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 （这题整整做了我两天多，每天晚上都对着磁盘阵列……）
 > 以下是两个压缩包，分别是一个 RAID 0 阵列的磁盘压缩包，和一个 RAID 5 阵列的磁盘压缩包，对应本题的两小问。你需要解析得到正确完整的磁盘阵列，挂载第一个分区后在该分区根目录下使用 Python 3.7 或以上版本执行 getflag.py 脚本以获取 flag。磁盘数据保证无损坏。
 
@@ -656,6 +684,9 @@ MyDisk.img: SGI XFS filesystem data (blksz 4096, inosz 512, v2 dirs)
 -----
 
 ## 助记词
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+![](https://img.shields.io/badge/-CRYPTO-orange?style=flat-square)
+
 题目有效内容：
 > 你的室友终于连夜赶完了他的 Java 语言程序设计的课程大作业。看起来他使用 Java 17 写了一个保存助记词的后端，当然还有配套的前端。助记词由四个英文单词组成，每个用户最多保存 32 条。
 > 
@@ -700,6 +731,8 @@ if (duration > FLAG1_DURATION_MILLIS) { // 600ms
 -----
 
 ## 马赛克
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+
 （这道题已经做破防了，本以为是个青铜，结果是个王者……）<br/>
 我做的肯定不是正解，利用二维码纠错能力勉强拿到了 flag，所以就不详细写 writeup 了，主要还是要看官方 wp（逃
 
@@ -724,6 +757,9 @@ if (duration > FLAG1_DURATION_MILLIS) { // 600ms
 -----
 
 ## minecRaft
+![](https://img.shields.io/badge/-WEB-blueviolet?style=flat-square)
+![](https://img.shields.io/badge/-REVERSE-inactive?style=flat-square)
+
 > kk 同学很喜欢玩 Minecraft，他最近收到了一张 MC 地图，地图里面有三盏灯，还有很多奇奇怪怪的压力板。
 > 
 > 但他发现这些灯好像不太符合 MC 电磁学（Red stone），你能帮他把灯全部点亮吗？
@@ -835,6 +871,9 @@ function dec(left, right) {
 -----
 
 ## 密码生成器
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
+![](https://img.shields.io/badge/-REVERSE-inactive?style=flat-square)
+
 > 小 T 最近又写了一个 web 应用。
 > 
 > 他发现很多用户都喜欢设置弱密码，于是决定让所有用户的密码都必须是 16 位长，并且各种符号都要有。为了让大家可以方便生成这样的密码，他还写了一个密码生成器，让用户可以生成符合规则的密码。
@@ -860,6 +899,7 @@ function dec(left, right) {
 -----
 
 ## p😭q
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 > 学会傅里叶的一瞬间，悔恨的泪水流了下来。
 >

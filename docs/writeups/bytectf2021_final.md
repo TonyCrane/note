@@ -6,6 +6,7 @@
 ---
 
 ## Enrich Life
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 首先使用 ffprobe 发现 description 里的 hint：`FlagInChromaFrames`，以及颜色格式为 yuv240p，所以思路就是看一看 yuv 中代表色度 chroma 的 uv 分量
 
@@ -54,6 +55,7 @@ print(long_to_bytes(int("".join(['1' if y[i, 0] < y[i, 1] else '0' for i in rang
 ```
 
 ## FPS_game
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 地面高度 1072851582，用 Cheat Engine 改成 1078000000 锁定
 
@@ -64,6 +66,7 @@ print(long_to_bytes(int("".join(['1' if y[i, 0] < y[i, 1] else '0' for i in rang
 ![](/assets/images/writeups/bytectf2021_final/%E5%9B%BE2.jpg)
 
 ## Lisa's cat
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 ![](/assets/images/writeups/bytectf2021_final/Untitled%202.png)
 
@@ -119,6 +122,7 @@ result.show()
 ![](/assets/images/writeups/bytectf2021_final/arnold_cat-233-1.png)
 
 ## Undercover
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 拿到题目发现给题的方式不是发附件而是直接插入图片，所以考虑是不是和链接有关系：
 

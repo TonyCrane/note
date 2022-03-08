@@ -6,6 +6,7 @@
 ---
 
 ## ra2
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 红警自制关卡，通过这个游戏自带的 Extras → map editor，即可进入看到地图中的 lunar flag 和 billboard
 
@@ -20,6 +21,7 @@ flag: **SUSCTF{RED_ALERT_WINNER!!!}**
 ---
 
 ## Tanner
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 Tanner 图，LDPC 码，发现文件尾有所求内容：
 
@@ -104,6 +106,7 @@ print(hashlib.sha256(bin(ans)[2:].encode("utf-8")).hexdigest())
 flag: **SUSCTF{c17019990bf57492cddf24f3cc3be588507b2d567934a101d4de2fa6d606b5c1}**
 
 ## AUDIO
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 音频隐写，已经给了修改后的文件和原文件，肯定要比较异同，直接在 Au 里进行操作
 
@@ -119,6 +122,7 @@ flag: **SUSCTF{c17019990bf57492cddf24f3cc3be588507b2d567934a101d4de2fa6d606b5c1}
 flag: **SUSCTF{MASTEROFAUDIO}**
 
 ## misound
+![](https://img.shields.io/badge/-MISC-informational?style=flat-square)
 
 音频，明显是 SSTV，但是中间穿插了杂乱的音频，裁剪出来：
 
