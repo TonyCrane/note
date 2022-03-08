@@ -426,6 +426,8 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
       
       
         
@@ -568,7 +570,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../cs/web/">Web</a>
+          <a href="../../cs/system/">Computer System</a>
           
             <label for="__nav_2_3">
               <span class="md-nav__icon md-icon"></span>
@@ -576,8 +578,120 @@ var _hmt = _hmt || [];
           
         </div>
       
-      <nav class="md-nav" aria-label="Web" data-md-level="2">
+      <nav class="md-nav" aria-label="Computer System" data-md-level="2">
         <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Computer System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/system/cs1/">Computer System I</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer System I" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer System I
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/system/cs1/topic1/" class="md-nav__link">
+        Number Representations
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/web/">Web</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Web" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
           <span class="md-nav__icon md-icon"></span>
           Web
         </label>
@@ -1086,6 +1200,13 @@ var _hmt = _hmt || [];
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#nanomaze" class="md-nav__link">
+    Nanomaze
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1255,6 +1376,13 @@ var _hmt = _hmt || [];
         <li class="md-nav__item">
   <a href="#the-ohio-state-university" class="md-nav__link">
     the Ohio State University
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nanomaze" class="md-nav__link">
+    Nanomaze
   </a>
   
 </li>
@@ -1590,6 +1718,134 @@ easy 和 normal 难度均没有 flag 相关信息，所以要解出 insane 难�
 <p>剩下一部分是 flag 的结尾，所以结尾应该是 }，其对应16进制值为 7D，二进制 0111 1101，发现结尾确实有类似 0111 1101 的 note<br/>
 然后记录所有 note，转换为字符就可以拿到最后一部分flag：5HoWtIme}</p>
 <p>拼接得到完整flag：TQLCTF{VVElcOM3_TO_O$u_i7s_5HoWtIme}</p>
+<hr />
+<h2 id="nanomaze">Nanomaze<a class="headerlink" href="#nanomaze" title="Permanent link">&para;</a></h2>
+<p>是 nano 复刻的 revomaze green 迷宫</p>
+<p>主要玩法就是整个地图在左右方向上是循环的（地图卷成一个圆筒）<br/>
+整个迷宫地图包含高度，每次只能向同高度走，高度下降了就会收到 [click] 提示，这之后也就不能再原路返回了<br/>
+并且有特殊位置可以使高度上升（第一行某处）<br/>
+目标是到达地图的最下面一层的某个位置</p>
+<p>由于左右循环，所以先找到地图的横向大小<br/>
+可以发现向右走一段后会走不动，而向左走可以不断得到 click，通过两个 click 之间的坐标差可以得到地图的横向大小约 75<br/>
+所以之后的横向坐标就可以对 75 取模</p>
+<p>同时也可以发现每次向右走到走不动的距离不一定<br/>
+这说明起始位置并不固定，所以需要先移动到不能动，再重置坐标，这样会清楚很多</p>
+<p>然后就是盲着走迷宫，用了 pygame 来绘制到达的点，以及发生 click 的位置</p>
+<details class="done">
+<summary>代码</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="__codelineno-2-1"></a><span class="kn">from</span> <span class="nn">pwn</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="__codelineno-2-3"></a><span class="kn">import</span> <span class="nn">pygame</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="__codelineno-2-4"></a><span class="kn">from</span> <span class="nn">pygame.locals</span> <span class="kn">import</span> <span class="o">*</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="__codelineno-2-6"></a><span class="n">p</span> <span class="o">=</span> <span class="n">process</span><span class="p">([</span><span class="s2">&quot;python&quot;</span><span class="p">,</span> <span class="s2">&quot;main.py&quot;</span><span class="p">])</span> <span class="c1"># 本地复现</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="__codelineno-2-7"></a><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="__codelineno-2-8"></a><span class="n">width</span> <span class="o">=</span> <span class="mi">75</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="__codelineno-2-10"></a><span class="n">pygame</span><span class="o">.</span><span class="n">init</span><span class="p">()</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="__codelineno-2-11"></a><span class="n">WHITE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="__codelineno-2-12"></a><span class="n">GREEN</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="__codelineno-2-13"></a><span class="n">RED</span> <span class="o">=</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="__codelineno-2-14"></a><span class="n">BLUE</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">)</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="__codelineno-2-16"></a><span class="n">size</span> <span class="o">=</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="mi">800</span><span class="p">,</span> <span class="mi">1000</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="__codelineno-2-17"></a><span class="n">clock</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">time</span><span class="o">.</span><span class="n">Clock</span><span class="p">()</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="__codelineno-2-18"></a><span class="n">screen</span> <span class="o">=</span> <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="__codelineno-2-19"></a><span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">set_caption</span><span class="p">(</span><span class="s2">&quot;nanomaze&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="__codelineno-2-20"></a><span class="n">screen</span><span class="o">.</span><span class="n">fill</span><span class="p">(</span><span class="n">WHITE</span><span class="p">)</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="__codelineno-2-21"></a><span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="__codelineno-2-23"></a><span class="k">def</span> <span class="nf">send</span><span class="p">(</span><span class="n">direction</span><span class="p">):</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="__codelineno-2-24"></a>    <span class="n">res</span> <span class="o">=</span> <span class="n">p</span><span class="o">.</span><span class="n">recvuntil</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;&gt; &quot;</span><span class="p">)</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="__codelineno-2-25"></a>    <span class="n">click</span> <span class="o">=</span> <span class="kc">False</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="__codelineno-2-26"></a>    <span class="k">if</span> <span class="s2">&quot;[click]&quot;</span> <span class="ow">in</span> <span class="n">res</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">):</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="__codelineno-2-27"></a>        <span class="n">click</span> <span class="o">=</span> <span class="kc">True</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="__codelineno-2-28"></a>    <span class="n">p</span><span class="o">.</span><span class="n">sendline</span><span class="p">(</span><span class="n">direction</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">))</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="__codelineno-2-29"></a>    <span class="k">return</span> <span class="n">click</span><span class="p">,</span> <span class="n">p</span><span class="o">.</span><span class="n">recvline</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="__codelineno-2-31"></a><span class="k">def</span> <span class="nf">update_value</span><span class="p">(</span><span class="n">direction</span><span class="p">,</span> <span class="n">value</span><span class="p">):</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="__codelineno-2-32"></a>    <span class="k">global</span> <span class="n">X</span><span class="p">,</span> <span class="n">Y</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="__codelineno-2-33"></a>    <span class="k">if</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;w&quot;</span><span class="p">:</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="__codelineno-2-34"></a>        <span class="n">X</span> <span class="o">-=</span> <span class="n">value</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="__codelineno-2-35"></a>    <span class="k">elif</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;a&quot;</span><span class="p">:</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="__codelineno-2-36"></a>        <span class="n">Y</span> <span class="o">-=</span> <span class="n">value</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="__codelineno-2-37"></a>    <span class="k">elif</span> <span class="n">direction</span> <span class="o">==</span> <span class="s2">&quot;s&quot;</span><span class="p">:</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="__codelineno-2-38"></a>        <span class="n">X</span> <span class="o">+=</span> <span class="n">value</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="__codelineno-2-39"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="__codelineno-2-40"></a>        <span class="n">Y</span> <span class="o">+=</span> <span class="n">value</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="__codelineno-2-41"></a>    <span class="k">if</span> <span class="n">Y</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="__codelineno-2-42"></a>        <span class="n">Y</span> <span class="o">+=</span> <span class="mi">75</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="__codelineno-2-43"></a>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="__codelineno-2-44"></a><span class="k">def</span> <span class="nf">move</span><span class="p">(</span><span class="n">direction</span><span class="p">,</span> <span class="n">aim</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="__codelineno-2-45"></a>    <span class="k">if</span> <span class="n">aim</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="__codelineno-2-46"></a>        <span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="__codelineno-2-47"></a>        <span class="k">while</span> <span class="n">times</span> <span class="o">&lt;</span> <span class="mi">20</span><span class="p">:</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="__codelineno-2-48"></a>            <span class="n">click</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="__codelineno-2-49"></a>            <span class="k">if</span> <span class="n">click</span><span class="p">:</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="__codelineno-2-50"></a>                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;click at    (</span><span class="si">{</span><span class="n">X</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">Y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="__codelineno-2-51"></a>                <span class="k">return</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="__codelineno-2-52"></a>            <span class="k">if</span> <span class="s2">&quot;Cannot be moved&quot;</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="__codelineno-2-53"></a>                <span class="n">times</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="__codelineno-2-54"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="__codelineno-2-55"></a>                <span class="n">update_value</span><span class="p">(</span><span class="n">direction</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]))</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="__codelineno-2-56"></a>                <span class="n">times</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="__codelineno-2-57"></a>                <span class="c1"># log.info(f&quot;  {direction} move to: ({X}, {Y})&quot;)</span>
+<a id="__codelineno-2-58" name="__codelineno-2-58" href="__codelineno-2-58"></a>        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2"> to bound: (</span><span class="si">{</span><span class="n">X</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">Y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-59" name="__codelineno-2-59" href="__codelineno-2-59"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-2-60" name="__codelineno-2-60" href="__codelineno-2-60"></a>        <span class="n">now</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">if</span> <span class="n">direction</span> <span class="ow">in</span> <span class="s2">&quot;ws&quot;</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">Y</span><span class="p">)</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61" href="__codelineno-2-61"></a>        <span class="k">while</span> <span class="nb">abs</span><span class="p">((</span><span class="nb">int</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> <span class="k">if</span> <span class="n">direction</span> <span class="ow">in</span> <span class="s2">&quot;ws&quot;</span> <span class="k">else</span> <span class="nb">int</span><span class="p">(</span><span class="n">Y</span><span class="p">))</span> <span class="o">-</span> <span class="n">now</span><span class="p">)</span> <span class="o">!=</span> <span class="n">aim</span><span class="p">:</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62" href="__codelineno-2-62"></a>            <span class="n">click</span><span class="p">,</span> <span class="n">res</span> <span class="o">=</span> <span class="n">send</span><span class="p">(</span><span class="n">direction</span><span class="p">)</span>
+<a id="__codelineno-2-63" name="__codelineno-2-63" href="__codelineno-2-63"></a>            <span class="k">if</span> <span class="n">click</span><span class="p">:</span>
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="__codelineno-2-64"></a>                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;click at    (</span><span class="si">{</span><span class="n">X</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">Y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-65" name="__codelineno-2-65" href="__codelineno-2-65"></a>                <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66" href="__codelineno-2-66"></a>                <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">RED</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span> <span class="o">+</span> <span class="n">X</span><span class="o">*</span><span class="mi">10</span><span class="p">],</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-2-67" name="__codelineno-2-67" href="__codelineno-2-67"></a>                <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="__codelineno-2-68"></a>            <span class="k">if</span> <span class="s2">&quot;Cannot be moved&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">res</span><span class="p">:</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69" href="__codelineno-2-69"></a>                <span class="n">update_value</span><span class="p">(</span><span class="n">direction</span><span class="p">,</span> <span class="nb">float</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">split</span><span class="p">()[</span><span class="mi">2</span><span class="p">]))</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70" href="__codelineno-2-70"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71" href="__codelineno-2-71"></a>                <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Can&#39;t move to </span><span class="si">{</span><span class="n">aim</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-72" name="__codelineno-2-72" href="__codelineno-2-72"></a>                <span class="k">break</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73" href="__codelineno-2-73"></a>        <span class="n">log</span><span class="o">.</span><span class="n">info</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">direction</span><span class="si">}</span><span class="s2"> move to:  (</span><span class="si">{</span><span class="n">X</span><span class="si">}</span><span class="s2">, </span><span class="si">{</span><span class="n">Y</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74" href="__codelineno-2-74"></a>        <span class="k">return</span> <span class="kc">True</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="__codelineno-2-75"></a>
+<a id="__codelineno-2-76" name="__codelineno-2-76" href="__codelineno-2-76"></a><span class="n">move</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-77" name="__codelineno-2-77" href="__codelineno-2-77"></a><span class="n">move</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78" href="__codelineno-2-78"></a><span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">75</span> <span class="c1"># 固定起始位置</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79" href="__codelineno-2-79"></a>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="__codelineno-2-80"></a><span class="k">def</span> <span class="nf">w</span><span class="p">(</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span> <span class="c1"># 便于交互</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="__codelineno-2-81"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82" href="__codelineno-2-82"></a>        <span class="n">move</span><span class="p">(</span><span class="s2">&quot;w&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-83" name="__codelineno-2-83" href="__codelineno-2-83"></a>        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span> <span class="o">+</span> <span class="n">X</span><span class="o">*</span><span class="mi">10</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="__codelineno-2-84"></a>        <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<a id="__codelineno-2-85" name="__codelineno-2-85" href="__codelineno-2-85"></a><span class="k">def</span> <span class="nf">a</span><span class="p">(</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-2-86" name="__codelineno-2-86" href="__codelineno-2-86"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+<a id="__codelineno-2-87" name="__codelineno-2-87" href="__codelineno-2-87"></a>        <span class="n">move</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-88" name="__codelineno-2-88" href="__codelineno-2-88"></a>        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span> <span class="o">+</span> <span class="n">X</span><span class="o">*</span><span class="mi">10</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-2-89" name="__codelineno-2-89" href="__codelineno-2-89"></a>        <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<a id="__codelineno-2-90" name="__codelineno-2-90" href="__codelineno-2-90"></a><span class="k">def</span> <span class="nf">s</span><span class="p">(</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-2-91" name="__codelineno-2-91" href="__codelineno-2-91"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+<a id="__codelineno-2-92" name="__codelineno-2-92" href="__codelineno-2-92"></a>        <span class="n">move</span><span class="p">(</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-93" name="__codelineno-2-93" href="__codelineno-2-93"></a>        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span> <span class="o">+</span> <span class="n">X</span><span class="o">*</span><span class="mi">10</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-2-94" name="__codelineno-2-94" href="__codelineno-2-94"></a>        <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<a id="__codelineno-2-95" name="__codelineno-2-95" href="__codelineno-2-95"></a><span class="k">def</span> <span class="nf">d</span><span class="p">(</span><span class="n">cnt</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
+<a id="__codelineno-2-96" name="__codelineno-2-96" href="__codelineno-2-96"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">cnt</span><span class="p">):</span>
+<a id="__codelineno-2-97" name="__codelineno-2-97" href="__codelineno-2-97"></a>        <span class="n">move</span><span class="p">(</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a id="__codelineno-2-98" name="__codelineno-2-98" href="__codelineno-2-98"></a>        <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span> <span class="o">+</span> <span class="n">X</span><span class="o">*</span><span class="mi">10</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-2-99" name="__codelineno-2-99" href="__codelineno-2-99"></a>        <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<a id="__codelineno-2-100" name="__codelineno-2-100" href="__codelineno-2-100"></a>
+<a id="__codelineno-2-101" name="__codelineno-2-101" href="__codelineno-2-101"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a id="__codelineno-2-102" name="__codelineno-2-102" href="__codelineno-2-102"></a>    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<a id="__codelineno-2-103" name="__codelineno-2-103" href="__codelineno-2-103"></a>    <span class="n">pygame</span><span class="o">.</span><span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">screen</span><span class="p">,</span> <span class="n">BLUE</span><span class="p">,</span> <span class="p">[</span><span class="mi">20</span> <span class="o">+</span> <span class="n">Y</span><span class="o">*</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span> <span class="o">+</span> <span class="n">X</span><span class="o">*</span><span class="mi">10</span><span class="p">],</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<a id="__codelineno-2-104" name="__codelineno-2-104" href="__codelineno-2-104"></a>    <span class="n">pygame</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">update</span><span class="p">()</span>
+<a id="__codelineno-2-105" name="__codelineno-2-105" href="__codelineno-2-105"></a>    <span class="n">op</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">&quot;&gt; &quot;</span><span class="p">)</span>
+<a id="__codelineno-2-106" name="__codelineno-2-106" href="__codelineno-2-106"></a>    <span class="n">exec</span><span class="p">(</span><span class="n">op</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p>结果：
+<img alt="" src="/assets/images/writeups/tqlctf2022/nanomaze.jpg" /></p>
+<p>nano 给的标准地图：
+<img alt="" src="/assets/images/writeups/tqlctf2022/maze.jpg" />
+就是 revomaze 的地图，<a href="https://www.bilibili.com/video/av720802187">这个视频</a>的最后有建模演示</p>
 
   
     <hr>
