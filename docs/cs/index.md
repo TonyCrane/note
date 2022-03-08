@@ -9,6 +9,8 @@
 - [Programming Language 编程语言](pl)
     - [C/C++](pl/c_cpp)
     - [Haskell](pl/haskell)
+- [Computer System 计算机系统](system)
+    - [Computer System I 计算机系统 Ⅰ](system/cs1)
 - [Web 相关](web)
     - [SVG](web/svg)
 - [RegEx 正则表达式](regex)

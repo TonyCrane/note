@@ -335,3 +335,139 @@ BASIC 难度谱面文件有一行差异：`WAVPassword: MisoilePunch`<br/>
 然后记录所有 note，转换为字符就可以拿到最后一部分flag：5HoWtIme}
 
 拼接得到完整flag：TQLCTF{VVElcOM3_TO_O$u_i7s_5HoWtIme}
+
+---
+
+## Nanomaze
+
+是 nano 复刻的 revomaze green 迷宫
+
+主要玩法就是整个地图在左右方向上是循环的（地图卷成一个圆筒）<br/>
+整个迷宫地图包含高度，每次只能向同高度走，高度下降了就会收到 [click] 提示，这之后也就不能再原路返回了<br/>
+并且有特殊位置可以使高度上升（第一行某处）<br/>
+目标是到达地图的最下面一层的某个位置
+
+由于左右循环，所以先找到地图的横向大小<br/>
+可以发现向右走一段后会走不动，而向左走可以不断得到 click，通过两个 click 之间的坐标差可以得到地图的横向大小约 75<br/>
+所以之后的横向坐标就可以对 75 取模
+
+同时也可以发现每次向右走到走不动的距离不一定<br/>
+这说明起始位置并不固定，所以需要先移动到不能动，再重置坐标，这样会清楚很多
+
+然后就是盲着走迷宫，用了 pygame 来绘制到达的点，以及发生 click 的位置
+??? done "代码"
+    ```python
+    from pwn import *
+
+    import pygame
+    from pygame.locals import *
+
+    p = process(["python", "main.py"]) # 本地复现
+    X, Y = 0, 0
+    width = 75
+
+    pygame.init()
+    WHITE = (255, 255, 255)
+    GREEN = (0, 255, 0)
+    RED = (255, 0, 0)
+    BLUE = (0, 0, 255)
+
+    size = width, height = 800, 1000
+    clock = pygame.time.Clock()
+    screen = pygame.display.set_mode(size)
+    pygame.display.set_caption("nanomaze")
+    screen.fill(WHITE)
+    pygame.display.flip()
+
+    def send(direction):
+        res = p.recvuntil(b"> ")
+        click = False
+        if "[click]" in res.decode("utf-8"):
+            click = True
+        p.sendline(direction.encode("utf-8"))
+        return click, p.recvline().decode("utf-8").strip()
+
+    def update_value(direction, value):
+        global X, Y
+        if direction == "w":
+            X -= value
+        elif direction == "a":
+            Y -= value
+        elif direction == "s":
+            X += value
+        else:
+            Y += value
+        if Y < 0:
+            Y += 75
+
+    def move(direction, aim=None):
+        if aim is None:
+            times = 0
+            while times < 20:
+                click, res = send(direction)
+                if click:
+                    log.info(f"click at    ({X}, {Y})")
+                    return
+                if "Cannot be moved" in res:
+                    times += 1
+                else:
+                    update_value(direction, float(res.split()[2]))
+                    times = 0
+                    # log.info(f"  {direction} move to: ({X}, {Y})")
+            log.info(f"{direction} to bound: ({X}, {Y})")
+        else:
+            now = int(X) if direction in "ws" else int(Y)
+            while abs((int(X) if direction in "ws" else int(Y)) - now) != aim:
+                click, res = send(direction)
+                if click:
+                    log.info(f"click at    ({X}, {Y})")
+                    pygame.display.update()
+                    pygame.draw.circle(screen, RED, [20 + Y*10, 20 + X*10], 10, 2)
+                    pygame.display.update()
+                if "Cannot be moved" not in res:
+                    update_value(direction, float(res.split()[2]))
+                else:
+                    log.info(f"Can't move to {aim} in {direction}")
+                    break
+            log.info(f"{direction} move to:  ({X}, {Y})")
+            return True
+
+    move("w")
+    move("d")
+    X, Y = 0, 75 # 固定起始位置
+
+    def w(cnt=1): # 便于交互
+        for _ in range(cnt):
+            move("w", 1)
+            pygame.draw.circle(screen, BLUE, [20 + Y*10, 20 + X*10], 5, 5)
+            pygame.display.update()
+    def a(cnt=1):
+        for _ in range(cnt):
+            move("a", 1)
+            pygame.draw.circle(screen, BLUE, [20 + Y*10, 20 + X*10], 5, 5)
+            pygame.display.update()
+    def s(cnt=1):
+        for _ in range(cnt):
+            move("s", 1)
+            pygame.draw.circle(screen, BLUE, [20 + Y*10, 20 + X*10], 5, 5)
+            pygame.display.update()
+    def d(cnt=1):
+        for _ in range(cnt):
+            move("d", 1)
+            pygame.draw.circle(screen, BLUE, [20 + Y*10, 20 + X*10], 5, 5)
+            pygame.display.update()
+
+    while True:
+        pygame.display.update()
+        pygame.draw.circle(screen, BLUE, [20 + Y*10, 20 + X*10], 5, 5)
+        pygame.display.update()
+        op = input("> ")
+        exec(op)
+    ```
+
+结果：
+![](/assets/images/writeups/tqlctf2022/nanomaze.jpg)
+
+nano 给的标准地图：
+![](/assets/images/writeups/tqlctf2022/maze.jpg)
+就是 revomaze 的地图，[这个视频](https://www.bilibili.com/video/av720802187)的最后有建模演示
