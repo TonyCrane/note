@@ -1034,6 +1034,10 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
+          
+        
       
       
         
@@ -1238,6 +1242,34 @@ var _hmt = _hmt || [];
     <li class="md-nav__item">
       <a href="../tqlctf2022/" class="md-nav__link">
         TQLCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../susctf2022/" class="md-nav__link">
+        SUSCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../d3ctf2022/" class="md-nav__link">
+        D3CTF 2022
       </a>
     </li>
   
@@ -1470,6 +1502,7 @@ var _hmt = _hmt || [];
 </div>
 <hr />
 <h2 id="gamev40">GameV4.0<a class="headerlink" href="#gamev40" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-WEB-blueviolet?style=flat-square" /></p>
 <p>web 类型的签到题</p>
 <p>开始还去认真地玩了这个游戏，然后打完 flag 关也没有看到 flag，就去翻了源码<br/>
 发现了 data.js 这个文件保存了所有关卡的数据，然后在文件的最末尾有一行
@@ -1478,6 +1511,7 @@ var _hmt = _hmt || [];
 base64 解码，然后 URL 解码，得到：flag: <code>VNCTF{Welcome_to_VNCTF2022}</code></p>
 <hr />
 <h2 id="gocalc0">gocalc0<a class="headerlink" href="#gocalc0" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-WEB-blueviolet?style=flat-square" /></p>
 <p>看样子是非预期了</p>
 <p>点进 flag 在这里，里面说 flag is in your session，打开 cookies 发现：
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="__codelineno-1-1"></a>session: MTY0NDk4ODEyMnxEdi1CQkFFQ180SUFBUkFCRUFBQVNQLUNBQUVHYzNSeWFXNW5EQVlBQkVaTVFVY0djM1J5YVc1bkRDd0FLbVpzWVdkN01EWXlZamcyWlRNdE1tSTFNaTAwTURFMUxUZzJNall0TjJFNVkyVTVORFV4TldZMGZRPT18sud3sUmK5woUfaXQnzZ_R_eu8wGDMVPjfgXvyKo99os=
@@ -1485,11 +1519,13 @@ base64 解码，然后 URL 解码，得到：flag: <code>VNCTF{Welcome_to_VNCTF2
 base64 解码后发现里面还有一段 base64，继续解码，就有 flag 了：<code>flag{062b86e3-2b52-4015-8626-7a9ce94515f4}</code></p>
 <hr />
 <h2 id="ezmath">ezmath<a class="headerlink" href="#ezmath" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-CRYPTO-orange?style=flat-square" /></p>
 <p>一道没什么含金量的 crypto</p>
 <p>题目问第 x 个满足 <span class="arithmatex">\((2^n-1)\equiv 0\pmod{15}\)</span> 的 n，并且在一分钟之内回答 777 次<br/>
 可以发现这里的 n 一定是 4 的倍数，而且是充要的，所以直接读入然后乘 4 再回答就好了</p>
 <hr />
 <h2 id="babymaze">BabyMaze<a class="headerlink" href="#babymaze" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-REVERSE-inactive?style=flat-square" /></p>
 <p>一道 python 的 rev</p>
 <p>直接 uncompyle6 发现卡死，然后 marshal+dis 读取字节码反编译
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="__codelineno-2-1"></a><span class="kn">import</span> <span class="nn">dis</span>
@@ -1615,9 +1651,8 @@ base64 解码后发现里面还有一段 base64，继续解码，就有 flag 了
 </code></pre></div>
 </details>
 <hr />
-<p>后面是 misc</p>
-<hr />
 <h2 id="_1">仔细找找<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
 <details class="question">
 <summary>题目</summary>
 <p><img alt="" src="/assets/images/writeups/vnctf2022/zxzz.png" /></p>
@@ -1634,6 +1669,7 @@ base64 解码后发现里面还有一段 base64，继续解码，就有 flag 了
 就能清晰看到 flag 了</p>
 <hr />
 <h2 id="strange-flag">Strange flag<a class="headerlink" href="#strange-flag" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
 <p>一个流量包，wireshark 打开，追踪最后一个 TCP 流<br/>
 读一下请求，发现是进入到了 flag 目录下执行了 tree 命令</p>
 <p>得到的 response 是 gzip 压缩后的，取出内容，然后解压得到 tree 的结果：
@@ -1693,6 +1729,7 @@ base64 解码后发现里面还有一段 base64，继续解码，就有 flag 了
 查了下，Folders 有工具，pip install Folders，然后 Folders flag/，得到 flag：<code>vnctf{d23903879df57503879bcdf1efc141fe}</code></p>
 <hr />
 <h2 id="prize-wheel">prize wheel<a class="headerlink" href="#prize-wheel" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
 <blockquote>
 <p>差一点，最后的图片逆过去的思路完全错了</p>
 </blockquote>
@@ -1789,6 +1826,7 @@ base64 解码后发现里面还有一段 base64，继续解码，就有 flag 了
 </details>
 <hr />
 <h2 id="simple-macos">simple macos<a class="headerlink" href="#simple-macos" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
 <blockquote>
 <p>也是差一点，看错隐写的图片文件了，做了半天做不出来</p>
 </blockquote>
@@ -1813,7 +1851,7 @@ base64 解码后发现里面还有一段 base64，继续解码，就有 flag 了
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年2月16日 15:40:39</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年3月8日 23:41:25</span>
       
         <br>
         创建日期:
