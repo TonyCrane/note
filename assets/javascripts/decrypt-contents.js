@@ -179,7 +179,7 @@ function init_decryptor() {
     // adjust password field width to placeholder length
     let input = document.getElementById("mkdocs-content-password");
     input.setAttribute('size', input.getAttribute('placeholder').length);
-    
+    var encrypted_something = {'mkdocs-encrypted-toc': ['nav', 'class']};
 
     /* If remember_password is set, try to use localstorage item to decrypt content when page is loaded */
     var password_cookie = getItemExpiry(window.location.pathname);
@@ -191,7 +191,7 @@ function init_decryptor() {
         if (content_decrypted) {
             // continue to decrypt others parts
             
-            
+            var something_decrypted = decrypt_somethings(password_input, encrypted_something);
         } else {
             // remove item on localStorage if decryption process fail (Invalid item)
             delItemName(window.location.pathname)
@@ -218,7 +218,7 @@ function init_decryptor() {
                 setItemExpiry(location_path, password_input.value, 1000*3600*48);
                 // continue to decrypt others parts
                 
-                
+                var something_decrypted = decrypt_somethings(password_input, encrypted_something);
             } else {
                 // TODO ?
             };
