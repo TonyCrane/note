@@ -9,7 +9,10 @@
 
 ## Table of Contents
 
+### Training
+
 - [🔒 AAA School Bus](AAA)（浙大校内 CTF 题目平台 writeup，暂不公开）
+- [Ethernaut](ethernaut)
 
 ### 2021
 - [SYSU MSC Puzzle 2021](sysu_msc_puzzle)
