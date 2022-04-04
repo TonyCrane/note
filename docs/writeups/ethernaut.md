@@ -257,7 +257,7 @@
 ## Delegation
 
 ??? question "题目合约"
-    ```
+    ```solidity
     // SPDX-License-Identifier: MIT
     pragma solidity ^0.6.0;
 
@@ -328,7 +328,7 @@ contract Exploit {
 ## Vault
 
 ??? question "题目合约"
-    ```
+    ```solidity
     // SPDX-License-Identifier: MIT
     pragma solidity ^0.6.0;
 
@@ -366,7 +366,7 @@ contract Exploit {
 ## King 
 
 ??? question "题目合约"
-    ```
+    ```solidity
     // SPDX-License-Identifier: MIT
     pragma solidity ^0.6.0;
 

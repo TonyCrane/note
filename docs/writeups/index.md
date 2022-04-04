@@ -13,6 +13,7 @@
 
 - [🔒 AAA School Bus](AAA)（浙大校内 CTF 题目平台 writeup，暂不公开）
 - [Ethernaut](ethernaut)
+- [Security Innovation Smart Contract CTF](SecurityInnovation)
 
 ### 2021
 - [SYSU MSC Puzzle 2021](sysu_msc_puzzle)
