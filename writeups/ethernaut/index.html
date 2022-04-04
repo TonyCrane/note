@@ -1056,6 +1056,8 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
       
       
         
@@ -1422,6 +1424,20 @@ var _hmt = _hmt || [];
     
   </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SecurityInnovation/" class="md-nav__link">
+        Security Innovation
+      </a>
     </li>
   
 
@@ -1990,33 +2006,33 @@ var _hmt = _hmt || [];
 <h2 id="delegation">Delegation<a class="headerlink" href="#delegation" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>题目合约</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="__codelineno-7-1"></a>// SPDX-License-Identifier: MIT
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="__codelineno-7-2"></a>pragma solidity ^0.6.0;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="__codelineno-7-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="__codelineno-7-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="__codelineno-7-4"></a>contract Delegate {
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="__codelineno-7-5"></a>    address public owner;
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="__codelineno-7-6"></a>    constructor(address _owner) public {
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="__codelineno-7-7"></a>        owner = _owner;
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="__codelineno-7-8"></a>    }
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="__codelineno-7-9"></a>    function pwn() public {
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="__codelineno-7-10"></a>        owner = msg.sender;
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="__codelineno-7-11"></a>    }
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="__codelineno-7-12"></a>}
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="__codelineno-7-4"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Delegate</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="__codelineno-7-5"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">owner</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="__codelineno-7-6"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_owner</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="__codelineno-7-7"></a><span class="w">        </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span>_owner<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="__codelineno-7-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="__codelineno-7-9"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">pwn</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="__codelineno-7-10"></a><span class="w">        </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="__codelineno-7-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="__codelineno-7-12"></a><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="__codelineno-7-13"></a>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="__codelineno-7-14"></a>contract Delegation {
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="__codelineno-7-15"></a>    address public owner;
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="__codelineno-7-16"></a>    Delegate delegate;
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="__codelineno-7-17"></a>    constructor(address _delegateAddress) public {
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="__codelineno-7-18"></a>        delegate = Delegate(_delegateAddress);
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="__codelineno-7-19"></a>        owner = msg.sender;
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="__codelineno-7-20"></a>    }
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="__codelineno-7-21"></a>    fallback() external {
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="__codelineno-7-22"></a>        (bool result,) = address(delegate).delegatecall(msg.data);
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="__codelineno-7-23"></a>        if (result) {
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="__codelineno-7-24"></a>            this;
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="__codelineno-7-25"></a>        }
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="__codelineno-7-26"></a>    }
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="__codelineno-7-27"></a>}
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="__codelineno-7-14"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Delegation</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="__codelineno-7-15"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">owner</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="__codelineno-7-16"></a><span class="w">    </span>Delegate<span class="w"> </span>delegate<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="__codelineno-7-17"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_delegateAddress</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="__codelineno-7-18"></a><span class="w">        </span>delegate<span class="w"> </span><span class="o">=</span><span class="w"> </span>Delegate<span class="p">(</span>_delegateAddress<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="__codelineno-7-19"></a><span class="w">        </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="__codelineno-7-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="__codelineno-7-21"></a><span class="w">    </span>fallback<span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="__codelineno-7-22"></a><span class="w">        </span><span class="p">(</span><span class="kt">bool</span><span class="w"> </span><span class="nv">result</span><span class="p">,)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span>delegate<span class="p">).</span>delegatecall<span class="p">(</span><span class="k">msg.data</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="__codelineno-7-23"></a><span class="w">        </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span>result<span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="__codelineno-7-24"></a><span class="w">            </span><span class="kt">this</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="__codelineno-7-25"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="__codelineno-7-26"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="__codelineno-7-27"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>目的还是拿到所有权，即执行 Delegate 中的 pwn 函数</p>
@@ -2047,24 +2063,24 @@ var _hmt = _hmt || [];
 <h2 id="vault">Vault<a class="headerlink" href="#vault" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>题目合约</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="__codelineno-10-1"></a>// SPDX-License-Identifier: MIT
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="__codelineno-10-2"></a>pragma solidity ^0.6.0;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="__codelineno-10-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="__codelineno-10-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-10-3" name="__codelineno-10-3" href="__codelineno-10-3"></a>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="__codelineno-10-4"></a>contract Vault {
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="__codelineno-10-5"></a>    bool public locked;
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="__codelineno-10-6"></a>    bytes32 private password;
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="__codelineno-10-4"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Vault</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="__codelineno-10-5"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">public </span><span class="nv">locked</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="__codelineno-10-6"></a><span class="w">    </span><span class="kt">bytes32</span><span class="w"> </span><span class="k">private </span><span class="nv">password</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-10-7" name="__codelineno-10-7" href="__codelineno-10-7"></a>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="__codelineno-10-8"></a>    constructor(bytes32 _password) public {
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="__codelineno-10-9"></a>        locked = true;
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="__codelineno-10-10"></a>        password = _password;
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="__codelineno-10-11"></a>    }
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="__codelineno-10-8"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">_password</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="__codelineno-10-9"></a><span class="w">        </span>locked<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="__codelineno-10-10"></a><span class="w">        </span>password<span class="w"> </span><span class="o">=</span><span class="w"> </span>_password<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="__codelineno-10-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="__codelineno-10-12"></a>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="__codelineno-10-13"></a>    function unlock(bytes32 _password) public {
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="__codelineno-10-14"></a>        if (password == _password) {
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="__codelineno-10-15"></a>            locked = false;
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="__codelineno-10-16"></a>        }
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="__codelineno-10-17"></a>    }
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="__codelineno-10-18"></a>}
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="__codelineno-10-13"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">unlock</span><span class="p">(</span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">_password</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="__codelineno-10-14"></a><span class="w">        </span><span class="kt">if</span><span class="w"> </span><span class="p">(</span>password<span class="w"> </span><span class="o">==</span><span class="w"> </span>_password<span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="__codelineno-10-15"></a><span class="w">            </span>locked<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">false</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="__codelineno-10-16"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="__codelineno-10-17"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="__codelineno-10-18"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>要 unlock 这个合约账户，也就是要找到 password</p>
@@ -2080,31 +2096,31 @@ var _hmt = _hmt || [];
 <h2 id="king">King<a class="headerlink" href="#king" title="Permanent link">&para;</a></h2>
 <details class="question">
 <summary>题目合约</summary>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="__codelineno-12-1"></a>// SPDX-License-Identifier: MIT
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="__codelineno-12-2"></a>pragma solidity ^0.6.0;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="__codelineno-12-1"></a><span class="c1">// SPDX-License-Identifier: MIT</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="__codelineno-12-2"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="o">^</span><span class="k">0.6.0</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="__codelineno-12-4"></a>contract King {
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="__codelineno-12-5"></a>    address payable king;
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="__codelineno-12-6"></a>    uint public prize;
-<a id="__codelineno-12-7" name="__codelineno-12-7" href="__codelineno-12-7"></a>    address payable public owner;
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="__codelineno-12-4"></a><span class="k">contract</span><span class="w"> </span><span class="ni">King</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="__codelineno-12-5"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span>king<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="__codelineno-12-6"></a><span class="w">    </span><span class="kt">uint</span><span class="w"> </span><span class="k">public </span><span class="nv">prize</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="__codelineno-12-7"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>owner<span class="p">;</span><span class="w"></span>
 <a id="__codelineno-12-8" name="__codelineno-12-8" href="__codelineno-12-8"></a>
-<a id="__codelineno-12-9" name="__codelineno-12-9" href="__codelineno-12-9"></a>    constructor() public payable {
-<a id="__codelineno-12-10" name="__codelineno-12-10" href="__codelineno-12-10"></a>        owner = msg.sender;  
-<a id="__codelineno-12-11" name="__codelineno-12-11" href="__codelineno-12-11"></a>        king = msg.sender;
-<a id="__codelineno-12-12" name="__codelineno-12-12" href="__codelineno-12-12"></a>        prize = msg.value;
-<a id="__codelineno-12-13" name="__codelineno-12-13" href="__codelineno-12-13"></a>    }
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="__codelineno-12-9"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="__codelineno-12-10"></a><span class="w">        </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="__codelineno-12-11"></a><span class="w">        </span>king<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="__codelineno-12-12"></a><span class="w">        </span>prize<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.value</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="__codelineno-12-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-12-14" name="__codelineno-12-14" href="__codelineno-12-14"></a>
-<a id="__codelineno-12-15" name="__codelineno-12-15" href="__codelineno-12-15"></a>    receive() external payable {
-<a id="__codelineno-12-16" name="__codelineno-12-16" href="__codelineno-12-16"></a>        require(msg.value &gt;= prize || msg.sender == owner);
-<a id="__codelineno-12-17" name="__codelineno-12-17" href="__codelineno-12-17"></a>        king.transfer(msg.value);
-<a id="__codelineno-12-18" name="__codelineno-12-18" href="__codelineno-12-18"></a>        king = msg.sender;
-<a id="__codelineno-12-19" name="__codelineno-12-19" href="__codelineno-12-19"></a>        prize = msg.value;
-<a id="__codelineno-12-20" name="__codelineno-12-20" href="__codelineno-12-20"></a>    }
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="__codelineno-12-15"></a><span class="w">    </span>receive<span class="p">()</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="__codelineno-12-16"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="k">msg.value</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>prize<span class="w"> </span><span class="err">||</span><span class="w"> </span><span class="k">msg.sender</span><span class="w"> </span><span class="o">==</span><span class="w"> </span>owner<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="__codelineno-12-17"></a><span class="w">        </span>king<span class="p">.</span>transfer<span class="p">(</span><span class="k">msg.value</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="__codelineno-12-18"></a><span class="w">        </span>king<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="__codelineno-12-19"></a><span class="w">        </span>prize<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.value</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="__codelineno-12-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a id="__codelineno-12-21" name="__codelineno-12-21" href="__codelineno-12-21"></a>
-<a id="__codelineno-12-22" name="__codelineno-12-22" href="__codelineno-12-22"></a>    function _king() public view returns (address payable) {
-<a id="__codelineno-12-23" name="__codelineno-12-23" href="__codelineno-12-23"></a>        return king;
-<a id="__codelineno-12-24" name="__codelineno-12-24" href="__codelineno-12-24"></a>    }
-<a id="__codelineno-12-25" name="__codelineno-12-25" href="__codelineno-12-25"></a>}
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="__codelineno-12-22"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">_king</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">payable</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="__codelineno-12-23"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>king<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="__codelineno-12-24"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="__codelineno-12-25"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 </details>
 <p>当题目再次出资更高的时候，king 就会回到题目上，要保持 king 在自己身上</p>
@@ -3276,7 +3292,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年3月29日 00:10:46</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年4月5日 00:14:43</span>
       
         <br>
         创建日期:
@@ -3320,13 +3336,13 @@ var _hmt = _hmt || [];
       
       
         
-        <a href="../AAA/" class="md-footer__link md-footer__link--next" aria-label="下一页: 🔒 AAA School Bus" rel="next">
+        <a href="../SecurityInnovation/" class="md-footer__link md-footer__link--next" aria-label="下一页: Security Innovation" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              🔒 AAA School Bus
+              Security Innovation
             </div>
           </div>
           <div class="md-footer__button md-icon">
