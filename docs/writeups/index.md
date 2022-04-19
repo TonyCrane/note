@@ -25,3 +25,6 @@
 ### 2022
 - [VNCTF 2022](vnctf2022)
 - [TQLCTF 2022](tqlctf2022)
+- [SUSCTF 2022](susctf2022)
+- [D^3CTF 2022](d3ctf2022)
+- [*CTF 2022](*ctf2022)
