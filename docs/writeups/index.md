@@ -28,3 +28,4 @@
 - [SUSCTF 2022](susctf2022)
 - [D^3CTF 2022](d3ctf2022)
 - [*CTF 2022](*ctf2022)
+- [MRCTF 2022](mrctf2022)
