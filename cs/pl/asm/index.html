@@ -684,6 +684,40 @@ var _hmt = _hmt || [];
     8086 汇编程序格式
   </a>
   
+    <nav class="md-nav" aria-label="8086 汇编程序格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    汇编程序基本结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    段的定义、假设与引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    程序的结束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    汇编程序语句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
       </ul>
@@ -1782,6 +1816,40 @@ var _hmt = _hmt || [];
   <a href="#8086_2" class="md-nav__link">
     8086 汇编程序格式
   </a>
+  
+    <nav class="md-nav" aria-label="8086 汇编程序格式">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    汇编程序基本结构
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    段的定义、假设与引用
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    程序的结束
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    汇编程序语句
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3058,6 +3126,88 @@ var _hmt = _hmt || [];
 </div>
 </div>
 <h2 id="8086_2">8086 汇编程序格式<a class="headerlink" href="#8086_2" title="Permanent link">&para;</a></h2>
+<h3 id="_34">汇编程序基本结构<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="__codelineno-4-1"></a><span class="nf">data</span><span class="w"> </span><span class="no">segment</span><span class="w">                            </span><span class="c1">; 汇编指示语句</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="__codelineno-4-2"></a><span class="nf">hey</span><span class="w">  </span><span class="no">db</span><span class="w"> </span><span class="err">&#39;</span><span class="no">Hello</span><span class="p">,</span><span class="no">world</span><span class="p">!</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="no">Dh</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="no">Ah</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="no">$</span><span class="err">&#39;</span><span class="w">   </span><span class="c1">; 伪指令语句</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="__codelineno-4-3"></a><span class="nf">data</span><span class="w"> </span><span class="no">ends</span><span class="w">                               </span><span class="c1">; 汇编指示语句</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="__codelineno-4-5"></a><span class="nf">code</span><span class="w"> </span><span class="no">segment</span><span class="w">                            </span><span class="c1">; 汇编指示语句</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="__codelineno-4-6"></a><span class="nf">assume</span><span class="w"> </span><span class="no">cs</span><span class="p">:</span><span class="no">code</span><span class="p">,</span><span class="w"> </span><span class="no">ds</span><span class="p">:</span><span class="no">data</span><span class="w">                 </span><span class="c1">; 汇编指示语句</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="__codelineno-4-7"></a><span class="nl">main:</span><span class="w">                                   </span><span class="c1">; 指令语句</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="__codelineno-4-8"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="no">data</span><span class="w">                        </span><span class="c1">; ...</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="__codelineno-4-9"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ds</span><span class="p">,</span><span class="w"> </span><span class="no">ax</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="__codelineno-4-10"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="w"></span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="__codelineno-4-11"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">offset</span><span class="w"> </span><span class="no">hey</span><span class="w"></span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="__codelineno-4-12"></a><span class="w">    </span><span class="nf">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span><span class="w"></span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="__codelineno-4-13"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="no">Ch</span><span class="w"></span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="__codelineno-4-14"></a><span class="w">    </span><span class="nf">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span><span class="w"></span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="__codelineno-4-15"></a><span class="nf">code</span><span class="w"> </span><span class="no">ends</span><span class="w">                               </span><span class="c1">; 汇编指示语句</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="__codelineno-4-16"></a><span class="nf">end</span><span class="w"> </span><span class="no">main</span><span class="w">                                </span><span class="c1">; 汇编指示语句</span>
+</code></pre></div>
+<h3 id="_35">段的定义、假设与引用<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h3>
+<h4 id="_36">段定义<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="__codelineno-5-1"></a><span class="err">&lt;</span><span class="nf">segmentname</span><span class="err">&gt;</span><span class="w"> </span><span class="no">segment</span><span class="w"> </span><span class="p">[</span><span class="err">&lt;</span><span class="no">align</span><span class="err">&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="err">&lt;</span><span class="no">combine</span><span class="err">&gt;</span><span class="p">]</span><span class="w"> </span><span class="p">[</span><span class="err">&#39;&lt;</span><span class="no">class</span><span class="err">&gt;&#39;</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="__codelineno-5-2"></a><span class="w">    </span><span class="err">&lt;</span><span class="nf">statements</span><span class="err">&gt;</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="__codelineno-5-3"></a><span class="err">&lt;</span><span class="nf">segmentname</span><span class="err">&gt;</span><span class="w"> </span><span class="no">ends</span><span class="w"></span>
+</code></pre></div>
+<p>方括号中可以省略</p>
+<ul>
+<li>align：对齐方式，byte word dword para page（para 为 16 字节，page 为 256 字节）缺省为 para</li>
+<li>combine：合并类型，public stack common memory at，public 一般用于代码段数据段，stack 用于堆栈段<ul>
+<li>ss 自动初始化为堆栈段的段地址，sp 自动初始化为堆栈段末尾字节偏移地址加 1</li>
+<li>代码段数据段可以省略 public，堆栈段不能省略 stack</li>
+</ul>
+</li>
+<li>'class'：类别名</li>
+</ul>
+<p>数据段定义时初始数据伪指令为 <code>变量名（标号名）、大小、内容</code>，大小即为 db dw dd 等。如果重复可以用 <code>大小 内容 dup(次数)</code> 的形式</p>
+<p>堆栈段定义一般使用：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="__codelineno-6-1"></a><span class="nf">stk</span><span class="w"> </span><span class="no">segment</span><span class="w"> </span><span class="no">stack</span><span class="w"></span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="__codelineno-6-2"></a><span class="nf">db</span><span class="w"> </span><span class="mi">100</span><span class="no">h</span><span class="w"> </span><span class="no">dup</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="__codelineno-6-3"></a><span class="nf">stk</span><span class="w"> </span><span class="no">ends</span><span class="w"></span>
+</code></pre></div>
+即开启一个 100h 大小的堆栈</p>
+<h4 id="_37">段的假设<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h4>
+<p>assume 用来建立段寄存器与段的关系，帮助汇编编译程序补充段地址</p>
+<p>一般写为 <code class="highlight"><span class="nf">assume</span><span class="w"> </span><span class="no">cs</span><span class="p">:</span><span class="no">code</span><span class="w"> </span><span class="no">ds</span><span class="p">:</span><span class="no">data</span><span class="w"> </span><span class="no">ss</span><span class="p">:</span><span class="no">stk</span><span class="w"></span></code> 的形式，这样解析变量时就可以自动填充段地址，比如使用 <code class="highlight"><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="no">abc</span><span class="p">]</span><span class="w"></span></code> 来引用 data 段中变量 abc，abc 的段地址为 data，而通过 assume 知道 data 就是 ds，因此会被解释为 <code class="highlight"><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="no">ds</span><span class="p">:[...]</span><span class="w"></span></code></p>
+<p>虽然 cs 和 ss 会自动赋值为段地址，但 ds 和 es 不会，需要在代码段里手动修改</p>
+<h4 id="_38">段的引用<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h4>
+<p>直接写段名就是段地址。使用 <code>seg 变量名</code> 或 <code>seg 标号名</code> 即表示变量/标号所在的段地址</p>
+<h3 id="_39">程序的结束<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h3>
+<h4 id="_40">源程序的结束<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h4>
+<p>使用 end 指令结束，格式为 <code class="highlight"><span class="nf">end</span><span class="w"> </span><span class="err">标号名</span><span class="w"></span></code>，指定程序从标号处开始运行</p>
+<h4 id="_41">程序段前缀<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h4>
+<p>程序段前缀（Program Segment Prefix，PSP）是一段长度为 100h 字节的内存。DOS 在运行程序时，先为程序分配一个 PSP，然后 DOS 读取改程序内容装入 PSP 后面的内存中，最后把 ds 和 es 设置为 PSP 段地址，把 ss 和 sp 设置为堆栈段段地址和堆栈段最后一个字节的偏移地址加 1，再把 cs 设置为代码段段地址，ip 设置为源程序中 end 指定标号的偏移地址，然后程序从 cs:ip 开始运行</p>
+<p>PSP 里面存放了与程序运行有关的重要信息，比如命令行参数、环境块段地址、父程序的 PSP 段地址等</p>
+<h4 id="_42">程序的终止<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h4>
+<p>通常调用 21h 号中断的 4C 号功能终止，如：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="__codelineno-7-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="no">Ch</span><span class="w"></span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="__codelineno-7-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="err">返回码</span><span class="w"></span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="__codelineno-7-3"></a><span class="nf">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span><span class="w"></span>
+</code></pre></div></p>
+<h3 id="_43">汇编程序语句<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h3>
+<ul>
+<li>空白不敏感</li>
+<li>常数可以使用整型常数、字符常数、字符串常数（拆为字符）</li>
+<li>可以使用常数表达式作为常数，有 + - * / mod shl shr not and or xor seg offset，常数表达式中不能出现寄存器等，只能是常数</li>
+<li>可以使用 eql 和 = 定义符号常数<ul>
+<li>= 的右侧只能是数值类型或字符类型的常数或常数表达式，可以对同一符号重新定义</li>
+<li>eql 的右侧还可以是字符串、汇编语句（<code class="highlight"><span class="nf">dosint</span><span class="w"> </span><span class="no">eql</span><span class="w"> </span><span class="err">&lt;</span><span class="no">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span><span class="err">&gt;</span><span class="w"></span></code>），但不能对同一符号重新定义</li>
+</ul>
+</li>
+<li>变量名和标号名的命名：可以是 52 个大小写字母、10 个数字、以及 @$?_，数字不能开头，$ 与 ? 不能单独使用，一般不区分大小写（编译时加上 /ml 区分大小写）</li>
+<li>标号定义<ul>
+<li><code class="highlight"><span class="err">标号名:</span><span class="w"></span></code> 即可</li>
+<li>或者 <code class="highlight"><span class="err">标号名</span><span class="w"> </span><span class="nf">label</span><span class="w"> </span><span class="no">near</span><span class="err">|</span><span class="no">far</span><span class="err">|</span><span class="no">byte</span><span class="err">|</span><span class="no">word</span><span class="err">|</span><span class="no">dword</span><span class="w"></span></code><ul>
+<li>near far 标识近标号和远标号</li>
+<li>byte word dword 标识标号为变量</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>变量的引用可以直接使用变量名或者 [变量名]</li>
+<li>可以使用 变量名[偏移] 来类似数组引用值，但偏移记得偏移 1 就是加一个字节，而不是下一个元素</li>
+</ul>
 
   
     <hr>
