@@ -633,36 +633,43 @@ var _hmt = _hmt || [];
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     转换指令
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     算数指令
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     十进制调整指令
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     字符串操作指令
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     控制转移指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    杂类指令
   </a>
   
 </li>
@@ -1725,36 +1732,43 @@ var _hmt = _hmt || [];
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     转换指令
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     算数指令
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     十进制调整指令
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     字符串操作指令
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
+  <a href="#_27" class="md-nav__link">
     控制转移指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    杂类指令
   </a>
   
 </li>
@@ -1889,7 +1903,7 @@ var _hmt = _hmt || [];
 <li>zf：zero flag 零标志，第 6 位，运算结果是否为 0</li>
 <li>af：auxiliary carry flag 辅助进位标志，第 4 位，记录运算时第三位是否向左侧产生进借位</li>
 <li>pf：parity flag 奇偶标志，第 2 位，结果操作数中低 8 位 1 的个数是否为偶数</li>
-<li>cf：carry flag 进位标志，第 1 位，运算时最高位是否向左侧有进借位</li>
+<li>cf：carry flag 进位标志，第 0 位，运算时最高位是否向左侧有进借位</li>
 </ul>
 </li>
 </ul>
@@ -1923,21 +1937,1126 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="8086_1">8086 汇编指令<a class="headerlink" href="#8086_1" title="Permanent link">&para;</a></h2>
 <h3 id="_6">数据传送指令<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<h4 id="_7">通用数据传送指令<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h4>
 <div class="card">
 <div class="card-header">mov</div>
 <div class="card-body">
 <ul>
 <li><strong>指令格式</strong>：mov a, b</li>
 <li><strong>指令作用</strong>：将 b 的值传入 a</li>
-<li><strong>注意</strong>：a 是寄存器或者逻辑地址，b 可以是寄存器、逻辑地址或立即数，但 a b 最多有一个是逻辑地址，且如果是将立即数传入逻辑地址所指内存时要标注大小（byte ptr / word ptr）</li>
+<li><strong>注意</strong>：a 是寄存器或者逻辑地址，b 可以是寄存器、逻辑地址或立即数，但 a b 最多有一个是逻辑地址，且如果是将立即数传入逻辑地址所指内存时要标注大小（byte ptr / word ptr），并且 a b 宽度需一致。不能把立即数赋值给段寄存器，也不能把段寄存器赋值给段寄存器。不影响任何标志位</li>
 </ul>
 </div>
 </div>
-<h3 id="_7">转换指令<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
-<h3 id="_8">算数指令<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
-<h3 id="_9">十进制调整指令<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
-<h3 id="_10">字符串操作指令<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
-<h3 id="_11">控制转移指令<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<div class="card">
+<div class="card-header">push</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：push a</li>
+<li><strong>指令作用</strong>：将 a 压入栈，即 sp = sp - 2, word ptr ss:[sp] = a</li>
+<li><strong>注意</strong>：a 是寄存器或者逻辑地址，内容一定是 16 位，不能是立即数，不能是 fl。不影响任何标志位</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">pop</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：pop a</li>
+<li><strong>指令作用</strong>：从栈上弹出 16 位数值到 a 中，即 a = word ptr ss:[sp], sp = sp + 2</li>
+<li><strong>注意</strong>：a 是寄存器或者逻辑地址，一定是 16 位，不能是 cs fl。不影响任何标志位</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">xchg</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：xchg op1, op2</li>
+<li><strong>指令作用</strong>：交换 op1 op2，即 tmp = op1, op1 = op2, op2 = tmp</li>
+<li><strong>注意</strong>：op1 op2 是寄存器或者内存，不能都是内存，且不能是段寄存器。不影响任何标志位</li>
+</ul>
+</div>
+</div>
+<h4 id="_8">端口输入输出指令<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">in</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：in acc, port</li>
+<li><strong>指令作用</strong>：从端口读数据到 al 或 ax 中，即 acc = [port]（端口中内容）</li>
+<li><strong>注意</strong>：acc 一定是 al 或 ax，port 一定是 dx 或立即数，如果是立即数则最大 0FFh。是 ax 则 [port] 存入 al，[port+1] 存入 ah</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">out</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：out port, acc</li>
+<li><strong>指令作用</strong>：把 al 或 ax 中值写入端口，即 [port] = acc</li>
+<li><strong>注意</strong>：port 一定是 dx 或立即数（立即数最大 0FFh），acc 一定是 al 或 ax。是 ax 则 al 写入 [port]，ah 写入 [port+1]</li>
+</ul>
+</div>
+</div>
+<h4 id="_9">地址传送指令<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">lea</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：lea dest, src</li>
+<li><strong>指令作用</strong>：将 src 的有效地址传入 dest，即 dest = offset src</li>
+<li><strong>注意</strong>：dest 是寄存器，src 是内存变量。取 src 的偏移地址</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">lds</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：lds dest, src</li>
+<li><strong>指令作用</strong>：将 src 处远指针装入 ds:dest，即 dest = word ptr [src], ds = word ptr [src+2]</li>
+<li><strong>注意</strong>：dest 是寄存器，src 是双字大小内存</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">les</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：les dest, src</li>
+<li><strong>指令作用</strong>：将 src 处远指针装入 es:dest，即 dest = word ptr [src], es = word ptr [src+2]</li>
+<li><strong>注意</strong>：dest 是寄存器，src 是双字大小内存</li>
+</ul>
+</div>
+</div>
+<h4 id="_10">标志寄存器传送指令<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">lahf</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：lahf</li>
+<li><strong>指令作用</strong>：将 fl 低 8 位复制到 ah，即 ah = fl &amp; 0FFh</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">sahf</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：sahf</li>
+<li><strong>指令作用</strong>：将 ah 存入 fl 低 8 位，即 fl = (fl &amp; 0FF00h) | 2 | (ah &amp; 0D5h)</li>
+<li><strong>注意</strong>：只保留 ah 的 0 2 4 6 7 位（cf pf af zf sf），且第 1 位恒为 1</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">pushf</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：pushf</li>
+<li><strong>指令作用</strong>：将 fl 压入堆栈，即 push fl（不能直接执行）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">popf</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：popf</li>
+<li><strong>指令作用</strong>：从堆栈弹出 16 位到 fl，即 pop fl（不能直接执行</li>
+</ul>
+</div>
+</div>
+<h3 id="_11">转换指令<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
+<h4 id="_12">符号扩充指令<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">cbw</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cbw</li>
+<li><strong>指令作用</strong>：将字节 al 扩充为字 ax，即将 al 符号位扩展到 ah</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">cwd</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cwd</li>
+<li><strong>指令作用</strong>：将字 ax 扩充为双字 dx:ax（直接拼接），即将 ax 符号位扩展到 dx</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">xlat</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：xlat</li>
+<li><strong>指令作用</strong>：换码指令，al = byte ptr ds:[bx+al]</li>
+<li><strong>注意</strong>：一般使 ds:bx 指向一张表，然后功能即类似列表索引取值</li>
+</ul>
+</div>
+</div>
+<h3 id="_13">算数指令<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<h4 id="_14">加法指令<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">add</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：add dest, src</li>
+<li><strong>指令作用</strong>：将 src 加到 dest 上，即 dest += src</li>
+<li><strong>注意</strong>：src 可以是寄存器/内存，dest 可以是立即数/寄存器/内存，但二者不能都为内存，宽度要一致。可能会产生进位（cf）和溢出（of）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">inc</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：inc op</li>
+<li><strong>指令作用</strong>：将 op 加一，即 op += 1</li>
+<li><strong>注意</strong>：op 为寄存器或内存。不影响 cf 位</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">adc</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：adc dest, src</li>
+<li><strong>指令作用</strong>：带进位加，即 dest = dest + src + cf</li>
+<li><strong>注意</strong>：操作数规则与 add 相同，可以用于模拟 32 位加法</li>
+</ul>
+</div>
+</div>
+<h4 id="_15">减法指令<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">sub</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：sub dest, src</li>
+<li><strong>指令作用</strong>：从 dest 减去 src，即 dest -= src</li>
+<li><strong>注意</strong>：操作数格式同 add，会产生溢出（of），借位也会使 cf 变 1</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">sbb</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：sbb dest, src</li>
+<li><strong>指令作用</strong>：带借位减，dest = dest - src - cf</li>
+<li><strong>注意</strong>：操作数格式同 add</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">dec</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：dec op</li>
+<li><strong>指令作用</strong>：将 op 减一，即 op -= 1</li>
+<li><strong>注意</strong>：op 为寄存器或内存。不影响 cf 位</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">neg</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：neg op</li>
+<li><strong>指令作用</strong>：op = -op</li>
+<li><strong>注意</strong>：op 为寄存器或内存。非零数求补后 cf=1，0 求补后 cf=0</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">cmp</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cmp op1, op2</li>
+<li><strong>指令作用</strong>：用 op1 减 op2，但丢弃结果只影响标志位</li>
+<li><strong>注意</strong>：操作数格式同 sub，用于在 jump 指令前给出符号位作为条件判断依据。</li>
+</ul>
+</div>
+</div>
+<h4 id="_16">乘法指令<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">mul</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：mul src</li>
+<li><strong>指令作用</strong>：非符号数乘法，当 src 为 8 位时 ax = al * src，当 src 为 16 位时 dx:ax = ax * src</li>
+<li><strong>注意</strong>：src 是寄存器或内存</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">imul</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：imul src</li>
+<li><strong>指令作用</strong>：符号数乘法，乘法方式同 mul，但将两个乘数和积都视为符号数</li>
+</ul>
+</div>
+</div>
+<h4 id="_17">除法指令<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">div</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：div op</li>
+<li><strong>指令作用</strong>：无符号数除法<ul>
+<li>当 op 为 8 位时，al = ax / op, ah = ax % op</li>
+<li>当 op 为 16 位时，ax = dx:ax / op, dx = dx:ax % op</li>
+</ul>
+</li>
+<li><strong>注意</strong>：op 是寄存器或内存，可以得到商和余数</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">idiv</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：idiv</li>
+<li><strong>指令作用</strong>：符号数除法，除法操作同 div，但将除数、被除数、商和余数都视为符号数</li>
+</ul>
+</div>
+</div>
+<h4 id="_18">逻辑运算指令<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">and</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：and dest, src</li>
+<li><strong>指令作用</strong>：按位与运算，dest = dest &amp; src, of=0, cf=0</li>
+<li><strong>注意</strong>：操作数格式同 and，of 和 cf 都会置 0，但会影响 zf</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">or</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：or dest, src</li>
+<li><strong>指令作用</strong>：按位或运算，dest = dest | src, of=0, cf=0</li>
+<li><strong>注意</strong>：操作数格式同 and，of 和 cf 都会置 0，但会影响 zf</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">xor</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：xor dest, src</li>
+<li><strong>指令作用</strong>：按位异或运算，dest = dest ^ src, of=0, cf=0</li>
+<li><strong>注意</strong>：操作数格式同 and，of 和 cf 都会置 0，但会影响 zf</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">not</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：not op</li>
+<li><strong>指令作用</strong>：对 op 按位求反，op = ~op</li>
+<li><strong>注意</strong>：op 为寄存器或内存</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">test</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：test op1, op2</li>
+<li><strong>指令作用</strong>：位测试，op1 &amp; op2 丢弃结果仅影响符号位</li>
+<li><strong>注意</strong>：主要用到 zf 的变化，为 jz jnz 提供 zf</li>
+</ul>
+</div>
+</div>
+<h4 id="_19">移位指令<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">shl</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：shl dest, count</li>
+<li><strong>指令作用</strong>：对 dest 逻辑左移 count 位，右侧补 0，左侧最后溢出的一位落入 cf</li>
+<li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">shr</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：shr dest, count</li>
+<li><strong>指令作用</strong>：对 dest 逻辑右移 count 位，左侧补 0，右侧最后溢出的一位落入 cf</li>
+<li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">sal</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：sal dest, count</li>
+<li><strong>指令作用</strong>：对 dest 算数左移 count 位，同逻辑左移</li>
+<li><strong>注意</strong>：与 shl 完全相同</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">sar</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：sar dest, count</li>
+<li><strong>指令作用</strong>：对 dest 算数右移 count 位，左侧补符号位，右侧最后溢出的一位落入 cf</li>
+<li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">rol</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：rol dest, count</li>
+<li><strong>指令作用</strong>：对 dest 循环左移 count 位，最高位回到最低位同时移到 cf 中</li>
+<li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">ror</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：ror dest, count</li>
+<li><strong>指令作用</strong>：对 dest 循环右移 count 位，最低位回到最高位同时移到 cf 中</li>
+<li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">rcl</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：rcl dest, count</li>
+<li><strong>指令作用</strong>：带进位循环左移，即 cf 加在 dest 左侧一起循环左移</li>
+<li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">rcr</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：rcr dest, count</li>
+<li><strong>指令作用</strong>：带进位循环右移，即 cf 加在 dest 右侧一起循环右移</li>
+<li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
+</ul>
+</div>
+</div>
+<h3 id="_20">十进制调整指令<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非压缩 BCD 码</p>
+<h4 id="bcd">压缩 BCD 码调整指令<a class="headerlink" href="#bcd" title="Permanent link">&para;</a></h4>
+<p>压缩 BCD 码即是使用 4 个二进制位表示 1 个十进制数，如 37h 表示 37。与这些指令相关的是 af 标志，它在加减法时如果低四位和高四位间发生了十六进制进位则变为 1。因此也会正好差 6，daa das 作用则是将这个 6 调整回来，使结果继续为压缩 BCD 码</p>
+<div class="card">
+<div class="card-header">daa</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：daa</li>
+<li><strong>指令作用</strong>：在 al 被做加法后将结果 al 调整为 BCD 码<ul>
+<li>if (af == 1 || (al&amp;0Fh) &gt; 9) al += 6, af = 1; else af = 0</li>
+<li>if (cf == 1 || al &gt; 9Fh) al += 60h, cf = 1; else cf = 0</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">das</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：das</li>
+<li><strong>指令作用</strong>：在 al 被做减法后将结果 al 调整为 BCD 码<ul>
+<li>if (af == 1 || (al&amp;0Fh) &gt; 9) al -= 6, af = 1; else af = 0</li>
+<li>if (cf == 1 || al &gt; 9Fh) al -= 60h, cf = 1; else cf = 0</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h4 id="bcd_1">非压缩 BCD 码调整指令<a class="headerlink" href="#bcd_1" title="Permanent link">&para;</a></h4>
+<p>非压缩 BCD 码使用 8 个二进制位表示 1 个十进制位，其中高 4 位没有意义，比如 06h 16h 26h 均表示十进制数 6</p>
+<div class="card">
+<div class="card-header">aaa</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：aaa</li>
+<li><strong>指令作用</strong>：加法的 ASCII 调整，在 al 被做加法后连带 ah 一起调整 ax 为非压缩 BCD 码<ul>
+<li>if (af == 1 || (al&amp;0Fh) &gt; 9) al = (al+6)&amp;0Fh, ah += 1, af = 1, cf = 1</li>
+<li>else af = 0, cf = 0</li>
+</ul>
+</li>
+</ul>
+<details class="example">
+<summary>例</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="__codelineno-0-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="__codelineno-0-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">8</span><span class="err">&#39;</span><span class="w">   </span><span class="c1">; al = 38h</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="__codelineno-0-3"></a><span class="nf">add</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="mi">9</span><span class="err">&#39;</span><span class="w">   </span><span class="c1">; al = 38h + 39h = 71h, af = 1, cf = 0</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="__codelineno-0-4"></a><span class="nf">aaa</span><span class="w">           </span><span class="c1">; ax = 0107h 即 17</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="__codelineno-0-6"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">0505</span><span class="no">h</span><span class="w"> </span><span class="c1">; 55</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="__codelineno-0-7"></a><span class="nf">add</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="w">     </span><span class="c1">; al = 0Eh, af = 0, cf = 0</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="__codelineno-0-8"></a><span class="nf">aaa</span><span class="w">           </span><span class="c1">; ax = 0604h 即 64</span>
+</code></pre></div>
+</details>
+</div>
+</div>
+<div class="card">
+<div class="card-header">aas</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：aas</li>
+<li><strong>指令作用</strong>：减法的 ASCII 调整，在 al 被做减法后连带 ah 一起调整 ax 为非压缩 BCD 码<ul>
+<li>if (af == 1 || (af&amp;0Fh) &gt; 9) al = (al-6)&amp;0Fh, ah -= 1, af = 1, cf = 1</li>
+<li>else af = 0, cf = 0</li>
+</ul>
+</li>
+</ul>
+<details class="example">
+<summary>例</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="__codelineno-1-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">0201</span><span class="no">h</span><span class="w">  </span><span class="c1">; 21</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="__codelineno-1-2"></a><span class="nf">sub</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">9</span><span class="w">      </span><span class="c1">; al = 0F8h, af = 1, cf = 1</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="__codelineno-1-3"></a><span class="nf">aas</span><span class="w">            </span><span class="c1">; ax = 0102h 即 12</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="__codelineno-1-5"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">0335</span><span class="no">h</span><span class="w">  </span><span class="c1">; 35</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="__codelineno-1-6"></a><span class="nf">sub</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">38</span><span class="no">h</span><span class="w">    </span><span class="c1">; (减 8) al = 0FDh, af = 1, cf = 1</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="__codelineno-1-7"></a><span class="nf">aas</span><span class="w">            </span><span class="c1">; ax = 0207h 即 27</span>
+</code></pre></div>
+</details>
+</div>
+</div>
+<div class="card">
+<div class="card-header">aam</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：aam</li>
+<li><strong>指令作用</strong>：乘法的 ASCII 调整，在 al 被做乘法后对其做调整<ul>
+<li>ah = al / 10, al = al % 10</li>
+</ul>
+</li>
+</ul>
+<details class="example">
+<summary>例</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="__codelineno-2-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="mi">3</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="__codelineno-2-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">bl</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="__codelineno-2-3"></a><span class="nf">mul</span><span class="w"> </span><span class="no">bl</span><span class="w">    </span><span class="c1">; ax = 000Ch</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="__codelineno-2-4"></a><span class="nf">aam</span><span class="w">       </span><span class="c1">; ax = 0102h 即 12</span>
+</code></pre></div>
+</details>
+</div>
+</div>
+<div class="card">
+<div class="card-header">aad</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：aad</li>
+<li><strong>指令作用</strong>：除法的 ASCII 调整，在 ax 被做除法<strong>前</strong>对其进行调整，使处罚结果为 BCD 码<ul>
+<li>al = ah * 10 + al, ah = 0</li>
+</ul>
+</li>
+</ul>
+<details class="example">
+<summary>例</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="__codelineno-3-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">0105</span><span class="no">h</span><span class="w">  </span><span class="c1">; 15</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="__codelineno-3-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">cl</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="__codelineno-3-3"></a><span class="nf">aad</span><span class="w">            </span><span class="c1">; ax = 000Fh</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="__codelineno-3-4"></a><span class="nf">div</span><span class="w"> </span><span class="no">cl</span><span class="w">         </span><span class="c1">; al = 03h, ah = 03h</span>
+</code></pre></div>
+</details>
+</div>
+</div>
+<h3 id="_21">字符串操作指令<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>字符串操作指令分为 movs 字符串传送、cmps 字符串比较、scas 字符串扫描、stos 存入字符串、lods 从字符串取五种，它们都可以接一个指令前缀。如果不接前缀，则只执行一次，如果接前缀，则重复执行。lods 指令不常用前缀</p>
+<div class="card">
+<div class="card-header">前缀 rep</div>
+<div class="card-body">
+<ul>
+<li><strong>作用</strong>：把后面的字符串操作指令重复 cx 次</li>
+<li><strong>注意</strong>：cx 需要提前设置，一般不接 cmps scas</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">前缀 repe / repz</div>
+<div class="card-body">
+<ul>
+<li><strong>作用</strong>：最多重复 cx 次，且仅当比较相等时继续重复</li>
+<li><strong>注意</strong>：cx 需要提前设置，不能用在 movs stos 上</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">前缀 repne / repnz</div>
+<div class="card-body">
+<ul>
+<li><strong>作用</strong>：最多重复 cx 次，且仅当比较不相等时继续重复</li>
+<li><strong>注意</strong>：cx 需要提前设置，不能用在 movs stos 上</li>
+</ul>
+</div>
+</div>
+<h4 id="_22">字符串传送指令<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">movsb</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：movsb / rep movsb</li>
+<li><strong>指令作用</strong>：以字节为单位从 ds:[si] 传送数据到 es:[di]，并移动 si di</li>
+<li><strong>注意</strong>：si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">movsw</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：movsw / rep movsw</li>
+<li><strong>指令作用</strong>：以字为单位从 ds:[si] 传送数据到 es:[di]，并移动 si di</li>
+<li><strong>注意</strong>：si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">movs</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：<ul>
+<li>(rep) movs byte ptr es:[di], byte ptr seg:[si]</li>
+<li>(rep) movs word ptr es:[di], word ptr seg:[si]</li>
+</ul>
+</li>
+<li><strong>指令作用</strong>：以字节/字为单位从 ds:[si] 传送数据到 seg:[di]，并移动 si di</li>
+<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个，当 seg 为 ds 时与 movsb/movsw 等价。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<h4 id="_23">字符串比较指令<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">cmpsb</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cmpsb / repe cmpsb / repne cmpsb</li>
+<li><strong>指令作用</strong>：比较字节 ds:[si] 与 es:[di]，即 byte ptr ds:[si] - byte ptr es:[di] 丢弃结果保留标志位，并移动 si di</li>
+<li><strong>注意</strong>：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">cmpsw</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cmpsw / repe cmpsw / repne cmpsw</li>
+<li><strong>指令作用</strong>：比较字 ds:[si] 与 es:[di]，即 word ptr ds:[si] - word ptr es:[di] 丢弃结果保留标志位，并移动 si di</li>
+<li><strong>注意</strong>：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">cmps</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：<ul>
+<li>(repe/repne) cmps byte ptr seg:[si], byte ptr es:[di]</li>
+<li>(repe/repne) cmps word ptr seg:[si], word ptr es:[di]</li>
+</ul>
+</li>
+<li><strong>指令作用</strong>：比较字节/字 ds:[si] 与 es:[di]，即左减右丢弃结果保留标志位，并移动 si di</li>
+<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个。si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<h4 id="_24">字符串扫描指令<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">scasb</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：scasb / repe scasb / repne scasb</li>
+<li><strong>指令作用</strong>：比较 al 与 es:[di]，即计算 al - es:[di] 丢弃结果保留符号位，并移动 di</li>
+<li><strong>注意</strong>：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">scasw</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：scasw / repe scasw / repne scasw</li>
+<li><strong>指令作用</strong>：比较 ax 与 es:[di]，即计算 ax - es:[di] 丢弃结果保留符号位，并移动 di</li>
+<li><strong>注意</strong>：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<h4 id="_25">存入字符串指令<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">stosb</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：stosb / rep stosb</li>
+<li><strong>指令作用</strong>：把字节 al 存入 es:[di] 中，并移动 di</li>
+<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">stosw</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：stosw / rep stosw</li>
+<li><strong>指令作用</strong>：把字 ax 存入 es:[di] 中，并移动 di</li>
+<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<h4 id="_26">从字符串取指令<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">lodsb</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：lodsb</li>
+<li><strong>指令作用</strong>：从 ds:[si] 读取一个字节存入 al，并移动 si</li>
+<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字节，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">lodsw</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：lodsw</li>
+<li><strong>指令作用</strong>：从 ds:[si] 读取一个字存入 ax，并移动 si</li>
+<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">lodsw</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：<ul>
+<li>lods byte ptr seg:[si]</li>
+<li>lods word ptr seg:[si]</li>
+</ul>
+</li>
+<li><strong>指令作用</strong>：从 ds:[si] 读取一个字节/字存入 al/ax，并移动 si</li>
+<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个。si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字节/字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<h3 id="_27">控制转移指令<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
+<h4 id="_28">无条件跳转指令<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h4>
+<p>无条件跳转指令 jmp 有三种形式，即短跳、近跳、远跳，其操作码和操作数均不同</p>
+<div class="card">
+<div class="card-header">jmp 短跳</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：jmp dest / jmp short dest</li>
+<li><strong>指令作用</strong>：将 ip 指针赋值为 dest，即跳转到 dest</li>
+<li><strong>注意</strong>：dest 只能为立即数，且目标地址 dest 与下条指令的偏移地址之间距离在范围 [-128, 127] 内。会编码为两字节（EBxx，后两位为距离）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">jmp 近跳</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：jmp dest</li>
+<li><strong>指令作用</strong>：将 ip 指针赋值为 dest，即跳转到 dest</li>
+<li><strong>注意</strong>：dest 为立即数或寄存器或内存，如果是立即数则目标地址与下条指令偏移地址之间距离在 [-32768, 32767] 内。会编码为三字节</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">jmp 远跳</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：jmp dest</li>
+<li><strong>指令作用</strong>：将 cs:ip 赋值为 dest，即跳转到 dest</li>
+<li><strong>注意</strong>：cs 也会改变，dest 可以是立即数或内存，如果是立即数要写成 段地址:偏移地址 的形式，如果是内存则存储的第一个字表示偏移地址、第二个字表示段地址</li>
+</ul>
+</div>
+</div>
+<h4 id="_29">条件跳转指令<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">j<em>cc</em> 类指令</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：j<em>cc</em> dest</li>
+<li><strong>指令作用</strong>：如果与标志位有关的条件 <em>cc</em> 成立，则令 ip 等于 dest，即跳转到 dest</li>
+<li><strong>注意</strong>：这些跳转都是短跳，需要目标地址与下条指令偏移地址距离在 [-128, 127] 内</li>
+</ul>
+<details class="abstract">
+<summary>所有此类指令及条件</summary>
+<table>
+<thead>
+<tr>
+<th align="center">指令</th>
+<th align="center">意义</th>
+<th align="left">条件</th>
+<th align="center">备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">jz</td>
+<td align="center">等于零则跳</td>
+<td align="left">zf=1</td>
+<td align="center">等价于 je</td>
+</tr>
+<tr>
+<td align="center">jnz</td>
+<td align="center">不等于零则跳</td>
+<td align="left">zf=0</td>
+<td align="center">等价于 jne</td>
+</tr>
+<tr>
+<td align="center">jc</td>
+<td align="center">有进位则跳</td>
+<td align="left">cf=1</td>
+<td align="center">等价于 jb jnae</td>
+</tr>
+<tr>
+<td align="center">jnc</td>
+<td align="center">无进位则跳</td>
+<td align="left">cf=0</td>
+<td align="center">等价于 jnb jae</td>
+</tr>
+<tr>
+<td align="center">js</td>
+<td align="center">有符号位则跳</td>
+<td align="left">sf=1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jns</td>
+<td align="center">无符号位则跳</td>
+<td align="left">sf=0</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jo</td>
+<td align="center">有溢出位则跳</td>
+<td align="left">of=1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jno</td>
+<td align="center">无溢出位则跳</td>
+<td align="left">of=0</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jp/jpe</td>
+<td align="center">有奇偶位则跳</td>
+<td align="left">pf=1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jnp/jpo</td>
+<td align="center">无奇偶位则跳</td>
+<td align="left">pf=0</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">ja/jnbe</td>
+<td align="center">无符号大于则跳</td>
+<td align="left">cf=0 and zf=0</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jae/jnb</td>
+<td align="center">无符号大于等于则跳</td>
+<td align="left">cf=0</td>
+<td align="center">等价于 jnc</td>
+</tr>
+<tr>
+<td align="center">jb/jae</td>
+<td align="center">无符号小于则跳</td>
+<td align="left">cf=1</td>
+<td align="center">等价于 jnc</td>
+</tr>
+<tr>
+<td align="center">jbe/jna</td>
+<td align="center">无符号小于等于则跳</td>
+<td align="left">cf=1 or zf=1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jg/jnle</td>
+<td align="center">有符号大于则跳</td>
+<td align="left">sf=of and zf=0</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jge/jnl</td>
+<td align="center">有符号大于等于则跳</td>
+<td align="left">sf=of</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jl/jnge</td>
+<td align="center">有符号小于则跳</td>
+<td align="left">sf!=of</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">jle/jng</td>
+<td align="center">有符号小于等于则跳</td>
+<td align="left">sf!=of or zf=1</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">je</td>
+<td align="center">相等则跳</td>
+<td align="left">zf=1</td>
+<td align="center">等价于 jz</td>
+</tr>
+<tr>
+<td align="center">jne</td>
+<td align="center">不相等则跳</td>
+<td align="left">zf=0</td>
+<td align="center">等价于 jnz</td>
+</tr>
+</tbody>
+</table>
+</details>
+</div>
+</div>
+<div class="card">
+<div class="card-header">jcxz</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：jcxz dest</li>
+<li><strong>指令作用</strong>：如果 cx 等于零则令 ip 等于 dest 即跳转到 dest</li>
+<li><strong>注意</strong>：属于短跳，需要目标地址与下条指令偏移地址距离在 [-128, 127] 内</li>
+</ul>
+</div>
+</div>
+<h4 id="_30">循环指令<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header">loop</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：loop dest</li>
+<li><strong>指令作用</strong>：cx 表示循环次数，cx 先减 1，如果 cx 不为 0 则跳转到 dest</li>
+<li><strong>注意</strong>：dest 是立即数，loop 属于短跳，需要目标地址与下条指令偏移地址距离在 [-128, 127] 内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">loopz</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：loopz dest</li>
+<li><strong>指令作用</strong>：如果等于零则循环，先 cx 减 1（此处不影响标志位），然后如果 cx != 0 且 zf == 1 则跳转到 dest</li>
+<li><strong>注意</strong>：dest 是立即数，loopz 属于短跳，需要目标地址与下条指令偏移地址距离在 [-128, 127] 内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">loope</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：loope dest</li>
+<li><strong>指令作用</strong>：如果相等则循环</li>
+<li><strong>注意</strong>：完全等价于 loopz</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">loopnz</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：loopnz dest</li>
+<li><strong>指令作用</strong>：如果不等于零则循环，先 cx 减 1（此处不影响标志位），然后如果 cx != 0 且 zf == 0 则跳转到 dest</li>
+<li><strong>注意</strong>：dest 是立即数，loopnz 属于短跳，需要目标地址与下条指令偏移地址距离在 [-128, 127] 内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">loopne</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：loopne dest</li>
+<li><strong>指令作用</strong>：如果不相等则循环</li>
+<li><strong>注意</strong>：完全等价于 loopnz</li>
+</ul>
+</div>
+</div>
+<h4 id="_31">子程序调用与返回指令<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h4>
+<p>call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区别也在于 cs 是否发生变化</p>
+<div class="card">
+<div class="card-header">call 近调用</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：call dest</li>
+<li><strong>指令作用</strong>：将下条指令偏移地址入栈然后跳转到 dest，即 push ip, ip = dest</li>
+<li><strong>注意</strong>：dest 可以是立即数或寄存器或内存</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">retn</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：retn / ret / retn count / ret count</li>
+<li><strong>指令作用</strong>：近返回<ul>
+<li>retn / ret：从栈中弹出一个十六位数到 ip，即 pop ip</li>
+<li>retn count / ret count：先 pop ip 然后 sp += count</li>
+</ul>
+</li>
+<li><strong>注意</strong>：如果有 count 则 count 是立即数，一般用于从 call 近调用返回</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">call 远调用</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：call dest</li>
+<li><strong>指令作用</strong>：push cs, push ip, cs:ip = dest</li>
+<li><strong>注意</strong>：dest 可以是立即数或内存，如果是立即数要写成 段地址:偏移地址 的形式，如果是内存则存储的第一个字表示偏移地址、第二个字表示段地址</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">retf</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：retf / retf count</li>
+<li><strong>指令作用</strong>：远返回，pop ip, pop cs，若有 count 则 sp += count</li>
+<li><strong>注意</strong>：如果有 count 则 count 是立即数，一般用于从 call 远调用返回</li>
+</ul>
+</div>
+</div>
+<h4 id="_32">中断和中断返回指令<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h4>
+<p>中断指令一般用于向系统提出中断请求得到系统的服务，可以看作调用系统提供的函数</p>
+<div class="card">
+<div class="card-header">int</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：int n</li>
+<li><strong>指令作用</strong>：调用 n 号中断，等效的操作有<ul>
+<li>pushf, push cs, push ip</li>
+<li>tf = 0, if = 0, ip = word ptr 0:[n*4], cs = word ptr 0:[n*4+2]</li>
+</ul>
+</li>
+<li><strong>注意</strong>：n 为立即数，称为中断号，在范围 [0, 0FFh] 内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">into</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：into</li>
+<li><strong>指令作用</strong>：溢出中断，如果 of == 1 则调用 4 号中断（int 4h）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">iret</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：iret</li>
+<li><strong>指令作用</strong>：中断返回，等效操作有 pop ip, pop cs, popf</li>
+<li><strong>注意</strong>：一般用于从 int 或 into 产生的中断中返回</li>
+</ul>
+</div>
+</div>
+<h3 id="_33">杂类指令<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h3>
+<div class="card">
+<div class="card-header">clc</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：clc</li>
+<li><strong>指令作用</strong>：清空进位位，即 cf = 0</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">stc</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：stc</li>
+<li><strong>指令作用</strong>：设置进位位，即 cf = 1</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">cmc</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cmc</li>
+<li><strong>指令作用</strong>：进位位求反，即 cf = ~cf</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">cld</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cld</li>
+<li><strong>指令作用</strong>：清空方向位，即 df = 0（正方向）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">std</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：std</li>
+<li><strong>指令作用</strong>：设置方向位，即 df = 1（负方向）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">cli</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cli</li>
+<li><strong>指令作用</strong>：禁止中断，即 if = 0</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">sti</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：sti</li>
+<li><strong>指令作用</strong>：允许中断，即 if = 1</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">nop</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：nop</li>
+<li><strong>指令作用</strong>：无操作，机器码 90h，占用一个字节空间，且消耗运行时间，但不进行操作</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">hlt</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：hlt</li>
+<li><strong>指令作用</strong>：停止处理器工作，直到系统复位或发送非屏蔽中断或外部中断</li>
+</ul>
+</div>
+</div>
 <h2 id="8086_2">8086 汇编程序格式<a class="headerlink" href="#8086_2" title="Permanent link">&para;</a></h2>
 
   
