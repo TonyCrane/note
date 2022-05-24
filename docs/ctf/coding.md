@@ -1,3 +1,7 @@
+---
+counter: True
+---
+
 # 编码及古典密码
 
 !!! abstract 

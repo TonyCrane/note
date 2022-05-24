@@ -1,3 +1,7 @@
+---
+counter: True
+---
+
 # 二维码 QRCode 标准阅读
 
 最近几次比赛遇到过好几次二维码的题目，打算好好来读一读标准文档 [ISO/IEC 18004:2015](https://fastly.jsdelivr.net/gh/tonycrane/tonycrane.github.io/p/409d352d/ISO_IEC18004-2015.pdf)

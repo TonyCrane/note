@@ -9,6 +9,7 @@
 - [Programming Language 编程语言](pl)
     - [C/C++](pl/c_cpp)
     - [Haskell](pl/haskell)
+    - [x86 Assembly](pl/asm)
 - [Computer System 计算机系统](system)
     - [Computer System I 计算机系统 Ⅰ](system/cs1)
 - [Web 相关](web)

@@ -1,3 +1,7 @@
+---
+counter: True
+---
+
 # mkdocs 使用记录
 
 !!! abstract 

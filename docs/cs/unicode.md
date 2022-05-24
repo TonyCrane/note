@@ -1,3 +1,7 @@
+---
+counter: True
+---
+
 # Unicode 统一码
 
 > Unicode（别名 Universal coded character set (UCS)），官方中文名称为统一码，是计算机科学领域的业界标准。它整理、编码了世界上大部分的文字系统，使得电脑可以用更为简单的方式来呈现和处理文字。

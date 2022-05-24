@@ -1,3 +1,7 @@
+---
+counter: True
+---
+
 # Esolang 深奥编程语言 
 
 > An esoteric programming language, or esolang, is a computer programming language designed to experiment with weird ideas, to be hard to program in, or as a joke, rather than for practical use.

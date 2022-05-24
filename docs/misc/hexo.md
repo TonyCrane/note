@@ -1,3 +1,7 @@
+---
+counter: True
+---
+
 # hexo 使用记录
 
 !!! abstract 

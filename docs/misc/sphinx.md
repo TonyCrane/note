@@ -1,3 +1,7 @@
+---
+counter: True
+---
+
 # Sphinx 使用记录
 
 !!! abstract 

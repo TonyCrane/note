@@ -9,4 +9,4 @@
 ## Table of Contents
 - [C/C++](c_cpp)
 - [Haskell](haskell)
-- [Assembly](asm)
+- [x86 Assembly](asm)

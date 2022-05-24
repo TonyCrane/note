@@ -64,6 +64,9 @@
       {% for path in config["extra_css"] %}
         <link rel="stylesheet" href="{{ path | url }}">
       {% endfor %}
+      {% if page and page.meta and page.meta.counter %}
+        <link rel="stylesheet" href="/css/counter.css">
+      {% endif %}
       {% include "partials/javascripts/base.html" %}
       {% block analytics %}
         {% include "partials/integrations/analytics.html" %}
