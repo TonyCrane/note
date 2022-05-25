@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=1Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=1Eh - X00 FOSSIL - EXTENDED LINE CONTROL INITIALIZATION - 
+AH = 1Eh
+AL = break status
+00h if break
+01h if no break
+BH = parity (see #00344)
+BL = number of stop bits
+00h one stop bit
+01h two stop bits (1.5 if 5 bit word length)
+CH = word length (see #00345)
+CL = bps rate (see #00346)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=1Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0941.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0943.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>X00 FOSSIL - EXTENDED LINE CONTROL INITIALIZATION</font></h3>
+<PRE>
+AH = 1Eh
+AL = break status
+00h if break
+01h if no break
+BH = parity <a href="rb-0942.htm#Table344">(see #00344)</a>
+BL = number of stop bits
+00h one stop bit
+01h two stop bits (1.5 if 5 bit word length)
+CH = word length <a href="rb-0942.htm#Table345">(see #00345)</a>
+CL = bps rate <a href="rb-0942.htm#Table346">(see #00346)</a>
+DX = port number<br>
+<p><b>Return:</b><br>AX = port status code (see #00304,#00305)
+</PRE>
+<p><b>Notes:</b>
+This function is intended to exactly emulate the PS/2 BIOS AH=04h call.
+If the port was locked at X00 load time, the appropriate parameters are
+ignored
+<p><b>See Also:</b>
+<a href="rb-0811.htm">AH=00h</a> - <a href="rb-0823.htm">AH=04h"SERIAL"</a>
+<PRE>
+<p>
+<a name=table344></a>
+(Table 00344)
+Values for X00 FOSSIL parity:
+00h    no parity
+01h    odd parity
+02h    even parity
+03h    stick parity odd
+04h    stick parity even
+</PRE>
+<p><b>See Also:</b>
+#00307 - #00345 - #00346
+<PRE>
+<p>
+<a name=table345></a>
+(Table 00345)
+Values for X00 FOSSIL word length:
+00h    5 bits
+01h    6 bits
+02h    7 bits
+03h    8 bits
+</PRE>
+<p><b>See Also:</b>
+#00308 - #00344 - #00346
+<PRE>
+<p>
+<a name=table346></a>
+(Table 00346)
+Values for X00 FOSSIL bps rate:
+00h    110
+01h    150
+02h    300
+03h    600
+04h    1200
+05h    2400
+06h    4800
+07h    9600
+08h    19200
+</PRE>
+<p><b>See Also:</b>
+#00309 - #00344 - #00345
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-x.htm">
+X</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0941.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0943.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

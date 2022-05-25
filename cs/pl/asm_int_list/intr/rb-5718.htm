@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=FB42h/BX=0002h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=FB42h/BX=0002h - Borland C++ 2.0 DPMILOAD.EXE - ALLOCATE MEMORY - 
+AX = FB42h
+BX = 0002h
+CX = size in bytes
+DX = bit flags
+bit 2: set to allocate DOS memory, clear for DPMI memory
+SI = selector of descriptor to be modified to access allocated memory
+DI = selector of a second descriptor to be modified
+Return: AX = ??? or 0000h on error
+CX:DX = linear base address of DPMI memory block
+SI:DI = handle for DPMI memory block or FFFFh:FFFFh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=FB42h/BX=0002h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5717.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5719.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Borland C++ 2.0 DPMILOAD.EXE - ALLOCATE MEMORY</font></h3>
+<PRE>
+AX = FB42h
+BX = 0002h
+CX = size in bytes
+DX = bit flags
+<p><b>bit 2:</b><br>Set to allocate DOS memory, clear for DPMI memory.
+SI = selector of descriptor to be modified to access allocated memory.
+DI = selector of a second descriptor to be modified<br>
+<p><b>Return:</b><br>AX = ??? or 0000h on error
+CX:DX = linear base address of DPMI memory block
+SI:DI = handle for DPMI memory block or FFFFh:FFFFh
+???
+</PRE>
+<p><b>Note:</b>
+Two segment descriptors may be set if a code and an aliased data
+segment are required; if only one descriptor is needed, SI should
+equal DI on entry
+<p><b>BUG:</b>
+When allocating DOS memory, the code computes the linear address by
+multiplying the segment number by 4 rather than shifting by 4
+<p><b>See Also:</b>
+<a href="rb-5720.htm">AX=FB42h/BX=0003h</a> - <a href="rb-5726.htm">AX=FB42h/BX=0008h</a> - <a href="rb-5841.htm">INT 31/AX=0501h</a>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5717.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5719.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

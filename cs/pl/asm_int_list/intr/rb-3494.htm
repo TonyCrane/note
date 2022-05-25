@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=12h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=12h - Novell NetWare - GET NETWORK SERIAL NUMBER - 
+AH = E3h subfn 12h
+AL = 00h
+BX = CX = DX = 0000h
+DS:SI - request buffer (see #01909)
+ES:DI - reply buffer (see #01910)
+Return: AL = status
+00h successful
+Desc:  return the serial number and application number for the software
+installed on the file server
+Notes: this function is supported by Advanced NetWare 2.1+
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=12h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3493.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3495.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET NETWORK SERIAL NUMBER</font></h3>
+<PRE>
+AH = E3h subfn 12h
+AL = 00h
+BX = CX = DX = 0000h
+DS:SI -> request buffer <a href="rb-3494.htm#Table1909">(see #01909)</a>
+ES:DI -> reply buffer <a href="rb-3494.htm#Table1910">(see #01910)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Desc:</b>
+Return the serial number and application number for the software
+installed on the file server
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Reportedly, the workstation crashes if AL,BX,CX, and DX are not all
+zero
+<p><b>See Also:</b>
+<a href="rb-3488.htm">AH=E3h/SF=0Ch</a> - <a href="rb-3493.htm">AH=E3h/SF=11h</a> - <a href="rb-3725.htm">AX=F217h/SF=12h</a>
+<PRE>
+<p>
+Format of NetWare "Get Serial Number" request buffer:
+<a name=table1909></a>
+offset   size   description     (Table 01909)
+00h     WORD   0001h (length of following data)
+02h     BYTE   12h (subfunction "Get Serial Number")
+</PRE>
+<p><b>See Also:</b>
+#01910 - #02167
+<PRE>
+<p>
+Format of NetWare "Get Serial Number" reply buffer:
+<a name=table1910></a>
+offset   size   description     (Table 01910)
+00h     WORD   (call) 0006h (size of following results buffer)
+02h   4 BYTEs  (big-endian) NetWare server serial number
+06h   2 BYTEs  (big-endian) NetWare application serial number
+</PRE>
+<p><b>See Also:</b>
+#01909 - #02167
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3493.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3495.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

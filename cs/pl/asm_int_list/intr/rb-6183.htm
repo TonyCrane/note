@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 45
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 45 - Acorn BBC Master 512 - OSFILE - READ/WRITE FILE OR DIRECTORY INFO - 
+AL = function
+00h save block of memory as file
+01h update directory entry for existing file
+02h set load address for existing file
+03h set execution address for existing file
+04h set attributes for existing file
+05h read directory
+06h delete file
+FFh load file
+DS:BX - control block (see #03201)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 45
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6182.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6184.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Acorn BBC Master 512 - OSFILE - READ/WRITE FILE OR DIRECTORY INFO</font></h3>
+<PRE>
+AL = function
+00h save block of memory as file
+01h update directory entry for existing file
+02h set load address for existing file
+03h set execution address for existing file
+04h set attributes for existing file
+05h read directory
+06h delete file
+FFh load file
+DS:BX -> control block <a href="rb-6183.htm#Table3201">(see #03201)</a><br>
+<p><b>Return:</b><br>FLAGS destroyed
+AL = file type
+00h not found
+01h file found
+02h directory found
+FFh protected file
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6133.htm">INT 40"Acorn"</a> - <a href="rb-6138.htm">INT 41"Acorn"</a> - <a href="rb-6180.htm">INT 44"Acorn"</a> - <a href="rb-6187.htm"
+<PRE>
+<p>
+Format of BBC Master control block:
+<a name=table3201></a>
+Offset  Size    Description     (Table 03201)
+00h    WORD    address of CR-terminated filename
+02h    DWORD   load address of file
+06h    DWORD   execution address of file
+0Ah    DWORD   start address of data to save
+0Eh    DWORD   end address of data to save, or file attributes
+file attributes in low byte <a href="rb-6183.htm#Table3202">(see #03202)</a>
+other three bytes are filing-system specific file attributes
+<p>
+Bitfields for BBC Master file attributes:
+<a name=table3202></a>
+Bit(s)  Description     (Table 03202)
+0      no owner read access
+1      no owner write access
+2      not executable by owner
+3      not deletable by owner
+4      no public read access
+5      no public write access
+6      not executable with public access
+7      not deletable with public access
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-45.htm">
+Int 45h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6182.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6184.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

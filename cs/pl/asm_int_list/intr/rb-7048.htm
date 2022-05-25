@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 62/AX=008Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 62/AX=008Dh - FGDRIVER v4.02 - FG_PCXRANGE - GET EXTENT OF PCX IMAGE - 
+AX = 008Dh
+ES:BX - variable pointer record (see #03495)
+Return: indicated variables updated; if the indicated header is not valid,
+all of the coordinate variables are set to FFFFh
+Note:  the FGDRIVER functions are rearranged with each major release, but
+their parameters do not change (see #03474 at AX=0000h)
+SeeAlso: AX=008Ch
+Format of FGDRIVER PCXRANGE variable pointer record:
+Offset Size  Description   (Table 03495)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 62/AX=008Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7047.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7049.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FGDRIVER v4.02 - FG_PCXRANGE - GET EXTENT OF PCX IMAGE</font></h3>
+<PRE>
+AX = 008Dh
+ES:BX -> variable pointer record <a href="rb-7048.htm#Table3495">(see #03495)</a><br>
+<p><b>Return:</b><br>Indicated variables updated; if the indicated header is not valid,
+all of the coordinate variables are set to FFFFh
+</PRE>
+<p><b>Note:</b>
+The FGDRIVER functions are rearranged with each major release, but
+their parameters do not change <a href="rb-0000.htm#Table0"></a>(see #03474 at AX=0000h)
+<p><b>See Also:</b>
+<a href="rb-7047.htm">AX=008Ch</a>
+<PRE>
+<p>
+Format of FGDRIVER PCXRANGE variable pointer record:
+<a name=table3495></a>
+Offset  Size    Description     (Table 03495)
+00h    WORD    segment of 128-byte PCX file header
+02h    WORD    offset of 128-byte PCX file header
+04h    WORD    segment of WORD buffer for X coordinate of image's left edge
+04h    WORD    offset of WORD buffer for X coordinate of image's left edge
+08h    WORD    segment of WORD buffer for X coordinate of image's right edge
+0Ah    WORD    offset of WORD buffer for X coordinate of image's right edge
+0Ch    WORD    segment of WORD buffer for Y coordinate of image's top edge
+0Eh    WORD    offset of WORD buffer for Y coordinate of image's top edge
+10h    WORD    segment of WORD buffer for X coordinate of image's bottom edge
+12h    WORD    offset of WORD buffer for X coordinate of image's bottom edge
+</PRE>
+<p><b>See Also:</b>
+#03494
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-62.htm">
+Int 62h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7047.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7049.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

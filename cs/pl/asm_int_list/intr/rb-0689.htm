@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=30h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=30h - QUICKCACHE II v4.20 - GET INFO - 
+AH = 30h
+AL = what to get
+00h system info (see #00269)
+01h drive info (see #00270)
+02h access frequency (array of 30 words)
+03h drive index
+(array of 32 bytes indicating BIOS drive for DOS drive)
+DS:DX - buffer for info
+Return: AX = status (0000h successful, 8000h invalid info specifier)
+Program: QUICKCACHE II is a shareware disk cache by P.R. Glassel and
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=30h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0688.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0690.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>QUICKCACHE II v4.20 - GET INFO</font></h3>
+<PRE>
+AH = 30h
+AL = what to get
+00h system info <a href="rb-0689.htm#Table269">(see #00269)</a>
+01h drive info <a href="rb-0689.htm#Table270">(see #00270)</a>
+02h access frequency (array of 30 words)
+03h drive index
+(array of 32 bytes indicating BIOS drive for DOS drive)
+DS:DX -> buffer for info<br>
+<p><b>Return:</b><br>AX = status (0000h successful, 8000h invalid info specifier)
+</PRE>
+<p><b>Program:</b>
+QUICKCACHE II is a shareware disk cache by P.R. Glassel and
+Associates, Inc.
+<PRE>
+<p>
+Format of QUICKCACHE II system info:
+<a name=table269></a>
+Offset  Size    Description     (Table 00269)
+<p><b>00h    BYTE    flag:</b><br>Cache enabled
+<p><b>01h    BYTE    flag:</b><br>Buffered writes enabled
+<p><b>02h    BYTE    flag:</b><br>Buffered reads enabled
+<p><b>03h    BYTE    flag:</b><br>Sounds enabled
+<p><b>04h    BYTE    flag:</b><br>Autodismount enabled
+05h    BYTE    ???
+<p><b>06h    BYTE    flag:</b><br>???
+<p><b>07h    BYTE    flag:</b><br>???
+<p><b>08h    BYTE    flag:</b><br>"em_assigned"
+<p><b>09h    BYTE    flag:</b><br>Emulated EMS
+0Ah    BYTE    single sector bonus
+0Bh    BYTE    "sticky_max"
+0Ch    BYTE    write sector bonus
+0Dh    BYTE    bonus threshold
+0Eh    WORD    flush interval
+10h    WORD    flush count
+12h    WORD    reserve pool size
+14h    WORD    remaining space in reserve pool
+16h    WORD    required free memory
+18h    WORD    total cache sectors
+1Ah    WORD    dirty cache sectors
+1Ch    BYTE    trace buffer size
+1Dh    BYTE    reserved (padding)
+</PRE>
+<p><b>See Also:</b>
+#00270
+<PRE>
+<p>
+Format of QUICKCACHE II drive info [16-element array, one element]:
+<a name=table270></a>
+Offset  Size    Description     (Table 00270)
+00h    BYTE    DOS drive number
+01h    BYTE    BIOS drive number
+02h    BYTE    maximum sector number
+03h    BYTE    maximum head number
+04h    BYTE    read buffer size
+05h    BYTE    write buffer size
+06h    BYTE    last status
+<p><b>07h    BYTE    flag:</b><br>Enabled
+<p><b>08h    BYTE    flag:</b><br>Buffered write enabled
+<p><b>09h    BYTE    flag:</b><br>Buffered read enabled
+<p><b>0Ah    BYTE    flag:</b><br>In use (drive info is valid)
+<p><b>0Bh    BYTE    flag:</b><br>Cylinder flush
+0Ch    BYTE    reserved (padding)
+0Dh    BYTE    sectors per track
+0Eh    WORD    sector size
+10h    WORD    sectors assigned
+12h    WORD    dirty sectors
+14h    WORD    reserved sectors
+16h    WORD    number of read errors
+18h    WORD    number of write errors
+1Ah    DWORD   "rio_count"
+1Eh    DWORD   number of cache misses
+22h    DWORD   "wio_count"
+26h    DWORD   "dio_count"
+</PRE>
+<p><b>See Also:</b>
+#00269
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-q.htm">
+Q</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0688.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0690.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

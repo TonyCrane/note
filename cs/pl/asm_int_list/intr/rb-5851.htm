@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=050Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=050Bh - DPMI 1.0+ - GET MEMORY INFORMATION - 
+AX = 050Bh
+ES:(E)DI - 128-byte buffer for memory information (see #03157)
+Return: CF clear if successful
+CF set on error (DPMI 0.9 only)
+Note:  16-bit programs use ES:DI, 32-bit programs must use ES:EDI
+SeeAlso: AX=0500h
+Format of DPMI memory information:
+Offset Size  Description   (Table 03157)
+00h  DWORD  total allocated bytes of physical memory controlled by host
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=050Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5850.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5852.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 1.0+ - GET MEMORY INFORMATION</font></h3>
+<PRE>
+AX = 050Bh
+ES:(E)DI -> 128-byte buffer for memory information <a href="rb-5851.htm#Table3157">(see #03157)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (DPMI 0.9 only)
+</PRE>
+<p><b>Note:</b>
+16-bit programs use ES:DI, 32-bit programs must use ES:EDI
+<p><b>See Also:</b>
+<a href="rb-5840.htm">AX=0500h</a>
+<PRE>
+<p>
+Format of DPMI memory information:
+<a name=table3157></a>
+Offset  Size    Description     (Table 03157)
+00h    DWORD   total allocated bytes of physical memory controlled by host
+04h    DWORD   total allocated bytes of virtual memory controlled by host
+08h    DWORD   total available bytes of virtual memory controlled by host
+0Ch    DWORD   total allocated bytes of virtual memory for curr virtual mach
+10h    DWORD   total available bytes of virtual memory for curr virtual mach
+14h    DWORD   total allocated bytes of virtual memory for current client
+18h    DWORD   total available bytes of virtual memory for current client
+1Ch    DWORD   total locked bytes for current client
+20h    DWORD   maximum locked bytes for current client
+24h    DWORD   highest linear address available to current client
+28h    DWORD   largest available memory block in bytes
+2Ch    DWORD   minimum allocation unit in bytes
+30h    DWORD   allocation alignment unit size in bytes
+34h 76 BYTEs   reserved (00h)
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5850.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5852.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

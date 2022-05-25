@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=B80Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=B80Fh - DOS LAN Requester - GET START PARAMETERS - 
+AX = B80Fh
+CX = size of return data buffer
+ES:DI - return data buffer (see #02984)
+Return: AX = status
+00h   network started
+nonzero network not started
+CX = number of bytes returned in buffer
+ES:DI buffer filled
+SeeAlso: AX=B809hPC LAN Program,AX=B80Eh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=B80Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5253.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5255.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS LAN Requester - GET START PARAMETERS</font></h3>
+<PRE>
+AX = B80Fh
+CX = size of return data buffer
+ES:DI -> return data buffer <a href="rb-5254.htm#Table2984">(see #02984)</a><br>
+<p><b>Return:</b><br>AX = status
+00h     network started
+nonzero network not started
+CX = number of bytes returned in buffer
+ES:DI buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4270.htm">AX=B809h"PC LAN Program"</a> - <a href="rb-5253.htm">AX=B80Eh</a>
+<PRE>
+<p>
+Format of DOS LAN Requester return data buffer:
+<a name=table2984></a>
+Offset  Size    Description     (Table 02984)
+00h    BYTE    major version
+01h    BYTE    minor version
+02h    WORD    configuration flags given when network was started <a href="rb-5254.htm#Table2985">(see #02985)</a>
+04h 15 BYTEs   NET START machine name (space padded)
+13h    BYTE    00h
+14h 9  BYTEs   NET START domain name (NULL padded)
+1Dh    BYTE    00h
+1Eh 32 BYTEs   /WRK heuristics string (space padded, not terminated)
+3Eh    WORD    /SRV value
+40h    WORD    /ASG value
+42h    WORD    /NBC value
+44h    WORD    /NBS value
+46h    WORD    /BBC value
+48h    WORD    /BBS value
+4Ah    WORD    /PBC value
+4Ch    WORD    /PBS value
+4Eh    WORD    /PFS value
+50h    WORD    /PFT value
+52h    WORD    /PWT value
+54h    WORD    /KUC value
+56h    WORD    /KST value
+58h    WORD    /NVS value
+5Ah    WORD    /NMS value
+5Ch    WORD    /NDB value
+5Eh    WORD    /MBI value
+60h    BYTE    NetBIOS name number for machine name
+61h    BYTE    NetBIOS name number for domain name
+62h    WORD    NetBIOS sessions required for configuration
+64h    WORD    NetBIOS commands required for configuration
+66h    WORD    NetBIOS names required for configuration
+68h 128 BYTEs  NET START path (LANROOT)
+E8h    BYTE    00h
+<p>
+Bitfields for configuration flags:
+<a name=table2985></a>
+Bit(s)  Description     (Table 02985)
+0      /NVS nonzero
+1      /NMS nonzero
+2      /API
+3      /HIM
+4      /LIM
+5      /ENC
+6      /POP
+7      /EMS
+8      /RPL
+9-12   reserved
+13     RDR started
+14     RCV started
+15     User is currently logged on
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5253.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5255.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

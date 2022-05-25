@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Int 78
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 78 - UofSalford DBOS DOS extender - API - 
+AH = function
+00h (PB) display 32-bit memory specified by command argument
+01h (PT) display 32-bit instruction(s) specified by command arg
+02h specify offset to subsequent PB and PT commands
+03h switch to protected mode
+DWORD following INT instruction point to map; protected-mode
+entry point is immediately following the DWORD
+Return: never
+Note:  if bit 31 of the map address is set, only a stub was
+loaded by DOS and DBOS will load the entire program
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 78
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7807.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7809.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>UofSalford DBOS DOS extender - API</font></h3>
+<PRE>
+AH = function
+00h (PB) display 32-bit memory specified by command argument
+01h (PT) display 32-bit instruction(s) specified by command arg
+02h specify offset to subsequent PB and PT commands
+03h switch to protected mode
+DWORD following INT instruction point to map; protected-mode
+entry point is immediately following the DWORD
+<p><b>Return:</b><br>Never
+</PRE>
+<p><b>Note:</b>
+If bit 31 of the map address is set, only a stub was
+loaded by DOS and DBOS will load the entire program
+04h specify that subsequent load (AH=03h) should leave program in
+memory
+05h release program from memory
+06h set break point at address and option count from commandline
+07h resume program execution
+08h single-step program
+09h set read/write breakpoint using 386 debug registers
+0Ah set write breakpoint using 386 debug register
+0Bh set memory byte to new value
+0Ch display CPU registers
+0Dh run until specified program address reached
+0Fh print trace from program map
+10h specify an offset using a map symbol
+14h print memory without any offset
+18h switch DBOS into/out of test mode (ON/OFF commandline args)
+1Dh get address of real/protected-mode communication buffer
+<PRE>
+<p><b>Return:</b><br>ES:BP -> comm buffer
+1Eh set real-mode memory size (specify how much real-mode memory
+to leave free when running FTN77 programs)
+22h uninstall DBOS
+24h force DBOS to emulate coprocessor instructions
+26h set named DBOS switches from commandline
+27h reset named DBOS switched from commandline
+2Ah set list of dynamic link libraries to contents of commandline
+file
+35h specify that subsequent load (AH=03h) should stop at first
+instruction<br>
+<p><b>Return:</b><br>???
+</PRE>
+<p><b>Notes:</b>
+DBOS supports functions 00h through 50h; many of these functions
+provide a low-level debugging interface.
+Command arguments are read from the calling program's PSP
+<p><b>See Also:</b>
+<a href="rb-7833.htm">INT 79"DBOS"</a>
+<PRE>
+<p><b>Index:</b><br>Uninstall;DBOS DOS extender
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-78.htm">
+Int 78h</a>
+- <a href="alpha-u.htm">
+U</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7807.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7809.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

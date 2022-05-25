@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=75h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=75h - Novell NetWare - QUEUE SERVICES - RESTORE QUEUE SERVER RIGHTS - 
+AH = E3h subfn 75h
+DS:SI - request buffer (see #01991)
+ES:DI - reply buffer (see #01989)
+Return: AL = status (00h,96h,9Ch,D0h,D1h,D3h,D5h,D9h,DAh,FEh,FFh) (see #01961)
+Desc:  restore server's own identity after assuming the login identity of the
+client submitting the job being serviced
+Notes: this function is supported by Advanced NetWare 2.1+
+caller must be a job server which has previously changed its identity
+SeeAlso: AH=E3h/SF=74h,AX=F217h/SF=75h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=75h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3537.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3539.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - RESTORE QUEUE SERVER RIGHTS</font></h3>
+<PRE>
+AH = E3h subfn 75h
+DS:SI -> request buffer <a href="rb-3538.htm#Table1991">(see #01991)</a>
+ES:DI -> reply buffer <a href="rb-3536.htm#Table1989">(see #01989)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,9Ch,D0h,D1h,D3h,D5h,D9h,DAh,FEh,FFh) (see #01961)
+</PRE>
+<p><b>Desc:</b>
+Restore server's own identity after assuming the login identity of the
+client submitting the job being serviced
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Caller must be a job server which has previously changed its identity
+<p><b>See Also:</b>
+<a href="rb-3537.htm">AH=E3h/SF=74h</a> - <a href="rb-3782.htm">AX=F217h/SF=75h</a>
+<PRE>
+<p>
+Format of NetWare "Restore Queue Server Rights" request buffer:
+<a name=table1991></a>
+Offset  Size    Description     (Table 01991)
+00h    WORD    0001h (length of following data)
+02h    BYTE    75h (subfunction "Change To Client Rights")
+</PRE>
+<p><b>See Also:</b>
+#01989 - #01990
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3537.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3539.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

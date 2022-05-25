@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4B02h/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4B02h/BX=0000h - DOS 5+ TASK SWITCHER - INSTALLATION CHECK - 
+AX = 4B02h
+BX = 0000h
+ES:DI = 0000h:0000h
+Return: ES:DI = 0000h:0000h if task switcher not loaded
+ES:DI - task switcher entry point (see #02819) if loaded
+AX = 0000h
+Notes: the returned entry point is that for the most-recently loaded task
+switcher; the entry points for prior task switchers may be determined
+with the get version call (see #02819)
+this function is supported by PC Tools v8+ CPTASK
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4B02h/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4861.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4863.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 5+ TASK SWITCHER - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 4B02h
+BX = 0000h
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI = 0000h:0000h if task switcher not loaded
+ES:DI -> task switcher entry point <a href="rb-4862.htm#Table2819">(see #02819)</a> if loaded
+AX = 0000h
+</PRE>
+<p><b>Notes:</b>
+The returned entry point is that for the most-recently loaded task
+switcher; the entry points for prior task switchers may be determined
+with the "get version" call <a href="rb-4862.htm#Table2819">(see #02819)</a>.
+This function is supported by PC Tools v8+ CPTASK
+<p><b>See Also:</b>
+<a href="rb-4819.htm">AX=4A05h</a> - <a href="rb-4863.htm">AX=4B03h</a>
+<PRE>
+<p>
+<a name=table2819></a>
+(Table 02819)
+Call task switcher entry point with:.
+AX = 0000h get version
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+ES:BX -> task switcher version struct <a href="rb-4862.htm#Table2820">(see #02820)</a>
+CF set if unsupported function.
+AX = 0001h test memory region
+ES:DI -> first byte to be tested
+CX = size of region to test
+<p><b>Return:</b><br>CF clear if successful
+AX = memory type of tested region
+0000h global
+0001h global and local
+0002h local (replaced on session switch)
+CF set if unsupported function.
+AX = 0002h suspend switcher
+ES:DI -> new task switcher's entry point
+<p><b>Return:</b><br>CF clear if successful
+AX = state
+0000h switcher has been suspended
+0001h switcher not suspended, new switcher must
+abort
+0002h switcher not suspended, but new switcher
+may run anyway
+CF set if unsupported function.
+AX = 0003h resume switcher
+ES:DI -> new task switcher's entry point
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+CF set if unsupported function.
+AX = 0004h hook notification chain
+ES:DI -> callback info structure to be added to chain
+<a href="rb-4861.htm#Table2817">(see #02817)</a>
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+CF set if unsupported function.
+AX = 0005h unhook notification chain
+ES:DI -> callback info structure to be removed from chain
+<a href="rb-4861.htm#Table2817">(see #02817)</a>
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+CF set if unsupported function.
+AX = 0006h query API support
+BX = asynchronous API identifier
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+ES:BX -> API info structure <a href="rb-4862.htm#Table2821">(see #02821)</a> for the
+client which provides the highest
+level of API support
+CF set if unsupported function
+<p>
+Format of task switcher version structure:
+<a name=table2820></a>
+Offset  Size    Description     (Table 02820)
+00h    WORD    major version of supported protocol  (current protocol is 1.0)
+02h    WORD    minor version of supported protocol
+04h    WORD    major version of task switcher
+06h    WORD    minor version of task switcher
+08h    WORD    task switcher ID (see AX=4B03h)
+0Ah    WORD    operation flags
+<p><b>bit 0:</b><br>Set if task switcher disabled
+<p><b>bits 1-15:</b><br>Reserved (0)
+0Ch    DWORD   pointer to ASCIZ task switcher name
+("MS-DOS Shell Task Switcher" for DOSSHELL task switcher)
+10h    DWORD   pointer to previous task switcher's entry point or 0000h:0000h
+<p>
+Format of API info structure:
+<a name=table2821></a>
+Offset  Size    Description     (Table 02821)
+00h    WORD    size of structure in bytes (000Ah)
+02h    WORD    API identifier
+0001h NetBIOS
+0002h 802.2
+0003h TCP/IP
+0004h LAN Manager named pipes
+0005h Novell NetWare IPX
+04h    WORD    major version \ of highest version of API for which the support
+06h    WORD    minor version / level specified in the next field is provided
+08h    WORD    support level
+0001h minimal support
+0002h API-level support
+0003h switcher compatibility
+0004h seamless compatibility
+</PRE>
+<p>
+<b>Category: <a href="cat-011.htm">
+DOS-Based Task Switchers/Multitaskers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4861.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4863.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=440Dh/CX=084Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=440Dh/CX=084Bh - MS-DOS 7.0+ - GENERIC IOCTL - LOCK PHYSICAL VOLUME - 
+AX = 440Dh
+CX = 084Bh / 484Bh
+(category code 08h for FAT12/16, 48h for FAT32; minor code 4Bh)
+BH = logical drive number (00h = default, 01h = A:, etc.)
+BL = lock level (00h-03h)
+DX = drive permissions (see #01575) for Level 1 lock or second
+Level 0 lock when formatting
+Return: CF set on error
+AX = error code (01h,02h,etc.) (see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=440Dh/CX=084Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2897.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2899.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS-DOS 7.0+ - GENERIC IOCTL - LOCK PHYSICAL VOLUME</font></h3>
+<PRE>
+AX = 440Dh
+CX = 084Bh / 484Bh
+(category code 08h for FAT12/16, 48h for FAT32; minor code 4Bh)
+BH = logical drive number (00h = default, 01h = A:, etc.)
+BL = lock level (00h-03h)
+DX = drive permissions <a href="rb-2897.htm#Table1575">(see #01575)</a> for Level 1 lock or second
+Level 0 lock when formatting<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code (01h,02h,etc.) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+</PRE>
+<p><b>Desc:</b>
+Lock all logical volumes on the same physical volume as the indicated
+drive
+<p><b>Note:</b>
+The physical volume must be locked before direct disk writes via
+INT 13 are permitted by Windows95
+<p><b>See Also:</b>
+<a href="rb-2896.htm">AX=440Dh"DOS 3.2+"</a> - <a href="rb-2897.htm">AX=440Dh/CX=084Ah</a> - <a href="rb-2900.htm">AX=440Dh/CX=086Bh</a>
+<p><b>See Also:</b>
+<a href="rb-2901.htm">AX=440Dh/CX=086Ch</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2897.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2899.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

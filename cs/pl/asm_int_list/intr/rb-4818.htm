@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A04h - Windows95 - DOS KERNEL - GET START OF HMA MEMORY CHAIN - 
+AX = 4A04h
+Return: AX = 0000h if function supported
+ES:DI - first HMA memory control block (see #02800)
+Format of Windows95 HMA memory control block:
+Offset Size  Description   (Table 02800)
+00h 2 BYTEs  signature MS (4Dh 53h)
+02h  WORD  segment of owner (or segment at which to address block???)
+0000h = free
+0001h = DOS???
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4817.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4819.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - DOS KERNEL - GET START OF HMA MEMORY CHAIN</font></h3>
+<PRE>
+AX = 4A04h<br>
+<p><b>Return:</b><br>AX = 0000h if function supported
+ES:DI -> first HMA memory control block <a href="rb-4818.htm#Table2800">(see #02800)</a>
+<p>
+Format of Windows95 HMA memory control block:
+<a name=table2800></a>
+Offset  Size    Description     (Table 02800)
+00h  2 BYTEs   signature "MS" (4Dh 53h)
+02h    WORD    segment of owner (or segment at which to address block???)
+0000h = free
+0001h = DOS???
+FF33h = IO.SYS
+FFFFh = MSDOS.SYS
+04h    WORD    size of memory block (not including this header)
+06h    WORD    offset of next memory block in segment FFFFh, or 0000h if last
+08h  8 BYTEs   unused (explicitly set to 0 for MS-DOS 7.10)
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4817.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4819.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B10Ah/SF=1042h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B10Ah/SF=1042h - PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (PC Technology devices) - 
+AX = B10Ah subfn 1042h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) (see #00878)
+Return: CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) (see #00729)
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B10Ah/SF=1042h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2381.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2383.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (PC Technology devices)</font></h3>
+<PRE>
+AX = B10Ah subfn 1042h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) <a href="rb-2377.htm#Table878">(see #00878)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) <a href="rb-2371.htm#Table729">(see #00729)</a>
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+</PRE>
+<p><b>Notes:</b>
+This function may require up to 1024 byte of stack; it will not enable
+interrupts if they were disabled before making the call.
+The meanings of BL and BH on entry were exchanged between the initial
+drafts of the specification and final implementation
+<p><b>See Also:</b>
+<a href="rb-2377.htm">AX=B10Ah</a> - <a href="rb-2381.htm">AX=B10Ah/SF=1022h</a> - <a href="rb-2383.htm">AX=B10Ah/SF=1045h</a> - <a href="rb-2387..html"
+<PRE>
+<p>
+Format of PCI Configuration data for PC Technology RZ-1000 EIDE controller:
+<a name=table928></a>
+Offset  Size    Description     (Table 00928)
+00h 64 BYTEs   header <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 1042h, device ID 1000h)
+10h    DWORD   base address for controller I/O registers
+(set to 01F1h for primary controller, 0171h for secondary)
+14h    DWORD   base address for controller digital I/O port
+(set to 03F5h for primary, 0375h for secondary)
+40h    DWORD   ???
+<p><b>bits 7-1:</b><br>???
+<p><b>bit 13:</b><br>Read-ahead mode enabled
+(Read-Ahead is buggy on original RZ-1000, and is
+thus typically disabled by clearing this bit)
+<p><b>bit 16:</b><br>???
+44h    DWORD   ???
+48h  8 BYTEs   ???
+50h 176 BYTEs  unused???
+</PRE>
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2381.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2383.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=7147h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=7147h - Windows95 - LONG FILENAME - GET CURRENT DIRECTORY - 
+AX = 7147h
+DL = drive number (00h = current, 01h = A:, etc.)
+DS:SI - buffer for ASCIZ directory name
+Return: CF clear if successful
+CF set on error
+AX = error code (see #01680)
+7100h if function not supported
+Notes: the returned pathname does not include the drive letter, colon, or
+leading backslash, and is not necessarily a long filename -- this
+function returns whatever path was used when changing to the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=7147h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3201.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3203.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - LONG FILENAME - GET CURRENT DIRECTORY</font></h3>
+<PRE>
+AX = 7147h
+DL = drive number (00h = current, 01h = A:, etc.)
+DS:SI -> buffer for ASCIZ directory name<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code <a href="rb-3012.htm#Table1680">(see #01680)</a>
+7100h if function not supported
+</PRE>
+<p><b>Notes:</b>
+The returned pathname does not include the drive letter, colon, or
+leading backslash, and is not necessarily a long filename -- this
+function returns whatever path was used when changing to the
+current directory, and may include a mixture of long and short
+components.
+The provided buffer must be at least as large as the value indicated
+by AX=71A0h.
+For compatibility with DOS versions prior to v7.00, the carry flag
+should be set on call to ensure that it is set on exit
+<p><b>See Also:</b>
+<a href="rb-2933.htm">AH=47h</a> - <a href="rb-3199.htm">AX=713Bh</a> - <a href="rb-3206.htm">AX=7160h</a> - <a href="rb-3210.htm">AX=71A0h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3201.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3203.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

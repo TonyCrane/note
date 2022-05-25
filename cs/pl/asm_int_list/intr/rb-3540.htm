@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=77h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=77h - Novell NetWare - QUEUE SERVICES - SET QUEUE SERVER CURRENT STATUS - 
+AH = E3h subfn 77h
+DS:SI - request buffer (see #01994)
+ES:DI - reply buffer (see #01995)
+Return: AL = status (00h,96h,9Ch,D0h,D1h,FEh,FFh) (see #01961)
+Notes: this function is supported by Advanced NetWare 2.1+
+caller must be a job server which has attached itself to the queue
+SeeAlso: AH=E3h/SF=68h,AH=E3h/SF=6Ch,AH=E3h/SF=6Fh,AH=E3h/SF=76h,AH=E3h/SF=78h
+SeeAlso: AX=F217h/SF=77h
+Format of NetWare Set Queue Server Current Status request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=77h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3539.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3541.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - SET QUEUE SERVER CURRENT STATUS</font></h3>
+<PRE>
+AH = E3h subfn 77h
+DS:SI -> request buffer <a href="rb-3540.htm#Table1994">(see #01994)</a>
+ES:DI -> reply buffer <a href="rb-3540.htm#Table1995">(see #01995)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,9Ch,D0h,D1h,FEh,FFh) (see #01961)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Caller must be a job server which has attached itself to the queue
+<p><b>See Also:</b>
+<a href="rb-3525.htm">AH=E3h/SF=68h</a> - <a href="rb-3529.htm">AH=E3h/SF=6Ch</a> - <a href="rb-3532.htm">AH=E3h/SF=6Fh</a> - <a href="rb-3539.htm"
+<p><b>See Also:</b>
+<a href="rb-3784.htm">AX=F217h/SF=77h</a>
+<PRE>
+<p>
+Format of NetWare "Set Queue Server Current Status" request buffer:
+<a name=table1994></a>
+Offset  Size    Description     (Table 01994)
+00h    WORD    0045h (length of following data)
+02h    BYTE    77h (subfunction "Set Queue Server Current Status")
+03h    DWORD   (big-endian) object ID of queue
+07h 64 BYTEs   server status record (format depends on server)
+first four bytes should contain estimated "price" for an
+average job
+</PRE>
+<p><b>See Also:</b>
+#01995
+<PRE>
+<p>
+Format of NetWare "Set Queue Server Current Status" reply buffer:
+<a name=table1995></a>
+Offset  Size    Description     (Table 01995)
+00h    WORD    (call) 0000h (no results returned)
+</PRE>
+<p><b>See Also:</b>
+#01994
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3539.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3541.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

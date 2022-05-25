@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=FE00h/DX=474Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=FE00h/DX=474Fh - GO! v3.22+ - API - 
+AX = FE00h
+DX = 474Fh ('GO')
+SI = function number
+0063h (BCD for '?') installation check
+0078h (BCD for 'N') non-registered search (two levels only)
+0082h (BCD for 'R') reserved for registered version
+0083h (BCD for 'S') reserved for registered version
+0085h (BCD for 'U') uninstall
+BX:CX - buffer (for search functions)
+buffer filled with search spec, i.e. APL to get first
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=FE00h/DX=474Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5774.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5776.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>GO! v3.22+ - API</font></h3>
+<PRE>
+AX = FE00h
+DX = 474Fh ('GO')
+SI = function number
+0063h (BCD for '?') installation check
+0078h (BCD for 'N') non-registered search (two levels only)
+0082h (BCD for 'R') reserved for registered version
+0083h (BCD for 'S') reserved for registered version
+0085h (BCD for 'U') uninstall
+BX:CX -> buffer (for search functions)
+buffer filled with search spec, i.e. "APL" to get first
+directory containing the substring APL, ":\APL" to find
+the first top-level directory beginning with the letters
+APL<br>
+<p><b>Return:</b><br>BX:CX buffer filled with result (search functions only)
+result is counted ASCIZ directory name, empty string if
+no matches (i.e. first byte is length of name, followed by
+name)
+</PRE>
+<p><b>Program:</b>
+GO! is a shareware directory locator TSR by Steve Ryckman
+<p><b>Note:</b>
+The application-supplied buffer for the requests and results which
+BX:CX points at must lie outside the conventional (low-640K)
+memory, since the TSR swaps memory on pop-up; a common location is
+the last 96 bytes of the video memory or a UMB
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-g.htm">
+G</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5774.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5776.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

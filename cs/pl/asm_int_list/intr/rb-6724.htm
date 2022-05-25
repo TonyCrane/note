@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0003h/SF=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0003h/SF=05h - Banyan VINES - ASYNC TERMINAL EMULATION - SET SESSION PARAMETER - 
+AX = 0003h subfn 05h
+DS:BX - argument block (see #03379)
+Return: AX = status (see #03369)
+SeeAlso: AX=0003h/SF=00h,AX=0003h/SF=06h,AX=0003h/SF=08h
+Format of VINES argument block for setting session parameters:
+Offset Size  Description   (Table 03379)
+00h  BYTE  session ID (00h)
+01h  BYTE  05h (function set session parameter)
+02h  BYTE  parameter number (see #03380)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0003h/SF=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6723.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6725.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - ASYNC TERMINAL EMULATION - SET SESSION PARAMETER</font></h3>
+<PRE>
+AX = 0003h subfn 05h
+DS:BX -> argument block <a href="rb-6724.htm#Table3379">(see #03379)</a><br>
+<p><b>Return:</b><br>AX = status (see #03369)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6719.htm">AX=0003h/SF=00h</a> - <a href="rb-6725.htm">AX=0003h/SF=06h</a> - <a href="rb-6727.htm">AX=0003h/SF=08h</a>
+<PRE>
+<p>
+Format of VINES argument block for setting session parameters:
+<a name=table3379></a>
+Offset  Size    Description     (Table 03379)
+00h    BYTE    session ID (00h)
+01h    BYTE    05h (function "set session parameter")
+02h    BYTE    parameter number <a href="rb-6724.htm#Table3380">(see #03380)</a>
+03h    BYTE    new parameter value
+<p>
+<a name=table3380></a>
+(Table 03380)
+Values for parameter number:
+00h    line speed (00h=any, 01h=50, 02h=110, 03h=134.5, 04h=150,
+05h=300, 06h=600, 07h=1200, 08h=2400, 09h=4800, 0Ah=9600)
+01h    parity (00h=none, 01h=odd, 02h=even)
+02h    duplex (00h=full, 01h=half)
+03h    character size (00h=7 bits, 01h=8 bits)
+04h    stop bits (00h=1, 01h=2)
+05h    XON/XOFF flow control (00h=no, 01h=yes)
+07h    intercharacter delay in tenths of a second
+08h    interline delay in tenths of a second
+09h    auto linefeed (00h=no, 01h=yes)
+0Ah    filter control characters (00h=no, 01h=yes)
+0Bh    terminal type (00h=VT100,01h=glassTTY,02h=VT52,03h=IBM3101)
+0Ch    auto wrap (00h=no, 01h=yes)
+0Dh    cursor shape (00h=underscore, 01h=block)
+0Eh    character set (00h=UK, 01h=US ASCII)
+0Fh    printer port (00h=LPT1, 01h=LPT2, 02h=LPT3)
+</PRE>
+<p><b>See Also:</b>
+#03379
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6723.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6725.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

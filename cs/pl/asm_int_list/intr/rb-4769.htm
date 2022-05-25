@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4310h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4310h - Cloaking - REAL-MODE API - 
+AX = 4310h
+Return: ES:BX - driver entry point (see #02749,#02778,#02779,#02780,#02781)
+SeeAlso: AX=4310hXMS
+(Table 02778)
+Call the Cloaking v1.01 Client Registration function with:
+AH = 7Eh
+BX = subfunction
+0000h get client registration count
+0001h get client registration structures
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4310h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4768.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4770.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Cloaking - REAL-MODE API</font></h3>
+<PRE>
+AX = 4310h<br>
+<p><b>Return:</b><br>ES:BX -> driver entry point (see #02749,#02778,#02779,#02780,#02781)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4524.htm">AX=4310h"XMS"</a>
+<PRE>
+<p>
+<a name=table2778></a>
+(Table 02778)
+Call the Cloaking v1.01 "Client Registration" function with:.
+AH = 7Eh.
+BX = subfunction
+0000h get client registration count
+0001h get client registration structures
+ES:DI -> buffer for registration structures<br>
+<p><b>Return:</b><br>AX = status
+0000h failed
+0001h successful
+---subfunction 00h---
+BX = size of client structure in bytes
+CX = number of clients installed
+---subfunction 01h---
+ES:DI buffer filled
+</PRE>
+<p><b>See Also:</b>
+#02779 - #02781 - <a href="rb-4211.htm">INT 2C/AX=0033h</a>
+<PRE>
+<p>
+<a name=table2779></a>
+(Table 02779)
+Call the Cloaking v1.01 "Verify Cloaking Host" function with:.
+AH = 7Fh<br>
+<p><b>Return:</b><br>AX = status
+0000h failed
+0001h (successful) if installed
+BX = version (0101h for v1.01)
+CX = flags
+<p><b>bit 0:</b><br>Host is VCPI-based
+DS:DX -> ASCIZ Cloaking host signature
+"CLOAKING.EXE"0, followed by a far-call entry point to
+uninstall host <a href="rb-4769.htm#Table2780">(see #02780)</a> in Helix's CLOAKING.EXE
+</PRE>
+<p><b>See Also:</b>
+#02778 - #02781
+<PRE>
+<p><b>Index:</b><br>Installation check;Cloaking host|installation check;CLOAKING.EXE
+<p>
+<a name=table2780></a>
+(Table 02780)
+Call the CLOAKING.EXE "Uninstall Host" function with:<br>
+<p><b>Return:</b><br>AX = 4F4Bh ('OK') if successfully uninstalled protected-mode code
+<p>
+<a name=table2781></a>
+(Table 02781)
+Call the Cloaking "Start Protected-Mode Client" function with:
+AH = 82h
+DX = XMS handle of locked block containing protected-mode code
+CL = code size (00h 16-bit, else 32-bit)
+ESI, EDI = parameters to pass to protected-mode code<br>
+<p><b>Return:</b><br>AX = status
+nonzero success
+0000h failed
+BL = error code (A2h,B0h) <a href="rb-4768.htm#Table2775">(see #02775)</a>
+</PRE>
+<p><b>Notes:</b>
+This function calls a user initialization function at offset 0 in
+the XMS memory block <a href="rb-4769.htm#Table2782">(see #02782)</a>.
+Supported by Helix's RM386 v6.00 and Helix's CLOAKING.EXE
+<p><b>See Also:</b>
+#02778 - #02779
+<PRE>
+<p>
+<a name=table2782></a>
+(Table 02782)
+Values user initialization function is called with:.
+EBX = physical address of block's start.
+ESI = user data from function 82h call.
+EDI = user data from function 82h call.
+CS = code selector for XMS block at EBX (16-bit or 32-bit).
+DS = data selector for XMS block, starting at EBX.
+ES = selector for V86 memory access to full real-mode 1088K.
+GS = selector for full 4G flat address space.
+SS:ESP -> stack provided by host<br>
+<p><b>Return:</b><br>Via 32-bit FAR return
+</PRE>
+<p><b>Note:</b>
+The initialization function may call any protected-mode Cloaking
+service; it should store the values of DS, ES, and GS for future
+reference
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4768.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4770.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

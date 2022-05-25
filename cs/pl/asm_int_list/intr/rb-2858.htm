@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4403h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4403h - Brian Antoine Seagate ST-01 SCSI.SYS - IOCTL - EXECUTE COMMANDS - 
+AX = 4403h
+BX = handle for device SCSITAPE
+CX = number of bytes to write
+DS:DX - SCSITAPE control block (see #01525)
+Return: CF clear if successful
+AX = number of bytes actually written
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+SeeAlso: AX=4405hST-01,INT 78/AH=10h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4403h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2857.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2859.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Brian Antoine Seagate ST-01 SCSI.SYS - IOCTL - EXECUTE COMMANDS</font></h3>
+<PRE>
+AX = 4403h
+BX = handle for device "SCSITAPE"
+CX = number of bytes to write
+DS:DX -> SCSITAPE control block <a href="rb-2858.htm#Table1525">(see #01525)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually written
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2858.htm">AX=4405h"ST-01"</a> - <a href="rb-7824.htm">INT 78/AH=10h</a>
+<PRE>
+<p>
+Format of SCSITAPE control block:
+<a name=table1525></a>
+Offset  Size    Description     (Table 01525)
+00h    WORD    command type
+'F' Format (argument 1 = interleave, argument 2 = format type)
+'E' Erase
+'R' Rewind
+'L' Load
+'N' No Load
+'S' Space (argument 1 = count, argument 2 = type)
+'M' File Mark (argument 1 = count)
+'A' Reassign
+02h    WORD    argument 1
+04h    WORD    argument 2
+06h    WORD    segment of command buffer
+08h    WORD    offset of command buffer
+0Ah    WORD    length of command buffer
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2857.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2859.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

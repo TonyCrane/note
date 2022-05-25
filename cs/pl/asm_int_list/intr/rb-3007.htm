@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5758h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5758h - Headroom - API - 
+AX = 5758h
+BL = function
+00h ???
+01h get Headroom location
+Return: CF clear if installed
+AX = PSP segment of Headroom TSR
+BX = paragraphs of memory used by Headroom
+CF set if not (normal DOS return)
+Note:  this function is also used as an installation check
+02h get INT 21 handler
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5758h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3006.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3008.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Headroom - API</font></h3>
+<PRE>
+AX = 5758h
+BL = function
+00h ???
+01h get Headroom location
+<p><b>Return:</b><br>CF clear if installed
+AX = PSP segment of Headroom TSR
+BX = paragraphs of memory used by Headroom
+CF set if not (normal DOS return)
+</PRE>
+<p><b>Note:</b>
+This function is also used as an installation check
+02h get INT 21 handler
+<PRE>
+<p><b>Return:</b><br>CF clear
+ES:BX -> Headroom's INT 21 handler
+</PRE>
+<p><b>Note:</b>
+Also sets unknown flag
+03h launch application???
+DS:SI -> 233-byte application record
+<PRE>
+<p><b>Return:</b><br>???
+04h ???
+???
+<p><b>Return:</b><br>CF clear
+05h get swap directory
+<p><b>Return:</b><br>CF clear
+DX:AX -> ASCIZ swap directory name
+06h ???
+DX = ???
+<p><b>Return:</b><br>CF clear
+07h ???
+08h ???
+09h get current application
+<p><b>Return:</b><br>BX = application number
+0Ah ???
+DX = application number
+DS:SI = ???
+<p><b>Return:</b><br>???
+0Bh ???
+0Ch ???
+DX = application number
+???
+<p><b>Return:</b><br>???
+0Dh ???
+DX = application number
+???
+<p><b>Return:</b><br>???
+0Eh get ???
+<p><b>Return:</b><br>CF clear
+AX = ???
+0Fh set ??? flag
+10h clear ??? flag
+11h find application by name
+DS:SI -> ASCIZ application name
+<p><b>Return:</b><br>CF clear
+AX = application number or FFFFh if not loaded
+12h ???
+DX = application number
+<p><b>Return:</b><br>CF clear
+???
+13h ???
+<p><b>Return:</b><br>CF clear
+14h ???
+same as function 13h
+15h set ???
+DX = ???
+16h get ???
+<p><b>Return:</b><br>AX = ??? set by function 15h
+17h get ???
+<p><b>Return:</b><br>BX = ???
+CX = ??? (may be pointer in BX:CX)
+<p><b>18h BUG:</b><br>Branches incorrectly due to fencepost error
+</PRE>
+<p><b>Program:</b>
+Headroom is a TSR/task switcher by Helix Software
+<p><b>See Also:</b>
+<a href="rb-2975.htm">AX=4C57h</a> - <a href="rb-3006.htm">AX=5757h</a> - <a href="rb-4906.htm">INT 2F/AX=5758h</a>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3006.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3008.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

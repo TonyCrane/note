@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=0Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=0Eh - DOS 1+ - SELECT DEFAULT DRIVE - 
+AH = 0Eh
+DL = new default drive (00h = A:, 01h = B:, etc)
+Return: AL = number of potentially valid drive letters
+Notes: under Novell NetWare, the return value is always 32, the number of
+drives that NetWare supports
+under DOS 3.0+, the return value is the greatest of 5, the value of
+LASTDRIVE= in CONFIG.SYS, and the number of drives actually present
+on a DOS 1.x/2.x single-floppy system, AL returns 2 since the floppy
+may be accessed as either A: or B:
+otherwise, the return value is the highest drive actually present
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=0Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2569.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2571.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - SELECT DEFAULT DRIVE</font></h3>
+<PRE>
+AH = 0Eh
+DL = new default drive (00h = A:, 01h = B:, etc)<br>
+<p><b>Return:</b><br>AL = number of potentially valid drive letters
+</PRE>
+<p><b>Notes:</b>
+Under Novell NetWare, the return value is always 32, the number of
+drives that NetWare supports.
+Under DOS 3.0+, the return value is the greatest of 5, the value of
+LASTDRIVE= in CONFIG.SYS, and the number of drives actually present.
+On a DOS 1.x/2.x single-floppy system, AL returns 2 since the floppy
+<PRE>
+<p><b>may be accessed as either A:</b><br>Or B:.
+Otherwise, the return value is the highest drive actually present.
+DOS 1.x supports a maximum of 16 drives, 2.x a maximum of 63 drives,
+and 3+ a maximum of 26 drives.
+Under Novell DOS 7, this function returns the correct LASTDRIVE value
+even when the undocumented LASTDRIVE=27..32 directive was used in
+CONFIG.SYS.
+"parse FCB" (see AH=29h) can be used to determine whether a drive
+letter is valid
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2588.htm">AH=19h</a> - <a href="rb-2777.htm">AH=3Bh</a> - <a href="rb-3396.htm">AH=DBh</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2569.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2571.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

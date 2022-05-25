@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A11h/BX=0005h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A11h/BX=0005h - DBLSPACE.BIN - ActivateDrive - MOUNT COMPRESSED DRIVE - 
+AX = 4A11h
+BX = 0005h
+DL = drive number (0=A:) to assign to new drive
+ES:SI - activation record (see #02805)
+Return: status returned in activation record (see #02806)
+SeeAlso: AX=4A11h/BX=0000h,AX=4A11h/BX=0006h
+Format of DBLSPACE activation record:
+Offset Size  Description   (Table 02805)
+00h 2 BYTEs  signature MD (4Dh 44h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A11h/BX=0005h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4839.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4841.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DBLSPACE.BIN - ActivateDrive - MOUNT COMPRESSED DRIVE</font></h3>
+<PRE>
+AX = 4A11h
+BX = 0005h
+DL = drive number (0=A:) to assign to new drive
+ES:SI -> activation record <a href="rb-4840.htm#Table2805">(see #02805)</a><br>
+<p><b>Return:</b><br>Status returned in activation record (see #02806)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4835.htm">AX=4A11h/BX=0000h</a> - <a href="rb-4841.htm">AX=4A11h/BX=0006h</a>
+<PRE>
+<p>
+Format of DBLSPACE activation record:
+<a name=table2805></a>
+Offset  Size    Description     (Table 02805)
+00h  2 BYTEs   signature "MD" (4Dh 44h)
+02h    BYTE    4Dh ('M') mount command
+03h    BYTE    error code (set to FFh before calling) <a href="rb-4840.htm#Table2806">(see #02806)</a>
+04h    BYTE    host drive number (0=A:)
+05h    ???     DISK_UNIT structure (not documented)
+<p>
+<a name=table2806></a>
+(Table 02806)
+Values for DBLSPACE Mount error code:
+00h    successful
+01h    drive letter not available for DoubleSpace
+02h    drive letter already in use
+03h    no more disk units (increase MaxRemovableDrives in .INI)
+09h    CVF too fragmented
+</PRE>
+<p><b>See Also:</b>
+#02805 - #02804
+<p>
+<b>Category: <a href="cat-017.htm">
+File/Disk Compression</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4839.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4841.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

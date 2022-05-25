@@ -1,0 +1,187 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=3Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=3Fh - IFSHLP.SYS - GET ENTRY POINT - 
+AH = 3Fh
+BX = file handle for device IFS$HLP$
+CX = 0008h (size of buffer in bytes)
+DS:DX - buffer for entry point record (see #01415)
+Return: CF clear if successful
+AX = number of bytes actually read (0 if at EOF before call)
+CF set on error
+AX = error code (05h,06h) (see #01680 at AH=59h/BX=0000h)
+Program: IFSHLP.SYS is a support driver for Microsoft Windows for Workgroups
+SeeAlso: AX=4402hIFSHLP
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=3Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2788.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2790.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>IFSHLP.SYS - GET ENTRY POINT</font></h3>
+<PRE>
+AH = 3Fh
+BX = file handle for device "IFS$HLP$"
+CX = 0008h (size of buffer in bytes)
+DS:DX -> buffer for entry point record <a href="rb-2789.htm#Table1415">(see #01415)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually read (0 if at EOF before call)
+CF set on error
+AX = error code (05h,06h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Program:</b>
+IFSHLP.SYS is a support driver for Microsoft Windows for Workgroups
+<p><b>See Also:</b>
+<a href="rb-2851.htm">AX=4402h"IFSHLP"</a>
+<PRE>
+<p>
+Format of IFSHLP.SYS entry point record:
+<a name=table1415></a>
+Offset  Size    Description     (Table 01415)
+00h  4 BYTEs   (call) required signature if called via IOCTL
+70h E9h 34h 37h for Windows 3.11
+70h E9h 35h 37h for Windows 3.11
+(ret) signature 34h 37h 70h EFh (Windows 3.11)
+(ret) signature 35h 37h 70h EFh (Windows95)
+04h    DWORD   (ret) pointer to FAR call entry point <a href="rb-2789.htm#Table1416">(see #01416)</a>
+<p>
+<a name=table1416></a>
+(Table 01416)
+Call IFSHLP.SYS entry point with:.
+<p><b>STACK:</b><br>WORD    function number (00h-0Ch)
+00h get ??? data
+01h set interrupt intercepts (trap)
+02h remove interrupt intercepts (untrap)
+03h ??? LPT2
+04h ??? LPT1
+05h revector INT 2F to trap and remove trap for others
+06h set ??? flag
+07h clear ??? flag
+08h get ??? flag word
+---Windows 3.11 only---
+09h ???
+0Ah ???
+0Bh ???
+0Ch get ???
+---if function 00h---<br>
+<p><b>Return:</b><br>DX:AX -> ??? data (see #01417)
+BX destroyed
+---if function 01h---.
+<p><b>STACK:</b><br>DWORD   new intercept (trap) address<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+0001h failed (already set)
+DX = 0000h
+BX destroyed
+</PRE>
+<p><b>Note:</b>
+The trap handler is called with a function number in BX, and the
+original BX on top of the stack; a null handler must perform a
+POP BX and an IRET
+---if function 02h---<br>
+<PRE>
+<p><b>Return:</b><br>AX = status
+0000h successful
+0001h failed (not set)
+DX = 0000h
+BX destroyed
+---if function 03h,04h---.
+<p><b>STACK:</b><br>WORD    ???<br>
+<p><b>Return:</b><br>AX = 0000h
+DX = 0000h
+BX destroyed
+---if function 05h---
+???<br>
+<p><b>Return:</b><br>BX destroyed
+---if function 06h---<br>
+<p><b>Return:</b><br>AX = 0001h and DX = 0000h if already set
+AX,DX unchanged if successful
+BX destroyed
+---if function 07h---<br>
+<p><b>Return:</b><br>AX = 0001h and DX = 0000h if not set
+AX,DX unchanged if successful
+BX destroyed
+---if function 08h---<br>
+<p><b>Return:</b><br>DX = 0000h
+AX = flags
+<p><b>bit 0:</b><br>Set/cleared by functions 06h and 07h
+<p><b>bit 1:</b><br>Trap is currently set (refer to functions 01h/02h).
+BX destroyed
+---if function 09h---<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+0001h failed (already called)
+BX destroyed
+---if function 0Ah---.
+<p><b>STACK:</b><br>WORD    ???.
+???<br>
+<p><b>Return:</b><br>BX destroyed
+---if function 0Bh---<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+0001h failed (not set)
+BX destroyed
+---if function 0Ch---<br>
+<p><b>Return:</b><br>AX = 0000h
+ES:BX -> ??? data
+---if function > 0Ch---<br>
+<p><b>Return:</b><br>AX = 0001h
+DX = 0000h
+BX destroyed
+<p>
+Format of IFSHLP ??? data:
+<a name=table1417></a>
+Offset  Size    Description     (Table 01417)
+00h    DWORD   -> DOS Swappable Data Area <a href="rb-0000.htm#Table0"></a>(see #01687,#01689)
+02h    WORD    ??? offset in DOS data segment?
+04h    WORD    offset in DOS data segment of current-PSP WORD
+06h    WORD    ???
+08h    WORD    ???
+0Ah    WORD    ???
+0Ch    DWORD   -> DOS List of Lists <a href="rb-2983.htm#Table1627">(see #01627)</a>
+10h    ???
+</PRE>
+<p><b>See Also:</b>
+#01416
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2788.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2790.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=DA14h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=DA14h - AMI PCI BIOS - GET/SET ??? - 
+AX = DA14h
+CL = subfunction
+00h read
+01h write
+DH = new value for ??? (00h-02h)
+DL = index of ??? (00h-03h, but not range-checked)
+???
+Return: CF clear if successful
+DH = current value of ??? if reading
+CF set on error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=DA14h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1659.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1661.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AMI PCI BIOS - GET/SET ???</font></h3>
+<PRE>
+AX = DA14h
+CL = subfunction
+00h read
+01h write
+DH = new value for ??? (00h-02h)
+DL = index of ??? (00h-03h, but not range-checked)
+???<br>
+<p><b>Return:</b><br>CF clear if successful
+DH = current value of ??? if reading
+CF set on error
+AH = error code (86h unsupported subfunction)
+</PRE>
+<p><b>Note:</b>
+The values for indexes 00h and 01h are stored in CMOS RAM location 19h,
+and the values for 02h and 03h are stored in location 36h
+<p><b>BUG:</b>
+The v1.00.05.AX1 BIOS range-checks DH on subfunction 00h instead of
+subfunction 01h, even though DH is never used by subfunction 00h
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1659.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1661.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE>Int 16/AX=6F08h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 16/AX=6F08h - HP Vectra EX-BIOS - F16_KBD - GET KEYBOARD INFORMATION - 
+AX = 6F08h
+Return: AH = status
+00h successful
+02h unsupported (non-HIL, i.e. standard, keyboard)
+BH = HP-HIL address (HP Vectra AT only???)
+BL = HP-HIL ID (HP Vectra AT only???)
+BL = keyboard language (ES/QS/RS only???) (see #00603)
+Notes: supported by the original HP Vectra AT and ES/QS/RS series HP Vectras
+the driver's address in the HP_VECTOR_TABLE (see INT 6F/AH=00h) may
+be computed as (BH-1)*6 + N, where N is the address of the first
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 16/AX=6F08h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1834.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1836.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HP Vectra EX-BIOS - F16_KBD - GET KEYBOARD INFORMATION</font></h3>
+<PRE>
+AX = 6F08h<br>
+<p><b>Return:</b><br>AH = status
+00h successful
+02h unsupported (non-HIL, i.e. standard, keyboard)
+BH = HP-HIL address (HP Vectra AT only???)
+BL = HP-HIL ID (HP Vectra AT only???)
+BL = keyboard language (ES/QS/RS only???) <a href="rb-1835.htm#Table603">(see #00603)</a>
+</PRE>
+<p><b>Notes:</b>
+Supported by the original HP Vectra AT and ES/QS/RS series HP Vectras.
+The driver's address in the HP_VECTOR_TABLE (see INT 6F/AH=00h) may
+be computed as (BH-1)*6 + N, where N is the address of the first
+HP-HIL device driver (see INT 6F/AH=0Ah"F_INQUIRE_FIRST")
+<p><b>See Also:</b>
+<a href="rb-1832.htm">AX=6F05h</a> - <a href="rb-1836.htm">AX=6F09h</a> - <a href="rb-7722.htm">INT 6F/AH=0Ah"F_INQUIRE_FIRST"</a>
+<PRE>
+<p>
+<a name=table603></a>
+(Table 00603)
+Values for HP HIL keyboard language code:
+00h    reserved
+01h    Arabic-French
+02h    Kanji
+03h    Swiss-French
+04h    Portugese
+05h    Arabic
+06h    Hebrew
+07h    Canadian-English
+08h    Turkish
+09h    Greek
+0Ah    Thai
+0Bh    Italian
+0Ch    Hangul (Korean)
+0Dh    Dutch
+0Eh    Swedish
+0Fh    German
+10h    Chinese (PRC)
+11h    Chinese (Taiwan)
+12h    Swiss (French ii)
+13h    Spanish
+14h    Swiss (German ii)
+15h    Belgian (Flemish)
+16h    Finnish
+17h    United Kingdom
+18h    French-Canadian
+19h    French-German
+1Ah    Norwegian
+1Bh    French
+1Ch    Danish
+1Dh    Katakana
+1Eh    Latin American Spanish
+1Fh    United States-American
+20h-FEh reserved
+FFh    non-HP keyboard (IBM AT keyboard and IBM Enhanced keyboard)
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-16.htm">
+Int 16h</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1834.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1836.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

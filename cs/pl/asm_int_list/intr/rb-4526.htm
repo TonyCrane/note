@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1612h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1612h - MS-DOS 7 kernel - GET ??? - 
+AX = 1612h
+Return: AX = 0000h if supported
+ES:BX - DOS 7 kernel data (see #02641)
+Note:  called by VTD.VXD; one of the returned data items is a pointer to the
+WORD in which the default CLOCK$ driver maintains its count of days
+since 01jan1980
+SeeAlso: AX=160Fh,AX=1611h,AX=1613h
+Format of MS-DOS 7.x ??? kernel data:
+Offset Size  Description   (Table 02641)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1612h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4525.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4527.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS-DOS 7 kernel - GET ???</font></h3>
+<PRE>
+AX = 1612h<br>
+<p><b>Return:</b><br>AX = 0000h if supported
+ES:BX -> DOS 7 kernel data <a href="rb-4526.htm#Table2641">(see #02641)</a>
+</PRE>
+<p><b>Note:</b>
+Called by VTD.VXD; one of the returned data items is a pointer to the
+WORD in which the default CLOCK$ driver maintains its count of days
+since 01jan1980
+<p><b>See Also:</b>
+<a href="rb-4523.htm">AX=160Fh</a> - <a href="rb-4525.htm">AX=1611h</a> - <a href="rb-4527.htm">AX=1613h</a>
+<PRE>
+<p>
+Format of MS-DOS 7.x ??? kernel data:
+<a name=table2641></a>
+Offset  Size    Description     (Table 02641)
+00h    WORD    structure revision??? (0001h)
+02h    DWORD   -> ??? function (call with DS=high word of this field)
+the indicated function vectors through the INT 13 hook at
+0070h:00B4h and then forces the A20 gate open
+06h    DWORD   -> ??? function
+0Ah    WORD    DOS DS
+0Ch  8 BYTEs   zeros seen
+14h    DWORD   -> ??? data
+18h    DWORD   -> ??? data.
+???
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4525.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4527.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

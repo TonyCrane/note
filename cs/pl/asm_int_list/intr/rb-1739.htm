@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=E801h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=E801h - Phoenix BIOS v4.0 - GET MEMORY SIZE FOR >64M CONFIGURATIONS - 
+AX = E801h
+Return: CF clear if successful
+AX = extended memory between 1M and 16M, in K (max 3C00h = 15MB)
+BX = extended memory above 16M, in 64K blocks
+CX = configured memory 1M to 16M, in K
+DX = configured memory above 16M, in 64K blocks
+CF set on error
+Notes: supported by the A03 level (6/14/94) and later XPS P90 BIOSes, as well
+as the Compaq Contura, 3/8/93 DESKPRO/i, and 7/26/93 LTE Lite 386 ROM
+BIOS
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=E801h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1738.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1740.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Phoenix BIOS v4.0 - GET MEMORY SIZE FOR >64M CONFIGURATIONS</font></h3>
+<PRE>
+AX = E801h<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = extended memory between 1M and 16M, in K (max 3C00h = 15MB)
+BX = extended memory above 16M, in 64K blocks
+CX = configured memory 1M to 16M, in K
+DX = configured memory above 16M, in 64K blocks
+CF set on error
+</PRE>
+<p><b>Notes:</b>
+Supported by the A03 level (6/14/94) and later XPS P90 BIOSes, as well
+as the Compaq Contura, 3/8/93 DESKPRO/i, and 7/26/93 LTE Lite 386 ROM
+BIOS.
+Supported by AMI BIOSes dated 8/23/94 or later.
+On some systems, the BIOS returns AX=BX=0000h; in this case, use CX
+and DX instead of AX and BX.
+This interface is used by Windows NT 3.1, OS/2 v2.11/2.20, and is
+used as a fall-back by newer versions if AX=E820h is not supported.
+This function is not used by MS-DOS 6.0 HIMEM.SYS when an EISA machine
+(for example with parameter /EISA) (see also MEM F000h:FFD9h), or no
+Compaq machine was detected, or parameter /NOABOVE16 was given.
+<p><b>See Also:</b>
+<a href="rb-1535.htm">AH=8Ah"Phoenix"</a> - <a href="rb-1740.htm">AX=E802h</a> - <a href="rb-1741.htm">AX=E820h</a> - <a href="rb-1742.htm">AX=E881
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1738.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1740.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

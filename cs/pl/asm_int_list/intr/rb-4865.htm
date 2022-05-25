@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4B05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4B05h - DOS 5+ TASK SWITCHER - IDENTIFY INSTANCE DATA - 
+AX = 4B05h
+ES:BX = 0000h:0000h
+CX:DX - task switcher entry point (see #02819)
+Return: ES:BX - startup info structure (see #02822) or 0000h:0000h
+Notes: called by task switcher
+clients with instance data should hook this call, pass it through to
+the previous handler with unchanged registers using a simulated
+interrupt. On return, the client should create a startup info
+structure (see #02822), store the returned ES:BX in the next
+field, and return the address of the created structure in ES:BX
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4B05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4864.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4866.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 5+ TASK SWITCHER - IDENTIFY INSTANCE DATA</font></h3>
+<PRE>
+AX = 4B05h
+ES:BX = 0000h:0000h
+CX:DX -> task switcher entry point <a href="rb-4862.htm#Table2819">(see #02819)</a><br>
+<p><b>Return:</b><br>ES:BX -> startup info structure (see #02822) or 0000h:0000h
+</PRE>
+<p><b>Notes:</b>
+Called by task switcher.
+Clients with instance data should hook this call, pass it through to
+the previous handler with unchanged registers using a simulated
+interrupt.  On return, the client should create a startup info
+structure <a href="rb-4865.htm#Table2822">(see #02822)</a>, store the returned ES:BX in the "next"
+field, and return the address of the created structure in ES:BX.
+All MS-DOS function calls are available from within this call.
+This function is supported by Novell DOS 7 DOSKEY, with structure v3.00
+<p><b>See Also:</b>
+<a href="rb-4498.htm">AX=1605h</a> - <a href="rb-4520.htm">AX=160Bh</a> - <a href="rb-4862.htm">AX=4B02h</a>
+<PRE>
+<p>
+Format of task switcher startup info structure:
+<a name=table2822></a>
+Offset  Size    Description     (Table 02822)
+00h  2 BYTEs   major, minor version of info structure (03h,00h)
+02h    DWORD   pointer to next startup info structure or 0000h:0000h
+06h    DWORD   0000h:0000h (ignored)
+0Ah    DWORD   ignored
+0Eh    DWORD   pointer to instance data records <a href="rb-4865.htm#Table2823">(see #02823)</a>
+<p>
+Format of one instance data record in array:
+<a name=table2823></a>
+Offset  Size    Description     (Table 02823)
+00h    DWORD   address of instance data (end of array if 0000h:0000h)
+04h    WORD    size of instance data
+</PRE>
+<p>
+<b>Category: <a href="cat-011.htm">
+DOS-Based Task Switchers/Multitaskers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4864.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4866.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=D44Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=D44Dh - 4DOS.COM v2.1+ - API - 
+AX = D44Dh
+BH = function
+00h installation check
+Return: AX = 44DDh
+BL = major version number
+BH = minor version number
+CX = PSP segment address for current invocation
+DL = 4DOS shell number (0 for the first (root) shell,
+updated each time a new copy is loaded)
+01h (internal, v2.1-3.03) terminate current copy of 4DOS
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=D44Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5528.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5530.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>4DOS.COM v2.1+ - API</font></h3>
+<PRE>
+AX = D44Dh
+BH = function
+00h installation check
+<p><b>Return:</b><br>AX = 44DDh
+BL = major version number
+BH = minor version number
+CX = PSP segment address for current invocation
+DL = 4DOS shell number (0 for the first (root) shell,
+updated each time a new copy is loaded)
+01h (internal, v2.1-3.03) terminate current copy of 4DOS
+<p><b>Return:</b><br>Nothing
+(internal, v4.0+) ???
+<p><b>Return:</b><br>AX = 44DDh
+ES:BX -> data area <a href="rb-5529.htm#Table3086">(see #03086)</a>
+02h ???
+DX = ???
+</PRE>
+<p><b>Note:</b>
+V5.52 signals "unrecoverable error" and then terminates
+with INT 21/AH=4Ch or enters a deliberate infinite
+loop if ???.
+---v2.1-3.03 only---
+03h EXEC program
+CX:DX -> EXEC record <a href="rb-5529.htm#Table3087">(see #03087)</a>
+FEh deallocate shell number (passed through to root shell)
+???
+FFh allocate shell number (passed through to root shell).
+---v5.52---
+03h get ???
+BL = ??? (00h/01h)
+<PRE>
+<p><b>Return:</b><br>DX = current value of ???
+04h set ???
+BL = ??? (00h/01h)
+DX = new value for ???
+</PRE>
+<p><b>Note:</b>
+A bug in v3.00 will crash the system if unrecognized value in BH
+<p><b>See Also:</b>
+<a href="rb-5530.htm">AX=D44Eh</a> - <a href="rb-5531.htm">AX=D44Fh/BX=0000h</a> - <a href="rb-5648.htm">AX=E44Dh</a> - <a href="rb-2854.htm">INT 2
+<p><b>See Also:</b>
+<a href="rb-1004.htm">INT 14/AX=7000h</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;4DOS|installation check;NDOS
+<p>
+Format of 4DOS v4.0 data area:
+<a name=table3086></a>
+Offset  Size    Description     (Table 03086)
+00h  2 BYTEs   ???
+06h    WORD    XMS handle for swapping.
+???
+</PRE>
+<p><b>See Also:</b>
+#03087
+<PRE>
+<p>
+Format of 4DOS EXEC v2.1-v3.03 record:
+<a name=table3087></a>
+Offset  Size    Description     (Table 03087)
+00h    WORD    offset of ASCIZ program name in same segment as EXEC record
+02h    WORD    offset of DOS commandline in same segment as EXEC record
+04h    WORD    segment of environment for child process (see INT 21/AH=26h)
+</PRE>
+<p><b>See Also:</b>
+#03086
+<p>
+<b>Category: <a href="cat-039.htm">
+Shells/Command Interpreters</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5528.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5530.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

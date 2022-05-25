@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=40h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=40h - Novell NetWare - BINDERY SERVICES - CHANGE BINDERY OBJECT PASSWORD - 
+AH = E3h subfn 40h
+DS:SI - request buffer (see #01948)
+ES:DI - reply buffer (see #01949)
+Return: AL = status (see #01946)
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=E3h/SF=3Fh,AH=E3h/SF=41h,AX=F217h/SF=40h
+Format of NetWare Change Bindery Object Password request buffer:
+Offset Size  Description   (Table 01948)
+00h  WORD  length of following data (max 133h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=40h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3512.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3514.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - BINDERY SERVICES - CHANGE BINDERY OBJECT PASSWORD</font></h3>
+<PRE>
+AH = E3h subfn 40h
+DS:SI -> request buffer <a href="rb-3513.htm#Table1948">(see #01948)</a>
+ES:DI -> reply buffer <a href="rb-3513.htm#Table1949">(see #01949)</a><br>
+<p><b>Return:</b><br>AL = status (see #01946)
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3512.htm">AH=E3h/SF=3Fh</a> - <a href="rb-3514.htm">AH=E3h/SF=41h</a> - <a href="rb-3752.htm">AX=F217h/SF=40h</a>
+<PRE>
+<p>
+Format of NetWare "Change Bindery Object Password" request buffer:
+<a name=table1948></a>
+Offset  Size    Description     (Table 01948)
+00h    WORD    length of following data (max 133h)
+02h    BYTE    40h (subfunction "Change Bindery Object Password")
+03h    WORD    (big-endian) type of object
+05h    BYTE    length of object's name (01h-2Fh)
+06h  N BYTEs   object name.
+BYTE    length of old password (00h-7Fh)
+N BYTEs   old password.
+BYTE    length of new password (00h-7Fh)
+N BYTEs   new password
+</PRE>
+<p><b>See Also:</b>
+#01949 - #02195
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1949></a>
+Offset  Size    Description     (Table 01949)
+00h    WORD    (call) 0000h (no data returned)
+</PRE>
+<p><b>See Also:</b>
+#01948 - #01951
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3512.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3514.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

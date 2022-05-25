@@ -1,0 +1,76 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=1021h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=1021h - TopView - PGMINT - INTERRUPT ANOTHER TASK - 
+AX = 1021h
+BX = segment of object handle for task to interrupt (not self)
+DX:CX - FAR routine to jump to next time task is run
+Return: nothing
+Notes: the FAR routine is entered with the current ES, DS, SI, DI, and BP
+values, using the task's internal stack (see AX=101Ah); only SS:SP
+needs to be preserved
+multiple PGMINTs to a single task are processed last-in first-out
+if the other task is in a DOS or DV API call, the interruption will
+occur on return from that call
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=1021h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1210.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1212.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TopView - PGMINT - INTERRUPT ANOTHER TASK</font></h3>
+<PRE>
+AX = 1021h
+BX = segment of object handle for task to interrupt (not self)
+DX:CX -> FAR routine to jump to next time task is run<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Notes:</b>
+The FAR routine is entered with the current ES, DS, SI, DI, and BP
+values, using the task's internal stack (see AX=101Ah); only SS:SP
+needs to be preserved.
+Multiple PGMINTs to a single task are processed last-in first-out.
+If the other task is in a DOS or DV API call, the interruption will
+occur on return from that call
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1210.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1212.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

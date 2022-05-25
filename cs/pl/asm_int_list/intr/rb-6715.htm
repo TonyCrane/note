@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0001h/SF=000Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0001h/SF=000Bh - Banyan VINES - Soint - SET USER COMPLETION FUNCTION - 
+AX = 0001h subfn 000Bh
+DS:DX - communications control block (function 000Bh) (see #03343)
+Return: AX = status (00h-0Ah,A2h) (see #03339)
+Range: INT 60h to INT 66h
+Note:  The Banyan interrupt handler is identified by the string BANV in
+the four bytes immediately preceding the interrupt handler
+SeeAlso: AX=0001h/SF=0005h,AX=0001h/SF=0008h
+Format of VINES control block for subfunction 000Bh:
+Offset Size  Description   (Table 03343)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0001h/SF=000Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6714.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6716.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - Soint - SET USER COMPLETION FUNCTION</font></h3>
+<PRE>
+AX = 0001h subfn 000Bh
+DS:DX -> communications control block (function 000Bh) <a href="rb-6715.htm#Table3343">(see #03343)</a><br>
+<p><b>Return:</b><br>AX = status (00h-0Ah,A2h) (see #03339)
+<p><b>Range:</b><br>INT 60h to INT 66h
+</PRE>
+<p><b>Note:</b>
+The Banyan interrupt handler is identified by the string "BANV" in
+the four bytes immediately preceding the interrupt handler
+<p><b>See Also:</b>
+<a href="rb-6713.htm">AX=0001h/SF=0005h</a> - <a href="rb-6714.htm">AX=0001h/SF=0008h</a>
+<PRE>
+<p>
+Format of VINES control block for subfunction 000Bh:
+<a name=table3343></a>
+Offset  Size    Description     (Table 03343)
+00h    WORD    000Bh
+02h    WORD    pointer to argument block <a href="rb-6715.htm#Table3344">(see #03344)</a>
+04h    WORD    error return code <a href="rb-6709.htm#Table3325">(see #03325)</a>
+06h  2 BYTEs   reserved
+08h    WORD    user CS register
+</PRE>
+<p><b>See Also:</b>
+#03342
+<PRE>
+<p>
+Format of VINES argument block for subfunction 000Bh:
+<a name=table3344></a>
+Offset  Size    Description     (Table 03344)
+00h    WORD    pointer to user interrupt function <a href="rb-6715.htm#Table3345">(see #03345)</a>
+02h    WORD    pointer to user stack
+04h    WORD    initial timeout value in multiples of 200ms, FFFFh = infinite
+</PRE>
+<p><b>See Also:</b>
+#03344
+<PRE>
+<p>
+<a name=table3345></a>
+(Table 03345)
+Values FAR user function is invoked with:.
+SS = DS = ES = segment of control block.
+<p><b>STACK:</b><br>DWORD   return address
+WORD    argument pointer (sosend or sorec argument block)
+WORD    error return code
+0000h argument pointer is valid
+00A3h timeout
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6714.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6716.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

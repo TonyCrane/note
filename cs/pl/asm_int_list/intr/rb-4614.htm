@@ -1,0 +1,164 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=377Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=377Bh - MS Windows - MX1501HAD - GET API ENTRY POINT - 
+AX = 1684h
+BX = 377Bh (virtual device ID for MX1501HAD device)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02708)
+0000h:0000h if the VxD does not support an API
+Note:  The drivers VCMD95C.VXD and VCMD.386 are part of the driver disks
+provided with the chip-card-reader/keyboard combination MX 1501 HAD,
+produced by Cherry
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=377Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4613.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4615.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - MX1501HAD - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 377Bh (virtual device ID for MX1501HAD device)
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02708)
+0000h:0000h if the VxD does not support an API
+</PRE>
+<p><b>Note:</b>
+The drivers VCMD95C.VXD and VCMD.386 are part of the driver disks
+provided with the chip-card-reader/keyboard combination MX 1501 HAD,
+produced by Cherry
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2708></a>
+(Table 02708)
+Call CHERRY VCMD95C.VXD entry point with:.
+AX = function
+0001h get version
+<p><b>Return:</b><br>AX = version number (0100h) (AH = major, AL = minor)
+0002h hook INT 09 (and 8???)
+0003h unhook INT 09 (and 8???)
+0004h get number of bytes in FIFO
+<p><b>Return:</b><br>AX = bytes in FIFO
+0005h get next FIFO-data
+<p><b>Return:</b><br>AX = data
+BL = port number
+BH = direction (1=in, 0=out)
+DX:CX = timestamp
+0006h clear FIFO
+0007h output byte
+DX = port number
+BL = keyboard command
+<p><b>Return:</b><br>Data in FIFO (see #02710)
+(value, port, in/out, timestamp)
+0008h input byte
+DX = port number
+<p><b>Return:</b><br>Data in FIFO (see #02710)
+(value, port, in/out, timestamp)
+0009h input byte immediately
+DX = port number
+<p><b>Return:</b><br>AX = data
+000Ah read next FIFO data (nondestructive)
+<p><b>Return:</b><br>AX = data
+BL = port number
+BH = direction (1=in, 0=out)
+DX:CX = timestamp
+000Bh get timestamp
+<p><b>Return:</b><br>DX:CX = timestamp (in ms)
+000Ch enable IRQ 1
+000Dh disable IRQ 1
+000Eh enable data retrieval
+</PRE>
+<p><b>Note:</b>
+Sets a flag in the internal mode-byte which
+tells the driver to recognize the data
+000Fh disable data retrieval
+<p><b>Note:</b>
+Resets a flag in the internal mode-byte
+0010h get retrieval mode
+<PRE>
+<p><b>Return:</b><br>AX = current retrieval mode
+0011h set retrieval mode
+BX = new retrieval mode <a href="rb-4614.htm#Table2709">(see #02709)</a>
+<p><b>Return:</b><br>AX = old retrieval mode
+0012h get command value
+<p><b>Return:</b><br>AX = command value
+0013h set command value
+BX = command value
+</PRE>
+<p><b>See Also:</b>
+#02706 - #02711
+<PRE>
+<p>
+Bitfields for retrieval mode:
+<a name=table2709></a>
+Bit(s)  Description     (Table 02709)
+0      enable data retrieval
+1      0 = interrupt-driven.
+1 = polling mode
+2      0 = read port 60h everytime.
+1 = read port 60h only when OBF of port 64h is set
+3      0 = don't call old INT 9.
+1 = call INT 9 before our INT-handler
+4-7    reserved
+</PRE>
+<p><b>See Also:</b>
+#02708 - #02710
+<PRE>
+<p>
+Format of FIFO entry (1024 entries in FIFO):
+<a name=table2710></a>
+Offset  Size    Description     (Table 02710)
+00h    BYTE    data byte
+01h    BYTE    I/O port
+02h    BYTE    direction (1=in, 0=out)
+03h    BYTE    reserved
+04h    DWORD   timestamp
+</PRE>
+<p><b>See Also:</b>
+#02708 - #02709
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4613.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4615.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

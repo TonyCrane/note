@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=E4h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=E4h - Compaq ROM BIOS 1993/08/03 and newer - ??? - 
+AH = E4h
+AL = subfunction
+00h get advanced system info
+Return: CF clear
+AH = 00h
+CX = 0000h
+BX = advanced system info flags (read from [XBDA:0094h])
+bit 4: mode 2 (dual harddisk controller) enabled
+01h,02h unsupported by this ROM version
+Return: CF set, AH = 86h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=E4h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1734.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1736.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Compaq ROM BIOS 1993/08/03 and newer - ???</font></h3>
+<PRE>
+AH = E4h
+AL = subfunction
+00h get advanced system info
+<p><b>Return:</b><br>CF clear
+AH = 00h
+CX = 0000h
+BX = advanced system info flags (read from [XBDA:0094h])
+<p><b>bit 4:</b><br>"mode 2" (dual harddisk controller) enabled
+01h,02h unsupported by this ROM version
+<p><b>Return:</b><br>CF set, AH = 86h
+80h set advanced system info
+BX = advanced system info flags
+<p><b>bit 4:</b><br>Enable "mode 2" (dual harddisk controller)
+???
+<p><b>Return:</b><br>???
+</PRE>
+<p><b>Note:</b>
+On Compaq machines with "COMPAQ" signature at
+F000h:FFEAh (see also MEM F000h:FFE0h), MS-DOS/PC DOS
+IO.SYS/IBMBIO.COM use this function to set bit 4
+before calling INT 13h/AH=08h to retrieve the number
+of hard disks installed (DL).
+90h,A0h,B0h,C0h,D0h,E0h,F0h set ???
+<PRE>
+<p><b>Return:</b><br>CF clear
+AH = 00h
+CX = 0000h
+BX = ???
+81h,91h,A1h,B1h,C1h,D1h,E1h,F1h unsupported by 3/8/93&4/8/93 ROMs
+<p><b>Return:</b><br>CF set, AH = 86h
+</PRE>
+<p><b>Notes:</b>
+Functions 80h/90h/etc. are not supported by the 4/8/93 EISA System ROM.
+These functions are not supported by the 7/26/93 LTE Lite 386 ROM
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1734.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1736.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

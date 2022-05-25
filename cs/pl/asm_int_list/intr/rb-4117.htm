@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<TITLE>Int 26
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 26 -  - 
+INT 26 - DOS 1+ - ABSOLUTE DISK WRITE (except partitions 32M)
+AL = drive number (00h = A:, 01h = B:, etc)
+CX = number of sectors to write (not FFFFh)
+DX = starting logical sector number (0000h - highest sector on drive)
+DS:BX - data to write
+Return: CF clear if successful
+CF set on error
+AH = status (see #02547)
+AL = error code (same as passed to INT 24 in DI)
+AX = 0207h if more than 64K sectors on drive -- use new-style call
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 26
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4116.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4118.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040></font></h3>
+<PRE>
+INT 26 - DOS 1+ - ABSOLUTE DISK WRITE (except partitions > 32M)
+AL = drive number (00h = A:, 01h = B:, etc)
+CX = number of sectors to write (not FFFFh)
+DX = starting logical sector number (0000h - highest sector on drive)
+DS:BX -> data to write<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = status <a href="rb-4113.htm#Table2547">(see #02547)</a>
+AL = error code (same as passed to INT 24 in DI)
+AX = 0207h if more than 64K sectors on drive -- use new-style call
+may destroy all other registers except segment registers
+</PRE>
+<p><b>Notes:</b>
+Original flags are left on stack, and must be popped by caller.
+This call bypasses the DOS filesystem, though DOS 5+ invalidates any
+disk buffers referencing sectors which are written with this call.
+Examination of CPWIN386.CPL indicates that if this call fails with
+error 0408h on an old-style (<32M) call, one should retry the
+call with the high bit of the drive number in AL set.
+Novell DOS 7 decides whether the old-style or new-style (>32M) version
+of INT 26 must be used solely on the basis of the partition's size,
+thus forcing use of the new-style call even for data in the first
+32M of the partition.
+Windows98 will display an error message and deliberately hang the
+system on attempted write to any hard disk if neither bit 7 of the
+Extended Drive Info byte nor bit 6 of "DOS_FLAG" (List-of-Lists+60h)
+is set.
+Although all registers except segment registers may be destroyed
+some software depends on some of the registers being preserved.
+For example some Flash disk drivers requires that DX is not trashed.
+DR-DOS 7.03 takes care of this.
+<p><b>BUGS:</b>
+DOS 3.1 through 3.3 set the word at ES:[BP+1Eh] to FFFFh if AL is an
+invalid drive number.
+DR DOS 3.41 will return with a jump instead of RETF, leaving the
+wrong number of bytes on the stack; use the huge-partition version
+(INT 26/CX=FFFFh) for all partition sizes under DR DOS 3.41.
+DR DOS 6.0 original releases 05/1991 & 08/1991 reported wrong error
+codes for "drive not ready" and "write protect". This was fixed
+<PRE>
+<p><b>with the DR DOS BDOS patch "PAT321" (1992/02/19, XDIR /C:</b><br>947Bh)
+and later "full" rebuilds (see INT21/AX=4452h for details).
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0608.htm">INT 13/AH=03h</a> - <a href="rb-4113.htm">INT 25</a> - <a href="rb-4118.htm">INT 26/CX=FFFFh</a> - <a href="rb-3229.htm">INT
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-26.htm">
+Int 26h</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4116.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4118.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AX=2833h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AX=2833h - Q87 v4+ - PREPARE TO UNLOAD AND GET XMS HANDLE FOR Q87 MEMORY - 
+AX = 2833h
+EAX = 29482833h (entire EAX value required)
+Return: EAX = XMS handle for memory allocated when Q87 was installed
+EBX = status
+00000000h Q87 is in demo mode (countdown running);
+Q87 remains active
+00000001h Q87 is in registered mode; memory manager's IDT, GDT,
+and optionally CR0 (if BL 5Fh on entry) have
+been restored
+00000002h Q87 is in demo mode (demo time has expired);
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AX=2833h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7412.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7414.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Q87 v4+ - PREPARE TO UNLOAD AND GET XMS HANDLE FOR Q87 MEMORY</font></h3>
+<PRE>
+AX = 2833h
+EAX = 29482833h (entire EAX value required)<br>
+<p><b>Return:</b><br>EAX = XMS handle for memory allocated when Q87 was installed
+EBX = status
+00000000h Q87 is in demo mode (countdown running);
+Q87 remains active
+00000001h Q87 is in registered mode; memory manager's IDT, GDT,
+and optionally CR0 (if BL <> 5Fh on entry) have
+been restored
+00000002h Q87 is in demo mode (demo time has expired);
+Q87 remains active
+</PRE>
+<p><b>Note:</b>
+This call is used by UNLOAD87 to release the memory used by Q87
+<p><b>BUG:</b>
+V4.00-v4.03 will hang on most machines when run under bare DOS with
+no memory manager, because neither Q87 nor UNLOAD87 checks whether
+there is a valid INT 67 handler before performing an installation
+check via INT 67
+<p><b>See Also:</b>
+<a href="rb-7419.htm">AX=4321h</a> - <a href="rb-2813.htm">INT 21/AX=4321h/BX=0000h</a>
+<p>
+<b>Category: <a href="cat-013.htm">
+Emulators</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-q.htm">
+Q</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7412.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7414.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

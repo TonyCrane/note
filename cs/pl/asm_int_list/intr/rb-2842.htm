@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4402h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4402h - LAN Manager - TCPDRV.DOS - API - 
+AX = 4402h
+BX = file handle referencing device TCPDRV$
+CX = 0019h
+DS:DX - buffer containing request block (see #01504)
+Return: CF clear if successful
+buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Program: TCPDRV.DOS is the low-level device driver supporting LAN Manager's
+TCP/IP protocol stack
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4402h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2841.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2843.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LAN Manager - TCPDRV.DOS - API</font></h3>
+<PRE>
+AX = 4402h
+BX = file handle referencing device "TCPDRV$"
+CX = 0019h
+DS:DX -> buffer containing request block <a href="rb-2842.htm#Table1504">(see #01504)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Program:</b>
+TCPDRV.DOS is the low-level device driver supporting LAN Manager's
+TCP/IP protocol stack
+<PRE>
+<p>
+Format of TCPDRV.DOS request block:
+<a name=table1504></a>
+Offset  Size    Description     (Table 01504)
+00h    BYTE    (call) function number
+00h initialize ???
+06h get ???
+07h get ???
+01h    BYTE    (call) 00h
+(ret) error code if error, unchanged if successful
+02h    WORD    signature 4354h ('CT')
+---function 00h---
+04h    DWORD   (call) pointer to ??? FAR function
+function is called with ES:BX -> device driver request used to
+invoke this function
+08h  4 BYTEs   ???
+0Ch    DWORD   (call) pointer to ??? record, WORD at offset 22h is read
+10h    DWORD   (ret) -> ??? buffer if 0000h:0000h on call
+---function 06h---
+04h  4 BYTEs   ???
+08h    DWORD   (ret) pointer to ???
+---function 07h---
+04h    DWORD   (ret) pointer to ??? record
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2841.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2843.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

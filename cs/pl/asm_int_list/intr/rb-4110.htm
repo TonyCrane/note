@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 23
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 23 - DOS 1+ - CONTROL-C/CONTROL-BREAK HANDLER - 
+---DOS 1.x---
+Return: AH = 00h abort program
+if all registers preserved, restart DOS call
+---DOS 2+---
+CF clear
+Return: all registers preserved
+return via RETF with CF set or (MS-DOS 1,DR DOS) RETF 2 with CF set
+DOS will abort program with errorlevel 0
+else (RETF/RETF 2 with CF clear or IRET with CF ignored)
+interrupted DOS call is restarted
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 23
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4109.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4111.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - CONTROL-C/CONTROL-BREAK HANDLER</font></h3>
+<PRE>
+---DOS 1.x---<br>
+<p><b>Return:</b><br>AH = 00h abort program
+if all registers preserved, restart DOS call
+---DOS 2+---
+CF clear<br>
+<p><b>Return:</b><br>All registers preserved
+return via RETF with CF set or (MS-DOS 1,DR DOS) RETF 2 with CF set
+DOS will abort program with errorlevel 0
+else (RETF/RETF 2 with CF clear or IRET with CF ignored)
+interrupted DOS call is restarted
+</PRE>
+<p><b>Notes:</b>
+This interrupt is invoked whenever DOS detects a ^C or ^Break; it
+should never be called directly.
+MS-DOS 1.25 also invokes INT 23 on a divide overflow (INT 00).
+MS-DOS remembers the stack pointer before calling INT 23, and if it is
+not the same on return, pops and discards the top word; this is what
+permits a return with RETF as well as IRET or RETF 2.
+MS-DOS 2.1+ ignores the returned CF if SP is the same on return as it
+was when DOS called INT 23, so RETF 2 will not terminate the program.
+Novell DOS 7 always pops a word if CF is set on return, so one should
+not return with RETF 2 and CF set or IRET with the stored flags' CF
+set.
+Any DOS call may safely be made within the INT 23 handler, although
+the handler must check for a recursive invocation if it does
+call DOS
+<p><b>See Also:</b>
+<a href="rb-2442.htm">INT 1B</a> - <a href="rb-3267.htm">INT 21/AH=92h"PTS-DOS"</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-23.htm">
+Int 23h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4109.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4111.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

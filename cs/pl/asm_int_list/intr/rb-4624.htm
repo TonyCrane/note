@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=168Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=168Ah - DPMI 0.9+ - GET VENDOR-SPECIFIC API ENTRY POINT - 
+AX = 168Ah
+DS:(E)SI = selector:offset of ASCIZ vendor name (see #02719)
+Return: AL = status
+00h successful
+ES:(E)DI - extended API entry point
+8Ah unsuccessful
+Notes: the vendor name is used to determine which entry point to return; it is
+case-sensitive
+available in protected mode only
+32-bit applications use ESI and EDI, 16-bit applications use SI and DI
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=168Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4623.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4625.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - GET VENDOR-SPECIFIC API ENTRY POINT</font></h3>
+<PRE>
+AX = 168Ah
+DS:(E)SI = selector:offset of ASCIZ vendor name <a href="rb-4624.htm#Table2719">(see #02719)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+ES:(E)DI -> extended API entry point
+8Ah unsuccessful
+</PRE>
+<p><b>Notes:</b>
+The vendor name is used to determine which entry point to return; it is
+case-sensitive.
+Available in protected mode only.
+32-bit applications use ESI and EDI, 16-bit applications use SI and DI.
+This call is present but not documented for DPMI 0.9.
+The Borland C++ 3.1 DPMILOAD does not handle requests for entry points
+other than the MS-DOS one gracefully, producing an unhandled
+exception report; this has been fixed in the Borland Pascal 7 version
+<p><b>See Also:</b>
+<a href="rb-4621.htm">AX=1687h</a> - <a href="rb-5866.htm">INT 31/AX=0A00h</a> - <a href="rb-5879.htm">INT 31/AH=57h</a>
+<PRE>
+<p>
+<a name=table2719></a>
+(Table 02719)
+Values for DPMI vendor-specific API names:
+"MS-DOS"       MS Windows and 386MAX v6.00+ <a href="rb-4624.htm#Table2720">(see #02720)</a>
+"386MAX"       386MAX v6.00+
+"HELIX_DPMI"   Helix Netroom's DPMI server
+"Phar Lap"     Phar Lap 286|DOS-Extender RUN286 <a href="rb-4624.htm#Table2721">(see #02721)</a>
+"RATIONAL DOS/4G"  DOS/4G, DOS/4GW
+"VIRTUAL SUPPORT"  Borland 32RTM
+<p>
+<a name=table2720></a>
+(Table 02720)
+Call Windows-support ("MS-DOS") entry point with:.
+AX = 0100h get LDT alias selector<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = alias selector
+CF set on error
+</PRE>
+<p><b>See Also:</b>
+#02719 - <a href="rb-4622.htm">AX=1688h/BX=0BADh</a>
+<PRE>
+<p>
+<a name=table2721></a>
+(Table 02721)
+Call Phar Lap RUN286 entry point with:.
+AX = 0000h (function "load MSW").
+BX = new value for MSW register (low word of CR0)<br>
+<p><b>Return:</b><br>???
+</PRE>
+<p><b>See Also:</b>
+#02719
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4623.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4625.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

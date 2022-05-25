@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=FF00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=FF00h - TopWare Network OS v5.10+ - GET SYSTEM INFORMATION - 
+AX = FF00h
+CL = what to get
+00h user information (see #02528)
+01h drive mapping (see #02529)
+02h printer server(s)
+05h local DOS drive number
+Return: ES:BX - desired information
+Program: TopWare Network Operating System is manufactured by Grand Computer
+Company
+Note:  this call is only supported on Workstations, not on the server
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=FF00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4058.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4060.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TopWare Network OS v5.10+ - GET SYSTEM INFORMATION</font></h3>
+<PRE>
+AX = FF00h
+CL = what to get
+00h user information <a href="rb-4059.htm#Table2528">(see #02528)</a>
+01h drive mapping <a href="rb-4059.htm#Table2529">(see #02529)</a>
+02h printer server(s)
+05h local DOS drive number<br>
+<p><b>Return:</b><br>ES:BX -> desired information
+</PRE>
+<p><b>Program:</b>
+TopWare Network Operating System is manufactured by Grand Computer
+Company
+<p><b>Note:</b>
+This call is only supported on Workstations, not on the server
+<p><b>See Also:</b>
+<a href="rb-4062.htm">AX=FF04h</a> - <a href="rb-5784.htm">INT 2F/AX=FF00h</a>
+<PRE>
+<p>
+Format of TopWare user information:
+<a name=table2528></a>
+Offset  Size    Description     (Table 02528)
+00h    BYTE    node ID
+01h 15 BYTEs   user name
+10h    WORD    user number
+12h    BYTE    group number
+<p>
+Format of TopWare drive mapping [array]:
+<a name=table2529></a>
+Offset  Size    Description     (Table 02529)
+<p><b>00h    BYTE    bits 6-0:</b><br>Drive number (1=A:, etc.)
+<p><b>bit 7:</b><br>This is a server drive
+01h  3 BYTEs   mapping drive (for example, "C:\")
+04h 64 BYTEs   current directory
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4058.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4060.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

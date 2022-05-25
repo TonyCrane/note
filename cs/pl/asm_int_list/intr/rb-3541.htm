@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=78h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=78h - Novell NetWare - QUEUE SERVICES - GET QUEUE JOB'S FILE SIZE (OLD) - 
+AH = E3h subfn 78h
+DS:SI - request buffer (see #01996)
+ES:DI - reply buffer (see #01997)
+Return: AL = status (see also #01961)
+00h successful
+Notes: this function is supported by Advanced NetWare 2.1+
+caller must be on a workstation which is security-equivalent to a
+member of the queue's Q_USERS, Q_OPERATORS, or Q_SERVERS properties
+SeeAlso: AH=E3h/SF=68h,AH=E3h/SF=6Ch,AH=E3h/SF=71h,AX=F217h/SF=78h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=78h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3540.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3542.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - GET QUEUE JOB'S FILE SIZE (OLD)</font></h3>
+<PRE>
+AH = E3h subfn 78h
+DS:SI -> request buffer <a href="rb-3541.htm#Table1996">(see #01996)</a>
+ES:DI -> reply buffer <a href="rb-3541.htm#Table1997">(see #01997)</a><br>
+<p><b>Return:</b><br>AL = status (see also #01961)
+00h successful
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Caller must be on a workstation which is security-equivalent to a
+member of the queue's Q_USERS, Q_OPERATORS, or Q_SERVERS properties
+<p><b>See Also:</b>
+<a href="rb-3525.htm">AH=E3h/SF=68h</a> - <a href="rb-3529.htm">AH=E3h/SF=6Ch</a> - <a href="rb-3534.htm">AH=E3h/SF=71h</a> - <a href="rb-3785.htm"
+<PRE>
+<p>
+Format of NetWare "Get Queue Job's File Size (old)" request buffer:
+<a name=table1996></a>
+Offset  Size    Description     (Table 01996)
+00h    WORD    0007h (length of following data)
+02h    BYTE    78h (subfunction "Get Queue Job's File Size (old)")
+03h    DWORD   (big-endian) object ID of queue
+07h    WORD    (big-endian) job number
+</PRE>
+<p><b>See Also:</b>
+#01997 - #02204 at AX=F217h/SF=78h
+<PRE>
+<p>
+Format of NetWare "Get Queue Job's File Size (old)" reply buffer:
+<a name=table1997></a>
+Offset  Size    Description     (Table 01997)
+00h    WORD    (call) 000Ah (size of following results)
+02h    DWORD   (big-endian) object ID of queue
+06h    WORD    (big-endian) job number
+08h    DWORD   (big-endian) size of job file in bytes
+</PRE>
+<p><b>See Also:</b>
+#01996 - #02204 at AX=F217h/SF=78h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3540.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3542.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

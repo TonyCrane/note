@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4B05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4B05h - DOS 5+ - SET EXECUTION STATE - 
+AX = 4B05h
+DS:DX - execution state structure (see #01625)
+Return: CF clear if successful
+AX = 0000h
+CF set on error
+AX = error code (see #01680 at AH=59h/BX=0000h)
+Note:  used by programs which intercept AX=4B00h to prepare new programs for
+execution (including setting the DOS version number). No DOS, BIOS
+or other software interrupt may be called after return from this call
+before commencement of the child process. If DOS is running in the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4B05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2941.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2943.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 5+ - SET EXECUTION STATE</font></h3>
+<PRE>
+AX = 4B05h
+DS:DX -> execution state structure <a href="rb-2942.htm#Table1625">(see #01625)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Note:</b>
+Used by programs which intercept AX=4B00h to prepare new programs for
+execution (including setting the DOS version number).  No DOS, BIOS
+or other software interrupt may be called after return from this call
+before commencement of the child process.  If DOS is running in the
+HMA, A20 is turned off on return from this call.
+<p><b>See Also:</b>
+<a href="rb-2939.htm">AH=4Bh</a>
+<PRE>
+<p>
+Format of execution state structure:
+<a name=table1625></a>
+Offset  Size    Description     (Table 01625)
+00h    WORD    reserved (00h)
+02h    WORD    type flags
+<p><b>bit 0:</b><br>Program is an .EXE
+<p><b>bit 1:</b><br>Program is an overlay
+04h    DWORD   pointer to ASCIZ name of program file
+08h    WORD    PSP segment of new program
+0Ah    DWORD   starting CS:IP of new program
+0Eh    DWORD   program size including PSP
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2941.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2943.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

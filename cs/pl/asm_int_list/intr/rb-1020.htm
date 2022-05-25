@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AX=8007h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AX=8007h - ARTICOM - GET REDIRECTED PORT INFORMATION - 
+AX = 8007h
+DX = port index (COM1=0, COM2=1, ...)
+ES:DI - buffer for port information structure (see #00363)
+Return: CF clear if redirection info returned and port is redirected
+CF set if not a redirected port
+AX = error code, if error (see #00360)
+SeeAlso: AX=8000h,AX=8003h,AX=8006h,AX=8008h
+Format of ARTICOM port information structure:
+Offset Size  Description   (Table 00363)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AX=8007h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1019.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1021.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ARTICOM - GET REDIRECTED PORT INFORMATION</font></h3>
+<PRE>
+AX = 8007h
+DX = port index (COM1=0, COM2=1, ...)
+ES:DI -> buffer for port information structure <a href="rb-1020.htm#Table363">(see #00363)</a><br>
+<p><b>Return:</b><br>CF clear if redirection info returned and port is redirected
+CF set if not a redirected port
+AX = error code, if error <a href="rb-1015.htm#Table360">(see #00360)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-1009.htm">AX=8000h</a> - <a href="rb-1015.htm">AX=8003h</a> - <a href="rb-1019.htm">AX=8006h</a> - <a href="rb-1021.htm">AX=8008h</a>
+<PRE>
+<p>
+Format of ARTICOM port information structure:
+<a name=table363></a>
+Offset  Size    Description     (Table 00363)
+00h 16 BYTEs   server name resource is on
+10h    BYTE    adapter number server is on
+11h 16 BYTEs   resource name
+21h    WORD    remote port index, use to get additional information
+23h    WORD    buffer size
+25h    WORD    baud rate <a href="rb-1020.htm#Table364">(see #00364)</a>
+26h    BYTE    modem status register
+27h    BYTE    modem control register
+28h    BYTE    line status register
+29h    BYTE    line control register
+<p><b>2Ah    BYTE    flow control in use:</b><br>0 - NONE, 1 - XON/XOFF, 2 - RTS/CTS
+2Bh    WORD    send timeout in ticks
+2Dh    WORD    receive timeout in ticks
+2Fh    WORD    time used on remote port
+31h    WORD    time left before timeout
+33h    BYTE    if server changes allowed?
+34h    WORD    FFFFh (-1) if connection ok, else old port index
+<p>
+<a name=table364></a>
+(Table 00364)
+Values for ARTICOM baud rate:
+00h    110
+01h    150
+02h    300
+03h    600
+04h    1200
+05h    2400
+06h    4800
+07h    9600
+08h    19200
+09h    38400
+0Ah    57600
+0Bh    115200
+0Ch    134.5
+0Dh    1800
+0Eh    2000
+0Fh    3600
+10h    7200
+</PRE>
+<p><b>See Also:</b>
+#00309
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1019.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1021.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

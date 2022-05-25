@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0001h/SF=0004h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0001h/SF=0004h - Banyan VINES - Soclose - CLOSE A SOCKET - 
+AX = 0001h subfn 0004h
+DS:DX - communications control block (function 0004h) (see #03337)
+Return: AX = status (0000h-000Ah,0097h) (see #03325)
+Range: INT 60h to INT 66h
+Note:  The Banyan interrupt handler is identified by the string BANV in
+the four bytes immediately preceding the interrupt handler
+SeeAlso: AX=0001h/SF=0001h,INT 15/AX=DE2Eh
+Format of VINES control block to close socket:
+Offset Size  Description   (Table 03337)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0001h/SF=0004h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6711.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6713.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - Soclose - CLOSE A SOCKET</font></h3>
+<PRE>
+AX = 0001h subfn 0004h
+DS:DX -> communications control block (function 0004h) <a href="rb-6712.htm#Table3337">(see #03337)</a><br>
+<p><b>Return:</b><br>AX = status (0000h-000Ah,0097h) (see #03325)
+<p><b>Range:</b><br>INT 60h to INT 66h
+</PRE>
+<p><b>Note:</b>
+The Banyan interrupt handler is identified by the string "BANV" in
+the four bytes immediately preceding the interrupt handler
+<p><b>See Also:</b>
+<a href="rb-6709.htm">AX=0001h/SF=0001h</a> - <a href="rb-1726.htm">INT 15/AX=DE2Eh</a>
+<PRE>
+<p>
+Format of VINES control block to close socket:
+<a name=table3337></a>
+Offset  Size    Description     (Table 03337)
+00h    WORD    0004h
+02h    WORD    pointer to argument block <a href="rb-6712.htm#Table3338">(see #03338)</a>
+04h    WORD    error return code <a href="rb-6709.htm#Table3325">(see #03325)</a>
+06h  4 BYTEs   reserved
+</PRE>
+<p><b>See Also:</b>
+#03334 - #03340
+<PRE>
+<p>
+Format of VINES argument block for closing socket:
+<a name=table3338></a>
+Offset  Size    Description     (Table 03338)
+00h    WORD    socket identifier
+</PRE>
+<p><b>See Also:</b>
+#03335 - #03337 - #03341
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6711.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6713.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

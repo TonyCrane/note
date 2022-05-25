@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6F/AX=0402h/BP=002Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6F/AX=0402h/BP=002Ah - HP Vectra EX-BIOS - F_IO_CTRL SF_GET_LINKS - GET DRIVER LINK FIELDS - 
+AX = 0402h
+BP = 002Ah (driver ID for V_SINPUT)
+ES:SI - buffer for link table (see #03759)
+Return: AH = status (see #03744)
+ES:SI buffer filled
+BP,DS destroyed
+Desc:  get the parent and child vectors for the seven supported physical
+device drivers
+SeeAlso: AH=00hHP Vectra,AX=0400hSF_DEF_LINKS,AX=0404hSF_SET_LINKS
+SeeAlso: AH=06hF_INQUIRE
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6F/AX=0402h/BP=002Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7666.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7668.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HP Vectra EX-BIOS - F_IO_CTRL SF_GET_LINKS - GET DRIVER LINK FIELDS</font></h3>
+<PRE>
+AX = 0402h
+BP = 002Ah (driver ID for V_SINPUT)
+ES:SI -> buffer for link table <a href="rb-7667.htm#Table3759">(see #03759)</a><br>
+<p><b>Return:</b><br>AH = status (see #03744)
+ES:SI buffer filled
+BP,DS destroyed
+</PRE>
+<p><b>Desc:</b>
+Get the parent and child vectors for the seven supported physical
+device drivers
+<p><b>See Also:</b>
+<a href="rb-7640.htm">AH=00h"HP Vectra"</a> - <a href="rb-7662.htm">AX=0400h"SF_DEF_LINKS"</a> - <a href="rb-7672.htm">AX=0404h"SF_SET_LINKS"</a>
+<p><b>See Also:</b>
+<a href="rb-7709.htm">AH=06h"F_INQUIRE"</a>
+<PRE>
+<p>
+Format of HP Vectra EX-BIOS driver link table:
+<a name=table3759></a>
+Offset  Size    Description     (Table 03759)
+00h    BYTE    vector number of HP-HIL device #1's child
+01h    BYTE    vector number of HP-HIL device #1's parent.
+...
+0Ch    BYTE    vector number of HP-HIL device #7's child
+0Dh    BYTE    vector number of HP-HIL device #7's parent
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-6F.htm">
+Int 6Fh</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7666.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7668.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

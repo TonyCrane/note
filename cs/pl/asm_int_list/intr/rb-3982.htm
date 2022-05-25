@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=14h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=14h - Novell NetWare v4+ - GET ACTIVE LAN BOARD LIST - 
+AX = F27Bh subfn 14h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02509)
+ES:DI - reply buffer (see #02510)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get Active LAN Board List request buffer:
+Offset Size  Description   (Table 02509)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=14h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3981.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3983.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET ACTIVE LAN BOARD LIST</font></h3>
+<PRE>
+AX = F27Bh subfn 14h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3982.htm#Table2509">(see #02509)</a>
+ES:DI -> reply buffer <a href="rb-3982.htm#Table2510">(see #02510)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get Active LAN Board List" request buffer:
+<a name=table2509></a>
+Offset  Size    Description     (Table 02509)
+00h    WORD    0005h (length of following data)
+02h    BYTE    14h (subfunction "Get Active LAN Board List")
+03h    DWORD   start number
+</PRE>
+<p><b>See Also:</b>
+#02510
+<PRE>
+<p>
+Format of NetWare "Get Active LAN Board List" reply buffer:
+<a name=table2510></a>
+Offset  Size    Description     (Table 02510)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    DWORD   maximum number of LANs
+0Ch    DWORD   number of LAN board numbers returned
+10h 50 DWORDs  board numbers
+</PRE>
+<p><b>See Also:</b>
+#02509
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3981.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3983.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

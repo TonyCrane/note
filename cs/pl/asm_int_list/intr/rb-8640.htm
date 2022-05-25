@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int E6
+</TITLE>
+<META NAME="Description" CONTENT="
+Int E6 - CP/M-86 v1.1 - XIOS INTERRUPT / UNKNOWN DISK DRIVE - 
+AX = function which accessed drive
+0000h SELDSK
+0001h READ
+0002h WRITE
+0003h HOME
+DX:BX - parameter block (see #04063)
+Return: AX = return value
+Desc:  called by CP/M-86 kernel when an unknown disk drive is used, which
+permits an application to provide access services
+Note:  This was labelled XIOS interrupt in later Digital Research
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int E6
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8639.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8641.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>CP/M-86 v1.1 - XIOS INTERRUPT / UNKNOWN DISK DRIVE</font></h3>
+<PRE>
+AX = function which accessed drive
+0000h SELDSK
+0001h READ
+0002h WRITE
+0003h HOME
+DX:BX -> parameter block <a href="rb-8640.htm#Table4063">(see #04063)</a><br>
+<p><b>Return:</b><br>AX = return value
+</PRE>
+<p><b>Desc:</b>
+Called by CP/M-86 kernel when an unknown disk drive is used, which
+permits an application to provide access services
+<p><b>Note:</b>
+This was labelled "XIOS interrupt" in later Digital Research
+documentation (CCP/M-86) and "for the version 1.0 back door".
+<PRE>
+<p>
+Format of CP/M-86 unknown-drive paramter block:
+<a name=table4063></a>
+Offset  Size    Description     (Table 04063)
+00h    BYTE    drive number (00h = first unknown drive, etc.)
+01h    BYTE    deblocking flag (00h = normal write, 01h = directory write)
+02h    WORD    track number
+04h    WORD    sector number
+06h    DWORD   data transfer address
+0Ah    BYTE    verify flag (nonzero to verify writes)
+</PRE>
+<p><b>Note:</b>
+In CP/M-86 v1.1, this is actually a portion of a BIOS disk data
+table which starts one byte before the address given to the INT E6
+handler; that extra byte is the current logical drive number
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-E6.htm">
+Int E6h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8639.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8641.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

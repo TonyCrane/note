@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=7143h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=7143h - Windows95 - LONG FILENAME - EXTENDED GET/SET FILE ATTRIBUTES - 
+AX = 7143h
+DS:DX - ASCIZ filename
+BL = action
+00h retrieve attributes
+Return: CX = file attributes (see #01420)
+01h set attributes
+CX = attributes
+02h get physical size of compressed file
+Return: DX:AX = actual disk usage of file, in bytes
+03h set last write date/time
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=7143h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3200.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3202.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - LONG FILENAME - EXTENDED GET/SET FILE ATTRIBUTES</font></h3>
+<PRE>
+AX = 7143h
+DS:DX -> ASCIZ filename
+BL = action
+00h retrieve attributes
+<p><b>Return:</b><br>CX = file attributes (see #01420)
+01h set attributes
+CX = attributes
+02h get physical size of compressed file
+<p><b>Return:</b><br>DX:AX = actual disk usage of file, in bytes
+03h set last write date/time
+DI = new last-write date <a href="rb-2992.htm#Table1666">(see #01666)</a>
+CX = new last-write time <a href="rb-2992.htm#Table1665">(see #01665)</a>
+04h get last write date/time
+<p><b>Return:</b><br>CX = last write time (see #01665)
+DI = last write date <a href="rb-2992.htm#Table1666">(see #01666)</a>
+05h set last access date
+DI = new last-access date <a href="rb-2992.htm#Table1666">(see #01666)</a>
+06h get last access date
+<p><b>Return:</b><br>DI = last access date (see #01666)
+07h set creation date/time
+DI = new creation date <a href="rb-2992.htm#Table1666">(see #01666)</a>
+CX = new creation time <a href="rb-2992.htm#Table1665">(see #01665)</a>
+SI = hundredths (10-millisecond units past time in CX, 0-199)
+08h get creation date/time
+<p><b>Return:</b><br>CX = creation time (see #01665)
+DI = creation date <a href="rb-2992.htm#Table1666">(see #01666)</a>
+SI = hundredths (10-millisecond units past time in CX)<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code <a href="rb-3012.htm#Table1680">(see #01680)</a>
+7100h if function not supported
+</PRE>
+<p><b>Note:</b>
+For compatibility with DOS versions prior to v7.00, the carry flag
+should be set on call to ensure that it is set on exit
+<p><b>See Also:</b>
+<a href="rb-2802.htm">AX=4300h</a> - <a href="rb-2803.htm">AX=4301h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3200.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3202.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

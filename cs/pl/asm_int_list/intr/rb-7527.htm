@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 68/AH=02h/SF=0B00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 68/AH=02h/SF=0B00h - APPC/PC - CONNECTION CONTROL - RECEIVE AND WAIT - 
+AH = 02h subfn 0B00h
+DS:DX - control block (see #03691)
+Return: control block updated
+SeeAlso: AH=02h/SF=0C00h,AH=02h/SF=0F00h
+Format of APPC/PC Receive_and_Wait control block:
+Offset Size  Description   (Table 03691)
+00h 12 BYTEs  reserved
+0Ch  WORD  0B00h (verb Receive_and_Wait or MC_Receive_and_Wait)
+0Eh  BYTE  1 if MC_ (mapped conversation) form of verb
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 68/AH=02h/SF=0B00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7526.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7528.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APPC/PC - CONNECTION CONTROL - RECEIVE AND WAIT</font></h3>
+<PRE>
+AH = 02h subfn 0B00h
+DS:DX -> control block <a href="rb-7527.htm#Table3691">(see #03691)</a><br>
+<p><b>Return:</b><br>Control block updated
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7528.htm">AH=02h/SF=0C00h</a> - <a href="rb-7530.htm">AH=02h/SF=0F00h</a>
+<PRE>
+<p>
+Format of APPC/PC "Receive_and_Wait" control block:
+<a name=table3691></a>
+Offset  Size    Description     (Table 03691)
+00h 12 BYTEs   reserved
+0Ch    WORD    0B00h (verb "Receive_and_Wait" or "MC_Receive_and_Wait")
+0Eh    BYTE    1 if MC_ (mapped conversation) form of verb
+0 if basic verb
+0Fh  5 BYTEs   reserved (0)
+14h    WORD    (big-endian) primary return code <a href="rb-7518.htm#Table3681">(see #03681)</a>
+16h    DWORD   (big-endian) error code <a href="rb-7518.htm#Table3682">(see #03682)</a>
+1Ah  8 BYTEs   (big-endian) TP_ID
+22h    DWORD   (big-endian) conversation ID
+26h    BYTE    type of information received <a href="rb-7527.htm#Table3692">(see #03692)</a>
+27h    BYTE    (MC_Receive_and_Wait only) fill (0=buffer, 1=LL)
+28h    BYTE    Request_to_Send_Received (0=no, 1=yes)
+29h    WORD    maximum length
+2Bh    WORD    data length
+2Dh    DWORD   pointer to data
+<p>
+<a name=table3692></a>
+(Table 03692)
+Values for type of information received:
+00h    data
+01h    data complete
+02h    data incomplete
+03h    confirm
+04h    confirm send
+05h    confirm deallocate
+06h    send
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-68.htm">
+Int 68h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7526.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7528.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

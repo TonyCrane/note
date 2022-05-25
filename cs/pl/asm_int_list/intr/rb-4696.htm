@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=2707h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=2707h - DR DOS 6.0 TaskMAX - CREATE NEW TASK - 
+AX = 2707h
+DS:DX - ASCIZ pathname of executable
+ES:BX - parameter block (see #02738)
+CX = number of ticks before automatic return to task manager
+(0000h = run until termination or explicitly switched)
+Return: DX = new task's task index (FFFFh if task terminated)
+SeeAlso: AX=2706h,AX=2708h
+Format of TaskMAX parameter block:
+Offset Size  Description   (Table 02738)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=2707h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4695.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4697.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DR DOS 6.0 TaskMAX - CREATE NEW TASK</font></h3>
+<PRE>
+AX = 2707h
+DS:DX -> ASCIZ pathname of executable
+ES:BX -> parameter block <a href="rb-4696.htm#Table2738">(see #02738)</a>
+CX = number of ticks before automatic return to task manager
+(0000h = run until termination or explicitly switched)<br>
+<p><b>Return:</b><br>DX = new task's task index (FFFFh if task terminated)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4695.htm">AX=2706h</a> - <a href="rb-4697.htm">AX=2708h</a>
+<PRE>
+<p>
+Format of TaskMAX parameter block:
+<a name=table2738></a>
+Offset  Size    Description     (Table 02738)
+00h    WORD    reserved, should be 0000h
+02h    DWORD   pointer to command tail to be copied into child's PSP
+06h    DWORD   pointer to first FCB to be copied into child's PSP
+0Ah    DWORD   pointer to second FCB to be copied into child's PSP
+</PRE>
+<p>
+<b>Category: <a href="cat-011.htm">
+DOS-Based Task Switchers/Multitaskers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4695.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4697.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

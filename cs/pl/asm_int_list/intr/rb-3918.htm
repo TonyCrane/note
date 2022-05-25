@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F257h/SF=13h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F257h/SF=13h - Novell NetWare - GET NAMESPACE INFORMATION - 
+AX = F257h subfn 13h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02403)
+ES:DI - reply buffer (see #02404)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F257h/SF=12h,AX=F257h/SF=15h
+Format of NetWare Get Namespace Information request packet:
+Offset Size  Description   (Table 02403)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F257h/SF=13h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3917.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3919.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET NAMESPACE INFORMATION</font></h3>
+<PRE>
+AX = F257h subfn 13h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3918.htm#Table2403">(see #02403)</a>
+ES:DI -> reply buffer <a href="rb-3918.htm#Table2404">(see #02404)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3917.htm">AX=F257h/SF=12h</a> - <a href="rb-3919.htm">AX=F257h/SF=15h</a>
+<PRE>
+<p>
+Format of NetWare "Get Namespace Information" request packet:
+<a name=table2403></a>
+Offset  Size    Description     (Table 02403)
+00h    BYTE    13h (subfunction "Get Namespace Information")
+01h    BYTE    source name space <a href="rb-3908.htm#Table2387">(see #02387)</a>
+02h    BYTE    destination name space
+03h    BYTE    reserved for future use
+04h    BYTE    volume number
+05h    DWORD   directory base
+09h    DWORD   namespace information mask
+</PRE>
+<p><b>See Also:</b>
+#02404
+<PRE>
+<p>
+Format of NetWare "Get Namespace Information" reply packet:
+<a name=table2404></a>
+Offset  Size    Description     (Table 02404)
+00h    var     namespace-specific information
+</PRE>
+<p><b>See Also:</b>
+#02403
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3917.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3919.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

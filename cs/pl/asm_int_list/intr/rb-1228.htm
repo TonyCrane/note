@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=12h/BH=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=12h/BH=00h - TopView - SEND MESSAGE - HANDLE - RETURN OBJECT HANDLE - 
+AH = 12h
+BH = 00h
+BL = which handle to return
+00h handle in DWORD on top of stack
+01h current task's window handle
+02h given task's mailbox handle (task's handle on stack)
+03h current task's mailbox handle
+04h given task's keyboard handle (task's handle on stack)
+05h current task's keyboard object handle
+06h given task's OBJECTQ handle (task's handle on stack)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=12h/BH=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1227.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1229.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TopView - SEND MESSAGE - HANDLE - RETURN OBJECT HANDLE</font></h3>
+<PRE>
+AH = 12h
+BH = 00h
+BL = which handle to return
+00h handle in DWORD on top of stack
+01h current task's window handle
+02h given task's mailbox handle (task's handle on stack)
+03h current task's mailbox handle
+04h given task's keyboard handle (task's handle on stack)
+05h current task's keyboard object handle
+06h given task's OBJECTQ handle (task's handle on stack)
+07h current task's OBJECTQ handle
+08h   \
+thru > return 0000:0000 under DV < 2.26
+10h   /
+0Ch (2.26+) task owning object with handle in DWORD on top of stack
+0Dh (2.26+) task handle of owner (parent) of current task<br>
+<p><b>Return:</b><br>DWORD on top of stack is object handle
+</PRE>
+<p><b>Note:</b>
+BL=0Ch,0Dh returns 00000000h if the object is not open (keyboard,
+mailbox, panel, pointer, and timer objects) or is an orphan (task,
+window)
+<p><b>See Also:</b>
+<a href="rb-1230.htm">AH=12h/BH=02h</a> - <a href="rb-1270.htm">AH=12h/BH=80h</a>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1227.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1229.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

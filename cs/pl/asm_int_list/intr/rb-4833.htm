@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A10h/BX=000Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A10h/BX=000Ah - SMARTDRV v4.00+ - GET ELEMENT STATUS TABLE - 
+AX = 4A10h
+BX = 000Ah
+Return: ES:BX - information pointer table (see #02803)
+Note:  this function is also supported by PC-Cache v8.0.
+SeeAlso: AX=4A10h/BX=0000h
+Format of SMARTDRV information pointer table:
+Offset Size  Description   (Table 02803)
+00h  WORD  offset of ??? byte/word array (byte if elements 2000h bytes)
+02h  WORD  offset of dirty flag byte/word array (byte if elts 2000h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A10h/BX=000Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4832.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4834.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SMARTDRV v4.00+ - GET ELEMENT STATUS TABLE</font></h3>
+<PRE>
+AX = 4A10h
+BX = 000Ah<br>
+<p><b>Return:</b><br>ES:BX -> information pointer table (see #02803)
+</PRE>
+<p><b>Note:</b>
+This function is also supported by PC-Cache v8.0.
+<p><b>See Also:</b>
+<a href="rb-4822.htm">AX=4A10h/BX=0000h</a>
+<PRE>
+<p>
+Format of SMARTDRV information pointer table:
+<a name=table2803></a>
+Offset  Size    Description     (Table 02803)
+00h    WORD    offset of ??? byte/word array (byte if elements < 2000h bytes)
+02h    WORD    offset of dirty flag byte/word array (byte if elts < 2000h)
+each byte/word is a bit string of the dirty sectors in element
+04h    WORD    offset of word array containing low halves of unique
+identifiers for the corresponding element's contents
+06h    WORD    offset of word array containing high halves of unique
+identifiers for the corresponding element's contents
+08h    WORD    offset of WORD containing current number of elements in cache
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4832.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4834.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

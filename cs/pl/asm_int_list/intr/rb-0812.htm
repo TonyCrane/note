@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=00h - FOSSIL (Fido/Opus/Seadog Standard Interface Level) - INITIALIZE - 
+AH = 00h
+AL = initializing parameters
+7 - 6 - 5   4 - 3   2  1 - 0
+-BAUD RATE-  PARITY  STOP  WORD
+BITS LENGTH
+000 19200 bd  00 none 0: 1 00: 5
+001 38400 bd  01 odd  1: 2 01: 6
+010  300 bd  11 even    10: 7
+011  600 bd         11: 8
+100 1200 bd
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0811.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0813.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FOSSIL (Fido/Opus/Seadog Standard Interface Level) - INITIALIZE</font></h3>
+<PRE>
+AH = 00h
+AL = initializing parameters
+7 - 6 - 5      4 - 3     2    1 - 0
+-BAUD RATE-    PARITY   STOP   WORD
+BITS  LENGTH
+<p><b>000 19200 bd   00 none  0:</b><br>1  00: 5
+<p><b>001 38400 bd   01 odd   1:</b><br>2  01: 6
+<p><b>010   300 bd   11 even        10:</b><br>7
+<p><b>011   600 bd                  11:</b><br>8
+100  1200 bd
+101  2400 bd
+110  4800 bd
+111  9600 bd (4800 on PCjr).
+DX = port number (0-3 or FFh if only performing non-I/O setup)<br>
+<p><b>Return:</b><br>AH = RS-232 status code bits (see #00301)
+AL = modem status bits
+<p><b>bit 3:</b><br>Always 1
+<p><b>bit 7:</b><br>DCD - carrier detect
+</PRE>
+<p><b>See Also:</b>
+#00300 - <a href="rb-0840.htm">AH=05h"FOSSIL"</a> - <a href="rb-1027.htm">AH=81h"COMM-DRV"</a> - <a href="rb-1033.htm">AH=82h"COURIERS"</a>
+<PRE>
+<p>
+Bitfields for FOSSIL RS-232 status:
+<a name=table301></a>
+Bit(s)  Description     (Table 00301)
+0      RDA - input data is available in buffer
+1      OVRN - data has been lost
+5      THRE - room is available in output buffer
+6      TSRE - output buffer empty
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0811.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0813.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

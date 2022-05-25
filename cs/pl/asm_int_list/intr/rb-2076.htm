@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 16/AX=FFEEh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 16/AX=FFEEh - PC Tools v5.1-8.0 DESKTOP - DEFINE PULLDOWN MENUS - 
+AX = FFEEh
+DS:SI - pulldown menu system description (see #00625)
+Return: AX destroyed
+Notes: available only when popped up
+if the accessory does not need any menu items of its own, it should
+call AX=FFFAh instead
+SeeAlso: AX=FFF7h,AX=FFFAh
+Format of PC Tools DESKTOP pulldown menu system description:
+Offset Size  Description   (Table 00625)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 16/AX=FFEEh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2075.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2077.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC Tools v5.1-8.0 DESKTOP - DEFINE PULLDOWN MENUS</font></h3>
+<PRE>
+AX = FFEEh
+DS:SI -> pulldown menu system description <a href="rb-2076.htm#Table625">(see #00625)</a><br>
+<p><b>Return:</b><br>AX destroyed
+</PRE>
+<p><b>Notes:</b>
+Available only when popped up.
+If the accessory does not need any menu items of its own, it should
+call AX=FFFAh instead
+<p><b>See Also:</b>
+<a href="rb-2085.htm">AX=FFF7h</a> - <a href="rb-2088.htm">AX=FFFAh</a>
+<PRE>
+<p>
+Format of PC Tools DESKTOP pulldown menu system description:
+<a name=table625></a>
+Offset  Size    Description     (Table 00625)
+00h    WORD    offset of menu bar contents (counted string)
+02h    WORD    number of items on menu bar
+04h 10 BYTEs   scan codes for hotkeying to each of up to ten menu items
+0Eh 10 BYTEs   which character to highlight in each menu item (01h=first)
+18h    WORD    offset of first menu definition <a href="rb-2076.htm#Table626">(see #00626)</a>
+1Ah    WORD    offset of second menu definition.
+...
+<p>
+Format of PC Tools DESKTOP menu definition:
+<a name=table626></a>
+Offset  Size    Description     (Table 00626)
+00h    WORD    offset of menu contents <a href="rb-2076.htm#Table627">(see #00627)</a>
+02h    WORD    number of entries in menu
+04h    for each entry:
+Offset  Size    Description
+00h    BYTE    scancode of Alt-key to invoke entry
+01h    BYTE    character to highlight (01h=first, etc)
+02h    WORD    offset of FAR routine to handle selection
+<p>
+Format of PC Tools DESKTOP menu contents:
+<a name=table627></a>
+Offset  Size    Description     (Table 00627)
+00h    BYTE    number of lines in menu
+01h    BYTE    width of menu
+02h  N BYTEs   counted strings, one for each line in menu
+</PRE>
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-16.htm">
+Int 16h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2075.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2077.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

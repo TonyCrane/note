@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 51
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 51 - TI Professional PC - RESTART TIMING EVENT - 
+AX = timer count in 25ms intervals
+DS:DI - timing-event table (see #03244)
+Note:  documented as for system use only; intended for multi-tasking
+software
+SeeAlso: INT 50TI Professional,INT 52TI Professional
+Format of TI Professional PC timing event table:
+Offset Size  Description   (Table 03244)
+00h  WORD  offset of next event table entry
+02h  BYTE  normally unused (FFh)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 51
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6336.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6338.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TI Professional PC - RESTART TIMING EVENT</font></h3>
+<PRE>
+AX = timer count in 25ms intervals
+DS:DI -> timing-event table <a href="rb-6337.htm#Table3244">(see #03244)</a>
+</PRE>
+<p><b>Note:</b>
+Documented as "for system use only"; intended for multi-tasking
+software
+<p><b>See Also:</b>
+<a href="rb-6306.htm">INT 50"TI Professional"</a> - <a href="rb-6341.htm">INT 52"TI Professional"</a>
+<PRE>
+<p>
+Format of TI Professional PC timing event table:
+<a name=table3244></a>
+Offset  Size    Description     (Table 03244)
+00h    WORD    offset of next event table entry
+02h    BYTE    normally unused (FFh)
+03h    BYTE    flags:
+bit 7 set if timing event active
+bits 6-0 not used by BIOS (0), but could be used by option ROMs
+04h    WORD    timeout count (decremented every 25ms when active)
+06h    WORD    offset of event handler (in segment F400h) to call on event
+timeout; the F400h segment allows addressing both system ROMs
+and the first 16K of memory (due to the 1M memory wraparound)
+</PRE>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-51.htm">
+Int 51h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6336.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6338.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=5Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=5Bh - DOS 3.0+ - CREATE NEW FILE - 
+AH = 5Bh
+CX = file attribute (see #01420 at AX=4301h)
+DS:DX - ASCIZ filename
+Return: CF clear if successful
+AX = file handle opened for read/write in compatibility mode
+CF set on error
+AX = error code (03h,04h,05h,50h) (see #01680)
+Notes: unlike AH=3Ch, this function will fail if the specified file exists
+rather than truncating it; this permits its use in creating semaphore
+files because it is an atomic test and set operation
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=5Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3014.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3016.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.0+ - CREATE NEW FILE</font></h3>
+<PRE>
+AH = 5Bh
+CX = file attribute <a href="rb-0000.htm#Table0"></a>(see #01420 at AX=4301h)
+DS:DX -> ASCIZ filename<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = file handle opened for read/write in compatibility mode
+CF set on error
+AX = error code (03h,04h,05h,50h) <a href="rb-3012.htm#Table1680">(see #01680)</a>
+</PRE>
+<p><b>Notes:</b>
+Unlike AH=3Ch, this function will fail if the specified file exists
+rather than truncating it; this permits its use in creating semaphore
+files because it is an atomic "test and set" operation.
+Under the FlashTek X-32 DOS extender, the filename pointer is in DS:EDX
+<p><b>See Also:</b>
+<a href="rb-2778.htm">AH=3Ch</a> - <a href="rb-3014.htm">AH=5Ah</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3014.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3016.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

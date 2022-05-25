@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F24Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F24Dh - Novell NetWare - CREATE NEW FILE - 
+AX = F24Dh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02356)
+ES:DI - reply buffer (see #02357)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AX=6C00h,AH=F2hNovell,AX=F23Eh,AX=F242h,AX=F243h
+Format of NetWare Create New File request packet:
+Offset Size  Description   (Table 02356)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F24Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3895.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3897.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - CREATE NEW FILE</font></h3>
+<PRE>
+AX = F24Dh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3896.htm#Table2356">(see #02356)</a>
+ES:DI -> reply buffer <a href="rb-3896.htm#Table2357">(see #02357)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3179.htm">AX=6C00h</a> - <a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3889.htm">AX=F23Eh</a> - <a href="rb-3891.htm">AX=F242h</a> - <a href=http://www.
+<PRE>
+<p>
+Format of NetWare "Create New File" request packet:
+<a name=table2356></a>
+Offset  Size    Description     (Table 02356)
+00h    BYTE    directory handle
+01h    BYTE    file attributes
+02h    BYTE    length of filename
+03h  N BYTEs   filename in DOS format
+</PRE>
+<p><b>See Also:</b>
+#02357
+<PRE>
+<p>
+Format of NetWare "Create New File" reply packet:
+<a name=table2357></a>
+Offset  Size    Description     (Table 02357)
+00h  6 BYTEs   NetWare file handle
+06h    WORD    reserved
+08h 14 BYTEs   DOS-format filename
+16h    BYTE    file attributes
+17h    BYTE    file execute type
+18h    DWORD   file length
+1Ch    WORD    creation date
+1Eh    WORD    last-access date
+20h    WORD    last-modification date
+22h    WORD    last-modification time
+</PRE>
+<p><b>See Also:</b>
+#02356
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3895.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3897.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=12h/BH=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=12h/BH=01h - TopView - SEND MESSAGE - NEW - CREATE NEW OBJECT - 
+AH = 12h
+BH = 01h
+BL = object type to create (see #00435)
+STACK: (only if window object or WINDOW class)
+DWORD address to jump to (no new task if high word == 0)
+DWORD (reserved) 0 = non-task window, FFFFh = task window
+DWORD bytes for task's private stack (FFFFh == default of 0100h)
+DWORD bytes system memory for input buffer for READ/READN
+(0 == none, -1 == default--same as logical window size)
+DWORD window size, columns
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=12h/BH=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1228.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1230.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TopView - SEND MESSAGE - NEW - CREATE NEW OBJECT</font></h3>
+<PRE>
+AH = 12h
+BH = 01h
+BL = object type to create <a href="rb-1229.htm#Table435">(see #00435)</a>.
+<p><b>STACK:</b><br>(only if window object or WINDOW class)
+DWORD address to jump to (no new task if high word == 0)
+DWORD (reserved) 0 = non-task window, FFFFh = task window
+DWORD bytes for task's private stack (FFFFh == default of 0100h)
+DWORD bytes system memory for input buffer for READ/READN
+(0 == none, -1 == default--same as logical window size)
+DWORD window size, columns
+DWORD window size, rows
+DWORD length of window title
+DWORD address of window title<br>
+<p><b>Return:</b><br>DWORD on top of stack is new object handle
+</PRE>
+<p><b>Notes:</b>
+If a new task is created, it is started with
+AX = BX = SI = DI = BP = 0
+DX:CX = handle of parent task
+DS = ES = SS = segment of private stack (and new task's handle).
+New windows are orphans, inherit the colors/hidden status of the
+creating task's window, and are placed in the upper left hand corner
+of the screen but not automatically redrawn.
+New keyboards are closed, and have all object bits cleared except for
+the hardware cursor bit
+<p><b>See Also:</b>
+<a href="rb-1230.htm">AH=12h/BH=02h</a> - <a href="rb-1271.htm">AH=12h/BH=81h</a>
+<PRE>
+<p>
+<a name=table435></a>
+(Table 00435)
+Values for TopView/DESQview object type (for creation):
+00h    (DV 2.0x only) handle is DWORD on top of stack
+01h    (DV 2.0x only) use task's window handle
+02h    (DV 2.0x only) given task's mailbox (task's handle on stack)
+03h    (DV 2.0x only) current task's mailbox
+04h    (DV 2.0x only) given task's keyboard (task's handle on stack)
+05h    (DV 2.0x only) current task's keyboard object
+08h    WINDOW class
+09h    MAILBOX class
+0Ah    KEYBOARD class
+0Bh    TIMER object (counts down 32-bit time in 10ms increments)
+0Fh    POINTER object
+10h    PANEL object
+</PRE>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1228.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1230.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

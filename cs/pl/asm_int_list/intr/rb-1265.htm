@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=12h/BH=14h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=12h/BH=14h - TopView - SEND MESSAGE - SETESC - SET ESCAPE ROUTINE ADDRESS - 
+AH = 12h
+BH = 14h
+BL = message modifier
+00h handle is DWORD on top of stack
+01h define user stream
+04h intercept keystrokes from KEYBOARD to window (handle on stack)
+05h intercept keystrokes from task's default KEYBOARD to a window
+STACK: (if window)  DWORD user stream number (14h-1Fh)
+DWORD address of FAR user stream handler
+(if keyboard) DWORD address of FAR filter function (see #00452)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=12h/BH=14h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1264.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1266.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TopView - SEND MESSAGE - SETESC - SET ESCAPE ROUTINE ADDRESS</font></h3>
+<PRE>
+AH = 12h
+BH = 14h
+BL = message modifier
+00h handle is DWORD on top of stack
+01h define user stream
+04h intercept keystrokes from KEYBOARD to window (handle on stack)
+05h intercept keystrokes from task's default KEYBOARD to a window.
+<p><b>STACK:</b><br>(if window)   DWORD user stream number (14h-1Fh)
+DWORD address of FAR user stream handler
+(if keyboard) DWORD address of FAR filter function <a href="rb-1265.htm#Table452">(see #00452)</a><br>
+<p><b>Return:</b><br>STACK popped
+<p>
+<a name=table452></a>
+(Table 00452)
+Values keyboard filter function is called with when keyboard is in field mode:
+AL = character
+AH = 00h or extended ASCII code if AL = 00h
+BL = field number
+CH = cursor column
+CL = cursor row
+DL = field type modifier (sixth item in field table entry)
+DH = seventh item in field table entry
+ES:SI = window's handle
+DS:DI -> field table entry for field containing the cursor<br>
+<p><b>Return:</b><br>AH = action to take
+00h use keystroke
+01h ignore keystroke
+FFh beep and ignore keystroke
+</PRE>
+<p><b>Note:</b>
+The filter function is not allowed to make INT 15, DOS, or BIOS calls
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1264.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1266.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

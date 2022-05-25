@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4404h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4404h - DBLSPACE.BIN - IOCTL - FLUSH OR INVALIDATE INTERNAL CACHES - 
+AX = 4404h
+BL = drive number (00h = default, 01h = A:, etc)
+CX = 000Ah (size of DSPACKET structure)
+DS:DX - DSPACKET structure (see #01532)
+Return: CF clear if IOCTL successful -- check DSPACKET for actual status
+AX = number of bytes actually transferred
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+SeeAlso: AX=4405hDBLSPACE,INT 2F/AX=4A11h/BX=0000h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4404h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2874.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2876.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DBLSPACE.BIN - IOCTL - FLUSH OR INVALIDATE INTERNAL CACHES</font></h3>
+<PRE>
+AX = 4404h
+BL = drive number (00h = default, 01h = A:, etc)
+CX = 000Ah (size of DSPACKET structure)
+DS:DX -> DSPACKET structure <a href="rb-2875.htm#Table1532">(see #01532)</a><br>
+<p><b>Return:</b><br>CF clear if IOCTL successful -- check DSPACKET for actual status
+AX = number of bytes actually transferred
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2883.htm">AX=4405h"DBLSPACE"</a> - <a href="rb-4835.htm">INT 2F/AX=4A11h/BX=0000h</a>
+<PRE>
+<p>
+Format of DoubleSpace DSPACKET structure:
+<a name=table1532></a>
+Offset  Size    Description     (Table 01532)
+00h    WORD    signature 444Dh ("DM")
+02h    BYTE    command code
+46h ('F') flush internal caches
+49h ('I') flush and invalidate internal caches
+03h    WORD    result code
+(ret) 4F4Bh ("OK") if successful, else unchanged
+05h  5 BYTEs   padding
+</PRE>
+<p>
+<b>Category: <a href="cat-017.htm">
+File/Disk Compression</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2874.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2876.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

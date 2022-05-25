@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=253Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=253Dh - Phar Lap 386/DOS-Extender v4.0+ - READ/WRITE IDT DESCRIPTOR - 
+AX = 253Dh
+BL = interrupt number
+ECX = direction (0 = read, 1 = write)
+DS:EDX - 8-byte buffer for descriptor
+Return: CF clear if successful
+DS:EDX filled if reading
+CF set on error
+EAX = error code (0082h if running under DPMI)
+Desc:  access hardware-level IDT rather than the internal 386/DOS-Extender
+shadow IDT
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=253Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2671.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2673.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Phar Lap 386/DOS-Extender v4.0+ - READ/WRITE IDT DESCRIPTOR</font></h3>
+<PRE>
+AX = 253Dh
+BL = interrupt number
+ECX = direction (0 = read, 1 = write)
+DS:EDX -> 8-byte buffer for descriptor<br>
+<p><b>Return:</b><br>CF clear if successful
+DS:EDX filled if reading
+CF set on error
+EAX = error code (0082h if running under DPMI)
+</PRE>
+<p><b>Desc:</b>
+Access hardware-level IDT rather than the internal 386/DOS-Extender
+shadow IDT
+<p><b>Notes:</b>
+This call will always fail under DPMI because it is not possible to
+access the IDT.
+The descriptor is not checked when writing.
+This call can normally be used only by programs running in ring 0
+because the processor does not allow an interrupt to be vectored to
+a less privileged ring
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2671.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2673.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

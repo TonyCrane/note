@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F272h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F272h - Novell NetWare v4+ - GET FILE SERVER UTC TIME - 
+AX = F272h
+CX = length of request buffer in bytes (0003h)
+DX = length of reply buffer in bytes (0064h)
+DS:SI - request buffer (see #02488)
+ES:DI - reply buffer (see #02489)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get File Server UTC Time request buffer:
+Offset Size  Description   (Table 02488)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F272h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3971.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3973.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET FILE SERVER UTC TIME</font></h3>
+<PRE>
+AX = F272h
+CX = length of request buffer in bytes (0003h)
+DX = length of reply buffer in bytes (0064h)
+DS:SI -> request buffer <a href="rb-3972.htm#Table2488">(see #02488)</a>
+ES:DI -> reply buffer <a href="rb-3972.htm#Table2489">(see #02489)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get File Server UTC Time" request buffer:
+<a name=table2488></a>
+Offset  Size    Description     (Table 02488)
+00h    BYTE    ??? (00h)
+01h    BYTE    ??? (01h)
+02h    BYTE    ??? (01h)
+</PRE>
+<p><b>See Also:</b>
+#02489
+<PRE>
+<p>
+Format of NetWare "Get File Server UTC Time" reply buffer:
+<a name=table2489></a>
+Offset  Size    Description     (Table 02489)
+00h    DWORD   seconds
+04h    DWORD   ???
+04h    DWORD   ??? (00000204h)
+04h    DWORD   ??? (00000000h)
+04h    DWORD   ??? (00000000h)
+04h    DWORD   ??? (FFFFFFFFh)
+04h    DWORD   ??? (00000000h)
+</PRE>
+<p><b>See Also:</b>
+#02488
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3971.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3973.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=1Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=1Ch - Novell NetWare v3+ - GET CONNECTION INFORMATION - 
+AX = F217h subfn 1Ch
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #02178)
+ES:DI - reply buffer (see #02179)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+SeeAlso: AH=F2hNovell,AX=F217h/SF=16h,AX=F217h/SF=1Fh
+Format of NetWare Get Connection Information request packet:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=1Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3733.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3735.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v3+ - GET CONNECTION INFORMATION</font></h3>
+<PRE>
+AX = F217h subfn 1Ch
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-3734.htm#Table2178">(see #02178)</a>
+ES:DI -> reply buffer <a href="rb-3734.htm#Table2179">(see #02179)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3729.htm">AX=F217h/SF=16h</a> - <a href="rb-3737.htm">AX=F217h/SF=1Fh</a>
+<PRE>
+<p>
+Format of NetWare "Get Connection Information" request packet:
+<a name=table2178></a>
+Offset  Size    Description     (Table 02178)
+00h    WORD    0005h (length of following data)
+02h    BYTE    1Ch (subfunction "Get Connection Information")
+03h    DWORD   target connection number
+</PRE>
+<p><b>Note:</b>
+Connection numbers greater than the maximum supported by the server
+can cause ABENDs
+<p><b>See Also:</b>
+#02179 - #02170
+<PRE>
+<p>
+Format of NetWare "Get Connection Information" reply packet:
+<a name=table2179></a>
+Offset  Size    Description     (Table 02179)
+00h    DWORD   (big-endian) unique user ID, 00000000h if no one logged in
+04h    WORD    (big-endian) user type
+06h 48 BYTEs   user name
+36h  7 BYTEs   login time <a href="rb-3593.htm#Table2087">(see #02087)</a>
+3Dh    BYTE    reserved
+</PRE>
+<p><b>See Also:</b>
+#02178 - #02171
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3733.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3735.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

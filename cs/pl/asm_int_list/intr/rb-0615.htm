@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=06h - Future Domain SCSI BIOS - FORMAT DRIVE WITH BAD SECTOR MAPPING - 
+AH = 06h
+AL = interleave
+(0 = default, 1 = consecutive sectors, 2 - 255 = vendor unique)
+DL = hard drive ID
+DH = defect list info (see #00237)
+ES:BX - defect table A, B or C (see #00238,#00239,#00240)
+Return: CF set on error
+CF clear if successful
+AH = status code (see #00234)
+Notes: block addresses must be in ascending order (for table B, cylinder is
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0614.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0616.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Future Domain SCSI BIOS - FORMAT DRIVE WITH BAD SECTOR MAPPING</font></h3>
+<PRE>
+AH = 06h
+AL = interleave
+(0 = default, 1 = consecutive sectors, 2 - 255 = vendor unique)
+DL = hard drive ID
+DH = defect list info <a href="rb-0615.htm#Table237">(see #00237)</a>
+ES:BX -> defect table A, B or C <a href="rb-0000.htm#Table0"></a>(see #00238,#00239,#00240)<br>
+<p><b>Return:</b><br>CF set on error
+CF clear if successful
+AH = status code <a href="rb-0606.htm#Table234">(see #00234)</a>
+</PRE>
+<p><b>Notes:</b>
+Block addresses must be in ascending order (for table B, cylinder is
+most significant, byte from index least significant; for table C,
+cylinder is most significant, sector number least significant).
+Table B defect bytes from index of FFFFFFFFh indicates that the entire
+track shall be reassigned.
+Table C defect sector number of FFFFFFFFh indicates that the entire
+track shall be reassigned.
+The TMC-950 does not support any Future Domain BIOS calls; instead,
+it provides a full CAM implementation (see INT 4F/AX=8100h)
+<p><b>See Also:</b>
+<a href="rb-0612.htm">AH=05h"SCSI"</a> - <a href="rb-0614.htm">AH=06h"FIXED"</a> - <a href="rb-0612.htm">AH=07h"SCSI"</a>
+<PRE>
+<p>
+Bitfields for Future Domain SCSI defect list info:
+<a name=table237></a>
+Bit(s)  Description     (Table 00237)
+7-5    drive LUN
+4      defect list is available
+3      defect list is complete (erase drive's defect list)
+2-0    defect table format.
+(000=use defect table A, 100=use defect table B,
+101=use defect table C)
+<p>
+Format of Future Domain SCSI defect table A:
+<a name=table238></a>
+Offset  Size    Description     (Table 00238)
+00h    WORD    number of bytes remaining in table
+02h    BYTE    reserved (0)
+03h    BYTE    reserved (0)
+04h    WORD    (big-endian) defect list length (4*number of defects)
+06h  4 DWORDs  (big-endian) defect block addresses
+<p>
+Format of Future Domain SCSI defect table B:
+<a name=table239></a>
+Offset  Size    Description     (Table 00239)
+00h    WORD    number of bytes remaining in table
+02h    BYTE    reserved (0)
+03h    BYTE    reserved (0)
+04h    WORD    (big-endian) defect list length (8*number of defects)
+06h 8N BYTEs   defect list [array] <a href="rb-0615.htm#Table241">(see #00241)</a>
+<p>
+Format of Future Domain SCSI defect table C:
+<a name=table240></a>
+Offset  Size    Description     (Table 00240)
+00h    WORD    number of bytes remaining in table
+02h    BYTE    reserved (0)
+03h    BYTE    reserved (0)
+04h    WORD    (big-endian) defect list length (8*number of defects)
+06h 8N BYTEs   defect list [array] <a href="rb-0615.htm#Table241">(see #00241)</a>
+<p>
+Format of Future Domain SCSI defect list entry:
+<a name=table241></a>
+Offset  Size    Description     (Table 00241)
+00h  3 BYTEs   (big-endian) cylinder number of defect
+03h    BYTE    head number of defect
+04h    DWORD   (big-endian) defect bytes from index
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0614.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0616.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=7000h/BX=0005h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=7000h/BX=0005h - Everex Extended Video BIOS - GET SUPPORTED MODE INFO - 
+AX = 7000h
+BX = 0005h
+CL = maximum number of modes to get info for
+CH = mode type to get info for (see #00196)
+DL = monitor type to get info for
+ES:DI - buffer for mode info (see #00197)
+Return: CL = total number of modes fitting criteria
+CH = size of each info record
+SeeAlso: AX=7000h/BX=0000h,AX=7000h/BX=0004h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=7000h/BX=0005h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0391.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0393.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Everex Extended Video BIOS - GET SUPPORTED MODE INFO</font></h3>
+<PRE>
+AX = 7000h
+BX = 0005h
+CL = maximum number of modes to get info for
+CH = mode type to get info for <a href="rb-0392.htm#Table196">(see #00196)</a>
+DL = monitor type to get info for
+ES:DI -> buffer for mode info <a href="rb-0392.htm#Table197">(see #00197)</a><br>
+<p><b>Return:</b><br>CL = total number of modes fitting criteria
+CH = size of each info record
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0390.htm">AX=7000h/BX=0000h</a> - <a href="rb-0391.htm">AX=7000h/BX=0004h</a>
+<PRE>
+<p>
+<a name=table196></a>
+(Table 00196)
+Values for Everex mode type:
+00h    all modes
+01h    monochrome text modes
+02h    color text modes
+03h    four-color CGA graphics modes
+04h    two-color CGA graphics modes
+05h    16-color graphics modes
+06h    256-color graphics modes
+<p>
+Format of Everex mode information record:
+<a name=table197></a>
+Offset  Size    Description     (Table 00197)
+00h    BYTE    mode number (bit 7 set if extended mode)
+01h    BYTE    mode type <a href="rb-0392.htm#Table196">(see #00196)</a>
+02h    BYTE    info bits <a href="rb-0392.htm#Table198">(see #00198)</a>
+03h    BYTE    font height
+04h    BYTE    text columns on screen
+05h    BYTE    text rows on screen
+06h    WORD    number of scan lines
+08h    BYTE    color information
+bits 7-4 reserved
+3-0 bits per pixel
+<p>
+Bitfields for Everex info bits:
+<a name=table198></a>
+Bit(s)  Description     (Table 00198)
+7,6    reserved
+5      monochrome mode
+4      interlaced display
+3      requires special oscillator
+2,1    memory required (00 = 256K, 01 = 512K, 10 = 1024K, 11 = 2048K)
+0      reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-e.htm">
+E</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0391.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0393.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,268 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=28A0h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=28A0h - MS Windows - PHARLAPX - GET API ENTRY POINT - 
+AX = 1684h
+BX = 28A0h (virtual device ID for PHARLAPX device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02694)
+0000h:0000h if the VxD does not support an API
+(Table 02694)
+Call PHARLAPX VxD entry point with:
+AX = function
+0001h get PHARLAP.386 version
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=28A0h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4600.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4602.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - PHARLAPX - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 28A0h (virtual device ID for PHARLAPX device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02694)
+0000h:0000h if the VxD does not support an API
+<p>
+<a name=table2694></a>
+(Table 02694)
+Call PHARLAPX VxD entry point with:
+AX = function
+0001h get PHARLAP.386 version
+<p><b>Return:</b><br>AX = version number (AH = major, AL = minor).
+---queue functions---
+0101h allocate a new message queue
+CX = size of queue data buffer in bytes
+<p><b>Return:</b><br>DX:AX = handle for new queue, or 0000h:0000h on error
+0102h allocate a new key queue
+CX = size of queue data buffer in bytes
+EDX = VM handle into which keys will be pasted
+<p><b>Return:</b><br>DX:AX = handle for new queue, or 0000h:0000h on error
+0103h free message queue
+EDX = queue handle
+<p><b>Return:</b><br>AX = status (0000h,0003h,0007h) (see #02695)
+0104h free key queue
+EDX = queue handle
+<p><b>Return:</b><br>AX = status (0000h,0003h,0005h) (see #02695)
+0105h add message to communications queue
+EDX = queue handle
+BX = length of message data in bytes
+CX = length of message header in bytes
+ES:(E)SI -> message header
+GS:(E)DI -> message data
+<p><b>Return:</b><br>AX = status (0000h-0003h,0007h) (see #02695)
+0106h remove message from queue
+EDX = queue handle
+CX = length of buffer in bytes
+ES:(E)SI -> buffer for message
+<p><b>Return:</b><br>AX = status (0000h,0003h,0006h,0007h,0008h) (see #02695)
+CX = length of returned message (if AX=0000h or 0008h)
+0107h flush queue (remove all data)
+EDX = queue handle
+<p><b>Return:</b><br>AX = status (0000h,0003h) (see #02695)
+0108h add PasteKey structure(s) to key queue
+EDX = queue handle
+CX = number of PasteKey structures in buffer
+ES:(E)SI -> PasteKey array <a href="rb-4601.htm#Table2696">(see #02696)</a>
+<p><b>Return:</b><br>AX = status (0000h-0003h) (see #02695)
+0109h register enqueueing callback function
+EDX = queue handle
+ECX = function argument
+ES:(E)SI -> callback function
+<p><b>Return:</b><br>AX = status (0000h,0003h,0009h) (see #02695)
+010Ah register dequeueing callback function
+EDX = queue handle
+ECX = function argument
+ES:(E)SI -> callback function
+<p><b>Return:</b><br>AX = status (0000h,0003h,0009h) (see #02695)
+010Bh unregister enqueueing callback function
+EDX = queue handle
+<p><b>Return:</b><br>AX = status (0000h,0003h,0009h) (see #02695)
+010Ch unregister dequeueing callback function
+EDX = queue handle
+<p><b>Return:</b><br>AX = status (0000h,0003h,0009h) (see #02695)
+010Dh get message queue status
+EDX = queue handle
+<p><b>Return:</b><br>AX = status (0000h,0003h) (see #02695)
+CX = number of pending messages
+010Eh peek at message in queue
+EDX = queue handle
+BX = number of message in queue (0000h = first)
+CX = size of buffer in bytes
+ES:(E)SI -> buffer for message
+<p><b>Return:</b><br>AX = status (0000h,0003h,0006h,0008h) (see #02695)
+CX = length of returned message (if AX=0000h or 0008h)
+010Fh peek at last message in queue
+EDX = queue handle
+CX = size of buffer in bytes
+ES:(E)SI -> buffer for message
+<p><b>Return:</b><br>AX = status (0000h,0003h,0006h,0008h) (see #02695)
+CX = length of returned message (if AX=0000h or 0008h)
+0110h replace last message in queue
+EDX = queue handle
+CX = length of message header in bytes
+BX = length of message data in bytes
+ES:(E)SI -> message header
+GS:(E)DI -> message data
+<p><b>Return:</b><br>AX = status (0000h,0002h,0003h) (see #02695)
+0111h set permitted message count for queue
+EDX = queue handle
+CX = maximum number of messages to enqueue (FFFFh = unlimited)
+<p><b>Return:</b><br>AX = status (0000h,0003h) (see #02695).
+---generalized VxD services---
+0202h call VxD function
+ES:(E)BX -> in/out register-set buffer
+<p><b>Return:</b><br>Buffer updated
+0203h map flat
+???.
+--system register functions---
+0301h read system registers into buffer
+ES:(E)SI -> 512-byte buffer
+<p><b>Return:</b><br>AX = 0000h
+buffer filled (mostly zeros)
+0302h copy linear memory into buffer
+EDX = linear address
+CX = number of bytes to copy
+ES:(E)SI -> buffer
+<p><b>Return:</b><br>AX = 0000h
+0303h copy data into linear memory
+EDX = linear address
+CX = number of bytes to copy
+ES:(E)SI -> buffer
+<p><b>Return:</b><br>AX = 0000h
+0304h freeze VM
+???
+0305h unfreeze VM
+???.
+---name registration functions---
+0401h register name
+EDX = magic number to associate with name
+ES:(E)SI -> name to register
+<p><b>Return:</b><br>AX = status (0000h,0009h) (see #02695)
+0402h unregister name
+ES:(E)SI -> name to be unregistered
+<p><b>Return:</b><br>AX = status (0000h,0009h) (see #02695)
+0403h look up name
+ES:(E)SI -> name to look up
+<p><b>Return:</b><br>DX:AX = magic number or 0000h:0000h if not registered
+0404h get name list handle
+<p><b>Return:</b><br>DX:AX = name list handle
+0000h:0000h if not initialized.
+---special DOS server routines (undocumented)---
+0501h register
+0502h unregister
+0503h validate VM
+0504h get INT9 count
+0505h get screen line
+0506h get shift status
+0507h get server PB pointer
+0508h initialize DOS shell
+0509h get last VM handle
+<p>
+<a name=table2695></a>
+(Table 02695)
+Values for PHARLAPX function status:
+00h    successful
+01h    data is too large to fit in queue
+02h    queue is full
+03h    invalid queue handle
+04h    invalid VM handle for queue
+05h    error starting a paste operation
+06h    queue is empty
+07h    a VM is blocked waiting on the queue
+08h    message was too long (truncated)
+09h    unable to register or unregister specified callback
+</PRE>
+<p><b>See Also:</b>
+#02694
+<PRE>
+<p>
+Format of PHARLAPX PasteKey structure:
+<a name=table2696></a>
+Offset  Size    Description     (Table 02696)
+00h    BYTE    ASCII code
+01h    BYTE    scan code <a href="rb-0045.htm#Table6">(see #00006)</a>
+02h    WORD    shift states
+</PRE>
+<p><b>See Also:</b>
+#02694
+<PRE>
+<p>
+Format of PHARLAPX VxD-call register structure:
+<a name=table2697></a>
+Offset  Size    Description     (Table 02697)
+00h    DWORD   call number
+04h    WORD    input register map <a href="rb-4601.htm#Table2698">(see #02698)</a>
+06h    WORD    output register map <a href="rb-4601.htm#Table2698">(see #02698)</a>
+08h  7 DWORDs  values for EAX, EBX, ECX, EDX, EBP, ESI, EDI on call
+24h  4 WORDs   values for DS, ES, FG, GS on call
+2Ch    DWORD   EFLAGS on call
+30h  7 DWORDs  returned values of EAX, EBX, ECX, EDX, EBP, ESI, EDI
+4Ch  4 WORDs   returned values of DS, ES, FS, GS
+54h    DWORD   returned EFLAGS
+</PRE>
+<p><b>See Also:</b>
+#02694
+<PRE>
+<p>
+Bitfields for PHARLAPX VxD-call register map:
+<a name=table2698></a>
+Bit(s)  Description     (Table 02698)
+0      value in EAX field is valid
+1      value in EBX field is valid
+2      value in ECX field is valid
+3      value in EDX field is valid
+4      value in EBP field is valid
+5      value in ESI field is valid
+6      value in EDI field is valid
+7      value in DS field is valid
+8      value in ES field is valid
+9      value in FS field is valid
+10     value in GS field is valid
+11     value in EFLAGS field is valid
+</PRE>
+<p><b>See Also:</b>
+#02697
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4600.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4602.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 16/AX=FFA5h/CX=1111h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 16/AX=FFA5h/CX=1111h - PC-Cache v6+ - INSTALLATION CHECK - 
+AX = FFA5h
+CX = 1111h
+Return: CH = 00h if installed
+ES:DI - internal data (see #00620)
+CL = cache state
+01h enabled
+02h disabled
+SeeAlso: INT 13/AH=27h,INT 13/AH=A0h,INT 21/AH=2Bh/CX=4358h
+Format of PC-Cache internal data:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 16/AX=FFA5h/CX=1111h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1986.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1988.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC-Cache v6+ - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = FFA5h
+CX = 1111h<br>
+<p><b>Return:</b><br>CH = 00h if installed
+ES:DI -> internal data <a href="rb-1987.htm#Table620">(see #00620)</a>
+CL = cache state
+01h enabled
+02h disabled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0680.htm">INT 13/AH=27h</a> - <a href="rb-0779.htm">INT 13/AH=A0h</a> - <a href="rb-2689.htm">INT 21/AH=2Bh/CX=4358h</a>
+<PRE>
+<p>
+Format of PC-Cache internal data:
+<a name=table620></a>
+Offset  Size    Description     (Table 00620)
+<p><b>-1Ch 20 BYTEs   cached drive list, one byte per drive A:</b><br>To T:
+each byte is either blank (20h) or drive letter (41h-54h)
+-8     BYTE    ???
+-7     WORD    number of physical transfers (scaled down to 0000h-7FFFh)
+-5     WORD    number of saved transfers (scaled down to 0000h-7FFFh)
+-3   3 BYTEs   ???
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-16.htm">
+Int 16h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1986.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1988.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

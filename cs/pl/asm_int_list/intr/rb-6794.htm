@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=000Fh/SF=0004h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=000Fh/SF=0004h - Banyan VINES - CLOSE SOCKET - 
+AX = 000Fh subfn 0004h
+CX:BX - request block (see #03449)
+DX = application's data segment (should be = CX)
+ES = DS
+Return: AX = status
+0000h successful
+00A5h resource not available
+Desc:  Closes a socket identified by its socket handle
+Format of request block:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=000Fh/SF=0004h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6793.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6795.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - CLOSE SOCKET</font></h3>
+<PRE>
+AX = 000Fh subfn 0004h
+CX:BX -> request block <a href="rb-6794.htm#Table3449">(see #03449)</a>
+DX = application's data segment (should be = CX)
+ES = DS<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+00A5h resource not available
+</PRE>
+<p><b>Desc:</b>
+Closes a socket identified by its socket handle
+<PRE>
+<p>
+Format of request block:
+<a name=table3449></a>
+Offset  Size    Description     (Table 03449)
+00h    WORD    0004h
+02h    WORD    magic number (FEFEh)
+04h    WORD    buffer for return code (set to 0 before calling)
+06h    WORD    reserved (will be set to client DS)
+08h    WORD    reserved (obviously not used; set to 0 before calling)
+0Ah    DWORD   far pointer to socket handle (2 bytes)
+0Eh    WORD    process handle (see AX=000Fh/SF=0008h)
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6793.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6795.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

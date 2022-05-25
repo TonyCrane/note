@@ -1,0 +1,171 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4458h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4458h - DR DOS 5.0+ internal - GET POINTER TO INTERNAL VARIABLE TABLE - 
+AX = 4458h
+Return: ES:BX - internal variable table (see #01584,#01585)
+AX = ??? (0B50h for DR DOS 5.0, 0A56h for DR DOS 6.0, 0FE4h for
+Novell DOS 7)
+SeeAlso: AX=4452h
+Format of DR DOS 5.0-6.0 internal variable table:
+Offset Size  Description   (Table 01584)
+00h  WORD  ???
+02h  WORD  segment of ???
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4458h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2924.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2926.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DR DOS 5.0+ internal - GET POINTER TO INTERNAL VARIABLE TABLE</font></h3>
+<PRE>
+AX = 4458h<br>
+<p><b>Return:</b><br>ES:BX -> internal variable table (see #01584,#01585)
+AX = ??? (0B50h for DR DOS 5.0, 0A56h for DR DOS 6.0, 0FE4h for
+Novell DOS 7)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2920.htm">AX=4452h</a>
+<PRE>
+<p>
+Format of DR DOS 5.0-6.0 internal variable table:
+<a name=table1584></a>
+Offset  Size    Description     (Table 01584)
+00h    WORD    ???
+02h    WORD    segment of ???
+04h    WORD    offset within DOS data segment of history control structure
+for COMMAND.COM history buffer <a href="rb-2925.htm#Table1586">(see #01586)</a>
+06h    WORD    offset within DOS data segment of history control structure
+for application history buffer <a href="rb-2925.htm#Table1586">(see #01586)</a>
+08h    BYTE    initial history state flags <a href="rb-2922.htm#Table1583">(see #01583)</a>
+09h  2 BYTEs   ???
+0Bh    WORD    KB of extended memory at startup
+0Dh    BYTE    number of far jump entry points
+0Eh    WORD    segment containing far jumps to DR DOS entry points <a href="rb-2925.htm#Table1587">(see #01587)</a>
+10h    WORD    (only if kernel loaded in HMA) offset in HMA of first free HMA
+memory block <a href="rb-2925.htm#Table1588">(see #01588)</a> or 0000h if none; segment is FFFFh
+12h    WORD    pointer to segment of environment variables set in CONFIG,
+or 0000h if already used
+---DR DOS 6.0---
+14h    WORD    (only if kernel loaded in HMA) offset in HMA of first used HMA
+memory block <a href="rb-2925.htm#Table1588">(see #01588)</a> or 0000h if none; segment is FFFFh
+16h  8 BYTEs   ???
+1Eh    WORD    offset in DOS data segment of full COUNTRY.SYS filename
+20h  8 BYTEs   ???
+28h    WORD    offset in DOS data segment of SHARE hook table
+2Ah  2 BYTEs   ???
+2Ch    WORD    offset in DOS data segment of far pointer to INT 2F/AX=1000h
+handler
+</PRE>
+<p><b>Notes:</b>
+The segment used for the DR DOS 6.0 CONFIG environment variables
+(excluding COMSPEC, VER and OS) is only useful for programs/drivers
+called from CONFIG.SYS. The word is set to zero later when the area
+is copied to the COMMAND.COM environment space.  This allows
+CONFIG.SYS to pass information to AUTOEXEC.BAT..
+The Novell DOS 7 KEYB uses offsets 10h,14h, and 2Ch in the same was
+as for DR DOS 6.0, so it is likely that the entire table is the same
+<PRE>
+<p>
+Format of Novell DOS 7 internal variable table:
+<a name=table1585></a>
+Offset  Size    Description     (Table 01585)
+00h    ???
+1Eh    WORD    offset of COUNTRY.SYS filename
+42h 16 DWORDs  pointers to ??? entry points.
+???
+<p>
+Format of history control structure:
+<a name=table1586></a>
+Offset  Size    Description     (Table 01586)
+00h    WORD    segment of buffer
+02h    WORD    size of buffer in bytes
+04h    WORD    ???
+<p>
+Format of kernel entry jump table for DR DOS 5.0-6.0:
+<a name=table1587></a>
+Offset  Size    Description     (Table 01587)
+00h  5 BYTEs   far jump to kernel entry point for CP/M CALL 5
+05h  5 BYTEs   far jump to kernel entry point for INT 20
+0Ah  5 BYTEs   far jump to kernel entry point for INT 21
+0Fh  5 BYTEs   far jump to kernel entry point for INT 22 (RETF)
+14h  5 BYTEs   far jump to kernel entry point for INT 23 (RETF)
+19h  5 BYTEs   far jump to kernel entry point for INT 24
+1Eh  5 BYTEs   far jump to kernel entry point for INT 25
+23h  5 BYTEs   far jump to kernel entry point for INT 26
+28h  5 BYTEs   far jump to kernel entry point for INT 27
+2Dh  5 BYTEs   far jump to kernel entry point for INT 28
+32h  5 BYTEs   far jump to kernel entry point for INT 2A (IRET)
+37h  5 BYTEs   far jump to kernel entry point for INT 2B (IRET)
+3Ch  5 BYTEs   far jump to kernel entry point for INT 2C (IRET)
+41h  5 BYTEs   far jump to kernel entry point for INT 2D (IRET)
+46h  5 BYTEs   far jump to kernel entry point for INT 2E (IRET)
+4Bh  5 BYTEs   far jump to kernel entry point for INT 2F
+</PRE>
+<p><b>Notes:</b>
+All of these entry points are indirected through this jump table
+to allow the kernel to be relocated into high memory while leaving
+the actual entry addresses in low memory for maximum compatibility.
+Some of these entry points (22h,23h,24h,2Eh,2Fh) are replaced as soon
+as COMMAND.COM is loaded, and return immediately to the caller, some
+returning an error code (the original handler for INT 2F returns
+AL=03h [fail]).
+<PRE>
+<p>
+Format of HMA Memory Block (DR DOS 6.0 kernel loaded in HMA):
+<a name=table1588></a>
+Offset  Size    Description     (Table 01588)
+00h    WORD    offset of next HMA Memory Block (0000h if last block)
+02h    WORD    size of this block in bytes (at least 10h)
+04h    BYTE    type of HMA Memory Block (interpreted by MEM)
+00h system
+01h KEYB
+02h NLSFUNC
+03h SHARE
+04h TaskMAX
+05h COMMAND
+05h    var     TSR (or system) code and data. DR DOS TSR's, such as KEYB,
+hooks interrupts using segment FFFEh instead FFFFh.
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2924.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2926.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

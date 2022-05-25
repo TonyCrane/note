@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5D02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5D02h - DOS 3.1+ internal - SHARE.EXE - CLOSE FILE BY NAME - 
+AX = 5D02h
+DS:DX - DOS parameter list (see #01686), only fields DX, DS,
+computer ID, and process ID used
+DPL's DS:DX - ASCIZ name of file to close
+Return: CF set on error
+AX = error code (see #01680)
+CF clear if successful
+Notes: error unless SHARE is loaded (calls [SysFileTable-28h])
+(see #01636 at AH=52h)
+name must be canonical fully-qualified, such as returned by AH=60h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5D02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3018.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3020.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.1+ internal - SHARE.EXE - CLOSE FILE BY NAME</font></h3>
+<PRE>
+AX = 5D02h
+DS:DX -> DOS parameter list <a href="rb-3017.htm#Table1686">(see #01686)</a>, only fields DX, DS,
+computer ID, and process ID used
+DPL's DS:DX -> ASCIZ name of file to close<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code <a href="rb-3012.htm#Table1680">(see #01680)</a>
+CF clear if successful
+</PRE>
+<p><b>Notes:</b>
+Error unless SHARE is loaded (calls [SysFileTable-28h])
+<a href="rb-0000.htm#Table0"></a>(see #01636 at AH=52h).
+Name must be canonical fully-qualified, such as returned by AH=60h.
+Not supported by DR DOS 3.41 and 5.0; returns error code 01h.
+Not supported by Novell DOS 7, although in Update 15 it is reported
+to no longer return an error code
+<p><b>See Also:</b>
+<a href="rb-3020.htm">AX=5D03h</a> - <a href="rb-3021.htm">AX=5D04h</a> - <a href="rb-2782.htm">AH=3Eh</a> - <a href="rb-3137.htm">AH=60h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3018.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3020.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

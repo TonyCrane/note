@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=71h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=71h - Windows95 - LONG FILENAME FUNCTIONS - 
+AH = 71h
+AL = function
+0Dh reset drive (see AX=710Dh)
+39h create directory (see AX=7139h)
+3Ah remove directory (see AX=713Ah)
+3Bh set current directory (see AX=713Bh)
+41h delete file (see AX=7141h)
+43h get/set file attributes (see AX=7143h)
+47h get current directory (see AX=7147h)
+4Eh find first file (see AX=714Eh)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=71h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3193.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3195.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - LONG FILENAME FUNCTIONS</font></h3>
+<PRE>
+AH = 71h
+AL = function
+0Dh reset drive (see AX=710Dh)
+39h create directory (see AX=7139h)
+3Ah remove directory (see AX=713Ah)
+3Bh set current directory (see AX=713Bh)
+41h delete file (see AX=7141h)
+43h get/set file attributes (see AX=7143h)
+47h get current directory (see AX=7147h)
+4Eh find first file (see AX=714Eh)
+4Fh find next file (see AX=714Fh)
+56h move (rename) file (see AX=7156h)
+60h truename (see AX=7160h/CL=00h,AX=7160h/CL=02h)
+6Ch create/open file (see AX=716Ch)
+A0h get volume information (see AX=71A0h)
+A1h terminate FindFirst/FindNext (see AX=71A1h)
+A6h get file information (see AX=71A6h)
+A7h time conversion (see AX=71A7h/BL=00h,AX=71A7h/BL=01h)
+A8h generate short filename (see AX=71A8h)
+A9h server create/open file (see AX=71A9h)
+AAh create/terminate SUBST (see AX=71AAh/BH=00h,AX=71AAh/BH=02h)<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code <a href="rb-3012.htm#Table1680">(see #01680)</a>
+7100h if function not supported
+CF clear if successful
+other registers as for corresponding "old" DOS function
+</PRE>
+<p><b>Notes:</b>
+If error 7100h is returned, the old-style function should be called.
+AX=714Eh returns a "search handle" which must be passed to AX=714Fh;
+when the search is complete, AX=71A1h must be called to terminate
+the search.
+For compatibility with DOS versions prior to v7.00, the carry flag
+should be set on call to ensure that it is set on exit.
+Caldera's DPMS-enabled LONGNAME.EXE BETA 1 extension for DR-DOS 7
+<PRE>
+<p><b>supports the following sub-set of LFN functions:</b><br>39h, 3Ah, 3Bh, 41h,
+43h (BL = 0, 1 only), 47h, 4Eh, 4Fh, 56h, 60h (CL = 0, 1, 2), 6Ch,
+A0h, A1h, A8h. BETA 2 fixes LFN directory entry checksums, which
+were causing wrong LFNs to be attached to a file. The 8.3 short
+names for filenames with exactly 8 chars are no longer abbreviated
+(e.g. LONGNAME.TXT -> LONGNAME.TXT, not LONGNA~1.TXT). BETA 3 has
+A7h (BL=0, 1) functions added, and 4Eh/4Fh can return file times
+in both DOS and 64 bit formats, BETA 4 has support added for
+Caldera's DRFAT32 redirector extension (see INT 2F/AX=15xxh)..
+Caldera's DR-OpenDOS 7.02+ COMMAND.COM utilizes the LFN API as soon
+as it detects it (mind, that LONGNAME.EXE can be dynamically loaded
+and unloaded at runtime). This COMMAND.COM shell also works under
+MS-DOS/PC DOS and in DOS boxes of Windows9x, NT, 2000, and OS/2..
+For 4DOS 6.02+ to work with 3rd party LFN providers, the Win95LFN=Yes
+directive should be inserted into the 4DOS.INI file..
+Mike Podanoffsky's RxDOS 7.2 provides most of this API natively,
+including functions 39h, 3Ah, 3Bh, 41h, 43h (BL = ???), 47h, 4Bh,
+4Eh, 4Fh, 56h, 60h (CL = 0, 1, 2, no CH), 6Ch, A0h, A1h and A7h.
+However, not all sub-functions seem to be supported yet.
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2775.htm">AH=39h</a> - <a href="rb-2776.htm">AH=3Ah</a> - <a href="rb-2777.htm">AH=3Bh</a> - <a href="rb-2797.htm">AH=41h</a> - <a "http://www.ctyme.com/intr/href"
+<p><b>See Also:</b>
+<a href="rb-2810.htm">AX=4307h</a> - <a href="rb-2933.htm">AH=47h</a> - <a href="rb-2977.htm">AH=4Eh</a> - <a href="rb-2979.htm">AH=4Fh</a> - <a hr
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3193.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3195.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

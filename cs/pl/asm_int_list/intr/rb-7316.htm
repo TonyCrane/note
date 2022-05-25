@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 66/AX=0688h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 66/AX=0688h - IBMSND driver, DIGPAK - PLAY 8-BIT DIGITIZED SOUND - 
+AX = 0688h
+DS:SI - SNDSTRUC (see #03519)
+Return: ???
+Program: The IBMSND driver is part of John W. Ratcliff's
+The IBM Digitized Sound Package
+DIGPAK is a set of digitized sound drivers written by
+John W. Ratcliff, The Audio Solution, Inc.
+InstallCheck:  test for a valid signature string six bytes prior to the
+interrupt handler; this string may be either KERN or MIDI (in
+the latter case, call AX=0701h to determine whether IBMSND is
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 66/AX=0688h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7315.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7317.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>IBMSND driver, DIGPAK - PLAY 8-BIT DIGITIZED SOUND</font></h3>
+<PRE>
+AX = 0688h
+DS:SI -> SNDSTRUC <a href="rb-7316.htm#Table3519">(see #03519)</a><br>
+<p><b>Return:</b><br>???
+</PRE>
+<p><b>Program:</b>
+The IBMSND driver is part of John W. Ratcliff's
+The IBM Digitized Sound Package.
+DIGPAK is a set of digitized sound drivers written by
+John W. Ratcliff, The Audio Solution, Inc.
+<PRE>
+<p><b>InstallCheck:</b><br>Test for a valid signature string six bytes prior to the
+interrupt handler; this string may be either "KERN" or "MIDI" (in
+the latter case, call AX=0701h to determine whether IBMSND is
+installed)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7319.htm">AX=068Bh</a> - <a href="rb-7323.htm">AX=068Fh</a> - <a href="rb-7341.htm">AX=0701h</a>
+<PRE>
+<p>
+Format of IBMSND driver SNDSTRUC:
+<a name=table3519></a>
+Offset  Size    Description     (Table 03519)
+00h    DWORD   -> audio data
+04h    WORD    length of audio data in bytes
+06h    DWORD   -> playback status flag
+0Ah    WORD    playback frequency
+</PRE>
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-66.htm">
+Int 66h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7315.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7317.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

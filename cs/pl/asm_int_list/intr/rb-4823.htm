@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A10h/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A10h/BX=0000h - Novell NWCACHE - INSTALLATION CHECK AND STATISTICS - 
+AX = 4A10h
+BX = 0000h
+CX = magic value
+0EDCh flush delayed writes
+('EDC' = Novell European Development Center)
+other (use EBABh to avoid SMARTDRV/DBLSPACE interaction)
+Return: (also refer to notes below)
+AX = 6756h ('gV') if installed
+CF clear
+BX = cache memory type
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A10h/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4822.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4824.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NWCACHE - INSTALLATION CHECK AND STATISTICS</font></h3>
+<PRE>
+AX = 4A10h
+BX = 0000h
+CX = magic value
+0EDCh flush delayed writes
+('EDC' = Novell European Development Center)
+other (use EBABh to avoid SMARTDRV/DBLSPACE interaction)<br>
+<p><b>Return:</b><br>(also refer to notes below)
+AX = 6756h ('gV') if installed
+CF clear
+BX = cache memory type
+01h conventional memory
+02h extended memory
+03h EMS
+DI:SI = cache misses
+CX:DX = segment:offset address of data area containing statistics
+<a href="rb-4823.htm#Table4095">(see #04095)</a>
+BP = version in BCD
+0100h = 1.00
+0101h = 1.01 & 1.02 (!)
+</PRE>
+<p><b>Notes:</b>
+SMARTDRV 4.0+ uses a similar installation check on this function but
+returns different data.  To ensure proper interpretation of
+the returned values, the caller must check the returned magic
+value in AX. Since SMARTDRV may also alter DI:SI (and possibly
+DS), the caller should take care of this, too..
+The Novell DOS / DR-DOS 7.x COMMAND.COM invokes this function with
+CX=0EDCh, which causes NWCACHE to flush any delayed writes before
+returning the normal register values if it is configured to flush
+writes before returning to the DOS prompt (/FLUSH:ON); however, if
+/FLUSH:OFF, this function becomes a NOP with CX=0EDCh..
+Note that for this function the 0EDCh special case may vanish with
+future issues of NWCACHE (2.0+), and the function would then always
+do the normal install check, and not flush the cache.
+<p><b>See Also:</b>
+<a href="rb-4823.htm">AX=4A10h/BX=0001h"NWCACHE"</a>
+<PRE>
+<p>
+Format of NWCACHE statistics:
+<a name=table4095></a>
+Offset  Size    Description     (Table 04095)
+00h    DWORD   number of read requests
+04h    DWORD   number of reads performed
+08h    DWORD   number of write requests
+0Ch    DWORD   number of writes performed
+10h    WORD    number of disk errors
+12h    WORD    number of cache memory errors
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4822.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4824.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

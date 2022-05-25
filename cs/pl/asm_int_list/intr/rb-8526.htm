@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Int E0/CL=45h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int E0/CL=45h - REAL/32 - N_RCT - GET REQUESTOR CONFIGURATION TABLE - 
+CL = 45h
+DS:DX - RCT Control Block (see #04031,#04032)
+Return: AX = status or error code (see #04033,#04030)
+may destroy SI,DI,DS???
+SeeAlso: INT E0/CL=47h
+Format of REAL/32 RCT Control Block for Drives:
+Offset Size  Description   (Table 04031)
+00h  BYTE  command byte
+00h map disk drive
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int E0/CL=45h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8525.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8527.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>REAL/32 - N_RCT - GET REQUESTOR CONFIGURATION TABLE</font></h3>
+<PRE>
+CL = 45h
+DS:DX -> RCT Control Block <a href="rb-0000.htm#Table0"></a>(see #04031,#04032)<br>
+<p><b>Return:</b><br>AX = status or error code (see #04033,#04030)
+may destroy SI,DI,DS???
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-8527.htm">INT E0/CL=47h</a>
+<PRE>
+<p>
+Format of REAL/32 RCT Control Block for Drives:
+<a name=table4031></a>
+Offset  Size    Description     (Table 04031)
+00h    BYTE    command byte
+00h map disk drive
+02h map list device
+01h    BYTE    local resource ID
+02h    BYTE    remote resource ID
+03h    BYTE    server node ID number
+</PRE>
+<p><b>Note:</b>
+The RCT Control Block is a union of two possible structures; this
+variant is used when mapping disk drives and list devices
+<p><b>See Also:</b>
+#04032
+<PRE>
+<p>
+Format of REAL/32 RCT Control Block for Queues:
+<a name=table4032></a>
+Offset  Size    Description     (Table 04032)
+00h    BYTE    command byte
+03h map local queue to server
+04h unmap queue
+01h  8 BYTEs   local queue name (case-sensitive)
+09h  8 BYTEs   remote queue name (case-sensitive)
+11h    BYTE    server node ID number
+</PRE>
+<p><b>Note:</b>
+The RCT Control Block is a union of two possible structures; this
+variant is used when mapping queues
+<p><b>See Also:</b>
+#04031
+<PRE>
+<p>
+<a name=table4033></a>
+(Table 04033)
+Values for REAL/32 "N_RCT" status:
+0000h  successful
+0001h  invalid local device
+0002h  invalid remote device
+0003h  no queue entry space
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-E0.htm">
+Int E0h</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8525.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8527.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

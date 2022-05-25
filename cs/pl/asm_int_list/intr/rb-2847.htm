@@ -1,0 +1,127 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4402h/SF=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4402h/SF=00h - Memory Managers - GET API ENTRY POINT - 
+AX = 4402h subfn 00h
+BX = file handle for device EMMXXXX0
+CX = 0006h (size of buffer in bytes)
+DS:DX - buffer for API entry point record (see #01512)
+first byte must be 00h on entry
+Return: CF clear if successful
+buffer filled (see #03603 at INT 67/AH=3Fh)
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Notes: this function is supported by Microsoft EMM386.EXE v4.45+ and
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4402h/SF=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2846.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2848.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Memory Managers - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 4402h subfn 00h
+BX = file handle for device "EMMXXXX0"
+CX = 0006h (size of buffer in bytes)
+DS:DX -> buffer for API entry point record <a href="rb-2847.htm#Table1512">(see #01512)</a>
+first byte must be 00h on entry<br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled <a href="rb-0000.htm#Table0"></a>(see #03603 at INT 67/AH=3Fh)
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Microsoft EMM386.EXE v4.45+ and
+CEMM v5.10+, and is intended for use by MS Windows as it starts up.
+If no other program has hooked INT 67, an alternate installation
+check for CEMM is testing for the string
+"COMPAQ EXPANDED MEMORY MANAGER 386" at offset 14h in the INT 67
+handler's segment; if present, the word at offset 12h contains the
+offset of the API entry point
+<p><b>See Also:</b>
+<a href="rb-2848.htm">AX=4402h/SF=01h</a> - <a href="rb-2849.htm">AX=4402h/SF=02h</a> - <a href="rb-2846.htm">AX=4402h"EMM386"</a> - <a href="rb-7414.htm">INT 67/AH=3Fh</a>
+<PRE>
+<p>
+Format of memory manager API entry point record:
+<a name=table1512></a>
+Offset  Size    Description     (Table 01512)
+00h    WORD    ??? (0022h for CEMM 5.11, 0025h for MS EMM386 v4.45)
+02h    DWORD   manager's private API entry point
+<a href="rb-0000.htm#Table0"></a>(see #01513,#03666 at INT 67/AX=FFA5h)
+<p>
+<a name=table1513></a>
+(Table 01513)
+Call CEMM v5.10+ entry point with:.
+AH = 00h get memory manager's state
+<p><b>Return:</b><br>AH = state
+<p><b>bit 0:</b><br>Turned OFF
+<p><b>bit 1:</b><br>AUTO mode enabled.
+AH = 01h set memory manager's state
+AL = new state (00h ON, 01h OFF, 02h AUTO)
+<p><b>Return:</b><br>CF clear if successful
+CF set on error.
+AH = 02h Weitek coprocessor support
+AL = subfunction
+00h get Weitek support state
+<p><b>Return:</b><br>AL = status
+<p><b>bit 0:</b><br>Weitek coprocessor is present
+<p><b>bit 1:</b><br>Weitek support is enabled
+01h turn on Weitek support
+02h turn off Weitek support
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = error code (01h invalid subfunc, 02h no Weitek).
+AH = 05h get statistics
+???.
+AH > 06h
+<p><b>Return:</b><br>CF set
+AH = 01h (invalid function)
+</PRE>
+<p><b>Notes:</b>
+AH=03h,04h,06h are NOPs which return CF clear, presumably for backwards
+compatibility with earlier versions of CEMM.
+In v5.11, AH=05h merely prints an error message (using INT 21/AH=09h)
+stating that a different version of CEMM is installed and it is
+therefore not possible to display the statistics
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2846.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2848.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

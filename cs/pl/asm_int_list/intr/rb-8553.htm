@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Int E0/CL=90h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int E0/CL=90h - REAL/32 - P_CREATE - CREATE A PROCESS - 
+CL = 90h
+DS:DX - process descriptor in calling process' system memory area
+(see #04026)
+Return: AX = status
+Notes: this call can create more than one process if the specied process
+descriptor's link (next-process) field is nonzero
+all reserved and unused fields in the process descriptor should be
+filled with zeros; passing an invalid descriptor or pointer may
+crash the system because the descriptor is not checked by the OS
+the newly-created process(es) is always a native process, which can not
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int E0/CL=90h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8552.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8554.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>REAL/32 - P_CREATE - CREATE A PROCESS</font></h3>
+<PRE>
+CL = 90h
+DS:DX -> process descriptor in calling process' system memory area
+<a href="rb-8523.htm#Table4026">(see #04026)</a><br>
+<p><b>Return:</b><br>AX = status
+</PRE>
+<p><b>Notes:</b>
+This call can create more than one process if the specied process
+descriptor's link (next-process) field is nonzero.
+All reserved and unused fields in the process descriptor should be
+filled with zeros; passing an invalid descriptor or pointer may
+crash the system because the descriptor is not checked by the OS.
+The newly-created process(es) is always a native process, which can not
+make DOS calls
+<p><b>See Also:</b>
+<a href="rb-8552.htm">INT E0/CL=8Fh</a>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-E0.htm">
+Int E0h</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8552.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8554.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

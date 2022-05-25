@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5D00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5D00h - DOS 3.1+ internal - SERVER FUNCTION CALL - 
+AX = 5D00h
+DS:DX - DOS parameter list (see #01686)
+DPL contains all register values for a call to INT 21h
+Return: as appropriate for function being called
+Notes: does not check AH. Out of range values will crash the system
+executes using specified computer ID and process ID
+sharing delay loops skipped
+a special sharing mode is enabled to handle FCBs opened across network
+wildcards are enabled for DELETE (AH=41h) and RENAME (AH=56h) under
+MS-DOS; under DR DOS 3.41, wildcards corrupt the filesystem; and
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5D00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3016.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3018.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.1+ internal - SERVER FUNCTION CALL</font></h3>
+<PRE>
+AX = 5D00h
+DS:DX -> DOS parameter list <a href="rb-3017.htm#Table1686">(see #01686)</a>
+DPL contains all register values for a call to INT 21h<br>
+<p><b>Return:</b><br>As appropriate for function being called
+</PRE>
+<p><b>Notes:</b>
+Does not check AH.  Out of range values will crash the system.
+Executes using specified computer ID and process ID.
+Sharing delay loops skipped.
+A special sharing mode is enabled to handle FCBs opened across network.
+Wildcards are enabled for DELETE (AH=41h) and RENAME (AH=56h) under
+MS-DOS; under DR DOS 3.41, wildcards corrupt the filesystem; and
+under DR DOS 5.0-6.0, the call returns error code 03h due to improper
+<PRE>
+<p><b>support for the server function call (refer to BUGS:</b><br>Section below).
+An extra file attribute parameter is enabled for OPEN (AH=3Dh),
+DELETE (AH=41h), and RENAME (AH=56h).
+Functions which take filenames require canonical names (as returned
+by AH=60h); this is apparently to prevent multi-hop file forwarding
+</PRE>
+<p><b>BUGS:</b>
+The OS/2 2.0 DOS Boot Session incorrectly maps DOS drive letters,
+seemingly ignoring HPFS drives.
+DR DOS 5.0-6.0 merely recursively call INT 21 after loading the
+registers from the DPL, leading to problems for peer-to-peer
+networks
+<p><b>See Also:</b>
+<a href="rb-2779.htm">AH=3Dh</a> - <a href="rb-2797.htm">AH=41h</a> - <a href="rb-2990.htm">AH=56h</a> - <a href="rb-3137.htm">AH=60h</a>
+<PRE>
+<p>
+Format of DOS parameter list:
+<a name=table1686></a>
+Offset  Size    Description     (Table 01686)
+00h    WORD    AX
+02h    WORD    BX
+04h    WORD    CX
+06h    WORD    DX
+08h    WORD    SI
+0Ah    WORD    DI
+0Ch    WORD    DS
+0Eh    WORD    ES
+10h    WORD    reserved (0)
+12h    WORD    computer ID (0 = current system)
+14h    WORD    process ID (PSP segment on specified computer)
+</PRE>
+<p><b>Note:</b>
+Under Windows Enhanced mode, the computer ID is normally the virtual
+machine ID (see INT 2F/AX=1683h), though this can reportedly be
+changed by setting UniqueDOSPSP= in SYSTEM.INI
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3016.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3018.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

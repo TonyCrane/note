@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=5Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=5Ch - DOS 3.0+ - FLOCK - RECORD LOCKING - 
+AH = 5Ch
+AL = subfunction
+00h lock region of file
+01h unlock region of file
+BX = file handle
+CX:DX = start offset of region within file
+SI:DI = length of region in bytes
+Return: CF clear if successful
+CF set on error
+AX = error code (01h,06h,21h,24h) (see #01680)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=5Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3015.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3017.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.0+ - FLOCK - RECORD LOCKING</font></h3>
+<PRE>
+AH = 5Ch
+AL = subfunction
+00h lock region of file
+01h unlock region of file
+BX = file handle
+CX:DX = start offset of region within file
+SI:DI = length of region in bytes<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (01h,06h,21h,24h) <a href="rb-3012.htm#Table1680">(see #01680)</a>
+</PRE>
+<p><b>Notes:</b>
+Error returned unless SHARE or network installed.
+An unlock call must specify the same region as some prior lock call.
+Locked regions become entirely inaccessible to other processes.
+Duplicate handles created with AH=45h or AH=46h inherit locks, but
+handles inherited by child processes (see AH=4Bh) do not.
+Under DR DOS 3.41 and 5.0, if a process opens a file without the no-
+inherit flag and then starts a child, any locks set by the parent
+are ignored, and the child will only get an error if it tries to
+lock an area previously locked by the parent process.  Under Novell
+DOS 7, this function is fully supported as in MS-DOS.
+<p><b>See Also:</b>
+<a href="rb-2893.htm">AX=440Bh</a> - <a href="rb-3324.htm">AH=BCh</a> - <a href="rb-3326.htm">AH=BEh</a> - <a href="rb-4314.htm">INT 2F/AX=110Ah</a
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3015.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3017.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

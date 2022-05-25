@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F257h/SF=07h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F257h/SF=07h - Novell NetWare - MODIFY FILE OR SUBDIRECTORY DOS INFORMATION - 
+AX = F257h subfn 07h
+CX = length of request packet in bytes
+DX = 0000h (no reply packet)
+DS:SI - request packet (see #02389)
+ES:DI ignored
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F257h/SF=04h,AX=F257h/SF=08h
+Format of NetWare Modify File or Subdirectory DOS Information request packet:
+Offset Size  Description   (Table 02389)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F257h/SF=07h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3908.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3910.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - MODIFY FILE OR SUBDIRECTORY DOS INFORMATION</font></h3>
+<PRE>
+AX = F257h subfn 07h
+CX = length of request packet in bytes
+DX = 0000h (no reply packet)
+DS:SI -> request packet <a href="rb-3909.htm#Table2389">(see #02389)</a>
+ES:DI ignored<br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3906.htm">AX=F257h/SF=04h</a> - <a href="rb-3910.htm">AX=F257h/SF=08h</a>
+<PRE>
+<p>
+Format of NetWare "Modify File or Subdirectory DOS Information" request packet:
+<a name=table2389></a>
+Offset  Size    Description     (Table 02389)
+00h    BYTE    07h (subfunction "Modify File or Subdirectory DOS Information")
+01h    BYTE    name space <a href="rb-3908.htm#Table2387">(see #02387)</a>
+02h    BYTE    reserved for future use
+03h    WORD    search attributes
+05h    DWORD   modify DOS mask
+09h            Modify DOS information structure
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3908.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3910.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

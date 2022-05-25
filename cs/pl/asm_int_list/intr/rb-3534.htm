@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=71h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=71h - Novell NetWare - QUEUE SERVICES - SERVICE QUEUE JOB AND OPEN FILE - 
+AH = E3h subfn 71h
+DS:SI - request buffer (see #01986)
+ES:DI - reply buffer (see #01972)
+Return: AL = status (00h,96h,9Ch,D0h,D1h,D3h,D5h,D9h,DAh,FEh,FFh)
+(see #01961)
+Notes: this function is supported by Advanced NetWare 2.1+
+the caller must be on a workstation which is security-equivalent to a
+member of the queue's Q_USERS, Q_OPERATORS, or Q_SERVERS properties
+SeeAlso: AH=E3h/SF=6Fh,AH=E3h/SF=72h,AH=E3h/SF=73h,AH=E3h/SF=76h
+SeeAlso: AX=F217h/SF=71h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=71h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3533.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3535.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - SERVICE QUEUE JOB AND OPEN FILE</font></h3>
+<PRE>
+AH = E3h subfn 71h
+DS:SI -> request buffer <a href="rb-3534.htm#Table1986">(see #01986)</a>
+ES:DI -> reply buffer <a href="rb-3525.htm#Table1972">(see #01972)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,9Ch,D0h,D1h,D3h,D5h,D9h,DAh,FEh,FFh)
+<a href="rb-3521.htm#Table1961">(see #01961)</a>
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The caller must be on a workstation which is security-equivalent to a
+member of the queue's Q_USERS, Q_OPERATORS, or Q_SERVERS properties
+<p><b>See Also:</b>
+<a href="rb-3532.htm">AH=E3h/SF=6Fh</a> - <a href="rb-3535.htm">AH=E3h/SF=72h</a> - <a href="rb-3536.htm">AH=E3h/SF=73h</a> - <a href="rb-3539.htm"
+<p><b>See Also:</b>
+<a href="rb-3778.htm">AX=F217h/SF=71h</a>
+<PRE>
+<p>
+Format of NetWare "Service Queue Job and Open File" request buffer:
+<a name=table1986></a>
+Offset  Size    Description     (Table 01986)
+00h    WORD    0007h (length of following data)
+02h    BYTE    71h (subfunction "Service Queue Job and Open File")
+03h    DWORD   (big-endian) object ID of queue
+07h    WORD    (big-endian) target job type
+FFFFh any
+</PRE>
+<p><b>See Also:</b>
+#01972 - #01987
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3533.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3535.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

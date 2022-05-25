@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0007h/BX=0008h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0007h/BX=0008h - Banyan VINES - ENUMERATE StreetTalk NAMES - 
+AX = 0007h
+BX = 0008h
+DS:DX - enumerate block (see #03437)
+Return: AX = status (see also #03432)
+0000h successful
+0411h all matching names have been returned
+0412h some groups unavailable, all available matches returned
+Note:  each program using this call should continue until a nonzero status
+is returned; otherwise, some resources will not be freed for several
+hours
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0007h/BX=0008h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6776.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6778.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - ENUMERATE StreetTalk NAMES</font></h3>
+<PRE>
+AX = 0007h
+BX = 0008h
+DS:DX -> enumerate block <a href="rb-6777.htm#Table3437">(see #03437)</a><br>
+<p><b>Return:</b><br>AX = status (see also #03432)
+0000h successful
+0411h all matching names have been returned
+0412h some groups unavailable, all available matches returned
+</PRE>
+<p><b>Note:</b>
+Each program using this call should continue until a nonzero status
+is returned; otherwise, some resources will not be freed for several
+hours
+<p><b>See Also:</b>
+<a href="rb-6774.htm">AX=0007h/BX=0005h</a> - <a href="rb-6776.htm">AX=0007h/BX=0007h</a> - <a href="rb-6778.htm">AX=0007h/BX=0009h</a>
+<PRE>
+<p>
+Format of VINES enumerate block:
+<a name=table3437></a>
+Offset  Size    Description     (Table 03437)
+00h    WORD    return code
+02h    WORD    pointer to pattern string
+04h    WORD    enumerate type
+0064h (100) organization
+00C8h (200) group
+012Ch (300) item
+06h    WORD    enumerate class
+0000h unspecified (return all matching items)
+0001h user names
+0002h service names
+0003h list names
+0004h nicknames
+08h    WORD    pointer to category criteria block <a href="rb-6777.htm#Table3438">(see #03438)</a> or 0
+0Ah    WORD    pointer to array of 64-byte returned names
+0Ch    WORD    number of names returned
+0Eh  6 BYTEs   reserved for subsequent enumerated calls (set to zeros on first
+call)
+</PRE>
+<p><b>See Also:</b>
+#03436
+<PRE>
+<p>
+Format of category criteria block:
+<a name=table3438></a>
+Offset  Size    Description     (Table 03438)
+00h    WORD    exclude flag
+0000h return only items with the specified categories
+0001h return all items except those with the given categories
+02h    WORD    number of categories (max 5, 0000h = match all categories)
+04h    WORD    category 1 value <a href="rb-6777.htm#Table3439">(see #03439)</a>
+06h    WORD    category 2 value
+08h    WORD    category 3 value
+0Ah    WORD    category 4 value
+0Ch    WORD    category 5 value
+</PRE>
+<p><b>See Also:</b>
+#03437
+<PRE>
+<p>
+<a name=table3439></a>
+(Table 03439)
+Values for common VINES service categories:
+0001h  server service
+0002h  file service
+0003h  print service
+0004h  mail service
+0005h  StreetTalk
+0006h  time service
+0007h  FTP service
+0008h  semaphore service
+0009h  3270/SNA service
+000Ah  terminal emulation service
+000Bh  asynchronous terminal service
+000Ch  NETBIOS service
+000Dh  PC-based service
+000Eh  BSC service
+000Fh  APPC service
+0010h  NM service
+0011h  VS service
+0012h  POP service
+0013h  AFP service
+0014h  VCS service
+0015h  EMS service
+0016h  LN service
+0017h  BS service
+0023h  RIPL service
+0064h  ADM service
+</PRE>
+<p><b>See Also:</b>
+#03438
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6776.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6778.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

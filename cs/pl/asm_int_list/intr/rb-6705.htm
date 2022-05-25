@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AH=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AH=00h - Banyan VINES - CALL A SERVICE - 
+AH = 00h
+AL = service ID (1..16)
+other registers vary by service
+Return: AX = status (see #03325)
+Desc:  Calls an adapter driver or redirector service. The service handler
+pointers are stored at offset 0010h in the code segment of the
+BANV interrupt handler (see #03323).
+Note:  Banyan can use any interrupt from 60h through 66h. The Banyan
+interrupt handler is identified by the string BANV in the four
+bytes immediately preceding the interrupt handler
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AH=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6704.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6706.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - CALL A SERVICE</font></h3>
+<PRE>
+AH = 00h
+AL = service ID (1..16)
+other registers vary by service<br>
+<p><b>Return:</b><br>AX = status (see #03325)
+</PRE>
+<p><b>Desc:</b>
+Calls an adapter driver or redirector service. The service handler
+pointers are stored at offset 0010h in the code segment of the
+BANV interrupt handler <a href="rb-6705.htm#Table3323">(see #03323)</a>.
+<p><b>Note:</b>
+Banyan can use any interrupt from 60h through 66h.  The Banyan
+interrupt handler is identified by the string "BANV" in the four
+bytes immediately preceding the interrupt handler
+<p><b>See Also:</b>
+<a href="rb-6797.htm">AH=01h</a> - <a href="rb-6801.htm">AH=03h</a>
+<PRE>
+<p>
+Format of the BANV code segment (revision 5.53):
+<a name=table3323></a>
+Offset  Size    Description     (Table 03323)
+00h 16 BYTEs   reserved
+10h 16 DWORDs  far pointers to the service handlers (0 = not installed)
+50h    DWORD   far pointer to last called service
+54h    WORD    VINES revision
+56h    DWORD   VINES revision long
+5Ah    WORD    VINES revision (lower bound)
+5Ch    DWORD   VINES revision (lower bound) long
+60h    WORD    VINES revision (upper bound)
+62h    DWORD   VINES revision (upper bound) long
+66h    WORD    end of PCCONFIG area
+68h    WORD    start of PCCONFIG area
+6Ah  4 BYTEs   BANV interrupt identifier ("BANV")
+6Eh  N BYTEs   BANV interrupt service
+</PRE>
+<p><b>See Also:</b>
+#03324
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6704.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6706.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

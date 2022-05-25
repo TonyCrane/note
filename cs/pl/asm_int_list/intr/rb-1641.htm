@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=D801h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=D801h - EISA SYSTEM ROM - READ FUNCTION CONFIGURATION INFORMATION - 
+AX = D801h
+CH = function number to read
+CL = slot number (including embedded and virtual)
+DS:SI - 320-byte buffer for standard configuration data block
+Return: CF clear if successful
+AH = 00h
+DS:SI buffer filled
+CF set on error
+AH = error code (80h-83h,86h,87h) (see #00539)
+BX destroyed
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=D801h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1640.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1642.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>EISA SYSTEM ROM - READ FUNCTION CONFIGURATION INFORMATION</font></h3>
+<PRE>
+AX = D801h
+CH = function number to read
+CL = slot number (including embedded and virtual)
+DS:SI -> 320-byte buffer for standard configuration data block<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h
+DS:SI buffer filled
+CF set on error
+AH = error code (80h-83h,86h,87h) <a href="rb-1640.htm#Table539">(see #00539)</a>
+BX destroyed
+</PRE>
+<p><b>Note:</b>
+Call with AL=81h if using 32-bit CS addressing mode instead of 16-bit.
+This function is also supported by the Compaq SystemPro 486, but it
+uses more than 1297 bytes of stack.
+<p><b>BUG:</b>
+Some implementations appear to destroy the DF direction flag;
+the Novell DOS 7+ memory managers explicitly clear it afterwards.
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-e.htm">
+E</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1640.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1642.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

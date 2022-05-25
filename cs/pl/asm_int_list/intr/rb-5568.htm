@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=DB16h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=DB16h - ZyXEL ZFAX v4.01 - QUOTE PREVIOUS STATUS - 
+AX = DB16h
+Return: DX:AX - previous receive state transaction log (see #03097)
+BX = type (00h incoming FAX, 01h incoming data, 02h incoming voice)
+SeeAlso: AX=DB00hZFAX,AX=DB11h,AX=DB17h
+Format of ZFAX transaction log receive state:
+Offset Size  Description   (Table 03097)
+00h  WORD  year
+02h  WORD  date
+04h  WORD  time
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=DB16h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5567.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5569.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ZyXEL ZFAX v4.01 - QUOTE PREVIOUS STATUS</font></h3>
+<PRE>
+AX = DB16h<br>
+<p><b>Return:</b><br>DX:AX -> previous receive state transaction log (see #03097)
+BX = type (00h incoming FAX, 01h incoming data, 02h incoming voice)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5546.htm">AX=DB00h"ZFAX"</a> - <a href="rb-5563.htm">AX=DB11h</a> - <a href="rb-5569.htm">AX=DB17h</a>
+<PRE>
+<p>
+Format of ZFAX transaction log receive state:
+<a name=table3097></a>
+Offset  Size    Description     (Table 03097)
+00h    WORD    year
+02h    WORD    date
+04h    WORD    time
+06h    WORD    extension number
+<p><b>08h    WORD    type:</b><br>00h incoming FAX, 01h outgoing FAX, 02h voice message
+<p><b>0Ah    WORD    status:</b><br>00h normal, 01h remote delete
+0Ch 125 BYTEs  filename
+89h 24 BYTEs   caller ID
+A1h 20 BYTEs   FAX number
+B5h 20 BYTEs   remote FAX ID
+C9h    WORD    error code
+CBh    WORD    connection direction (00h transmit, 01h receive)
+CDh    BYTE    connection time minutes
+CEh    BYTE    connection time seconds
+CFh    BYTE    ???
+D0h    WORD    connection speed (24, 48, 72, 96, 12, 144)
+D2h    WORD    connection page size (A4, B4, A3)
+D4h    WORD    connection coding scheme (1-DN, 1-DH, 2-DN, 2-DH)
+D6h    WORD    page count
+</PRE>
+<p>
+<b>Category: <a href="cat-015.htm">
+Fax</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-z.htm">
+Z</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5567.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5569.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

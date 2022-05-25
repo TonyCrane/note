@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<TITLE>Int 25/AX=CDCDh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 25/AX=CDCDh - Stacker - GET DEVICE DRIVER ADDRESS - 
+AX = CDCDh
+DS:BX - buffer for address (see #02549)
+CX = 0001h
+DX = 0000h
+Return: AX = CDCDh if Stacker installed
+DS:BX buffer filled
+Note:  not supported by Stacker Anywhere; to obtain the Stacker device
+driver address and to detect drives controlled by all versions
+of Stacker, INT 21/AX=4404hStacker or lookup via the CDS and DPB
+should be preferred (see INT 21/AH=52h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 25/AX=CDCDh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4114.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4116.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Stacker - GET DEVICE DRIVER ADDRESS</font></h3>
+<PRE>
+AX = CDCDh
+DS:BX -> buffer for address <a href="rb-4115.htm#Table2549">(see #02549)</a>
+CX = 0001h
+DX = 0000h<br>
+<p><b>Return:</b><br>AX = CDCDh if Stacker installed
+DS:BX buffer filled
+</PRE>
+<p><b>Note:</b>
+Not supported by Stacker Anywhere; to obtain the Stacker device
+driver address and to detect drives controlled by all versions
+of Stacker, INT 21/AX=4404h"Stacker" or lookup via the CDS and DPB
+should be preferred (see INT 21/AH=52h).
+Stacker Anywhere does not link its built-in device driver into
+the standard device driver chain, but it can be found via CDS/DPB
+<p><b>See Also:</b>
+<a href="rb-2872.htm">INT 21/AX=4404h"Stacker"</a>
+<PRE>
+<p>
+Format of Stacker v2+ driver address buffer:
+<a name=table2549></a>
+Offset  Size    Description     (Table 02549)
+00h    WORD    signature CDCDh
+02h    WORD    ??? 0001h
+04h    DWORD   pointer to Stacker signature at device driver offset 1Ah
+<a href="rb-4115.htm#Table2550">(see #02550)</a>
+<p>
+Format of Stacker v2+ device driver:
+<a name=table2550></a>
+Offset  Size    Description     (Table 02550)
+00h    DWORD   pointer to next driver, offset=FFFFh if last driver
+FFFFh:FFFFh for Stacker Anywhere
+04h    WORD    device attributes <a href="rb-0000.htm#Table0"></a>(see #01647,#01648)
+06h    WORD    device strategy entry point
+08h    WORD    device interrupt entry point
+0Ah    BYTE    number of subunits (drives) supported by driver
+0 for Stacker Anywhere
+0Bh  7 BYTEs   signature "STAC-CD" for Stacker and Stacker Anywhere
+12h  7 BYTEs   ???
+19h    BYTE    always = 01h ?? (Stacker Anywhere points here)
+1Ah    WORD    signature A55Ah (all other Stacker versions point here)
+1Ch    WORD    Stacker version * 64h
+0C8h = 200, 012Ch = 300, 0190h = 400 (also Stacker Anywhere)
+1Eh    WORD    offset of volume-specific information offset table
+(list of WORDs, one per drive, containing offsets to various
+information)
+20h 56 BYTEs   n/a
+58h    BYTE    volume number, set after INT 21/AX=4404h, INT 21/AX=4408h
+(use to index into volume-specific info offset table,
+should be set to FFh before and tested for change after)
+59h 19 BYTEs   n/a
+6Ch  4 BYTEs   ASCII string "SWAP"
+<p><b>70h 26 BYTEs   drive mapping table (one byte for each drive A:</b><br>Through Z:)
+(only used for drives swapped by SSWAP.COM; other drives
+compressed by Stacker can be found with the standard device
+driver header signature (see INT 21/AH=52h)
+---Stacker 4, Stacker Anywhere---
+8Ah 40 BYTEs   ???
+B2h  4 BYTEs   ASCII string "SWP2"
+B6h 26 BYTEs   drive table ???
+D0h 150 BYTEs  ???
+166h 60 BYTEs   LZSINFO structure <a href="rb-0000.htm#Table0"></a>(see #02808 at INT 2F/AX=4A12h)
+</PRE>
+<p><b>See Also:</b>
+#02551 - #01646 at INT 21/AH=52h
+<PRE>
+<p>
+Format of Stacker boot record:
+<a name=table2551></a>
+Offset  Size    Description     (Table 02551)
+1F0h  8 BYTEs   Stacker signature (first byte is CDh)
+1F8h    DWORD   pointer to start of Stacker device driver
+1FCh    WORD    Stacker volume number
+1FEh    WORD    ???
+</PRE>
+<p><b>See Also:</b>
+#02550
+<p>
+<b>Category: <a href="cat-017.htm">
+File/Disk Compression</a>
+- <a href="int-25.htm">
+Int 25h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4114.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4116.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

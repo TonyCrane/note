@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=0Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=0Ah - Novell NetWare - CONNECTION SERVICES - ENTER LOGIN AREA - 
+AH = E3h subfn 0Ah
+DS:SI - request buffer (see #01894)
+ES:DI - reply buffer (see #01895)
+Return: AL = status
+00h successful
+Desc:  change the login directory for the calling workstation
+Note:  this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+SeeAlso: AH=D7h,AH=E3h/SF=14h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=0Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3486.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3488.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - CONNECTION SERVICES - ENTER LOGIN AREA</font></h3>
+<PRE>
+AH = E3h subfn 0Ah
+DS:SI -> request buffer <a href="rb-3487.htm#Table1894">(see #01894)</a>
+ES:DI -> reply buffer <a href="rb-3487.htm#Table1895">(see #01895)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Desc:</b>
+Change the login directory for the calling workstation
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3390.htm">AH=D7h</a> - <a href="rb-3496.htm">AH=E3h/SF=14h</a>
+<PRE>
+<p>
+Format of NetWare "Enter Login Area" request buffer:
+<a name=table1894></a>
+Offset  Size    Description     (Table 01894)
+00h    WORD    length of following data (max 102h)
+02h    BYTE    0Ah (subfunction "Enter Login Area")
+03h    BYTE    number of local drives
+04h    BYTE    length of subdirectory name (00h-FFh)
+05h  N BYTEs   name of subdirectory under SYS:LOGIN where to find the login
+utility
+</PRE>
+<p><b>See Also:</b>
+#01895
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1895></a>
+Offset  Size    Description     (Table 01895)
+00h    WORD    (call) 0000h (no data returned)
+</PRE>
+<p><b>See Also:</b>
+#01891 - #01894 - #01898
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3486.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3488.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

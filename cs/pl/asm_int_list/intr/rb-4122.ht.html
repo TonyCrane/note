@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 28
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 28 - DOS 2+ - DOS IDLE INTERRUPT - 
+SS:SP = top of MS-DOS stack for I/O functions
+Return: all registers preserved
+Desc:  This interrupt is invoked each time one of the DOS character input
+functions loops while waiting for input. Since a DOS call is in
+progress even though DOS is actually idle during such input waits,
+hooking this function is necessary to allow a TSR to perform DOS
+calls while the foreground program is waiting for user input. The
+INT 28h handler may invoke any INT 21h function except functions
+00h through 0Ch.
+Notes: under DOS 2.x, the critical error flag (the byte immediately after the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 28
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4121.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4123.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - DOS IDLE INTERRUPT</font></h3>
+<PRE>
+SS:SP = top of MS-DOS stack for I/O functions<br>
+<p><b>Return:</b><br>All registers preserved
+</PRE>
+<p><b>Desc:</b>
+This interrupt is invoked each time one of the DOS character input
+functions loops while waiting for input.  Since a DOS call is in
+progress even though DOS is actually idle during such input waits,
+hooking this function is necessary to allow a TSR to perform DOS
+calls while the foreground program is waiting for user input.  The
+INT 28h handler may invoke any INT 21h function except functions
+00h through 0Ch.
+<p><b>Notes:</b>
+Under DOS 2.x, the critical error flag (the byte immediately after the
+InDOS flag) must be set in order to call DOS functions 50h/51h from
+the INT 28h handler without destroying the DOS stacks..
+Calls to INT 21/AH=3Fh,40h from within an INT 28 handler may not use a
+handle which refers to CON.
+At the time of the call, the InDOS flag (see INT 21/AH=34h) is normally
+set to 01h; if larger, DOS is truly busy and should not be reentered.
+The default handler is an IRET instruction.
+Supported in OS/2 compatibility box.
+The _MS-DOS_Programmer's_Reference_ for DOS 5.0 incorrectly documents
+this interrupt as superseded.
+The performance of NetWare Lite servers (and probably other peer-to-
+peer networks) can be dramatically improved by calling INT 28
+frequently from an application's idle loop
+<p><b>See Also:</b>
+<a href="rb-2739.htm">INT 21/AH=34h</a> - <a href="rb-4143.htm">INT 2A/AH=84h</a> - <a href="rb-4530.htm">INT 2F/AX=1680h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-28.htm">
+Int 28h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4121.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4123.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

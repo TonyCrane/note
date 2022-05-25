@@ -1,0 +1,145 @@
+<HTML>
+<HEAD>
+<TITLE>Int F1
+</TITLE>
+<META NAME="Description" CONTENT="
+Int F1 - Common ISDN API (CAPI) v2.0 - CAPI_GET_PROFILE - GET CAPABILITIES - 
+AL = F3h
+AH = CAPI version number * 10 (14h for v2.0)
+ES:BX - 64-byte buffer for CAPI capabilities (see #04074)
+CX = controller number (01h-06h) or 0000h to get number of controllers
+Return: AX = status (0000h,11xxh) (see #04070)
+ES:BX buffer filled if successful
+Notes: the caller is required to provide at least 512 bytes of stack space
+SeeAlso: INT F1/AL=01h,INT F1/AL=F0h,INT F1/AL=F2h,INT F1/AH=FFh
+Format of CAPI v2.0 capabilities:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int F1
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8690.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8692.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Common ISDN API (CAPI) v2.0 - CAPI_GET_PROFILE - GET CAPABILITIES</font></h3>
+<PRE>
+AL = F3h
+AH = CAPI version number * 10 (14h for v2.0)
+ES:BX -> 64-byte buffer for CAPI capabilities <a href="rb-8691.htm#Table4074">(see #04074)</a>
+CX = controller number (01h-06h) or 0000h to get number of controllers<br>
+<p><b>Return:</b><br>AX = status (0000h,11xxh) (see #04070)
+ES:BX buffer filled if successful
+</PRE>
+<p><b>Notes:</b>
+The caller is required to provide at least 512 bytes of stack space
+<p><b>See Also:</b>
+INT F1/AL=01h - INT F1/AL=F0h - INT F1/AL=F2h - <a href="rb-8692.htm">INT F1/AH=FFh</a>
+<PRE>
+<p>
+Format of CAPI v2.0 capabilities:
+<a name=table4074></a>
+Offset  Size    Description     (Table 04074)
+00h    WORD    number of installed controllers
+02h    WORD    number of supported B channels
+04h    DWORD   global options <a href="rb-8691.htm#Table4075">(see #04075)</a>
+08h    DWORD   B1 protocol support flags <a href="rb-8691.htm#Table4076">(see #04076)</a>
+0Ch    DWORD   B2 protocol support flags <a href="rb-8691.htm#Table4077">(see #04077)</a>
+10h    DWORD   B3 protocol support flags <a href="rb-8691.htm#Table4078">(see #04078)</a>
+14h 24 BYTEs   reserved for CAPI use
+2Ch 20 BYTEs   vendor-specific information
+<p>
+Bitfields for CAPI v2.0 global options:
+<a name=table4075></a>
+Bit(s)  Description     (Table 04075)
+0      internal controller supported
+1      external controller supported
+2      handset supported (only if bit 1 also set)
+3      DTMF supported
+4-31   reserved (0)
+</PRE>
+<p><b>See Also:</b>
+#04074
+<PRE>
+<p>
+Bitfields for CAPI v2.0 B1 protocol support:
+<a name=table4076></a>
+Bit(s)  Description     (Table 04076)
+0      64k bps with HDLC framing (required, always set)
+1      64k bps bit-transparent operation with network byte framing
+2      V.110 asynchronous with start/stop byte framing
+3      V.110 synchronous with HDLC framing
+4      T.30 modem for group 3 FAX
+5      64k bps inverted with HDLC framing
+6      56k bps bit-transparent operation with network byte framing
+7-31   reserved (0)
+</PRE>
+<p><b>See Also:</b>
+#04074
+<PRE>
+<p>
+Bitfields for CAPI v2.0 B2 protocol support:
+<a name=table4077></a>
+Bit(s)  Description     (Table 04077)
+0      ISO 7776 (X.75 SLP) (required, always set)
+1      transparent
+2      SDLC
+3      Q.921 LAPD (D-channel X.25)
+4      T.30 for group 3 FAX
+5      point-to-point protocol (PPP)
+6      transparent (ignoring B1 framing errors)
+7-31   reserved (0)
+</PRE>
+<p><b>See Also:</b>
+#04074
+<PRE>
+<p>
+Bitfields for CAPI v2.0 B3 protocol support:
+<a name=table4078></a>
+Bit(s)  Description     (Table 04078)
+0      transparent (required, always set)
+1      T.90NL with T.70NL compatibility
+2      ISO 8208 (X.25 DTE-DTE)
+3      X.25 DCE
+4      T.30 for group 3 FAX
+5-31   reserved (0)
+</PRE>
+<p><b>See Also:</b>
+#04074
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-F1.htm">
+Int F1h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8690.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8692.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=02h - Novell NetWare v4+ - GET SERVER INFORMATION - 
+AX = F27Bh subfn 02h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02492)
+ES:DI - reply buffer (see #02493)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+SeeAlso: AX=F27Bh/SF=01h
+Format of NetWare Get Server Information request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3973.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3975.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET SERVER INFORMATION</font></h3>
+<PRE>
+AX = F27Bh subfn 02h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3974.htm#Table2492">(see #02492)</a>
+ES:DI -> reply buffer <a href="rb-3974.htm#Table2493">(see #02493)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3973.htm">AX=F27Bh/SF=01h</a>
+<PRE>
+<p>
+Format of NetWare "Get Server Information" request buffer:
+<a name=table2492></a>
+Offset  Size    Description     (Table 02492)
+00h    WORD    0001h (length of following data)
+02h    BYTE    02h (subfunction "Get Server Information")
+</PRE>
+<p><b>See Also:</b>
+#02493
+<PRE>
+<p>
+Format of NetWare "Get Server Information" reply buffer:
+<a name=table2493></a>
+Offset  Size    Description     (Table 02493)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    DWORD   current NCP stations in use
+0Ch    DWORD   peak NCP stations in use
+10h    DWORD   total NCP requests
+14h    DWORD   server utilization
+18h    DWORD   number of cancelled replies
+1Ch    DWORD   "writeHeldOffCount"
+20h    DWORD   "writeHeldOffWithDuplicateRequest"
+24h    DWORD   number of invalid request types
+28h    DWORD   "beingAbortedCount"
+2Ch    DWORD   "alreadyDoingReallocCount"
+30h    DWORD   "deAllocInvalidSlotCount"
+34h    DWORD   "deAllocBeingProcessedCount"
+38h    DWORD   "deAllocForgedPacketCount"
+3Ch    DWORD   "startStationErrorCount"
+40h    DWORD   number of invalid slot numbers
+44h    DWORD   "beingProcessedCount"
+48h    DWORD   number of forged packets
+4Ch    DWORD   number still transmitting
+50h    DWORD   "reExecuteRequestCount"
+54h    DWORD   number of invalid sequence numbers
+58h    DWORD   "duplicateIsBeingSentAlreadyCnt"
+5Ch    DWORD   number of positive acknowledgements sent
+60h    DWORD   number of duplicate replies sent
+64h    DWORD   number of times out of memory for station control
+68h    DWORD   number of times out of available connections
+6Ch    DWORD   "reallocSlotCount"
+70h    DWORD   "reallocSlotCameTooSoonCount"
+74h    WORD    number of times maximum hop count exceeded
+76h    WORD    number of unknown networks
+78h    WORD    "NoSpaceForService"
+7Ah    WORD    number of times out of receive buffers
+7Ch    WORD    "notMyNetwork"
+7Eh    DWORD   number of NetBIOS packets propagated
+82h    DWORD   total number of packets serviced
+86h    DWORD   total number of packets routed
+</PRE>
+<p><b>See Also:</b>
+#02492
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3973.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3975.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

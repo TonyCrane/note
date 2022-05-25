@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=C9h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=C9h - Novell NetWare - FILE SERVER - GET FILE SERVER DESCRIPTION STRINGS - 
+AH = E3h subfn C9h
+DS:SI - request buffer (see #02010)
+ES:DI - reply buffer (see #02011)
+Return: AL = status
+00h successful
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must be attached to the file server
+SeeAlso: AH=E3h/SF=11h,AH=E3h/SF=CDh,AH=E3h/SF=E8h,AX=F217h/SF=C9h
+Format of NetWare Get File Server Description Strings request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=C9h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3548.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3550.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET FILE SERVER DESCRIPTION STRINGS</font></h3>
+<PRE>
+AH = E3h subfn C9h
+DS:SI -> request buffer <a href="rb-3549.htm#Table2010">(see #02010)</a>
+ES:DI -> reply buffer <a href="rb-3549.htm#Table2011">(see #02011)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must be attached to the file server
+<p><b>See Also:</b>
+<a href="rb-3493.htm">AH=E3h/SF=11h</a> - <a href="rb-3553.htm">AH=E3h/SF=CDh</a> - <a href="rb-3579.htm">AH=E3h/SF=E8h</a> - <a href="rb-3805.htm"
+<PRE>
+<p>
+Format of NetWare "Get File Server Description Strings" request buffer:
+<a name=table2010></a>
+Offset  Size    Description     (Table 02010)
+00h    WORD    0001h (length of following data)
+02h    BYTE    C9h (subfunction "Get File Server Description Strings")
+</PRE>
+<p><b>See Also:</b>
+#02011 - #02225 at AX=F217h/SF=C9h
+<PRE>
+<p>
+Format of NetWare "Get File Server Description Strings" reply buffer:
+<a name=table2011></a>
+Offset  Size    Description     (Table 02011)
+00h    WORD    (call) 0200h (size of following results buffer)
+02h    var     ASCIZ name of company distributing this copy of NetWare.
+Var     ASCIZ version and revision
+9 BYTEs   ASCIZ revision date (mm/dd/yy).
+Var     ASCIZ copyright notice
+</PRE>
+<p><b>See Also:</b>
+#02010 - #02225 at AX=F217h/SF=C9h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3548.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3550.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F256h/SF=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F256h/SF=04h - Novell NetWare - ENUMERATE EXTENDED ATTRIBUTES - 
+AX = F256h subfn 04h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02365)
+ES:DI - reply buffer (see #02366)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F256h/SF=01h,AX=F256h/SF=02h,AX=F256h/SF=05h
+Format of NetWare Enumerate Extended Attributes request packet:
+Offset Size  Description   (Table 02365)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F256h/SF=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3900.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3902.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - ENUMERATE EXTENDED ATTRIBUTES</font></h3>
+<PRE>
+AX = F256h subfn 04h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3901.htm#Table2365">(see #02365)</a>
+ES:DI -> reply buffer <a href="rb-3901.htm#Table2366">(see #02366)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3898.htm">AX=F256h/SF=01h</a> - <a href="rb-3899.htm">AX=F256h/SF=02h</a> - <a href="rb-3902.htm">AX=F256h/SF=05h</a>
+<PRE>
+<p>
+Format of NetWare "Enumerate Extended Attributes" request packet:
+<a name=table2365></a>
+Offset  Size    Description     (Table 02365)
+00h    BYTE    04h (subfunction "Enumerate Extended Attributes")
+01h    WORD    flags <a href="rb-3902.htm#Table2372">(see #02372)</a>
+03h  8 BYTEs   extended attribute handle structure <a href="rb-3902.htm#Table2373">(see #02373)</a>
+0Bh    DWORD   inspect size
+0Fh    WORD    enumeration sequence
+11h    WORD    key length
+13h  N BYTEs   key
+</PRE>
+<p><b>See Also:</b>
+#02366
+<PRE>
+<p>
+Format of NetWare "Enumerate Extended Attributes" reply packet:
+<a name=table2366></a>
+Offset  Size    Description     (Table 02366)
+00h    DWORD   error code
+04h    DWORD   total extended attributes
+08h    DWORD   total extended attribute data size
+0Ch    DWORD   total extended attribute key size
+10h    DWORD   new extended attribute handle
+---information level 0---
+14h  2 WORDs   reserved
+---information level 1---
+14h    WORD    number of enumerated extended attribute structures
+16h    var     EA structure level 1
+---information level 6---
+14h    WORD    reserved
+16h    var     EA structure level 6
+---information level 7---
+14h    WORD    number of enumerated extended attribute structures
+16h    var     EA structure level 7
+</PRE>
+<p><b>See Also:</b>
+#02365
+<PRE>
+<p>
+Format of NetWare Extended Attribute structure level 1:
+<a name=table2367></a>
+Offset  Size    Description     (Table 02367)
+00h    DWORD   length of EA value
+04h    WORD    length of EA key
+06h    DWORD   access flag
+0Ah  N BYTEs   key
+</PRE>
+<p><b>See Also:</b>
+#02366 - #02368 - #02369
+<PRE>
+<p>
+Format of NetWare Extended Attribute structure level 6:
+<a name=table2368></a>
+Offset  Size    Description     (Table 02368)
+00h    DWORD   length of EA value
+04h    WORD    length of EA key
+06h    DWORD   access flag
+0Ah    DWORD   key extents
+0Eh    DWORD   value extents
+12h  N BYTEs   key
+</PRE>
+<p><b>See Also:</b>
+#02366 - #02367 - #02369
+<PRE>
+<p>
+Format of NetWare Extended Attribute structure level 7:
+<a name=table2369></a>
+Offset  Size    Description     (Table 02369)
+00h    BYTE    key length
+01h  N BYTEs   key.
+BYTE    00h
+</PRE>
+<p><b>See Also:</b>
+#02366 - #02367 - #02368
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3900.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3902.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

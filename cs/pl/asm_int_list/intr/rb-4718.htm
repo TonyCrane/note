@@ -1,0 +1,135 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=2780h/CL=03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=2780h/CL=03h - Novell DOS 7 - EMM386.EXE - MULTITASKING API - MEMORY - 
+AX = 2780h
+CL = 03h (module: Memory)
+CH = subfunction
+00h ???
+01h F_PdirGet ???
+02h F_PdirSet ???
+03h Z_PageAlloc allocate a given page of memory
+04h F_PageAllocG allocate global page???
+05h F_PageAllocI allocate instance page???
+06h F_PtblRead get page table???
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=2780h/CL=03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4717.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4719.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell DOS 7 - EMM386.EXE - MULTITASKING API - MEMORY</font></h3>
+<PRE>
+AX = 2780h.
+<p><b>CL = 03h (module:</b><br>Memory).
+CH = subfunction
+00h ???
+01h "F_PdirGet" ???
+02h "F_PdirSet" ???
+03h "Z_PageAlloc" allocate a given page of memory
+04h "F_PageAllocG" allocate global page???
+05h "F_PageAllocI" allocate instance page???
+06h "F_PtblRead" get page table???
+07h "F_PtrlWrite" select page table???
+08h "Z_PtblGet" read page table
+09h "Z_PtblSet" change page table
+0Ah "Z_PagesAlloc" allocate pages of memory
+0Bh "Z_PageFree" free a given page of memory
+0Ch "Z_MemAlloc" allocate a memory block
+0Dh "Z_MemFree" release memory block
+0Eh "Z_MemSizeGet" get size of memory block
+0Fh "Z_MemResize" resize a memory block
+10h "Z_DescAlloc" allocate a memory descriptor
+11h "Z_DescFree" release a memory descriptor
+12h "Z_DescGet" get details on memory descriptor
+13h "Z_DescSet" set a memory descriptor
+14h "Z_MemDescAlloc" allocate a memory block and its descriptor
+15h "Z_MemDescFree" release a memory block and its descriptor
+16h "Z_MemDescSizeGet" get size of memory block
+17h "Z_MemDescResize" resize a memory block
+18h "Z_PageLock" lock a page, with existing contents
+19h "Z_PageUnlock" unlock a page
+1Ah "Z_PageLockAny" lock a page, contents undefined
+1Bh "Z_PageUnlockReuse" unlock page, reuse phsyical memory
+1Ch "Z_PageLockNone" lock a page, no physical memory assigned
+1Dh "Z_PageUnlockNone" unlock a page, don't reuse physical memory
+1Eh "F_CallRealRaw" call real mode (SS:ESP supplied)
+1Fh "F_IntRealRaw" perform real-mode interrupt (SS:ESP supplied)
+20h "F_CallReal" call real mode with RETF frame
+21h "F_IntReal" perform real-mode interrupt
+22h "F_PagedCallReal" paged real-mode call
+23h "F_PagedIntReal" paged real-mode interrupt
+24h "F_CallIretReal" call real mode with IRET frame
+25h "F_CallIretRealRaw" call real mode with IRET (SS:ESP supplied)
+26h "F_CallProt16" call 16-bit protected-mode code
+27h "F_CallProt32" call 32-bit protected-mode code
+28h "F_IAddPage" add kernel instance data
+29h "Z_PageDomLock" lock page in specific domain, preserve contents
+2Ah "Z_PatgeDomUnlock" unlock page in specific domain
+2Bh "Z_PageDomLockAny" lock page in specific domain, undef contents
+2Ch "Z_PageDomUnlockReuse" unlock page in spec. domain,reuse ph.mem
+2Dh "Z_PageDomLockNone" lock page in spec. domain, no phys memory
+2Eh "Z_PageDomUnlockNone" unlock page in spec. domain, no phys. mem
+2Fh "Z_GateAlloc" allocate a gate
+30h "Z_GateFree" release a gate
+31h "X_MemFreeGet" get total free memory
+32h "X_MemTopGet" get highest memory address
+33h "X_MemTotalGet" get total memory size
+34h "F_DescRead" ???
+35h "F_DescWrite" ???
+36h "F_GetStack" ???
+37h "F_SetStack" ???<br>
+<p><b>Return:</b><br>CX = status (most subfunctions)
+(E)AX and/or (E)BX contain return values, depending on function
+</PRE>
+<p><b>Notes:</b>
+Called by DPMS.EXE and EMM386.EXE.
+This API is only available if AX=12FFh/BX=0EDCh returns successfully;
+because the request is handled on the initial trap to the memory
+manager caused by INT instructions, this API must be invoked with
+an actual INT 2F instruction instead of some simulation such as a
+far call to the address in the interrupt vector table
+<p><b>See Also:</b>
+<a href="rb-4452.htm">AX=12FFh/BX=0EDCh</a> - <a href="rb-4716.htm">AX=2780h/CL=01h</a> - <a href="rb-4717.htm">AX=2780h/CL=02h</a> - <a href=http://www.ctyme.com/intr/rb-
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4717.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4719.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

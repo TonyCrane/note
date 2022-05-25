@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AH=13h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AH=13h - DOS 3.2+ - SET DISK INTERRUPT HANDLER - 
+AH = 13h
+DS:DX - interrupt handler disk driver calls on read/write
+ES:BX = address to restore INT 13 to on system halt (exit from root
+shell) or warm boot (INT 19)
+Return: DS:DX set by previous invocation of this function
+ES:BX set by previous invocation of this function
+Notes: IO.SYS hooks INT 13 and inserts one or more filters ahead of the
+original INT 13 handler. The first is for disk change detection
+on floppy drives, the second is for tracking formatting calls and
+correcting DMA boundary errors, the third is for working around
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AH=13h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4452.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4454.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.2+ - SET DISK INTERRUPT HANDLER</font></h3>
+<PRE>
+AH = 13h
+DS:DX -> interrupt handler disk driver calls on read/write
+ES:BX = address to restore INT 13 to on system halt (exit from root
+shell) or warm boot (INT 19)<br>
+<p><b>Return:</b><br>DS:DX set by previous invocation of this function
+ES:BX set by previous invocation of this function
+</PRE>
+<p><b>Notes:</b>
+IO.SYS hooks INT 13 and inserts one or more filters ahead of the
+original INT 13 handler.  The first is for disk change detection
+on floppy drives, the second is for tracking formatting calls and
+correcting DMA boundary errors, the third is for working around
+problems in a particular version of IBM's ROM BIOS.
+Before the first call, ES:BX points at the original BIOS INT 13; DS:DX
+also points there unless IO.SYS has installed a special filter for
+hard disk reads (on systems with model byte FCh and BIOS date
+"01/10/84" only), in which case it points at the special filter.
+Most DOS 3.2+ disk access is via the vector in DS:DX, although a few
+functions are still invoked via an INT 13 instruction.
+During Windows 3.1 startup this function seems to be used to
+temporarily point DOS to a dummy handler in WDCTRL.386 which always
+halts the system with a fatal error message.  If DS hasn't changed
+on return from the function, Windows will display the error message
+"Invalid DOS version"..
+This is a dangerous security loophole for any virus-monitoring software
+which does not trap this call ("INT13", "Nomenklatura", and many
+Bulgarian viruses are known to use it to get the original ROM entry
+point).
+The preloadable Novell DOS 7+ SECURITY.BIN driver $SECURE$ traps
+this call.
+<p><b>BUG:</b>
+Novell DOS 7 IBMBIO.COM before 1995-05-08 trashed AX on return from
+this function. VGACOPY by Thomas M”nkemeier's VGA Software GmbH
+crashed due to this.  Later releases of Novell DOS 7 preserved the
+contents of the AX register.
+<p><b>See Also:</b>
+<a href="rb-0606.htm">INT 13/AH=01h</a> - <a href="rb-2270.htm">INT 19</a> - <a href="rb-8327.htm">INT 9D"VIRUS"</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4452.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4454.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

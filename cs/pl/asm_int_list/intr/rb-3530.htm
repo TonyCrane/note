@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=6Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=6Dh - Novell NetWare - QUEUE SERVICES - CHANGE QUEUE JOB ENTRY (OLD) - 
+AH = E3h subfn 6Dh
+DS:SI - request buffer (see #01981)
+ES:DI - reply buffer (see #01983)
+Return: AL = status (00h,96h,D0h,D1h,D5h,D7h,FEh,FFh) (see #01961)
+Notes: this function is supported by Advanced NetWare 2.1+
+caller must be an operator or the user who created the job
+SeeAlso: AH=E3h/SF=68h,AH=E3h/SF=6Ah,AH=E3h/SF=6Ch,AH=E3h/SF=6Eh
+SeeAlso: AX=F217h/SF=6Dh
+Format of NetWare Change Queue Job Entry request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=6Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3529.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3531.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - CHANGE QUEUE JOB ENTRY (OLD)</font></h3>
+<PRE>
+AH = E3h subfn 6Dh
+DS:SI -> request buffer <a href="rb-3530.htm#Table1981">(see #01981)</a>
+ES:DI -> reply buffer <a href="rb-3531.htm#Table1983">(see #01983)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,D0h,D1h,D5h,D7h,FEh,FFh) (see #01961)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Caller must be an operator or the user who created the job
+<p><b>See Also:</b>
+<a href="rb-3525.htm">AH=E3h/SF=68h</a> - <a href="rb-3527.htm">AH=E3h/SF=6Ah</a> - <a href="rb-3529.htm">AH=E3h/SF=6Ch</a> - <a href="rb-3531.htm"
+<p><b>See Also:</b>
+<a href="rb-3774.htm">AX=F217h/SF=6Dh</a>
+<PRE>
+<p>
+Format of NetWare "Change Queue Job Entry" request buffer:
+<a name=table1981></a>
+Offset  Size    Description     (Table 01981)
+00h    WORD    0105h (length of following data)
+02h    BYTE    6Dh (subfunction "Change Queue Job Entry")
+03h    DWORD   (big-endian) object ID of queue
+07h 256 BYTEs  job structure <a href="rb-3525.htm#Table1971">(see #01971)</a>
+</PRE>
+<p><b>See Also:</b>
+#01983
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3529.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3531.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

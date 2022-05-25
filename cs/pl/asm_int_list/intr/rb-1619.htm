@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=CEh/BL=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=CEh/BL=00h - Later PS/2s - ALLOCATE DMA ARBITRATION LEVEL - 
+AH = CEh
+BL = 00h-0Eh arbitration level to be allocated
+0Fh-FFh reserved
+AL = option byte
+bit 7-1: reserved (0)
+bit 0: 0 = need DMA channel for arbitration level requested
+1 = no channel required for arbitration level
+Return: CF set on error
+AH = status (80h,86h = function not supported)
+CF clear on success
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=CEh/BL=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1618.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1620.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Later PS/2s - ALLOCATE DMA ARBITRATION LEVEL</font></h3>
+<PRE>
+AH = CEh
+BL = 00h-0Eh arbitration level to be allocated
+0Fh-FFh reserved
+AL = option byte
+<p><b>bit 7-1:</b><br>Reserved (0)
+<p><b>bit 0:</b><br>0 = need DMA channel for arbitration level requested
+1 = no channel required for arbitration level<br>
+<p><b>Return:</b><br>CF set on error
+AH = status (80h,86h = function not supported)
+CF clear on success
+AL = channel number
+00h-07h channel number allocated for the arbiration level
+08h-FEh reserved
+FFh     no channel requested for arbitration level
+AH = status <a href="rb-1619.htm#Table531">(see #00531)</a>
+</PRE>
+<p><b>Notes:</b>
+Arbitration level 00h has the highest priority, 0Eh the lowest
+to perform a DMA transfer operation, be sure to call this function
+first, and call AH=CFh afterward.  Failure to use this function
+can cause unpredictable results.
+<p><b>See Also:</b>
+<a href="rb-1620.htm">AH=CFh</a>
+<PRE>
+<p>
+<a name=table531></a>
+(Table 00531)
+Values for DMA arbitration status:
+00h    success
+01h    arbitration level not available
+02h    channel not available
+03h    invalid arbitration level passed
+</PRE>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1618.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1620.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

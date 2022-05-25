@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 17/AH=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 17/AH=00h - PRINTER - WRITE CHARACTER - 
+AH = 00h
+AL = character to write
+DX = printer number (00h-02h)
+Return: AH = printer status (see #00631)
+Note:  Under PhysTechSoft's PTS ROM-DOS the parallel port can also be
+accessed as COM5.
+BUGS:  Some print spoolers trash the BX register on return.
+Some original IBM BIOSes set more than one printer status bits at
+a time, while only one of them is correct.
+SeeAlso: AH=02h,AH=84hAX,AX=6F02h,AH=F1h,INT 16/AX=FFE3h,INT 1A/AH=11hNEC
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 17/AH=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2097.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2099.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PRINTER - WRITE CHARACTER</font></h3>
+<PRE>
+AH = 00h
+AL = character to write
+DX = printer number (00h-02h)<br>
+<p><b>Return:</b><br>AH = printer status (see #00631)
+</PRE>
+<p><b>Note:</b>
+Under PhysTechSoft's PTS ROM-DOS the parallel port can also be
+accessed as COM5.
+<p><b>BUGS:</b>
+Some print spoolers trash the BX register on return..
+Some original IBM BIOSes set more than one printer status bits at
+a time, while only one of them is correct.
+<p><b>See Also:</b>
+<a href="rb-2100.htm">AH=02h</a> - <a href="rb-2180.htm">AH=84h"AX"</a> - <a href="rb-2174.htm">AX=6F02h</a> - <a href="rb-2235.htm">AH=F1h</a> - <
+<p><b>See Also:</b>
+<a href="rb-6258.htm">INT 4B/AH=00h</a> - <a href="rb-2094.htm">PORT 0278h"PRINTER"</a> - MEM 0040h:0008h - MEM 0040h:0078h
+<PRE>
+<p>
+Bitfields for printer status:
+<a name=table631></a>
+Bit(s)  Description     (Table 00631)
+7      not busy
+6      acknowledge
+5      out of paper
+4      selected
+3      I/O error
+2-1    unused
+0      timeout
+</PRE>
+<p><b>Notes:</b>
+If both, bit 5 "out of paper" and 4 "selected" are set, the MS-DOS/
+PC DOS kernel assumes that no printer is attached..
+For Tandy 2000, bit 7 indicates printer-busy when set rather than clear
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-17.htm">
+Int 17h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2097.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2099.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

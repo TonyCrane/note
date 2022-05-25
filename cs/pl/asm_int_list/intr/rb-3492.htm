@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=10h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=10h - Novell NetWare - FILE SERVICES - SET FILE INFORMATION - 
+AH = E3h subfn 10h
+DS:SI - request buffer (see #01905)
+ES:DI - reply buffer (see #01906)
+Return: AL = status
+00h successful
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+the caller must have modify privileges on the directory containing the
+file
+SeeAlso: AH=B6h,AH=E3h/SF=0Fh,AX=F217h/SF=10h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=10h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3491.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3493.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVICES - SET FILE INFORMATION</font></h3>
+<PRE>
+AH = E3h subfn 10h
+DS:SI -> request buffer <a href="rb-3492.htm#Table1905">(see #01905)</a>
+ES:DI -> reply buffer <a href="rb-3492.htm#Table1906">(see #01906)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX.
+The caller must have modify privileges on the directory containing the
+file
+<p><b>See Also:</b>
+<a href="rb-3306.htm">AH=B6h</a> - <a href="rb-3491.htm">AH=E3h/SF=0Fh</a> - <a href="rb-3723.htm">AX=F217h/SF=10h</a>
+<PRE>
+<p>
+Format of NetWare "Set File Information" request buffer:
+<a name=table1905></a>
+Offset  Size    Description     (Table 01905)
+00h    WORD    length of following data (max 151h)
+02h    BYTE    10h (subfunction "Set File Information")
+03h    BYTE    file attributes <a href="rb-0000.htm#Table0"></a>(see #01420 at AX=4301h)
+04h    BYTE    extended file attributes <a href="rb-0000.htm#Table0"></a>(see #01804 at AH=B6h)
+05h  4 BYTEs   reserved
+09h    WORD    (big-endian) file's creation date <a href="rb-0000.htm#Table0"></a>(see #01666 at AX=5700h)
+0Bh    WORD    (big-endian) date of last access <a href="rb-0000.htm#Table0"></a>(see #01665 at AX=5700h)
+0Dh    DWORD   (big-endian) date and time of last update <a href="rb-3459.htm#Table1846">(see #01846)</a>
+11h    DWORD   (big-endian) object ID of owner
+15h    DWORD   (big-endian) date and time last archived <a href="rb-3459.htm#Table1846">(see #01846)</a>
+19h 56 BYTEs   reserved
+51h    BYTE    directory handle or 00h
+52h    BYTE    search attributes <a href="rb-0000.htm#Table0"></a>(see #01420 at AX=4301h)
+53h    BYTE    length of filename
+54h  N BYTEs   filename
+</PRE>
+<p><b>See Also:</b>
+#01906
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1906></a>
+Offset  Size    Description     (Table 01906)
+00h    WORD    (call) 0000h (no results returned)
+</PRE>
+<p><b>See Also:</b>
+#01905
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3491.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3493.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

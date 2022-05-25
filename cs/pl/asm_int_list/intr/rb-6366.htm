@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Int 58
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 58 - TI Professional PC - SYSTEM TIMER 25ms HOOK - 
+Desc:  called from the hardware timer tick interrupt, after executing the
+first four BIOS timing events, updating the system clock, invoking
+INT 5A if required, saving registers, and switching to a temporary
+stack (the one reserved for IRQ3)
+Notes: the handler for this interrupt may destroy AX,BX,DI,ES but must
+preserve all other registers; 8 WORDs of stack space are available,
+of which at most 4 may be used if the handler enables interrupts
+if the handler switches stacks (because more than 4/8 WORDs are
+required), the original stack must be restored before chaining to
+the previous handler
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 58
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6365.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6367.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TI Professional PC - SYSTEM TIMER 25ms HOOK</font></h3>
+<p><b>Desc:</b>
+Called from the hardware timer tick interrupt, after executing the
+first four BIOS timing events, updating the system clock, invoking
+INT 5A if required, saving registers, and switching to a temporary
+stack (the one reserved for IRQ3)
+<p><b>Notes:</b>
+The handler for this interrupt may destroy AX,BX,DI,ES but must
+preserve all other registers; 8 WORDs of stack space are available,
+of which at most 4 may be used if the handler enables interrupts.
+If the handler switches stacks (because more than 4/8 WORDs are
+required), the original stack must be restored before chaining to
+the previous handler
+<p><b>See Also:</b>
+<a href="rb-6171.htm">INT 43"TI Professional"</a> - <a href="rb-6275.htm">INT 4C"TI Professional"</a>
+<p><b>See Also:</b>
+<a href="rb-6374.htm">INT 5A"TI Professional"</a>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-58.htm">
+Int 58h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6365.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6367.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

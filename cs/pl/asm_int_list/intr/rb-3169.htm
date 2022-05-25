@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=67h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=67h - DOS 3.3+ - SET HANDLE COUNT - 
+AH = 67h
+BX = size of new file handle table for process
+Return: CF clear if successful
+CF set on error
+AX = error code (see #01680 at AH=59h/BX=0000h)
+Desc:  adjust the size of the per-process open file table, thus raising or
+lowering the limit on the number of files the caller can open
+simultaneously
+Notes: if BX = 20, no action is taken if the handle limit has not yet been
+increased, and the table is copied back into the PSP if the limit
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=67h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3168.ht.html">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3170.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.3+ - SET HANDLE COUNT</font></h3>
+<PRE>
+AH = 67h
+BX = size of new file handle table for process<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Desc:</b>
+Adjust the size of the per-process open file table, thus raising or
+lowering the limit on the number of files the caller can open
+simultaneously
+<p><b>Notes:</b>
+If BX <= 20, no action is taken if the handle limit has not yet been
+increased, and the table is copied back into the PSP if the limit
+is currently > 20 handles.
+For file handle tables of > 20 handles, DOS 3.30 never reuses the
+same memory block, even if the limit is being reduced; this can lead
+to memory fragmentation as a new block is allocated and the existing
+one freed.
+Only the first 20 handles are copied to child processes in DOS 3.3-6.0.
+Increasing the file handles here will not, in general, increase the
+number of files that can be opened using the runtime library of a
+high-level language such as C.
+Novell DOS 7 reportedly terminates the calling program if the JFT is
+being reduced in size and there are any open file handles beyond
+the portion of the JFT being retained
+<p><b>BUGS:</b>
+The original release of DOS 3.30 allocates a full 64K for the handle
+table on requests for an even number of handles.
+DR DOS 3.41 and 5.0 will lose track of any open file handles beyond
+the portion of the JFT retained after the call; MS-DOS will indicate
+error 04h if any of the JFT entries to be removed are open
+<p><b>See Also:</b>
+<a href="rb-2682.htm">AH=26h</a> - <a href="rb-3250.htm">AH=86h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3168.ht.html">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3170.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

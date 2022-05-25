@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=59h/BX=0001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=59h/BX=0001h - European MS-DOS 4.0 - GET HARD ERROR INFORMATION - 
+AH = 59h
+BX = 0001h
+Return: ES:DI - hard error information packet (see #01685) for most recent
+hard (critical) error
+SeeAlso: AH=59h/BX=0000h,AH=95h,INT 24
+Format of European MS-DOS 4.0 hard error information packet:
+Offset Size  Description   (Table 01685)
+00h  WORD  contents of AX at system entry
+02h  WORD  Process ID which encountered error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=59h/BX=0001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3012.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3014.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>European MS-DOS 4.0 - GET HARD ERROR INFORMATION</font></h3>
+<PRE>
+AH = 59h
+BX = 0001h<br>
+<p><b>Return:</b><br>ES:DI -> hard error information packet (see #01685) for most recent
+hard (critical) error
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3012.htm">AH=59h/BX=0000h</a> - <a href="rb-3270.htm">AH=95h</a> - <a href="rb-4112.htm">INT 24</a>
+<PRE>
+<p>
+Format of European MS-DOS 4.0 hard error information packet:
+<a name=table1685></a>
+Offset  Size    Description     (Table 01685)
+00h    WORD    contents of AX at system entry
+02h    WORD    Process ID which encountered error
+04h    WORD    contents of AX at time of error
+06h    BYTE    error type
+00h physical I/O error
+01h disk change request
+02h file sharing violation
+03h FCB problem
+04h file locking violation
+05h bad FAT
+06h network detected error
+07h    BYTE    INT 24 error code
+08h    WORD    extended error code <a href="rb-3012.htm#Table1680">(see #01680)</a>
+0Ah    DWORD   pointer to associated device
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-e.htm">
+E</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3012.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3014.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

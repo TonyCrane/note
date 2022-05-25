@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=F0h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=F0h - Novell NetWare v3+ - GET LOGICAL RECORD INFORMATION - 
+AX = F217h subfn F0h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02262)
+ES:DI - reply buffer (see #02263)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F217h/SF=E0h,AX=F217h/SF=EFh
+Format of NetWare Get Logical Record Information request packet:
+Offset Size  Description   (Table 02262)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=F0h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3842.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3844.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v3+ - GET LOGICAL RECORD INFORMATION</font></h3>
+<PRE>
+AX = F217h subfn F0h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3843.htm#Table2262">(see #02262)</a>
+ES:DI -> reply buffer <a href="rb-3843.htm#Table2263">(see #02263)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3828.htm">AX=F217h/SF=E0h</a> - <a href="rb-3842.htm">AX=F217h/SF=EFh</a>
+<PRE>
+<p>
+Format of NetWare "Get Logical Record Information" request packet:
+<a name=table2262></a>
+Offset  Size    Description     (Table 02262)
+00h    WORD    length of following data
+02h    BYTE    F0h (subfunction "Get Logical Record Information")
+03h    WORD    last record seen
+05h    BYTE    length of logical record name
+06h  N BYTEs   logical record name (case-sensitive)
+</PRE>
+<p><b>See Also:</b>
+#02263
+<PRE>
+<p>
+Format of NetWare "Get Logical Record Information" request packet:
+<a name=table2263></a>
+Offset  Size    Description     (Table 02263)
+00h    WORD    number of connections logging record
+02h    WORD    number of shareable locks
+<p><b>04h    BYTE    flag:</b><br>Locked exclusively if nonzero
+05h    WORD    next request record (place in last-seen field on next call)
+07h    BYTE    number of records returned
+08h            logical record information records [array]
+Offset  Size    Description
+00h    WORD    connection number
+02h    BYTE    task number
+03h    BYTE    lock status
+</PRE>
+<p><b>See Also:</b>
+#02262
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3842.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3844.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

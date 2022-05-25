@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=102Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=102Eh - DESQview v2.40+ - ALLOCATE SYSTEM MEMORY - 
+AX = 102Eh
+BX = number of bytes
+Return: AX = status
+0000h successful
+ES:DI - allocated system memory (see #00433)
+0001h failed
+ES:DI = 0000h:0000h
+Note:  under DV 2.42, this call is identical to AX=1001h
+SeeAlso: AX=1001h,AX=1002h,AX=DE0Ch
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=102Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1219.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1221.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview v2.40+ - ALLOCATE SYSTEM MEMORY</font></h3>
+<PRE>
+AX = 102Eh
+BX = number of bytes<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+ES:DI -> allocated system memory <a href="rb-1220.htm#Table433">(see #00433)</a>
+0001h failed
+ES:DI = 0000h:0000h
+</PRE>
+<p><b>Note:</b>
+Under DV 2.42, this call is identical to AX=1001h
+<p><b>See Also:</b>
+<a href="rb-1193.htm">AX=1001h</a> - <a href="rb-1194.htm">AX=1002h</a> - <a href="rb-1686.htm">AX=DE0Ch</a>
+<PRE>
+<p>
+Format of DESQview system memory block header:
+<a name=table433></a>
+Offset  Size    Description     (Table 00433)
+00h    WORD    segment of next header or 0000h
+02h    WORD    segment of previous header or 0000h
+04h    WORD    size of block in paragraphs, including header
+06h    BYTE    availability flag (00h in use, 01h free)
+</PRE>
+<p><b>Note:</b>
+This header is located one paragraph before the memory block proper
+<p><b>See Also:</b>
+#00423
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1219.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1221.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

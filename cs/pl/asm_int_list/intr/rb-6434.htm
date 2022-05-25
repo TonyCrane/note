@@ -1,0 +1,205 @@
+<HTML>
+<HEAD>
+<TITLE>Int 60
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 60 - TI Professional PC - SYSTEM ROM DATA AREA POINTER (NOT A VECTOR!) - 
+Desc:  the low word of this vector contains the segment of the RAM data area
+to be used by the system ROM at F400h:A000h, and the high word
+contains the length of the data area (see #03263)
+SeeAlso: INT 61TI Professional PC,INT 66TI Professional PC
+Format of TI Professional System ROM data area:
+Offset Size  Description   (Table 03263)
+00h  BYTE  port 00h shadow
+01h  BYTE  port 03h shadow
+02h  BYTE  port 04h shadow
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 60
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6433.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6435.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TI Professional PC - SYSTEM ROM DATA AREA POINTER (NOT A VECTOR!)</font></h3>
+<p><b>Desc:</b>
+The low word of this vector contains the segment of the RAM data area
+to be used by the system ROM at F400h:A000h, and the high word
+contains the length of the data area <a href="rb-6434.htm#Table3263">(see #03263)</a>
+<p><b>See Also:</b>
+<a href="rb-6694.htm">INT 61"TI Professional PC"</a> - <a href="rb-7302.htm">INT 66"TI Professional PC"</a>
+<PRE>
+<p>
+Format of TI Professional System ROM data area:
+<a name=table3263></a>
+Offset  Size    Description     (Table 03263)
+00h    BYTE    port 00h shadow
+01h    BYTE    port 03h shadow
+02h    BYTE    port 04h shadow
+03h    WORD    system configuration word <a href="rb-6434.htm#Table3266">(see #03266)</a>
+05h    BYTE    25ms count
+06h    WORD    offset of timing event 1 (0008h)
+08h    WORD    (event 1) offset of timing event 2 (0010h)
+0Ah    BYTE    (event 1) unused (FFh)
+0Bh    BYTE    (event 1) active flag (bit 7 set if on)
+0Ch    WORD    (event 1) count-down until end of event
+0Eh    WORD    (event 1) event routine (in segment F400h) to call at timeout
+10h    WORD    (event 2) offset of timing event 3 (0018h)
+12h    BYTE    (event 2) unused (FFh)
+13h    BYTE    (event 2) active flag (bit 7 set if on)
+14h    WORD    (event 2) count-down until end of event
+16h    WORD    (event 2) event routine (in segment F400h) to call at timeout
+18h    WORD    (event 3) offset of timing event 3 (0020h)
+1Ah    BYTE    (event 3) unused (FFh)
+1Bh    BYTE    (event 3) active flag (bit 7 set if on)
+1Ch    WORD    (event 3) count-down until end of event
+1Eh    WORD    (event 3) event routine (in segment F400h) to call at timeout
+20h    WORD    (event 4) 0000h - last event
+22h    BYTE    (event 4) unused (FFh)
+23h    BYTE    (event 4) active flag (bit 7 set if on)
+24h    WORD    (event 4) count-down until end of event
+26h    WORD    (event 4) event routine (in segment F400h) to call at timeout
+28h    WORD    offset of start of text display within segment DE00h
+2Ah    WORD    end of display
+2Ch    WORD    current absolute cursor position
+2Eh    WORD    start of current character row
+30h    WORD    current cursor column
+32h    WORD    cursor type and size <a href="rb-6434.htm#Table3264">(see #03264)</a>
+34h    WORD    start of protected status region on screen (0000h = none)
+36h    BYTE    pop flag used by some ROM routines
+00h pop registers before return
+<p><b>nonzero:</b><br>Do not pop
+37h    BYTE    unused (FFh)
+38h    BYTE    PAUSE flag
+00h off
+FFh on
+<p><b>39h    BYTE    temp:</b><br>Current attribute while moving characters on screen
+3Ah    WORD    start of keyboard queue (next key at start+2 or 0042h if 0060h)
+3Ch    WORD    end of keyboard queue (next key inserted at end+2 or 0042h)
+3Eh    BYTE    number of characters in buffer
+3Fh    BYTE    keyboard mode flags <a href="rb-6434.htm#Table3265">(see #03265)</a>
+40h    BYTE    Alt-digit-digit-digit accumulator
+41h    BYTE    Alt-digit-digit-digit count of digits (mod 3)
+42h 16 WORDs   keyboard buffer (circular queue)
+<p><b>62h  8 DWORDs  Drive Interface Table pointers for floppies A:-D:</b><br>+ four others
+(0000h:0000h if pointer not in use)
+82h    BYTE    disk-error retry count (incremented on each disk error)
+83h  2 BYTEs   BIOS scratch space
+85h  8 BYTEs   current cylinder number for drives 0-7
+FFh = unknown
+8Dh    BYTE    BIOS scratch space
+8Eh    BYTE    hard error code for last disk access
+00h operation successful
+8Fh  8 BYTEs   save area for disk DSR parameters
+97h  6 BYTEs   current drive status
+9Dh    BYTE    retry error status
+9Eh    BYTE    BIOS scratch space
+9Fh  7 BYTEs   ???
+A6h  2 WORDs   INT 47 save area for SS,SP
+AAh  2 WORDs   INT 46 save area for SS,SP
+AEh  2 WORDs   INT 43 save area for SS,SP
+B2h  2 WORDs   save area for SS,SP to be restored by common intr. exit routine
+B6h 24 WORDs   stack for INT 47
+E6h 24 WORDs   stack for INT 46
+116h 17 WORDs   stack for INT 43
+13Ah  6 BYTEs   system date and time (hundredths, seconds, minutes, hours, and
+WORD days since 01jan1980)
+</PRE>
+<p><b>Note:</b>
+Timing event 1 is the disk I/O timeout, event 2 is the floppy disk
+motor timeout, event 3 is the floppy disk motor spin-up time, and
+event 4 is used to turn off the speaker after a delay
+<PRE>
+<p>
+Bitfields for TI Professional PC cursor size and type:
+<a name=table3264></a>
+Bit(s)  Description     (Table 03264)
+15     reserved (0)
+14-13  cursor type.
+00 nonblinking.
+01 off.
+10 slow blink.
+11 fast blink
+12-8   starting scan line (0-11)
+7-5    reserved (0)
+4-0    ending scan line (0-11)
+</PRE>
+<p><b>See Also:</b>
+#03263
+<PRE>
+<p>
+Bitfields for TI Professional PC keyboard mode flags:
+<a name=table3265></a>
+Bit(s)  Description     (Table 03265)
+7      CapsLock was ON at last keypress
+6-4    reserved (0)
+3      repeat key
+2      Shift was down at last keypress
+1      Alt was down at last keypress
+0      Ctrl was down at last keypress
+</PRE>
+<p><b>See Also:</b>
+#03263
+<PRE>
+<p>
+Bitfields for TI Professional System Configuration Word:
+<a name=table3266></a>
+Bit(s)  Description     (Table 03266)
+<p><b>0      drive A:</b><br>Installed
+<p><b>1      drive B:</b><br>Installed
+<p><b>2      drive C:</b><br>Installed
+<p><b>3      drive D:</b><br>Installed
+<p><b>4      drive A:</b><br>Is 80-track
+<p><b>5      drive A:</b><br>Is double-sided
+6      60-Hz (USA,etc.) system instead of 50-Hz (Europe)
+7      hard disk installed
+8      serial port 1 installed
+9      serial port 2 installed
+10     serial port 3 installed
+11     serial port 4 installed
+14-12  installed graphics planes.
+000 none.
+001 plane A.
+111 planes A, B, and C
+15     clock installed
+</PRE>
+<p><b>See Also:</b>
+#03263
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-60.htm">
+Int 60h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6433.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6435.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

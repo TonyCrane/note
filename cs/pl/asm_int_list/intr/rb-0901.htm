@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=10h/DX=FFFFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=10h/DX=FFFFh - Connection Manager - QUERY SERVICE NAMES - 
+AH = 10h
+DX = FFFFh
+CL = subfunction
+00h search first
+01h search next
+ES:DI - pattern buffer (see #00341)
+Return: AH = return code (00h,01h,03h,06h) (see also #00303 at AH=00h/DX=FFFFh)
+01h no (more) matching names
+03h invalid request
+ES:DI buffer filled with reply buffer (see #00341) containing matched
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=10h/DX=FFFFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0900.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0902.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Connection Manager - QUERY SERVICE NAMES</font></h3>
+<PRE>
+AH = 10h
+DX = FFFFh
+CL = subfunction
+00h search first
+01h search next
+ES:DI -> pattern buffer <a href="rb-0901.htm#Table341">(see #00341)</a><br>
+<p><b>Return:</b><br>AH = return code (00h,01h,03h,06h) (see also #00303 at AH=00h/DX=FFFFh)
+01h no (more) matching names
+03h invalid request
+ES:DI buffer filled with reply buffer <a href="rb-0901.htm#Table341">(see #00341)</a> containing matched
+name if AH=00h
+</PRE>
+<p><b>Program:</b>
+Connection Manager by Softwarehouse Corp. permits the sharing of
+serial ports over an IPX or NetBIOS-based network
+<p><b>Desc:</b>
+Obtain the names of groups and lines available for connection requests,
+and the names of active Connection Servers
+<p><b>See Also:</b>
+<a href="rb-0829.htm">AH=04h/DX=FFFFh</a> - <a href="rb-0878.htm">AH=0Bh/DX=FFFFh</a>
+<PRE>
+<p>
+Format of Connection Manager pattern/reply buffer:
+<a name=table341></a>
+Offset  Size    Description     (Table 00341)
+00h    WORD    length of pattern (30h or 32h)
+02h 16 BYTEs   server pattern or name
+12h 16 BYTEs   group pattern or name
+22h 16 BYTEs   line pattern or name
+23h    BYTE    (optional) ???
+24h    BYTE    (optional, returned) current line status
+00h available
+01h out of service
+02h currently allocated to a connection
+</PRE>
+<p><b>Note:</b>
+Pattern may include '?' wildcard to match any character
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0900.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0902.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

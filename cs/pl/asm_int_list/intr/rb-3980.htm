@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=0Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=0Bh - Novell NetWare v4+ - GET NLM INFORMATION - 
+AX = F27Bh subfn 0Bh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02504)
+ES:DI - reply buffer (see #02505)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get NLM Information request buffer:
+Offset Size  Description   (Table 02504)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=0Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3979.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3981.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET NLM INFORMATION</font></h3>
+<PRE>
+AX = F27Bh subfn 0Bh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3980.htm#Table2504">(see #02504)</a>
+ES:DI -> reply buffer <a href="rb-3980.htm#Table2505">(see #02505)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get NLM Information" request buffer:
+<a name=table2504></a>
+Offset  Size    Description     (Table 02504)
+00h    WORD    0005h (length of following data)
+02h    BYTE    0Bh (subfunction "Get NLM Information")
+03h    DWORD   NLM number
+</PRE>
+<p><b>See Also:</b>
+#02505
+<PRE>
+<p>
+Format of NetWare "Get NLM Information" reply buffer:
+<a name=table2505></a>
+Offset  Size    Description     (Table 02505)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    DWORD   identification number
+0Ch    DWORD   flags
+10h    DWORD   NLM type <a href="rb-3980.htm#Table2506">(see #02506)</a>
+14h    DWORD   parent identifier
+18h    DWORD   major version
+1Ch    DWORD   minor version
+20h    DWORD   revision
+24h    DWORD   year
+28h    DWORD   month
+2Ch    DWORD   day
+30h    DWORD   bytes available for allocation
+34h    DWORD   "allocFreeCount"
+38h    DWORD   last garbage collection
+3Ch    DWORD   message language
+40h    DWORD   number of referenced public identifiers
+<p><b>44h 200 BYTEs  NLM strings:</b><br>Filename, NLM name, copyright
+</PRE>
+<p><b>See Also:</b>
+#02504
+<PRE>
+<p>
+<a name=table2506></a>
+(Table 02506)
+Values for NetWare NLM type:
+0001h  LAN
+0002h  DSK
+0003h  NAM
+0004h  utility NLM
+0005h  MSL
+0006h  operating system NLM
+0007h  paged NLM
+0008h  HAM
+0009h  CDM
+000Ah  file system NLM
+000Bh  real mode NLM
+000Ch  hidden NLM
+</PRE>
+<p><b>See Also:</b>
+#02505
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3979.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3981.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,139 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=D201h/BX=5649h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=D201h/BX=5649h - Quarterdeck RPCI - VIDRAM v5.0+ - INSTALLATION CHECK - 
+AX = D201h
+BX = 5649h (VI)
+CX = 4452h (DR)
+DX = 414Dh (AM)
+Return: BX = 4F4Bh (OK)
+ES:DI - VIDRAM entry point (see #03080)
+Range: AH=C0h to AH=FFh, selected by scanning AH=D2h-FFh, then AH=C0h-D1h
+SeeAlso: AX=D200h
+(Table 03080)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=D201h/BX=5649h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5523.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5525.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Quarterdeck RPCI - VIDRAM v5.0+ - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = D201h
+BX = 5649h ("VI")
+CX = 4452h ("DR")
+DX = 414Dh ("AM")<br>
+<p><b>Return:</b><br>BX = 4F4Bh ("OK")
+ES:DI -> VIDRAM entry point <a href="rb-5524.htm#Table3080">(see #03080)</a>
+<p><b>Range:</b><br>AH=C0h to AH=FFh, selected by scanning AH=D2h-FFh, then AH=C0h-D1h
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5516.htm">AX=D200h</a>
+<PRE>
+<p>
+<a name=table3080></a>
+(Table 03080)
+Call VIDRAM entry point with:.
+AH = 00h get status
+<p><b>Return:</b><br>AL = VIDRAM state (see #03081)
+BL = extra RAM status <a href="rb-5524.htm#Table3082">(see #03082)</a>
+BH = feature flags <a href="rb-5524.htm#Table3083">(see #03083)</a>
+CL = current monitor (01h = mono, 80h = color)
+SI = current top of memory (paragraph)
+DI = segment of start of HiRAM chain.
+AH = 01h setup
+AL = VIDRAM state <a href="rb-5524.htm#Table3081">(see #03081)</a>
+BL = extra RAM status <a href="rb-5524.htm#Table3082">(see #03082)</a>
+BH = feature flags <a href="rb-5524.htm#Table3083">(see #03083)</a>
+CL = monitor (01h = monochrome, 80h = color)
+SI = new top of memory (paragraph)
+DI = segment of start of HiRAM chain.
+AH = 02h get end address of VIDRAM code
+<p><b>Return:</b><br>ES:DI -> VIDRAM partial map context (see #03084,#03085)<br>
+<p><b>Return:</b><br>CF set on error
+CF clear if successful
+<p>
+<a name=table3081></a>
+(Table 03081)
+Values for VIDRAM state:
+00h    off
+01h    no EGA graphics
+02h    no graphics at all
+<p>
+<a name=table3082></a>
+(Table 03082)
+Values for VIDRAM extra RAM status:
+00h    VIDRAM does not use extra RAM
+01h    VIDRAM uses EMS as extra RAM
+02h    VIDRAM uses EGA as extra RAM
+<p>
+Bitfields for VIDRAM feature flags:
+<a name=table3083></a>
+Bit(s)  Description     (Table 03083)
+0      override enabled
+1      mapped memory detected in A000h-B000h range
+2      top of memory not at 640K
+3      MDA detected
+4      high RAM exists in video area
+5      mapped memory detected in video area
+6-7    reserved???
+<p>
+Format of VIDRAM partial map context (EMS 3.2):
+<a name=table3084></a>
+Offset  Size    Description     (Table 03084)
+00h    BYTE    EMS version ID (32h)
+01h    WORD    EMM handle for this entry
+03h    BYTE    number of frames
+04h    BYTE    first page frame
+05h    WORD    offset from ES to previously saved map
+<p>
+Format of VIDRAM partial map context (EMS 4.0):
+<a name=table3085></a>
+Offset  Size    Description     (Table 03085)
+00h    BYTE    EMS version ID (40h)
+01h    WORD    mappable segment count
+03h  N WORD    mappable segments
+WORD    offset to previously saved map???
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-q.htm">
+Q</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5523.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5525.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

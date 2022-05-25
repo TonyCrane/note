@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5FCCh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5FCCh - LANtastic v4.1+ - GET/SET SERVER CONTROL BITS - 
+AX = 5FCCh
+ES:DI - ASCIZ server name in form \\machine
+CX = bit values (value of bits you want to set) (see #01745)
+DX = bit mask (bits you are interested in, 0 = get only) (see #01745)
+Return: CF clear if successful
+CX = control bits after call (see #01745)
+CF set on error
+AX = error code
+Note:  you must have the S privilege to SET, anyone can GET.
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5FCCh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3128.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3130.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LANtastic v4.1+ - GET/SET SERVER CONTROL BITS</font></h3>
+<PRE>
+AX = 5FCCh
+ES:DI -> ASCIZ server name in form "\\machine"
+CX = bit values (value of bits you want to set) <a href="rb-3129.htm#Table1745">(see #01745)</a>
+DX = bit mask (bits you are interested in, 0 = get only) <a href="rb-3129.htm#Table1745">(see #01745)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CX = control bits after call <a href="rb-3129.htm#Table1745">(see #01745)</a>
+CF set on error
+AX = error code
+</PRE>
+<p><b>Note:</b>
+You must have the "S" privilege to SET, anyone can GET.
+<PRE>
+<p>
+Bitfields for control bits:
+<a name=table1745></a>
+Bit(s)  Description     (Table 01745)
+0      disable logins
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3128.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3130.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

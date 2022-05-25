@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=5481h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=5481h - POWER.EXE - GET STATISTICS - 
+AX = 5481h
+BX = which statistics
+0000h idle detection
+0001h APM statistics
+CX = length of buffer in bytes
+DS:SI - buffer for statistics (see #02843,#02844)
+Return: AX = status
+0000h successful
+0071h ERROR_PM_BUFFER_TOO_SMALL
+0087h ERROR_PM_INVALID_PARAMETER
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=5481h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4892.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4894.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>POWER.EXE - GET STATISTICS</font></h3>
+<PRE>
+AX = 5481h
+BX = which statistics
+0000h idle detection
+0001h APM statistics
+CX = length of buffer in bytes
+DS:SI -> buffer for statistics <a href="rb-0000.htm#Table0"></a>(see #02843,#02844)<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+0071h "ERROR_PM_BUFFER_TOO_SMALL"
+0087h "ERROR_PM_INVALID_PARAMETER"
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4885.htm">AH=53h</a> - <a href="rb-4887.htm">AX=5400h</a> - <a href="rb-4892.htm">AX=5480h</a> - <a href="rb-4889.htm">AX=5402h</a> - <
+<PRE>
+<p>
+Format of POWER.EXE idle detection statistics:
+<a name=table2843></a>
+Offset  Size    Description     (Table 02843)
+00h    DWORD   "CPU_ON_TIME" total time CPU is active with POWER.EXE idle
+detection enabled, in timer ticks
+04h    DWORD   "CPU_IDLE_TIME" timer ticks during which CPU was idle
+(divide by previous to get idle rate)
+08h    DWORD   total idle calls
+0Ch    DWORD   "TOTAL_APP_IDLE" total INT 2Fh idle calls
+10h    DWORD   "TOTAL_DOS_YIELD" total INT 28h idle calls
+14h    DWORD   "TOTAL_KEY_IDLE" total INT 16h idle calls
+18h    DWORD   "TOTAL_DOS_IDLE" total INT 2Ah idle calls
+<p>
+Format of APM statistics:
+<a name=table2844></a>
+Offset  Size    Description     (Table 02844)
+00h    DWORD   "RESUME_COUNT" total number of resumes since last APM_ENABLE
+</PRE>
+<p>
+<b>Category: <a href="cat-031.htm">
+Power Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4892.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4894.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

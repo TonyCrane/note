@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=86h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=86h - BIOS - WAIT (AT,PS) - 
+AH = 86h
+CX:DX = interval in microseconds
+Return: CF clear if successful (wait interval elapsed)
+CF set on error or AH=83h wait already in progress
+AH = status (see #00496)
+Note:  the resolution of the wait period is 977 microseconds on many systems
+because many BIOSes use the 1/1024 second fast interrupt from the AT
+real-time clock chip which is available on INT 70; because newer
+BIOSes may have much more precise timers available, it is not
+possible to use this function accurately for very short delays unless
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=86h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1524.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1526.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>BIOS - WAIT (AT,PS)</font></h3>
+<PRE>
+AH = 86h
+CX:DX = interval in microseconds<br>
+<p><b>Return:</b><br>CF clear if successful (wait interval elapsed)
+CF set on error or AH=83h wait already in progress
+AH = status <a href="rb-1506.htm#Table496">(see #00496)</a>
+</PRE>
+<p><b>Note:</b>
+The resolution of the wait period is 977 microseconds on many systems
+because many BIOSes use the 1/1024 second fast interrupt from the AT
+real-time clock chip which is available on INT 70; because newer
+BIOSes may have much more precise timers available, it is not
+possible to use this function accurately for very short delays unless
+the precise behavior of the BIOS is known (or found through testing)
+<p><b>See Also:</b>
+<a href="rb-1355.htm">AH=41h</a> - <a href="rb-1512.htm">AH=83h</a> - <a href="rb-2437.htm">INT 1A/AX=FF01h</a> - <a href="rb-7797.htm">INT 70</a>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1524.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1526.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>Int 33/AX=3003h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 33/AX=3003h - Smooth Mouse Driver, PrecisePoint - GET INFORMATION - 
+AX = 3003h
+BL = data structure selector
+00h Primary Bitmap (used for 25 line mode) (see #03192)
+01h Secondary Bitmap (used for 43/50 line modes) (see #03192)
+02h Sacrifice Character Map (see #03193)
+03h Program Information (see #03194)
+Return: ES:DX - selected data structure
+SeeAlso: AX=3000h
+Format of Primary/Secondary Bitmap [SMD_BITMAP_STRUCT]:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 33/AX=3003h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6082.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6084.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Smooth Mouse Driver, PrecisePoint - GET INFORMATION</font></h3>
+<PRE>
+AX = 3003h
+BL = data structure selector
+00h Primary Bitmap (used for 25 line mode) <a href="rb-6083.htm#Table3192">(see #03192)</a>
+01h Secondary Bitmap (used for 43/50 line modes) <a href="rb-6083.htm#Table3192">(see #03192)</a>
+02h Sacrifice Character Map <a href="rb-6083.htm#Table3193">(see #03193)</a>
+03h Program Information <a href="rb-6083.htm#Table3194">(see #03194)</a><br>
+<p><b>Return:</b><br>ES:DX -> selected data structure
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6080.htm">AX=3000h</a>
+<PRE>
+<p>
+Format of Primary/Secondary Bitmap [SMD_BITMAP_STRUCT]:
+<a name=table3192></a>
+Offset  Size    Description     (Table 03192)
+00h    BYTE    vertical size of bitmap (00h - 10h)
+01h    BYTE    horizontal size of bitmap (00h - 10h)
+02h    BYTE    vertical hotspot position (00h - 10h)
+03h    BYTE    horizontal hotspot position (00h - 10h)
+04h 16 WORDs   cursor bitmap data
+14h 16 WORDs   screen bitmap data
+<p>
+Format of Sacrifice Character Map [SMD_SMAP_STRUCT]:
+<a name=table3193></a>
+Offset  Size    Description     (Table 03193)
+00h    BYTE    bytes are character values (00h-FFh) used in place of the
+01h    BYTE    actual character for the corresponding position on the screen
+02h    BYTE         +--------------+     occupied by part or all of the mouse
+03h    BYTE         | 0h | 1h | 2h |     cursor
+04h    BYTE         |----+----+----|
+05h    BYTE         | 3h | 4h | 5h |
+06h    BYTE         |----+----+----|
+07h    BYTE         | 6h | 7h | 8h |
+08h    BYTE         +--------------+
+<p>
+Format of Program Information [SMD_INFO_STRUCT]:
+<a name=table3194></a>
+Offset  Size    Description     (Table 03194)
+00h    WORD    segment of old interrupt 33h handler
+02h    WORD    offset of old interrupt 33h handler
+04h    WORD    PSP of SMD
+06h    BYTE    ENABLE/DISABLE manual setting status
+07h    BYTE    ENABLE/DISABLE internal usage status
+</PRE>
+<p>
+<b>Category: <a href="cat-025.htm">
+Mouse/Pointing Device</a>
+- <a href="int-33.htm">
+Int 33h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6082.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6084.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

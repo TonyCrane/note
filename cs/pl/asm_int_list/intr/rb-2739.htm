@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=34h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=34h - DOS 2+ - GET ADDRESS OF INDOS FLAG - 
+AH = 34h
+Return: ES:BX - one-byte InDOS flag
+Notes: this function executes on the DOS stack, and thus cannot be called
+while another DOS function is already executing; you should use
+this function once at the beginning of the program and store the
+returned pointer rather than calling it when requiring DOS access
+the value of InDOS is incremented whenever an INT 21 function begins
+and decremented whenever one completes
+during an INT 28 call, it is safe to call some INT 21 functions even
+though InDOS may be 01h instead of zero
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=34h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2738.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2740.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - GET ADDRESS OF INDOS FLAG</font></h3>
+<PRE>
+AH = 34h<br>
+<p><b>Return:</b><br>ES:BX -> one-byte InDOS flag
+</PRE>
+<p><b>Notes:</b>
+This function executes on the DOS stack, and thus cannot be called
+while another DOS function is already executing; you should use
+this function once at the beginning of the program and store the
+returned pointer rather than calling it when requiring DOS access.
+The value of InDOS is incremented whenever an INT 21 function begins
+and decremented whenever one completes.
+During an INT 28 call, it is safe to call some INT 21 functions even
+though InDOS may be 01h instead of zero.
+InDOS alone is not sufficient for determining when it is safe to
+enter DOS, as the critical error handling decrements InDOS and
+increments the critical error flag for the duration of the critical
+error.  Thus, it is possible for InDOS to be zero even if DOS is
+busy..
+SMARTDRV 4.0 sets the InDOS flag while flushing its buffers to disk,
+then zeros it on completion.
+The critical error flag is the byte immediately following InDOS in
+DOS 2.x, and the byte BEFORE the InDOS flag in DOS 3.0+ and
+DR DOS 3.41+ (except COMPAQ DOS 3.0, where the critical error flag
+is located 1AAh bytes BEFORE the critical section flag).
+For DOS 3.1+, an undocumented call exists to get the address of the
+critical error flag (see AX=5D06h).
+This function was undocumented prior to the release of DOS 5.0.
+<p><b>See Also:</b>
+<a href="rb-3023.htm">AX=5D06h</a> - <a href="rb-3028.htm">AX=5D0Bh</a> - <a href="rb-1706.htm">INT 15/AX=DE1Fh</a> - <a href="rb-4122.ht.html">INT 28<
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2738.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2740.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

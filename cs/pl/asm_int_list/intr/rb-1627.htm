@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=D101h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=D101h - Later PS/2s - RETURN DEVICE DESCRIPTOR TABLE (DDT) ENTRY BY NUMBER - 
+AX = D101h
+BX = number of requested entry (starting with 1)
+DX = 0000h (reserved, must be set to 0)
+ES:DI - buffer to contain DDT entry (see #00535)
+Return: AH = return code (see #00534)
+CF set on error
+CF clear on success
+ES:DI buffer filled with DDT entry
+SeeAlso: AH=C0h,AH=C7h,AH=C9h,AX=D100h,AX=D102h,AX=D104h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=D101h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1626.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1628.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Later PS/2s - RETURN DEVICE DESCRIPTOR TABLE (DDT) ENTRY BY NUMBER</font></h3>
+<PRE>
+AX = D101h
+BX = number of requested entry (starting with 1)
+DX = 0000h (reserved, must be set to 0)
+ES:DI -> buffer to contain DDT entry <a href="rb-1627.htm#Table535">(see #00535)</a><br>
+<p><b>Return:</b><br>AH = return code (see #00534)
+CF set on error
+CF clear on success
+ES:DI buffer filled with DDT entry
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-1594.htm">AH=C0h</a> - <a href="rb-1611.htm">AH=C7h</a> - <a href="rb-1613.htm">AH=C9h</a> - <a href="rb-1626.htm">AX=D100h</a> - <a hr
+<PRE>
+<p>
+Format of Device Descriptor Table (DDT):
+<a name=table535></a>
+Offset  Size    Description     (Table 00535)
+<p><b>00h    BYTE    bits 7-4:</b><br>Reserved (set to 0)
+<p><b>bits 3-0:</b><br>Slot of device (0 = system board)
+<p><b>01h    BYTE    bits 7-4:</b><br>Second interrupt for this device (0 = none)
+<p><b>bits 3-0:</b><br>First interrupt for this device (0 = none)
+<p><b>02h    BYTE    bits 7-4:</b><br>Second arbitration level for this device
+<p><b>bits 3-0:</b><br>First arbitration level for this device
+03h    WORD    DDT indicators <a href="rb-1627.htm#Table536">(see #00536)</a>
+05h    BYTE    reserved (0)
+06h    WORD    device ID (0 = none)
+08h    WORD    starting address of first  I/O block (0 = none)
+0Ah    WORD    starting address of second I/O block (0 = none)
+OCh    WORD    starting address of third  I/O block (0 = none)
+OEh    DWORD   start of first non-system memory block (0 = none)
+12h    WORD    size of first non-system memory block (in kilobytes)
+14h    DWORD   start of second non-system memory block (0 = none)
+18h    WORD    size of second non-system memory block (in kilobytes)
+1Ah    BYTE    implementation identifier of the device
+1Bh    BYTE    implementation revision level of the device
+</PRE>
+<p><b>Note:</b>
+I/O block addresses and non-system memory addresses are listed in
+ascending order in each DDT entry.
+<PRE>
+<p>
+Bitfields for DDT indicators:
+<a name=table536></a>
+Bit(s)  Description     (Table 00536)
+15     reserved (0)
+14     second arbitration level exists
+13     first arbitration level exists
+12     serial interface is RS-422
+11     not address limited
+10     DMA channel used
+9      second arbitration level can be shared
+8      first arbitration level can be shared
+7-0    reserved (0)
+</PRE>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1626.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1628.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

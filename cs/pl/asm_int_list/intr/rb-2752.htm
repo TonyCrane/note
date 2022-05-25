@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=3700h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=3700h - DOS 2+ - SWITCHAR - GET SWITCH CHARACTER - 
+AX = 3700h
+Return: AL = status
+00h successful
+DL = current switch character
+FFh unsupported subfunction
+Desc:  Determine the character which is used to introduce command switches.
+This setting is ignored by MS-DOS commands in version 4.0 and higher,
+but is honored by many third-party programs and by Novell DOS 7
+external commands
+BUG:  Novell DOS 7's COMMAND.COM (prior to Update 15) fails to honor the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=3700h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2751.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2753.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - SWITCHAR - GET SWITCH CHARACTER</font></h3>
+<PRE>
+AX = 3700h<br>
+<p><b>Return:</b><br>AL = status
+00h successful
+DL = current switch character
+FFh unsupported subfunction
+</PRE>
+<p><b>Desc:</b>
+Determine the character which is used to introduce command switches.
+This setting is ignored by MS-DOS commands in version 4.0 and higher,
+but is honored by many third-party programs and by Novell DOS 7
+external commands
+<p><b>BUG:</b>
+Novell DOS 7's COMMAND.COM (prior to Update 15) fails to honor the
+SwitChar setting for internal commands even though COMMAND.COM
+honors it in its own command tail (i.e. COMMAND /?); even in Update
+15, internal commands fail to honor SwitChar for the /? help option
+<p><b>Notes:</b>
+Documented in some OEM versions of some releases of DOS.
+Supported by OS/2 compatibility box.
+Always returns AL=00h/DL=2Fh for MS-DOS 5+ and DR DOS 3.41-6.0.
+Novell DOS 7 COMMAND.COM indicates switch characters other than '/'
+by changing the first backslash (and only the first one) in the
+path it prints for PROMPT $p with a forward slash
+<p><b>See Also:</b>
+<a href="rb-2753.htm">AX=3701h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2751.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2753.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

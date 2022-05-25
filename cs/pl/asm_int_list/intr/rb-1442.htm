@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=53B0h/BH=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=53B0h/BH=06h - Intel System Management Bus - GET DEVICE ADDRESSES - 
+AX = 53B0h
+BH = 06h
+BL = position in list to report
+CH = 6941h ('iA')
+Return: CF clear if successful
+AH = 00h (SMBus OK)
+BH = number of SMBus devices
+BL = SMBus Device Address of device at position BL in list
+(see #00486)
+CF set if error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=53B0h/BH=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1441.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1443.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Intel System Management Bus - GET DEVICE ADDRESSES</font></h3>
+<PRE>
+AX = 53B0h
+BH = 06h
+BL = position in list to report
+CH = 6941h ('iA')<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h (SMBus OK)
+BH = number of SMBus devices
+BL = SMBus Device Address of device at position BL in list
+<a href="rb-1442.htm#Table486">(see #00486)</a>
+CF set if error
+AH = error code (06h,0Ah,86h) <a href="rb-1437.htm#Table484">(see #00484)</a>
+</PRE>
+<p><b>Desc:</b>
+Retrieves already assigned SMBus device addresses
+<p><b>Notes:</b>
+This function is supported in INT 15h mode only.
+Bit 0 of the device address indicates read/write, so a device may
+be listed at both xxxxxxx0b and xxxxxxx1b
+<p><b>See Also:</b>
+I2C A0h [and I2C.LST in general]
+<PRE>
+<p>
+<a name=table486></a>
+(Table 00486)
+Values for System Management Bus predefined device addresses:
+10h    SMBus host
+12h    Smart Battery charger
+14h    Smart Battery selector
+16h    Smart Battery
+18h    SMBus Alert response
+50h    ACCESS.bus host
+58h    LCD contrast controller
+5Ah    CCFL backlight driver
+6Eh    ACCESS.bus default address
+80h-86h PCMCIA socket controllers
+88h    VGA graphics controller
+90h-96h unrestricted addresses
+82h    SMBus device default address
+</PRE>
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1441.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1443.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

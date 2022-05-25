@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int D4/AH=22h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int D4/AH=22h - PC-MOS/386 v5.01 - ADD A TASK TO THE SYSTEM - 
+AH = 22h
+DS:SI - addtask data structure (see #04018)
+Return: CF clear if successful
+ES = segment address of the new task's TCB data structure
+CF set on error
+AX = error code (see #04017)
+SeeAlso: AH=21h
+(Table 04017)
+Values for PC-MOS/386 error code:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int D4/AH=22h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8453.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8455.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC-MOS/386 v5.01 - ADD A TASK TO THE SYSTEM</font></h3>
+<PRE>
+AH = 22h
+DS:SI -> addtask data structure <a href="rb-8454.htm#Table4018">(see #04018)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ES = segment address of the new task's TCB data structure
+CF set on error
+AX = error code <a href="rb-8454.htm#Table4017">(see #04017)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-8453.htm">AH=21h</a>
+<PRE>
+<p>
+<a name=table4017></a>
+(Table 04017)
+Values for PC-MOS/386 error code:
+08h    insufficient memory
+0Bh    invalid addtask structure format
+12h    insufficient available space in system memory pool
+1Fh    general failure
+55h    already allocated
+57h    if task already in use or invalid parameter
+<p>
+Format of PC-MOS/386 addtask data structure:
+<a name=table4018></a>
+Offset  Size    Description     (Table 04018)
+00h    WORD    task size in KB (min 16KB)
+02h    WORD    task ID (0000h for automatic selection)
+04h    BYTE    task class (' ' or 'A'-'Z')
+05h    DWORD   -> ASCIZ name of task startup batchfile
+09h    DWORD   -> task's terminal driver (0000000h = background task)
+0Dh    WORD    task port
+0Fh    DWORD   task baud rate
+13h    DWORD   (ret) total extended memory
+17h    DWORD   (ret) number of 4K extended memory pages allocated
+1Bh    WORD    (ret) paragraphs of system memory pool allocated
+1Dh    WORD    (ret) system memory pool size in paragraphs
+1Fh    WORD    (ret) ASCII task percentage of system memory pool
+21h  3 BYTEs   reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-D4.htm">
+Int D4h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8453.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8455.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

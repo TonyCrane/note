@@ -1,0 +1,190 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=DA20h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=DA20h - AMI PCI BIOS v1.00.12.AX1T - CMOS RAM BITFIELD MANIPULATION - 
+AX = DA20h
+BL = subfunction
+00h set CMOS data field
+BH = CMOS data field number (00h-4Dh)
+CH = new value for bitfield (in lowest bits of register)
+01h read CMOS data field
+BH = CMOS data field number (00h-4Dh)
+Return: CH = value of bitfield
+CL = mask of valid bits
+Note:  both CL/CH shifted to move valid bits into lowest pos
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=DA20h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1662.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1664.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AMI PCI BIOS v1.00.12.AX1T - CMOS RAM BITFIELD MANIPULATION</font></h3>
+<PRE>
+AX = DA20h
+BL = subfunction
+00h set CMOS data field
+BH = CMOS data field number (00h-4Dh)
+CH = new value for bitfield (in lowest bits of register)
+01h read CMOS data field
+BH = CMOS data field number (00h-4Dh)
+<p><b>Return:</b><br>CH = value of bitfield
+CL = mask of valid bits
+</PRE>
+<p><b>Note:</b>
+Both CL/CH shifted to move valid bits into lowest pos
+02h set CMOS byte
+CL = CMOS RAM address (00h-7Fh)
+CH = new value for CMOS byte
+03h get CMOS byte
+CL = CMOS RAM address (00h-7Fh)
+<PRE>
+<p><b>Return:</b><br>CH = value of CMOS byte
+04h update CMOS checksums
+</PRE>
+<p><b>Note:</b>
+Sets 2Eh/2Fh to checksum of 10h-2Dh and 7Eh/7Fh to
+checksum of 48h-7Dh
+05h verify CMOS checksums
+<PRE>
+<p><b>Return:</b><br>CF clear if checksums OK
+AH = 00h
+CF set if checksum mismatch
+AH = 01h<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h
+CF set on error
+AH = error code (86h unsupported function/data field)
+</PRE>
+<p><b>Notes:</b>
+This function was not supported by the v1.00.05.AX1 BIOS, but had been
+added by 1.00.12.AX1T.
+After using subfunctions 00h or 02h, the application must call
+subfunction 04h to update the checksums to prevent an error the next
+time the system is booted
+<PRE>
+<p>
+<a name=table542></a>
+(Table 00542)
+Values for AMI BIOS v1.00.12.AX1T CMOS bitfield identifier:
+ID     address bit(s)  contents
+00h    1Ah     7-6
+01h    1Dh     7-6
+02h    6Eh     1
+03h    77h     0
+04h    77h     1
+05h    77h     2
+06h    77h     3
+07h    77h     5
+08h    77h     6
+09h    77h     7
+0Ah    78h     7       power management enabled???
+0Bh    78h     6
+0Ch    10h     7-4     first floppy drive type
+0Dh    10h     3-0     second floppy drive type
+0Eh    11h     7
+0Fh    20h     4-0     selected language for error messages/setup utility
+10h    11h     2-1
+11h    11h     4
+12h    11h     0
+13h    11h     3
+14h    13h     7
+15h    13h     6-5
+16h    13h     4-2
+17h    19h     7
+18h    19h     6
+19h    19h     5
+1Ah    19h     4
+1Bh    1Eh     2-0
+1Ch    1Bh     7-6
+1Dh    1Ch     7
+1Eh    1Ch     3
+1Fh    1Ah     5-4
+20h    1Dh     5-4
+21h    1Bh     5-4
+22h    1Ch     6
+23h    1Ch     2
+24h    1Ah     3-2
+25h    1Dh     3-2
+26h    1Bh     3-2
+27h    1Ch     5
+28h    1Ch     1
+29h    1Ah     1-0
+2Ah    1Dh     1-0
+2Bh    1Bh     1-0
+2Ch    1Ch     4
+2Dh    1Ch     0
+2Eh    50h     7-0
+2Fh    51h     7-0
+30h    52h     7-0
+31h    53h     7-0
+32h    60h     0
+33h    60h     0
+34h    60h     0
+35h    60h     0
+36h    60h     0
+37h    60h     0
+38h    60h     1
+39h    61h     7
+3Ah    60h     2
+3Bh    61h     6-4
+3Ch    61h     2-0
+3Dh    60h     7-6
+3Eh    60h     5-4
+3Fh    78h     5-4
+40h    6Eh     5
+41h    1Eh     3
+42h    6Eh     0
+43h    6Eh     2
+44h    6Fh     1-0
+45h    6Fh     1-0
+46h    28h     4-2
+47h    28h     7-5
+48h    6Eh     4
+49h    6Eh     3
+4Ah    76h     7-0
+4Bh    77h     4
+4Ch    11h     6
+4Dh    1Fh     7-0
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1662.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1664.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

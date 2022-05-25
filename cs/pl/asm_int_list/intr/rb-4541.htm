@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=000Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=000Ch - MS Windows - VMD - GET API ENTRY POINT - 
+AX = 1684h
+BX = 000Ch (virtual device ID for VMD device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02650)
+0000h:0000h if the VxD does not support API in current mode
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+(Table 02650)
+Call VMOUSE entry point with:
+EAX = function number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=000Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4540.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4542.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - VMD - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 000Ch (virtual device ID for VMD device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02650)
+0000h:0000h if the VxD does not support API in current mode
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2650></a>
+(Table 02650)
+Call VMOUSE entry point with:.
+EAX = function number
+0000h get VMOUSE version
+<p><b>Return:</b><br>CF clear
+AH = major version
+AL = minor version
+0001h
+EBX = ???
+ECX = ???
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (e.g. fn 0003h not yet called)
+0002h ??? (calls "test system VM handle")
+<p><b>Return:</b><br>CF clear if successful (in system VM)
+CF set on error
+0003h ???
+ECX = ???
+DX = ???
+<p><b>Return:</b><br>CF clear
+0004h ???
+</PRE>
+<p><b>Note:</b>
+Invokes Call_Priority_VM_Event
+0005h get mouse port data
+<PRE>
+<p><b>Return:</b><br>CF clear
+AL = ??? (04h)
+AH = mouse IRQ interrupt number (IRQ4=0Ch,etc.)
+CX = mouse I/O port address (e.g. 03F8h)
+DX = COM port number??? (0001h for mouse on COM1)
+0100h NOP???
+<p><b>Return:</b><br>CF clear
+0101h init???
+<p><b>Return:</b><br>CF clear
+</PRE>
+<p><b>Note:</b>
+Appears to be the same as fn 0005h, but returns no data
+0102h unimplemented
+<PRE>
+<p><b>Return:</b><br>CF set
+0103h check ???
+<p><b>Return:</b><br>AX = status (0000h/0001h)
+</PRE>
+<p><b>Note:</b>
+Checks flag set by fn 0003h
+else
+<PRE>
+<p><b>Return:</b><br>CF set
+</PRE>
+<p><b>See Also:</b>
+#02649 - #02651
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4540.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4542.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

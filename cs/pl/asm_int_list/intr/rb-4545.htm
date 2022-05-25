@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=0010h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=0010h - MS Windows - IOS - GET API ENTRY POINT - 
+AX = 1684h
+BX = 0010h (virtual device ID for IOS device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02654)
+0000h:0000h if the VxD does not support API in current mode
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+(Table 02654)
+Call IOS entry point with:
+EAX = function number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=0010h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4544.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4546.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - IOS - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 0010h (virtual device ID for IOS device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02654)
+0000h:0000h if the VxD does not support API in current mode
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2654></a>
+(Table 02654)
+Call IOS entry point with:.
+EAX = function number
+0000h ???
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+CF set on error
+AX = FFFFh
+0001h check if ???
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+CF set on error
+AX = FFFFh
+0002h requestor services???
+DL = service number???
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+DX = ???
+CF set on error
+AX = FFFFh
+</PRE>
+<p><b>Note:</b>
+Calls "IOS_Requestor_Service" (see INT 20"Windows")
+0003h ??? (copies five bytes of data internally)
+<PRE>
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h
+EDX = ???
+CF set on error
+AX = FFFFh
+else
+<p><b>Return:</b><br>CF set
+AX = FFFFh
+</PRE>
+<p><b>See Also:</b>
+#02653 - #02655
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4544.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4546.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

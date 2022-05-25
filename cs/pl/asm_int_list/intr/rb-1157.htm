@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=04h - SYSTEM - BUILD ABIOS SYSTEM PARAMETER TABLE (PS) - 
+AH = 04h
+ES:DI - 32-byte results buffer for System Parameter Table (see #00410)
+DS = segment containing ABIOS RAM extensions (zero if none)
+Return: CF clear if successful
+AH = 00h success
+ES:DI buffer filled
+AL destroyed
+CF set on failure
+AX destroyed
+AH = 80h/86h if not supported
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1156.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1158.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SYSTEM - BUILD ABIOS SYSTEM PARAMETER TABLE (PS)</font></h3>
+<PRE>
+AH = 04h
+ES:DI -> 32-byte results buffer for System Parameter Table <a href="rb-1157.htm#Table410">(see #00410)</a>
+DS = segment containing ABIOS RAM extensions (zero if none)<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h success
+ES:DI buffer filled
+AL destroyed
+CF set on failure
+AX destroyed
+AH = 80h/86h if not supported
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-1157.htm">AH=05h"ABIOS"</a> - <a href="rb-1595.htm">AH=C1h</a>
+<PRE>
+<p>
+Format of ABIOS System Parameter Table:
+<a name=table410></a>
+Offset  Size    Description     (Table 00410)
+00h    DWORD   FAR address of ABIOS Common Start Routine
+04h    DWORD   FAR address of ABIOS Interrupt Routine
+08h    DWORD   FAR address of ABIOS Time-out Routine
+0Ch    WORD    number of bytes of stack required by this ABIOS implementation
+0Eh 16 BYTEs   reserved
+1Eh    WORD    number of entries in initialization table
+</PRE>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1156.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1158.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

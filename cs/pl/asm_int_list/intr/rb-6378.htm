@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 5B
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 5B - AT&T Starlan Extended NetBIOS (variable length names) - 
+ES:BX - Network Control Block (see #03245)
+Return: AL = status (see #03248)
+SeeAlso: INT 5CNetBIOS
+Format of Starlan Network Control Block:
+Offset Size  Description   (Table 03245)
+00h  BYTE  ncb_command (see also #03250)
+70h send net Break
+01h  BYTE  ncb_retcode
+02h  BYTE  ncb_lsn
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 5B
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6377.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6379.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AT&T Starlan Extended NetBIOS (variable length names)</font></h3>
+<PRE>
+ES:BX -> Network Control Block <a href="rb-6378.htm#Table3245">(see #03245)</a><br>
+<p><b>Return:</b><br>AL = status (see #03248)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6395.htm">INT 5C"NetBIOS"</a>
+<PRE>
+<p>
+Format of Starlan Network Control Block:
+<a name=table3245></a>
+Offset  Size    Description     (Table 03245)
+00h    BYTE    ncb_command (see also #03250)
+70h send net Break
+01h    BYTE    ncb_retcode
+02h    BYTE    ncb_lsn
+03h    BYTE    ncb_num
+04h    DWORD   -> ncb_buffer
+08h    WORD    ncb_length
+0Ah 16 BYTEs   ncb_callname
+1Ah 16 BYTEs   ncb_name
+2Ah    BYTE    ncb_rto
+2Bh    BYTE    ncb_sto
+2Ch    DWORD   -> ncb_post     /* int (far *ncb_post)(); */
+30h    BYTE    ncb_lana_num
+31h    BYTE    ncb_cmd_cplt
+32h    DWORD   -> ncb_vname
+36h    BYTE    ncb_vnamelen
+37h  9 BYTEs   ncb_reserve
+</PRE>
+<p><b>Note:</b>
+Fields 00h-31h are the same as for a standard NetBIOS NCB (see #03249)
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-5B.htm">
+Int 5Bh</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6377.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6379.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

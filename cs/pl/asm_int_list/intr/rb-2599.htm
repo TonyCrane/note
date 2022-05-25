@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=22h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=22h - DOS 1+ - WRITE RANDOM RECORD TO FCB FILE - 
+AH = 22h
+DS:DX - opened FCB (see #01345)
+Disk Transfer Area contains record to be written
+Return: AL = status
+00h successful
+01h disk full
+02h segment wrap in DTA
+Notes: the record is written to the current file position as specified by the
+random record and record size fields of the FCB
+the file position is not updated after writing the record
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=22h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2598.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2600.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - WRITE RANDOM RECORD TO FCB FILE</font></h3>
+<PRE>
+AH = 22h
+DS:DX -> opened FCB <a href="rb-2574.htm#Table1345">(see #01345)</a>
+Disk Transfer Area contains record to be written<br>
+<p><b>Return:</b><br>AL = status
+00h successful
+01h disk full
+02h segment wrap in DTA
+</PRE>
+<p><b>Notes:</b>
+The record is written to the current file position as specified by the
+random record and record size fields of the FCB.
+The file position is not updated after writing the record.
+If the record is located beyond the end of the file, the file is
+extended but the intervening data remains uninitialized.
+If the record only partially fills a disk sector, it is copied to a
+DOS disk buffer to be written out to disk at a later time.
+Not supported by MS Windows 3.0 DOSX.EXE DOS extender
+<p><b>See Also:</b>
+<a href="rb-2580.htm">AH=15h</a> - <a href="rb-2598.htm">AH=21h</a> - <a href="rb-2684.htm">AH=28h</a> - <a href="rb-2791.htm">AH=40h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2598.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2600.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

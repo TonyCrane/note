@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=1Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=1Bh - DOS 1+ - GET ALLOCATION INFORMATION FOR DEFAULT DRIVE - 
+AH = 1Bh
+Return: AL = sectors per cluster (allocation unit)
+CX = bytes per sector
+DX = total number of clusters
+DS:BX - media ID byte (see #01356)
+Notes: under DOS 1.x, DS:BX points at an actual copy of the FAT; later
+versions return a pointer to a copy of the FAT's ID byte
+this function may not be properly supported on CD-ROMs and other
+installable file systems (use AX=4402hCD-ROM for CD-ROMs
+instead)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=1Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2589.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2591.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - GET ALLOCATION INFORMATION FOR DEFAULT DRIVE</font></h3>
+<PRE>
+AH = 1Bh<br>
+<p><b>Return:</b><br>AL = sectors per cluster (allocation unit)
+CX = bytes per sector
+DX = total number of clusters
+DS:BX -> media ID byte <a href="rb-2590.htm#Table1356">(see #01356)</a>
+</PRE>
+<p><b>Notes:</b>
+Under DOS 1.x, DS:BX points at an actual copy of the FAT; later
+versions return a pointer to a copy of the FAT's ID byte.
+This function may not be properly supported on CD-ROMs and other
+installable file systems (use AX=4402h"CD-ROM" for CD-ROMs
+instead)
+<p><b>BUG:</b>
+DOS 7.10 (Win95B/Win98) reportedly returns incorrect values in AL and
+DX for FAT12/FAT16 drives, even though it manages correct results
+for FAT32 drives (DOS windows are not affected, only real-mode
+DOS)
+<p><b>See Also:</b>
+<a href="rb-2591.htm">AH=1Ch</a> - <a href="rb-2751.htm">AH=36h</a>
+<PRE>
+<p>
+<a name=table1356></a>
+(Table 01356)
+Values for media ID byte:
+FFh    floppy, double-sided, 8 sectors per track (320K)
+FEh    floppy, single-sided, 8 sectors per track (160K)
+FDh    floppy, double-sided, 9 sectors per track (360K)
+FCh    floppy, single-sided, 9 sectors per track (180K)
+<p><b>FAh    HP 200LX D:</b><br>ROM disk, 16 sectors per track (995K).
+<p><b>HP 200LX E:</b><br>(Stacker host drive ???)
+F9h    floppy, double-sided, 15 sectors per track (1.2M).
+Floppy, double-sided, 9 sectors per track (720K,3.5")
+F8h    hard disk
+F0h    other media.
+(e.g. floppy, double-sized, 18 sectors per track -- 1.44M,3.5")
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2589.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2591.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

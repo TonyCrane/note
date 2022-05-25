@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AH=1Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AH=1Bh - PC/TCP kernel v2.05+ - net_read - READ FROM THE NETWORK - 
+AH = 1Bh
+BX = network descriptor
+CX = maximum number of bytes to read
+DX = receive options (see #03465)
+DS:SI - buffer for data
+ES:DI - addr structure (see #03462) for remote from which to read
+0000h:0000h for any
+Return: CF clear if successful
+AX = number of bytes actually read
+DX = ???
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AH=1Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6847.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6849.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC/TCP kernel v2.05+ - net_read - READ FROM THE NETWORK</font></h3>
+<PRE>
+AH = 1Bh
+BX = network descriptor
+CX = maximum number of bytes to read
+DX = receive options <a href="rb-6848.htm#Table3465">(see #03465)</a>
+DS:SI -> buffer for data
+ES:DI -> "addr" structure <a href="rb-6834.htm#Table3462">(see #03462)</a> for remote from which to read
+0000h:0000h for any<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually read
+DX = ???
+CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #03319 at INT 61"FTP Software")
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6703.htm">INT 61"FTP Software"</a> - <a href="rb-6704.htm">INT 61/AH=00h"PC/TCP"</a> - <a href="rb-6846.htm">INT 61/AH=1Ah</a> - <a href="../i.html"
+<PRE>
+<p>
+Bitfields for PC/TCP receive options:
+<a name=table3465></a>
+Bit(s)  Description     (Table 03465)
+1      do not remove data from queue, just copy it
+2      do not copy data, just remove it from queue
+5      fail if datagram would be truncated
+6      do not block, return error if no data available
+</PRE>
+<p><b>Note:</b>
+Special case for UDP: if both 1 and 2 set, return number of datagrams
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6847.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6849.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

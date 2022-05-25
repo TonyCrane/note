@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AX=8000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AX=8000h - COMM-DRV v14.0 - READ PORT METRICS - GET ERROR CODE AND BUFFER STATUS - 
+AX = 8000h
+DX = port number
+Return: AX = code for last error (see #00357)
+BX = number of characters in output buffer
+CX = nubmer of characters in input buffer
+DX = state flag (see #00358)
+Program: COMM-DRV is a universal serial communications driver by Willies'
+Computer Software Company, which supports standard INT 14 and
+FOSSIL calls as well as its own interfaces
+SeeAlso: AX=8001hCOMM-DRV,AX=8002hCOMM-DRV,AX=8003hCOMM-DRV
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AX=8000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1009.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1011.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>COMM-DRV v14.0 - READ PORT METRICS - GET ERROR CODE AND BUFFER STATUS</font></h3>
+<PRE>
+AX = 8000h
+DX = port number<br>
+<p><b>Return:</b><br>AX = code for last error (see #00357)
+BX = number of characters in output buffer
+CX = nubmer of characters in input buffer
+DX = state flag <a href="rb-1010.htm#Table358">(see #00358)</a>
+</PRE>
+<p><b>Program:</b>
+COMM-DRV is a universal serial communications driver by Willies'
+Computer Software Company, which supports standard INT 14 and
+FOSSIL calls as well as its own interfaces
+<p><b>See Also:</b>
+<a href="rb-1012.htm">AX=8001h"COMM-DRV"</a> - <a href="rb-1014.htm">AX=8002h"COMM-DRV"</a> - <a href="rb-1016.htm">AX=8003h"COMM-DRV"</a>
+<PRE>
+<p>
+<a name=table357></a>
+(Table 00357)
+Values for COMM-DRV error code:
+00h    no error
+01h    buffer not set or attempted to change buffer for active port
+02h    port not active
+03h    transmit buffer full
+04h    receive buffer full
+05h    syntax error
+06h    invalid buffer size
+07h    invalid port
+08h    handler changed
+09h    invalid baud rate
+0Ah    invalid parity setting
+0Bh    invalid data length
+0Ch    invalid number of stop bits
+0Dh    invalid protocol number
+0Eh    IRQ changed
+0Fh    port changged
+10h    invalid threshold setting
+11h    invalid IRQ number
+12h    interrupts not enabled
+13h    invalid break syntax
+14h    fatal error
+15h    CTS error
+16h    invalid RS232 I/O port address
+17h    environment variable not set
+18h    error on IOCTL call
+19h    error during atexit cleanup
+1Ah    error mapping for direct calls
+1Bh    error opening device
+1Ch    unable to allocate memory
+1Dh    error on external micro card
+1Eh    card changed error
+1Fh    card type error
+20h    not supported
+21h    parent port error
+22h    card command buffer full
+23h    no subdevice for this port
+24h    unknown error
+25h    external card busy
+26h    no more timers available
+27h    INT 14 vector changed
+28h    INT 08 vector changed
+29h    DPMI error
+2Ah    TSR buffer too small (or nonexistent)
+2Bh    out of asynchronous resources
+2Ch    out of timer resources
+2Dh    out of "other" timer resources
+2Eh    file I/O error
+2Fh    hardware memory > 64K
+<p>
+Bitfields for state flag :
+<a name=table358></a>
+Bit(s)  Description     (Table 00358)
+0      port is active
+1      output throttled (XOFF received, or DSR or CTS reset)
+2      input throttled (XOFF sent, or DTR or RTS reset)
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1009.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1011.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

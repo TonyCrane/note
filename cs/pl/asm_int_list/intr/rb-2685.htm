@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=29h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=29h - DOS 1+ - PARSE FILENAME INTO FCB - 
+AH = 29h
+AL = parsing options (see #01380)
+DS:SI - filename string (both '*' and '?' wildcards OK)
+ES:DI - buffer for unopened FCB
+Return: AL = result code
+00h successful parse, no wildcards encountered
+01h successful parse, wildcards present
+FFh failed (invalid drive specifier)
+DS:SI - first unparsed character
+ES:DI buffer filled with unopened FCB (see #01345)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=29h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2684.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2686.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - PARSE FILENAME INTO FCB</font></h3>
+<PRE>
+AH = 29h
+AL = parsing options <a href="rb-2685.htm#Table1380">(see #01380)</a>
+DS:SI -> filename string (both '*' and '?' wildcards OK)
+ES:DI -> buffer for unopened FCB<br>
+<p><b>Return:</b><br>AL = result code
+00h successful parse, no wildcards encountered
+01h successful parse, wildcards present
+FFh failed (invalid drive specifier)
+DS:SI -> first unparsed character
+ES:DI buffer filled with unopened FCB <a href="rb-2574.htm#Table1345">(see #01345)</a>
+</PRE>
+<p><b>Notes:</b>
+Asterisks in the name are expanded to question marks in the FCB.
+All processing stops when a filename terminator is encountered.
+Cannot be used with filespecs which include a path (DOS 2+).
+Novell NetWare monitors the result code since an 'invalid drive' may
+signal an attempt to reconnect a network drive; if there are no
+connections to the specified drive, NetWare attempts to build a
+connection and map the drive to the SYS:LOGIN directory
+<p><b>See Also:</b>
+<a href="rb-2574.htm">AH=0Fh</a> - <a href="rb-2581.htm">AH=16h</a> - <a href="rb-2682.htm">AH=26h</a>
+<PRE>
+<p>
+Bitfields for parsing options:
+<a name=table1380></a>
+Bit(s)  Description     (Table 01380)
+0      skip leading separators
+1      use existing drive number in FCB if no drive is specified, instead of
+setting field to zero
+2      use existing filename in FCB if no base name is specified, instead of
+filling field with blanks
+3      use existing extension in FCB if no extension is specified, instead of
+filling field with blanks
+4-7    reserved (0)
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2684.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2686.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

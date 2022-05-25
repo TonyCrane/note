@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 62/AX=0092h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 62/AX=0092h - FGDRIVER v4.02 - FG_POLYFILL - DRAW A FILLED CONVEX POLYGON - 
+AX = 0092h
+CX = number of vertices
+ES:BX - variable pointer record (see #03496)
+Notes: the FGDRIVER functions are rearranged with each major release, but
+their parameters do not change (see #03474 at AX=0000h)
+The vertex array consists of pairs of words specifying the X and Y
+coordinates of each vertex; the work array is used internally and
+must contain at least four times as many bytes as the polygon is
+high in pixels
+This function is ignored in text modes
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 62/AX=0092h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7052.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7054.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FGDRIVER v4.02 - FG_POLYFILL - DRAW A FILLED CONVEX POLYGON</font></h3>
+<PRE>
+AX = 0092h
+CX = number of vertices
+ES:BX -> variable pointer record <a href="rb-7053.htm#Table3496">(see #03496)</a>
+</PRE>
+<p><b>Notes:</b>
+The FGDRIVER functions are rearranged with each major release, but
+their parameters do not change <a href="rb-0000.htm#Table0"></a>(see #03474 at AX=0000h).
+The vertex array consists of pairs of words specifying the X and Y
+coordinates of each vertex; the work array is used internally and
+must contain at least four times as many bytes as the polygon is
+high in pixels.
+This function is ignored in text modes.
+If the polygon is non-convex, only a portion of it may be filled
+<p><b>See Also:</b>
+<a href="rb-6920.htm">AX=000Eh</a> - <a href="rb-6945.htm">AX=0027h</a> - <a href="rb-7052.htm">AX=0091h</a> - <a href="rb-7054.htm">AX=0093h</a> -
+<PRE>
+<p>
+Format of FGDRIVER POLYFILL variable pointer record:
+<a name=table3496></a>
+Offset  Size    Description     (Table 03496)
+00h    WORD    segment of vertex array <a href="rb-7055.htm#Table3498">(see #03498)</a>
+02h    WORD    offset of vertex array
+04h    WORD    segment of work array
+06h    WORD    offset of work array
+</PRE>
+<p><b>See Also:</b>
+#03497
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-62.htm">
+Int 62h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7052.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7054.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

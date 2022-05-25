@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F220h/SF=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F220h/SF=00h - Novell NetWare - OPEN SEMAPHORE (OLD) - 
+AX = F220h subfn 00h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02280)
+ES:DI - reply buffer (see #02281)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=C500h,AX=F220h/SF=01h,AX=F220h/SF=03h
+Format of NetWare Open Semaphore (old) request packet:
+Offset Size  Description   (Table 02280)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F220h/SF=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3853.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3855.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - OPEN SEMAPHORE (OLD)</font></h3>
+<PRE>
+AX = F220h subfn 00h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3854.htm#Table2280">(see #02280)</a>
+ES:DI -> reply buffer <a href="rb-3854.htm#Table2281">(see #02281)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3342.htm">AX=C500h</a> - <a href="rb-3855.htm">AX=F220h/SF=01h</a> - <a href="rb-3857.htm">AX=F220h/SF=03h</a>
+<PRE>
+<p>
+Format of NetWare "Open Semaphore (old)" request packet:
+<a name=table2280></a>
+Offset  Size    Description     (Table 02280)
+00h    BYTE    00h (subfunction "Open Semaphore (old)")
+01h    BYTE    initial value of semaphore ( >= 0)
+02h    BYTE    length of semaphore's name (max 512)
+03h  N BYTEs   semaphore name
+</PRE>
+<p><b>See Also:</b>
+#02281 - #02282
+<PRE>
+<p>
+Format of NetWare "Open Semaphore (old)" reply packet:
+<a name=table2281></a>
+Offset  Size    Description     (Table 02281)
+00h    DWORD   semaphore handle
+04h    BYTE    number of processes using semaphore (including caller)
+</PRE>
+<p><b>See Also:</b>
+#02280 - #02283
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3853.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3855.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

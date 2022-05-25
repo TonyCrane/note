@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=0021h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=0021h - MS Windows - PAGEFILE - GET API ENTRY POINT - 
+AX = 1684h
+BX = 0021h (virtual device ID for PAGEFILE device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02661)
+0000h:0000h if the VxD does not support an API
+SeeAlso: AX=1684h/BX=0017h,#01289 at INT 20Windows
+(Table 02661)
+Call PAGEFILE entry point with:
+AX = function
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=0021h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4550.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4552.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - PAGEFILE - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 0021h (virtual device ID for PAGEFILE device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02661)
+0000h:0000h if the VxD does not support an API
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4548.htm">AX=1684h/BX=0017h</a> - <a href="rb-4416.htm">#01289 at INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2661></a>
+(Table 02661)
+Call PAGEFILE entry point with:.
+AX = function
+0000h get version
+<p><b>Return:</b><br>CF clear
+AX = version (AH = major, AL = minor)
+0001h get swap file info
+DS:SI -> 128-byte buffer for swap file full pathname
+DS:DI -> 128-byte buffer for SPART.PAR full pathname
+<p><b>Return:</b><br>CF clear
+AL = pager type <a href="rb-4551.htm#Table2662">(see #02662)</a>
+AH = flags
+<p><b>bit 7:</b><br>Swap file corrupted
+ECX = maximum size of swap file
+DS:SI buffer filled if paging enabled
+DS:DI buffer filled if permanent swap file
+0002h delete permanent swap file on exit
+<p><b>Return:</b><br>CF clear
+0003h get current temporary swap file size
+<p><b>Return:</b><br>CF clear
+DX:AX = current swap file size in bytes
+0000h:0000h if permanent swap file
+</PRE>
+<p><b>Note:</b>
+This API is only available in protected mode, and may only be called
+from the system VM
+<p><b>See Also:</b>
+<a href="rb-4416.htm">#01289 at INT 20"Windows"</a> - #02663
+<PRE>
+<p>
+<a name=table2662></a>
+(Table 02662)
+Values for MS Windows PAGEFILE pager type:
+00h    paging disabled
+01h    MSDOS
+02h    BIOS
+03h    32-bit disk access
+</PRE>
+<p><b>See Also:</b>
+#02661
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4550.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4552.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6F/AH=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6F/AH=04h - 10NET - SEND - 
+AH = 04h
+DS:BX - send record (see #03758)
+DS:DX - data (max 1024 bytes)
+Return: CF clear if successful
+CF set on error
+AX = error code (see #03740)
+SeeAlso: AH=05h10NET,AH=09h10NET,AH=0Ah10NET
+Format of 10NET send record:
+Offset Size  Description   (Table 03758)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6F/AH=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7656.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7658.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>10NET - SEND</font></h3>
+<PRE>
+AH = 04h
+DS:BX -> send record <a href="rb-7657.htm#Table3758">(see #03758)</a>
+DS:DX -> data (max 1024 bytes)<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code <a href="rb-7639.htm#Table3740">(see #03740)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7705.htm">AH=05h"10NET"</a> - <a href="rb-7717.htm">AH=09h"10NET"</a> - <a href="rb-7718.htm">AH=0Ah"10NET"</a>
+<PRE>
+<p>
+Format of 10NET send record:
+<a name=table3758></a>
+Offset  Size    Description     (Table 03758)
+00h 12 BYTEs   receiving node's ID
+if first byte has high-order bit set, message is directed to
+the CT_RGATE vector at the receiver
+if second byte is 00h, first byte is taken as a CB
+channel number and delivered to all nodes on same channel
+0Ch    WORD     length of data at DX
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-6F.htm">
+Int 6Fh</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7656.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7658.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

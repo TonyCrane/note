@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=D100h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=D100h - MDEBUG command driver - GET STATUS - 
+AX = D100h
+BX = version of MDEBUG (BH = major, BL = minor)
+CX = command driver counter
+---v1.60+---
+DS:SI - MDEBUG identification table (see #03076)
+ES = segment of display memory used by MDEBUG
+DI = size of video mode used by MDEBUG
+(high byte = lines, low byte = columns)
+Return: DL = FFh
+BX = version number of the driver if it is less than the version in BX,
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=D100h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5504.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5506.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MDEBUG command driver - GET STATUS</font></h3>
+<PRE>
+AX = D100h
+BX = version of MDEBUG (BH = major, BL = minor)
+CX = command driver counter
+---v1.60+---
+DS:SI -> MDEBUG identification table <a href="rb-5505.htm#Table3076">(see #03076)</a>
+ES = segment of display memory used by MDEBUG
+DI = size of video mode used by MDEBUG
+(high byte = lines, low byte = columns)<br>
+<p><b>Return:</b><br>DL = FFh
+BX = version number of the driver if it is less than the version in BX,
+else unchanged
+CX incremented
+</PRE>
+<p><b>Program:</b>
+MDEBUG is a shareware memory-resident debugging tool by Bernd
+Schemmer, including a memory monitor, an interpreter, and a
+disassembler
+<PRE>
+<p><b>Range:</b><br>AH=C0h to AH=FFh, selected by switch or programmatically
+</PRE>
+<p><b>Notes:</b>
+Called by MDEBUG at start of popup session; if the version number
+returned in BX is less than 1.52 (1.60 for MDEBUG v1.70), MDEBUG will
+not call any of the other functions during this popup session.
+MDEBUG can use any two consecutive multiplex numbers between C0h and
+FFh; the default is D0h for the display driver and D1h for the
+command driver (call INT 60/AH=00h"MDEBUG" for the multiplex numbers
+actually used).
+This function must end with a far call to the old INT 2F handler after
+changing the registers.
+This function MUST be reentrant.
+Command drivers must also declare the following data at the given
+offsets in the code segment
+100h  3 BYTEs   JMP-command in .COM-files
+103h    BYTE    NOP-command (90h)
+104h 26 BYTEs   signature "Kommandotreiber fÅr MDEBUG"
+11Eh 12 BYTEs   name of driver, e.g. "MDHISDRV.COM"
+each driver must have a unique name.
+MDEBUG will pass every key and command to the command driver(s) before
+checking for a valid internal command
+<p><b>See Also:</b>
+<a href="rb-5494.htm">AX=D000h</a> - <a href="rb-5506.htm">AX=D101h</a>
+<PRE>
+<p>
+Format of MDEBUG identification table:
+<a name=table3076></a>
+Offset  Size    Description     (Table 03076)
+-2     WORD    entry offset
+00h    WORD    CS of MDEBUG
+02h    DWORD   old INT 08h vector
+06h    DWORD   old INT 09h vector
+0Ah    DWORD   address INT 16h routine used by MDEBUG
+0Eh    BYTE    length of version string
+0Fh  N BYTEs   version string
+</PRE>
+<p>
+<b>Category: <a href="cat-006.htm">
+Debuggers/Debugging Tools</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5504.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5506.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

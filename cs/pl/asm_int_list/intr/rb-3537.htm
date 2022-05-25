@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=74h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=74h - Novell NetWare - QUEUE SERVICES - CHANGE TO CLIENT RIGHTS (OLD) - 
+AH = E3h subfn 74h
+DS:SI - request buffer (see #01990)
+ES:DI - reply buffer (see #01989)
+Return: AL = status (00h,96h,D0h,D1h,D5h,D9h) (see #01961)
+Desc:  temporarily assume the login identity of the client submitting the
+job being serviced
+Notes: this function is supported by Advanced NetWare 2.1+
+caller must be a job server which has obtained a job for servicing
+SeeAlso: AH=E3h/SF=75h,AX=F217h/SF=74h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=74h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3536.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3538.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - CHANGE TO CLIENT RIGHTS (OLD)</font></h3>
+<PRE>
+AH = E3h subfn 74h
+DS:SI -> request buffer <a href="rb-3537.htm#Table1990">(see #01990)</a>
+ES:DI -> reply buffer <a href="rb-3536.htm#Table1989">(see #01989)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,D0h,D1h,D5h,D9h) (see #01961)
+</PRE>
+<p><b>Desc:</b>
+Temporarily assume the login identity of the client submitting the
+job being serviced
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Caller must be a job server which has obtained a job for servicing
+<p><b>See Also:</b>
+<a href="rb-3538.htm">AH=E3h/SF=75h</a> - <a href="rb-3781.htm">AX=F217h/SF=74h</a>
+<PRE>
+<p>
+Format of NetWare "Change to Client Rights (old)" request buffer:
+<a name=table1990></a>
+Offset  Size    Description     (Table 01990)
+00h    WORD    0007h (length of following data)
+02h    BYTE    74h (subfunction "Change To Client Rights (old)")
+03h    DWORD   (big-endian) object ID of queue
+07h    WORD    (big-endian) job number
+</PRE>
+<p><b>See Also:</b>
+#01989 - #01991
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3536.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3538.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

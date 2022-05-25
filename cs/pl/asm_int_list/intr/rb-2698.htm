@@ -1,0 +1,169 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=2B44h/BX=4D41h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=2B44h/BX=4D41h - PcANYWHERE IV/LAN - INSTALLATION CHECK - 
+AX = 2B44h ('D')
+BX = 4D41h ('MA')
+CX = 7063h ('pc')
+DX = 4157h ('AW')
+Return: AX = resident program
+4F4Bh ('OK') if large host resident
+6F6Bh ('ok') if small host resident
+CX:DX - API entry point (see #01389)
+SeeAlso: INT 16/AH=79h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=2B44h/BX=4D41h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2697.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2699.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PcANYWHERE IV/LAN - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 2B44h ('D')
+BX = 4D41h ('MA')
+CX = 7063h ('pc')
+DX = 4157h ('AW')<br>
+<p><b>Return:</b><br>AX = resident program
+4F4Bh ('OK') if large host resident
+6F6Bh ('ok') if small host resident
+CX:DX -> API entry point <a href="rb-2698.htm#Table1389">(see #01389)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-1856.htm">INT 16/AH=79h</a>
+<PRE>
+<p>
+<a name=table1389></a>
+(Table 01389)
+Call pcANYWHERE API entry point with:.
+AX = 0000h get pcANYWHERE IV version
+DS:SI -> BYTE buffer for host type code
+<p><b>Return:</b><br>AH = version number
+AL = revision number
+DS:DI buffer byte filled with
+00h full-featured host
+01h limited-feature LAN host
+other API may not be supported.
+AX = 0001h initialize operation
+DS:SI -> initialization request structure <a href="rb-2698.htm#Table1390">(see #01390)</a>
+<p><b>Return:</b><br>AX = function status (see #01393).
+AX = 0002h get status
+<p><b>Return:</b><br>AH = current operating mode (see #01390)
+AL = current connection status <a href="rb-2698.htm#Table1392">(see #01392)</a>.
+AX = 0003h suspend remote screen updates
+<p><b>Return:</b><br>AX = function status (see #01393).
+AX = 0004h resume screen updates
+<p><b>Return:</b><br>AX = function status (see #01393).
+AX = 0005h end current remote access session
+DS:SI -> termination request structure <a href="rb-2698.htm#Table1391">(see #01391)</a>
+<p><b>Return:</b><br>AX = function status (see #01393).
+AX = 0006h remove pcANYWHERE IV from memory
+<p><b>Return:</b><br>AX = status (see #01393).
+AX = 8000h read data from communications channel
+DS:BX -> buffer
+CX = buffer size
+<p><b>Return:</b><br>AX >= number of characters read/available
+AX < 0 on error.
+AX = 8001h write data to communications channel
+DS:BX -> buffer
+CX = buffer size
+<p><b>Return:</b><br>AX >= number of characters written
+AX < 0 on error.
+AX = 8002h get connection status
+<p><b>Return:</b><br>AX = status
+> 0000h if connection active
+= 0000h if connection lost
+< 0000h on error
+<p>
+Format of pcANYWHERE initialization request structure:
+<a name=table1390></a>
+Offset  Size    Description     (Table 01390)
+00h    BYTE    operating mode
+00h wait for a call
+01h hot key activates
+02h incoming call activates
+03h initiate a call
+01h  3 BYTEs   user ID to append to config file names
+04h    WORD    DS-relative pointer to path for config files
+06h    WORD    DS-relative pointer to path for program files
+<p>
+Format of pcANYWHERE termination request structure:
+<a name=table1391></a>
+Offset  Size    Description     (Table 01391)
+00h    BYTE    operating mode after termination
+00h wait for a call
+01h hot key activates
+02h incoming call activates
+80h use current mode
+FFh remove from memory
+<p>
+Bitfields for current connection status:
+<a name=table1392></a>
+Bit(s)  Description     (Table 01392)
+0      a physical connection is active
+1      remove screen updating is active
+2      connection checking is active
+3      hot key detection is active
+4      background file transfer is active
+<p>
+<a name=table1393></a>
+(Table 01393)
+Values for pcANYWHERE function status:
+0000h  function completed successfully
+FFD1h  unable to release interrupt vectors
+FFD2h  unable to release allocated memory
+FFF2h  unable to establish a connection when operating mode is
+"Initiate a call"
+FFF3h  modem configuration is invalid (corrupt config)
+FFF4h  modem initialization failed (no modem response)
+FFF5h  the communications device could not be initialized
+FFF6h  the host operator aborted the function
+FFF7h  the communications driver type specified in the configuration file is
+different than the one loaded when pcANYWHERE IV was started
+FFF9h  the configuration file is invalid
+FFFAh  the configuration file could not be found
+FFFBh  no session is active
+FFFCh  a remote access session is active
+FFFDh  the specified operating mode is invalid
+</PRE>
+<p>
+<b>Category: <a href="cat-033.htm">
+Remote Control/File Access</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2697.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2699.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

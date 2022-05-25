@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=35h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=35h - Novell NetWare v4+ - GET KNOWN NETWORKS INFO - 
+AX = F27Bh subfn 35h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02519)
+ES:DI - reply buffer (see #02520)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+SeeAlso: AX=F27Bh/SF=33h,AX=F27Bh/SF=38h
+Format of NetWare Get Router Info request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=35h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3986.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3988.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET KNOWN NETWORKS INFO</font></h3>
+<PRE>
+AX = F27Bh subfn 35h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3987.htm#Table2519">(see #02519)</a>
+ES:DI -> reply buffer <a href="rb-3987.htm#Table2520">(see #02520)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3986.htm">AX=F27Bh/SF=33h</a> - <a href="rb-3988.htm">AX=F27Bh/SF=38h</a>
+<PRE>
+<p>
+Format of NetWare "Get Router Info" request buffer:
+<a name=table2519></a>
+Offset  Size    Description     (Table 02519)
+00h    WORD    0005h (length of following data)
+02h    BYTE    35h (function "Get Known Networks Info")
+03h    DWORD   start number (00000000h)
+</PRE>
+<p><b>See Also:</b>
+#02520
+<PRE>
+<p>
+Format of NetWare "Get Router Info" reply buffer:
+<a name=table2520></a>
+Offset  Size    Description     (Table 02520)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    DWORD   number of records following (max 20)
+0Ch    var     array of network info records
+Offset  Size    Description
+00h    WORD    network number
+04h    WORD    hops to net
+06h    WORD    network status
+08h    WORD    time to net
+</PRE>
+<p><b>See Also:</b>
+#02517 - #02519
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3986.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3988.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

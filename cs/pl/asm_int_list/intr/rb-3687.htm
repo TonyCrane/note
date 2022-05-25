@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F216h/SF=15h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F216h/SF=15h - Novell NetWare - GET VOLUME INFO WITH HANDLE - 
+AX = F216h subfn 15h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #01874 at AH=E2h/SF=15h)
+ES:DI - reply buffer (see #02119)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E2h/SF=15h,AX=F212h,AX=F216h/SF=13h
+Format of NetWare Get Volume Info With Handle reply packet:
+Offset Size  Description   (Table 02119)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F216h/SF=15h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3686.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3688.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET VOLUME INFO WITH HANDLE</font></h3>
+<PRE>
+AX = F216h subfn 15h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-0000.htm#Table0"></a>(see #01874 at AH=E2h/SF=15h)
+ES:DI -> reply buffer <a href="rb-3687.htm#Table2119">(see #02119)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3475.htm">AH=E2h/SF=15h</a> - <a href="rb-3661.htm">AX=F212h</a> - <a href="rb-3685.htm">AX=F216h/SF=13h</a>
+<PRE>
+<p>
+Format of NetWare "Get Volume Info With Handle" reply packet:
+<a name=table2119></a>
+Offset  Size    Description     (Table 02119)
+00h    WORD    (big-endian) sectors per block
+02h    WORD    (big-endian) total blocks on volume
+04h    WORD    (big-endian) blocks available on volume
+06h    WORD    (big-endian) total directory slots
+08h    WORD    (big-endian) directory slots available
+0Ah 16 BYTEs   NUL-padded volume name
+<p><b>1Ah    WORD    (big-endian) flag:</b><br>Volume removable if nonzero
+</PRE>
+<p><b>See Also:</b>
+#01874 at AH=E2h/SF=15h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3686.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3688.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

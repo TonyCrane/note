@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=5310h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=5310h - Advanced Power Management v1.2 - GET CAPABILITIES - 
+AX = 5310h
+BX = device ID (see #00474)
+0000h (APM BIOS)
+other reserved
+Return: CF clear if successful
+BL = number of battery units supported (00h if no system batteries)
+CX = capabilities flags (see #00480)
+CF set on error
+AH = error code (01h,09h,86h) (see #00473)
+Notes: this function is supported via the INT 15, 16-bit protected mode, and
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=5310h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1412.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1414.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Advanced Power Management v1.2 - GET CAPABILITIES</font></h3>
+<PRE>
+AX = 5310h
+BX = device ID <a href="rb-1401.htm#Table474">(see #00474)</a>
+0000h (APM BIOS)
+other reserved<br>
+<p><b>Return:</b><br>CF clear if successful
+BL = number of battery units supported (00h if no system batteries)
+CX = capabilities flags <a href="rb-1413.htm#Table480">(see #00480)</a>
+CF set on error
+AH = error code (01h,09h,86h) <a href="rb-1394.htm#Table473">(see #00473)</a>
+</PRE>
+<p><b>Notes:</b>
+This function is supported via the INT 15, 16-bit protected mode, and
+32-bit protected mode interfaces; it does not require that a
+connection be established prior to use.
+This function will return the capabilities currently in effect, not
+any new settings which have been made but do not take effect until
+a system restart
+<p><b>See Also:</b>
+<a href="rb-1394.htm">AX=5300h</a> - <a href="rb-1412.htm">AX=530Fh</a> - <a href="rb-1414.htm">AX=5311h</a> - <a href="rb-1415.htm">AX=5312h</a> -
+<PRE>
+<p>
+Bitfields for APM v1.2 capabilities flags:
+<a name=table480></a>
+Bit(s)  Description     (Table 00480)
+15-8   reserved
+7      PCMCIA Ring Indicator will wake up system from suspend mode
+6      PCMCIA Ring Indicator will wake up system from standby mode
+5      Resume on Ring Indicator will wake up system from suspend mode
+4      Resume on Ring Indicator will wake up system from standby mode
+3      resume timer will wake up system from suspend mode
+2      resume timer will wake up system from standby mode
+1      can enter global suspend state
+0      can enter global standby state
+</PRE>
+<p>
+<b>Category: <a href="cat-031.htm">
+Power Management</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1412.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1414.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

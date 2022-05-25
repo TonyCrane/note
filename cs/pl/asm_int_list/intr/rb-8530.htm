@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int E0/CL=5Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int E0/CL=5Ch - REAL/32 - P_PATH - SCAN PATH FOR EXECUTABLE FILE - 
+CL = 5Ch
+DS:DX - Exec Parameter Block (EPB) (see #04035)
+Return: AX = status
+FFFEh file not found
+FFFDh path not found
+FFFCh too many handles open
+FFFBh access denied
+FFF6h invalid environment
+FFDCh sharing conflict
+FFAAh invalid password
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int E0/CL=5Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8529.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8531.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>REAL/32 - P_PATH - SCAN PATH FOR EXECUTABLE FILE</font></h3>
+<PRE>
+CL = 5Ch
+DS:DX -> Exec Parameter Block (EPB) <a href="rb-8530.htm#Table4035">(see #04035)</a><br>
+<p><b>Return:</b><br>AX = status
+FFFEh file not found
+FFFDh path not found
+FFFCh too many handles open
+FFFBh access denied
+FFF6h invalid environment
+FFDCh sharing conflict
+FFAAh invalid password
+EPB updated (if successful)
+may destroy SI,DI,DS
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-8531.htm">INT E0/CL=5Dh</a> - <a href="rb-8532.htm">INT E0/CL=5Eh</a> - <a href="rb-2939.htm">INT 21/AH=4Bh</a>
+<PRE>
+<p>
+Format of REAL/32 Exec Parameter Block (EPB):
+<a name=table4035></a>
+Offset  Size    Description     (Table 04035)
+00h    DWORD   -> ASCIZ command to be executed
+04h    BYTE    type of exec
+00h .CMD
+01h .COM
+02h .EXE
+03h .BAT
+04h RSP-type queue
+05h    BYTE    flags
+<p><b>bit 0:</b><br>Overlay existing program
+<p><b>bit 1:</b><br>Don't assign console to child
+<p><b>bit 2:</b><br>Allocate memory for .CMD within parent's memory space
+<p><b>bit 3:</b><br>Make full banked window available while loading child
+06h    DWORD   32-bit offset to ASCIZ command line
+0Ah    WORD    selector for ASCIZ command line
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-E0.htm">
+Int E0h</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8529.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8531.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

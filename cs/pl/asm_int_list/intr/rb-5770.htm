@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=FBFBh/ES=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=FBFBh/ES=0000h - SoundBlaster speech driver - INSTALLATION CHECK - 
+AX = FBFBh
+ES = 0000h
+Return: ES nonzero if installed
+ES:BX - entry point data structure (see #03138)
+SeeAlso: INT 80/BX=0000h,INT F3SoundBlaster
+Format of SoundBlaster entry point data structure:
+Offset Size  Description   (Table 03138)
+00h 3 BYTEs  signature FB 
+03h  BYTE  driver major version number???
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=FBFBh/ES=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5769.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5771.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SoundBlaster speech driver - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = FBFBh
+ES = 0000h<br>
+<p><b>Return:</b><br>ES nonzero if installed
+ES:BX -> entry point data structure <a href="rb-5770.htm#Table3138">(see #03138)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-8153.htm">INT 80/BX=0000h</a> - <a href="rb-8699.htm">INT F3"SoundBlaster"</a>
+<PRE>
+<p>
+Format of SoundBlaster entry point data structure:
+<a name=table3138></a>
+Offset  Size    Description     (Table 03138)
+00h  3 BYTEs   signature "FB "
+03h    BYTE    driver major version number???
+04h    DWORD   speech driver entry point <a href="rb-5770.htm#Table3139">(see #03139)</a>
+08h 24 BYTEs   ???
+20h  ? BYTEs   data buffer for calling speech driver
+(can be 117 bytes or more)
+<p>
+<a name=table3139></a>
+(Table 03139)
+Call SoundBlaster speech driver entry point with:.
+AL = function
+07h speak a string
+data buffer <a href="rb-5770.htm#Table3138">(see #03138)</a> contains:
+BYTE  length of string
+N BYTEs string to speak
+</PRE>
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5769.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5771.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

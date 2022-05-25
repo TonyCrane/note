@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=20h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=20h - Compaq, ATAPI Removable Media Device - GET CURRENT MEDIA FORMAT - 
+AH = 20h
+DL = drive number (00h,01h)
+Return: CF clear if successful
+AL = media type (see #00265)
+AH = 00h
+CF set on error
+AH = error code
+01h invalid request
+30h drive does not support media sense
+31h no such drive / media not present
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=20h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0666.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0668.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Compaq, ATAPI Removable Media Device - GET CURRENT MEDIA FORMAT</font></h3>
+<PRE>
+AH = 20h
+DL = drive number (00h,01h)<br>
+<p><b>Return:</b><br>CF clear if successful
+AL = media type <a href="rb-0667.htm#Table265">(see #00265)</a>
+AH = 00h
+CF set on error
+AH = error code
+01h invalid request
+30h drive does not support media sense
+31h no such drive / media not present
+32h non-default media / drive does not support media type
+</PRE>
+<p><b>Notes:</b>
+This function is supported by the 1993/3/8 Compaq ROM BIOS, but only
+partially (AL is always 00h when successful) by the 1993/8/3 version.
+This function is also supported by some recent versions of the Phoenix
+486 BIOS.
+This function does not seem to be supported by some Toshiba BIOSes
+(at least before 1995, maybe some laptops??? with 1.44 MB floppies),
+because S/DOS 1.0 contains code to bypass a call to this function,
+always assuming the drive would not support media sense.
+<p><b>See Also:</b>
+<a href="rb-0639.htm">AH=15h</a>
+<PRE>
+<p>
+<a name=table265></a>
+(Table 00265)
+Values for Compaq/ATAPI diskette media type:
+03h    720K  (1M unformatted)
+04h    1.44M (2M unformatted)
+06h    2.88M (4M unformatted)
+0Ch    360K
+0Dh    1.2M
+0Eh    Toshiba 3mode
+0Fh    NEC 3mode (1024-byte sectors)
+10h    ATAPI Removable Media Device
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0666.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0668.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

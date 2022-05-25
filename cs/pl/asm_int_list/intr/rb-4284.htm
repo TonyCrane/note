@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1000h - SHARE - INSTALLATION CHECK - 
+AX = 1000h
+Return: AL = status
+00h not installed, OK to install
+01h not installed, not OK to install
+FFh installed
+Notes: supported by OS/2 v1.3+ compatibility box, which always returns AL=FFh
+if DOS 4.01 SHARE was automatically loaded, file sharing is in an
+inactive state (due to the undocumented /NC flag used by the autoload
+code) until this call is made
+DR DOS 5.0 SHARE 1.00 only checks for AH=10h and in this case does not
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4283.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4285.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SHARE - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 1000h<br>
+<p><b>Return:</b><br>AL = status
+00h not installed, OK to install
+01h not installed, not OK to install
+FFh installed
+</PRE>
+<p><b>Notes:</b>
+Supported by OS/2 v1.3+ compatibility box, which always returns AL=FFh.
+If DOS 4.01 SHARE was automatically loaded, file sharing is in an
+inactive state (due to the undocumented /NC flag used by the autoload
+code) until this call is made.
+DR DOS 5.0 SHARE 1.00 only checks for AH=10h and in this case does not
+chain to a previous handler, DR DOS 6.0 SHARE 1.02+ properly chains
+for any values other than AX=1000h and the private FDOS hook
+AX=1001h.  However, under DR PalmDOS and Novell DOS 7+, the
+SHARE 2.00+ only tests for the AX=1000h install check, since it no
+longer uses AX=1001h to hook into the system..
+DOS 5+ chains to the previous handler if AL <> 00h on entry.
+Windows Enhanced mode hooks this call and reports that SHARE is
+installed even when it is not
+<p><b>BUGS:</b>
+Values of AL other than 00h put DOS 3.x SHARE into an infinite loop
+<PRE>
+<p><b>(08E9:</b><br>OR  AL,AL
+<p><b>08EB:</b><br>JNZ 08EB) <- the buggy instruction (DOS 3.3).
+Values of AL other than described here put PC-DOS 4.00 into the same
+loop (the buggy instructions are the same)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4299.htm">AX=1080h</a> - <a href="rb-2983.htm">INT 21/AH=52h</a> - <a href="rb-2924.htm">INT 21/AX=4457h/DX=FFFFh</a>
+<p>
+<b>Category: <a href="cat-016.htm">
+File Manipulation</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4283.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4285.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

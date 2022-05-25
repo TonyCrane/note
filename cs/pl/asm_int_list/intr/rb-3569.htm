@@ -1,0 +1,138 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=DDh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=DDh - Novell NetWare - FILE SERVER - GET PHYSICAL RECORD LOCKS BY CONN&FILE - 
+AH = E3h subfn DDh
+DS:SI - request buffer (see #02054)
+ES:DI - reply buffer (see #02055)
+Return: AL = status (00h,C6h,FFh) (see #02053)
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have console operator privileges
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=DEh,AH=E3h/SF=DFh,AX=F217h/SF=DDh
+(Table 02053)
+Values for NetWare function status:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=DDh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3568.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3570.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET PHYSICAL RECORD LOCKS BY CONN&FILE</font></h3>
+<PRE>
+AH = E3h subfn DDh
+DS:SI -> request buffer <a href="rb-3569.htm#Table2054">(see #02054)</a>
+ES:DI -> reply buffer <a href="rb-3569.htm#Table2055">(see #02055)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h,FFh) (see #02053)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have console operator privileges
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3570.htm">AH=E3h/SF=DEh</a> - <a href="rb-3571.htm">AH=E3h/SF=DFh</a> - <a href="rb-3825.htm"
+<PRE>
+<p>
+<a name=table2053></a>
+(Table 02053)
+Values for NetWare function status:
+00h    successful
+C6h    no console rights
+FFh    file not open
+</PRE>
+<p><b>See Also:</b>
+#02025 - #02094
+<PRE>
+<p>
+Format of NetWare "Get Phys Record Locks by Conn and File" request buffer:
+<a name=table2054></a>
+Offset  Size    Description     (Table 02054)
+00h    WORD    0016h (length of following data)
+02h    BYTE    DDh (subfunction "Get Physical Record Locks by Connection and
+File")
+03h    WORD    (big-endian) logical connection number
+05h    WORD    (big-endian) last record seen (0000h on first call)
+07h    BYTE    volume number (00h-1Fh)
+08h    WORD    (big-endian) directory handle
+0Ah 14 BYTEs   ASCIZ filename
+</PRE>
+<p><b>See Also:</b>
+#02055 - #02236 at AX=F217h/SF=DDh
+<PRE>
+<p>
+Format of NetWare "Get Phys Record Locks by Conn and File" reply buffer:
+<a name=table2055></a>
+Offset  Size    Description     (Table 02055)
+00h    WORD    (call) size of following results record (max 1FEh)
+02h    WORD    next request record (place in "last record" on next call)
+0000h if no more records
+04h    BYTE    number of physical record locks
+05h    BYTE    number of records following
+06h    var     array of Physical Record Lock Info records <a href="rb-3569.htm#Table2056">(see #02056)</a>
+</PRE>
+<p><b>See Also:</b>
+#02054 - #02236 at AX=F217h/SF=DDh
+<PRE>
+<p>
+Format of NetWare Physical Record Lock Info:
+<a name=table2056></a>
+Offset  Size    Description     (Table 02056)
+00h    BYTE    task number
+01h    BYTE    lock status <a href="rb-3569.htm#Table2057">(see #02057)</a>
+02h    DWORD   (big-endian) starting offset of record in file
+06h    DWORD   (big-endian) ending offset of record in file
+</PRE>
+<p><b>See Also:</b>
+#02055
+<PRE>
+<p>
+Bitfields for lock status:
+<a name=table2057></a>
+Bit(s)  Description     (Table 02057)
+0      exclusive lock
+1      shareable lock
+2      logged
+6      lock held by TTS
+</PRE>
+<p><b>See Also:</b>
+#02056
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3568.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3570.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

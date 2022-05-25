@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E1h/SF=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E1h/SF=04h - Novell NetWare - MESSAGE SERVICES - SEND PERSONAL MESSAGE - 
+AH = E1h subfn 04h
+DS:SI - request buffer (see #01826)
+ES:DI - reply buffer (see #01827)
+Return: AL = status
+00h successful
+FEh I/O error or out of dynamic workspace
+Notes: this function is supported by NetWare 4.0+ and Advanced NetWare 1.0-2.x
+message pipes use CPU time on the file server; IPX, SPX, or NetBIOS
+connections should be used for peer-to-peer communications as these
+protocols do not use file server time
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E1h/SF=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3448.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3450.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - MESSAGE SERVICES - SEND PERSONAL MESSAGE</font></h3>
+<PRE>
+AH = E1h subfn 04h
+DS:SI -> request buffer <a href="rb-3449.htm#Table1826">(see #01826)</a>
+ES:DI -> reply buffer <a href="rb-3449.htm#Table1827">(see #01827)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+FEh I/O error or out of dynamic workspace
+</PRE>
+<p><b>Notes:</b>
+This function is supported by NetWare 4.0+ and Advanced NetWare 1.0-2.x.
+Message pipes use CPU time on the file server; IPX, SPX, or NetBIOS
+connections should be used for peer-to-peer communications as these
+protocols do not use file server time
+<p><b>See Also:</b>
+<a href="rb-3445.htm">AH=E1h/SF=00h</a> - <a href="rb-3450.htm">AH=E1h/SF=05h</a> - <a href="rb-3451.htm">AH=E1h/SF=06h</a> - <a href="rb-3453.htm"
+<PRE>
+<p>
+Format of NetWare "Send Personal Message" request buffer:
+<a name=table1826></a>
+Offset  Size    Description     (Table 01826)
+00h    WORD    length of following data (max E5h)
+02h    BYTE    04h (subfunction "Send Personal Message")
+03h    BYTE    number of connections (01h-64h)
+04h  N BYTEs   list of connections to receive broadcast message.
+BYTE    length of message (01h-7Eh)
+N BYTEs   message (no control characters or characters > 7Eh)
+</PRE>
+<p><b>See Also:</b>
+#01827
+<PRE>
+<p>
+Format of NetWare "Send Personal Message" reply buffer:
+<a name=table1827></a>
+Offset  Size    Description     (Table 01827)
+00h    WORD    (call) size of following results buffer (max 65h)
+02h    BYTE    number of connections
+03h  N BYTEs   list of per-connection results
+00h successful
+FCh message rejected because queue is full (contains 6 msgs)
+FDh incomplete pipe
+FFh failed
+</PRE>
+<p><b>See Also:</b>
+#01826
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3448.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3450.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

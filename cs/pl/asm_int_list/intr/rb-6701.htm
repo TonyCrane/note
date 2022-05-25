@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61 - TCPOpen kernel - API - 
+ES:BX - request packet (see #03317)
+Program: TCPOpen is a TCP/IP protocol stack by Lanera
+Range: INT 60 to INT 7F, selected by configuration file
+Note:  there does not appear to be an installation check, though function
+FFFFh can be used to verify that the software is indeed functioning
+Format of TCPOpen request packet:
+Offset Size  Description   (Table 03317)
+00h 8 BYTEs  ???
+08h  WORD  function number (0000h-001Ah or FFF9h-FFFFh)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6700.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6702.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TCPOpen kernel - API</font></h3>
+<PRE>
+ES:BX -> request packet <a href="rb-6701.htm#Table3317">(see #03317)</a>
+</PRE>
+<p><b>Program:</b>
+TCPOpen is a TCP/IP protocol stack by Lanera
+<PRE>
+<p><b>Range:</b><br>INT 60 to INT 7F, selected by configuration file
+</PRE>
+<p><b>Note:</b>
+There does not appear to be an installation check, though function
+FFFFh can be used to verify that the software is indeed functioning
+<PRE>
+<p>
+Format of TCPOpen request packet:
+<a name=table3317></a>
+Offset  Size    Description     (Table 03317)
+00h  8 BYTEs   ???
+08h    WORD    function number (0000h-001Ah or FFF9h-FFFFh)
+0Ah    WORD    ???
+0Ch  2 BYTEs   ???
+0Eh    WORD    (ret) return code
+10h  2 BYTEs   ???
+12h    WORD    ???
+14h    WORD    (ret) 0001h if requested function complete
+16h    WORD    (ret) ???
+18h  6 BYTEs   ???
+1Eh    DWORD   -> ???
+22h    WORD    ??? or 0000h
+24h    WORD    (ret) ???
+</PRE>
+<p><b>See Also:</b>
+#03318
+<PRE>
+<p>
+<a name=table3318></a>
+(Table 03318)
+<p><b>Call TCPOpen Function FFFFh:</b><br>Installation verification<br>
+<p><b>Return:</b><br>Offset 10h = BEEFh
+offset 14h = 0001h
+offset 24h = ???
+<p><b>Index:</b><br>Installation check;TCPOpen kernel
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6700.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6702.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

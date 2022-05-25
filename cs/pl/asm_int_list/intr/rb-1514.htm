@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=84h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=84h - BIOS - JOYSTICK SUPPORT (XT after 1982/11/8,AT,XT286,PS) - 
+AH = 84h
+DX = subfunction
+0000h read joystick switches
+Return: AL bits 7-4 = switch settings
+0001h read positions of joysticks
+Return: AX = X position of joystick A
+BX = Y position of joystick A
+CX = X position of joystick B
+DX = Y position of joystick B
+Return: CF set on error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=84h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1513.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1515.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>BIOS - JOYSTICK SUPPORT (XT after 1982/11/8,AT,XT286,PS)</font></h3>
+<PRE>
+AH = 84h
+DX = subfunction
+0000h read joystick switches
+<p><b>Return:</b><br>AL bits 7-4 = switch settings
+0001h read positions of joysticks
+<p><b>Return:</b><br>AX = X position of joystick A
+BX = Y position of joystick A
+CX = X position of joystick B
+DX = Y position of joystick B<br>
+<p><b>Return:</b><br>CF set on error
+AH = status <a href="rb-1506.htm#Table496">(see #00496)</a>
+CF clear if successful
+</PRE>
+<p><b>Notes:</b>
+If no game port is installed, subfunction 0000h returns AL=00h (all
+switches open) and subfunction 0001h returns AX=BX=CX=DX=0000h.
+A 250kOhm joystick typically returns 0000h-01A0h
+<p><b>See Also:</b>
+<a href="rb-1515.htm">AH=84h"V20-XT-BIOS"</a>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1513.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1515.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

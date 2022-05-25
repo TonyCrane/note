@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=DFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=DFh - Novell NetWare - GET LOGICAL RECORDS BY CONNECTION (OLD) - 
+AX = F217h subfn DFh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02061 at AH=E3h/SF=DFh)
+ES:DI - reply buffer (see #02238)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E3h/SF=DFh,AX=F217h/SF=EFh
+Format of NetWare Get Logical Records By Connection (old) reply packet:
+Offset Size  Description   (Table 02238)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=DFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3826.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3828.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET LOGICAL RECORDS BY CONNECTION (OLD)</font></h3>
+<PRE>
+AX = F217h subfn DFh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-0000.htm#Table0"></a>(see #02061 at AH=E3h/SF=DFh)
+ES:DI -> reply buffer <a href="rb-3827.htm#Table2238">(see #02238)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3571.htm">AH=E3h/SF=DFh</a> - <a href="rb-3842.htm">AX=F217h/SF=EFh</a>
+<PRE>
+<p>
+Format of NetWare "Get Logical Records By Connection (old)" reply packet:
+<a name=table2238></a>
+Offset  Size    Description     (Table 02238)
+00h    WORD    next request record (place in "last record" field on next call)
+0000h if no more locked records
+02h    BYTE    number of records following
+03h    var     array of Logical Lock Information Records
+<a href="rb-0000.htm#Table0"></a>(see #02063 at AH=E3h/SF=DFh)
+</PRE>
+<p><b>See Also:</b>
+#02061 - #02062 at AH=E3h/SF=DFh
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3826.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3828.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

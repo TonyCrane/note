@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=0Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=0Fh - Novell NetWare - SCAN FILE INFORMATION - 
+AX = F217h subfn 0Fh
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #01903 at AH=E3h/SF=0Fh)
+ES:DI - reply buffer (see #02165)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E3h/SF=0Fh,AX=F217h/SF=10h
+Format of NetWare Scan File Information reply packet:
+Offset Size  Description   (Table 02165)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=0Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3721.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3723.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SCAN FILE INFORMATION</font></h3>
+<PRE>
+AX = F217h subfn 0Fh
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-0000.htm#Table0"></a>(see #01903 at AH=E3h/SF=0Fh)
+ES:DI -> reply buffer <a href="rb-3722.htm#Table2165">(see #02165)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3491.htm">AH=E3h/SF=0Fh</a> - <a href="rb-3723.htm">AX=F217h/SF=10h</a>
+<PRE>
+<p>
+Format of NetWare "Scan File Information" reply packet:
+<a name=table2165></a>
+Offset  Size    Description     (Table 02165)
+00h    WORD    next sequence number (place in request buffer for next call)
+02h 14 BYTEs   ASCIZ filename
+10h    BYTE    file attributes <a href="rb-0000.htm#Table0"></a>(see #01420 at AX=4301h)
+11h    BYTE    extended file attributes <a href="rb-0000.htm#Table0"></a>(see #01804 at AH=B6h)
+12h    DWORD   (big-endian) file size in bytes
+16h    WORD    (big-endian) file's creation date <a href="rb-0000.htm#Table0"></a>(see #01666 at AX=5700h)
+18h    WORD    (big-endian) date of last access <a href="rb-0000.htm#Table0"></a>(see #01665 at AX=5700h)
+1Ah    DWORD   (big-endian) date and time of last update <a href="rb-3459.htm#Table1846">(see #01846)</a>
+1Eh    DWORD   (big-endian) object ID of owner
+22h    DWORD   (big-endian) date and time last archived <a href="rb-3459.htm#Table1846">(see #01846)</a>
+26h 55 BYTEs   reserved
+</PRE>
+<p><b>See Also:</b>
+#01903 at AH=E3h/SF=0Fh
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3721.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3723.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

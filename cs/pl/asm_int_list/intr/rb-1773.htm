@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>Int 16/AH=12h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 16/AH=12h - KEYBOARD - GET EXTENDED SHIFT STATES (enh kbd support only) - 
+AH = 12h
+Return: AL = shift flags 1 (same as returned by AH=02h) (see #00587)
+AH = shift flags 2 (see #00588)
+Notes: AL bit 3 set only for left Alt key on many machines
+AH bits 7 through 4 always clear on a Compaq SLT/286
+INT 16/AH=09h can be used to determine whether this function is
+supported, but only on later model PS/2s
+many BIOSes (including at least some versions of Phoenix and AMI) will
+destroy AH on return from functions higher than AH=12h, returning
+12h less than was in AH on entry (due to a chain of DEC/JZ
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 16/AH=12h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1772.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1774.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>KEYBOARD - GET EXTENDED SHIFT STATES (enh kbd support only)</font></h3>
+<PRE>
+AH = 12h<br>
+<p><b>Return:</b><br>AL = shift flags 1 (same as returned by AH=02h) (see #00587)
+AH = shift flags 2 <a href="rb-1773.htm#Table588">(see #00588)</a>
+</PRE>
+<p><b>Notes:</b>
+AL bit 3 set only for left Alt key on many machines.
+AH bits 7 through 4 always clear on a Compaq SLT/286.
+INT 16/AH=09h can be used to determine whether this function is
+supported, but only on later model PS/2s.
+Many BIOSes (including at least some versions of Phoenix and AMI) will
+destroy AH on return from functions higher than AH=12h, returning
+12h less than was in AH on entry (due to a chain of DEC/JZ
+instructions)
+<p><b>See Also:</b>
+<a href="rb-1756.htm">AH=02h</a> - <a href="rb-1769.htm">AH=09h</a> - <a href="rb-1781.htm">AH=22h</a> - <a href="rb-1809.htm">AH=51h</a> - <a "http://www.ctyme.com/intr/href"
+<PRE>
+<p>
+Bitfields for keyboard shift flags 1:
+<a name=table587></a>
+Bit(s)  Description     (Table 00587)
+7      Insert active
+6      CapsLock active
+5      NumLock active
+4      ScrollLock active
+3      Alt key pressed (either Alt on 101/102-key keyboards)
+2      Ctrl key pressed (either Ctrl on 101/102-key keyboards)
+1      left shift key pressed
+0      right shift key pressed
+</PRE>
+<p><b>See Also:</b>
+#00582 - #00588 - MEM 0040h:0017h - #M0010
+<PRE>
+<p>
+Bitfields for keyboard shift flags 2:
+<a name=table588></a>
+Bit(s)  Description     (Table 00588)
+7      SysReq key pressed (SysReq is often labeled SysRq)
+6      CapsLock pressed
+5      NumLock pressed
+4      ScrollLock pressed
+3      right Alt key pressed
+2      right Ctrl key pressed
+1      left Alt key pressed
+0      left Ctrl key pressed
+</PRE>
+<p><b>See Also:</b>
+#00587 - MEM 0040h:0018h - #M0011
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-16.htm">
+Int 16h</a>
+- <a href="alpha-k.htm">
+K</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1772.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1774.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

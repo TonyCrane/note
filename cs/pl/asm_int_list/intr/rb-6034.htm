@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Int 33/AX=006Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 33/AX=006Dh - MS MOUSE - GET VERSION STRING - 
+AX = 006Dh 'm'
+Return: ES:DI - Microsoft version number of resident driver (see #03187)
+Notes: also supported by Logitech, Mouse Systems, Kraft, and Genius mouse
+drivers
+the Mouse Systems 7.01 and Genius Mouse 9.06 drivers report their
+Microsoft version as 7.00 even though they do not support any of the
+functions from 0025h through 002Dh supported by the MS 7.00 driver
+(the Genius Mouse driver supports function 0026h, but it differs
+from the Microsoft function)
+the TRUEDOX 4.01 driver reports its version as 6.26 through this call,
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 33/AX=006Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6033.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6035.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS MOUSE - GET VERSION STRING</font></h3>
+<PRE>
+AX = 006Dh 'm'<br>
+<p><b>Return:</b><br>ES:DI -> Microsoft version number of resident driver (see #03187)
+</PRE>
+<p><b>Notes:</b>
+Also supported by Logitech, Mouse Systems, Kraft, and Genius mouse
+drivers.
+The Mouse Systems 7.01 and Genius Mouse 9.06 drivers report their
+Microsoft version as 7.00 even though they do not support any of the
+functions from 0025h through 002Dh supported by the MS 7.00 driver
+(the Genius Mouse driver supports function 0026h, but it differs
+from the Microsoft function).
+The TRUEDOX 4.01 driver reports its version as 6.26 through this call,
+but as 6.24 through AX=0024h.
+There seems to be no reliable method to distinguish MS MOUSE before
+3.00 from mouse drivers of other vendors..
+Some releases of the MS MOUSE 6.00 erroneously return 6.01 instead of
+their true version number.  In this case, a DI value of 01ABh can
+be used to still detect a 6.00 driver..
+For returned versions 6.02+, INT 33/AX=0024h should be used to retrieve
+more accurate version data..
+True MS MOUSE drivers can also be identified by magic numbers in
+their copyright message, stored in the driver's segment (ES).
+These can be found by scanning the first 2 Kb of the mouse
+<PRE>
+<p><b>driver's segment for a string like:</b><br>[new since 7.00+]
+"** This is Copyright 1983[-19xx] Microsoft ***" with the
+magic number stored one byte after the signature string.
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5993.htm">AX=0024h</a> - <a href="rb-6020.htm">AX=004Dh</a> - <a href="rb-6031.htm">AX=006Ah</a> - <a href="rb-6078.htm">AX=266Ch</a>
+<PRE>
+<p>
+Format of Microsoft version number:
+<a name=table3187></a>
+Offset  Size    Description     (Table 03187)
+00h    BYTE    major version
+01h    BYTE    minor version (BCD)
+<p>
+<a name=table4087></a>
+(Table 04087)
+Values for Microsoft MOUSE copyright string magic numbers:
+5564h  version 3.00..6.00      (for reported versions up to 5.03, and 6.00)
+557Ch  version 6.01Z..6.24     (for reported versions 6.01..6.24)
+E806h  version 6.25            (for reported version 6.25)
+EB02h  version 6.26..7.04      (for reported version 6.26..7.04)
+0800h  Integrated driver 1.0+  (for reported version 9.x+)
+</PRE>
+<p><b>Note:</b>
+Versions above 7.04 (except for integrated mouse drivers) have a magic
+number representing their version number, e.g. 0507h for version 7.05
+<p>
+<b>Category: <a href="cat-025.htm">
+Mouse/Pointing Device</a>
+- <a href="int-33.htm">
+Int 33h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6033.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6035.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

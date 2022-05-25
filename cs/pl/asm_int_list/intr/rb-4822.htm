@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A10h/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A10h/BX=0000h - SMARTDRV v4.00+ - INSTALLATION CHECK AND HIT RATIOS - 
+AX = 4A10h
+BX = 0000h
+CX = EBABh (v4.1+; see Note), and CX 0EDCh
+Return: AX = BABEh if installed
+DX:BX = cache hits
+DI:SI = cache misses
+CX = number of dirty cache elements
+BP = version in BCD (4.10 = 0410h)
+4.0 = 0400h (Windows 3.1)
+4.01 = 0401h (MS-DOS 6.0, 1992/07/30)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A10h/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4821.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4823.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SMARTDRV v4.00+ - INSTALLATION CHECK AND HIT RATIOS</font></h3>
+<PRE>
+AX = 4A10h
+BX = 0000h
+CX = EBABh (v4.1+; see Note), and CX <> 0EDCh<br>
+<p><b>Return:</b><br>AX = BABEh if installed
+DX:BX = cache hits
+DI:SI = cache misses
+CX = number of dirty cache elements
+BP = version in BCD (4.10 = 0410h)
+4.0  = 0400h (Windows 3.1)
+4.01 = 0401h (MS-DOS 6.0, 1992/07/30)
+4.10 = 0410h (1992/11/11)
+4.20 = 0420h
+5.0  = 0500h (MS-DOS 6.2)
+</PRE>
+<p><b>Notes:</b>
+Most of the SMARTDRV API, including this call, is supported by
+PC-Cache v8.0 and recent versions of the Norton Caches.
+The internal name for SMARTDRV is "BAMBI", hence the magic "BABE"..
+If DBLSPACE.BIN is installed but SMARTDRV has not yet been installed,
+then calls of this function with CX<>EBABh on entry cause
+DBLSPACE.BIN to display the error message
+"Cannot run SMARTDrive 4.0 with DoubleSpace" and abort the caller
+with INT 21/AX=4C00h.
+Since the Novell DOS 7 - DR-DOS 7.03 NWCACHE supports a similar
+install check at this function, but the returned registers
+contain different data, the caller must take the returned AX value
+into account to ensure proper interpretation of the returned info.
+The caller should ensure CX <> 0EDCh to avoid any interaction
+with the NWCACHE and COMMAND.COM special case of CX=0EDCh.
+Although this is an install check, NWCACHE always flushes delayed
+writes to disk, when calling this function with CX<>0EDCh or while
+/FLUSH:ON is active, but this is nothing to rely upon. The reason
+for this could be to get more accurate statistics, while SMARTDRV
+just takes a on-the-fly snapshot of the statistic vars..
+The private NWCACHE/NLCACHE install check INT2Fh/D8C0h does not flush
+to disk, and therefore can be used by callers that must ensure
+the buffers aren't flushed on this function (e.g. alternative
+command shells may need this to make their "flush before prompt"
+feature configurable)..
+The NWCACHE 0EDCh special case will most probably vanish with
+future issues of NWCACHE (2.0+)..
+SMARTDRV v3.x had a completely different API using IOCTL calls, which
+was also supported by the Norton Caches
+<p><b>BUG:</b>
+Although DS and ES registers are listed as unmodified, some
+releases of SMARTDRV seem to trash the DS register, at least the
+MS-DOS 6.2+ KEYB takes care to preserve the DS register when calling
+this function.
+<p><b>See Also:</b>
+<a href="rb-4824.htm">AX=4A10h/BX=0001h</a> - <a href="rb-4828.htm">AX=4A10h/BX=0004h</a> - <a href="rb-4829.htm">AX=4A10h/BX=0005h</a>
+<p><b>See Also:</b>
+<a href="rb-4831.htm">AX=4A10h/BX=0007h</a> - <a href="rb-4834.htm">AX=4A10h/BX=1234h</a> - <a href="rb-4835.htm">AX=4A11h/BX=0000h</a>
+<p><b>See Also:</b>
+<a href="rb-2828.htm">INT 21/AX=4402h"SMARTDRV"</a> - <a href="rb-2855.htm">INT 21/AX=4403h"SMARTDRV"</a>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4821.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4823.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

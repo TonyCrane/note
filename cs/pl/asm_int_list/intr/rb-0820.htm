@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=02h/DX=FFFFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=02h/DX=FFFFh - Connection Manager - RECEIVE CHARACTER - 
+AH = 02h
+DX = FFFFh
+BH = character to send
+Return: AH = return code (00h-02h,04h,FFh) (see #00303)
+BH = line status (see #00304)
+AL = received character (if any)
+Notes: if DX is 0-3 on entry, Connection Manager emulates the standard BIOS
+function, but redirects the port over the network; if DX is any other
+value, the call is chained
+this function is provided primarily for compatibility; AH=07h/DX=FFFFh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=02h/DX=FFFFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0819.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0821.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Connection Manager - RECEIVE CHARACTER</font></h3>
+<PRE>
+AH = 02h
+DX = FFFFh
+BH = character to send<br>
+<p><b>Return:</b><br>AH = return code (00h-02h,04h,FFh) (see #00303)
+BH = line status <a href="rb-0821.htm#Table304">(see #00304)</a>
+AL = received character (if any)
+</PRE>
+<p><b>Notes:</b>
+If DX is 0-3 on entry, Connection Manager emulates the standard BIOS
+function, but redirects the port over the network; if DX is any other
+value, the call is chained.
+This function is provided primarily for compatibility; AH=07h/DX=FFFFh
+is the preferred function because it provides better performance
+<p><b>See Also:</b>
+<a href="rb-0820.htm">AH=02h/DX=FFFFh</a> - <a href="rb-0822.htm">AH=03h/DX=FFFFh</a> - <a href="rb-0853.htm">AH=06h/DX=FFFFh</a>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0819.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0821.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

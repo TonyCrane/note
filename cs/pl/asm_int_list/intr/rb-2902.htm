@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=440Dh/CX=086Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=440Dh/CX=086Dh - MS-DOS 7.0+ - GENERIC IOCTL - ENUMERATE OPEN FILES - 
+AX = 440Dh
+CX = 086Dh / 486Dh
+(category code 08h for FAT12/16, 48h for FAT32; minor code 6Dh)
+BL = drive number (00h=default,01h=A:,etc)
+DS:DX - buffer for ASCIZ pathname
+SI = file index (0000h to number of open files-1)
+DI = enumeration type (0000h all files, 0001h unmovable files)
+Return: CF set on error
+AX = error code (01h,02h,12h,etc.) (see #01680 at AH=59h/BX=0000h)
+0012h if file index is out of range
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=440Dh/CX=086Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2901.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2903.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS-DOS 7.0+ - GENERIC IOCTL - ENUMERATE OPEN FILES</font></h3>
+<PRE>
+AX = 440Dh
+CX = 086Dh / 486Dh
+(category code 08h for FAT12/16, 48h for FAT32; minor code 6Dh)
+BL = drive number (00h=default,01h=A:,etc)
+DS:DX -> buffer for ASCIZ pathname
+SI = file index (0000h to number of open files-1)
+DI = enumeration type (0000h all files, 0001h unmovable files)<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code (01h,02h,12h,etc.) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+0012h if file index is out of range
+CF clear if successful
+AX = file open mode (BX from AX=6C00h or AX=716Ch)
+CX = file type <a href="rb-2902.htm#Table1577">(see #01577)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2896.htm">AX=440Dh"DOS 3.2+"</a> - <a href="rb-2897.htm">AX=440Dh/CX=084Ah</a> - <a href="rb-2901.htm">AX=440Dh/CX=086Ch</a>
+<p><b>See Also:</b>
+<a href="rb-2903.htm">AX=440Dh/CX=086Eh</a> - <a href="rb-3179.htm">AX=6C00h</a> - <a href="rb-3209.htm">AX=716Ch</a>
+<PRE>
+<p>
+<a name=table1577></a>
+(Table 01577)
+Values for file type:
+0000h  normal file
+0001h  memory-mapped file (unmovable)
+0002h  unmovable file
+0004h  swap file
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2901.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2903.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

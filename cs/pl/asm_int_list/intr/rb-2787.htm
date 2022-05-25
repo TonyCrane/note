@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=3Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=3Fh - BW-TCP - GET DRIVER INFO - 
+AH = 3Fh
+BX = file handle for device ETHDEV27
+CX = 002Bh
+DS:DX - buffer for driver info (see #01412)
+Return: CF clear if successful
+AX = number of bytes actually read (0 if at EOF before call)
+CF set on error
+AX = error code (05h,06h) (see #01680 at AH=59h/BX=0000h)
+Program: BW-TCP is a TCP/IP protocol stack by Beame & Whiteside Software
+InstallCheck:  for the TCP/IP stack, test for the existence of the character
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=3Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2786.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2788.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>BW-TCP - GET DRIVER INFO</font></h3>
+<PRE>
+AH = 3Fh
+BX = file handle for device "ETHDEV27"
+CX = 002Bh
+DS:DX -> buffer for driver info <a href="rb-2787.htm#Table1412">(see #01412)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually read (0 if at EOF before call)
+CF set on error
+AX = error code (05h,06h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Program:</b>
+BW-TCP is a TCP/IP protocol stack by Beame & Whiteside Software
+<PRE>
+<p><b>InstallCheck:</b><br>For the TCP/IP stack, test for the existence of the character
+device UDP-IP10
+</PRE>
+<p><b>Note:</b>
+The B&W socket library performs an INT 21/AX=4401h with DX=0060h before
+making this call to retrieve the driver information; one should also
+call the private API interrupt with AH=15h
+<p><b>See Also:</b>
+<a href="rb-0994.htm">INT 14/AH=56h</a> - <a href="rb-6905.htm">INT 62/AH=00h"ETHDEV"</a> - <a href="rb-7203.htm">INT 63/AH=03h</a> - <a href="rb-7251.htm">INT 64/AH=01h</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;BW-TCP hardware driver
+<p><b>Index:</b><br>Installation check;BW-TCP TCPIP.SYS
+<p>
+Format of BW-TCP driver info:
+<a name=table1412></a>
+Offset  Size    Description     (Table 01412)
+00h    WORD    I/O base address
+02h    BYTE    shared memory page (01h = segment 0100h, etc.)
+03h    BYTE    interrupt vector for private API
+04h    BYTE    IRQ used by board
+05h    WORD    size of data buffer
+07h    WORD    maximum transfer window
+09h    WORD    time zone
+0Bh    BYTE    address type (01h user, 04h RARP, 05h BOOTP)
+0Ch    DWORD   internet address
+10h    WORD    "value" ???
+12h    BYTE    subnet mask
+13h    WORD    "ether_pointer" ???
+15h    WORD    offset in device driver of log server records <a href="rb-2787.htm#Table1413">(see #01413)</a>
+17h    WORD    offset in device driver of name server records <a href="rb-2787.htm#Table1413">(see #01413)</a>
+19h    WORD    offset in device driver of print server records <a href="rb-2787.htm#Table1413">(see #01413)</a>
+1Bh    WORD    offset in device driver of time server records <a href="rb-2787.htm#Table1413">(see #01413)</a>
+1Dh    WORD    offset in device driver of gateway records <a href="rb-2787.htm#Table1413">(see #01413)</a>
+1Fh    WORD    segment address of device driver
+21h    BYTE    transfer size
+22h  9 BYTEs   network adapter board name
+---11/21/91+ ---
+23h    BYTE    ETHDEV version (major in high nybble, minor in low nybble)
+24h    BYTE    ETHDEV revision
+25h    BYTE    TCPIP version (major in high nybble, minor in low nybble)
+26h    BYTE    TCPIP revision
+27h    BYTE    BWRPC version (major in high nybble, minor in low nybble)
+28h    BYTE    BWRPC revision
+29h    BYTE    BWNFS version (major in high nybble, minor in low nybble)
+2Ah    BYTE    BWNFS revision
+2Bh    BYTE    Telnet version (major in high nybble, minor in low nybble)
+2Ch    BYTE    Telnet revision
+2Dh    BYTE    NETBIOS version (major in high nybble, minor in low nybble)
+2Eh    BYTE    NETBIOS revision
+</PRE>
+<p><b>Note:</b>
+For each driver, if version=0, the driver is not installed or does
+not support the version check
+<PRE>
+<p>
+Format of BW-TCP server records:
+<a name=table1413></a>
+Offset  Size    Description     (Table 01413)
+00h    BYTE    number of server records following
+01h  N DWORDs  internet addresses of servers
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2786.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2788.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

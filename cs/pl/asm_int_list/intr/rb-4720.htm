@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=2780h/CL=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=2780h/CL=05h - Novell DOS 7 - EMM386.EXE - MULTITASKING API - VIRTUAL MACHINES - 
+AX = 2780h
+CL = 05h (module: VM)
+CH = function
+00h F_VMProtInit internal protected-mode initialization
+01h Z_TMLoad load task manager
+02h Z_TMUnload unload task manager
+03h Z_VMBackSet send virtual machine to background
+04h Z_VMForeSet send virtual machine to foreground
+05h Z_VMSaveEnable enable saving virtual machine
+06h Z-VMSaveDisable disable saving virtual machine
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=2780h/CL=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4719.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4721.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell DOS 7 - EMM386.EXE - MULTITASKING API - VIRTUAL MACHINES</font></h3>
+<PRE>
+AX = 2780h.
+<p><b>CL = 05h (module:</b><br>VM).
+CH = function
+00h "F_VMProtInit" internal protected-mode initialization
+01h "Z_TMLoad" load task manager
+02h "Z_TMUnload" unload task manager
+03h "Z_VMBackSet" send virtual machine to background
+04h "Z_VMForeSet" send virtual machine to foreground
+05h "Z_VMSaveEnable" enable saving virtual machine
+06h "Z-VMSaveDisable" disable saving virtual machine
+07h "Z_TMInit" intialize task manager
+08h "Z_TMHotKeyGet" get task manager hotkey
+09h "Z_TMHitKeyEnable" restart scanning for task manager key
+0Ah "Z_TMHotKeyDisable" stop scanning for task manager key
+0Bh "X_ForeGet" get current foreground domain
+0Ch "F_DMAHandlerEnable" (re)enable DMA address translation
+0Dh "F_DMAHandlerDisable" disable DMA address translation
+0Eh "Z_SerialTimeoutGet" set serial port timeout
+0Fh "Z_ParallelTimeoutSet" set parallel port timeout
+10h "F_VCPIEntry" domain is entering VCPI mode
+11h "F_VCPIExit" domain is leaving VCPI mode
+12h "X_MsgGlobalEnter" enter Global Message Mode
+13h "X_MsgGlobalDisplay" display global message
+14h "X_MsgGlobalExit" leave Global Message Mode
+15h "X_MsgDomEnter" enter Domain Message Mode
+16h "X_MsgDomDisplay" display domain-specific message
+17h "X_MsgDomExit" leave Domain Message Mode
+18h "X_MsgFatalDisplay" display fatal error message
+19h "Z_SerialBaseSet" set serial port address
+1Ah "Z_ParallelBaseSet" set parallel port address
+1Bh "Z_SerialIRQSet" set serial port IRQ
+1Ch "Z_ParallelIRQSet" set parallel port IRQ
+1Dh "F_ResetVideo" emergency video system reset
+1Eh "F_SetMouseIRQ" set which IRQ is used by mouse
+1Fh "F_CheckNotIdle" check whether system is idle
+20h "F_GetMouseInfo"
+21h "Z_SerialOwnerGet" get serial port owner
+22h "Z_SerialTimeoutGet" get serial port timeout
+23h "Z_ParallelOwnerGet" get parallel port owner
+24h "Z_ParallelTimeoutGet" get parallel port timeout.
+???<br>
+<p><b>Return:</b><br>???
+</PRE>
+<p><b>Notes:</b>
+Called by DPMS.EXE and EMM386.EXE.
+The handler for this function may be set by one of the subfunctions
+of AX=2780h/CL=01h; the default handler returns AX=BX=FFFFh and
+CX=0001h <a href="rb-4716.htm#Table2739">(see #02739)</a>.
+This API is only available if AX=12FFh/BX=0EDCh returns successfully;
+because the request is handled on the initial trap to the memory
+manager caused by INT instructions, this API must be invoked with
+an actual INT 2F instruction instead of some simulation such as a
+far call to the address in the interrupt vector table
+<p><b>See Also:</b>
+<a href="rb-4452.htm">AX=12FFh/BX=0EDCh</a> - <a href="rb-4716.htm">AX=2780h/CL=01h</a> - <a href="rb-4717.htm">AX=2780h/CL=02h</a> - <a href=http://www.ctyme.com/intr/rb-
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4719.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4721.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

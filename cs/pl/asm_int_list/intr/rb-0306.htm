@@ -1,0 +1,162 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=4F14h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=4F14h - VESA OEM Extensions - Matrox Millenium (BIOS v2.1) - 
+AX = 4F14h
+BL = function
+00h installation check / get capabilities
+ES:DI - 256-byte buffer for Matrox-specific information
+(see #00125)
+Return: ES:DI buffer filled
+01h read/write MGA indexed data register
+BH = direction (00h = write, else read)
+CL = register number (80h for most-recently used register)
+CH = new value, if writing
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=4F14h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0305.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0307.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VESA OEM Extensions - Matrox Millenium (BIOS v2.1)</font></h3>
+<PRE>
+AX = 4F14h
+BL = function
+00h installation check / get capabilities
+ES:DI -> 256-byte buffer for Matrox-specific information
+<a href="rb-0306.htm#Table125">(see #00125)</a>
+<p><b>Return:</b><br>ES:DI buffer filled
+01h read/write MGA indexed data register
+BH = direction (00h = write, else read)
+CL = register number (80h for most-recently used register)
+CH = new value, if writing
+<p><b>Return:</b><br>CH = current value, if reading
+02h read/write register in MGA control space
+BH = direction and size
+<p><b>bit 4:</b><br>Read register instead of writing
+<p><b>bits 1-0:</b><br>Data size (00 = BYTE, 01 = WORD, 10 = DWORD)
+SI = register address
+CL/CX/ECX = new value if writing
+<p><b>Return:</b><br>CL/CX/ECX = current value if reading
+03h read PINS byte
+SI = offset of byte within PINS data <a href="rb-0306.htm#Table126">(see #00126)</a>
+<p><b>Return:</b><br>CL = value of specified PINS byte
+04h ??? (related to PLL programming)
+DX = ???
+<p><b>Return:</b><br>CL,EDX destroyed
+05h read BIOS byte
+SI = offset of byte relative to start of BIOS image
+<p><b>Return:</b><br>CL = specified byte
+else
+<p><b>Return:</b><br>AX = FFFFh<br>
+<p><b>Return:</b><br>AL = 4Fh if function supported
+AH = status
+00h successful
+01h failed
+</PRE>
+<p><b>Note:</b>
+Most of this info is from http:\\grafi.ii.pw.edu.pl\gbm\matrox
+<p><b>See Also:</b>
+<a href="rb-0306.htm">MEM C000h:7FFCh"Matrox"</a>
+<PRE>
+<p>
+Format of Matrox-specific VESA extensions information:
+<a name=table125></a>
+Offset  Size    Description     (Table 00125)
+00h  7 BYTEs   signature "VBE/MGA"
+07h 10 BYTEs   ??? (01h 01h 00h 00h 00h 00h 00h 00h 00h 07h)
+11h    WORD    BIOS version (high byte = major, low byte = one-digit minor)
+13h    DWORD   -> manufacturer name (ASCIZ "Matrox")
+17h    DWORD   -> ASCIZ card name
+1Bh    DWORD   -> ??? ASCIZ string (empty string on card examined)
+1Fh    DWORD   -> ASCIZ vendor name
+23h    DWORD   -> ASCIZ BIOS file base name
+27h    DWORD   -> PINS
+2Bh    WORD    video memory size in 64K units
+2Dh    DWORD   linear address of linear frame buffer
+31h    DWORD   linear address of MGA control aperture
+35h    WORD    PCI bus/device for card???
+37h 201 BYTEs  unused??? (cleared to 00h)
+<p>
+Format of Matrox PINS data (version 3.0):
+<a name=table126></a>
+Offset  Size    Description     (Table 00126)
+00h  2 BYTEs   signature ".A" (2Eh 41h)
+02h    BYTE    structure length (40h for v3.0)
+03h    BYTE    ???
+04h    WORD    PINS version (high byte = major, low byte = minor)
+06h    WORD    date last programmed
+08h    WORD    number of times programmed
+0Ah    WORD    flags
+0Ch  8 BYTEs   ASCII serial number, three letters + five digits
+14h  8 BYTEs   ???
+1Ch  4 BYTEs   ASCII card version
+20h    DWORD   PCB revision
+24h    BYTE    maximum RAMDAC frequency in MHz (less 100)
+25h    BYTE    maximum RAMDAC frequency???
+26h    BYTE    maximum RAMDAc frequency???
+27h    BYTE    ???
+28h    BYTE    ??? timing data?
+29h    BYTE    ???
+2Ah    BYTE    ???
+2Bh    BYTE    ???
+2Ch    BYTE    ???
+2Dh    BYTE    ???
+2Eh    BYTE    ???
+2Fh    BYTE    ???
+30h  4 BYTEs   ???
+34h    BYTE    ???
+35h    BYTE    ???
+36h    BYTE    ???
+37h    BYTE    memory size in 64K units
+38h    BYTE    ???
+39h    BYTE    ???
+3Ah    BYTE    ???
+3Bh    BYTE    ???
+3Ch    BYTE    ???
+3Dh    BYTE    ???
+3Eh    BYTE    ???
+3Fh    BYTE    checksum (to make sum of all bytes MOD 256 == 00h)
+</PRE>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0305.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0307.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

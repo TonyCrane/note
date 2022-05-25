@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=6F05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=6F05h - VIDEO - Video7 VGA,VEGA EXTENDED EGA/VGA,HP Vectra - SET VIDEO MODE - 
+AX = 6F05h
+BL = mode (see #00191)
+Return: AX,BL destroyed
+Notes: also supported by the HP Vectra Extended BIOS on the original
+HP Vectra AT and by ES/QS/RS series Vectras
+on the HP Vectra, this function rather than AH=00h must be used to
+return to an IBM-standard mode after setting an HP-specified mode
+from 08h to 0Fh.
+SeeAlso: AH=00h,AX=0070h,AX=007Eh,AX=6F04h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=6F05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0384.ht.html">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0386.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - Video7 VGA,VEGA EXTENDED EGA/VGA,HP Vectra - SET VIDEO MODE</font></h3>
+<PRE>
+AX = 6F05h
+BL = mode <a href="rb-0385.htm#Table191">(see #00191)</a><br>
+<p><b>Return:</b><br>AX,BL destroyed
+</PRE>
+<p><b>Notes:</b>
+Also supported by the HP Vectra Extended BIOS on the original
+HP Vectra AT and by ES/QS/RS series Vectras.
+On the HP Vectra, this function rather than AH=00h must be used to
+return to an IBM-standard mode after setting an HP-specified mode
+from 08h to 0Fh.
+<p><b>See Also:</b>
+<a href="rb-0069.htm">AH=00h</a> - <a href="rb-0070.htm">AX=0070h</a> - <a href="rb-0071.htm">AX=007Eh</a> - <a href="rb-0384.ht.html">AX=6F04h</a>
+<PRE>
+<p>
+<a name=table191></a>
+(Table 00191)
+Values for Video7/VEGA video mode:
+text/ text pixel   pixel   colors disply scrn  system
+grph resol  box  resolution       pages  addr
+00h-13h = standard IBM modes <a href="rb-0000.htm#Table0"></a>(see #00010 at AH=00h)
+08h = T  80x27   .       .     mono      .     .  HP MultiMode Video
+09h = T  80x27   .       .       .       .     .  HP MultiMode Video
+0Ah = T  40x27   .       .     mono      .     .  HP MultiMode Video
+0Bh = T  40x27   .       .       .       .     .  HP MultiMode Video
+0Ch = reserved                                    HP MultiMode Video
+0Dh = G    .     .    640x400    .       .     .  HP MultiMode Video
+0Eh = G    .     .    320x400    .       .     .  HP MultiMode Video
+0Fh = G    .     .    320x400    .       .     .  HP MultiMode Video
+40h = T  80x43  8x8      .       .       .     .  Video7/VEGA VGA
+41h = T 132x25  8x14     .       .       .     .  Video7/VEGA VGA
+42h = T 132x43  8x8      .       .       .     .  Video7/VEGA VGA
+43h = T  80x60  8x8      .       .       .     .  Video7/VEGA VGA
+44h = T 100x60  8x8      .       .       .     .  Video7/VEGA VGA
+45h = T 132x28  8x8      .       .       .     .  Video7/VEGA VGA
+60h = G    .     .    752x410   16       .     .  Video7 VGA, VEGA VGA
+61h = G    .     .    720x540   16       .     .  Video7 VGA, VEGA VGA
+= G    .     .    720x540   16       .     .  Northgate, Headland 1024i
+62h = G    .     .    800x600   16       .     .  Video7 VGA, VEGA Ext EGA
+= G    .     .    800x600   16       .     .  Headland 1024i
+63h = G    .     .   1024x768    2       .     .  Video7 VGA
+64h = G    .     .   1024x768    4       .     .  Video7 VGA
+65h = G    .     .   1024x768   16       .     .  Video7 VGA, VEGA Ext EGA
+= G    .     .   1024x768   16       .     .  Headland 1024i
+66h = G    .     .    640x400  256       .     .  Video7 VGA, VEGA Ext VGA
+= G    .     .    640x400  256       .     .  Northgate, Headland 1024i
+67h = G    .     .    640x480  256       .     .  Video7 VGA, VEGA Ext VGA
+= G    .     .    640x480  256       .     .  Headland 1024i
+68h = G    .     .    720x540  256       .     .  Video7 VGA, VEGA Ext VGA
+= G    .     .    720x540  256       .     .  Headland 1024i
+69h = G    .     .    800x600  256       .     .  Video7 VGA, VEGA Ext VGA
+= G    .     .    800x600  256       .     .  Headland 1024i
+70h = G    .     .    752x410   16gray   .     .  Video7 VGA, VEGA VGA
+71h = G    .     .    720x540   16gray   .     .  Video7 VGA, VEGA VGA
+72h = G    .     .    800x600   16gray   .     .  Video7 VGA
+73h = G    .     .   1024x768    2gray   .     .  Video7 VGA
+74h = G    .     .   1024x768    4gray   .     .  Video7 VGA
+75h = G    .     .   1024x768   16gray   .     .  Video7 VGA
+76h = G    .     .    640x400  256gray   .     .  Video7 VGA
+77h = G    .     .    640x480  256gray   .     .  Video7 VGA
+78h = G    .     .    720x540  256gray   .     .  Video7 VGA
+79h = G    .     .    800x600  256gray   .     .  (future)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0069.htm">AH=00h</a> - #00010 - <a href="rb-0070.htm">AX=0070h</a> - #00011 - <a href="rb-0071.htm">AX=007Eh</a> - <a href="rb-0384.ht.html"
+<PRE>
+<p><b>Index:</b><br>Video modes;Video 7|video modes;VEGA|video modes;Headland
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0384.ht.html">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0386.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

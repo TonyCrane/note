@@ -1,0 +1,136 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5702h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5702h - DOS 4.x only - GET EXTENDED ATTRIBUTES FOR FILE - 
+AX = 5702h
+BX = file handle
+CX = size of result buffer or 0000h
+DS:SI - EAP list (see #01667)
+ES:DI - buffer for returned EAV list (see #01670)
+Return: CF clear if successful
+CX = size of returned data
+CF set on error
+AX = error code (see #01680)
+Desc:  get the current value of one or more extended attributes
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5702h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2993.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2995.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 4.x only - GET EXTENDED ATTRIBUTES FOR FILE</font></h3>
+<PRE>
+AX = 5702h
+BX = file handle
+CX = size of result buffer or 0000h
+DS:SI -> EAP list <a href="rb-2994.htm#Table1667">(see #01667)</a>
+ES:DI -> buffer for returned EAV list <a href="rb-2994.htm#Table1670">(see #01670)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CX = size of returned data
+CF set on error
+AX = error code <a href="rb-3012.htm#Table1680">(see #01680)</a>
+</PRE>
+<p><b>Desc:</b>
+Get the current value of one or more extended attributes
+<p><b>Notes:</b>
+If CX=0000h on entry, ES:DI is ignored and no data is actually
+returned, only the amount of data which is available.
+The default DOS 4 behavior is to return a single word of 0000h (no
+structures) in the result buffer if CX>=0002h on entry; this
+functionality was apparently never released to the public
+<p><b>See Also:</b>
+<a href="rb-2997.htm">AX=5703h</a> - <a href="rb-3000.htm">AX=5704h</a> - <a href="rb-3184.htm">AH=6Eh</a> - <a href="rb-4351.htm">INT 2F/AX=112Dh<
+<PRE>
+<p>
+Format of EAP (extended attribute properties) list:
+<a name=table1667></a>
+Offset  Size    Description     (Table 01667)
+00h    WORD    number of EAP structures following
+02h    var     array of EAP structures <a href="rb-2994.htm#Table1668">(see #01668)</a>
+</PRE>
+<p><b>See Also:</b>
+#01670
+<PRE>
+<p>
+Format of EAP (extended attribute property) structure:
+<a name=table1668></a>
+Offset  Size    Description     (Table 01668)
+00h    BYTE    attribute type
+01h boolean (either 00h or 01h)
+02h number (BYTE, WORD, or DWORD)
+03h string
+04h date stamp
+05h time stamp
+01h    WORD    EAP flags <a href="rb-2994.htm#Table1669">(see #01669)</a>
+03h    BYTE    size of reference string (name)
+04h  N BYTEs   reference string
+<p>
+Bitfields for EAP flags:
+<a name=table1669></a>
+Bit(s)  Description     (Table 01669)
+12     unchangeable
+13     ignore
+14     unchangeable
+15     used by COMMAND.COM for code page, but not understood by ATTRIB
+<p>
+Format of EAV (extended attribute value) list:
+<a name=table1670></a>
+Offset  Size    Description     (Table 01670)
+00h    WORD    number of EAV structures following
+02h    var     array of Extended Attribute Value structures <a href="rb-2994.htm#Table1671">(see #01671)</a>
+</PRE>
+<p><b>See Also:</b>
+#01667
+<PRE>
+<p>
+Format of Extended Attribute Value structures:
+<a name=table1671></a>
+Offset  Size    Description     (Table 01671)
+00h  4 BYTEs   ???
+04h    BYTE    size of reference string
+05h    WORD    size of value
+07h    var     reference string.
+Var     value
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2993.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2995.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

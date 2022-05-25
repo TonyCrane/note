@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A05h - DOS 5+ DOSSHELL - TASK SWITCHING API??? - 
+AX = 4A05h
+SI = function
+0000h reset???
+0001h ???
+ES:BP - 80-byte buffer containing ???
+0002h ???
+0003h ???
+0004h ???
+BL = ???
+0005h ???
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4818.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4820.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 5+ DOSSHELL - TASK SWITCHING API???</font></h3>
+<PRE>
+AX = 4A05h
+SI = function
+0000h reset???
+0001h ???
+ES:BP -> 80-byte buffer containing ???
+0002h ???
+0003h ???
+0004h ???
+BL = ???
+0005h ???
+0006h get ???
+<p><b>Return:</b><br>ES:SI -> ???
+0007h get ???
+<p><b>Return:</b><br>AX = ???
+0008h get ???
+<p><b>Return:</b><br>DX:AX -> ??? (internal control data of some kind)
+0009h get ???
+<p><b>Return:</b><br>ES:SI -> ??? (apparently identical to function 0006h)
+000Ah ???
+BL = length of buffer
+ES:BP -> buffer containing ???
+000Bh get ???
+<p><b>Return:</b><br>AX = ???
+000Ch ???
+BL = ???
+<p><b>Return:</b><br>If BL nonzero on entry
+DX:AX -> ???
+if BL = 00h on entry
+ES:SI -> ???
+</PRE>
+<p><b>Notes:</b>
+DOSSHELL chains to the previous handler if SI is not one of the values
+listed above.
+The DOSSWAP.EXE module calls functions 03h,04h,05h,07h,08h,09h,0Ch.
+The Windows 3.1 DSWAP.EXE and WSWAP.EXE task switchers use these calls
+<p><b>See Also:</b>
+<a href="rb-4861.htm">AX=4B01h</a>
+<p>
+<b>Category: <a href="cat-011.htm">
+DOS-Based Task Switchers/Multitaskers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4818.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4820.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

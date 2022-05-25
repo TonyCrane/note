@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=04h - Novell NetWare v4+ - GET USER INFORMATION - 
+AX = F27Bh subfn 04h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02494)
+ES:DI - reply buffer (see #02495)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get User Information request buffer:
+Offset Size  Description   (Table 02494)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3974.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3976.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET USER INFORMATION</font></h3>
+<PRE>
+AX = F27Bh subfn 04h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3975.htm#Table2494">(see #02494)</a>
+ES:DI -> reply buffer <a href="rb-3975.htm#Table2495">(see #02495)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get User Information" request buffer:
+<a name=table2494></a>
+Offset  Size    Description     (Table 02494)
+00h    WORD    0005h (length of following data)
+02h    BYTE    04h (subfunction "Get User Information")
+03h    DWORD   connection number
+</PRE>
+<p><b>See Also:</b>
+#02495
+<PRE>
+<p>
+Format of NetWare "Get User Information" reply buffer:
+<a name=table2495></a>
+Offset  Size    Description     (Table 02495)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    DWORD   connection number
+0Ch    DWORD   use count
+10h    BYTE    connection service type
+11h  7 BYTEs   login time
+18h    DWORD   status
+1Ch    DWORD   expiration time
+20h    DWORD   object type
+24h    BYTE    transaction flag
+25h    BYTE    logical lock threshold
+26h    BYTE    record lock threshold
+27h    BYTE    file write flags
+28h    BYTE    file write state
+29h    BYTE    (filler)
+2Ah    WORD    file lock count
+2Ch    WORD    record lock count
+2Eh  6 BYTEs   total number of bytes read
+34h  6 BYTEs   total number of bytes written
+3Ah    DWORD   total requests
+3Eh    DWORD   held requests
+42h  6 BYTEs   held bytes read
+48h  6 BYTEs   held bytes written
+4Eh    BYTE    length of user name
+4Fh  N BYTEs   user name
+</PRE>
+<p><b>See Also:</b>
+#02494
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3974.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3976.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

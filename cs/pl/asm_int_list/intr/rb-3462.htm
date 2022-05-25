@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=05h - Novell NetWare - DIRECTORY SERVICES - GET VOLUME NUMBER - 
+AH = E2h subfn 05h
+DS:SI - request buffer (see #01852)
+ES:DI - reply buffer (see #01853)
+Return: AL = status (00h,98h) (see #01839)
+Notes: this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+SeeAlso: AH=DAh,AH=E2h/SF=02h,AH=E2h/SF=05h,AH=E2h/SF=15h,AH=E3h/SF=E9h
+SeeAlso: AX=F216h/SF=05h
+Format of NetWare Get Volume Number request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3461.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3463.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - GET VOLUME NUMBER</font></h3>
+<PRE>
+AH = E2h subfn 05h
+DS:SI -> request buffer <a href="rb-3462.htm#Table1852">(see #01852)</a>
+ES:DI -> reply buffer <a href="rb-3462.htm#Table1853">(see #01853)</a><br>
+<p><b>Return:</b><br>AL = status (00h,98h) (see #01839)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3393.htm">AH=DAh</a> - <a href="rb-3459.htm">AH=E2h/SF=02h</a> - <a href="rb-3462.htm">AH=E2h/SF=05h</a> - <a href="rb-3475.htm">AH=E2h
+<p><b>See Also:</b>
+<a href="rb-3674.htm">AX=F216h/SF=05h</a>
+<PRE>
+<p>
+Format of NetWare "Get Volume Number" request buffer:
+<a name=table1852></a>
+Offset  Size    Description     (Table 01852)
+00h    WORD    length of following data (max 12h)
+02h    BYTE    05h (subfunction "Get Volume Number")
+03h    BYTE    length of volume name (01h-10h)
+04h  N BYTEs   volume name
+</PRE>
+<p><b>See Also:</b>
+#01853 - #02113 at AX=F216h/SF=05h
+<PRE>
+<p>
+Format of NetWare "Get Volume Number" reply buffer:
+<a name=table1853></a>
+Offset  Size    Description     (Table 01853)
+00h    WORD    (call) 0001h (length of following results buffer)
+02h    BYTE    volume number
+</PRE>
+<p><b>See Also:</b>
+#01852 - #02113 at AX=F216h/SF=05h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3461.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3463.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

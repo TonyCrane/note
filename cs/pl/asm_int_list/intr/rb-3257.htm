@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=8Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=8Ch - European MS-DOS 4.0 - SET SIGNAL HANDLER - 
+AH = 8Ch
+AL = signal number (see #01793)
+BL = action (see #01794)
+DS:DX - signal handler (see #01795)
+Return: CF clear if successful
+AL = previous action
+ES:BX - previous signal handler
+CF set on error
+AX = error code (01h,invalid SigNumber or Action)
+(see #01680 at AH=59h/BX=0000h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=8Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3256.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3258.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>European MS-DOS 4.0 - SET SIGNAL HANDLER</font></h3>
+<PRE>
+AH = 8Ch
+AL = signal number <a href="rb-3257.htm#Table1793">(see #01793)</a>
+BL = action <a href="rb-3257.htm#Table1794">(see #01794)</a>
+DS:DX -> signal handler <a href="rb-3257.htm#Table1795">(see #01795)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AL = previous action
+ES:BX -> previous signal handler
+CF set on error
+AX = error code (01h,invalid SigNumber or Action)
+<a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Desc:</b>
+Set the routine which will be invoked on a number of exceptional
+conditions
+<p><b>Note:</b>
+All signals will be sent to the most recently installed handler
+<p><b>See Also:</b>
+<a href="rb-3258.htm">AH=8Dh</a>
+<PRE>
+<p>
+<a name=table1793></a>
+(Table 01793)
+Values for European MS-DOS 4.0 signal number:
+01h    SIGINTR         Control-C or user defined interrupt key
+08h    SIGTERM         program termination
+09h    SIGPIPE         broken pipe
+0Dh    SIGUSER1        reserved for user definition
+0Eh    SIGUSER2        reserved for user definition
+<p>
+<a name=table1794></a>
+(Table 01794)
+Values for signal action:
+00h    SIG_DFL         terminate process on receipt
+01h    SIG_IGN         ignore signal
+02h    SIG_GET         signal is accepted
+03h    SIG_ERR         sender gets error
+04h    SIG_ACK         acknowledge received signal and clear it, but don't
+change current setting
+<p>
+<a name=table1795></a>
+(Table 01795)
+Values signal handler is called with:.
+AL = signal number <a href="rb-3257.htm#Table1793">(see #01793)</a>.
+AH = signal argument<br>
+<p><b>Return:</b><br>RETF, CF set: terminate process.
+<p><b>RETF, CF clear, ZF set:</b><br>Abort any interrupted system call with an error.
+<p><b>RETF, CF clear, ZF clear:</b><br>Restart any interrupted system call.
+<p><b>IRET:</b><br>Restart any interrupted system call
+</PRE>
+<p><b>Note:</b>
+The signal handler may also perform a nonlocal GOTO by resetting the
+stack pointer and jumping; before doing so, it should dismiss the
+signal by calling this function with BL=04h
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-e.htm">
+E</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3256.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3258.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

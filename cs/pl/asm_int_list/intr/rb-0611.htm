@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=05h - FIXED DISK - FORMAT TRACK - 
+AH = 05h
+AL = interleave value (XT-type controllers only)
+ES:BX - 512-byte format buffer
+the first 2*(sectors/track) bytes contain F,N for each sector
+F = sector type
+00h for good sector
+20h to unassign from alternate location
+40h to assign to alternate location
+80h for bad sector
+N = sector number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0610.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0612.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FIXED DISK - FORMAT TRACK</font></h3>
+<PRE>
+AH = 05h
+AL = interleave value (XT-type controllers only)
+ES:BX -> 512-byte format buffer
+the first 2*(sectors/track) bytes contain F,N for each sector
+F = sector type
+00h for good sector
+20h to unassign from alternate location
+40h to assign to alternate location
+80h for bad sector
+N = sector number
+CH = cylinder number (bits 8,9 in high bits of CL)
+CL = high bits of cylinder number (bits 7,6)
+DH = head
+DL = drive<br>
+<p><b>Return:</b><br>CF set on error
+CF clear if successful
+AH = status code <a href="rb-0606.htm#Table234">(see #00234)</a>
+</PRE>
+<p><b>Notes:</b>
+AWARD AT BIOS and AMI 386sx BIOS have been extended to handle more
+than 1024 cylinders by placing bits 10 and 11 of the cylinder number
+into bits 6 and 7 of DH.
+For XT-type controllers on an AT or higher, AH=0Fh should be called
+first.
+The IBM AT BIOS and many other BIOSes use only the low four bits of
+DH (head number) since the WD-1003 controller which is the standard
+AT controller (and the controller that IDE emulates) only supports
+16 heads.
+Not all controller support sector types 20h and 40h.
+Under Windows95, an application must issue a physical volume lock on
+the drive via INT 21/AX=440Dh before it can successfully write to
+the disk with this function
+<p><b>See Also:</b>
+<a href="rb-0610.htm">AH=05h"FLOPPY"</a> - <a href="rb-0614.htm">AH=06h"FIXED"</a> - <a href="rb-0618.htm">AH=07h"FIXED"</a> - <a href="rb-0630.ht.html"
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0610.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0612.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

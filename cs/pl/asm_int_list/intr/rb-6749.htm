@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0004h/SF=0007h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0004h/SF=0007h - Banyan VINES - GET CONNECTION DATA STRUCTURES - 
+AX = 0004h subfn 0007h
+DS:DX - request block (see #03408)
+Return: AX = status (see also #03400)
+0000h pointer returned in request block
+0033h invalid request ID
+Desc:  Returns pointers to various internal data structures
+Format of VINES Function 0004h/Subfunction 0007h request block:
+Offset Size  Description   (Table 03408)
+00h  WORD  0007h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0004h/SF=0007h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6748.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6750.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - GET CONNECTION DATA STRUCTURES</font></h3>
+<PRE>
+AX = 0004h subfn 0007h
+DS:DX -> request block <a href="rb-6749.htm#Table3408">(see #03408)</a><br>
+<p><b>Return:</b><br>AX = status (see also #03400)
+0000h pointer returned in request block
+0033h invalid request ID
+</PRE>
+<p><b>Desc:</b>
+Returns pointers to various internal data structures
+<PRE>
+<p>
+Format of VINES Function 0004h/Subfunction 0007h request block:
+<a name=table3408></a>
+Offset  Size    Description     (Table 03408)
+00h    WORD    0007h
+02h    BYTE    request ID (0..7) <a href="rb-6749.htm#Table3409">(see #03409)</a>
+03h    WORD    buffer for pointer segment
+05h    WORD    buffer for pointer offset
+</PRE>
+<p><b>See Also:</b>
+#03410 - #03411
+<PRE>
+<p>
+<a name=table3409></a>
+(Table 03409)
+Values for VINES pointer ID:
+00h    job file table ???
+01h    drive handle table
+02h    drive connection table
+03h    IPC port of drive Z:
+04h    end of drive connection table
+05h    ???
+06h    ???
+07h    redirector data segment (offset=0)
+</PRE>
+<p><b>See Also:</b>
+#03408
+<PRE>
+<p>
+Format of VINES drive handle table:
+<a name=table3410></a>
+Offset  Size    Description     (Table 03410)
+00h    BYTE    handle to default drive (0 = not connected)
+<p><b>01h    BYTE    handle to drive A:</b><br>(0 = not connected).
+...
+<p><b>1Ah    BYTE    handle to drive Z:</b><br>(0 = not connected)
+</PRE>
+<p><b>See Also:</b>
+#03411
+<PRE>
+<p>
+Format of VINES drive connection table:
+<a name=table3411></a>
+Offset  Size    Description     (Table 03411)
+00h    WORD    file service type (?) (0001h if drive Z:, 0000h else)
+02h 16 BYTEs   IPC port (contains the server serial number)
+12h 46 BYTEs   ???
+40h 64 BYTEs   null-terminated StreetTalk name of associated file service
+<p><b>80h 64 BYTEs   null-terminated root directory (/ROOT:</b><br>Parameter of SETDRIVE)
+</PRE>
+<p><b>See Also:</b>
+#03410
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6748.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6750.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

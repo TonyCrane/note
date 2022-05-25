@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F25Ah/SF=82h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F25Ah/SF=82h - Novell NetWare - VOLUME DATA MIGRATION STATUS - 
+AX = F25Ah subfn 82h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02455)
+ES:DI - reply buffer (see #02456)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F25Ah/SF=01h,AX=F25Ah/SF=83h,AX=F25Ah/SF=84h
+Format of NetWare Volume Data Migration Status request packet:
+Offset Size  Description   (Table 02455)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F25Ah/SF=82h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3950.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3952.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - VOLUME DATA MIGRATION STATUS</font></h3>
+<PRE>
+AX = F25Ah subfn 82h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3951.htm#Table2455">(see #02455)</a>
+ES:DI -> reply buffer <a href="rb-3951.htm#Table2456">(see #02456)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3948.htm">AX=F25Ah/SF=01h</a> - <a href="rb-3952.htm">AX=F25Ah/SF=83h</a> - <a href="rb-3953.htm">AX=F25Ah/SF=84h</a>
+<PRE>
+<p>
+Format of NetWare "Volume Data Migration Status" request packet:
+<a name=table2455></a>
+Offset  Size    Description     (Table 02455)
+00h    WORD    length of following data
+02h    BYTE    82h (subfunction "Volume Data Migration Status")
+03h    DWORD   volume number
+07h    DWORD   support module ID
+</PRE>
+<p><b>See Also:</b>
+#02456
+<PRE>
+<p>
+Format of NetWare "Volume Data Migration Status" request packet:
+<a name=table2456></a>
+Offset  Size    Description     (Table 02456)
+00h    DWORD   number of migrated files
+04h    DWORD   total size required to restore all migrated files
+08h    DWORD   total space used on migration device
+0Ch    DWORD   limbo space (demigrated files with save-key flag set)
+10h    DWORD   total space including limbo space
+14h    DWORD   number of files in limbo
+</PRE>
+<p><b>See Also:</b>
+#02455
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3950.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3952.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=FF24h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=FF24h - CauseWay - ExecOverlay - LOAD AND OPTIONALLY EXECUTE APP CODE - 
+AX = FF24h
+EBX = flags
+bit 0: don't execute (overlay only)
+bit 1: don't preserve relocation information
+ES:EDX - filename (see also #03163)
+FS:ESI - commandline (ESI = 00000000h if no commandline)
+GS:EDI - name (CW's /o option)
+Return: CF clear if successful
+---EBX bit 0 set---
+CX:EDX = program entry point (CS:EIP)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=FF24h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5926.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5928.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>CauseWay - ExecOverlay - LOAD AND OPTIONALLY EXECUTE APP CODE</font></h3>
+<PRE>
+AX = FF24h
+EBX = flags
+<p><b>bit 0:</b><br>Don't execute (overlay only)
+<p><b>bit 1:</b><br>Don't preserve relocation information.
+ES:EDX -> filename (see also #03163).
+FS:ESI -> commandline (ESI = 00000000h if no commandline).
+GS:EDI -> name (CW's /o option)<br>
+<p><b>Return:</b><br>CF clear if successful
+---EBX bit 0 set---
+CX:EDX = program entry point (CS:EIP)
+SI = segment of PSP
+---EBX bit 1 set---
+BX:EAX = initial SS:ESP
+EDI high word = base segment
+EDI low word = number of segments
+EBP = start of segment definitions
+CF set on error
+AX = error code
+0001h DOS file access error
+0002h not a CuaseWay 3P file
+0003h not enough memory
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5933.htm">AX=FF2Ah</a> - <a href="rb-2939.htm">INT 21/AH=4Bh</a>
+<PRE>
+<p>
+Format of CauseWay executable:
+<a name=table3163></a>
+Offset  Size    Description     (Table 03163)
+00h  2 BYTEs   signature "3P"
+02h    DWORD   size of header data in bytes
+06h    DWORD   size of EXE image data in bytes
+0Ah    DWORD   number of bytes of program memory required
+0Eh    WORD    number of segment definitions <a href="rb-5927.htm#Table3165">(see #03165)</a>
+10h    DWORD   number of relocation table entries
+14h    DWORD   offset of program entry point
+18h    WORD    segment list entry number for entry point's CS
+1Ah    DWORD   initial ESP
+1Eh    WORD    segment list entry number for initial SS
+20h    DWORD   control flags <a href="rb-5927.htm#Table3164">(see #03164)</a>
+24h    DWORD   automatic stack size in bytes if ESP entry = 00000000h
+28h    BYTE    length of name (name follows program image)
+29h 23 BYTEs   reserved
+</PRE>
+<p><b>See Also:</b>
+#01594 - #01609 at INT 21/AH=4Bh
+<PRE>
+<p>
+Bitfields for CauseWay executable control flags:
+<a name=table3164></a>
+Bit(s)  Description     (Table 03164)
+0      16-bit interrupt stack frame
+7      descriptor table type (0 = GDT, 1 = LDT)
+14     16-bit default data size
+31     compressed EXE image
+</PRE>
+<p><b>Note:</b>
+Bits 0 and 14 should always be equal
+<p><b>See Also:</b>
+#03163
+<PRE>
+<p>
+Format of CauseWay segment definition [array]:
+<a name=table3165></a>
+Offset  Size    Description     (Table 03165)
+00h    DWORD   start offset within program image
+04h    DWORD   length and type
+<p><b>bits 0-19:</b><br>Length
+<p><b>bit 20:</b><br>Granularity (if set, length is in 4K pages)
+<p><b>bits 21-24:</b><br>Type
+0000 code
+0001 read/write data
+0010 stack
+0011 read-only data
+<p><b>bit 25:</b><br>Force segment descriptor's D bit to 0
+<p><b>bit 26:</b><br>Force segmetn descriptor's D bit to 1
+</PRE>
+<p><b>See Also:</b>
+#03163
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5926.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5928.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

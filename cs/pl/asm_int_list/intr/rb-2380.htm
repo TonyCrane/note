@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B10Ah/SF=1011h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B10Ah/SF=1011h - PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (DEC device) - 
+AX = B10Ah subfn 1011h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) (see #00878)
+Return: CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) (see #00729)
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B10Ah/SF=1011h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2379.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2381.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (DEC device)</font></h3>
+<PRE>
+AX = B10Ah subfn 1011h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) <a href="rb-2377.htm#Table878">(see #00878)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) <a href="rb-2371.htm#Table729">(see #00729)</a>
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+</PRE>
+<p><b>Notes:</b>
+This function may require up to 1024 byte of stack; it will not enable
+interrupts if they were disabled before making the call.
+The meanings of BL and BH on entry were exchanged between the initial
+drafts of the specification and final implementation
+<p><b>See Also:</b>
+<a href="rb-2377.htm">AX=B10Ah</a> - <a href="rb-2387.htm">AX=B10Ah/SF=8086h</a>
+<PRE>
+<p>
+Format of DEC DC21140/DC21040/DC21041 Tulip {Fast/Plus} Ethernet:
+<a name=table923></a>
+Offset  Size    Description     (Table 00923)
+00h 64 BYTEs   header <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 1011h, device ID 0014h)
+10h    DWORD   base I/O port for access to control/status registers
+14h    DWORD   base memory address for access to control/status registers
+40h    DWORD   configuration driver area
+<p><b>bit 31:</b><br>Sleep mode   \ only one of bits 31,30 may be set
+<p><b>bit 30:</b><br>Snooze mode  /
+<p><b>bits 15-8:</b><br>Device driver's use
+!!!digital\21041hm.pdf p.34   digital\21140ahm.pdf p.35
+</PRE>
+<p><b>See Also:</b>
+#00742
+<PRE>
+<p>
+Format of DEC 21052 PCI-PCI bridge PCI configuration data:
+<a name=table924></a>
+Offset  Size    Description     (Table 00924)
+00h 64 BYTEs   header, type 1 <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 1011h, device ID 0021h)
+40h    BYTE    chip control
+41h    BYTE    diagnostic control
+42h    BYTE    burst counter
+43h    BYTE    SErr disable
+44h    BYTE    primary target wait timer
+45h    BYTE    secondary target wait timer
+46h  2 BYTEs   reserved
+48h    DWORD   count of secondary write attempts
+4Ch    DWORD   count of primary write attempts
+50h 44 DWORDs  reserved
+!!!digital\21052ds.pdf p.117
+</PRE>
+<p><b>See Also:</b>
+#00742
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2379.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2381.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

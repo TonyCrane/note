@@ -1,0 +1,149 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2A/AX=4147h/DX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2A/AX=4147h/DX=0000h - NetSoft DOS-NET v1.20+ - INSTALLATION CHECK - 
+AX = 4147h ('AG')
+DX = 0000h
+Return: DX = 4147h if installed
+DS:SI - configuration data (see #02554)
+Program: DOS-NET is a shareware networking package by Albert Graham
+Note:  this call is supported by CLIENT.COM, SERVER.COM, ROUTER.COM, and
+NETDOS.COM
+SeeAlso: INT 65/DX=4147h,INT 65/DX=4741h
+Format of DOS-NET v1.20 configuration data area:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2A/AX=4147h/DX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4137.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4139.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>NetSoft DOS-NET v1.20+ - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 4147h ('AG')
+DX = 0000h<br>
+<p><b>Return:</b><br>DX = 4147h if installed
+DS:SI -> configuration data <a href="rb-4138.htm#Table2554">(see #02554)</a>
+</PRE>
+<p><b>Program:</b>
+DOS-NET is a shareware networking package by Albert Graham
+<p><b>Note:</b>
+This call is supported by CLIENT.COM, SERVER.COM, ROUTER.COM, and
+NETDOS.COM
+<p><b>See Also:</b>
+<a href="rb-7270.htm">INT 65/DX=4147h</a> - <a href="rb-7276.htm">INT 65/DX=4741h</a>
+<PRE>
+<p>
+Format of DOS-NET v1.20 configuration data area:
+<a name=table2554></a>
+Offset  Size    Description     (Table 02554)
+00h    BYTE    ???
+01h    BYTE    interrupt number used by DOS-NET APIs
+02h    WORD    function number to place in AX for above interrupt
+04h    BYTE    minor version as two BCD digits (e.g. 20h for v1.20)
+05h    BYTE    major version number (01h for v1.20)
+06h  2 BYTEs   ???
+08h    WORD    ??? (used by ARCNET.COM)
+<p><b>bit 15:</b><br>??? (set by MACTEST.COM)
+0Ah    WORD    ??? (used by NDIS.COM and ODI.COM)
+0Ch 22 BYTEs   ???
+24h    DWORD   -> ??? function (set by PROTECT.COM)
+28h 12 BYTEs   ???
+34h    DWORD   -> ??? function (set by FASTVIEW.COM)
+38h    DWORD   -> ??? function (set by FASTVIEW.COM)
+58h    DWORD   -> ??? (offsets 04h and 1Ah from value are used by NETFILES).
+???
+7Ch    WORD    ???
+7Eh    WORD    ??? (may be high half of a DWORD at 7Ch).
+???
+A8h    DWORD   -> ??? (used by SM.COM).
+???
+114h    WORD    ???
+116h    WORD    ??? (may be high half of a DWORD at 114h).
+???
+1BDh    BYTE    ??? flags
+<p><b>bit 0:</b><br>???
+<p><b>bit 6:</b><br>???.
+???
+1E1h    BYTE    ???.
+???
+208h    WORD    ??? (used by SM.COM, MACTEST)
+282h    WORD    ???
+284h  2 BYTEs   ???
+286h    WORD    ??? flags
+<p><b>bit 0:</b><br>???.
+???
+31Eh    WORD    ???
+320h    WORD    ??? (used by NDIS.COM and ODI.COM)
+322h  8 BYTEs   ???
+32Ah    WORD    ??? (used by NDIS.COM and ODI.COM).
+???
+33Eh  4 BYTEs   ??? (used by ODI.COM)
+342h  N BYTEs   ??? (used by NDIS.COM).
+???
+3CFh    BYTE    ??? flags
+<p><b>bit 2:</b><br>???
+3D2h    BYTE    installed-component flags
+<p><b>bit 0:</b><br>PROTECT installed
+<p><b>bit 1:</b><br>NETCACHE installed
+<p><b>bit 3:</b><br>SM.COM installed
+<p><b>bit 7:</b><br>NETDEBUG installed
+3D3h    BYTE    installed-component flags
+<p><b>bit 0:</b><br>NETFILES installed
+<p><b>bit 6:</b><br>FASTVIEW installed.
+???
+3FFh    BYTE    ??? (used by NDIS.COM)
+400h    BYTE    ???
+401h    BYTE    ??? (used by SM.COM)
+402h    BYTE    ??? (used by SM.COM).
+???
+448h    BYTE    ???
+449h    BYTE    ??? (used by MACTEST)
+44Ah    BYTE    ??? (used by PROTECT)
+44Bh    BYTE    ???
+44Ch    BYTE    ???
+44Dh    BYTE    ??? (used by SM.COM)
+44Eh    BYTE    ??? (used by SM.COM, MACTEST).
+???
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2A.htm">
+Int 2Ah</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4137.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4139.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

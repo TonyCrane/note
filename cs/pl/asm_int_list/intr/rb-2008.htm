@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 16/AX=FFB5h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 16/AX=FFB5h - PC Tools v5.5-8.0 DESKTOP - GET/SET WINDOW PARAMETERS - 
+AX = FFB5h
+BX = window specifier (000Fh to 0019h) (see #00621)
+DX = 0000h get, nonzero = set
+ES:DI - window parameter buffer (see #00622)
+SeeAlso: AX=FFCBh
+(Table 00621)
+Values for PC Tools DESKTOP window specifier:
+000Fh comm/FAX
+0014h hotkey selection
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 16/AX=FFB5h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2007.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2009.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC Tools v5.5-8.0 DESKTOP - GET/SET WINDOW PARAMETERS</font></h3>
+<PRE>
+AX = FFB5h
+BX = window specifier (000Fh to 0019h) <a href="rb-2008.htm#Table621">(see #00621)</a>
+DX = 0000h get, nonzero = set
+ES:DI -> window parameter buffer <a href="rb-2008.htm#Table622">(see #00622)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2030.htm">AX=FFCBh</a>
+<PRE>
+<p>
+<a name=table621></a>
+(Table 00621)
+Values for PC Tools DESKTOP window specifier:
+000Fh  comm/FAX
+0014h  hotkey selection
+0015h  ASCII table
+0016h  system colors menu
+<p>
+Format of PC Tools DESKTOP window parameters:
+<a name=table622></a>
+Offset  Size    Description     (Table 00622)
+00h    BYTE    rows in window, not counting frame
+01h    BYTE    columns in window, not counting frame
+02h    BYTE    row number of top of window
+03h    BYTE    2*column number of left of window
+04h    BYTE    character attribute for ???
+05h    BYTE    character attribute for background/border
+06h    BYTE    character attribute for ???
+07h    DWORD   pointer to ??? on screen
+0Bh  4 BYTEs   ???
+0Fh    BYTE    nonzero if window may be resized
+</PRE>
+<p><b>Note:</b>
+If running in monochrome mode, character attributes at offsets 04h to
+06h are stored unchanged, but attributes other than 07h, 0Fh, or 70h
+are changed to 07h on reading
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-16.htm">
+Int 16h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2007.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2009.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

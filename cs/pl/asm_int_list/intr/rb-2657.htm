@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=252Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=252Eh - Phar Lap 386/DOS-Extender VMM v2.3+ - GET/SET VMM PARAMETERS - 
+AX = 252Eh
+CL = direction (00h get parameters, 01h set parameters)
+DS:EBX - parameter buffer (see #01374)
+Return: CF clear if successful
+CF set on error
+EAX = error code (81h bad parameter value)
+Format of Phar Lap VMM parameter buffer:
+Offset Size  Description   (Table 01374)
+00h  DWORD  flags
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=252Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2656.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2658.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Phar Lap 386/DOS-Extender VMM v2.3+ - GET/SET VMM PARAMETERS</font></h3>
+<PRE>
+AX = 252Eh
+CL = direction (00h get parameters, 01h set parameters)
+DS:EBX -> parameter buffer <a href="rb-2657.htm#Table1374">(see #01374)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+EAX = error code (81h bad parameter value)
+<p>
+Format of Phar Lap VMM parameter buffer:
+<a name=table1374></a>
+Offset  Size    Description     (Table 01374)
+00h    DWORD   flags
+<p><b>bit 0:</b><br>Page fault logging enabled
+---v5.0+ ---
+<p><b>bit 1:</b><br>Swap extender to disk during DOS EXEC call
+<p><b>bit 2:</b><br>Don't zero allocated memory
+04h    DWORD   scan period for page aging, in milliseconds
+08h    DWORD   maximum size (in bytes) to check on each page scan
+0Ch 52 BYTEs   unused
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2656.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2658.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

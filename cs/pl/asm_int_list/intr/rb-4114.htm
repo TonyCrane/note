@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 25/CX=FFFFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 25/CX=FFFFh - DOS 3.31+ - ABSOLUTE DISK READ (32M-2047M hard-disk partition) - 
+CX = FFFFh
+AL = drive number (0=A, 1=B, etc)
+DS:BX - disk read packet (see #02548)
+Return: CF clear if successful
+CF set on error
+AH = status (see #02547)
+AL = error code (same as passed to INT 24 in DI)
+AX = 0207h for FAT32 drive -- use INT 21/AX=7305h
+may destroy all other registers except segment registers; Win9X always
+sets SI to 0000h due to an apparent coding bug
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 25/CX=FFFFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4113.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4115.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.31+ - ABSOLUTE DISK READ (32M-2047M hard-disk partition)</font></h3>
+<PRE>
+CX = FFFFh
+AL = drive number (0=A, 1=B, etc)
+DS:BX -> disk read packet <a href="rb-4114.htm#Table2548">(see #02548)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = status <a href="rb-4113.htm#Table2547">(see #02547)</a>
+AL = error code (same as passed to INT 24 in DI)
+AX = 0207h for FAT32 drive -- use INT 21/AX=7305h
+may destroy all other registers except segment registers; Win9X always
+sets SI to 0000h due to an apparent coding bug
+</PRE>
+<p><b>Notes:</b>
+Partition is potentially >32M (and requires this form of the call) if
+bit 1 of the device attribute word in the device driver is set.
+Original flags are left on stack, and must be removed by caller.
+This call bypasses the DOS filesystem.
+For FAT32 drives (which may be up to 2TB in size), use INT 21/AX=7305h
+<p><b>See Also:</b>
+<a href="rb-0607.htm">INT 13/AH=02h</a> - <a href="rb-4113.htm">INT 25</a> - <a href="rb-4118.htm">INT 26/CX=FFFFh</a> - <a href="rb-3229.htm">INT
+<PRE>
+<p>
+Format of disk read packet:
+<a name=table2548></a>
+Offset  Size    Description     (Table 02548)
+00h    DWORD   sector number
+04h    WORD    number of sectors to read
+06h    DWORD   transfer address
+</PRE>
+<p><b>See Also:</b>
+#02552
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-25.htm">
+Int 25h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4113.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4115.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

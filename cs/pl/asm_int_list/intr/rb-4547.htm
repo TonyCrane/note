@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=0015h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=0015h - MS Windows - DOSMGR - GET API ENTRY POINT - 
+AX = 1684h
+BX = 0015h (virtual device ID for DOSMGR device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02656,#01282)
+0000h:0000h if the VxD does not support an API
+SeeAlso: #01282 at INT 20Windows
+(Table 02656)
+Call DOSMGR entry point with:
+AX = 0000h get DOSMGR version
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=0015h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4546.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4548.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - DOSMGR - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 0015h (virtual device ID for DOSMGR device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02656,#01282)
+0000h:0000h if the VxD does not support an API
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4416.htm">#01282 at INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2656></a>
+(Table 02656)
+Call DOSMGR entry point with:.
+AX = 0000h get DOSMGR version
+<p><b>Return:</b><br>CF clear
+AX = version (AH = major, AL = minor).
+AX = 0001h set critical focus
+<p><b>Return:</b><br>CF clear.
+AX = 0002h crash current virtual machine
+<p><b>Return:</b><br>Never
+</PRE>
+<p><b>Note:</b>
+Displays message box stating that "application has been
+stopped by the DOSMGR device".
+AX = 0003h enter critical section
+<p><b>Note:</b>
+This function assumes that the code for INT 2A/AX=8001h
+and INT 2A/AX=8002h have been modified for Windows.
+AX = 0004h get VM ID byte
+<PRE>
+<p><b>Return:</b><br>CF clear if successful
+ES:DI -> VM ID byte
+CF set on error
+</PRE>
+<p><b>Note:</b>
+This function fails if the INT 2A modifications have not
+yet been applied.
+AX = 0005h inform Windows of possible media change
+BL = drive number (00h=A:)
+<PRE>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4416.htm">#01282 at INT 20"Windows"</a> - #02655 - #02657
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4546.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4548.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

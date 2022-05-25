@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=D103h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=D103h - MDEBUG command driver - EXECUTE KEY IN THE MONITOR - 
+AX = D103h
+BX = key code (like result of an interrupt 16h call)
+CX = cursor position
+0000h in the ASCII column of the monitor
+0001h in one of the hex fields of the monitor
+DS:SI - MDEBUG data structure (see #03078)
+ES:DI - actual byte in the monitor
+Return: AL = FFh
+AH = return code
+00h key processed, read next key
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=D103h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5507.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5509.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MDEBUG command driver - EXECUTE KEY IN THE MONITOR</font></h3>
+<PRE>
+AX = D103h
+BX = key code (like result of an interrupt 16h call)
+CX = cursor position
+0000h in the ASCII column of the monitor
+0001h in one of the hex fields of the monitor
+DS:SI -> MDEBUG data structure <a href="rb-5507.htm#Table3078">(see #03078)</a>
+ES:DI -> actual byte in the monitor<br>
+<p><b>Return:</b><br>AL = FFh
+AH = return code
+00h key processed, read next key
+01h leave MDEBUG popup session
+02h leave MDEBUG popup session and automatically popup again if DOS
+is not busy
+03h signal an error (beep)
+04h driver has redefined the key, proceed with the new key
+BX = new key code
+MDEBUG will not pass the new key to the command driver(s)
+else treat like code 00h
+</PRE>
+<p><b>Note:</b>
+This function must end with a far call to the old INT 2F handler (with
+registers unchanged) if the driver does not support the key in BX.
+Otherwise, the driver must not chain to the old INT 2F.
+<p><b>See Also:</b>
+<a href="rb-5509.htm">AX=D104h</a>
+<p>
+<b>Category: <a href="cat-006.htm">
+Debuggers/Debugging Tools</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5507.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5509.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

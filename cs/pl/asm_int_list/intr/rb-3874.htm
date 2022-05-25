@@ -1,0 +1,177 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F223h/SF=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F223h/SF=05h - Novell NetWare v2+ - AFP GET FILE INFORMATION - 
+AX = F223h subfn 05h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02309)
+ES:DI - reply buffer (see #02311)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F223h/SF=04h,AX=F223h/SF=09h,AX=F223h/SF=13h
+Format of NetWare AFP Get File Information request packet:
+Offset Size  Description   (Table 02309)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F223h/SF=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3873.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3875.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2+ - AFP GET FILE INFORMATION</font></h3>
+<PRE>
+AX = F223h subfn 05h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3874.htm#Table2309">(see #02309)</a>
+ES:DI -> reply buffer <a href="rb-3874.htm#Table2311">(see #02311)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3873.htm">AX=F223h/SF=04h</a> - <a href="rb-3878.htm">AX=F223h/SF=09h</a> - <a href="rb-3887.htm">AX=F223h/SF=13h</a>
+<PRE>
+<p>
+Format of NetWare "AFP Get File Information" request packet:
+<a name=table2309></a>
+Offset  Size    Description     (Table 02309)
+00h    WORD    (big-endian) length of following data
+02h    BYTE    05h (subfunction "AFP Get File Information")
+03h    BYTE    volume number
+04h    DWORD   AFP entry ID
+08h    WORD    request bitmap
+0Ah    BYTE    path length
+0Bh  N BYTEs   AFP-style pathname (relative to AFP entry ID)
+</PRE>
+<p><b>See Also:</b>
+#02311
+<PRE>
+<p>
+Bitfields for NetWare AFP request bitmap:
+<a name=table2310></a>
+Bit(s)  Description     (Table 02310)
+0      return AFP entry ID
+1      return data fork length
+2      return resource fork length
+3      return number of contained files/subdirectories
+4      return owner ID
+5      return short name
+6      return access rights
+7      ??? (unused?)
+8      return attributes
+9      return parent directory ID
+10     return creation date
+11     return last-access date
+12     return last-modified date and time
+13     return last-backup date and time
+14     return Finder information
+15     return long name
+</PRE>
+<p><b>See Also:</b>
+#02309 - #02336 - #02337
+<PRE>
+<p>
+Format of NetWare "AFP Get File Information" reply packet:
+<a name=table2311></a>
+Offset  Size    Description     (Table 02311)
+00h    DWORD   AFP entry ID for specified file
+04h    DWORD   AFP entry ID for specified file's parent directory
+08h    WORD    directory/file attributes <a href="rb-3874.htm#Table2312">(see #02312)</a>
+0Ah    DWORD   length of data fork
+0Eh    DWORD   length of resource fork
+12h    WORD    total files and subdirectories contained within entry
+always 0000h if entry is a file
+14h    WORD    creation date in AFP format
+16h    WORD    last-access date in AFP format
+18h    WORD    last-modified date in AFP format
+1Ah    WORD    last-modified time in AFP format
+1Ch    WORD    last-backup date in AFP format
+1Eh    WORD    last-backup time in AFP format
+20h 32 BYTEs   Finder information
+40h 32 BYTEs   long filename
+60h    DWORD   NetWare object ID of owner
+64h 12 BYTEs   short filename (MS-DOS 8.3 format)
+70h    WORD    access privileges <a href="rb-3874.htm#Table2313">(see #02313)</a>
+</PRE>
+<p><b>See Also:</b>
+#02309 - #02338
+<PRE>
+<p>
+Bitfields for NetWare AFP file/directory attributes:
+<a name=table2312></a>
+Bit(s)  Description     (Table 02312)
+0      search mode
+1      search mode
+2      search mode
+3      (undefined)
+4      transaction
+5      index
+6      read audit
+7      write audit
+8      read-only
+9      hidden
+10     system
+11     execute-only
+12     subdirectory
+13     archive
+14     (undefined)
+15     shareable file
+</PRE>
+<p><b>See Also:</b>
+#02311 - #02322 - #02337
+<PRE>
+<p>
+Bitfields for NetWare AFP access privileges:
+<a name=table2313></a>
+Bit(s)  Description     (Table 02313)
+8      read (files)
+9      write (files)
+10     open (files)
+11     create (files)
+12     delete (files)
+<p><b>13     parental (directories):</b><br>Create/delete/rename subdirectories
+14     search (directories)
+15     modify file status flags
+</PRE>
+<p><b>See Also:</b>
+#02311 - #02337 - #02327
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3873.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3875.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

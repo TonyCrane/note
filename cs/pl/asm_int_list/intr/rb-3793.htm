@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=81h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=81h - Novell NetWare - GET QUEUE JOB LIST - 
+AX = F217h subfn 81h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02216)
+ES:DI - reply buffer (see #02217)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F217h/SF=6Bh
+Format of NetWare Get Queue Job List request packet:
+Offset Size  Description   (Table 02216)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=81h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3792.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3794.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET QUEUE JOB LIST</font></h3>
+<PRE>
+AX = F217h subfn 81h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3793.htm#Table2216">(see #02216)</a>
+ES:DI -> reply buffer <a href="rb-3793.htm#Table2217">(see #02217)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3772.htm">AX=F217h/SF=6Bh</a>
+<PRE>
+<p>
+Format of NetWare "Get Queue Job List" request packet:
+<a name=table2216></a>
+Offset  Size    Description     (Table 02216)
+00h    WORD    length of following data
+02h    BYTE    81h (subfunction "Get Queue Job List")
+03h    DWORD   queue ID
+07h    DWORD   address of next job in queue
+</PRE>
+<p><b>See Also:</b>
+#02217
+<PRE>
+<p>
+Format of NetWare "Get Queue Job List" reply packet:
+<a name=table2217></a>
+Offset  Size    Description     (Table 02217)
+00h    DWORD   total jobs in queue
+04h    DWORD   length of job number list (max 125)
+08h  N DWORDs  list of job numbers in queue
+</PRE>
+<p><b>See Also:</b>
+#02216
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3792.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3794.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

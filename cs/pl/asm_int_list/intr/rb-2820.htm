@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4400h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4400h -  - 
+INT 21 - DOS 2+ - IOCTL - GET DEVICE INFORMATION
+AX = 4400h
+BX = handle
+Return: CF clear if successful
+DX = device information word (see #01423)
+AX destroyed
+CF set on error
+AX = error code (01h,05h,06h) (see #01680 at AH=59h/BX=0000h)
+Notes: value in DH corresponds to high byte of device driver's attribute word
+if handle refers to a character device
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4400h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2819.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2821.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040></font></h3>
+<PRE>
+INT 21 - DOS 2+ - IOCTL - GET DEVICE INFORMATION
+AX = 4400h
+BX = handle<br>
+<p><b>Return:</b><br>CF clear if successful
+DX = device information word <a href="rb-2820.htm#Table1423">(see #01423)</a>
+AX destroyed
+CF set on error
+AX = error code (01h,05h,06h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+Value in DH corresponds to high byte of device driver's attribute word
+if handle refers to a character device.
+Novell NetWare reportedly does not return a drive number in bits 5-0
+for a disk file.
+This function was not supported by Digital Research's DOS Plus
+<p><b>See Also:</b>
+<a href="rb-2821.htm">AX=4401h</a> - <a href="rb-4411.htm">INT 2F/AX=122Bh</a>
+<PRE>
+<p>
+Bitfields for device information word:
+<a name=table1423></a>
+Bit(s)  Description     (Table 01423)
+character device
+14    device driver can process IOCTL requests (see AX=4402h"DOS 2+")
+13    output until busy supported
+11    driver supports OPEN/CLOSE calls
+8    ??? (set by MS-DOS 6.2x KEYB)
+7    set (indicates device)
+6    EOF on input
+5    raw (binary) mode
+4    device is special (uses INT 29)
+3    clock device
+2    NUL device
+1    standard output
+0    standard input
+disk file
+15    file is remote (DOS 3.0+)
+14    don't set file date/time on closing (DOS 3.0+)
+11    media not removable
+8    (DOS 4 only) generate INT 24 if no disk space on write or read past
+end of file
+7    clear (indicates file)
+6    file has not been written
+5-0   drive number (0 = A:)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4124.htm">INT 29</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2819.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2821.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

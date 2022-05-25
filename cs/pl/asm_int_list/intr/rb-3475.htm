@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=15h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=15h - Novell NetWare - DIRECTORY SERVICES - GET VOLUME INFO WITH HANDLE - 
+AH = E2h subfn 15h
+DS:SI - request buffer (see #01874)
+ES:DI - reply buffer (see #01875)
+Return: AL = status
+00h successful
+Note:  this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+SeeAlso: AH=DAh,AH=E2h/SF=02h,AH=E2h/SF=06h,AH=E2h/SF=19h,AH=E3h/SF=E9h
+SeeAlso: AX=F216h/SF=15h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=15h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3474.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3476.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - GET VOLUME INFO WITH HANDLE</font></h3>
+<PRE>
+AH = E2h subfn 15h
+DS:SI -> request buffer <a href="rb-3475.htm#Table1874">(see #01874)</a>
+ES:DI -> reply buffer <a href="rb-3475.htm#Table1875">(see #01875)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3393.htm">AH=DAh</a> - <a href="rb-3459.htm">AH=E2h/SF=02h</a> - <a href="rb-3463.htm">AH=E2h/SF=06h</a> - <a href="rb-3479.htm">AH=E2h
+<p><b>See Also:</b>
+<a href="rb-3687.htm">AX=F216h/SF=15h</a>
+<PRE>
+<p>
+Format of NetWare "Get Volume Info with Handle" request buffer:
+<a name=table1874></a>
+Offset  Size    Description     (Table 01874)
+00h    WORD    0002h (length of following data)
+02h    BYTE    15h (subfunction "Get Volume Info With Handle")
+03h    BYTE    directory handle
+</PRE>
+<p><b>See Also:</b>
+#01875 - #02119
+<PRE>
+<p>
+Format of NetWare "Get Volume Info with Handle" reply buffer:
+<a name=table1875></a>
+Offset  Size    Description     (Table 01875)
+00h    WORD    (call) 001Ch (length of following results buffer)
+02h    WORD    (big-endian) sectors per block
+04h    WORD    (big-endian) total blocks on volume
+06h    WORD    (big-endian) blocks available on volume
+08h    WORD    (big-endian) total directory slots
+0Ah    WORD    (big-endian) directory slots available
+0Ch 16 BYTEs   NUL-padded volume name
+<p><b>1Ch    WORD    (big-endian) flag:</b><br>Volume removable if nonzero
+</PRE>
+<p><b>See Also:</b>
+#01874 - #02119
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3474.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3476.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

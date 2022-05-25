@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=60h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=60h - DOS 3.0+ - TRUENAME - CANONICALIZE FILENAME OR PATH - 
+AH = 60h
+DS:SI - ASCIZ filename or path
+ES:DI - 128-byte buffer for canonicalized name
+Return: CF set on error
+AX = error code
+02h invalid component in directory path or drive letter only
+03h malformed path or invalid drive letter
+ES:DI buffer unchanged
+CF clear if successful
+AH = 00h or 3Ah (DOS 6.1/6.2 for character device)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=60h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3136.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3138.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.0+ - TRUENAME - CANONICALIZE FILENAME OR PATH</font></h3>
+<PRE>
+AH = 60h
+DS:SI -> ASCIZ filename or path
+ES:DI -> 128-byte buffer for canonicalized name<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code
+02h invalid component in directory path or drive letter only
+03h malformed path or invalid drive letter
+ES:DI buffer unchanged
+CF clear if successful
+AH = 00h or 3Ah (DOS 6.1/6.2 for character device)
+AL = destroyed (00h or 2Fh or 5Ch or last character of current
+directory on drive)
+buffer filled with qualified name of form D:\PATH\FILE.EXT or
+\\MACHINE\PATH\FILE.EXT
+</PRE>
+<p><b>Desc:</b>
+Determine the canonical name of the specified filename or path,
+corresponding to the undocumented TRUENAME command in COMMAND.COM
+<p><b>Notes:</b>
+The input path need not actually exist.
+Letters are uppercased, forward slashes converted to backslashes,
+asterisks converted to appropriate number of question marks, and
+file and directory names are truncated to 8.3 if necessary.  (DR DOS
+3.41 and 5.0 do not expand asterisks).
+'.' and '..' in the path are resolved.
+Filespecs on local drives always start with "d:", those on network
+drives always start with "\\".
+If path string is on a JOINed drive, the returned name is the one that
+would be needed if the drive were not JOINed; similarly for a
+SUBSTed, ASSIGNed, or network drive letter.   Because of this, it is
+possible to get a qualified name that is not legal under the current
+combination of SUBSTs, ASSIGNs, JOINs, and network redirections.
+Under DOS 3.3 through 6.00, a device name is translated differently if
+the device name does not have an explicit directory or the directory
+is \DEV (relative directory DEV from the root directory works
+correctly).  In these cases, the returned string consists of the
+unchanged device name and extension appended to the string X:/
+(forward slash instead of backward slash as in all other cases) where
+X is the default or explicit drive letter..
+Under MS-DOS 7.0, this call returns the short name for any
+long-filename portions of the provided pathname or filename.
+Functions which take pathnames require canonical paths if invoked via
+INT 21/AX=5D00h.
+Supported by OS/2 v1.1 compatibility box.
+NetWare 2.1x does not support characters with the high bit set; early
+versions of NetWare 386 support such characters except in this call.
+In addition, NetWare returns error code 3 for the path "X:\"; one
+should use "X:\." instead..
+Novell DOS 7 reportedly has difficulty with non-MS-DOS filenames on
+network drives, and can return "D:" instead of "SERVER/VOLUME".
+For DOS 3.3-6.0, the input and output buffers may be the same, as the
+canonicalized name is built in an internal buffer and copied to the
+specified output buffer as the very last step.
+For DR DOS 6.0, this function is not automatically called when on a
+network.  Device drivers reportedly cannot make this call from their
+INIT function.  Using the same pointer for both input and output
+buffers is not supported in the April 1992 and earlier versions of
+DR DOS.
+Windows for Workgroups 3.11, Windows95 and even MS-DOS 7.00 only
+return the local drive path; to obtain network paths use
+INT 21/AX=5F02h or INT 21/AX=5F46h instead.
+Corel's CORELCDX and MSCDEX without the /S switch return canonical
+names of the form "\\D.\A.\path", where "D" is the CD-ROM drive
+letter and "A" appears to indicate the first physical CD-ROM drive;
+MSCDEX with the /S switch returns a canonical name with embedded
+blanks.  Novell DOS 7 NWCDEX as of the 11/16/94 update returns the
+same canonical path as MSCDEX; earlier revisions returned
+"Cdex.   D:\path", where "D" is the CD-ROM drive letter.
+The Windows95 MSCDEX-replacement VxD returns "D:\path", even though the
+MS-DOS 7.00 MSCDEX behaves identically to older versions (above)
+<p><b>BUG:</b>
+Windows95 incorrectly treats filenames where the first two characters
+after the drive letter and colon are both slashes (either forward
+or backward) as a UNC (network name) and requires several seconds
+to attempt to resolve the name before returning an unchanged
+string
+<p><b>See Also:</b>
+<a href="rb-3042.htm">AX=5F02h</a> - <a href="rb-3119.htm">AX=5FB3h</a> - <a href="rb-3206.htm">AX=7160h/CL=00h</a> - <a href="rb-4340.htm">INT 2F/
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3136.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3138.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

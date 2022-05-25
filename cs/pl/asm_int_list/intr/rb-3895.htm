@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F24Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F24Ah - Novell NetWare - COPY FROM ONE FILE TO ANOTHER - 
+AX = F24Ah
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02354)
+ES:DI - reply buffer (see #02355)
+Return: AX = status (see #02350)
+Note:  this function only marks the file for deletion; use AH=E2h/SF=CEh to
+actually delete all marked files
+SeeAlso: AH=F2hNovell,AX=F243h,AX=F247h,AH=F3hNetWare
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F24Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3894.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3896.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - COPY FROM ONE FILE TO ANOTHER</font></h3>
+<PRE>
+AX = F24Ah
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3895.htm#Table2354">(see #02354)</a>
+ES:DI -> reply buffer <a href="rb-3895.htm#Table2355">(see #02355)</a><br>
+<p><b>Return:</b><br>AX = status (see #02350)
+</PRE>
+<p><b>Note:</b>
+This function only marks the file for deletion; use AH=E2h/SF=CEh to
+actually delete all marked files
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3892.htm">AX=F243h</a> - <a href="rb-3894.htm">AX=F247h</a> - <a href="rb-3293.htm">AH=F3h"NetWare"</a>
+<PRE>
+<p>
+Format of NetWare "Copy from One File to Another" request packet:
+<a name=table2354></a>
+Offset  Size    Description     (Table 02354)
+00h    BYTE    reserved for future use
+01h  6 BYTEs   source NetWare file handle
+07h  6 BYTEs   destination NetWare file handle
+0Dh    DWORD   source file offset
+11h    DWORD   destination file offset
+15h    DWORD   number of bytes to copy
+</PRE>
+<p><b>See Also:</b>
+#02355
+<PRE>
+<p>
+Format of NetWare "Copy from One File to Another" reply packet:
+<a name=table2355></a>
+Offset  Size    Description     (Table 02355)
+00h    DWORD   number of bytes actually copied
+</PRE>
+<p><b>See Also:</b>
+#02354
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3894.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3896.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

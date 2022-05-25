@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5FB1h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5FB1h - LANtastic - GET SHARED DIRECTORY INFORMATION - 
+AX = 5FB1h
+DS:SI - 64-byte buffer for link description
+ES:DI - ASCIZ machine and shared directory name in form
+\\machine\shared-resource
+Return: CF clear if successful
+CX = access control list privileges for requesting user (see #01742)
+CF set on error
+AX = error code
+Bitfields for LANtastic access control list:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5FB1h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3116.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3118.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LANtastic - GET SHARED DIRECTORY INFORMATION</font></h3>
+<PRE>
+AX = 5FB1h
+DS:SI -> 64-byte buffer for link description
+ES:DI -> ASCIZ machine and shared directory name in form
+"\\machine\shared-resource"<br>
+<p><b>Return:</b><br>CF clear if successful
+CX = access control list privileges for requesting user <a href="rb-3117.htm#Table1742">(see #01742)</a>
+CF set on error
+AX = error code
+<p>
+Bitfields for LANtastic access control list:
+<a name=table1742></a>
+Bit(s)  Description     (Table 01742)
+4      (I) allow expansion of indirect files
+5      (A) allow attribute changing
+6      (P) allow physical access to device
+7      (E) allow program execution
+8      (N) allow file renaming
+9      (K) allow directory deletion
+10     (D) allow file deletion
+11     (L) allow file/directory lookups
+12     (M) allow directory creation
+13     (C) allow file creation
+14     (W) allow open for write and writing
+15     (R) allow open for read and reading
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3116.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3118.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

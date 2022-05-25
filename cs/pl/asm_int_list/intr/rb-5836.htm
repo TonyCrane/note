@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0305h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0305h - DPMI 0.9+ - GET STATE SAVE/RESTORE ADDRESSES - 
+AX = 0305h
+Return: CF clear
+AX = size in bytes of state buffer
+BX:CX = real mode address of procedure to save/restore state
+SI:(E)DI = protected mode procedure to save/restore state (see #03150)
+Notes: the buffer size will be zero if it is not necessary to preserve state
+16-bit programs should call SI:DI, 32-bit programs should call SI:EDI
+this function is only needed if using the raw mode switch service
+SeeAlso: AX=0306h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0305h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5835.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5837.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - GET STATE SAVE/RESTORE ADDRESSES</font></h3>
+<PRE>
+AX = 0305h<br>
+<p><b>Return:</b><br>CF clear
+AX = size in bytes of state buffer
+BX:CX = real mode address of procedure to save/restore state
+SI:(E)DI = protected mode procedure to save/restore state <a href="rb-5836.htm#Table3150">(see #03150)</a>
+</PRE>
+<p><b>Notes:</b>
+The buffer size will be zero if it is not necessary to preserve state.
+16-bit programs should call SI:DI, 32-bit programs should call SI:EDI.
+This function is only needed if using the raw mode switch service
+<p><b>See Also:</b>
+<a href="rb-5837.htm">AX=0306h</a>
+<PRE>
+<p>
+<a name=table3150></a>
+(Table 03150)
+Call DPMI state-save procedures with:.
+AL = direction
+00h save state
+01h restore state.
+ES:(E)DI -> state buffer<br>
+<p><b>Return:</b><br>All registers preserved
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5835.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5837.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

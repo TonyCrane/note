@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=08h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=08h - IBM SurePath BIOS - WAIT REQUESTED TIME PERIOD - 
+AH = 08h
+AL = function
+00h wait in increments of 15.025 microseconds
+CX = number of time increments to wait (0000h = maximum)
+80h wait in increments of 840 ns
+ECX = number of time increments to wait
+81h I/O event wait
+BH = bitmask of bits to check
+BL = expected pattern
+DX = I/O port address
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=08h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1171.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1173.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>IBM SurePath BIOS - WAIT REQUESTED TIME PERIOD</font></h3>
+<PRE>
+AH = 08h
+AL = function
+00h wait in increments of 15.025 microseconds
+CX = number of time increments to wait (0000h = maximum)
+80h wait in increments of 840 ns
+ECX = number of time increments to wait
+81h I/O event wait
+BH = bitmask of bits to check
+BL = expected pattern
+DX = I/O port address
+ECX = number of 840 ns microticks to wait
+<p><b>Return:</b><br>ECX = 00000000h if expected pattern did not occur
+82h memory event wait
+BH = bitmask of bits to check
+BL = expected pattern
+ES:SI -> BYTE to check
+ECX = number of 840 ns microticks to wait
+<p><b>Return:</b><br>ECX = 00000000h if expected pattern did not occur
+other reserved<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = status
+00h successful
+01h used 15.025 microsecond interval, time rounded up
+08h reserved subfunction
+86h function not supported
+</PRE>
+<p><b>Notes:</b>
+IBM classifies this function as optional.
+If the POST determines that the timer is nonfunctional, this function
+uses the 15.025 microsecond refresh timer instead of the
+full-resolution timer
+<p><b>See Also:</b>
+<a href="rb-1169.htm">AH=07h"IBM"</a> - <a href="rb-1175.htm">AH=09h"IBM"</a> - <a href="rb-1525.htm">AH=86h</a>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1171.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1173.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

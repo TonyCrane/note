@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=0026h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=0026h - MS Windows - VPOWERD - GET API ENTRY POINT - 
+AX = 1684h
+BX = 0026h (virtual device ID for VPOWERD device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02664)
+0000h:0000h if the VxD does not support API in current mode
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+(Table 02664)
+Call VPOWERD.VXD entry point with:
+AX = function number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=0026h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4552.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4554.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - VPOWERD - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 0026h (virtual device ID for VPOWERD device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02664)
+0000h:0000h if the VxD does not support API in current mode
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2664></a>
+(Table 02664)
+Call VPOWERD.VXD entry point with:.
+AX = function number
+0000h get VPOWERD version
+<p><b>Return:</b><br>DX = 0000h
+AX = version (AH = major, AL = minor)
+0001h get APM BIOS version
+<p><b>Return:</b><br>DX:AX = APM BIOS version
+0002h get current power management level
+<p><b>Return:</b><br>DX:AX = power management level
+0003h enable/disable power management (see INT 15/AX=5308h)
+??? = new state of power management
+<p><b>Return:</b><br>DX:AX = 0000h:0000h if successful
+else error code <a href="rb-4553.htm#Table2665">(see #02665)</a>
+0004h set power state (see INT 15/AX=5307h)
+<p><b>Return:</b><br>DX:AX = 0000h:0000h if successful
+else error code <a href="rb-4553.htm#Table2665">(see #02665)</a>
+0005h set system power status
+<p><b>Return:</b><br>DX:AX = 0000h:0000h if successful
+else error code <a href="rb-4553.htm#Table2665">(see #02665)</a>
+0006h restore APM power-on defaults (see INT 15/AX=5309h)
+<p><b>Return:</b><br>DX:AX = 0000h:0000h if successful
+else error code <a href="rb-4553.htm#Table2665">(see #02665)</a>
+0007h get power status (see INT 15/AX=530Ah)
+<p><b>Return:</b><br>???
+0008h get APM 1.1 power state (see INT 15/AX=530Ch)
+<p><b>Return:</b><br>???
+0009h invoke OEM APM function
+??? -> buffer containing parameters for INT 15/AX=5380h
+<p><b>Return:</b><br>DX:AX = 0000h:0000h or error code (see #02665)
+buffer updated if successful
+000Ah register power handler
+???
+<p><b>Return:</b><br>DX:AX = 0000h:0000h or error code
+000Bh deregister power handler
+???
+<p><b>Return:</b><br>DX:AX = 0000h:0000h or error code (see #02665)
+000Ch Win32 get system power status
+000Dh Win32 set system power status
+else
+<p><b>Return:</b><br>DX = 0000h
+AX = 00FFh
+</PRE>
+<p><b>See Also:</b>
+#02663 - #02666
+<PRE>
+<p>
+<a name=table2665></a>
+(Table 02665)
+Values for VPOWERD.VXD error code:
+000000xxh      APM error code
+000000FFh      function number out of range
+80000001h      ??? (service 05h)
+80000002h      ??? (service 0Dh)
+80000003h      specified NULL buffer pointer (service 07h,08h,09h)
+80000005h      ??? (service 03h)
+80000006h      ??? (service 04h)
+80000007h      ??? (service 05h)
+80000008h      ??? (service 05h)
+80000009h      out of memory (service 0Ah)
+8000000Ah      ??? (service 0Ah)
+8000000Bh      invalid power handler (service 0Bh)
+8000000Ch      unsupported/disabled??? function
+</PRE>
+<p><b>See Also:</b>
+#02664 - #01290
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4552.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4554.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

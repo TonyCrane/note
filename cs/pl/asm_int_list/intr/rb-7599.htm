@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6B/AX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6B/AX=0000h - Novell NASI/NACS, Ungermann-Bass Net One SERIAL I/O - BUFFERED WRITE - 
+AX = 0000h
+CX = length
+ES:BX - buffer
+Return: CX = number of bytes written
+Program: NASI is Novell's NetWare Asynchronous Services Interface (purchased
+from Network Products Corp, who call it NCSI) which runs on
+workstations; NACS is the NetWare Asynchronous Communications
+Services module which runs on servers
+InstallCheck:  test for the signature string NCSI three bytes past the
+interrupt handler; see also AH=02h.
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6B/AX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7598.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7600.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NASI/NACS, Ungermann-Bass Net One SERIAL I/O - BUFFERED WRITE</font></h3>
+<PRE>
+AX = 0000h
+CX = length
+ES:BX -> buffer<br>
+<p><b>Return:</b><br>CX = number of bytes written
+</PRE>
+<p><b>Program:</b>
+NASI is Novell's NetWare Asynchronous Services Interface (purchased
+from Network Products Corp, who call it NCSI) which runs on
+workstations; NACS is the NetWare Asynchronous Communications
+Services module which runs on servers
+<PRE>
+<p><b>InstallCheck:</b><br>Test for the signature string "NCSI" three bytes past the
+interrupt handler; see also AH=02h..
+As of version 3.0, Novell's NASI can be distinguished from NPC's
+NCSI by the presence of an 'A' immediately following the signature
+</PRE>
+<p><b>Notes:</b>
+This function is also supported by TelAPI, NPC NCSI, and Connection
+Manager CLIENT.EXE; for TelAPI, nonzero values in AL specify a
+connection ID.
+Connection Manager returns CF set/AL=FFh if called while an INT 6B
+call is already in progress
+<p><b>See Also:</b>
+<a href="rb-7600.htm">AX=0100h</a> - <a href="rb-7613.htm">AH=18h</a> - <a href="rb-0934.htm">INT 14/AH=19h</a> - <a href="rb-1112.htm">INT 14/AH=E
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-6B.htm">
+Int 6Bh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7598.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7600.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

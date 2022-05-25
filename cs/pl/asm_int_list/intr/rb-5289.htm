@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=C000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=C000h - Novell NetWare Connect NETWARN - INSTALLATION CHECK - 
+AX = C000h
+Return: AL = FFh if installed
+SI = segment of resident portion
+Program: NETWARN is a utility supplied with NetWare Connect to warn a
+remote dialup user when programs are about to be loaded slowly over
+the modem link.
+Range: AH=C0h to AH=FFh, selected by scanning for first free multiplex number
+Note:  on return, verify that it is NETWARN responding by examining signature
+at in NETWARN's data table in the resident segment (see #03027)
+SeeAlso: AX=C000hODI,AX=C000hNESL
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=C000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5288.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5290.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare Connect NETWARN - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = C000h<br>
+<p><b>Return:</b><br>AL = FFh if installed
+SI = segment of resident portion
+</PRE>
+<p><b>Program:</b>
+NETWARN is a utility supplied with NetWare Connect to warn a
+remote dialup user when programs are about to be loaded slowly over
+the modem link.
+<PRE>
+<p><b>Range:</b><br>AH=C0h to AH=FFh, selected by scanning for first free multiplex number
+</PRE>
+<p><b>Note:</b>
+On return, verify that it is NETWARN responding by examining signature
+at in NETWARN's data table in the resident segment <a href="rb-5289.htm#Table3027">(see #03027)</a>
+<p><b>See Also:</b>
+<a href="rb-4876.htm">AX=C000h"ODI"</a> - <a href="rb-5288.htm">AX=C000h"NESL"</a>
+<PRE>
+<p>
+Format of NETWARN Configuration structure:
+<a name=table3027></a>
+Offset  Size    Description     (Table 03027)
+103h 7 BYTEs   signature string "NETWARN"
+10Ah   BYTE    major version in ASCII (="1")
+10Bh   BYTE    minor version in ASCII (="0")
+10Ch   DWORD   minimum size of EXE cared about in bytes (/S=xxxx)
+110h   WORD    same value in kilobytes <a href="rb-0000.htm#Table0"></a>(see #03028 [bit 4])
+112h   BYTE    multiplex code (AH value) actually being used
+113h   WORD    options <a href="rb-5289.htm#Table3028">(see #03028)</a>
+115h   DWORD   INT 21h vector before NETWARN loaded
+119h   DWORD   INT 2Fh vector before NETWARN loaded
+11Dh 16 BYTEs  ASCIIZ local name of last device which was checked
+12Dh 128 BYTEs ASCIIZ remote name of last device which was checked
+</PRE>
+<p><b>Note:</b>
+The specified offsets are from the start of the resident segment
+<PRE>
+<p>
+Bitfields for NETWARN options:
+<a name=table3028></a>
+Bit(s)  Description     (Table 03028)
+0      ??? (=0)
+1      /U (Unload) selected (never in resident)
+2      /E (Enabled) Will trap & check EXEC's
+3      /D (Disabled) No EXEC checking done
+4      /S (Size) was set <a href="rb-0000.htm#Table0"></a>(see #03027 [offsets 010Ch and 0110h])
+5      /P (Path shown)
+6      /H or /? (Help) (never in resident)
+</PRE>
+<p><b>See Also:</b>
+#03027
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5288.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5290.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

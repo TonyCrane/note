@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=C503h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=C503h - PC-DOS Econet v1.05 - ADD EVENT HANDLER - 
+AX = C503h
+DS:DX - event handler (see #03046)
+Return: AX = return code (see #03037)
+Note:  the interrupt-enable state will be preserved, but interrupts may be
+enabled during processing of this function
+SeeAlso: AX=C500h,AX=C504h,AX=C505h,AX=C508h
+Format of Econet event handler:
+Offset Size  Description   (Table 03046)
+00h  DWORD  - next handler's code (at offset 8, filled in by Econet)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=C503h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5400.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5402.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC-DOS Econet v1.05 - ADD EVENT HANDLER</font></h3>
+<PRE>
+AX = C503h
+DS:DX -> event handler <a href="rb-5401.htm#Table3046">(see #03046)</a><br>
+<p><b>Return:</b><br>AX = return code (see #03037)
+</PRE>
+<p><b>Note:</b>
+The interrupt-enable state will be preserved, but interrupts may be
+enabled during processing of this function
+<p><b>See Also:</b>
+<a href="rb-5398.htm">AX=C500h</a> - <a href="rb-5402.htm">AX=C504h</a> - <a href="rb-5403.htm">AX=C505h</a> - <a href="rb-5406.htm">AX=C508h</a>
+<PRE>
+<p>
+Format of Econet event handler:
+<a name=table3046></a>
+Offset  Size    Description     (Table 03046)
+00h    DWORD   -> next handler's code (at offset 8, filled in by Econet)
+04h    DWORD   -> previous event handler (filled in by Econet)
+08h    var     entry point (executable code called on event) <a href="rb-5401.htm#Table3047">(see #03047)</a>
+<p>
+<a name=table3047></a>
+(Table 03047)
+Values Econet event handler is called with:.
+AL = event number.
+AH = timeout flag (01h if timeout, else 00h)<br>
+<p><b>Return:</b><br>All registers preserved
+if event trapped by this handler, issue RETF
+if event not trapped, jump to address stored at offset 0
+</PRE>
+<p><b>See Also:</b>
+#03046
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5400.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5402.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

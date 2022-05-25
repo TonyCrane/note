@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=440Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=440Eh - DOS 3.2+ - IOCTL - GET LOGICAL DRIVE MAP - 
+AX = 440Eh
+BL = drive number (00h=default,01h=A:,etc)
+Return: CF set on error
+AX = error code (01h,0Fh) (see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+AL = 00h block device has only one logical drive assigned
+1..26 the last letter used to reference the drive (1=A:,etc)
+Notes: DR DOS 3.41-5.0 DRIVER.SYS does not support drive mapping and thus
+always returns AL=00h; Windows NT 4.0 also always returns AL=00h
+in addition to the normal operation, if Stacker is installed, this
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=440Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2906.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2908.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.2+ - IOCTL - GET LOGICAL DRIVE MAP</font></h3>
+<PRE>
+AX = 440Eh
+BL = drive number (00h=default,01h=A:,etc)<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code (01h,0Fh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+AL = 00h block device has only one logical drive assigned
+1..26 the last letter used to reference the drive (1=A:,etc)
+</PRE>
+<p><b>Notes:</b>
+DR DOS 3.41-5.0 DRIVER.SYS does not support drive mapping and thus
+always returns AL=00h; Windows NT 4.0 also always returns AL=00h.
+In addition to the normal operation, if Stacker is installed, this
+call also sets the volume number at offset 58h in the Stacker
+device driver (DR DOS 3.41-5.0 only; use AX=4408h otherwise)
+(see AX=4404h"Stacker",INT 25/AX=CDCDh)
+<p><b>See Also:</b>
+<a href="rb-2890.htm">AX=4408h</a> - <a href="rb-2908.htm">AX=440Fh</a> - <a href="rb-4411.htm">INT 2F/AX=122Bh</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2906.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2908.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=E301h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=E301h - Disk Spool II v4.0x - GET SPOOL FILE STATUS - 
+AX = E301h
+ES:BX - ASCIZ filename (max 32 chars)
+Return: AH = status
+00h successful
+ES:SI - spool file status record (see #01262)
+F0h not a spool file
+FFh failed
+Note:  this function is also supported by Vertisoft's Emulaser utility ELSPL,
+as that is a licensed version of Disk Spool II
+SeeAlso: AH=E0h,AX=E302h,AX=E401h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=E301h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2424.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2426.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Disk Spool II v4.0x - GET SPOOL FILE STATUS</font></h3>
+<PRE>
+AX = E301h
+ES:BX -> ASCIZ filename (max 32 chars)<br>
+<p><b>Return:</b><br>AH = status
+00h successful
+ES:SI -> spool file status record <a href="rb-2425.htm#Table1262">(see #01262)</a>
+F0h not a spool file
+FFh failed
+</PRE>
+<p><b>Note:</b>
+This function is also supported by Vertisoft's Emulaser utility ELSPL,
+as that is a licensed version of Disk Spool II
+<p><b>See Also:</b>
+<a href="rb-2420.htm">AH=E0h</a> - <a href="rb-2426.htm">AX=E302h</a> - <a href="rb-2427.htm">AX=E401h</a>
+<PRE>
+<p>
+Format of Disk Spool II spool file status record:
+<a name=table1262></a>
+Offset  Size    Description     (Table 01262)
+00h    BYTE    hour of creation or last update
+01h    BYTE    minute of creation or last update
+02h    BYTE    year-1980 of creation or last update
+03h    BYTE    month of creation or last update
+04h    BYTE    day of creation or last update
+05h    BYTE    total number of copies to print
+06h    BYTE    number of copies already printed
+07h    BYTE    printer port (01h COM1, 02h COM2, 05h LPT1, 06h LPT2)
+08h    BYTE    save status (00h delete after printing, 01h save)
+09h    BYTE    file status
+01h done printing, but being saved
+02h on hold
+03h queued for printing
+04h being spooled
+05h being despooled (i.e. printed)
+0Ah 16 BYTEs   ASCIZ description
+1Ah  2 WORDs   file size in bytes (high,low)
+1Eh  2 WORDs   bytes left to print (high,low)
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2424.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2426.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

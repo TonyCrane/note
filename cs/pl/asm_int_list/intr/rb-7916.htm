@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7C
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7C - PRINDIR v8.02-8.xx - API - 
+AH = function
+00h set output to Invisible mode
+01h set output to LPT1
+02h set output to LPT2
+03h set output to LPT3
+04h set output to COM1
+05h set output to COM2
+06h set output to COM3
+07h set output to COM4
+08h set output to screen
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7C
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7915.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7917.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PRINDIR v8.02-8.xx - API</font></h3>
+<PRE>
+AH = function
+00h set output to Invisible mode
+01h set output to LPT1
+02h set output to LPT2
+03h set output to LPT3
+04h set output to COM1
+05h set output to COM2
+06h set output to COM3
+07h set output to COM4
+08h set output to screen
+09h set output to file
+0Ah change file path
+ES:DI -> new path
+CX = length of path (max 41, but not range-checked)
+0Bh change file name
+ES:DI -> new filename
+CX = length of new name (max 41, but not range-checked)
+0Ch set redirected device
+(01h = LPT1 ... 03h = LPT3, 04h = COM1 ... 07h = COM4)
+0Dh force buffer dump
+0Eh set display color
+AL = new color attribute <a href="rb-0000.htm#Table0"></a>(see #00014 at INT 10/AH=08h)
+0Fh set popup hotkey
+AL = hotkey scancode
+10h toggle byte display
+AL = new state (00h off, 01h on)
+11h change buffer flush delay
+AL = timer ticks before flush<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+0001h invalid function or nothing in buffer to be dumped
+(documented as "nonzero = error")
+</PRE>
+<p><b>Program:</b>
+PRINDIR is a shareware printer-redirection program by J.M. Allen
+Creations
+<PRE>
+<p><b>InstallCheck:</b><br>Test for the ASCIZ signature "PRINDIR N.NN" (where N.NN is the
+version number) two bytes beyond the start of the interrupt handler
+</PRE>
+<p><b>Note:</b>
+Prior versions of PRINDIR used INT 7A instead of INT 7C
+<p><b>See Also:</b>
+<a href="rb-7840.htm">INT 7A"PRINDIR"</a> - <a href="rb-4990.htm">INT 2F/AX=7F00h"PRINDIR"</a>
+<PRE>
+<p><b>Index:</b><br>Hotkeys;PRINDIR
+</PRE>
+<p>
+<b>Category: <a href="cat-032.htm">
+Printer Enhancements</a>
+- <a href="int-7C.htm">
+Int 7Ch</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7915.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7917.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

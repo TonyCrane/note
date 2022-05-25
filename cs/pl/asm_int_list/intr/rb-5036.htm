@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=8221h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=8221h - MODRES - INSTALLATION CHECK - 
+AX = 8221h
+Return: AX = status
+5722h successful
+other MODRES not installed
+BX = BCD version number (BH = major, BL = minor)
+DX:CX - Output Device structure (read-only) (see #02961)
+SeeAlso: AX=8220h,AX=8222h,AX=8225h,AX=8227h
+Format of Output Device structure [array]:
+Offset Size  Description   (Table 02961)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=8221h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5035.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5037.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MODRES - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 8221h<br>
+<p><b>Return:</b><br>AX = status
+5722h successful
+other MODRES not installed
+BX = BCD version number (BH = major, BL = minor)
+DX:CX -> Output Device structure (read-only) <a href="rb-5036.htm#Table2961">(see #02961)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5035.htm">AX=8220h</a> - <a href="rb-5037.htm">AX=8222h</a> - <a href="rb-5040.htm">AX=8225h</a> - <a href="rb-5042.htm">AX=8227h</a>
+<PRE>
+<p>
+Format of Output Device structure [array]:
+<a name=table2961></a>
+Offset  Size    Description     (Table 02961)
+00h 20 BYTEs   ASCIZ name of the output device
+(end of list if first char is FFh)
+14h    WORD    apparently always FFFFh
+16h    WORD    0000h if output device not available
+else first I/O port for the output device
+18h    WORD    second I/O port for the output device (for example
+if it is stereo)
+000oh if only one port used or device is not available
+1Ah  7 BYTEs   ???
+</PRE>
+<p><b>See Also:</b>
+#02960 - #02962
+<PRE>
+<p>
+<a name=table2962></a>
+(Table 02962)
+Values for MODRES v1.52 output device index:
+00h    PC speaker
+01h    D/A Converter on LPT1
+02h    D/A Converter on LPT2
+03h    D/A Converter on LPT3
+04h    D/A Converter on LPT4
+05h    D/A Converter on LPT1&LPT2 (stereo)
+06h    D/A Converter on LPT1&LPT2 (mono)
+07h    Sound Blaster (port 02x0h)
+08h    User Defined D/A (mono)
+09h    User Defined D/A (stereo)
+0Ah    Stereo-on-1
+0Bh    Disney SS su LPT1
+0Ch    Disney SS su LPT2
+0Dh    Disney SS su LPT3
+0Eh    Disney SS su LPT4
+</PRE>
+<p><b>Note:</b>
+This list may vary between versions of MODRES
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5035.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5037.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

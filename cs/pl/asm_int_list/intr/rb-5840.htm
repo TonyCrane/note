@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0500h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0500h - DPMI 0.9+ - GET FREE MEMORY INFORMATION - 
+AX = 0500h
+ES:(E)DI - buffer for memory information (see #03155)
+Return: CF clear
+Notes: 16-bit programs use ES:DI, 32-bit programs use ES:EDI
+this function must be considered advisory because other applications
+may affect the results at any time after the call
+fields not supported by the DPMI implementation are filled with
+FFFFFFFFh
+DPMI 1.0+ supports this function solely for backward compatibility; use
+AX=050Bh instead
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0500h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5839.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5841.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - GET FREE MEMORY INFORMATION</font></h3>
+<PRE>
+AX = 0500h
+ES:(E)DI -> buffer for memory information <a href="rb-5840.htm#Table3155">(see #03155)</a><br>
+<p><b>Return:</b><br>CF clear
+</PRE>
+<p><b>Notes:</b>
+16-bit programs use ES:DI, 32-bit programs use ES:EDI.
+This function must be considered advisory because other applications
+may affect the results at any time after the call.
+Fields not supported by the DPMI implementation are filled with
+FFFFFFFFh.
+DPMI 1.0+ supports this function solely for backward compatibility; use
+AX=050Bh instead.
+The limited DPMI host built into Phar Lap's 286|DOS-Extender v2.5 only
+returns the first field in the memory information record
+<p><b>See Also:</b>
+<a href="rb-5841.htm">AX=0501h</a> - <a href="rb-5851.htm">AX=050Bh</a> - <a href="rb-5856.htm">AX=0604h</a>
+<PRE>
+<p>
+Format of DPMI memory information:
+<a name=table3155></a>
+Offset  Size    Description     (Table 03155)
+00h    DWORD   largest available block in bytes
+04h    DWORD   maximum unlocked page allocation
+08h    DWORD   maximum locked page allocation
+0Ch    DWORD   total linear address space in pages
+10h    DWORD   total unlocked pages
+14h    DWORD   free pages
+18h    DWORD   total physical pages
+1Ch    DWORD   free linear address space in pages
+20h    DWORD   size of paging file/partition in pages
+24h 12 BYTEs   reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5839.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5841.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

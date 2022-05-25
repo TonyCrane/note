@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 62/AX=0042h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 62/AX=0042h - FGDRIVER v4.02 - FG_GETENTRY - GET PAGE TYPE AND ADDRESS - 
+AX = 0042h
+ES:BX - variable pointer record (see #03483)
+CX = page number (00h-3Fh)
+Notes: the FGDRIVER functions are rearranged with each major release, but
+their parameters do not change (see #03474 at AX=0000h)
+Page addresses are segments for pages stored in conventional memory
+(including physical and virtual pages), and EMS or XMS handles for
+pages stored in EMS or XMS
+SeeAlso: AX=0000h,AX=00ACh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 62/AX=0042h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6971.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6973.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FGDRIVER v4.02 - FG_GETENTRY - GET PAGE TYPE AND ADDRESS</font></h3>
+<PRE>
+AX = 0042h
+ES:BX -> variable pointer record <a href="rb-6972.htm#Table3483">(see #03483)</a>
+CX = page number (00h-3Fh)
+</PRE>
+<p><b>Notes:</b>
+The FGDRIVER functions are rearranged with each major release, but
+their parameters do not change <a href="rb-0000.htm#Table0"></a>(see #03474 at AX=0000h).
+Page addresses are segments for pages stored in conventional memory
+(including physical and virtual pages), and EMS or XMS handles for
+pages stored in EMS or XMS
+<p><b>See Also:</b>
+<a href="rb-6906.htm">AX=0000h</a> - <a href="rb-7079.htm">AX=00ACh</a>
+<PRE>
+<p>
+Format of FGDRIVER GETENTRY variable pointer record:
+<a name=table3483></a>
+Offset  Size    Description     (Table 03483)
+00h    WORD    segment of WORD buffer for page address
+02h    WORD    offset of WORD buffer for page address
+04h    WORD    segment of WORD buffer for page type (se #03484)
+06h    WORD    offset of WORD buffer for page type
+<p>
+<a name=table3484></a>
+(Table 03484)
+Values for FGDRIVER page type:
+0000h  unallocated
+0001h  physical
+0002h  virtual
+0003h  logical page, stored in expanded memory (EMS)
+0004h  logical page, stored in extended memory (XMS)
+0005h  logical page, stored in conventional memory
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-62.htm">
+Int 62h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6971.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6973.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

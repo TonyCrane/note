@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F216h/SF=33h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F216h/SF=33h - Novell NetWare v2.2+ - GET EXTENDED VOLUME INFORMATION - 
+AX = F216h subfn 33h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #02160)
+ES:DI - reply buffer (see #02161)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+SeeAlso: AX=F216h/SF=29h
+Format of NetWare Get Extended Volume Information request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F216h/SF=33h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3716.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3718.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2.2+ - GET EXTENDED VOLUME INFORMATION</font></h3>
+<PRE>
+AX = F216h subfn 33h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-3717.htm#Table2160">(see #02160)</a>
+ES:DI -> reply buffer <a href="rb-3717.htm#Table2161">(see #02161)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3707.htm">AX=F216h/SF=29h</a>
+<PRE>
+<p>
+Format of NetWare "Get Extended Volume Information" request buffer:
+<a name=table2160></a>
+Offset  Size    Description     (Table 02160)
+00h    WORD    length of following data
+02h    BYTE    33h (subfunction "Get Extended Volume Information")
+---v2.2---
+03h    BYTE    volume ID
+---v4.x---
+03h    DWORD   volume number
+</PRE>
+<p><b>See Also:</b>
+#02161
+<PRE>
+<p>
+Format of NetWare "Get Extended Volume Information" reply buffer:
+<a name=table2161></a>
+Offset  Size    Description     (Table 02161)
+00h    WORD    length of returned data
+02h    DWORD   volume type
+06h    DWORD   status flag bits
+<p><b>bit 0:</b><br>Suballocation
+<p><b>bit 1:</b><br>Compressoin
+<p><b>bit 2:</b><br>Migration
+<p><b>bit 3:</b><br>Auditing
+0Ah    DWORD   sector size
+0Eh    DWORD   sectors per cluster
+12h    DWORD   total clusters in volume
+16h    DWORD   free clusters
+1Ah    DWORD   freeable suballocated clusters
+1Eh    DWORD   freeable in-limbo sectors
+22h    DWORD   non-freeable in-limbo sectors
+26h    DWORD   non-freeable available suballocated sectors
+2Ah    DWORD   unuable suballocated sectors
+2Eh    DWORD   total suballocated clusters
+32h    DWORD   number of data streams
+36h    DWORD   number of in-limbo data streams
+3Ah    DWORD   age of oldest deleted file in clock ticks
+3Eh    DWORD   number of compressed data streams
+42h    DWORD   number of compressed in-limbo data streams
+46h    DWORD   number of uncompressable data streams
+4Ah    DWORD   number of precompressed sectors
+4Eh    DWORD   number of compressed sectors
+52h    DWORD   number of migrated files
+56h    DWORD   number of migrated sectors
+5Ah    DWORD   number of clusters used by FAT
+5Eh    DWORD   number of clusters used by directories
+62h    DWORD   number of clusters used by extended directories
+66h    DWORD   total number of directory entries
+6Ah    DWORD   number of unused directory entries
+6Eh    DWORD   total number of extended directory extants
+72h    DWORD   number of unused extended directory extants
+76h    DWORD   number of extended attributes defined (see AX=F256h/SF=04h)
+7Ah    DWORD   number of extended-attribute extants used
+7Eh    DWORD   object ID for Directory Services
+82h    DWORD   date and time volume last modified
+86h    var     counted volume name string
+</PRE>
+<p><b>See Also:</b>
+#02160
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3716.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3718.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

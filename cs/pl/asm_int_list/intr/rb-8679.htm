@@ -1,0 +1,133 @@
+<HTML>
+<HEAD>
+<TITLE>Int F1
+</TITLE>
+<META NAME="Description" CONTENT="
+Int F1 - Common ISDN API (CAPI) v2.0 - CAPI_PUT_MESSAGE - 
+AL = 03h
+AH = CAPI version number * 10 (14h for v2.0)
+DX = application ID (see INT F1/AL=01h)
+ES:BX - message to be sent (see #04071)
+Return: AX = status (0000h,11xxh) (see #04070)
+Notes: the caller is required to provide at least 512 bytes of stack space
+the message buffer may be reused as soon as this call returns
+SeeAlso: AH=03h,INT F1/AL=01h,INT F1/AL=04h
+(Table 04073)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int F1
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8678.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8680.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Common ISDN API (CAPI) v2.0 - CAPI_PUT_MESSAGE</font></h3>
+<PRE>
+AL = 03h
+AH = CAPI version number * 10 (14h for v2.0)
+DX = application ID (see INT F1/AL=01h)
+ES:BX -> message to be sent <a href="rb-8678.htm#Table4071">(see #04071)</a><br>
+<p><b>Return:</b><br>AX = status (0000h,11xxh) (see #04070)
+</PRE>
+<p><b>Notes:</b>
+The caller is required to provide at least 512 bytes of stack space.
+The message buffer may be reused as soon as this call returns
+<p><b>See Also:</b>
+<a href="rb-8678.htm">AH=03h</a> - INT F1/AL=01h - INT F1/AL=04h
+<PRE>
+<p>
+<a name=table4073></a>
+(Table 04073)
+Values for CAPI v2.0 message command/subcommand:
+Cmd/SubCmd      Name                    Description
+01h/80h    ALERT_REQ           indicate compatibility with incoming calls
+01h/81h    ALERT_CONF          confirm receipt of ALERT_REQ
+02h/80h    CONNECT_REQ         establish B-channel connection
+02h/81h    CONNECT_CONF        confirm start of connection establishment
+02h/82h    CONNECT_IND         indication from CAPI of incoming connection
+02h/83h    CONNECT_RESP        accept incoming connection
+03h/82h    CONNECT_ACTIVE_IND  indication that B-channel connection complete
+03h/83h    CONNECT_ACTIVE_RESP confirm connection-complete indication
+04h/80h    DISCONNECT_REQ      request shutdown of B-channel connection
+04h/81h    DISCONNECT_CONF     confirm shutdown of B-channel connection
+04h/82h    DISCONNECT_IND      indication that B-channel is shutting down
+04h/83h    DISCONNECT_RESP     confirm that application knows of shutdown
+05h/80h    LISTEN_REQ          enable signalling on incoming events
+05h/81h    LISTEN_CONF         confirm enabling of incoming event signalling
+08h/80h    INFO_REQ            send protocol information for physical connect
+08h/81h    INFO_CONF           confirm INFO_REQ
+08h/82h    INFO_IND            indicate event for physical connection
+08h/83h    INFO_CONF           confirm receipt of INFO_IND
+41h/80h    SELECT_B_PROTOCOL_REQ   change protocol on already-active connect
+41h/81h    SELECT_B_PROTOCOL_CONF  confirm receipt of SELECT_B_PROTOCOL_REQ
+80h/80h    FACILITY_REQ        control optional facilities
+80h/81h    FACILITY_CONF       confirm acceptance of FACILITY_REQ
+80h/82h    FACILITY_IND        indicate facility-dependent event
+80h/83h    FACILITY_RESP       confirm receipt of FACILITY_IND
+82h/80h    CONNECT_B3_REQ      establish Level 3 connection
+82h/81h    CONNECT_B3_CONF     confirm start of connection establishment
+82h/82h    CONNECT_B3_IND      indication of incoming Level 3 connection
+82h/83h    CONNECT_B3_RESP     accept incoming connection
+83h/82h    CONNECT_B3_ACTIVE_IND  indication that Level 3 connection complete
+83h/83h    CONNECT_B3_ACTIVE_RESP confirm connection-complete indication
+84h/80h    DISCONNECT_B3_REQ   request shutdown of Level 3 connection
+84h/81h    DISCONNECT_B3_CONF  confirm shutdown of Level 3 connection
+84h/82h    DISCONNECT_B3_IND   indication that Level 3 is shutting down
+84h/83h    DISCONNECT_B3_RESP  confirm that application knows of shutdown
+85h/80h    GET_B3_PARAMS_REQ   request Level 3 parameters
+85h/81h    GET_B3_PARAMS_CONF  return Level 3 parameters
+86h/80h    DATA_B3_REQ         send data on Level 3
+86h/81h    DATA_B3_CONF        confirm sending of Level 3 data
+86h/82h    DATA_B3_IND         indication of incoming Level 3 data
+86h/83h    DATA_B3_RESP        confirm receipt of Level 3 data
+87h/80h    RESET_B3_REQ        request resetting of a logical connection
+87h/81h    RESET_B3_CONF       confirm logical connection reset
+87h/82h    RESET_B3_IND        indication from CAPI that logical conn. reset
+87h/83h    RESET_B3_RESP       confirm receipt of RESET_B3_IND
+88h/82h    CONNECT_B3_T90_ACTIVE_IND  indicate switch from T.70 to T.90
+88h/83h    CONNECT_B3_T90_ACTIVE_RESP confirm receipt of T90_ACTIVE_IND
+FFh/80h    MANUFACTURER_REQ    vendor-specific request
+FFh/81h    MANUFACTURER_CONF   vendor-specific request confirmation
+FFh/82h    MANUFACTURER_IND    vendor-specific notification
+FFh/83h    MANUFACTURER_RESP   vendor-specific notification confirmation
+</PRE>
+<p><b>See Also:</b>
+#04071 - #04072
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-F1.htm">
+Int F1h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8678.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8680.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

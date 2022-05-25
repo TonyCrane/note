@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0400h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0400h - DPMI 0.9+ - GET DPMI VERSION - 
+AX = 0400h
+Return: CF clear
+AH = major version of DPMI spec supported
+AL = two-digit minor version of DPMI spec supported
+BX = DPMI host flags (see #03152)
+CL = processor type (02h=80286, 03h=80386, 04h=80486)
+DH = curr value of virtual master interrupt controller base interrupt
+DL = curr value of virtual slave interrupt controller base interrupt
+BUG:  Windows NT versions from the March 1993 beta to at least the Final
+release with fixes to CSD002 report version 0090h (0.144); this has
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0400h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5837.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5839.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - GET DPMI VERSION</font></h3>
+<PRE>
+AX = 0400h<br>
+<p><b>Return:</b><br>CF clear
+AH = major version of DPMI spec supported
+AL = two-digit minor version of DPMI spec supported
+BX = DPMI host flags <a href="rb-5838.htm#Table3152">(see #03152)</a>
+CL = processor type (02h=80286, 03h=80386, 04h=80486)
+DH = curr value of virtual master interrupt controller base interrupt
+DL = curr value of virtual slave interrupt controller base interrupt
+</PRE>
+<p><b>BUG:</b>
+Windows NT versions from the March 1993 beta to at least the Final
+release with fixes to CSD002 report version 0090h (0.144); this has
+reportedly been corrected in the Windows NT 3.5 beta
+<p><b>See Also:</b>
+<a href="rb-5839.htm">AX=0401h</a> - <a href="rb-2614.htm">INT 21/AX=250Ch</a> - <a href="rb-4621.htm">INT 2F/AX=1687h</a> - <a href="rb-6262.htm">
+<p><b>See Also:</b>
+<a href="rb-7501.htm">INT 67/AX=DE0Ah</a>
+<PRE>
+<p>
+Bitfields for DPMI host flags:
+<a name=table3152></a>
+Bit(s)  Description     (Table 03152)
+0      running under an 80386 (32-bit) implementation
+1      processor returns to real mode for reflected interrupts instead of V86
+mode
+2      virtual memory supported
+3      reserved (undefined)
+4-15   reserved (zero)
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5837.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5839.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

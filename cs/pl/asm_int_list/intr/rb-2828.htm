@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4402h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4402h - SMARTDRV.SYS v3.x only - IOCTL - GET CACHE STATUS - 
+AX = 4402h
+BX = file handle for device SMARTAAR
+CX = number of bytes to read (min 28h)
+DS:DX - buffer for status record (see #01447)
+Return: CF clear if successful
+AX = number of bytes actually read
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Note:  NCache2 (from the Norton Utilities v8.0) attempts to support this
+interface, but does not do so correctly, often hanging the system;
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4402h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2827.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2829.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SMARTDRV.SYS v3.x only - IOCTL - GET CACHE STATUS</font></h3>
+<PRE>
+AX = 4402h
+BX = file handle for device "SMARTAAR"
+CX = number of bytes to read (min 28h)
+DS:DX -> buffer for status record <a href="rb-2828.htm#Table1447">(see #01447)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually read
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Note:</b>
+NCache2 (from the Norton Utilities v8.0) attempts to support this
+interface, but does not do so correctly, often hanging the system;
+one should use the SmartDrive v4.x or NCache private interfaces
+(see INT 2F/AX=4A10h/BX=0000h,INT 2F/AX=FE00h/DI=4E55h)
+<p><b>See Also:</b>
+<a href="rb-2855.htm">AX=4403h"SMARTDRV"</a> - <a href="rb-4822.htm">INT 2F/AX=4A10h/BX=0000h</a>
+<PRE>
+<p>
+Format of SMARTDRV status record:
+<a name=table1447></a>
+Offset  Size    Description     (Table 01447)
+00h    BYTE    write-through flag (always 01h)
+01h    BYTE    writes should be buffered (always 00h)
+02h    BYTE    cache enabled if 01h
+03h    BYTE    driver type (01h extended memory, 02h expanded)
+04h    WORD    clock ticks between cache flushes (currently unused)
+06h    BYTE    cache contains locked tracks if nonzero
+07h    BYTE    flush cache on INT 19 reboot if nonzero
+08h    BYTE    cache full track writes if nonzero
+09h    BYTE    double buffering (for VDS) state (00h off, 01h on, 02h dynamic)
+0Ah    DWORD   original INT 13 vector
+0Eh    BYTE    minor version number
+0Fh    BYTE    major version number
+10h    WORD    unused
+12h    WORD    sectors read                    \
+14h    WORD    sectors already in cache         > may be scaled rather than
+16h    WORD    sectors already in track buffer /  absolute counts
+18h    BYTE    cache hit rate in percent
+19h    BYTE    track buffer hit rate in percent
+1Ah    WORD    total tracks in cache
+1Ch    WORD    number of tracks in use
+1Eh    WORD    number of locked tracks
+20h    WORD    number of dirty tracks
+22h    WORD    current cache size in 16K pages
+24h    WORD    original (maximum) cache size in 16K pages
+26h    WORD    minimum cache size in 16K pages
+28h    DWORD   pointer to byte flag to increment for locking cache contents
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2827.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2829.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

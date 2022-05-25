@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4402h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4402h - PGS1600.DEV - IOCTL - GET CONFIGURATION INFO - 
+AX = 4402h
+BX = file handle for device PGS1600$
+CX = 0018h (size of buffer)
+DS:DX - configuration buffer (see #01484)
+Return: CF clear if successful
+buffer filled
+AX = number of bytes actually copied
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Program: PGS1600.DEV is a device driver for the Cornerstone Technology PG1600
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4402h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2833.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2835.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PGS1600.DEV - IOCTL - GET CONFIGURATION INFO</font></h3>
+<PRE>
+AX = 4402h
+BX = file handle for device "PGS1600$"
+CX = 0018h (size of buffer)
+DS:DX -> configuration buffer <a href="rb-2834.htm#Table1484">(see #01484)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled
+AX = number of bytes actually copied
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Program:</b>
+PGS1600.DEV is a device driver for the Cornerstone Technology PG1600
+display adapter, which provides a 1600x1200 monochrome display as
+well as one of two emulations, MDA or CGA.
+<p><b>See Also:</b>
+<a href="rb-2860.htm">AX=4403h"PGS1600"</a>
+<PRE>
+<p>
+Format of PGS1600.DEV configuration information:
+<a name=table1484></a>
+Offset  Size    Description     (Table 01484)
+00h    WORD    version (high byte = major, low byte = minor)
+02h    WORD    board initialisation mode
+04h    WORD    board I/O address
+03D0h CGA emulation
+03B0h MDA emulation
+0390h no emulation
+0350h no emulation, alternate
+06h    WORD    emulation buffer segment
+B800h   CGA emulation
+B000h   MDA emulation
+0000h   no emulation
+08h    WORD    PG1600 graphics buffer segment
+0Ah    WORD    number of bytes between consecutive graphic rows
+0Ch    WORD    horizontal pixel size
+0Eh    WORD    vertical pixel size
+10h    WORD    horizontal dots per inch
+12h    WORD    vertical dots per inch
+14h    WORD    graphics buffer bits per pixel
+16h    WORD    monitor bits per pixel
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2833.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2835.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

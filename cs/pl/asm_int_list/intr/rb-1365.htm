@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=44C6h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=44C6h - Olivetti Quaderno - READ LCD - 
+AX = 44C6h
+Return: DX = FFFFh clock is displayed on LCD display
+DX = other: hex number displayed in first four positions of display
+BH = left alphanumeric character on display (see #00466)
+BL = right alphanumeric character on display (see #00466)
+CL = colon flags (see #00467)
+Notes: the LCD display has the format HH:HH:AA, where H is a hex digit and A
+is an alphanumeric character
+this function is also supported by XBIOS.COM
+SeeAlso: AX=44C7h,AX=44C9h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=44C6h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1364.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1366.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Olivetti Quaderno - READ LCD</font></h3>
+<PRE>
+AX = 44C6h<br>
+<p><b>Return:</b><br>DX = FFFFh clock is displayed on LCD display.
+<p><b>DX = other:</b><br>Hex number displayed in first four positions of display.
+BH = left alphanumeric character on display <a href="rb-1365.htm#Table466">(see #00466)</a>.
+BL = right alphanumeric character on display <a href="rb-1365.htm#Table466">(see #00466)</a>.
+CL = colon flags <a href="rb-1365.htm#Table467">(see #00467)</a>
+</PRE>
+<p><b>Notes:</b>
+The LCD display has the format HH:HH:AA, where H is a hex digit and A
+is an alphanumeric character.
+This function is also supported by XBIOS.COM
+<p><b>See Also:</b>
+<a href="rb-1366.htm">AX=44C7h</a> - <a href="rb-1368.htm">AX=44C9h</a>
+<PRE>
+<p>
+<a name=table466></a>
+(Table 00466)
+Values for Olivetti Quaderno LCD alphanumeric characters:
+00h-0Fh hex digit
+2Bh    "+"
+2Dh    "-"
+30h-39h "0" to "9"
+41h-5Ah "A" to "Z"
+61h-6Ah "a" to "z"
+else   blank
+<p>
+Bitfields for Olivetti Quaderno LCD colon flags:
+<a name=table467></a>
+Bit(s)  Description     (Table 00467)
+0      left colon on
+1      right colon on
+2-7    unused
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-o.htm">
+O</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1364.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1366.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

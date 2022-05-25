@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B18Eh/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B18Eh/BX=0000h - PCI BIOS v2.1+ - GET IRQ ROUTING INFORMATION (32-bit) - 
+AX = B18Eh
+BX = 0000h
+DS = segment/selector for PCI BIOS data
+(real mode: F000h; 16-bit PM: physical 000F0000h; 32-bit PM: as
+specified by BIOS32 services directory)
+ES:(E)DI - IRQ routing table header (see #01259 at AX=B406h)
+Return: CF clear if successful
+AH = 00h
+BX = bit map of IRQ channels permanently dedicated to PCI
+WORD ES:[DI] = size of returned data
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B18Eh/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2403.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2405.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.1+ - GET IRQ ROUTING INFORMATION (32-bit)</font></h3>
+<PRE>
+AX = B18Eh
+BX = 0000h
+DS = segment/selector for PCI BIOS data
+<p><b>(real mode:</b><br>F000h; 16-bit PM: physical 000F0000h; 32-bit PM: as
+specified by BIOS32 services directory).
+ES:(E)DI -> IRQ routing table header <a href="rb-0000.htm#Table0"></a>(see #01259 at AX=B406h)<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h
+BX = bit map of IRQ channels permanently dedicated to PCI
+WORD ES:[DI] = size of returned data
+CF set on error
+AH = error code (59h) <a href="rb-2408.htm#Table1243">(see #01243)</a>
+WORD ES:[DI] = required size of buffer
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2393.htm">AX=B10Fh</a> - <a href="rb-2414.htm">AX=B406h</a> - <a href="rb-4606.htm">INT 2F/AX=1684h/BX=304Ch</a>
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2403.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2405.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

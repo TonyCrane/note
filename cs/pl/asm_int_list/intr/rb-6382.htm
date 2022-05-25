@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 5B
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 5B - TI Professional PC - KEYBOARD MAPPING HOOK - 
+CF set
+AH = shift state (see #03247)
+AL = scan code (see #03214)
+Return: BX, CX, DI, ES may be destroyed
+various return methods are supported:
+IRET, AX unchanged: process keystroke normally
+IRET, AL = FFh: discard keystroke
+IRET, AX changed: process modified keystroke
+chain to old INT 5B: allow other handlers to look at (possibly
+modified) keystroke in AX
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 5B
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6381.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6383.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TI Professional PC - KEYBOARD MAPPING HOOK</font></h3>
+<PRE>
+CF set
+AH = shift state <a href="rb-6382.htm#Table3247">(see #03247)</a>
+AL = scan code <a href="rb-6253.htm#Table3214">(see #03214)</a><br>
+<p><b>Return:</b><br>BX, CX, DI, ES may be destroyed
+various return methods are supported:
+<p><b>IRET, AX unchanged:</b><br>Process keystroke normally
+<p><b>IRET, AL = FFh:</b><br>Discard keystroke
+<p><b>IRET, AX changed:</b><br>Process modified keystroke
+<p><b>chain to old INT 5B:</b><br>Allow other handlers to look at (possibly
+modified) keystroke in AX
+<p><b>RETF 2, CF clear:</b><br>Place returned AX into keyboard buffer without
+any further processing
+</PRE>
+<p><b>Notes:</b>
+Invoked by the keyboard ISR, and used to remap the keyboard.
+If CF is clear on entry, some other handler has processed the
+keystroke and the current handler should not modify it, instead
+performing a RETF 2 or IRET (after clearing CF on the stack).
+When requesting that a value be placed directly into the keyboard
+buffer, AL and AH may not *both* be nonzero (the TI does not
+return scan codes as part of the key code for non-extended keys)
+<p><b>See Also:</b>
+<a href="rb-1387.htm">INT 15/AH=4Fh</a> - <a href="rb-6248.htm">INT 4A/AH=00h"TI"</a> - <a href="rb-6369.htm">INT 59"TI Professional"</a>
+<p><b>See Also:</b>
+<a href="rb-6402.htm">INT 5C"TI Professional"</a> - <a href="rb-6406.htm">INT 5D"TI Professional"</a>
+<p><b>See Also:</b>
+<a href="rb-6409.htm">INT 5E"TI Professional"</a> - <a href="rb-6412.htm">INT 5F"TI Professional"</a>
+<PRE>
+<p>
+Bitfields for TI Professional PC keyboard mapping hook shift states:
+<a name=table3247></a>
+Bit(s)  Description     (Table 03247)
+7      CAPS LOCK is on
+6-4    reserved (0)
+3      repeated key
+2      Shift is pressed
+1      Alt is pressed
+0      Ctrl is pressed
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-5B.htm">
+Int 5Bh</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6381.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6383.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

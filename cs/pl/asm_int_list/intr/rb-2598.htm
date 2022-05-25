@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=21h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=21h - DOS 1+ - READ RANDOM RECORD FROM FCB FILE - 
+AH = 21h
+DS:DX - opened FCB (see #01345)
+Return: AL = status
+00h successful
+01h end of file, no data read
+02h segment wrap in DTA, no data read
+03h end of file, partial record read
+Disk Tranfer Area filled with record read from file
+Notes: the record is read from the current file position as specified by the
+random record and record size fields of the FCB
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=21h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2597.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2599.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - READ RANDOM RECORD FROM FCB FILE</font></h3>
+<PRE>
+AH = 21h
+DS:DX -> opened FCB <a href="rb-2574.htm#Table1345">(see #01345)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+01h end of file, no data read
+02h segment wrap in DTA, no data read
+03h end of file, partial record read
+Disk Tranfer Area filled with record read from file
+</PRE>
+<p><b>Notes:</b>
+The record is read from the current file position as specified by the
+random record and record size fields of the FCB.
+The file position is not updated after reading the record.
+If a partial record is read, it is zero-padded to the full size.
+Not supported by MS Windows 3.0 DOSX.EXE DOS extender
+<p><b>See Also:</b>
+<a href="rb-2579.htm">AH=14h</a> - <a href="rb-2599.htm">AH=22h</a> - <a href="rb-2683.htm">AH=27h</a> - <a href="rb-2783.htm">AH=3Fh"DOS"</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2597.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2599.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=0Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=0Ah - DOS 1+ - BUFFERED INPUT - 
+AH = 0Ah
+DS:DX - buffer (see #01344)
+Return: buffer filled with user input
+Notes: ^C/^Break are checked, and INT 23 is called if either detected
+reads from standard input, which may be redirected under DOS 2+
+if the maximum buffer size (see #01344) is set to 00h, this call returns
+immediately without reading any input
+SeeAlso: AH=0Ch,INT 2F/AX=4810h
+Format of DOS input buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=0Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2562.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2564.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - BUFFERED INPUT</font></h3>
+<PRE>
+AH = 0Ah
+DS:DX -> buffer <a href="rb-2563.htm#Table1344">(see #01344)</a><br>
+<p><b>Return:</b><br>Buffer filled with user input
+</PRE>
+<p><b>Notes:</b>
+^C/^Break are checked, and INT 23 is called if either detected.
+Reads from standard input, which may be redirected under DOS 2+.
+If the maximum buffer size <a href="rb-2563.htm#Table1344">(see #01344)</a> is set to 00h, this call returns
+immediately without reading any input
+<p><b>See Also:</b>
+<a href="rb-2567.htm">AH=0Ch</a> - <a href="rb-4804.htm">INT 2F/AX=4810h</a>
+<PRE>
+<p>
+Format of DOS input buffer:
+<a name=table1344></a>
+Offset  Size    Description     (Table 01344)
+00h    BYTE    maximum characters buffer can hold
+01h    BYTE    (call) number of chars from last input which may be recalled
+(ret) number of characters actually read, excluding CR
+02h  N BYTEs   actual characters read, including the final carriage return
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2562.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2564.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

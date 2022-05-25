@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=000Fh/SF=0008h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=000Fh/SF=0008h - Banyan VINES - GET PROCESS HANDLE - 
+AX = 000Fh subfn 0008h
+CX:BX - request block (see #03450)
+DX = application's data segment (should be = CX)
+ES = DS
+Return: AX = status
+0000h successful
+00A5h resource not available
+Desc:  Returns a process handle to be used in other request blocks
+Notes: This function is a prerequisite to all AX=000Fh subfunctions which
+expect a process handle in the request block
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=000Fh/SF=0008h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6794.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6796.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - GET PROCESS HANDLE</font></h3>
+<PRE>
+AX = 000Fh subfn 0008h
+CX:BX -> request block <a href="rb-6795.htm#Table3450">(see #03450)</a>
+DX = application's data segment (should be = CX)
+ES = DS<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+00A5h resource not available
+</PRE>
+<p><b>Desc:</b>
+Returns a process handle to be used in other request blocks
+<p><b>Notes:</b>
+This function is a prerequisite to all AX=000Fh subfunctions which
+expect a process handle in the request block.
+Although subsequent calls from the same application return different
+process handles, there seem to be no restrictions on how many times
+an application may call this function (in fact, the code in the VINES
+toolkit library always calls it before issueing other AX=000Fh calls)
+<PRE>
+<p>
+Format of request block:
+<a name=table3450></a>
+Offset  Size    Description     (Table 03450)
+00h    WORD    0008h
+02h    WORD    magic number (FEFEh)
+04h    WORD    buffer for return code (set to 0 before calling)
+06h    WORD    reserved
+08h    WORD    reserved (obviously not used; set to 0 before calling)
+0Ah    DWORD   process type (1 = transient, 2 = resident; destroyed on exit)
+0Eh    WORD    buffer for process handle
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6794.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6796.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

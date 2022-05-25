@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=FF00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=FF00h - CauseWay - Info - GET SYSTEM SELECTORS/FLAGS - 
+AX = FF00h
+Return: AX = selector for flag address space (base 00000000h, limit 4GB)
+BX = selector for current PSP segment (limit 0100h)
+(E)CX = size of DOS transfer buffer (max 64K)
+DX = real-mode segment address of DOS transfer buffer
+ES:(E)SI = protected-mode address of DOS transfer buffer
+EDI = system flags (see #03162)
+Program: CauseWay is a 386 DOS extender by Michael Devore and John Wildsmith
+for use with Watcom C++ or assembly language programs
+Notes: the entire transfer buffer can be addressed with a 16-bit offset in
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=FF00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5890.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5892.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>CauseWay - Info - GET SYSTEM SELECTORS/FLAGS</font></h3>
+<PRE>
+AX = FF00h<br>
+<p><b>Return:</b><br>AX = selector for flag address space (base 00000000h, limit 4GB)
+BX = selector for current PSP segment (limit 0100h)
+(E)CX = size of DOS transfer buffer (max 64K)
+DX = real-mode segment address of DOS transfer buffer
+ES:(E)SI = protected-mode address of DOS transfer buffer
+EDI = system flags <a href="rb-5891.htm#Table3162">(see #03162)</a>
+</PRE>
+<p><b>Program:</b>
+CauseWay is a 386 DOS extender by Michael Devore and John Wildsmith
+for use with Watcom C++ or assembly language programs
+<p><b>Notes:</b>
+The entire transfer buffer can be addressed with a 16-bit offset in
+protected mode.
+CauseWay always maps selector 0040h to the BIOS data segment at
+real-mode segment 0040h; when not running under a DPMI host, CauseWay
+also provides selectors A000h, B000h, and B800h mapped to video
+memory
+<p><b>See Also:</b>
+<a href="rb-5928.htm">AX=FF25h</a>
+<PRE>
+<p>
+Bitfields for CauseWay system flags:
+<a name=table3162></a>
+Bit(s)  Description     (Table 03162)
+0      32-bit code
+1      virtual memory manage enabled
+<p><b>3-2    mode:</b><br>00 raw extended memory, 01 VCPI, 10 DPMI
+4      DPMI available
+5      VCPI available
+6      no memory managers
+<p><b>7      application descriptor table type:</b><br>0 = GDT, 1 = LDT
+14-8   reserved
+15     debugging engine present
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5890.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5892.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

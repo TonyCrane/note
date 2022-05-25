@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=15h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=15h - DISK - GET DISK TYPE (XT 1986/1/10 or later,XT286,AT,PS) - 
+AH = 15h
+DL = drive number (bit 7 set for hard disk)
+(AL = FFh, CX = FFFFh, see Note)
+Return: CF clear if successful
+AH = type code
+00h no such drive
+(SpeedStor) AL = 03h hard disk
+CX:DX = number of 512-byte sectors
+01h floppy without change-line support
+02h floppy (or other removable drive) with change-line support
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=15h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0638.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0640.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DISK - GET DISK TYPE (XT 1986/1/10 or later,XT286,AT,PS)</font></h3>
+<PRE>
+AH = 15h
+DL = drive number (bit 7 set for hard disk)
+(AL = FFh, CX = FFFFh, see Note)<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = type code
+00h no such drive
+(SpeedStor) AL = 03h hard disk
+CX:DX = number of 512-byte sectors
+01h floppy without change-line support
+02h floppy (or other removable drive) with change-line support
+03h hard disk
+CX:DX = number of 512-byte sectors
+CF set on error
+AH = status <a href="rb-0000.htm#Table0"></a>(see #00234 at AH=01h)
+</PRE>
+<p><b>Note:</b>
+SyQuest can report type 01h or 02h for 'hard disks', since its media
+is removable
+<p><b>BUGS:</b>
+Many versions of the Award 486 BIOS do not return the sector count
+because the BIOS exit code restores CX and DX to their original
+values after the function had already set them to correct values.
+Some releases of PC Tools REBUILD preset CX=FFFFh and only trust the
+results if CH <= 2 on return (which would cut off drives > 16 Gb)..
+Several different Compaq BIOSes incorrectly report high-numbered
+drives (such as 90h, B0h, D0h, and F0h) as present, giving them the
+same geometry as drive 80h; as a workaround, scan through disk
+numbers, stopping as soon as the number of valid drives encountered
+equals the value in 0040h:0075h.
+The PS/2 Model 30 fails to reset the bus after INT 13/AH=08h and
+INT 13/AH=15h.  A workaround is to monitor for these functions
+and perform a transparent INT 13/AH=01h status read afterwards.
+This will reset the bus. The MS-DOS 6.0 IO.SYS takes care of
+this by installing a special INT 13h interceptor for this purpose..
+Some releases of SpeedStor have a bug where it reports AX=0003h instead
+of correctly reporting AH=03h for hard disks. A possible workaround
+when testing for hard disks is to check for AH=03h and AX=0003h.
+In this case this function should be invoked with a bogus fixed
+value in AL, e.g. AL=FFh.
+<p><b>See Also:</b>
+<a href="rb-0621.htm">AH=08h</a> - <a href="rb-0640.htm">AH=16h</a> - <a href="rb-0641.htm">AH=17h</a> - <a href="rb-0612.htm">AH=19h"SCSI"</a> - MEM 0040h:0075h
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0638.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0640.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

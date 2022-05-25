@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=DE20h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=DE20h - DESQview v2.26+ - DISPATCHINT - INTERRUPT ANOTHER TASK - 
+AX = DE20h
+BX = segment of handle of task to interupt
+DX:CX - FAR interrupt routine
+BP,SI,DI,DS,ES as required by interrupt routine
+Return: nothing
+Notes: unlike PGMINT (AX=1021h), DISPATCHINT may be applied to the task
+making the DISPATCHINT call
+multiple DISPATCHINT calls are processed in the order in which they
+were executed
+the FAR routine is entered with the current ES, DS, SI, DI, and BP
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=DE20h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1706.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1708.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview v2.26+ - DISPATCHINT - INTERRUPT ANOTHER TASK</font></h3>
+<PRE>
+AX = DE20h
+BX = segment of handle of task to interupt
+DX:CX -> FAR interrupt routine
+BP,SI,DI,DS,ES as required by interrupt routine<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Notes:</b>
+Unlike "PGMINT" (AX=1021h), DISPATCHINT may be applied to the task
+making the DISPATCHINT call.
+Multiple "DISPATCHINT" calls are processed in the order in which they
+were executed.
+The FAR routine is entered with the current ES, DS, SI, DI, and BP
+values, using the task's internal stack (see AX=101Ah); only SS:SP
+needs to be preserved.
+This API call may be made from within a hardware interrupt handler
+<p><b>See Also:</b>
+<a href="rb-1211.htm">AX=1021h</a> - <a href="rb-1722.htm">AX=DE2Ah</a>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1706.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1708.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

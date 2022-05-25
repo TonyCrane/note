@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=64h/BX=0025h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=64h/BX=0025h - OS/2 v2.1+ Virtual DOS Machine - OS/2 API DOS32StartSession - 
+AH = 64h
+BX = 0025h (API ordinal)
+CX = 636Ch (cl)
+DS:SI - STARTDATA structure (see #01748)
+Return: AX = return code
+SeeAlso: AH=64h/CX=636Ch,AH=64h/BX=00B6h
+Format of OS/2 Virtual DOS Machine STARTDATA structure:
+Offset Size  Description   (Table 01748)
+00h  WORD  length of structure (must be 0018h,001Eh,0020h,0032h,or 003Ch)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=64h/BX=0025h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3158.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3160.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>OS/2 v2.1+ Virtual DOS Machine - OS/2 API DOS32StartSession</font></h3>
+<PRE>
+AH = 64h
+BX = 0025h (API ordinal)
+CX = 636Ch ("cl")
+DS:SI -> STARTDATA structure <a href="rb-3159.htm#Table1748">(see #01748)</a><br>
+<p><b>Return:</b><br>AX = return code
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3158.htm">AH=64h/CX=636Ch</a> - <a href="rb-3160.htm">AH=64h/BX=00B6h</a>
+<PRE>
+<p>
+Format of OS/2 Virtual DOS Machine STARTDATA structure:
+<a name=table1748></a>
+Offset  Size    Description     (Table 01748)
+00h    WORD    length of structure (must be 0018h,001Eh,0020h,0032h,or 003Ch)
+02h    WORD    relation of new process to caller (00h independent, 01h child)
+04h    WORD    fore/background (00h foreground, 01h background)
+06h    WORD    trace options (00h-02h, 00h = no trace)
+08h    DWORD   pointer to ASCIZ program title (max 62 chars) or 0000h:0000h
+0Ch    DWORD   pointer to ASCIZ program name (max 128 chars) or 0000h:0000h
+10h    DWORD   pointer to ASCIZ program args (max 144 chars) or 0000h:0000h
+14h    DWORD   "TermQ" (currently reserved, must be 00000000h)
+18h    DWORD   pointer to environment (max 486 bytes) or 0000h:0000h
+1Ch    WORD    inheritance (00h or 01h)
+1Eh    WORD    session type
+00h OS/2 session manager determines type (default)
+01h OS/2 full-screen
+02h OS/2 window
+03h PM
+04h VDM full-screen
+07h VDM window
+20h    DWORD   pointer to ASCIZ icon filename (max 128 chars) or 0000h:0000h
+24h    DWORD   "PgmHandle" (currently reserved, must be 00000000h)
+28h    WORD    "PgmControl"
+2Ah    WORD    initial column
+2Ch    WORD    initial row
+2Eh    WORD    initial width
+30h    WORD    initial height
+32h    WORD    reserved (0)
+34h    DWORD   "ObjectBuffer" (currently reserved, must be 00000000h)
+38h    DWORD   "ObjectBufferLen" (currently reserved, must be 00000000h)
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-o.htm">
+O</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3158.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3160.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

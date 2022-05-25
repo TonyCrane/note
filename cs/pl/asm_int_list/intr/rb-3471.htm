@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=11h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=11h - Novell NetWare - FILE SERVICES - RESTORE ERASED FILE (OLD) - 
+AH = E2h subfn 11h
+DS:SI - request buffer (see #01867)
+ES:DI - reply buffer (see #01868)
+Return: AL = status (00h,98h,FFh) (see #01866)
+Desc:  restores one file marked for deletion which has not yet been purged
+Note:  this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+SeeAlso: AH=13h,AH=41h,AH=E2h/SF=10h,AH=E3h/SF=CEh,AX=F244h
+(Table 01866)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=11h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3470.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3472.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVICES - RESTORE ERASED FILE (OLD)</font></h3>
+<PRE>
+AH = E2h subfn 11h
+DS:SI -> request buffer <a href="rb-3471.htm#Table1867">(see #01867)</a>
+ES:DI -> reply buffer <a href="rb-3471.htm#Table1868">(see #01868)</a><br>
+<p><b>Return:</b><br>AL = status (00h,98h,FFh) (see #01866)
+</PRE>
+<p><b>Desc:</b>
+Restores one file marked for deletion which has not yet been purged
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-2578.htm">AH=13h</a> - <a href="rb-2797.htm">AH=41h</a> - <a href="rb-3470.htm">AH=E2h/SF=10h</a> - <a href="rb-3554.htm">AH=E3h/SF=CEh
+<PRE>
+<p>
+<a name=table1866></a>
+(Table 01866)
+Values for NetWare function status:
+00h    successful
+98h    nonexistent volume
+9Ch    invalid path
+C6h    no console rights
+FFh    no more erased files
+</PRE>
+<p><b>See Also:</b>
+#01839 - #01899
+<PRE>
+<p>
+Format of NetWare "Restore Erased File" request buffer:
+<a name=table1867></a>
+Offset  Size    Description     (Table 01867)
+00h    WORD    length of following data (max 13h)
+02h    BYTE    11h (subfunction "Restore Erased File")
+03h    BYTE    directory handle or 00h
+04h    BYTE    length of volume name
+05h  N BYTEs   volume name (including colon)
+</PRE>
+<p><b>Note:</b>
+If both a directory handle and a volume name are specified, the volume
+name overrides the handle
+<p><b>See Also:</b>
+#01868 - #02116
+<PRE>
+<p>
+Format of NetWare "Restore Erased File" reply buffer:
+<a name=table1868></a>
+Offset  Size    Description     (Table 01868)
+00h    WORD    (call) 001Eh (size of following results buffer)
+02h 15 BYTEs   ASCIZ name of erased file
+11h 15 BYTEs   ASCIZ name under which file was restored
+</PRE>
+<p><b>See Also:</b>
+#01867 - #02116
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3470.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3472.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

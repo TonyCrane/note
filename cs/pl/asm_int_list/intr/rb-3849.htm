@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=F6h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=F6h - Novell NetWare - GET VOLUME EXTENDED INFORMATION - 
+AX = F217h subfn F6h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02275)
+ES:DI - reply buffer (see #02276)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F217h/SF=E8h
+Format of NetWare Get Volume Extended Information request packet:
+Offset Size  Description   (Table 02275)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=F6h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3848.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3850.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET VOLUME EXTENDED INFORMATION</font></h3>
+<PRE>
+AX = F217h subfn F6h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3849.htm#Table2275">(see #02275)</a>
+ES:DI -> reply buffer <a href="rb-3849.htm#Table2276">(see #02276)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3835.htm">AX=F217h/SF=E8h</a>
+<PRE>
+<p>
+Format of NetWare "Get Volume Extended Information" request packet:
+<a name=table2275></a>
+Offset  Size    Description     (Table 02275)
+00h    WORD    length of following data
+02h    BYTE    F6h (subfunction "Get Volume Extended Information")
+03h    BYTE    volume number
+04h    BYTE    size of reply buffer
+</PRE>
+<p><b>See Also:</b>
+#02276
+<PRE>
+<p>
+Format of NetWare "Get Volume Extended Information" reply packet:
+<a name=table2276></a>
+Offset  Size    Description     (Table 02276)
+00h    DWORD   system interval
+(up-time in clock ticks, wraps to 0 on reaching FFFFFFFFh)
+04h    BYTE    volume number
+05h    BYTE    logical drive number
+06h    WORD    number of 512-byte sectors per disk block
+08h    DWORD   starting block number of volume
+0Ch    WORD    total number of disk blocks
+0Eh    WORD    number of free disk blocks
+10h    WORD    total number of directory entries
+12h    WORD    number of available directory entries
+14h    WORD    maximum directory entries ever used
+<p><b>16h    BYTE    flag:</b><br>Volume is hashed in memory if nonzero
+<p><b>17h    BYTE    flag:</b><br>Volume is cached if nonzero
+<p><b>18h    BYTE    flag:</b><br>Volume is removable if nonzero
+<p><b>19h    BYTE    flag:</b><br>Volume is mounted if nonzero
+1Ah 16 BYTEs   volume name (null-padded)
+</PRE>
+<p><b>See Also:</b>
+#02275
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3848.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3850.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

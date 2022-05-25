@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=71A8h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=71A8h - Windows95 - LONG FILENAME - GENERATE SHORT FILENAME - 
+AX = 71A8h
+DS:SI - ASCIZ long filename (no path allowed!)
+ES:DI - buffer for ASCIZ short filename
+DH = short name's format
+00h 11-char directory entry/FCB filename format
+01h DOS 8.3
+DL = character sets
+bits 7-4: short name's character set (see #01785)
+bits 3-0: long name's character set (see #01785)
+Return: CF clear if successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=71A8h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3218.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3220.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - LONG FILENAME - GENERATE SHORT FILENAME</font></h3>
+<PRE>
+AX = 71A8h
+DS:SI -> ASCIZ long filename (no path allowed!)
+ES:DI -> buffer for ASCIZ short filename
+DH = short name's format
+00h 11-char directory entry/FCB filename format
+01h DOS 8.3
+DL = character sets
+<p><b>bits 7-4:</b><br>Short name's character set (see #01785)
+<p><b>bits 3-0:</b><br>Long name's character set (see #01785)<br>
+<p><b>Return:</b><br>CF clear if successful
+ES:DI buffer filled
+CF set on error
+AX = error code
+7100h if function not supported
+</PRE>
+<p><b>Note:</b>
+This function uses the same algorithm as the filesystem except that
+the returned name never has a numeric tail for disambiguation
+<p><b>See Also:</b>
+<a href="rb-3206.htm">AX=7160h/CL=00h</a> - <a href="rb-3208.htm">AX=7160h/CL=02h</a> - <a href="rb-3217.htm">AX=71A7h/BL=00h</a>
+<PRE>
+<p>
+<a name=table1785></a>
+(Table 01785)
+Values for Windows95 filename character set:
+00h    Windows ANSI
+01h    current OEM character set
+02h    Unicode
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3218.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3220.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

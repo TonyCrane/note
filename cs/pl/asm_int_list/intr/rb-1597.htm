@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=C201h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=C201h - SYSTEM - POINTING DEVICE BIOS INTERFACE (PS) - RESET - 
+AX = C201h
+Return: CF set on error
+AH = status (see #00522)
+CF clear if successful
+BH = device ID
+BL = value returned by attached device after reset
+AAh if device is a mouse
+Notes: after successful completion of this call, the pointing device is set
+as follows: disabled, sample rate 100 Hz, resolution 4 counts/mm,
+scaling 1:1, unchanged data package size
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=C201h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1596.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1598.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SYSTEM - POINTING DEVICE BIOS INTERFACE (PS) - RESET</font></h3>
+<PRE>
+AX = C201h<br>
+<p><b>Return:</b><br>CF set on error
+AH = status <a href="rb-1596.htm#Table522">(see #00522)</a>
+CF clear if successful
+BH = device ID
+BL = value returned by attached device after reset
+AAh if device is a mouse
+</PRE>
+<p><b>Notes:</b>
+After successful completion of this call, the pointing device is set
+<PRE>
+<p><b>as follows:</b><br>Disabled, sample rate 100 Hz, resolution 4 counts/mm,
+scaling 1:1, unchanged data package size.
+This function should be called before rebooting the system (see
+INT 15/AH=4Fh), since otherwise the mouse may behave erratically on
+some systems after the boot.  Before calling this function, the
+caller should check that the INT 15h vector is in fact initialized
+(on some very old machines the IVT may contain 0000h:0000h)..
+IBM classifies this function as required
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5956.htm">INT 33/AX=0000h</a> - <a href="rb-1596.htm">AX=C200h</a> - <a href="rb-1603.htm">AX=C207h</a>
+<p>
+<b>Category: <a href="cat-025.htm">
+Mouse/Pointing Device</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1596.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1598.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

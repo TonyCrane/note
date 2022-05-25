@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 68/AH=02h/SF=1300h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 68/AH=02h/SF=1300h - APPC/PC - CONNECTION CONTROL - WAIT - 
+AH = 02h subfn 1300h
+DS:DX - control block (see #03698)
+Return: control block updated
+SeeAlso: AH=02h/SF=1200h
+Format of APPC/PC Wait control block:
+Offset Size  Description   (Table 03698)
+00h 12 BYTEs  reserved
+0Ch  WORD  1300h (verb Wait)
+0Eh  BYTE  1 if MC_ (mapped conversation) form of verb
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 68/AH=02h/SF=1300h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7532.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7534.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APPC/PC - CONNECTION CONTROL - WAIT</font></h3>
+<PRE>
+AH = 02h subfn 1300h
+DS:DX -> control block <a href="rb-7533.htm#Table3698">(see #03698)</a><br>
+<p><b>Return:</b><br>Control block updated
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7532.htm">AH=02h/SF=1200h</a>
+<PRE>
+<p>
+Format of APPC/PC "Wait" control block:
+<a name=table3698></a>
+Offset  Size    Description     (Table 03698)
+00h 12 BYTEs   reserved
+0Ch    WORD    1300h (verb "Wait")
+0Eh    BYTE    1 if MC_ (mapped conversation) form of verb
+0 if basic verb
+0Fh  5 BYTEs   reserved (0)
+14h    WORD    (big-endian) primary return code <a href="rb-7518.htm#Table3681">(see #03681)</a>
+16h    DWORD   (big-endian) error code <a href="rb-0000.htm#Table0"></a>(see #03682,#03697)
+1Ah  8 BYTEs   (big-endian) TP_ID
+22h    DWORD   (big-endian) conversation ID
+26h    BYTE    number of conversations to wait on
+</PRE>
+<p><b>Note:</b>
+Error codes have interpretations as for AH=02h/SF=1200h
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-68.htm">
+Int 68h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7532.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7534.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=D102h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=D102h - Later PS/2s - RETURN DEVICE DESCRIPTOR TABLE (DDT) ENTRY BY I/O ADDRSS - 
+AX = D102h
+BX = entry number at which to start searching
+CX = requested I/O port address
+DX = 0000h (reserved, must be set to 0)
+ES:DI - buffer to contain DDT entry (see #00535)
+Return: AH = return code (see #00534)
+BX = DDT entry number where I/O port was found, or total entries
+plus 1 if port was not found.
+CF set on error
+CF clear on success
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=D102h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1627.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1629.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Later PS/2s - RETURN DEVICE DESCRIPTOR TABLE (DDT) ENTRY BY I/O ADDRSS</font></h3>
+<PRE>
+AX = D102h
+BX = entry number at which to start searching
+CX = requested I/O port address
+DX = 0000h (reserved, must be set to 0)
+ES:DI -> buffer to contain DDT entry <a href="rb-1627.htm#Table535">(see #00535)</a><br>
+<p><b>Return:</b><br>AH = return code (see #00534)
+BX = DDT entry number where I/O port was found, or total entries
+plus 1 if port was not found.
+CF set on error
+CF clear on success
+ES:DI buffer filled with DDT entry
+</PRE>
+<p><b>Desc:</b>
+The DDT is searched from the specified entry for the I/O port in CX,
+and the first entry in which it is found is returned
+<p><b>See Also:</b>
+<a href="rb-1594.htm">AH=C0h</a> - <a href="rb-1611.htm">AH=C7h</a> - <a href="rb-1613.htm">AH=C9h</a> - <a href="rb-1626.htm">AX=D100h</a> - <a hr
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1627.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1629.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

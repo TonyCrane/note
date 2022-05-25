@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6F/AX=9501h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6F/AX=9501h - 10NET v5.0 - GET SHARED DEVICE ENTRY - 
+AX = 9501h
+BX = zero-based index
+DS:SI - server's node ID
+ES:DI - buffer for shared device structure (see #03783)
+Return: CF clear if successful
+CF set on error
+AX = status (see #03740)
+SeeAlso: AX=1501h,AX=9502h,AX=9503h,AX=9504h
+Format of 10NET shared device structure:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6F/AX=9501h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7790.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7792.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>10NET v5.0 - GET SHARED DEVICE ENTRY</font></h3>
+<PRE>
+AX = 9501h
+BX = zero-based index
+DS:SI -> server's node ID
+ES:DI -> buffer for shared device structure <a href="rb-7791.htm#Table3783">(see #03783)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = status <a href="rb-7639.htm#Table3740">(see #03740)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7749.htm">AX=1501h</a> - <a href="rb-7792.htm">AX=9502h</a> - <a href="rb-7793.htm">AX=9503h</a> - <a href="rb-7794.htm">AX=9504h</a>
+<PRE>
+<p>
+Format of 10NET shared device structure:
+<a name=table3783></a>
+Offset  Size    Description     (Table 03783)
+00h  8 BYTEs   alias
+08h    BYTE    type (02h modem, 03h print queue, 04h directory)
+09h    BYTE    access rights
+<p><b>bit 0:</b><br>Read
+<p><b>bit 1:</b><br>Write
+<p><b>bit 2:</b><br>Create
+0Ah  8 BYTEs   password
+12h 32 BYTEs   comment
+---directory---
+32h 64 BYTEs   pathname of shared directory
+---print queue---
+32h    BYTE    notification bit mask <a href="rb-7791.htm#Table3784">(see #03784)</a>
+33h    BYTE    job control bit mask <a href="rb-7791.htm#Table3785">(see #03785)</a>
+34h    WORD    number of days to retain file
+36h    WORD    test print length
+38h    BYTE    number of copies to print
+39h    BYTE    compression algorithm
+3Ah    BYTE    tab width (00h = don't expand)
+3Bh    BYTE    priority
+3Ch    WORD    time to open queue (FFFFh = always)
+3Eh    WORD    time to close queue
+40h    WORD    pause following queue switch, in clock ticks
+42h    WORD    pause between print jobs, in clock ticks
+44h    BYTE    associate queue file existence mask
+<p><b>bit 0:</b><br>Queue switch file exists
+<p><b>bit 1:</b><br>Initiate file exists
+<p><b>bit 2:</b><br>Abort file exists
+45h  6 BYTEs   character sequence for page eject
+4Bh    BYTE    status of print queue
+<p><b>bit 0:</b><br>Queue is closed
+4Ch    WORD    number of jobs on queue
+4Eh    WORD    offset of next print job to be dispatched (FFFFh = none)
+50h    BYTE    number of print devices in printer pool
+51h    WORD    offset of first print device structure (FFFFh if empty)
+<p>
+Bitfields for notification flags:
+<a name=table3784></a>
+Bit(s)  Description     (Table 03784)
+0      user at print start
+1      operator at start, with reply
+2      user at print completion
+3      operator at completion, with reply
+4      user on queue switch
+5      operator on queue switch, with reply
+6      user on print error
+<p>
+Bitfields for 10NET job control mask:
+<a name=table3785></a>
+Bit(s)  Description     (Table 03785)
+0      print banner page
+1      eject page at end of job
+2      mark as "held" (queue but don't print)
+3      rush job (queue at top)
+4      overwrite file with zeros before deletion
+5      hyperspool if possible
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-6F.htm">
+Int 6Fh</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7790.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7792.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

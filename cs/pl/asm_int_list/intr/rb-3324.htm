@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=BCh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=BCh - Novell NetWare - SYNCHRONIZATION SERVICES - LOG PHYSICAL RECORD - 
+AH = BCh
+AL = flags (see #01808)
+BX = file handle
+CX:DX = starting offset in file
+SI:DI = length of region to lock
+BP = timeout in timer ticks (1/18 sec)
+0000h = don't wait if already locked
+Return: AL = status (see #01807)
+Desc:  add the specified physical record to the log table, optionally locking
+it
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=BCh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3323.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3325.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SYNCHRONIZATION SERVICES - LOG PHYSICAL RECORD</font></h3>
+<PRE>
+AH = BCh
+AL = flags <a href="rb-3324.htm#Table1808">(see #01808)</a>
+BX = file handle
+CX:DX = starting offset in file
+SI:DI = length of region to lock
+BP = timeout in timer ticks (1/18 sec)
+0000h = don't wait if already locked<br>
+<p><b>Return:</b><br>AL = status (see #01807)
+</PRE>
+<p><b>Desc:</b>
+Add the specified physical record to the log table, optionally locking
+it
+<p><b>Note:</b>
+This function is supported by NetWare 4.6+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3016.htm">AH=5Ch</a> - <a href="rb-3325.htm">AH=BDh</a> - <a href="rb-3326.htm">AH=BEh</a> - <a href="rb-3329.htm">AH=BFh</a> - <a "http://www.ctyme.com/intr/href"
+<PRE>
+<p>
+<a name=table1807></a>
+(Table 01807)
+Values for NetWare status:
+00h    successful
+96h    no dynamic memory for file
+FEh    timed out
+FFh    failed
+<p>
+Bitfields for NetWare flags:
+<a name=table1808></a>
+Bit(s)  Description     (Table 01808)
+0      lock as well as log record
+1      non-exclusive lock
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3323.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3325.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

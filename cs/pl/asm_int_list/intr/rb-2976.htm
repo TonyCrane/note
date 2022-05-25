@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=4Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=4Dh - DOS 2+ - GET RETURN CODE (ERRORLEVEL) - 
+AH = 4Dh
+Return: AH = termination type
+00h normal (INT 20,INT 21/AH=00h, or INT 21/AH=4Ch)
+01h control-C abort
+02h critical error abort
+03h terminate and stay resident (INT 21/AH=31h or INT 27)
+AL = return code
+CF clear
+Notes: the word in which DOS stores the return code is cleared after being
+read by this function, so the return code can only be retrieved once
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=4Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2975.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2977.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - GET RETURN CODE (ERRORLEVEL)</font></h3>
+<PRE>
+AH = 4Dh<br>
+<p><b>Return:</b><br>AH = termination type
+00h normal (INT 20,INT 21/AH=00h, or INT 21/AH=4Ch)
+01h control-C abort
+02h critical error abort
+03h terminate and stay resident (INT 21/AH=31h or INT 27)
+AL = return code
+CF clear
+</PRE>
+<p><b>Notes:</b>
+The word in which DOS stores the return code is cleared after being
+read by this function, so the return code can only be retrieved once.
+COMMAND.COM stores the return code of the last external command it
+executed as ERRORLEVEL.
+This call should not be used if the child was started with AX=4B04h;
+use AH=8Ah instead.
+The following sequence will close a Virtual DOS Machine under OS/2 2.0
+through OS/2 Merlin (but may change in the future):
+MOV AH,4Dh
+INT 21h
+HLT
+DB  02h,0FDh
+This sequence is the only way to close a specific VDM which was
+booted from floppy or a disk image.
+<p><b>See Also:</b>
+<a href="rb-2939.htm">AH=4Bh</a> - <a href="rb-2974.htm">AH=4Ch</a> - <a href="rb-3255.htm">AH=8Ah</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2975.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2977.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

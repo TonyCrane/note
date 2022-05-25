@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=14h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=14h - DOS 1+ - SEQUENTIAL READ FROM FCB FILE - 
+AH = 14h
+DS:DX - opened FCB (see #01345)
+Return: AL = status
+00h successful
+01h end of file (no data)
+02h segment wrap in DTA
+03h end of file, partial record read
+Disk Tranfer Area filled with record read from file
+Notes: reads a record of the size specified in the FCB beginning at the
+current file position, then updates the current block and current
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=14h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2578.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2580.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - SEQUENTIAL READ FROM FCB FILE</font></h3>
+<PRE>
+AH = 14h
+DS:DX -> opened FCB <a href="rb-2574.htm#Table1345">(see #01345)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+01h end of file (no data)
+02h segment wrap in DTA
+03h end of file, partial record read
+Disk Tranfer Area filled with record read from file
+</PRE>
+<p><b>Notes:</b>
+Reads a record of the size specified in the FCB beginning at the
+current file position, then updates the current block and current
+record fields in the FCB.
+If a partial record was read, it is zero-padded to the full size.
+Not supported by MS Windows 3.0 DOSX.EXE DOS extender
+<p><b>See Also:</b>
+<a href="rb-2574.htm">AH=0Fh</a> - <a href="rb-2580.htm">AH=15h</a> - <a href="rb-2589.htm">AH=1Ah</a> - <a href="rb-2783.htm">AH=3Fh"DOS"</a> - <a
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2578.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2580.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

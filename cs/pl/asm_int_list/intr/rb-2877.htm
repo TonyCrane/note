@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4404h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4404h - DoubleTools v1.0 - GET ??? - 
+AX = 4404h
+BL = drive number (00h = default, 01h = A:, etc)
+CX = 0006h
+DS:DX - DoubleTools structure (see #01534)
+Return: CF clear if IOCTL successful -- check DSPACKET for actual status
+AX = number of bytes actually transferred
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Note:  the Transporter device driver has the signature 55h 61h 50h 74h
+(DaPt) twelve bytes after it beginning
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4404h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2876.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2878.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DoubleTools v1.0 - GET ???</font></h3>
+<PRE>
+AX = 4404h
+BL = drive number (00h = default, 01h = A:, etc)
+CX = 0006h
+DS:DX -> DoubleTools structure <a href="rb-2877.htm#Table1534">(see #01534)</a><br>
+<p><b>Return:</b><br>CF clear if IOCTL successful -- check DSPACKET for actual status
+AX = number of bytes actually transferred
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Note:</b>
+The Transporter device driver has the signature 55h 61h 50h 74h
+("DaPt") twelve bytes after it beginning
+<PRE>
+<p>
+Format of DoubleTools structure:
+<a name=table1534></a>
+Offset  Size    Description     (Table 01534)
+00h    WORD    (call) signature 55h AAh
+(ret) signature 78h 70h ("xp")
+02h    WORD    (call) signature 52h 16h
+(ret) ???
+04h    WORD    (ret) segment of driver's DS (same as its PSP)
+</PRE>
+<p>
+<b>Category: <a href="cat-017.htm">
+File/Disk Compression</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2876.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2878.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

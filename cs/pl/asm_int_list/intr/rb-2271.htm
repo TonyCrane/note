@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AH=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AH=00h - TIME - GET SYSTEM TIME - 
+AH = 00h
+Return: CX:DX = number of clock ticks since midnight
+AL = midnight flag, nonzero if midnight passed since time last read
+Notes: there are approximately 18.2 clock ticks per second, 1800B0h per 24 hrs
+(except on Tandy 2000, where the clock runs at 20 ticks per second)
+IBM and many clone BIOSes set the flag for AL rather than incrementing
+it, leading to loss of a day if two consecutive midnights pass
+without a request for the time (e.g. if the system is on but idle)
+since the midnight flag is cleared, if an application calls this
+function after midnight before DOS does, DOS will not receive the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AH=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2270.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2272.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TIME - GET SYSTEM TIME</font></h3>
+<PRE>
+AH = 00h<br>
+<p><b>Return:</b><br>CX:DX = number of clock ticks since midnight
+AL = midnight flag, nonzero if midnight passed since time last read
+</PRE>
+<p><b>Notes:</b>
+There are approximately 18.2 clock ticks per second, 1800B0h per 24 hrs
+(except on Tandy 2000, where the clock runs at 20 ticks per second).
+IBM and many clone BIOSes set the flag for AL rather than incrementing
+it, leading to loss of a day if two consecutive midnights pass
+without a request for the time (e.g. if the system is on but idle).
+Since the midnight flag is cleared, if an application calls this
+function after midnight before DOS does, DOS will not receive the
+midnight flag and will fail to advance the date.
+Modern releases of MS-DOS/PC DOS (5.0+???) assume that AL is a day
+rollover counter rather than a flag, as expected by older releases.
+DOS 5 - 7.10 (Windows 98 SE) provide an undocumented CONFIG.SYS
+SWITCHES=/T option to force the old behaviour of the day advancing
+code, that is using a flag instead of a counter..
+DR DOS 3.31 - DR-DOS 7.03 handle AL as a flag.
+<p><b>See Also:</b>
+<a href="rb-2272.htm">AH=01h</a> - <a href="rb-2273.htm">AH=02h</a> - <a href="rb-2703.htm">INT 21/AH=2Ch</a> - <a href="rb-6356.htm">INT 55"Tandy
+<p><b>See Also:</b>
+<a href="rb-7060.htm">INT 62/AX=0099h</a> - MEM 0040h:006Ch - MEM 0040h:0070h
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2270.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2272.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

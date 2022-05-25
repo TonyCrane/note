@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=1130h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=1130h - VIDEO - GET FONT INFORMATION (EGA, MCGA, VGA) - 
+AX = 1130h
+BH = pointer specifier
+00h INT 1Fh pointer
+01h INT 43h pointer
+02h ROM 8x14 character font pointer
+03h ROM 8x8 double dot font pointer
+04h ROM 8x8 double dot font (high 128 characters)
+05h ROM alpha alternate (9 by 14) pointer (EGA,VGA)
+06h ROM 8x16 font (MCGA, VGA)
+07h ROM alternate 9x16 font (VGA only) (see #00021)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=1130h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0157.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0159.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - GET FONT INFORMATION (EGA, MCGA, VGA)</font></h3>
+<PRE>
+AX = 1130h
+BH = pointer specifier
+00h INT 1Fh pointer
+01h INT 43h pointer
+02h ROM 8x14 character font pointer
+03h ROM 8x8 double dot font pointer
+04h ROM 8x8 double dot font (high 128 characters)
+05h ROM alpha alternate (9 by 14) pointer (EGA,VGA)
+06h ROM 8x16 font (MCGA, VGA)
+07h ROM alternate 9x16 font (VGA only) <a href="rb-0158.htm#Table21">(see #00021)</a>
+11h (UltraVision v2+) 8x20 font (VGA) or 8x19 font (autosync EGA)
+12h (UltraVision v2+) 8x10 font (VGA) or 8x11 font (autosync EGA)<br>
+<p><b>Return:</b><br>ES:BP = specified pointer
+CX    = bytes/character of on-screen font (not the requested font!)
+DL    = highest character row on screen
+</PRE>
+<p><b>Note:</b>
+For UltraVision v2+, the 9xN alternate fonts follow the corresponding
+8xN font at ES:BP+256N
+<p><b>BUG:</b>
+The IBM EGA and some other EGA cards return in DL the number of rows on
+screen rather than the highest row number (which is one less).
+<p><b>See Also:</b>
+<a href="rb-0136.htm">AX=1100h</a> - <a href="rb-0139.htm">AX=1103h</a> - <a href="rb-0151.htm">AX=1120h</a> - <a href="rb-2446.htm">INT 1F"SYSTEM
+<PRE>
+<p>
+Format of alternate font table [array]:
+<a name=table21></a>
+Offset  Size    Description     (Table 00021)
+00h    BYTE    character to be replaced (00h = end of table)
+01h  N BYTEs   graphics data for character, one byte per scan line
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0157.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0159.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

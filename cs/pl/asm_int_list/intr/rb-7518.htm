@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<TITLE>Int 68/AH=02h/SF=0100h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 68/AH=02h/SF=0100h - APPC/PC - CONNECTION CONTROL - ALLOCATE - 
+AH = 02h subfn 0100h
+DS:DX - control block (see #03680)
+Return: control block updated
+SeeAlso: AH=02h/SF=0500h
+Format of APPC/PC Allocate control block:
+Offset Size  Description   (Table 03680)
+00h 12 BYTEs  reserved
+0Ch  WORD  0100h (verb Allocate or MC_Allocate)
+0Eh  BYTE  1 if MC_ (mapped conversation) form of verb
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 68/AH=02h/SF=0100h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7517.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7519.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APPC/PC - CONNECTION CONTROL - ALLOCATE</font></h3>
+<PRE>
+AH = 02h subfn 0100h
+DS:DX -> control block <a href="rb-7518.htm#Table3680">(see #03680)</a><br>
+<p><b>Return:</b><br>Control block updated
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7521.htm">AH=02h/SF=0500h</a>
+<PRE>
+<p>
+Format of APPC/PC "Allocate" control block:
+<a name=table3680></a>
+Offset  Size    Description     (Table 03680)
+00h 12 BYTEs   reserved
+0Ch    WORD    0100h (verb "Allocate" or "MC_Allocate")
+0Eh    BYTE    1 if MC_ (mapped conversation) form of verb
+0 if basic verb
+0Fh  5 BYTEs   reserved (0)
+14h    WORD    (big-endian) primary return code <a href="rb-7518.htm#Table3681">(see #03681)</a>
+16h    DWORD   (big-endian) error code <a href="rb-7518.htm#Table3682">(see #03682)</a>
+1Ah  8 BYTEs   (big-endian) TP_ID
+22h    DWORD   (big-endian) conversation ID
+26h    BYTE    (MC_Allocate only) conversation type
+0 basic conversation
+1 mapped conversation
+27h    BYTE    SYNC_LEVEL (00h none, 01h confirm)
+28h    WORD    0000h
+2Ah    BYTE    RETURN_CONTROL
+00h when session allocated
+01h immediate
+02h when session free
+2Bh  8 BYTEs   00h
+33h  8 BYTEs   (big-endian) partner logical unit name
+3Bh  8 BYTEs   (big-endian) mode name
+43h 65 BYTEs   (counted string) TP name
+84h    BYTE    security (00h none, 01h same, 02h pgm)
+85h 11 BYTEs   00h
+90h 11 BYTEs   (counted string) password
+9Bh 11 BYTEs   (counted string) user ID
+A6h    WORD    PIP_DATA length
+A8h    DWORD   pointer to PIP_DATA
+<p>
+<a name=table3681></a>
+(Table 03681)
+Values for APPC/PC primary return code:
+0000h  successful
+0001h  parameter check
+0002h  state check
+0003h  allocation error
+0005h  deallocate abended
+0006h  deallocate abended program
+0007h  deallocate abended SVC
+0008h  deallocate abended timer
+0009h  deallocate normal return
+000Ah  data posting blocked
+000Bh  posting not active
+000Ch  PROG_ERROR_NO_TRUNC
+000Dh  PROG_ERROR_TRUNC
+000Eh  PROG_ERROR_PURGING
+000Fh  CONV_FAILURE_RETRY
+0010h  CONV_FAILURE_NO_RETRY
+0011h  SVC_ERROR_NO_TRUNC
+0012h  SVC_ERROR_TRUNC
+0013h  SVC_ERROR_PURGING
+0014h  unsuccessful
+0018h  CNOS partner logical unit reject
+0019h  conversation type mixed
+F001h  APPC disabled
+F002h  APPC busy
+F003h  APPC abended
+F004h  incomplete
+<p>
+<a name=table3682></a>
+(Table 03682)
+Values for APPC/PC error code:
+0001h  bad TP ID
+0002h  bad conversation ID
+0004h  allocation error, no retry
+0005h  allocation error, retry
+0006h  data area crosses segment boundary
+0010h  bad TPN length
+0011h  bad CONV length
+0012h  bad SYNC level
+0013h  bad security selection
+0014h  bad return control
+0015h  SEC_TOKENS too big
+0016h  PIP_LEN incorrect
+0017h  no use of SNASVCMG
+0018h  unknown partner mode
+<p><b>0031h  confirm:</b><br>SYNC_NONE
+<p><b>0032h  confirm:</b><br>Bad state
+<p><b>0033h  confirm:</b><br>NOT_LL_BDY
+<p><b>0041h  confirmed:</b><br>Bad state
+<p><b>0051h  deallocate:</b><br>Bad type
+<p><b>0052h  deallocate:</b><br>Flush bad state
+<p><b>0053h  deallocate:</b><br>Confirm bad state
+<p><b>0055h  deallocate:</b><br>NOT_LL_BDY
+<p><b>0057h  deallocate:</b><br>Log LL_WRONG
+<p><b>0061h  flush:</b><br>Not send state
+<p><b>0091h  post on receipt:</b><br>Invalid length
+<p><b>0092h  post on receipt:</b><br>Not in receive state
+<p><b>0093h  post on receipt:</b><br>Bad fill
+00A1h  prepare to receive:invalid type
+<p><b>00A2h  prepare to receive:</b><br>Unfinished LL
+<p><b>00A3h  prepare to receive:</b><br>Not in send state
+<p><b>00B1h  receive and wait:</b><br>Bad state
+<p><b>00B2h  receive and wait:</b><br>NOT_LL_BDY
+<p><b>00B5h  receive and wait:</b><br>Bad fill
+<p><b>00C1h  receive immediate:</b><br>Not in receive state
+<p><b>00C4h  receive immediate:</b><br>Bad fill
+<p><b>00E1h  request to send:</b><br>Not in receive state
+<p><b>00F1h  send data:</b><br>Bad LL
+<p><b>00F2h  send data:</b><br>Not in send state
+<p><b>0102h  send error:</b><br>Log LL wrong
+<p><b>0103h  send error:</b><br>Bad type
+<p><b>0121h  test:</b><br>Invalid type
+<p><b>0122h  test:</b><br>Not in receive state
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-68.htm">
+Int 68h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7517.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7519.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

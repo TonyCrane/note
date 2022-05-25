@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F216h/SF=26h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F216h/SF=26h - Novell NetWare v3+ - SCAN FILE OR DIRECTORY FOR EXTENDED TRUSTEES - 
+AX = F216h subfn 26h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #02138)
+ES:DI - reply buffer (see #02139)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+Desc:  get up to 20 extended trustee entries per call for a file or directory
+Format of NetWare Scan File/Directory for Extended Trustees request buffer:
+Offset Size  Description   (Table 02138)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F216h/SF=26h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3703.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3705.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v3+ - SCAN FILE OR DIRECTORY FOR EXTENDED TRUSTEES</font></h3>
+<PRE>
+AX = F216h subfn 26h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-3704.htm#Table2138">(see #02138)</a>
+ES:DI -> reply buffer <a href="rb-3704.htm#Table2139">(see #02139)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>Desc:</b>
+Get up to 20 extended trustee entries per call for a file or directory
+<PRE>
+<p>
+Format of NetWare "Scan File/Directory for Extended Trustees" request buffer:
+<a name=table2138></a>
+Offset  Size    Description     (Table 02138)
+00h    WORD    length of following data
+02h    BYTE    26h (subfunc "Scan File or Directory For Extended Trustees")
+03h    BYTE    directory handle
+04h    BYTE    sequence number
+00h for first call, increment by number of returned entries
+05h    BYTE    length of path
+06h  N BYTEs   pathname
+</PRE>
+<p><b>See Also:</b>
+#02138
+<PRE>
+<p>
+Format of NetWare "Scan File/Directory for Extended Trustees" reply buffer:
+<a name=table2139></a>
+Offset  Size    Description     (Table 02139)
+00h    BYTE    number of entries returned (max 20)
+01h 20 DWORDs  (big-endian) list of object IDs
+51h 20 WORDs   list of associated trustee rights
+</PRE>
+<p><b>See Also:</b>
+#02139
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3703.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3705.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 62/AX=0074h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 62/AX=0074h - FGDRIVER v4.02 - FG_MOUSEBUT - GET MOUSE BUTTON PRESS/RELEASE CNTS - 
+AX = 0074h
+CX = mouse button (1 = left press, 2 = right press, 3 = middle press,
+-1=left release, -2=right release, -3=middle release)
+ES:BX - variable pointer record (see #03490)
+Return: variables updated
+Notes: the FGDRIVER functions are rearranged with each major release, but
+their parameters do not change (see #03474 at AX=0000h)
+This function returns the count of presses or releases since the last
+call to this function; if the count is zero, row and column will
+also be zero
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 62/AX=0074h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7022.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7024.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FGDRIVER v4.02 - FG_MOUSEBUT - GET MOUSE BUTTON PRESS/RELEASE CNTS</font></h3>
+<PRE>
+AX = 0074h
+CX = mouse button (1 = left press, 2 = right press, 3 = middle press,
+-1=left release, -2=right release, -3=middle release)
+ES:BX -> variable pointer record <a href="rb-7023.htm#Table3490">(see #03490)</a><br>
+<p><b>Return:</b><br>Variables updated
+</PRE>
+<p><b>Notes:</b>
+The FGDRIVER functions are rearranged with each major release, but
+their parameters do not change <a href="rb-0000.htm#Table0"></a>(see #03474 at AX=0000h).
+This function returns the count of presses or releases since the last
+call to this function; if the count is zero, row and column will
+also be zero
+<p><b>See Also:</b>
+<a href="rb-7024.htm">AX=0075h</a> - <a href="rb-7026.htm">AX=0077h</a> - <a href="rb-7029.htm">AX=007Ah</a>
+<PRE>
+<p>
+Format of FGDRIVER MOUSEBUT variable pointer record:
+<a name=table3490></a>
+Offset  Size    Description     (Table 03490)
+00h    WORD    segment of WORD buffer for press/release count
+02h    WORD    offset of WORD buffer for press/release count
+04h    WORD    segment of WORD buffer for screen space col of last press/rls
+06h    WORD    offset of WORD buffer for screen space col of last press/rels
+08h    WORD    segment of WORD buffer for screen space row of last press/rls
+0Ah    WORD    offset of WORD buffer for screen space row of last press/rls
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-62.htm">
+Int 62h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7022.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7024.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

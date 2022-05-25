@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=0009h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=0009h - MS Windows - REBOOT - GET API ENTRY POINT - 
+AX = 1684h
+BX = 0009h (virtual device ID for REBOOT device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02648)
+0000h:0000h if the VxD does not support an API
+SeeAlso: INT 14/AH=17hFOSSIL,INT 16/AX=E0FFh
+(Table 02648)
+Call REBOOT protected-mode entry point with:
+AX = function
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=0009h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4538.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4540.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - REBOOT - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 0009h (virtual device ID for REBOOT device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02648)
+0000h:0000h if the VxD does not support an API
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0929.htm">INT 14/AH=17h"FOSSIL"</a> - <a href="rb-1913.htm">INT 16/AX=E0FFh</a>
+<PRE>
+<p>
+<a name=table2648></a>
+(Table 02648)
+Call REBOOT protected-mode entry point with:.
+AX = function
+0100h warm boot
+<p><b>Return:</b><br>Never
+</PRE>
+<p><b>Note:</b>
+Broadcasts "Reboot_Processor" message, which is caught
+by the VKD device
+0201h set KERNEL Ctrl-Alt-Del handler
+ES:DI -> new Ctrl-Alt-Del handler
+DS:SI -> KERNEL reboot sanity check byte
+<PRE>
+<p><b>Return:</b><br>CF clear
+</PRE>
+<p><b>Notes:</b>
+If an application installs its own handler and then
+chains to Windows' handler, Windows will no longer
+be able to detect hung applications, and will always
+produce an "Application not responding" dialog
+DS must contain a writable, fixed selector because
+the provided address is converted to a linear address
+before being stored
+when Ctrl-Alt-Del is pressed in the system VM, Reboot
+sets the sanity check byte to zero, schedules a
+750ms wait, and then tests whether the check byte is
+still zero; if not, it displays a message that there
+is no hung application and then exits
+0202h get KERNEL Ctrl-Alt-Del handler
+<PRE>
+<p><b>Return:</b><br>CF clear
+ES:DI -> current Ctrl-Alt-Del handler
+</PRE>
+<p><b>Note:</b>
+The default handler is located in KERNEL
+0203h display "Application not responding" dialog box
+ES:DI -> ASCIZ name of hung application
+<PRE>
+<p><b>Return:</b><br>Never if user pressed Ctrl-Alt-Del a second time
+CF clear
+AX = result
+0000h user pressed Esc
+0001h user pressed Enter
+</PRE>
+<p><b>Note:</b>
+This function is used by the default Windows
+Ctrl-Alt-Del handler
+0204h set/reset protected-mode INT 01 handler
+CX:EDX -> new protected-mode INT 01 handler
+CX = 0000h restore protected-mode INT 01 handler
+<PRE>
+<p><b>Return:</b><br>CF clear
+</PRE>
+<p><b>Notes:</b>
+If CX is nonzero, the current handler address is saved
+internally before the new handler is set; this saved
+address is then used when CX is zero on entry
+used by Windows' default Ctrl-Alt-Del handler; actual
+fatal exit to DOS will be done on next INT 01
+<PRE>
+<p><b>Warning:</b><br>Opened files are not closed and remain open as
+orphaned files in DOS
+</PRE>
+<p><b>Note:</b>
+Functions 0201h and 0203h are not useful outside the system VM
+<p><b>See Also:</b>
+#01271 - #01273
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4538.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4540.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

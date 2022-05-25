@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=3000h/CX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=3000h/CX=0000h - VIDEO - LOCATE 3270PC CONFIGURATION TABLE (INSTALLATION CHECK) - 
+AX = 3000h
+CX = 0000h
+DX = 0000h
+Return: CX:DX - 3270PC configuration table (see #00062)
+CX:DX = 0000h:0000h if 3270PC Control Program not active
+SeeAlso: AX=1F01h
+Format of 3270 PC configuration table:
+Offset Size  Description   (Table 00062)
+00h  BYTE  aspect ratio X
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=3000h/CX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0240.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0242.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - LOCATE 3270PC CONFIGURATION TABLE (INSTALLATION CHECK)</font></h3>
+<PRE>
+AX = 3000h
+CX = 0000h
+DX = 0000h<br>
+<p><b>Return:</b><br>CX:DX -> 3270PC configuration table (see #00062)
+CX:DX = 0000h:0000h if 3270PC Control Program not active
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0238.htm">AX=1F01h</a>
+<PRE>
+<p>
+Format of 3270 PC configuration table:
+<a name=table62></a>
+Offset  Size    Description     (Table 00062)
+00h    BYTE    aspect ratio X
+01h    BYTE    aspect ratio Y
+02h    BYTE    monitor type <a href="rb-0241.htm#Table63">(see #00063)</a>
+03h    BYTE    reserved
+04h    BYTE    adapter ID
+00h = 5151/5272 adapter
+04h = 5151/5272 with XGA adapter
+30h = 3295 or 3270PC G/GX adapter
+05h    BYTE    reserved
+06h    BYTE    function flags 1 <a href="rb-0241.htm#Table64">(see #00064)</a>
+07h    BYTE    function flags 2
+<p><b>bit 6:</b><br>GPI graphics supported
+08h    WORD    segment address of Control Program Level table <a href="rb-0241.htm#Table65">(see #00065)</a>
+0Ah 10 BYTEs   reserved
+<p>
+<a name=table63></a>
+(Table 00063)
+Values for 3270 PC monitor type:
+00h    5151 (mono) or 5272 (color)
+01h    3295
+02h    5151 or 5272 with XGA (???) graphics adapter
+03h    5279 with 3270PC G adapter
+04h    5379 model C01 with 3270PC GX adapter
+05h    5379 model M01 with 3270PC GX adapter
+07h    non-3270PC with 3270 Workstation Program
+FFh    3270PC Control Program not loaded
+<p>
+Bitfields for 3270 PC function flags 1:
+<a name=table64></a>
+Bit(s)  Description     (Table 00064)
+7      mono text, 1 page
+6      color text, 1 page
+5      color text, 4 pages
+4      CGA color graphics
+3      720x350 two-color graphics
+2      360x350 four-color graphics
+1      720x350 eight-color graphics
+<p>
+Format of Control Program Level table:
+<a name=table65></a>
+Offset  Size    Description     (Table 00065)
+00h    WORD    program version
+02xxh = 3270PC Control Program v2.xx
+03xxh = 3270PC Control Program v3.xx
+04xxh = 3270 Workstation Program v1.xx
+02h    BYTE    Control Program ID (00h)
+03h 27 BYTEs   Control Program Descriptor ("IBM 3270 PC CONTROL PROGRAM")
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0240.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0242.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

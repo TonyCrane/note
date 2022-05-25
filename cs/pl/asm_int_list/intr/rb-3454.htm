@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E1h/SF=09h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E1h/SF=09h - Novell NetWare - MESSAGE SERVICES - BROADCAST TO CONSOLE - 
+AH = E1h subfn 09h
+DS:SI - request buffer (see #01837)
+ES:DI - reply buffer (see #01838)
+Return: AL = status (see #01834)
+Desc:  send a one-line message to the system console on the default file
+server
+Note:  this function is supported by NetWare 4.0+ and Advanced NetWare 1.0+
+SeeAlso: AH=DEh/DL=04h,AH=E1h/SF=00h,AH=E1h/SF=01h,AH=E3h/SF=D1h
+SeeAlso: AX=F215h/SF=09h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E1h/SF=09h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3453.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3455.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - MESSAGE SERVICES - BROADCAST TO CONSOLE</font></h3>
+<PRE>
+AH = E1h subfn 09h
+DS:SI -> request buffer <a href="rb-3454.htm#Table1837">(see #01837)</a>
+ES:DI -> reply buffer <a href="rb-3454.htm#Table1838">(see #01838)</a><br>
+<p><b>Return:</b><br>AL = status (see #01834)
+</PRE>
+<p><b>Desc:</b>
+Send a one-line message to the system console on the default file
+server
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+ and Advanced NetWare 1.0+
+<p><b>See Also:</b>
+<a href="rb-3407.htm">AH=DEh/DL=04h</a> - <a href="rb-3445.htm">AH=E1h/SF=00h</a> - <a href="rb-3446.htm">AH=E1h/SF=01h</a> - <a href="rb-3557.htm"
+<p><b>See Also:</b>
+<a href="rb-3667.htm">AX=F215h/SF=09h</a>
+<PRE>
+<p>
+Format of NetWare "Broadcast to Console" request buffer:
+<a name=table1837></a>
+Offset  Size    Description     (Table 01837)
+00h    WORD    length of following data (max 3Eh)
+02h    BYTE    09h (subfunction "Broadcast to Console")
+03h    BYTE    length of message (01h-3Ch)
+04h  N BYTEs   message (no control characters or characters > 7Eh)
+</PRE>
+<p><b>See Also:</b>
+#01838
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1838></a>
+Offset  Size    Description     (Table 01838)
+00h    WORD    (call) 0000h (no results returned)
+</PRE>
+<p><b>See Also:</b>
+#01837
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3453.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3455.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

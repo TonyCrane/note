@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 4B/AX=8105h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 4B/AX=8105h - Virtual DMA Specification - SCATTER/GATHER LOCK REGION - 
+AX = 8105h
+DX = flags (see #03224)
+ES:DI - Extended DMA descriptor structure (see #03222,#03223)
+region size, linear segment, linear offset, and number avail
+fields set
+Return: CF clear if successful
+EDDS number used field set
+if DX bit 6 set, lower 12 bits of BX = offset in first page
+CF set on error
+AL = error code (see #03218)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 4B/AX=8105h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6264.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6266.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Virtual DMA Specification - SCATTER/GATHER LOCK REGION</font></h3>
+<PRE>
+AX = 8105h
+DX = flags <a href="rb-6265.htm#Table3224">(see #03224)</a>
+ES:DI -> Extended DMA descriptor structure <a href="rb-0000.htm#Table0"></a>(see #03222,#03223)
+region size, linear segment, linear offset, and number avail
+fields set<br>
+<p><b>Return:</b><br>CF clear if successful
+EDDS number used field set
+if DX bit 6 set, lower 12 bits of BX = offset in first page
+CF set on error
+AL = error code <a href="rb-6262.htm#Table3218">(see #03218)</a>
+EDDS region size field filled with max length in bytes that can be
+locked and described in the EDDS table
+</PRE>
+<p><b>BUG:</b>
+Windows 3.0 in enhanced mode may return zero instead of the physical
+page address for pages which were originally not present
+<p><b>See Also:</b>
+<a href="rb-6263.htm">AX=8103h</a> - <a href="rb-6266.htm">AX=8106h</a>
+<PRE>
+<p>
+Bitfields for VDS flags:
+<a name=table3224></a>
+Bit(s)  Description     (Table 03224)
+0-5    reserved (zero)
+6      EDDS should be returned with page table entries
+7      only present pages should be locked (not-present pages receive entry
+of 0000h)
+8-15   reserved (zero)
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-4B.htm">
+Int 4Bh</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6264.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6266.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

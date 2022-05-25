@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 33/AX=0009h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 33/AX=0009h - MS MOUSE v3.0+ - DEFINE GRAPHICS CURSOR - 
+AX = 0009h
+BX = column of cursor hot spot in bitmap (-16 to 16)
+CX = row of cursor hot spot (-16 to 16)
+ES:DX - mask bitmap (see #03170)
+Notes: in graphics modes, the screen contents around the current mouse cursor
+position are ANDed with the screen mask and then XORed with the
+cursor mask
+the Microsoft mouse driver v7.04 and v8.20 uses only BL and CL, so the
+hot spot row/column should be limited to -128..127
+Microsoft KnowledgeBase article Q19850 states that the high bit is
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 33/AX=0009h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5964.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5966.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS MOUSE v3.0+ - DEFINE GRAPHICS CURSOR</font></h3>
+<PRE>
+AX = 0009h
+BX = column of cursor hot spot in bitmap (-16 to 16)
+CX = row of cursor hot spot (-16 to 16)
+ES:DX -> mask bitmap <a href="rb-5965.htm#Table3170">(see #03170)</a>
+</PRE>
+<p><b>Notes:</b>
+In graphics modes, the screen contents around the current mouse cursor
+position are ANDed with the screen mask and then XORed with the
+cursor mask.
+The Microsoft mouse driver v7.04 and v8.20 uses only BL and CL, so the
+hot spot row/column should be limited to -128..127.
+Microsoft KnowledgeBase article Q19850 states that the high bit is
+right-most, but that statement is contradicted by all other available
+documentation
+<p><b>See Also:</b>
+<a href="rb-5966.htm">AX=000Ah</a> - <a href="rb-5975.htm">AX=0012h</a> - <a href="rb-6000.htm">AX=002Ah</a> - <a href="rb-7034.htm">INT 62/AX=007F
+<PRE>
+<p>
+Format of mouse mask bitmap:
+<a name=table3170></a>
+Offset  Size    Description     (Table 03170)
+00h 16 WORDs   screen mask
+10h 16 WORDs   cursor mask
+</PRE>
+<p><b>Note:</b>
+Each word defines the sixteen pixels of a row, low bit rightmost
+<p>
+<b>Category: <a href="cat-025.htm">
+Mouse/Pointing Device</a>
+- <a href="int-33.htm">
+Int 33h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5964.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5966.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=00h - Novell NetWare - DIRECTORY SERVICES - SET DIRECTORY HANDLE - 
+AH = E2h subfn 00h
+DS:SI - request buffer (see #01840)
+ES:DI - reply buffer (see #01841)
+Return: AL = status (00h,98h,9Bh,9Ch) (see #01839)
+Desc:  set the target handle to reference the directory specified by the
+source handle and the source path; both handles must refer to the
+same file server
+Notes: this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+the target handle is not changed if this function fails
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3456.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3458.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - SET DIRECTORY HANDLE</font></h3>
+<PRE>
+AH = E2h subfn 00h
+DS:SI -> request buffer <a href="rb-3457.htm#Table1840">(see #01840)</a>
+ES:DI -> reply buffer <a href="rb-3457.htm#Table1841">(see #01841)</a><br>
+<p><b>Return:</b><br>AL = status (00h,98h,9Bh,9Ch) (see #01839)
+</PRE>
+<p><b>Desc:</b>
+Set the target handle to reference the directory specified by the
+source handle and the source path; both handles must refer to the
+same file server
+<p><b>Notes:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX.
+The target handle is not changed if this function fails
+<p><b>See Also:</b>
+<a href="rb-3458.htm">AH=E2h/SF=01h</a> - <a href="rb-3472.htm">AH=E2h/SF=12h</a> - <a href="rb-3473.htm">AH=E2h/SF=13h</a> - <a href="rb-3669.htm"
+<PRE>
+<p>
+<a name=table1839></a>
+(Table 01839)
+Values for NetWare function status:
+00h    successful
+84h    not permitted to create
+8Ah    not permitted to delete
+8Bh    not permitted to rename
+8Ch    not permitted to modify
+98h    nonexistent volume
+9Bh    invalid directory handle
+9Ch    invalid path
+9Eh    invalid filename
+9Fh    directory currently in use
+A0h    directory not empty
+C6h    no console rights
+FCh    no such bindery object
+</PRE>
+<p><b>See Also:</b>
+#01834 - #01866
+<PRE>
+<p>
+Format of NetWare "Set Directory Handle" request buffer:
+<a name=table1840></a>
+Offset  Size    Description     (Table 01840)
+00h    WORD    length of following data (max 103h)
+02h    BYTE    00h (subfunction "Set Directory Handle")
+03h    BYTE    directory handle of target
+04h    BYTE    directory handle of source
+05h    BYTE    length of source directory path (01h-FFh)
+06h  N BYTEs   source directory path
+</PRE>
+<p><b>See Also:</b>
+#01841
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1841></a>
+Offset  Size    Description     (Table 01841)
+00h    WORD    (call) 0000h (no results returned)
+</PRE>
+<p><b>See Also:</b>
+#01840
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3456.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3458.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

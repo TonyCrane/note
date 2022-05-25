@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6B/AH=21h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6B/AH=21h - NPC NCSI EXTENDED SERIAL I/O - QUERY NAME SERVICE - 
+AH = 21h
+AL = virtual circuit number
+CL = ??? (00h or 01h)
+ES:BX - buffer for service name structure (see #03732)
+Return: CF clear if successful
+ES:BX buffer filled
+CF set on error
+Notes: a program should call this function after allocating a virtual circuit
+and check that the general name matches the requested service
+prior to version 3.0, Novell's NASI returned the first available port;
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6B/AH=21h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7621.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7623.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>NPC NCSI EXTENDED SERIAL I/O - QUERY NAME SERVICE</font></h3>
+<PRE>
+AH = 21h
+AL = virtual circuit number
+CL = ??? (00h or 01h)
+ES:BX -> buffer for service name structure <a href="rb-7622.htm#Table3732">(see #03732)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ES:BX buffer filled
+CF set on error
+</PRE>
+<p><b>Notes:</b>
+A program should call this function after allocating a virtual circuit
+and check that the general name matches the requested service.
+Prior to version 3.0, Novell's NASI returned the first available port;
+v3.0+ returns the first port found--check the returned status to
+determine whether the port is available
+<p><b>See Also:</b>
+<a href="rb-7605.htm">AH=14h"NCSI"</a>
+<PRE>
+<p>
+Format of NCSI service name structure:
+<a name=table3732></a>
+Offset  Size    Description     (Table 03732)
+00h    WORD    buffer length
+02h  8 BYTEs   service name
+0Ah  8 BYTEs   general name
+12h  8 BYTEs   specific name
+1Ah  4 BYTEs   ???
+---Novell NASI v3.0+ ---
+1Eh    BYTE    port number
+1Fh    BYTE    port status
+00h idle (available)
+01h allocated (available)
+02h connected
+03h on hold
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-6B.htm">
+Int 6Bh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7621.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7623.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4405h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4405h - SFS v1.00 - DRIVER CONTROL - 
+AX = 4405h
+BL = drive number (00h = default, 01h = A:, etc)
+CX = number of bytes to write
+DS:DX - data to write (see #01543)
+Return: CF clear if successful
+AX = number of bytes actually written
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Program: SFS (Secure FileSystem) is a shareware encrypting disk driver by
+Peter C. Gutmann
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4405h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2885.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2887.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SFS v1.00 - DRIVER CONTROL</font></h3>
+<PRE>
+AX = 4405h
+BL = drive number (00h = default, 01h = A:, etc)
+CX = number of bytes to write
+DS:DX -> data to write <a href="rb-2886.htm#Table1543">(see #01543)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually written
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Program:</b>
+SFS (Secure FileSystem) is a shareware encrypting disk driver by
+Peter C. Gutmann
+<p><b>See Also:</b>
+<a href="rb-2880.htm">AX=4404h"SFS"</a>
+<PRE>
+<p>
+<a name=table1542></a>
+(Table 01542)
+Values for SFS control function:
+00h    "PACKET_SET_DISKINFO"    set disk parameters
+01h    "PACKET_SET_KEYINFO"     set keying information
+02h    "PACKET_SET_READONLY"    select read/write or read-only
+03h    "PACKET_SET_DRIVENO"     set drive number to mount
+04h    "PACKET_SET_MOUNTSTATUS" set mount status
+05h    "PACKET_SET_UNMOUNT"     set/clear quick-unmount hotkey
+06h    "PACKET_SET_TIMEOUT"     set/clear auto-unmount timeout
+<p>
+Format of SFS control data packet:
+<a name=table1543></a>
+Offset  Size    Description     (Table 01543)
+00h    WORD    signature 4330h ('C0')
+02h    WORD    function <a href="rb-2886.htm#Table1542">(see #01542)</a>
+---function 00h---
+04h    WORD    sector size in bytes
+06h    BYTE    sectors per cluster
+07h    WORD    number of boot sectors
+09h    BYTE    number of copies of FAT
+0Ah    WORD    size of root directory in entries
+0Ch    WORD    number of sectors on disk, 16-bit
+0Eh    BYTE    media descriptor byte
+0Fh    WORD    sectors per FAT
+11h    WORD    sectors per track
+13h    WORD    number of heads
+15h    DWORD   number of hidden sectors
+19h    DWORD   number of sectors on disk, 32-bit
+---function 01h---
+04h 20 BYTEs   master IV for encrypted disk
+18h 64 BYTEs   NDC/SHS keying information
+---function 02h---
+<p><b>04h    WORD    read-only state:</b><br>00h read-only, 01h read/write
+---function 03h---
+04h    WORD    drive number <a href="rb-2886.htm#Table1544">(see #01544)</a>
+06h    DWORD   sector offset of logical volume from start of physical volume
+0 if logical volume = physical volume
+---function 04h---
+04h    WORD    mount status (00h unmounted, 01h mounted)
+---function 05h---
+04h    WORD    hotkey (high byte = shift state, low byte = scan code or 00h)
+<a href="rb-0045.htm#Table6">(see #00006)</a>
+0000h to disable hotkey
+---function 06h---
+04h    WORD    timeout in minutes before automatic unmount
+0000h to disable auto-unmount
+</PRE>
+<p><b>Notes:</b>
+The data for function 00h corresponds to a DOS BPB (see AH=53h).
+Functions 00h, 01h, and 03h automatically unmount the encrypted drive.
+Unmounting a drive with function 04h also destroys the encryption
+information in the driver and forces all dirty buffers to be flushed
+<PRE>
+<p>
+Bitfields for SFS drive number:
+<a name=table1544></a>
+Bit(s)  Description     (Table 01544)
+15-12  drive access mode.
+0000 BIOS access.
+0001 direct IDE access.
+0010 direct SCSI access
+---if BIOS access---
+11-8   unused (0)
+7-0    BIOS drive number
+---if IDE access---
+11-8   unused (0)
+7-0    IDE drive number
+---if SCSI access---
+11-8   SCSI host number
+7-4    SCSI target ID
+3-0    SCSI logical unit number
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2885.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2887.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

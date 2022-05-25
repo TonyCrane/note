@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4309h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4309h - HIMEM.SYS v3.09+ - GET XMS HANDLE TABLE - 
+AX = 4309h
+Return: AL = 43h if function supported
+ES:BX - XMS handle table (see #02747)
+Note:  HIMEM.SYS v3.09 is part of MS-DOS 6.0.
+SeeAlso: AX=4308h
+Format of XMS handle table:
+Offset Size  Description   (Table 02747)
+00h  BYTE  ??? (01h in HIMEM.SYS v3.09)
+01h  BYTE  size of one handle descriptor
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4309h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4766.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4768.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HIMEM.SYS v3.09+ - GET XMS HANDLE TABLE</font></h3>
+<PRE>
+AX = 4309h<br>
+<p><b>Return:</b><br>AL = 43h if function supported
+ES:BX -> XMS handle table <a href="rb-4767.htm#Table2747">(see #02747)</a>
+</PRE>
+<p><b>Note:</b>
+HIMEM.SYS v3.09 is part of MS-DOS 6.0.
+<p><b>See Also:</b>
+<a href="rb-4766.htm">AX=4308h</a>
+<PRE>
+<p>
+Format of XMS handle table:
+<a name=table2747></a>
+Offset  Size    Description     (Table 02747)
+00h    BYTE    ??? (01h in HIMEM.SYS v3.09)
+01h    BYTE    size of one handle descriptor
+02h    WORD    number of handles (default = 20h)
+04h    DWORD   pointer to XMS handle array <a href="rb-4767.htm#Table2748">(see #02748)</a>
+</PRE>
+<p><b>See Also:</b>
+#02777
+<PRE>
+<p>
+Format of XMS handle descriptor [array]:
+<a name=table2748></a>
+Offset  Size    Description     (Table 02748)
+00h    BYTE    flag
+01h=free, 02h=used, 04h=in pool but not associated with any EMB
+01h    BYTE    lock count (00h=unlocked)
+02h    DWORD   address of XMS block in KB (shift left by 10 for abs. address)
+06h    DWORD   size of XMS block in KB
+</PRE>
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4766.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4768.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

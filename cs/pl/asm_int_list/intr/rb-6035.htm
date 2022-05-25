@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 33/AX=0070h/BX=ABCDh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 33/AX=0070h/BX=ABCDh - Mouse Systems MOUSE DRIVER - POPUP.COM - INSTALLATION CHECK - 
+AX = 0070h
+BX = ABCDh
+Return: AX = ABCDh if installed
+BX:CX - data structure (see #03188)
+Notes: this function is also supported by the Genius Mouse 9.06 driver
+the v7.01 POPUP.COM and menu drivers also check for the signature
+CDh ABh BAh DCh at offset -2Ch from the interrupt handler
+if POPUP is not loaded, the returned data structure contains the proper
+signature at offset 00h, but not at offset 08h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 33/AX=0070h/BX=ABCDh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6034.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6036.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Mouse Systems MOUSE DRIVER - POPUP.COM - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 0070h
+BX = ABCDh<br>
+<p><b>Return:</b><br>AX = ABCDh if installed
+BX:CX -> data structure <a href="rb-6035.htm#Table3188">(see #03188)</a>
+</PRE>
+<p><b>Notes:</b>
+This function is also supported by the Genius Mouse 9.06 driver.
+The v7.01 POPUP.COM and menu drivers also check for the signature
+CDh ABh BAh DCh at offset -2Ch from the interrupt handler.
+If POPUP is not loaded, the returned data structure contains the proper
+signature at offset 00h, but not at offset 08h
+<PRE>
+<p>
+Format of Mouse Systems POPUP.COM data structure:
+<a name=table3188></a>
+Offset  Size    Description     (Table 03188)
+00h    WORD    signature ABCDh
+02h    DWORD   pointer to info structure??? <a href="rb-6035.htm#Table3189">(see #03189)</a>
+06h  2 BYTEs   ???
+08h    WORD    signature ABCDh
+<p>
+Format of Mouse Systems POPUP.COM info structure:
+<a name=table3189></a>
+Offset  Size    Description     (Table 03189)
+00h    WORD    driver version
+02h  8 BYTEs   ???
+0Ah    WORD    segment of ???.
+???
+</PRE>
+<p>
+<b>Category: <a href="cat-025.htm">
+Mouse/Pointing Device</a>
+- <a href="int-33.htm">
+Int 33h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6034.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6036.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

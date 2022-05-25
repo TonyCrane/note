@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4403h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4403h - AI Architects - OS/x86??? - API - 
+AX = 4403h
+BX = handle for device AIA_OS
+CX = number of bytes to write (ignored)
+DS:DX - 12-byte buffer (see #01526), first byte is command:
+81h installation check
+82h get API entry point
+84h uninstall
+Return: CF clear if successful
+AX = number of bytes actually written
+DS:DX buffer filled
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4403h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2858.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2860.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AI Architects - OS/x86??? - API</font></h3>
+<PRE>
+AX = 4403h
+BX = handle for device "AIA_OS"
+CX = number of bytes to write (ignored)
+DS:DX -> 12-byte buffer <a href="rb-2859.htm#Table1526">(see #01526)</a>, first byte is command:
+81h installation check
+82h get API entry point
+84h uninstall<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually written
+DS:DX buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Ch,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h)
+</PRE>
+<p><b>Notes:</b>
+These functions are only available if the DOS extender was loaded as a
+device driver in CONFIG.SYS.
+Called by TKERNEL (a licensed version of AI Architects/Ergo OS/x86)
+<p><b>See Also:</b>
+<a href="rb-5767.htm">INT 2F/AX=FBA1h/BX=0081h</a> - <a href="rb-5768.htm">INT 2F/AX=FBA1h/BX=0082h</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;OS/x86|entry point;OS/x86|uninstall;OS/x86
+<p>
+Format of buffer on return:
+<a name=table1526></a>
+Offset  Size    Description     (Table 01526)
+00h  4 BYTEs   signature "IABH"
+---if function 81h---
+(no additional fields)
+---if function 82h---
+04h    DWORD   pointer to API entry point (see INT 2F/AX=FBA1h/BX=0082h)
+---if function 84h---
+04h    WORD    success indicator
+06h    WORD    segment of ???
+08h    WORD    segment of ??? memory block to free if nonzero
+0Ah    WORD    segment of ??? memory block to free if nonzero
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2858.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2860.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

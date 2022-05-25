@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AH=59h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AH=59h - LIM EMS 4.0 - GET EXPANDED MEMORY HARDWARE INFORMATION - 
+AH = 59h
+AL = subfunction
+00h get hardware configuration array
+ES:DI - buffer to be filled with array (see #03655)
+01h get unallocated raw page count
+Return: BX = unallocated raw pages
+DX = total raw pages
+Return: AH = status (see also AH=58hEMS 4.0)
+A4h access denied by operating system
+Note:  subfunction 00h is for use by operating systems only, and can be
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AH=59h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7442.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7444.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LIM EMS 4.0 - GET EXPANDED MEMORY HARDWARE INFORMATION</font></h3>
+<PRE>
+AH = 59h
+AL = subfunction
+00h get hardware configuration array
+ES:DI -> buffer to be filled with array <a href="rb-7443.htm#Table3655">(see #03655)</a>
+01h get unallocated raw page count
+<p><b>Return:</b><br>BX = unallocated raw pages
+DX = total raw pages<br>
+<p><b>Return:</b><br>AH = status (see also AH=58h"EMS 4.0")
+A4h access denied by operating system
+</PRE>
+<p><b>Note:</b>
+Subfunction 00h is for use by operating systems only, and can be
+enabled or disabled at any time by the operating system
+<PRE>
+<p>
+Format of EMS hardware configuration array:
+<a name=table3655></a>
+Offset  Size    Description     (Table 03655)
+00h    WORD    size of raw EMM pages in paragraphs
+02h    WORD    number of alternate register sets
+04h    WORD    size of mapping-context save area in bytes
+06h    WORD    number of register sets assignable to DMA
+08h    WORD    DMA operation type
+0000h DMA with alternate register sets
+0001h only one DMA register set
+</PRE>
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7442.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7444.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

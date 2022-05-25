@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AH=13h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AH=13h - VIDEO - WRITE STRING (AT and later,EGA) - 
+AH = 13h
+AL = write mode
+bit 0: update cursor after writing
+bit 1: string contains alternating characters and attributes
+bits 2-7: reserved (0)
+BH = page number
+BL = attribute if string contains only characters
+CX = number of characters in string
+DH,DL = row,column at which to start writing
+ES:BP - string to write
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AH=13h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0209.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0211.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - WRITE STRING (AT and later,EGA)</font></h3>
+<PRE>
+AH = 13h
+AL = write mode
+<p><b>bit 0:</b><br>Update cursor after writing
+<p><b>bit 1:</b><br>String contains alternating characters and attributes
+<p><b>bits 2-7:</b><br>Reserved (0).
+BH = page number.
+BL = attribute if string contains only characters.
+CX = number of characters in string.
+DH,DL = row,column at which to start writing.
+ES:BP -> string to write<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Notes:</b>
+Recognizes CR, LF, BS, and bell; for the ET4000 BIOS, scrolling,
+backspace, and CR only take place in the active page.
+Also available PC or XT with EGA or higher.
+HP 95LX only supports write mode 00h.
+IBM documents AL=10h,11h,20h,21h as "private" rather than "reserved".
+With PhysTechSoft's PTS ROM-DOS the AL,BH,BL,DH, and DL values are
+ignored on entry.
+<p><b>BUG:</b>
+On the IBM VGA Adapter, any scrolling which may occur is performed on
+the active page rather than the requested page
+<p><b>See Also:</b>
+<a href="rb-0099.htm">AH=09h</a> - <a href="rb-0100.htm">AH=0Ah</a> - <a href="rb-0211.htm">AH=13h"DOS/V"</a>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0209.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0211.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

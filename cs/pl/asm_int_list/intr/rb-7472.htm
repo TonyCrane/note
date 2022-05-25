@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AX=5DEBh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AX=5DEBh - RM386 - V86-MODE I/O TRAPPING PORT CONTROL - 
+AX = 5DEBh
+BX = function
+00h disable V86-mode trapping for specified port
+01h enable V86-mode trapping for specified port
+02h get V86-mode trapping state for specified port
+DX = port for which to enable/disable/query trapping
+Return: AH = status
+00h successful
+BX = current trapping state (00h off, 01h on) (function 02)
+A7h invalid port ID
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AX=5DEBh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7471.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7473.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>RM386 - V86-MODE I/O TRAPPING PORT CONTROL</font></h3>
+<PRE>
+AX = 5DEBh
+BX = function
+00h disable V86-mode trapping for specified port
+01h enable V86-mode trapping for specified port
+02h get V86-mode trapping state for specified port
+DX = port for which to enable/disable/query trapping<br>
+<p><b>Return:</b><br>AH = status
+00h successful
+BX = current trapping state (00h off, 01h on) (function 02)
+A7h invalid port ID
+A8h reserved port--cannot trap/untrap (DMA/INT/KBD controllers)
+</PRE>
+<p><b>Notes:</b>
+RM386 traps this function on the initial transition to protected
+mode caused by the INT instruction, which means it can not be
+overridden simply by hooking the interrupt
+<p><b>See Also:</b>
+<a href="rb-7471.htm">AX=5DEAh</a>
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7471.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7473.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

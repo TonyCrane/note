@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=D1h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=D1h - Novell NetWare - FILE SERVER - SEND CONSOLE BROADCAST - 
+AH = E3h subfn D1h
+DS:SI - request buffer (see #02022)
+ES:DI - reply buffer (see #02024)
+Return: AL = status (00h,C6h) (see #02025)
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have console operator privileges
+the broadcast message will not be received by workstations which have
+disabled broadcasts with AH=E1h/SF=02h
+SeeAlso: AH=E1h/SF=02h,AH=E1h/SF=09h,AH=E3h/SF=C8h,AH=E3h/SF=D3h
+SeeAlso: AX=F217h/SF=D1h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=D1h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3556.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3558.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - SEND CONSOLE BROADCAST</font></h3>
+<PRE>
+AH = E3h subfn D1h
+DS:SI -> request buffer <a href="rb-3557.htm#Table2022">(see #02022)</a>
+ES:DI -> reply buffer <a href="rb-3558.htm#Table2024">(see #02024)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02025)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have console operator privileges.
+The broadcast message will not be received by workstations which have
+disabled broadcasts with AH=E1h/SF=02h
+<p><b>See Also:</b>
+<a href="rb-3447.htm">AH=E1h/SF=02h</a> - <a href="rb-3454.htm">AH=E1h/SF=09h</a> - <a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3559.htm"
+<p><b>See Also:</b>
+<a href="rb-3813.htm">AX=F217h/SF=D1h</a>
+<PRE>
+<p>
+Format of NetWare "Send Console Broadcast" request buffer:
+<a name=table2022></a>
+Offset  Size    Description     (Table 02022)
+00h    WORD    length of following data (max A2h)
+02h    BYTE    D1h (subfunction "Send Console Broadcast")
+03h    BYTE    number of connections to receive message
+00h = all, else specific list below
+04h  N BYTEs   connection list.
+BYTE    length of message (max 3Ch)
+N BYTEs   message
+</PRE>
+<p><b>See Also:</b>
+#02024
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3556.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3558.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

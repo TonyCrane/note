@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=7001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=7001h - License Service API - REQUEST LICENSE - 
+AX = 7001h
+CX = license server index (0000h to 001Fh)
+DS:DX - SLSREQUEST structure (see #02850)
+Return: AX = status
+0000h success
+else provider error code
+ES:BX = provider specific handle for the license context
+SeeAlso: AX=7002h,AX=7004h,AX=7005h
+Format of License Service SLSREQUEST structure:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=7001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4918.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4920.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>License Service API - REQUEST LICENSE</font></h3>
+<PRE>
+AX = 7001h
+CX = license server index (0000h to 001Fh)
+DS:DX -> SLSREQUEST structure <a href="rb-4919.htm#Table2850">(see #02850)</a><br>
+<p><b>Return:</b><br>AX = status
+0000h success
+else  provider error code
+ES:BX = provider specific handle for the license context
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4920.htm">AX=7002h</a> - <a href="rb-4922.htm">AX=7004h</a> - <a href="rb-4923.htm">AX=7005h</a>
+<PRE>
+<p>
+Format of License Service SLSREQUEST structure:
+<a name=table2850></a>
+Offset  Size    Description     (Table 02850)
+00h    DWORD   (ret) status code
+04h    DWORD   (ret) handle identifying context
+08h    DWORD   (call) address of Publisher string
+0Ch    DWORD   (call) address of Product string
+10h    DWORD   (call) address of Version string
+14h    DWORD   units required
+18h    DWORD   address of comment string
+1Ch    DWORD   address of SLSCHALLENGE structure <a href="rb-4919.htm#Table2851">(see #02851)</a>
+<p>
+Format of License Service SLSCHALLENGE structure:
+<a name=table2851></a>
+Offset  Size    Description     (Table 02851)
+00h    DWORD   algorithm (currently always 1)
+04h    DWORD   secret to be challenged (1-255)
+08h    DWORD   size of challenge in bytes (1-255)
+0Ch  N BYTEs   challenge data
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4918.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4920.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

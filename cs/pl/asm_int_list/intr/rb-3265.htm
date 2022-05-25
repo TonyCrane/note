@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=91h/CX=FFFFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=91h/CX=FFFFh - PTS-DOS 6.51 & S/DOS 1.0 - DIRECT DISK WRITE - 
+AH = 91h
+CX = FFFFh (for partitions 32 Mb)
+DS:BX - request block (see #04094)
+CX = sector count (for partitions 32 Mb)
+DX = starting sector number
+DS:BX - buffer
+Return: CF set on error
+AX error code
+CF clear on success
+Note:  This function is supported by Paragon Technology Systems S/DOS 1.0
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=91h/CX=FFFFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3264.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3266.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PTS-DOS 6.51 & S/DOS 1.0 - DIRECT DISK WRITE</font></h3>
+<PRE>
+AH = 91h
+CX = FFFFh (for partitions > 32 Mb)
+DS:BX -> request block <a href="rb-3262.htm#Table4094">(see #04094)</a>
+CX = sector count (for partitions < 32 Mb)
+DX = starting sector number
+DS:BX -> buffer<br>
+<p><b>Return:</b><br>CF set on error
+AX error code
+CF clear on success
+</PRE>
+<p><b>Note:</b>
+This function is supported by Paragon Technology Systems S/DOS 1.0
+(and most probably by PTS-DOS 6.51, maybe even earlier)..
+To access big partitions (> 32 Mb), CX != FFFFh is not allowed and
+the buffer must always be used. Otherwise, the system will return
+error code 0207h..
+It is currently unknown if this function is also supported by
+PhysTechSoft PTS-DOS 6.60, 6.70, or 2000.
+<p><b>See Also:</b>
+<a href="rb-2584.htm">INT 21/Ah=90h"PTS"</a> - INT 25h - INT 26h
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3264.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3266.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

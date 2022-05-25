@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=41h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=41h - DOS 2+ - UNLINK - DELETE FILE - 
+AH = 41h
+DS:DX - ASCIZ filename (no wildcards, but see notes)
+CL = attribute mask for deletion (server call only, see notes)
+Return: CF clear if successful
+AX destroyed (DOS 3.3) AL seems to be drive of deleted file
+CF set on error
+AX = error code (02h,03h,05h) (see #01680 at AH=59h/BX=0000h)
+Notes: (DOS 3.1+) wildcards are allowed if invoked via AX=5D00h, in which case
+the filespec must be canonical (as returned by AH=60h), and only
+files matching the attribute mask in CL are deleted
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=41h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2796.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2798.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - UNLINK - DELETE FILE</font></h3>
+<PRE>
+AH = 41h
+DS:DX -> ASCIZ filename (no wildcards, but see notes)
+CL = attribute mask for deletion (server call only, see notes)<br>
+<p><b>Return:</b><br>CF clear if successful
+AX destroyed (DOS 3.3) AL seems to be drive of deleted file
+CF set on error
+AX = error code (02h,03h,05h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+(DOS 3.1+) wildcards are allowed if invoked via AX=5D00h, in which case
+the filespec must be canonical (as returned by AH=60h), and only
+files matching the attribute mask in CL are deleted.
+DR DOS 5.0-6.0 returns error code 03h if invoked via AX=5D00h; DR DOS
+3.41 crashes if called via AX=5D00h with wildcards.
+DOS does not erase the file's data; it merely becomes inaccessible
+because the FAT chain for the file is cleared.
+Deleting a file which is currently open may lead to filesystem
+corruption.  Unless SHARE is loaded, DOS does not close the handles
+referencing the deleted file, thus allowing writes to a nonexistant
+file..
+Under DR DOS and DR Multiuser DOS, this function will fail if the file
+is currently open.
+Under the FlashTek X-32 DOS extender, the pointer is in DS:EDX
+<p><b>BUG:</b>
+DR DOS 3.41 crashes if called via AX=5D00h
+<p><b>See Also:</b>
+<a href="rb-2578.htm">AH=13h</a> - <a href="rb-2803.htm">AX=4301h</a> - <a href="rb-2816.htm">AX=4380h</a> - <a href="rb-3017.htm">AX=5D00h</a> - <
+<p><b>See Also:</b>
+<a href="rb-4324.htm">INT 2F/AX=1113h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2796.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2798.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

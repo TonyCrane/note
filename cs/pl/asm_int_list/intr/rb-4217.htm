@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2D
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2D - AMIS v3.0+ - UNINSTALL - 
+AL = 02h
+AH = multiplex number for program
+DX:BX = return address for successful uninstall (may be ignored by TSR)
+Return: AL = status
+00h not implemented (makes TSR non-compliant with specification)
+01h unsuccessful
+02h can not uninstall yet, will do so when able
+03h safe to remove, but no resident uninstaller
+(TSR still enabled)
+BX = segment of memory block with resident code
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2D
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4216.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4218.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AMIS v3.0+ - UNINSTALL</font></h3>
+<PRE>
+AL = 02h
+AH = multiplex number for program
+DX:BX = return address for successful uninstall (may be ignored by TSR)<br>
+<p><b>Return:</b><br>AL = status
+00h not implemented (makes TSR non-compliant with specification)
+01h unsuccessful
+02h can not uninstall yet, will do so when able
+03h safe to remove, but no resident uninstaller
+(TSR still enabled)
+BX = segment of memory block with resident code
+04h safe to remove, but no resident uninstaller
+(TSR now disabled)
+BX = segment of memory block with resident code
+05h not safe to remove now, try again later
+06h disabled, but can not be removed from memory
+because loaded from CONFIG.SYS
+07h safe to remove, but no resident device-driver
+uninstaller.  Caller must unlink device
+drivers from DOS device chain as well as
+unhooking interrupts and freeing memory
+BX = segment of memory block with resident code
+FFh successful
+return at DX:BX with AX destroyed if successful and TSR honors
+specific return address
+</PRE>
+<p><b>Note:</b>
+This function is not valid unless a program is installed on the
+specified multiplex number; use INT 2D/AL=00h to check
+<p><b>See Also:</b>
+INT 2D/AL=00h - INT 2D/AL=01h - INT 2D/AL=03h - INT 2D/AL=04h - INT 2D/AL=05h
+<p><b>See Also:</b>
+INT 2D/AL=06h
+<PRE>
+<p><b>Index:</b><br>Uninstall;Alternate Multiplex Interrupt Specification|uninstall;AMIS
+</PRE>
+<p>
+<b>Category: <a href="cat-042.htm">
+TSR Libraries</a>
+- <a href="int-2D.htm">
+Int 2Dh</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4216.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4218.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

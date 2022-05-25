@@ -1,0 +1,77 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AH=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AH=01h - DOS 2.x only PRINT.COM - REMOVE FILE FROM PRINT QUEUE - 
+AH = 01h
+DS:DX - FCB (see #01345 at INT 21/AH=0Fh) for file to be canceled
+Return: AH = number of files currently in print queue
+AL = 00h (successful)
+ES:BX - print queue (10 FCBs; first byte of FFh indicates unused)
+ES:DX - currently-printing FCB (if DX=FFFFh, none printing)
+Notes: DOS 2.x PRINT.COM does not chain to previous INT 2F handler
+values in AH other than 00h or 01h cause PRINT to return the number of
+files in the queue in AH
+SeeAlso: AH=00hPRINT.COM,AX=0103h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AH=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4258.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4260.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2.x only PRINT.COM - REMOVE FILE FROM PRINT QUEUE</font></h3>
+<PRE>
+AH = 01h
+DS:DX -> FCB <a href="rb-0000.htm#Table0"></a>(see #01345 at INT 21/AH=0Fh) for file to be canceled<br>
+<p><b>Return:</b><br>AH = number of files currently in print queue
+AL = 00h (successful)
+ES:BX -> print queue (10 FCBs; first byte of FFh indicates unused)
+ES:DX -> currently-printing FCB (if DX=FFFFh, none printing)
+</PRE>
+<p><b>Notes:</b>
+DOS 2.x PRINT.COM does not chain to previous INT 2F handler.
+Values in AH other than 00h or 01h cause PRINT to return the number of
+files in the queue in AH
+<p><b>See Also:</b>
+<a href="rb-4255.htm">AH=00h"PRINT.COM"</a> - <a href="rb-4265.htm">AX=0103h</a>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4258.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4260.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

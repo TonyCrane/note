@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=5305h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=5305h - Advanced Power Management v1.0+ - CPU IDLE - 
+AX = 5305h
+Return: CF clear if successful (after system leaves idle state)
+CF set on error
+AH = error code (03h,0Bh) (see #00473)
+Notes: call when the system is idle and should be suspended until the next
+system event or interrupt
+should not be called from within a hardware interrupt handler to avoid
+reentrance problems
+if an interrupt causes the system to resume normal processing, the
+interrupt may or may not have been handled when the BIOS returns
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=5305h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1398.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1400.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Advanced Power Management v1.0+ - CPU IDLE</font></h3>
+<PRE>
+AX = 5305h<br>
+<p><b>Return:</b><br>CF clear if successful (after system leaves idle state)
+CF set on error
+AH = error code (03h,0Bh) <a href="rb-1394.htm#Table473">(see #00473)</a>
+</PRE>
+<p><b>Notes:</b>
+Call when the system is idle and should be suspended until the next
+system event or interrupt.
+Should not be called from within a hardware interrupt handler to avoid
+reentrance problems.
+If an interrupt causes the system to resume normal processing, the
+interrupt may or may not have been handled when the BIOS returns
+from this call; thus, the caller should allow interrupts on return.
+Interrupt handlers may not retain control if the BIOS allows
+interrupts while in idle mode even if they are able to determine
+that they were called from idle mode.
+The caller should issue this call continuously in a loop until it needs
+to perform some processing of its own
+<p><b>See Also:</b>
+<a href="rb-1192.htm">AX=1000h</a> - <a href="rb-1400.htm">AX=5306h</a> - <a href="rb-4530.htm">INT 2F/AX=1680h</a>
+<p>
+<b>Category: <a href="cat-031.htm">
+Power Management</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1398.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1400.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

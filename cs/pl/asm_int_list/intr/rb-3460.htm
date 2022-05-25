@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=03h - Novell NetWare - DIRECTORY SERVICES - GET EFFECTIVE DIRECTORY RIGHTS - 
+AH = E2h subfn 03h
+DS:SI - request buffer (see #01847)
+ES:DI - reply buffer (see #01848)
+Return: AL = status (00h,98h,9Bh) (see #01839)
+Note:  this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+SeeAlso: AH=E2h/SF=01h,AH=E2h/SF=02h,AX=F216h/SF=03h
+Format of NetWare Get Effective Directory Rights (old) request buffer:
+Offset Size  Description   (Table 01847)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3459.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3461.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - GET EFFECTIVE DIRECTORY RIGHTS</font></h3>
+<PRE>
+AH = E2h subfn 03h
+DS:SI -> request buffer <a href="rb-3460.htm#Table1847">(see #01847)</a>
+ES:DI -> reply buffer <a href="rb-3460.htm#Table1848">(see #01848)</a><br>
+<p><b>Return:</b><br>AL = status (00h,98h,9Bh) (see #01839)
+</PRE>
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3458.htm">AH=E2h/SF=01h</a> - <a href="rb-3459.htm">AH=E2h/SF=02h</a> - <a href="rb-3672.htm">AX=F216h/SF=03h</a>
+<PRE>
+<p>
+Format of NetWare "Get Effective Directory Rights (old)" request buffer:
+<a name=table1847></a>
+Offset  Size    Description     (Table 01847)
+00h    WORD    length of following data (max 102h)
+02h    BYTE    03h (subfunction "Get Effective Directory Rights (old)")
+03h    BYTE    directory handle
+04h    BYTE    length of directory path (00h-FFh)
+05h  N BYTEs   directory path
+</PRE>
+<p><b>See Also:</b>
+#01848 - #01850
+<PRE>
+<p>
+Format of NetWare "Get Effective Directory Rights" reply buffer:
+<a name=table1848></a>
+Offset  Size    Description     (Table 01848)
+00h    WORD    (call) 0001h (length of following data buffer)
+02h    BYTE    effective directory rights <a href="rb-3460.htm#Table1849">(see #01849)</a>
+</PRE>
+<p><b>See Also:</b>
+#01847
+<PRE>
+<p>
+Bitfields for NetWare directory rights:
+<a name=table1849></a>
+Bit(s)  Description     (Table 01849)
+0      reading allowed
+1      writing allowed
+2      opens allowed
+3      file creation allowed
+4      deletion allowed
+5      "parental" may create/delete subdirectories and grant/revoke trustee
+rights
+6      directory search allowed
+7      file attributes may be changed
+</PRE>
+<p><b>See Also:</b>
+#01848 - #01850
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3459.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3461.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

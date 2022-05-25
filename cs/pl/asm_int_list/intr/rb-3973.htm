@@ -1,0 +1,150 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=01h - Novell NetWare v4+ - GET CACHE INFORMATION - 
+AX = F27Bh subfn 01h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02490)
+ES:DI - reply buffer (see #02491)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+SeeAlso: AX=F27Bh/SF=02h
+Format of NetWare Get Cache Information request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3972.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3974.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET CACHE INFORMATION</font></h3>
+<PRE>
+AX = F27Bh subfn 01h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3973.htm#Table2490">(see #02490)</a>
+ES:DI -> reply buffer <a href="rb-3973.htm#Table2491">(see #02491)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3974.htm">AX=F27Bh/SF=02h</a>
+<PRE>
+<p>
+Format of NetWare "Get Cache Information" request buffer:
+<a name=table2490></a>
+Offset  Size    Description     (Table 02490)
+00h    WORD    0001h (length of following data)
+02h    BYTE    01h (subfunction "Get Cache Information")
+</PRE>
+<p><b>See Also:</b>
+#02491
+<PRE>
+<p>
+Format of NetWare "Get Cache Information" reply buffer:
+<a name=table2491></a>
+Offset  Size    Description     (Table 02491)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    DWORD   "readExistingBlockCount"
+0Ch    DWORD   "readExistingWriteWaitCount"
+10h    DWORD   "readExistingPartialReadCount"
+14h    DWORD   "readExistingReadErrorCount"
+18h    DWORD   "writeBlockCount"
+1Ch    DWORD   "writeEntireBlockCount"
+20h    DWORD   "getDiskCount"
+24h    DWORD   "getDiskNeedToAllocCount"
+28h    DWORD   "getDiskSomeoneBeatMeCount"
+2Ch    DWORD   "getDiskPartialReadCount"
+30h    DWORD   "getDiskReadErrorCount"
+34h    DWORD   "getAsyncDiskCount"
+38h    DWORD   "getAsyncDiskNeedToAlloc"
+3Ch    DWORD   "getAsyncDiskSomeoneBeatMe"
+40h    DWORD   "errorDoingAsyncReadCount"
+44h    DWORD   "getDiskNoReadCount"
+48h    DWORD   "getDiskNoReadAllocCount"
+4Ch    DWORD   "getDiskNoReadSomeoneBeatMeCount"
+50h    DWORD   "diskWriteCount"
+54h    DWORD   "diskWriteAllocCount"
+58h    DWORD   "diskWriteSomeoneBeatMeCount"
+5Ch    DWORD   "writeErrorCount"
+60h    DWORD   "waitOnSemaphoreCount"
+64h    DWORD   "allocBlockWaitForSomeoneCount"
+68h    DWORD   "allocBlockCount"
+6Ch    DWORD   "allocBlockWaitCount"
+70h    DWORD   original number of cache buffers
+74h    DWORD   current number of cache buffers
+78h    DWORD   cache dirty-block threshold
+7Ch    DWORD   "waitNodeCount"
+80h    DWORD   "waitNodeAllocFailureCount"
+84h    DWORD   "moveCacheNodeCount"
+88h    DWORD   "moveCacheNodeFromAvailCount"
+8Ch    DWORD   "accelerateCacheNodeWriteCount"
+90h    DWORD   "removeCacheNodeCount"
+94h    DWORD   "removeCacheNodeFromAvailCount"
+98h    DWORD   number of cache checks
+9Ch    DWORD   number of cache hits
+A0h    DWORD   number of dirty-cache checks
+A4h    DWORD   number of dirty-cache hits
+A8h    DWORD   "cacheUsedWhileChecking"
+ACh    DWORD   "waitForDirtyBlocksDecreaseCount"
+B0h    DWORD   "allocBlockFromAvailCount"
+B4h    DWORD   "allocBlockFromLRUCount"
+B8h    DWORD   "allocBlockAlreadyWaiting"
+BCh    DWORD   "LRUSittingTime"
+C0h    DWORD   maximum byte count
+C4h    DWORD   minimum number of cache buffers
+C8h    DWORD   minimum cache report threshold
+D0h    DWORD   "allocWaitingCount"
+D4h    DWORD   number of dirty cache blocks
+D8h    DWORD   "cacheDirtyWaitTime"
+DCh    DWORD   "maxDirtyTime"
+E0h    DWORD   number of directory cache buffers
+E4h    DWORD   "cacheByteToBlockShiftFactor"
+</PRE>
+<p><b>See Also:</b>
+#02490
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3972.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3974.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

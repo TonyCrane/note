@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AX=5DEAh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AX=5DEAh - RM386 - V86-MODE I/O PORT TRAPPING CONTROL - 
+AX = 5DEAh
+BX = function
+00h globally disable V86-mode trapping
+01h globally enable V86-mode trapping
+CL = interrupt to use for trapping
+02h get I/O trapping state
+Return: AH = status
+00h successful
+BX = current trapping state (function 02h)
+0000h disabled, 0001h enabled
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AX=5DEAh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7470.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7472.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>RM386 - V86-MODE I/O PORT TRAPPING CONTROL</font></h3>
+<PRE>
+AX = 5DEAh
+BX = function
+00h globally disable V86-mode trapping
+01h globally enable V86-mode trapping
+CL = interrupt to use for trapping
+02h get I/O trapping state<br>
+<p><b>Return:</b><br>AH = status
+00h successful
+BX = current trapping state (function 02h)
+0000h disabled, 0001h enabled
+CX = interrupt used as trap interrupt (functions 00h and 02h)
+</PRE>
+<p><b>Notes:</b>
+RM386 traps this function on the initial transition to protected
+mode caused by the INT instruction, which means it can not be
+overridden simply by hooking the interrupt.
+When I/O trapping is enabled and I/O port access occurs, RM386
+simulates an INT instruction for the specified interrupt; the
+interrupt handler is responsible for decoding the trapped instruction
+and performing the appropriate action.  INT 2C/AX=002Dh provides a
+similar but more-easily used interface.
+<p><b>See Also:</b>
+<a href="rb-7472.htm">AX=5DEBh</a> - <a href="rb-7506.htm">AH=EFh"RM386"</a> - <a href="rb-4204.htm">INT 2C/AX=002Dh</a>
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7470.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7472.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

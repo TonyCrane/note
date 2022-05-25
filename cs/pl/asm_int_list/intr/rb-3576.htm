@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=E5h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=E5h - Novell NetWare - FILE SERVER - GET CONNECTION'S USAGE STATISTICS - 
+AH = E3h subfn E5h
+DS:SI - request buffer (see #02075)
+ES:DI - reply buffer (see #02076)
+Return: AL = status (00h,C6h) (see #02053)
+Notes: this function is supported by Advanced NetWare 2.1+
+one must have console operator privileges to get statistics for logical
+connections other than one's own
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=DAh,AH=E3h/SF=DBh,AH=E3h/SF=E1h
+SeeAlso: AX=F217h/SF=E5h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=E5h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3575.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3577.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET CONNECTION'S USAGE STATISTICS</font></h3>
+<PRE>
+AH = E3h subfn E5h
+DS:SI -> request buffer <a href="rb-3576.htm#Table2075">(see #02075)</a>
+ES:DI -> reply buffer <a href="rb-3576.htm#Table2076">(see #02076)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02053)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+One must have console operator privileges to get statistics for logical
+connections other than one's own
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3566.htm">AH=E3h/SF=DAh</a> - <a href="rb-3567.htm">AH=E3h/SF=DBh</a> - <a href="rb-3573.htm"
+<p><b>See Also:</b>
+<a href="rb-3832.htm">AX=F217h/SF=E5h</a>
+<PRE>
+<p>
+Format of NetWare "Get Connection's Usage Statistics" request buffer:
+<a name=table2075></a>
+Offset  Size    Description     (Table 02075)
+00h    WORD    0003h (length of following data)
+02h    BYTE    E5h (subfunction "Get Connection's Usage Statistics")
+03h    WORD    (big-endian) logical connection number
+</PRE>
+<p><b>See Also:</b>
+#02076 - #02243 at AX=F217h/SF=E5h
+<PRE>
+<p>
+Format of NetWare "Get Connection's Usage Statistics" reply buffer:
+<a name=table2076></a>
+Offset  Size    Description     (Table 02076)
+00h    WORD    (call) 0014h (size of following results record)
+02h    DWORD   (big-endian) clock ticks since server started
+06h  6 BYTEs   bytes read
+0Ch  6 BYTEs   bytes written
+12h    DWORD   (big-endian) total request packets
+</PRE>
+<p><b>See Also:</b>
+#02075 - #02243 at AX=F217h/SF=E5h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3575.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3577.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

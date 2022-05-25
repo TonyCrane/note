@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=2780h/CL=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=2780h/CL=06h - Novell DOS 7 - EMM386.EXE - MULTITASKING API - DPMI SERVICES - 
+AX = 2780h
+CL = 06h
+CH = function
+00h F_InitDPMI used for internal initialization
+01h F_DescAllocLDT allocate LDT descriptor
+02h F_DescFreeLDT free LDT descriptor
+03h F_DescGetLDT get details on LDT descriptor
+04h F_DescSetLDT set up LDT descriptor
+05h F_DescAllocInt21 allocate descriptor for PM INT 21
+06h F_WhereIsDPMI get address of DPMI global data
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=2780h/CL=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4720.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4722.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell DOS 7 - EMM386.EXE - MULTITASKING API - DPMI SERVICES</font></h3>
+<PRE>
+AX = 2780h
+CL = 06h
+CH = function
+00h "F_InitDPMI" used for internal initialization
+01h "F_DescAllocLDT" allocate LDT descriptor
+02h "F_DescFreeLDT" free LDT descriptor
+03h "F_DescGetLDT" get details on LDT descriptor
+04h "F_DescSetLDT" set up LDT descriptor
+05h "F_DescAllocInt21" allocate descriptor for PM INT 21
+06h "F_WhereIsDPMI" get address of DPMI global data<br>
+<p><b>Return:</b><br>???
+</PRE>
+<p><b>Notes:</b>
+Called by DPMS.EXE and EMM386.EXE.
+The handler for this function may be set by one of the subfunctions
+of AX=2780h/CL=01h; the default handler returns AX=BX=FFFFh and
+CX=0001h <a href="rb-4716.htm#Table2739">(see #02739)</a>.
+This API is only available if AX=12FFh/BX=0EDCh returns successfully;
+because the request is handled on the initial trap to the memory
+manager caused by INT instructions, this API must be invoked with
+an actual INT 2F instruction instead of some simulation such as a
+far call to the address in the interrupt vector table
+<p><b>See Also:</b>
+<a href="rb-4452.htm">AX=12FFh/BX=0EDCh</a> - <a href="rb-4716.htm">AX=2780h/CL=01h</a> - <a href="rb-4717.htm">AX=2780h/CL=02h</a> - <a href=http://www.ctyme.com/intr/rb-
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4720.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4722.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

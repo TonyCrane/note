@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=32h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=32h - Novell NetWare - BINDERY SERVICES - CREATE BINDERY OBJECT - 
+AH = E3h subfn 32h
+DS:SI - request buffer (see #01921)
+ES:DI - reply buffer (see #01922)
+Return: AL = status (see #01920)
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=E3h/SF=33h,AH=E3h/SF=34h,AH=E3h/SF=38h,AH=E3h/SF=39h
+SeeAlso: AX=F217h/SF=32h
+(Table 01920)
+Values for NetWare function status:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=32h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3498.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3500.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - BINDERY SERVICES - CREATE BINDERY OBJECT</font></h3>
+<PRE>
+AH = E3h subfn 32h
+DS:SI -> request buffer <a href="rb-3499.htm#Table1921">(see #01921)</a>
+ES:DI -> reply buffer <a href="rb-3499.htm#Table1922">(see #01922)</a><br>
+<p><b>Return:</b><br>AL = status (see #01920)
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3500.htm">AH=E3h/SF=33h</a> - <a href="rb-3501.htm">AH=E3h/SF=34h</a> - <a href="rb-3505.htm">AH=E3h/SF=38h</a> - <a href="rb-3506.htm"
+<p><b>See Also:</b>
+<a href="rb-3738.htm">AX=F217h/SF=32h</a>
+<PRE>
+<p>
+<a name=table1920></a>
+(Table 01920)
+Values for NetWare function status:
+00h    successful
+96h    server out of memory
+EEh    object already exists
+EFh    invalid name
+F0h    wildcard not allowed
+F1h    invalid bindery security level
+F3h    not permitted to rename object
+F4h    not permitted to delete objects
+F5h    not permitted to create objects
+FCh    no such object
+FEh    server bindery locked
+FFh    bindery failure
+</PRE>
+<p><b>See Also:</b>
+#01902 - #01927
+<PRE>
+<p>
+Format of NetWare "Create Bindery Object" request buffer:
+<a name=table1921></a>
+Offset  Size    Description     (Table 01921)
+00h    WORD    length of following data (max 35h)
+02h    BYTE    32h (subfunction "Create Bindery Object")
+03h    BYTE    object flag (00h static, 01h dynamic)
+04h    BYTE    object security levels
+05h    WORD    (big-endian) type of object
+07h    BYTE    length of object's name
+08h  N BYTEs   object's name
+</PRE>
+<p><b>See Also:</b>
+#01922
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1922></a>
+Offset  Size    Description     (Table 01922)
+00h    WORD    0000h (no data returned)
+</PRE>
+<p><b>See Also:</b>
+#01921 - #01923 - #01924
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3498.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3500.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

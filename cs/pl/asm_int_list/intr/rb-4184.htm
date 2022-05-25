@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2C/AX=000Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2C/AX=000Fh - Cloaking v1.01 - Simulate_Shell_Event - 
+AX = 000Fh
+ECX = event code (see #02560)
+DX = subfunction for event
+EDX high word = boost value (see #02561)
+SI:EDI - completion procedure
+Return: CF clear if successful (event scheduled)
+CF set on error
+Note:  this function is only available while MS Windows is running
+SeeAlso: AX=0011h,AX=0012h,INT 2F/AX=1605h,INT 2F/AX=4310hCloaking
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2C/AX=000Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4183.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4185.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Cloaking v1.01 - Simulate_Shell_Event</font></h3>
+<PRE>
+AX = 000Fh
+ECX = event code <a href="rb-4184.htm#Table2560">(see #02560)</a>
+DX = subfunction for event
+EDX high word = boost value <a href="rb-4184.htm#Table2561">(see #02561)</a>
+SI:EDI -> completion procedure<br>
+<p><b>Return:</b><br>CF clear if successful (event scheduled)
+CF set on error
+</PRE>
+<p><b>Note:</b>
+This function is only available while MS Windows is running
+<p><b>See Also:</b>
+<a href="rb-4185.htm">AX=0011h</a> - <a href="rb-4186.htm">AX=0012h</a> - <a href="rb-4498.htm">INT 2F/AX=1605h</a> - <a href="rb-4769.htm">INT 2F/
+<PRE>
+<p>
+<a name=table2560></a>
+(Table 02560)
+Values for Cloaking shell event code:
+0414h  Hot key event.
+<p><b>Subevent 0000h:</b><br>Alt-Space.
+<p><b>Subevent 0001h:</b><br>Alt-Enter.
+<p><b>Subevent 0002h:</b><br>Dir-VM
+0415h  Switch context.
+Subevent 0000h for DOS VM context, nonzero for System VM context
+0416h  Clipboard event
+0417h  Termination event.
+Subevent 0000h for normal termination, nonzero for error
+0418h  Display message.
+Subevent 0000h for normal message, nonzero for system model ASAP
+0419h  Crash
+041Ah  Paste complete.
+<p><b>Subevent 0000h:</b><br>Normal.
+<p><b>Subevent 0001h:</b><br>Cancelled by user.
+<p><b>Subevent 0002h:</b><br>Cancelled
+041Bh  Contention event
+041Ch  Screen switch.
+<p><b>Subevent 0000h:</b><br>Forward.
+<p><b>Subevent 0001h:</b><br>Back
+041Dh  Filesystem change
+041Eh  Check Focus
+041Fh  Panic
+<p>
+Bitfields for boost value:
+<a name=table2561></a>
+Bit(s)  Description     (Table 02561)
+0      boost system VM until focus changes
+1      boost system VM on Switcher screen
+2      boost system VM until response
+3      boost system VM during clipboard activity
+4      boost system VM during print screen
+5      boost system VM during update
+</PRE>
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2C.htm">
+Int 2Ch</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4183.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4185.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F223h/SF=08h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F223h/SF=08h - Novell NetWare v2+ - AFP OPEN FILE FORK - 
+AX = F223h subfn 08h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02317)
+ES:DI - reply buffer (see #02318)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F223h/SF=01h,AX=F223h/SF=05h,AX=F223h/SF=09h
+Format of NetWare AFP Open File Fork request packet:
+Offset Size  Description   (Table 02317)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F223h/SF=08h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3876.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3878.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2+ - AFP OPEN FILE FORK</font></h3>
+<PRE>
+AX = F223h subfn 08h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3877.htm#Table2317">(see #02317)</a>
+ES:DI -> reply buffer <a href="rb-3877.htm#Table2318">(see #02318)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3870.htm">AX=F223h/SF=01h</a> - <a href="rb-3874.htm">AX=F223h/SF=05h</a> - <a href="rb-3878.htm">AX=F223h/SF=09h</a>
+<PRE>
+<p>
+Format of NetWare "AFP Open File Fork" request packet:
+<a name=table2317></a>
+Offset  Size    Description     (Table 02317)
+00h    WORD    (big-endian) length of following data
+02h    BYTE    08h (subfunction "AFP Open File Fork")
+03h    BYTE    volume number
+04h    DWORD   AFP entry ID
+08h    BYTE    fork indicator (00h = data fork, 01h = resource fork)
+09h    BYTE    access mode
+<p><b>bit 0:</b><br>Read
+<p><b>bit 1:</b><br>Write
+<p><b>bit 2:</b><br>Deny read access to others
+<p><b>bit 3:</b><br>Deny write access to others
+<p><b>bit 4:</b><br>Compatibility mode (should be set)
+0Ah    BYTE    path length
+0Bh  N BYTEs   AFP-style pathname (relative to AFP entry ID)
+</PRE>
+<p><b>See Also:</b>
+#02318
+<PRE>
+<p>
+Format of NetWare "AFP Open File Fork" reply packet:
+<a name=table2318></a>
+Offset  Size    Description     (Table 02318)
+00h    DWORD   AFP entry ID for newly-opened file fork
+04h    DWORD   length of opened fork
+08h  6 BYTEs   NetWare file handle
+</PRE>
+<p><b>See Also:</b>
+#02317
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3876.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3878.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

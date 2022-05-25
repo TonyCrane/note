@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=12h/BH=13h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=12h/BH=13h - DESQview 2.50+ - SEND MESSAGE - READINTO - GET NEXT MAIL MESSAGE - 
+AH = 12h
+BH = 13h
+BL = mailbox from which to read
+00h DWORD on top of stack is mailbox handle
+02h use given task's mailbox (task's handle on top of stack)
+03h use current task's default mailbox
+STACK: DWORD size of buffer in bytes
+DWORD pointer to buffer
+Return: STACK: DWORD number of bytes read
+Program: DESQview 2.5x is distributed as part of DESQview/X 1.0x
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=12h/BH=13h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1262.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1264.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview 2.50+ - SEND MESSAGE - READINTO - GET NEXT MAIL MESSAGE</font></h3>
+<PRE>
+AH = 12h
+BH = 13h
+BL = mailbox from which to read
+00h DWORD on top of stack is mailbox handle
+02h use given task's mailbox (task's handle on top of stack)
+03h use current task's default mailbox.
+<p><b>STACK:</b><br>DWORD size of buffer in bytes
+DWORD pointer to buffer<br>
+<p><b>Return:</b><br>STACK: DWORD number of bytes read
+</PRE>
+<p><b>Program:</b>
+DESQview 2.5x is distributed as part of DESQview/X 1.0x
+<p><b>Notes:</b>
+This call blocks if no input is available, but will return less than
+the requested number of bytes if some (but insufficient) data is
+available.
+Use this call instead of AH=12h/BH=04h if the mailbox has flag bits
+4 or 5 set, as common memory may be exhausted by that call when
+attempting to read the next message
+<p><b>See Also:</b>
+<a href="rb-1149.htm">AH=12h/BH=04h"READ"</a> - <a href="rb-1238.htm">AH=12h/BH=05h</a> - <a href="rb-1268.htm">AH=12h/BH=16h</a>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1262.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1264.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

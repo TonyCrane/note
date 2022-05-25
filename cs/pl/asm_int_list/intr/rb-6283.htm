@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 4D/AH=03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 4D/AH=03h - TI Professional PC - DISK - WRITE SECTOR(S) FROM MEMORY - 
+AH = 03h
+AL = number of sectors to write (must be nonzero)
+CH = low eight bits of cylinder number
+CL = sector number 1-63 (bits 0-5)
+high two bits of cylinder (bits 6-7, hard disk only)
+DH = head number
+DL = drive number (bit 7 set for hard disk)
+ES:BX - buffer containing data
+Return: CF set on error
+if AH = 11h (corrected ECC error), AL = burst length
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 4D/AH=03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6282.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6284.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TI Professional PC - DISK - WRITE SECTOR(S) FROM MEMORY</font></h3>
+<PRE>
+AH = 03h
+AL = number of sectors to write (must be nonzero)
+CH = low eight bits of cylinder number
+CL = sector number 1-63 (bits 0-5)
+high two bits of cylinder (bits 6-7, hard disk only)
+DH = head number
+DL = drive number (bit 7 set for hard disk)
+ES:BX -> buffer containing data<br>
+<p><b>Return:</b><br>CF set on error
+if AH = 11h (corrected ECC error), AL = burst length
+CF clear if successful
+AH = status <a href="rb-0000.htm#Table0"></a>(see #00234 at INT 13/AH=01h)
+AL = number of sectors transferred
+ES:BX -> buffer for last sector processed (including one with errors)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6280.htm">AH=00h</a> - <a href="rb-6281.htm">AH=01h</a> - <a href="rb-6282.htm">AH=02h</a> - <a href="rb-6284.htm">AH=04h</a> - <a "http://www.ctyme.com/intr/href"
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-4D.htm">
+Int 4Dh</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6282.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6284.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

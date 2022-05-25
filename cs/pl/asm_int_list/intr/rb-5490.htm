@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=CD21h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=CD21h - InterWave Game API - OPEN GAME DEVICE - 
+AX = CD21h
+BX = installed program identifier
+ES:DI - ASCIZ device name
+MIDISIMPLE
+MIDICOMPLEX
+DIRECTCODEC
+Return: AL = status
+00h successful
+DX = device handle
+---MIDISIMPLE and MIDICOMPLEX---
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=CD21h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5489.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5491.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>InterWave Game API - OPEN GAME DEVICE</font></h3>
+<PRE>
+AX = CD21h
+BX = installed program identifier
+ES:DI -> ASCIZ device name
+"MIDISIMPLE"
+"MIDICOMPLEX"
+"DIRECTCODEC"<br>
+<p><b>Return:</b><br>AL = status
+00h successful
+DX = device handle
+---MIDISIMPLE and MIDICOMPLEX---
+BX = real-mode interrupt number <a href="rb-0000.htm#Table0"></a>(see #03074,#03075)
+---DIRECTCODEC---
+BX = base port
+CL = IRQ
+CH = DMA channel (04h = no DMA)
+SI = size of FIFO in bytes (0000h = use DMA)
+nonzero failed (not supported or already in use)
+AH may be destroyed
+<p><b>Range:</b><br>AH=CDh-ECh, selected by scanning for an available multiplex number
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5463.htm">AX=CD00h"InterWave"</a> - <a href="rb-5463.htm">AX=CD01h"InterWave"</a> - <a href="rb-5469.htm">AX=CD02h"InterWave"</a>
+<p><b>See Also:</b>
+<a href="rb-5478.htm">AX=CD05h"InterWave"</a> - <a href="rb-5491.htm">AX=CD22h"InterWave"</a> - <a href="rb-5492.htm">AX=CD80h"InterWave"</a>
+<PRE>
+<p>
+<a name=table3074></a>
+(Table 03074)
+Call MIDISIMPLE with:.
+EAX = function number
+0001h MIDI byte out
+BL = MIDI byte to send
+0002h MIDI string out
+ECX = length of MIDI string in bytes
+ES:EDI -> MIDI string to send (should not include timing info).
+DX = device handle.
+INT xxh (as returned by AX=CD21h)<br>
+<p><b>Return:</b><br>EAX = status
+00000000h if successful
+FFFFFFFFh on error (bad handle)
+</PRE>
+<p><b>See Also:</b>
+#03075 - <a href="rb-7962.htm">INT 7E/AX=0001h"IWSBSDRV"</a> - <a href="rb-7963.htm">INT 7E/AX=0002h"IWSBSDRV"</a>
+<PRE>
+<p>
+<a name=table3075></a>
+(Table 03075)
+Call MIDICOMPLEX with:.
+EAX = function number
+??? (specification is still in development).
+DX = device handle.
+INT xxh (as returned by AX=CD21h)<br>
+<p><b>Return:</b><br>EAX = status
+00000000h if successful
+FFFFFFFFh on error (bad handle)
+</PRE>
+<p><b>See Also:</b>
+#03074
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5489.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5491.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

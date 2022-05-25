@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=1Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=1Ch - DOS 1+ - GET ALLOCATION INFORMATION FOR SPECIFIC DRIVE - 
+AH = 1Ch
+DL = drive (00h = default, 01h = A:, etc)
+Return: AL = sectors per cluster (allocation unit), or FFh if invalid drive
+CX = bytes per sector
+DX = total number of clusters
+DS:BX - media ID byte (see #01356)
+Notes: under DOS 1.x, DS:BX points at an actual copy of the FAT; later
+versions return a pointer to a copy of the FAT's ID byte
+on a DBLSPACE drive, the total number of clusters is based on the
+estimated compression ratio
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=1Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2590.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2592.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - GET ALLOCATION INFORMATION FOR SPECIFIC DRIVE</font></h3>
+<PRE>
+AH = 1Ch
+DL = drive (00h = default, 01h = A:, etc)<br>
+<p><b>Return:</b><br>AL = sectors per cluster (allocation unit), or FFh if invalid drive
+CX = bytes per sector
+DX = total number of clusters
+DS:BX -> media ID byte <a href="rb-2590.htm#Table1356">(see #01356)</a>
+</PRE>
+<p><b>Notes:</b>
+Under DOS 1.x, DS:BX points at an actual copy of the FAT; later
+versions return a pointer to a copy of the FAT's ID byte.
+On a DBLSPACE drive, the total number of clusters is based on the
+estimated compression ratio.
+This function may not be properly supported on CD-ROMs and other
+installable file systems (use AX=4402h"CD-ROM" for CD-ROMs
+instead)
+<p><b>BUG:</b>
+DOS 7.10 (Win95B/Win98) reportedly returns incorrect values in AL and
+DX for FAT12/FAT16 drives, even though it manages correct results
+for FAT32 drives (DOS windows are not affected, only real-mode
+DOS)
+<p><b>See Also:</b>
+<a href="rb-2590.htm">AH=1Bh</a> - <a href="rb-2751.htm">AH=36h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2590.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2592.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

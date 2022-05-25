@@ -1,0 +1,206 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=4F01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=4F01h - VESA SuperVGA BIOS - GET SuperVGA MODE INFORMATION - 
+AX = 4F01h
+CX = SuperVGA video mode (see #04082 for bitfields)
+ES:DI - 256-byte buffer for mode information (see #00079)
+Return: AL = 4Fh if function supported
+AH = status
+00h successful
+ES:DI buffer filled
+01h failed
+Desc:  determine the attributes of the specified video mode
+SeeAlso: AX=4F00h,AX=4F02h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=4F01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0273.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0275.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VESA SuperVGA BIOS - GET SuperVGA MODE INFORMATION</font></h3>
+<PRE>
+AX = 4F01h
+CX = SuperVGA video mode <a href="rb-0000.htm#Table0"></a>(see #04082 for bitfields)
+ES:DI -> 256-byte buffer for mode information <a href="rb-0274.htm#Table79">(see #00079)</a><br>
+<p><b>Return:</b><br>AL = 4Fh if function supported
+AH = status
+00h successful
+ES:DI buffer filled
+01h failed
+</PRE>
+<p><b>Desc:</b>
+Determine the attributes of the specified video mode
+<p><b>See Also:</b>
+<a href="rb-0273.htm">AX=4F00h</a> - <a href="rb-0275.htm">AX=4F02h</a>
+<PRE>
+<p>
+Bitfields for VESA/VBE video mode number:
+<a name=table4082></a>
+Bit(s)  Description     (Table 04082)
+15     preserve display memory on mode change
+14     (VBE v2.0+) use linear (flat) frame buffer
+13     (VBE/AF 1.0P) VBE/AF initializes accelerator hardware
+12     reserved for VBE/AF
+11     (VBE v3.0) user user-specified CRTC refresh rate values
+10-9   reserved for future expansion
+8-0    video mode number (0xxh are non-VESA modes, 1xxh are VESA-defined)
+<p>
+Format of VESA SuperVGA mode information:
+<a name=table79></a>
+Offset  Size    Description     (Table 00079)
+00h    WORD    mode attributes <a href="rb-0274.htm#Table80">(see #00080)</a>
+02h    BYTE    window attributes, window A <a href="rb-0274.htm#Table81">(see #00081)</a>
+03h    BYTE    window attributes, window B <a href="rb-0274.htm#Table81">(see #00081)</a>
+04h    WORD    window granularity in KB
+06h    WORD    window size in KB
+08h    WORD    start segment of window A (0000h if not supported)
+0Ah    WORD    start segment of window B (0000h if not supported)
+0Ch    DWORD   -> FAR window positioning function (equivalent to AX=4F05h)
+10h    WORD    bytes per scan line
+---remainder is optional for VESA modes in v1.0/1.1, needed for OEM modes---
+12h    WORD    width in pixels (graphics) or characters (text)
+14h    WORD    height in pixels (graphics) or characters (text)
+16h    BYTE    width of character cell in pixels
+17h    BYTE    height of character cell in pixels
+18h    BYTE    number of memory planes
+19h    BYTE    number of bits per pixel
+1Ah    BYTE    number of banks
+1Bh    BYTE    memory model type <a href="rb-0274.htm#Table82">(see #00082)</a>
+1Ch    BYTE    size of bank in KB
+1Dh    BYTE    number of image pages (less one) that will fit in video RAM
+1Eh    BYTE    reserved (00h for VBE 1.0-2.0, 01h for VBE 3.0)
+---VBE v1.2+ ---
+1Fh    BYTE    red mask size
+20h    BYTE    red field position
+21h    BYTE    green mask size
+22h    BYTE    green field size
+23h    BYTE    blue mask size
+24h    BYTE    blue field size
+25h    BYTE    reserved mask size
+26h    BYTE    reserved mask position
+27h    BYTE    direct color mode info
+<p><b>bit 0:</b><br>Color ramp is programmable
+<p><b>bit 1:</b><br>Bytes in reserved field may be used by application
+---VBE v2.0+ ---
+28h    DWORD   physical address of linear video buffer
+2Ch    DWORD   pointer to start of offscreen memory
+30h    WORD    KB of offscreen memory
+---VBE v3.0 ---
+32h    WORD    bytes per scan line in linear modes
+34h    BYTE    number of images (less one) for banked video modes
+35h    BYTE    number of images (less one) for linear video modes
+<p><b>36h    BYTE    linear modes:</b><br>Size of direct color red mask (in bits)
+<p><b>37h    BYTE    linear modes:</b><br>Bit position of red mask LSB (e.g. shift count)
+<p><b>38h    BYTE    linear modes:</b><br>Size of direct color green mask (in bits)
+<p><b>39h    BYTE    linear modes:</b><br>Bit position of green mask LSB (e.g. shift count)
+<p><b>3Ah    BYTE    linear modes:</b><br>Size of direct color blue mask (in bits)
+<p><b>3Bh    BYTE    linear modes:</b><br>Bit position of blue mask LSB (e.g. shift count)
+<p><b>3Ch    BYTE    linear modes:</b><br>Size of direct color reserved mask (in bits)
+<p><b>3Dh    BYTE    linear modes:</b><br>Bit position of reserved mask LSB
+3Eh    DWORD   maximum pixel clock for graphics video mode, in Hz
+42h 190 BYTEs  reserved (0)
+</PRE>
+<p><b>Note:</b>
+While VBE 1.1 and higher will zero out all unused bytes of the buffer,
+v1.0 did not, so applications that want to be backward compatible
+should clear the buffer before calling
+<PRE>
+<p>
+Bitfields for VESA SuperVGA mode attributes:
+<a name=table80></a>
+Bit(s)  Description     (Table 00080)
+0      mode supported by present hardware configuration
+1      optional information available (must be =1 for VBE v1.2+)
+2      BIOS output supported
+3      set if color, clear if monochrome
+4      set if graphics mode, clear if text mode
+---VBE v2.0+ ---
+5      mode is not VGA-compatible
+6      bank-switched mode not supported
+7      linear framebuffer mode supported
+8      double-scan mode available (e.g. 320x200 and 320x240)
+---VBE v3.0 ---
+9      interlaced mode available
+10     hardware supports triple buffering
+11     hardware supports stereoscopic display
+12     dual display start address support
+13-15  reserved
+---VBE/AF v1.0P---
+9      application must call EnableDirectAccess before calling bank-switching
+functions
+</PRE>
+<p><b>See Also:</b>
+#00079
+<PRE>
+<p>
+Bitfields for VESA SuperVGA window attributes:
+<a name=table81></a>
+Bit(s)  Description     (Table 00081)
+0      exists
+1      readable
+2      writable
+3-7    reserved
+</PRE>
+<p><b>See Also:</b>
+#00079
+<PRE>
+<p>
+<a name=table82></a>
+(Table 00082)
+Values for VESA SuperVGA memory model type:
+00h    text
+01h    CGA graphics
+02h    HGC graphics
+03h    16-color (EGA) graphics
+04h    packed pixel graphics
+05h    "sequ 256" (non-chain 4) graphics
+06h    direct color (HiColor, 24-bit color)
+07h    YUV (luminance-chrominance, also called YIQ)
+08h-0Fh reserved for VESA
+10h-FFh OEM memory models
+</PRE>
+<p><b>See Also:</b>
+#00079
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0273.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0275.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=12h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=12h - Novell NetWare - DIRECTORY SERVICES - ALLOC PERMANENT DIRECTORY HANDLE - 
+AH = E2h subfn 12h
+DS:SI - request buffer (see #01869)
+ES:DI - reply buffer (see #01870)
+Return: AL = status (00h,98h,9Ch) (see #01866)
+Note:  this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+SeeAlso: AH=E2h/SF=00h,AH=E2h/SF=13h,AH=E2h/SF=14h,AX=F216h/SF=12h
+Format of NetWare Allocate Permanent Directory Handle request buffer:
+Offset Size  Description   (Table 01869)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=12h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3471.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3473.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - ALLOC PERMANENT DIRECTORY HANDLE</font></h3>
+<PRE>
+AH = E2h subfn 12h
+DS:SI -> request buffer <a href="rb-3472.htm#Table1869">(see #01869)</a>
+ES:DI -> reply buffer <a href="rb-3472.htm#Table1870">(see #01870)</a><br>
+<p><b>Return:</b><br>AL = status (00h,98h,9Ch) (see #01866)
+</PRE>
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3457.htm">AH=E2h/SF=00h</a> - <a href="rb-3473.htm">AH=E2h/SF=13h</a> - <a href="rb-3474.htm">AH=E2h/SF=14h</a> - <a href="rb-3684.htm"
+<PRE>
+<p>
+Format of NetWare "Allocate Permanent Directory Handle" request buffer:
+<a name=table1869></a>
+Offset  Size    Description     (Table 01869)
+00h    WORD    length of following data (max 103h)
+02h    BYTE    12h (subfunction "Allocate Permanent Directory Handle")
+03h    BYTE    directory handle
+04h    BYTE    drive ('A'-'Z')
+05h    BYTE    length of directory path
+06h  N BYTEs   directory path
+</PRE>
+<p><b>See Also:</b>
+#01870 - #01871 - #02118
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1870></a>
+Offset  Size    Description     (Table 01870)
+00h    WORD    (call) 0002h (size of following results buffer)
+02h    BYTE    new directory handle
+03h    BYTE    effective directory rights <a href="rb-3460.htm#Table1849">(see #01849)</a>
+</PRE>
+<p><b>See Also:</b>
+#01869 - #02118
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3471.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3473.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

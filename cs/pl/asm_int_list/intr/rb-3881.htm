@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F223h/SF=0Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F223h/SF=0Ch - Novell NetWare v2+ - AFP GET ENTRY ID FROM PATHNAME - 
+AX = F223h subfn 0Ch
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02328)
+ES:DI - reply buffer (see #02329)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F223h/SF=04h,AX=F223h/SF=06h,AX=F223h/SF=12h
+Format of NetWare AFP Get Entry ID from Path Name request packet:
+Offset Size  Description   (Table 02328)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F223h/SF=0Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3880.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3882.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2+ - AFP GET ENTRY ID FROM PATHNAME</font></h3>
+<PRE>
+AX = F223h subfn 0Ch
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3881.htm#Table2328">(see #02328)</a>
+ES:DI -> reply buffer <a href="rb-3881.htm#Table2329">(see #02329)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3873.htm">AX=F223h/SF=04h</a> - <a href="rb-3875.htm">AX=F223h/SF=06h</a> - <a href="rb-3886.htm">AX=F223h/SF=12h</a>
+<PRE>
+<p>
+Format of NetWare "AFP Get Entry ID from Path Name" request packet:
+<a name=table2328></a>
+Offset  Size    Description     (Table 02328)
+00h    WORD    (big-endian) length of following data
+02h    BYTE    0Ch (subfunction "AFP Get Entry ID from Path Name")
+03h    BYTE    NetWare directory handle
+04h    BYTE    path length
+05h  N BYTEs   pathname
+</PRE>
+<p><b>See Also:</b>
+#02329
+<PRE>
+<p>
+Format of NetWare "AFP Get Entry ID from Path Name" reply packet:
+<a name=table2329></a>
+Offset  Size    Description     (Table 02329)
+00h    DWORD   AFP entry ID corresponding to specified file
+</PRE>
+<p><b>See Also:</b>
+#02328
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3880.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3882.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

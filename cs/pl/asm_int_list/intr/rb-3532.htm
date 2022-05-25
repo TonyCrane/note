@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=6Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=6Fh - Novell NetWare - QUEUE SERVICES - ATTACH QUEUE SERVER TO QUEUE - 
+AH = E3h subfn 6Fh
+DS:SI - request buffer (see #01984)
+ES:DI - reply buffer (see #01983)
+Return: AL = status (00h,96h,9Ch,D0h,D1h,D3h,DAh,DBh,FEh,FFh)
+(see also AH=E3h/SF=64h)
+FFh bindery failure, or no such property, or no such member
+Desc:  attach the calling job server to the specified queue
+Notes: this function is supported by Advanced NetWare 2.1+
+a queue may have up to 25 job servers attached
+the calling workstation must be security-equivalent to a member of the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=6Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3531.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3533.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - ATTACH QUEUE SERVER TO QUEUE</font></h3>
+<PRE>
+AH = E3h subfn 6Fh
+DS:SI -> request buffer <a href="rb-3532.htm#Table1984">(see #01984)</a>
+ES:DI -> reply buffer <a href="rb-3531.htm#Table1983">(see #01983)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,9Ch,D0h,D1h,D3h,DAh,DBh,FEh,FFh)
+(see also AH=E3h/SF=64h)
+FFh bindery failure, or no such property, or no such member
+</PRE>
+<p><b>Desc:</b>
+Attach the calling job server to the specified queue
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+A queue may have up to 25 job servers attached.
+The calling workstation must be security-equivalent to a member of the
+queue's Q_SERVERS property
+<p><b>See Also:</b>
+<a href="rb-3533.htm">AH=E3h/SF=70h</a> - <a href="rb-3534.htm">AH=E3h/SF=71h</a> - <a href="rb-3535.htm">AH=E3h/SF=72h</a> - <a href="rb-3536.htm"
+<p><b>See Also:</b>
+<a href="rb-3776.htm">AX=F217h/SF=6Fh</a>
+<PRE>
+<p>
+Format of NetWare "Attach Queue Server to Queue" request buffer:
+<a name=table1984></a>
+Offset  Size    Description     (Table 01984)
+00h    WORD    0005h (length of following data)
+02h    BYTE    6Fh (subfunction "Attach Queue Server To Queue")
+03h    DWORD   (big-endian) object ID of queue
+</PRE>
+<p><b>See Also:</b>
+#01983 - #01985
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3531.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3533.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

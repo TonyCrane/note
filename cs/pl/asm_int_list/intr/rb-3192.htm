@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=7070h/BX=6060h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=7070h/BX=6060h - PCW Weather Card interface - GET DATA SEGMENT - 
+AX = 7070h
+BX = 6060h
+CX = 7070h
+DX = 7070h
+SI = 7070h
+DI = 7070h
+Return: AX = segment of data structure (see #01776)
+Notes: the data structure is at offset 516 from this segment
+the update byte is at offset 514 from this segment. Updates are
+once per second while this byte is nonzero and it is decremented
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=7070h/BX=6060h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3191.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3193.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCW Weather Card interface - GET DATA SEGMENT</font></h3>
+<PRE>
+AX = 7070h
+BX = 6060h
+CX = 7070h
+DX = 7070h
+SI = 7070h
+DI = 7070h<br>
+<p><b>Return:</b><br>AX = segment of data structure (see #01776)
+</PRE>
+<p><b>Notes:</b>
+The data structure is at offset 516 from this segment.
+The update byte is at offset 514 from this segment.  Updates are
+once per second while this byte is nonzero and it is decremented
+once per second.  While this byte is 0 updates are once per minute.
+<p><b>See Also:</b>
+<a href="rb-3193.htm">AX=7070h/BX=7070h</a>
+<PRE>
+<p>
+Format of PCW Weather Card data structure:
+<a name=table1776></a>
+Offset  Type    Description     (Table 01776)
+00h    WORD    hour
+02h    WORD    minute
+04h    WORD    second
+06h    WORD    day
+08h    WORD    month
+0Ah    WORD    year
+0Ch    WORD    ???
+0Eh    WORD    relative barometric pressure (in 1/100 inches)
+10h    WORD    ???
+12h    WORD    ???
+14h    WORD    temperature 1 (in 1/10 degrees F)
+16h    WORD    temperature 1 lowest (in 1/10 degrees F)
+18h    WORD    temperature 1 highest (in 1/10 degrees F)
+1Ah    WORD    temperature 2 (in 1/10 degrees F)
+1Ch    WORD    temperature 2 lowest (in 1/10 degrees F)
+1Eh    WORD    temperature 2 highest (in 1/10 degrees F)
+20h    WORD    wind speed (in MPH)
+22h    WORD    average of 60 wind speed samples (in MPH)
+24h    WORD    highest wind speed (in MPH)
+26h    WORD    wind chill factor  (in 1/10 degrees F)
+28h    WORD    lowest wind chill factor (in 1/10 degrees F)
+2Ah    WORD    ???
+2Ch    WORD    wind direction (in degrees)
+2Eh    WORD    accumulated daily rainfall (in 1/10 inches)
+30h    WORD    accumulated annual rainfall (in 1/10 inches)
+</PRE>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3191.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3193.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

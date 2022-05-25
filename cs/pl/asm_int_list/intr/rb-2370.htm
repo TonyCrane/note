@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B001h/CX=4D52h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B001h/CX=4D52h - Microsoft Real-Time Compression Interface (MRCI) - ROM-BASED SERVER - 
+AX = B001h
+CX = 4D52h (MR)
+DX = 4349h (CI)
+Return: CX = 4943h (IC) if installed
+DX = 524Dh (RM) if installed
+ES:DI - MRCINFO structure (see #00725)
+Note:  this call is functionally identical to INT 2F/AX=4A12h, which should
+be called first, as this call is used for the first, ROM-based
+MRCI server, while the other call is used for RAM-based servers
+which may be partially or entirely replacing a prior server
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B001h/CX=4D52h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2369.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2371.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Microsoft Real-Time Compression Interface (MRCI) - ROM-BASED SERVER</font></h3>
+<PRE>
+AX = B001h
+CX = 4D52h ("MR")
+DX = 4349h ("CI")<br>
+<p><b>Return:</b><br>CX = 4943h ("IC") if installed
+DX = 524Dh ("RM") if installed
+ES:DI -> MRCINFO structure <a href="rb-2370.htm#Table725">(see #00725)</a>
+</PRE>
+<p><b>Note:</b>
+This call is functionally identical to INT 2F/AX=4A12h, which should
+be called first, as this call is used for the first, ROM-based
+MRCI server, while the other call is used for RAM-based servers
+which may be partially or entirely replacing a prior server
+<p><b>See Also:</b>
+<a href="rb-4849.htm">INT 2F/AX=4A12h</a>
+<PRE>
+<p>
+Format of MRCINFO structure:
+<a name=table725></a>
+Offset  Size    Description     (Table 00725)
+00h  4 BYTEs   vendor signature
+"MSFT" Microsoft
+04h    WORD    server version (high=major)
+06h    WORD    MRCI specification version
+08h    DWORD   address of server entry point <a href="rb-2370.htm#Table727">(see #00727)</a>
+<p><b>0Ch    WORD    bit flags:</b><br>Server capabilities (see #00726)
+<p><b>0Eh    WORD    bit flags:</b><br>Hardware assisted capabilities (see #00726)
+10h    WORD    maximum block size supported by server (at least 8192 bytes)
+<p>
+Bitfields for MRCI capabilities:
+<a name=table726></a>
+Bit(s)  Description     (Table 00726)
+0      standard compress
+1      standard decompress
+2      update compress
+3      MaxCompress (not present in initial public release)
+4      reserved
+5      incremental decompress
+6      MRCI 2.0 standard compress
+7      MRCI 2.0 standard decompress
+8-14   reserved
+15     this structure is in ROM and can't be modified.
+(server capabilities only)
+<p>
+<a name=table727></a>
+(Table 00727)
+Call MRCI entry point with:.
+DS:SI -> MRCREQUEST structure <a href="rb-2370.htm#Table728">(see #00728)</a>.
+CX = type of client (0000h application, 0001h file system).
+AX = operation
+0001h perform standard compression
+0002h perform standard decompression
+0004h perform update compression
+0008h perform MaxCompress
+0020h perform incremental decompression
+0040h perform MRCI 2.0 standard compression
+0080h perform MRCI 2.0 standard decompression.
+AX = FFFFh clear flags
+BX = bitmask of flags to clear (set bits in BX are flags to clear)<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+0001h invalid function
+0002h server busy, try again
+0003h destination buffer too small
+0004h incompressible data
+0005h bad compressed data format
+BP destroyed (MS-DOS 6.2)
+</PRE>
+<p><b>Note:</b>
+MRCI driver may chain to a previous driver
+<PRE>
+<p>
+Format of MRCREQUEST structure:
+<a name=table728></a>
+Offset  Size    Description     (Table 00728)
+00h    DWORD   pointer to source buffer
+04h    WORD    size of source buffer (0000h = 64K)
+06h    WORD    (UpdateCompress only)
+(call) offset in source buffer of beginning of changed data
+(ret) offset in destination buffer of beginning of changed
+compressed data
+08h    DWORD   pointer to destination buffer
+must contain original compressed data for UpdateCompress
+0Ch    WORD    size of destination buffer (0000h = 64K)
+<p><b>any compression:</b><br>Size of buffer for compressed data
+<p><b>standard decompression:</b><br>Number of bytes to be decompressed
+<p><b>incremental decompression:</b><br>Number of byte to decompress now
+(ret) actual size of resulting data
+0Eh    WORD    client compressed data storage allocation size
+10h    DWORD   incremental decompression state data
+set to 00000000h before first incremental decompression call
+</PRE>
+<p><b>Notes:</b>
+The source and destination buffers may not overlap.
+The source and destination buffer sizes should normally be the same.
+Application should not update the contents of the MRCREQUEST structure
+between incremental decompression calls
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2369.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2371.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

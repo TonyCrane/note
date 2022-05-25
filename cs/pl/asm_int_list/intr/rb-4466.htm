@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=14FFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=14FFh - DR DOS 5.0+ NLSFUNC - PREPARE CODE PAGE - 
+AX = 14FFh
+BX = code page (see #01757 at INT 21/AX=6602h)
+Return: AX = ???
+ZF set if AX=0000h
+Notes: DR DOS 5.0 NLSFUNC returns CF set and AX=0001h if AL was not 00h, FEh,
+or FFh on entry.
+passes codepage preparation request to each character device supporting
+the generic IOCTL call
+BUG:  DR DOS 5.0 NLSFUNC 3.00 - Novell DOS 7 NLSFUNC 3.03, and OpenDOS 7.01 -
+DR-OpenDOS 7.02 NLSFUNC 3.02 requires DF cleared on entry, otherwise
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=14FFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4465.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4467.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DR DOS 5.0+ NLSFUNC - PREPARE CODE PAGE</font></h3>
+<PRE>
+AX = 14FFh
+BX = code page <a href="rb-0000.htm#Table0"></a>(see #01757 at INT 21/AX=6602h)<br>
+<p><b>Return:</b><br>AX = ???
+ZF set if AX=0000h
+</PRE>
+<p><b>Notes:</b>
+DR DOS 5.0 NLSFUNC returns CF set and AX=0001h if AL was not 00h, FEh,
+or FFh on entry..
+Passes codepage preparation request to each character device supporting
+the generic IOCTL call
+<p><b>BUG:</b>
+DR DOS 5.0 NLSFUNC 3.00 - Novell DOS 7 NLSFUNC 3.03, and OpenDOS 7.01 -
+DR-OpenDOS 7.02 NLSFUNC 3.02 requires DF cleared on entry, otherwise
+the system may crash.  However, since this function is called only by
+the BDOS, the problem never actually occurs.  DR-DOS 7.02/7.03
+NLSFUNC 4.00+ always clears DF by itself.
+<p><b>See Also:</b>
+<a href="rb-4456.htm">AX=1400h/BX=0EDCh</a> - <a href="rb-4465.htm">AX=14FEh</a> - <a href="rb-2894.htm">INT 21/AX=440Ch</a> - <a href="rb-3168.ht.html"
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4465.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4467.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

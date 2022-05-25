@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=DA8Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=DA8Ch - AMI PCI BIOS - GET BIOS AND CHIPSET IDENTIFICATION - 
+AX = DA8Ch
+CL = subfunction
+00h get BIOS version string
+ES:DI - 12-byte buffer for version string
+01h get chipset identification
+BL = what to retrieve
+(00h host/PCI bridge,01h motherboard chipset)
+ES:DI - 12-byte buffer for chipset identification (see #00543)
+Return: CF clear if successful
+ES:DI buffer filled
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=DA8Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1664.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1666.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AMI PCI BIOS - GET BIOS AND CHIPSET IDENTIFICATION</font></h3>
+<PRE>
+AX = DA8Ch
+CL = subfunction
+00h get BIOS version string
+ES:DI -> 12-byte buffer for version string
+01h get chipset identification
+BL = what to retrieve
+(00h host/PCI bridge,01h motherboard chipset)
+ES:DI -> 12-byte buffer for chipset identification <a href="rb-1665.htm#Table543">(see #00543)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ES:DI buffer filled
+CF set on error
+AH = error code (86h unsupported subfunction)
+</PRE>
+<p><b>Notes:</b>
+The v1.00.05.AX1 BIOS returns "1.00.05.AX1 " as its version string.
+Subfunction 01h returns the five bytes read from the PCI configuration
+registers 00h-05h <a href="rb-2377.htm#Table878">(see #00878)</a>, padded to 12 bytes with NULs
+<p><b>See Also:</b>
+<a href="rb-1673.htm">AX=DB04h</a> - <a href="int-15.htm">PORT C000h</a>"Neptune"
+<PRE>
+<p>
+Format of AMI PCI BIOS chipset identification:
+<a name=table543></a>
+Offset  Size    Description     (Table 00543)
+00h    WORD    vendor ID <a href="rb-0000.htm#Table0"></a>(see #00732 at AX=B102h)
+8086h = Intel
+02h    WORD    device ID
+0484h (BL=01h)
+04A3h (BL=00h)
+04h    BYTE    low byte of PCI Command Register
+05h  7 BYTEs   unused (00h)
+</PRE>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1664.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1666.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 60/AH=0Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 60/AH=0Ah - FTP Packet Driver 1.09+ - HIGH-PERF FUNC - GET PARAMETERS - 
+AH = 0Ah
+Return: CF set on error
+DH = error code (0Bh) (see #03305)
+CF clear if successful
+ES:DI - parameter table (see #03310)
+Format of packet driver parameter table:
+Offset Size  Description   (Table 03310)
+00h  BYTE  major revision of packet driver spec driver conforms to
+01h  BYTE  minor revision of packet driver spec
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 60/AH=0Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6671.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6673.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FTP Packet Driver 1.09+ - HIGH-PERF FUNC - GET PARAMETERS</font></h3>
+<PRE>
+AH = 0Ah<br>
+<p><b>Return:</b><br>CF set on error
+DH = error code (0Bh) <a href="rb-6655.htm#Table3305">(see #03305)</a>
+CF clear if successful
+ES:DI -> parameter table <a href="rb-6672.htm#Table3310">(see #03310)</a>
+<p>
+Format of packet driver parameter table:
+<a name=table3310></a>
+Offset  Size    Description     (Table 03310)
+00h    BYTE    major revision of packet driver spec driver conforms to
+01h    BYTE    minor revision of packet driver spec
+02h    BYTE    length of this structure in bytes
+03h    BYTE    length of a MAC-layer address
+04h    WORD    maximum transfer unit, including MAC headers
+06h    WORD    buffer size for multicast addr
+08h    WORD    number of receive buffers (one less than back-to-back MTU rcvs)
+0Ah    WORD    number of transmit buffers
+0Ch    WORD    interrupt number to hook for post-EOI processing, 00h=none
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-60.htm">
+Int 60h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6671.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6673.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

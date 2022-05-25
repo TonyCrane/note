@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=CB15h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=CB15h - Communicating Applications Specification - SUBMIT FILE TO SEND - 
+AX = CB15h
+DS:DX - variable-length data area (see #03066)
+Return: AX = 0 event handle
+AX 0 error code (see #03048)
+SeeAlso: AX=CB01h
+Format of CAS file submission data area:
+Offset Size  Description   (Table 03066)
+00h  BYTE  transfer type
+00h = 200x200 dpi, fax mode
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=CB15h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5442.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5444.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Communicating Applications Specification - SUBMIT FILE TO SEND</font></h3>
+<PRE>
+AX = CB15h
+DS:DX -> variable-length data area <a href="rb-5443.htm#Table3066">(see #03066)</a><br>
+<p><b>Return:</b><br>AX >= 0 event handle
+AX < 0  error code <a href="rb-5422.htm#Table3048">(see #03048)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5422.htm">AX=CB01h</a>
+<PRE>
+<p>
+Format of CAS file submission data area:
+<a name=table3066></a>
+Offset  Size    Description     (Table 03066)
+00h    BYTE    transfer type
+00h = 200x200 dpi, fax mode
+01h = 100x200 dpi, fax mode
+02h = file transfer mode
+03h to 7Fh reserved
+01h    BYTE    text size
+00h = 80 columns
+01h = 132 columns
+02h to 7Fh reserved
+02h    WORD    time to send (DOS packed time, see #01665 at INT 21/AX=5700h)
+04h    WORD    date to send (DOS packed date, see #01666 at INT 21/AX=5700h)
+06h 32 BYTEs   ASCIZ destination name
+26h 80 BYTEs   ASCIZ name of file to send
+76h 47 BYTEs   ASCIZ phone number to dial
+A5h 64 BYTEs   ASCIZ application-specific tag string
+E5h    BYTE    reserved (00h)
+E6h    BYTE    cover page
+00h don't send cover page
+01h send cover page
+02h to 7Fh reserved
+E7h 23 BYTEs   reserved (zeros)
+FEh variable   ASCIZ string containing text of cover page (if cover page flag
+set to 01h)
+</PRE>
+<p>
+<b>Category: <a href="cat-015.htm">
+Fax</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5442.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5444.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

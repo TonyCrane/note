@@ -1,0 +1,225 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6F
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6F - Novell NetWare - PCOX API (3270 PC terminal interface) - 
+AX = function
+0000h enter terminal mode
+Return: AX = status
+0000h no action requested
+0001h screen save
+0001h reset interface and set configuration parameters
+DX = bitfields
+bits 2-0: model number
+bits 4-3: I/O address
+bits 6-5: DMA channel
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6F
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7637.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7639.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - PCOX API (3270 PC terminal interface)</font></h3>
+<PRE>
+AX = function
+0000h enter terminal mode
+<p><b>Return:</b><br>AX = status
+0000h no action requested
+0001h screen save
+0001h reset interface and set configuration parameters
+DX = bitfields
+<p><b>bits 2-0:</b><br>Model number
+<p><b>bits 4-3:</b><br>I/O address
+<p><b>bits 6-5:</b><br>DMA channel
+<p><b>Return:</b><br>Nothing
+0002h set display parameters
+DX = bitfields
+<p><b>bits 1-0:</b><br>OIA mode
+<p><b>bits 4-2:</b><br>Monitor support
+<p><b>Return:</b><br>Nothing
+0003h read status
+<p><b>Return:</b><br>AX = status word (see #03738)
+0004h read cursor position
+<p><b>Return:</b><br>AX = cursor position
+0005h get character from device buffer
+DX = cursor position
+<p><b>Return:</b><br>AH = type (00h data, 01h attribute)
+AL = data or attribute character
+0006h send character
+DH = type (00h ASCII, 01h extended code)
+DL = ASCII character or extended code
+<p><b>Return:</b><br>Nothing
+0007h set timeout
+DX = timeout in seconds
+<p><b>Return:</b><br>Nothing
+0008h wait for location to be modified
+DX = cursor position
+<p><b>Return:</b><br>AX = status (0000h modified, nonzero timeout)
+0009h NOP
+000Ah restore display
+<p><b>Return:</b><br>Nothing
+000Bh update device buffer
+<p><b>Return:</b><br>AX = cursor positoin
+000Ch write string to add information area
+DS:DX -> string
+<p><b>Return:</b><br>Nothing
+000Dh maintenance operations
+DX = maintenance operation code
+<p><b>Return:</b><br>AX = operation status
+000Eh get control program version
+<p><b>Return:</b><br>AH = release number (major version)
+AL = level number (minor version)
+000Fh get microcode version
+<p><b>Return:</b><br>AH = release number (major version)
+AL = level number (minor version)
+0010h save or display graphics
+BX = length of data buffer
+CX = subfunction request code
+DS:DX -> data buffer
+<p><b>Return:</b><br>AX = return code
+CX = length of PIF data
+0011h perform structured field operation
+CX = request number
+DS:DX -> parameter list
+<p><b>Return:</b><br>AX = status word (see #03738)
+CX = error number
+0012h set cursor position for direct write buffer
+DX = new cursor position
+<p><b>Return:</b><br>AX = status word (see #03738)
+0013h write direct to buffer
+DL = character to be written
+DH = translation option
+<p><b>Return:</b><br>AX = status word (see #03738)
+0014h write direct to buffer without echo
+DL = character to be written
+DH = translation option
+<p><b>Return:</b><br>AX = status word (see #03738)
+0015h set direct write string length
+DX = string value
+<p><b>Return:</b><br>Nothing
+0016h write string direct to buffer
+DS:DX -> string
+<p><b>Return:</b><br>AX = status word (see #03738)
+0017h write string direct to buffer, untranslated
+DS:DX -> string
+<p><b>Return:</b><br>AX = status word (see #03738)
+0018h get direct-write cursor position
+<p><b>Return:</b><br>AX = cursor position
+0019h convert row/column to cursor position
+DH = display row (1-43)
+DL = display column (1-132)
+<p><b>Return:</b><br>AX = cursor position
+001Ah convert cursor position to row/column
+DX = cursor position
+<p><b>Return:</b><br>AH = display row
+AL = display column
+001Bh find next field
+DX = initial cursor position
+<p><b>Return:</b><br>AX = field cursor position
+001Ch find previous field
+DX = initial cursor position
+<p><b>Return:</b><br>AX = field cursor position
+001Dh find next unprotected field
+DX = initial cursor position
+<p><b>Return:</b><br>AX = field cursor position
+001Eh find previous unprotected field
+DX = initial cursor position
+<p><b>Return:</b><br>AX = field cursor position
+001Fh find next protected field
+DX = initial cursor position
+<p><b>Return:</b><br>AX = field cursor position
+0020h find previous protected field
+DX = initial cursor position
+<p><b>Return:</b><br>AX = field cursor position
+0021h masked search forward
+DH = mask
+DL = search pattern
+<p><b>Return:</b><br>AX = cursor position or 0000h
+0022h masked search backward
+DH = mask
+DL = search pattern
+<p><b>Return:</b><br>AX = cursor position or 0FFFh
+0023h find field length
+DX = cursor position
+<p><b>Return:</b><br>AX = field length
+0024h read field
+DS:DX -> buffer for field contents
+<p><b>Return:</b><br>AX = status word (see #03738)
+0025h read screen
+DS:DX -> buffer for screen contents
+<p><b>Return:</b><br>AX = status word (see #03738)
+0026h read buffer untranslated
+DX = cursor position
+<p><b>Return:</b><br>AX = buffer code
+CX:BX -> 3278/79 device buffer image
+0027h enable/disable keyboard
+DL = new state of keyboard breaks (00h enabled, 01h disabled)
+<p><b>Return:</b><br>Nothing
+0028h select host session
+DL = session short name
+<p><b>Return:</b><br>AX = session information
+0029h retrieve host session name
+AX = short name (DFT) or 0000h (not available, CUT mode)
+002Ah get current device buffer size
+<p><b>Return:</b><br>AX = device buffer size
+CX = segment of EAB
+002Bh arm modified location trigger
+DX = cursor position
+<p><b>Return:</b><br>AX = status (0000h not available, 0001h successful)
+<p>
+Bitfields for PCOX status word:
+<a name=table3738></a>
+Bit(s)  Description     (Table 03738)
+0,1    cursor type
+2      cursor inhibited
+3      display inhibited
+4      feature step inhibited
+5      480-character format code
+6,7    unused
+8-10   model number (2-5)
+11     unit has been reset by controller (cleared after status returned)
+12     buffer has been written into (cleared after status returned)
+13     alarm has been sounded (cleared after status returned)
+14-15  monitor type (01 mono, 10 color, 11 hybrid)
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-6F.htm">
+Int 6Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7637.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7639.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7A/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7A/BX=0000h - Novell NetWare - IPX Driver - OPEN SOCKET - 
+BX = 0000h
+AL = socket longevity
+00h open until close or terminate
+FFh open until close
+DX = socket number (high byte in DL)
+0000h dynamic allocation
+else socket to open (see #03809)
+Return: AL = return code
+00h success
+DX = socket number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7A/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7841.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7843.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - IPX Driver - OPEN SOCKET</font></h3>
+<PRE>
+BX = 0000h
+AL = socket longevity
+00h open until close or terminate
+FFh open until close
+DX = socket number (high byte in DL)
+0000h dynamic allocation
+else  socket to open <a href="rb-7842.htm#Table3809">(see #03809)</a><br>
+<p><b>Return:</b><br>AL = return code
+00h success
+DX = socket number
+FEh socket table full
+FFh socket already open
+</PRE>
+<p><b>Notes:</b>
+TSRs which need to use sockets should set AL to FFh, non-resident
+programs should normally use AL=00h.
+IPX can be configured to support up to 150 open sockets on a
+workstation, and defaults to 20.
+This function is supported by Advanced NetWare 1.02+
+<p><b>See Also:</b>
+<a href="rb-7843.htm">INT 7A/BX=0001h</a> - <a href="rb-7846.htm">INT 7A/BX=0004h</a> - <a href="rb-7877.htm">INT 7A/BX=0023h</a>
+<PRE>
+<p>
+<a name=table3809></a>
+(Table 03809)
+Values for IPX socket number:
+0451h  File Service (NetWare Core Protocol)
+0452h  Service Advertising Protocol (SAP) <a href="rb-7845.htm#Table3817">(see #03817)</a>
+0453h  Routing Information Packet <a href="rb-7845.htm#Table3820">(see #03820)</a>
+0455h  NetBIOS Packet
+0456h  diagnostics
+0457h  server serial numbers (labeled "Copy Protection" by Lanalyzer)
+2222h  NetWare Core Protocol
+4000h-7FFFh used for dynamic allocation
+4000h \ seem to be used by IPX internally
+4001h /
+4444h  Brightwork Development's SiteLock server
+5555h  Brightwork Development's SiteLock client (workstation)
+8000h-FFFFh assigned by Novell
+869Ch  ID Software's DOOM
+901Fh  Lancheck
+9023h  Server info (NetWare "Slurpee", NetWare Lite, Personal NetWare)
+9024h  Client info (NetWare "Slurpee", NetWare Lite, Personal NetWare)
+9025h  Serial socket (NetWare "Slurpee", NetWare Lite, Personal NetWare)
+9026h  Extension info (NetWare Lite, Personal NetWare???)
+</PRE>
+<p><b>Notes:</b>
+SiteLock is an application metering product using IPX to communicate
+between the application and the license server.
+IPX socket numbers should be registered with the Novell Development
+Products Division
+<p><b>See Also:</b>
+<a href="rb-7843.htm">INT 7A/BX=0001h</a>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-7A.htm">
+Int 7Ah</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7841.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7843.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

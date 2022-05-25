@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=0Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=0Ah - MBBIOS - WRITE BUFFER - 
+AH = 0Ah
+CX = count
+ES:DI - buffer (see #00338)
+Return: AX = status (see #00304,#00305)
+CX = unsent character count
+DI updated
+Note:  the PACCOM version of MBBIOS does not use CX or ES:DI; instead, ES
+contains the segment of a buffer containing the packet to be sent,
+which by default will be freed once the packet has been sent. Use
+AH=0ChMBBIOS to allocate the buffer.
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=0Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0873.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0875.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MBBIOS - WRITE BUFFER</font></h3>
+<PRE>
+AH = 0Ah
+CX = count
+ES:DI -> buffer <a href="rb-0874.htm#Table338">(see #00338)</a><br>
+<p><b>Return:</b><br>AX = status (see #00304,#00305)
+CX = unsent character count
+DI updated
+</PRE>
+<p><b>Note:</b>
+The PACCOM version of MBBIOS does not use CX or ES:DI; instead, ES
+contains the segment of a buffer containing the packet to be sent,
+which by default will be freed once the packet has been sent.  Use
+AH=0Ch"MBBIOS" to allocate the buffer.
+<p><b>See Also:</b>
+<a href="rb-0816.htm">AH=01h</a> - <a href="rb-0877.htm">AH=0Bh"MBBIOS"</a> - <a href="rb-0880.htm">AH=0Ch"MBBIOS"</a> - <a href="rb-0934.htm">AH=1
+<PRE>
+<p>
+Format of MBBIOS PACCOM buffer:
+<a name=table338></a>
+Offset  Size    Description     (Table 00338)
+00h 504 BYTEs  data area
+1F8h    WORD    length of data in data area
+1FAh    BYTE    flags/status
+<p><b>bit 7:</b><br>Don't discard buffer after transmitting data
+<p><b>bit 6:</b><br>Buffer has been transmitted
+1FBh    BYTE    reserved (0) for additional flags/status
+1FCh    WORD    user data
+1FEh    WORD    MBBIOS-internal pointer to next buffer
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0873.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0875.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

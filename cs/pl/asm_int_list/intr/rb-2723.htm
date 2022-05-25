@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=31h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=31h - DOS 2+ - TERMINATE AND STAY RESIDENT - 
+AH = 31h
+AL = return code
+DX = number of paragraphs to keep resident
+Return: never
+Notes: the value in DX only affects the memory block containing the PSP;
+additional memory allocated via AH=48h is not affected
+the minimum number of paragraphs which will remain resident is 11h
+for DOS 2.x and 06h for DOS 3.0+
+most TSRs can save some memory by releasing their environment block
+before terminating (see #01378 at AH=26h,AH=49h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=31h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2722.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2724.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - TERMINATE AND STAY RESIDENT</font></h3>
+<PRE>
+AH = 31h
+AL = return code
+DX = number of paragraphs to keep resident<br>
+<p><b>Return:</b><br>Never
+</PRE>
+<p><b>Notes:</b>
+The value in DX only affects the memory block containing the PSP;
+additional memory allocated via AH=48h is not affected.
+The minimum number of paragraphs which will remain resident is 11h
+for DOS 2.x and 06h for DOS 3.0+.
+Most TSRs can save some memory by releasing their environment block
+before terminating <a href="rb-0000.htm#Table0"></a>(see #01378 at AH=26h,AH=49h).
+Any open files remain open, so one should close any files which will
+not be used before going resident; to access a file which is left
+open from the TSR, one must switch PSP segments first (see AH=50h)
+<p><b>See Also:</b>
+<a href="rb-2551.htm">AH=00h</a> - <a href="rb-2974.htm">AH=4Ch</a> - <a href="rb-2976.htm">AH=4Dh</a> - <a href="rb-2470.htm">INT 20</a> - <a "http://www.ctyme.com/intr/href"
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2722.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2724.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

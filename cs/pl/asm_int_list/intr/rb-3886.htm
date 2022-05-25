@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F223h/SF=12h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F223h/SF=12h - Novell NetWare v2+ - AFP GET DOS FILENAME FROM ENTRY ID - 
+AX = F223h subfn 12h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02339)
+ES:DI - reply buffer (see #02340)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F223h/SF=04h,AX=F223h/SF=06h
+Format of NetWare AFP Get DOS Name from Entry ID request packet:
+Offset Size  Description   (Table 02339)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F223h/SF=12h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3885.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3887.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2+ - AFP GET DOS FILENAME FROM ENTRY ID</font></h3>
+<PRE>
+AX = F223h subfn 12h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3886.htm#Table2339">(see #02339)</a>
+ES:DI -> reply buffer <a href="rb-3886.htm#Table2340">(see #02340)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3873.htm">AX=F223h/SF=04h</a> - <a href="rb-3875.htm">AX=F223h/SF=06h</a>
+<PRE>
+<p>
+Format of NetWare "AFP Get DOS Name from Entry ID" request packet:
+<a name=table2339></a>
+Offset  Size    Description     (Table 02339)
+00h    WORD    (big-endian) length of following data
+02h    BYTE    12h (subfunction "AFP Get DOS Name From Entry ID")
+03h    BYTE    volume number
+04h    DWORD   AFP entry ID
+</PRE>
+<p><b>See Also:</b>
+#02340
+<PRE>
+<p>
+Format of NetWare "AFP Get DOS Name from Entry ID" reply packet:
+<a name=table2340></a>
+Offset  Size    Description     (Table 02340)
+00h    BYTE    length of DOS pathname
+01h  N BYTEs   pathname corresponding to AFP entry ID
+</PRE>
+<p><b>See Also:</b>
+#02339
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3885.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3887.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

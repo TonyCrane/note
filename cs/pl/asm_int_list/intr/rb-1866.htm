@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 16/AX=8765h/BX=4321h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 16/AX=8765h/BX=4321h - AT.COM version 8/26/87 - API - 
+AX = 8765h
+BX = 4321h
+CX = ??? or FFFFh
+if CX = FFFFh
+DX = number of event to remove or FFFFh
+Return: ES:BX - event record array (see #00607)
+Program: AT.COM is a resident scheduler by Bill Frolik
+Format of AT.COM event record:
+Offset Size  Description   (Table 00607)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 16/AX=8765h/BX=4321h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1865.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1867.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AT.COM version 8/26/87 - API</font></h3>
+<PRE>
+AX = 8765h
+BX = 4321h
+CX = ??? or FFFFh
+if CX = FFFFh
+DX = number of event to remove or FFFFh<br>
+<p><b>Return:</b><br>ES:BX -> event record array (see #00607)
+</PRE>
+<p><b>Program:</b>
+AT.COM is a resident scheduler by Bill Frolik
+<PRE>
+<p>
+Format of AT.COM event record:
+<a name=table607></a>
+Offset  Size    Description     (Table 00607)
+00h    BYTE    in-use flag (00h free, 01h in use, FFh end of array)
+01h    BYTE    day of date on which to trigger
+02h    BYTE    month of date on which to trigger
+03h    BYTE    trigger time, minute
+04h    BYTE    trigger time, hour
+05h    WORD    offset of command to be executed
+</PRE>
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-16.htm">
+Int 16h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1865.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1867.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

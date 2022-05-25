@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 68/AH=FBh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 68/AH=FBh - APPC/PC - CONVERT - 
+AH = FBh
+DS:DX - control block (see #03707)
+Return: control block updated
+Format of APPC/PC CONVERT control block:
+Offset Size  Description   (Table 03707)
+00h 12 BYTEs  reserved
+0Ch  WORD  1A00h (verb CONVERT)
+0Eh 6 BYTEs  00h
+14h  DWORD  (big-endian) return code
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 68/AH=FBh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7544.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7546.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APPC/PC - CONVERT</font></h3>
+<PRE>
+AH = FBh
+DS:DX -> control block <a href="rb-7545.htm#Table3707">(see #03707)</a><br>
+<p><b>Return:</b><br>Control block updated
+<p>
+Format of APPC/PC "CONVERT" control block:
+<a name=table3707></a>
+Offset  Size    Description     (Table 03707)
+00h 12 BYTEs   reserved
+0Ch    WORD    1A00h (verb "CONVERT")
+0Eh  6 BYTEs   00h
+14h    DWORD   (big-endian) return code
+18h    BYTE    conversion
+00h ASCII to EBCDIC
+01h EBCDIC to ASCII
+19h    BYTE    character set
+00h AE
+01h A
+02h G
+1Ah    WORD    length of string to convert
+1Ch    DWORD   pointer to source
+20h    DWORD   pointer to target
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-68.htm">
+Int 68h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7544.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7546.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

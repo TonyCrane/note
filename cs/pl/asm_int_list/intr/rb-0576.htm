@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 11/SI=6A6Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 11/SI=6A6Ah - Columbia Data Products Standard Device Level Protocol (SDLP) 1.6 - 
+SI = 6A6Ah
+AH = command (see #00227)
+AL = SCSI Addressing (see #00228)
+Return: CF clear if successful
+DI = 6A6Ah if AH=01h on entry (maybe for all functions???)
+AH = ??? for command 01h
+CF set on error
+AL = error code
+SeeAlso: INT 21/AX=4402hASPI
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 11/SI=6A6Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0575.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0577.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Columbia Data Products Standard Device Level Protocol (SDLP) 1.6</font></h3>
+<PRE>
+SI = 6A6Ah
+AH = command <a href="rb-0576.htm#Table227">(see #00227)</a>
+AL = SCSI Addressing <a href="rb-0576.htm#Table228">(see #00228)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+DI = 6A6Ah if AH=01h on entry (maybe for all functions???)
+AH = ??? for command 01h
+CF set on error
+AL = error code
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2832.htm">INT 21/AX=4402h"ASPI"</a>
+<PRE>
+<p>
+<a name=table227></a>
+(Table 00227)
+Values for SDLP command:
+00h    SDLP initialization
+01h    SDLP System Identify
+02h    simple read sectors
+03h    simple write sectors
+04h    simple verify sectors/seek to sector
+05h    get device size/type
+06h    ready unit
+07h    format unit
+08h    diagnostics
+09h    rewind
+0Ah    erase
+0Bh    write filemarks
+0Ch    space
+0Dh    prevent/allow media removal
+0Eh    load/unload media
+0Fh    reserved - returns good status
+10h    set block size
+11h    write setmark
+12h    set error level
+13h    get address of Request Sense Buffer
+14h    get SDLP error via Request Sense
+F0h    Vendor Unique Function (WD7000-FASST2 only)
+FDh    reset current SCSI HAC
+FEh    get/set current SCSI HAC
+FFh    execute SCSI command
+<p>
+Bitfields for SDLP SCSI addressing:
+<a name=table228></a>
+Bit(s)  Description     (Table 00228)
+7-6    Host Adapter
+5-3    SCSI Target ID
+2-0    SCSI Target LUN (logical unit number)
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-11.htm">
+Int 11h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0575.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0577.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

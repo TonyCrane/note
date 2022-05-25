@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6F/AH=03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6F/AH=03h - 10NET - GET ADDRESS OF CONFIGURATION TABLE - 
+AH = 03h
+DS:DI - node ID (optional)
+Return: ES:BX - configuration table (see #03756)
+SeeAlso: AH=13h,INT 21/AX=5E01h10NET
+Format of 10NET configuration table:
+Offset Size  Description   (Table 03756)
+-41   WORD  local device table address
+-39   WORD  extended network error mapping table address
+-37   WORD  shared device table address
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6F/AH=03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7655.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7657.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>10NET - GET ADDRESS OF CONFIGURATION TABLE</font></h3>
+<PRE>
+AH = 03h
+DS:DI -> node ID (optional)<br>
+<p><b>Return:</b><br>ES:BX -> configuration table (see #03756)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7746.htm">AH=13h</a> - <a href="rb-3032.htm">INT 21/AX=5E01h"10NET"</a>
+<PRE>
+<p>
+Format of 10NET configuration table:
+<a name=table3756></a>
+Offset  Size    Description     (Table 03756)
+-41     WORD    local device table address
+-39     WORD    extended network error mapping table address
+-37     WORD    shared device table address
+-35     WORD    mounted device table address
+-33     BYTE    receive buffer counter
+-32     BYTE    collect buffer counter
+-31     WORD    TUF address
+-29     BYTE    enable flag
+-28     BYTE    FCB keep flag
+-27     WORD    reserved
+---up to here, 10NET v3.3---
+-25     WORD    count of dropped Send6F
+-23     WORD    buffer start address
+-21     WORD    comm driver base address
+-19     WORD    send/receive retry count
+-17     BYTE    number of 550ms loops before timeout
+-16     WORD    UFH address
+-14     WORD    CDIR address
+-12     WORD    LTAB address
+-10     WORD    SFH address
+-8      WORD    FTAB address
+-6      WORD    RLTAB address
+-4      WORD    SMI address
+-2      WORD    NTAB address
+00h    WORD    address of first CT_DRV
+02h    BYTE    number of DRV entries
+03h  8 BYTEs   login name
+0Bh 12 BYTEs   node ID (blank-padded)
+17h  6 BYTEs   node address
+1Dh    BYTE    flag
+1Eh    BYTE    CT_CFLG (chat permit)
+<p><b>bit 1:</b><br>Sound bell
+<p><b>bit 0:</b><br>CHAT permit
+1Fh    BYTE    CT_PSFLG <a href="rb-7656.htm#Table3757">(see #03757)</a>
+20h    BYTE    in 10Net flag
+21h    WORD    receive message count
+23h    WORD    send message count
+25h    WORD    retry count
+27h    WORD    failed count
+29h    WORD    driver errors
+2Bh    WORD    dropped responses/CHATs
+2Dh  9 BYTEs   LIST ID/NTAB address (3 entries--LPT1-3)
+36h  6 BYTEs   AUX ID/NTAB address (2 entries--COM1-2)
+3Ch    BYTE    active CB channel
+3Dh    BYTE    received 6F messages on queue
+3Eh  9 BYTEs   activity counters for channels 1-9
+---beyond here, 10NET v3.3---
+<p><b>47h    BYTE    bit 0:</b><br>RS232 gate
+<p><b>bit 1:</b><br>Send6F gate (user set)
+48h    DWORD   pointer into gate (user set)
+4Ch    DWORD   pointer into 10Net send
+50h  N WORDs   addresses of timer blocks
+<p>
+Bitfields for CT_PSFLG:
+<a name=table3757></a>
+Bit(s)  Description     (Table 03757)
+5      PRINT permit
+4      KB initiated
+3      CHAT called FOXPTRM
+2      SUBMIT active
+1      SUBMIT received
+0      SUBMIT permit
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-6F.htm">
+Int 6Fh</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7655.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7657.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

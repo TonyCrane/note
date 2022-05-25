@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=DB00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=DB00h - AMI BIOS - Flash ROM - READ FLASH BIOS - 
+AX = DB00h
+DS:SI - parameter block (see #00544)
+ES:DI - buffer for copied information
+Return: CF clear if successful
+CF set on error
+AH = status (86h if not implemented)
+DS,ES destroyed, possibly other registers
+Note:  used by FMUP.EXE, Intel's Flash Memory Update utility
+SeeAlso: AH=DAh,AX=DB01h,AX=DB04h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=DB00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1668.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1670.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AMI BIOS - Flash ROM - READ FLASH BIOS</font></h3>
+<PRE>
+AX = DB00h
+DS:SI -> parameter block <a href="rb-1669.htm#Table544">(see #00544)</a>
+ES:DI -> buffer for copied information<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = status (86h if not implemented)
+DS,ES destroyed, possibly other registers
+</PRE>
+<p><b>Note:</b>
+Used by FMUP.EXE, Intel's Flash Memory Update utility
+<p><b>See Also:</b>
+<a href="rb-1654.htm">AH=DAh</a> - <a href="rb-1670.htm">AX=DB01h</a> - <a href="rb-1673.htm">AX=DB04h</a>
+<PRE>
+<p>
+Format of AMI BIOS Flash ROM parameter block:
+<a name=table544></a>
+Offset  Size    Description     (Table 00544)
+00h 32 BYTEs   ASCIZ description of the file's contents
+20h    BYTE    Logical area type <a href="rb-1670.htm#Table545">(see #00545)</a>
+21h    DWORD   logical area size (overall size of area)
+<p><b>25h    BYTE    flag:</b><br>Load from file (FF=yes, 00=no)
+<p><b>26h    BYTE    flag:</b><br>Reboot after update (FF=yes, 00=no)
+<p><b>27h    BYTE    flag:</b><br>Update entire image (FF=yes, 00=no)
+28h 24 BYTEs   ASCIZ logical area name (cooresponds to offset 20)
+"System BIOS"
+"Logo Data Area", etc.
+<p><b>40h 15 BYTEs   ASCIZ time stamp string:</b><br>MM/DD/YY-HH:MM
+4Fh    BYTE    checksum for this header (sum of all bytes except this one)
+if checksum would be 00h,01h, or FFh, it is set to 2Ah
+50h    DWORD   this file's starting address (offset in image)
+54h    DWORD   size of image chunk in this file
+58h    BYTE    logical area type - same as offset 20h
+<p><b>59h    BYTE    flag:</b><br>Last file in chain (FF=yes, 00=no)
+5Ah  6 BYTEs   ASCIZ signature "FLASH"
+60h 16 BYTEs   ASCIZ filename of next file in chain
+70h 16 BYTEs   ASCIZ BIOS reserved string (usually version #)
+</PRE>
+<p><b>Notes:</b>
+This block is identical in format to the 128-byte header on an AMI
+BIOS Update file.
+<PRE>
+<p><b>For AX=DB00h, the following fields must be specified:</b><br>50h,54h,58h;
+the fields at offset 20h and 5Ah should also be set if possible.
+The fields at offsets 40h and 70h will be set on return, if available
+</PRE>
+<p><b>See Also:</b>
+#00546
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1668.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1670.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

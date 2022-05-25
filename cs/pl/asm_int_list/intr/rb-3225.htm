@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=73h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=73h - MS-DOS 7 - DRIVE LOCKING AND FLUSHING - 
+AH = 73h
+DL = drive (0=current, 1=A:, etc.)
+CL = which flag to get or set
+00h drive flag???
+01h drive's dirty-buffers flag
+AL = subfunction
+00h get indicated flag
+01h set ???
+CH = new value for indicated flag
+bit 1: ??? (CL=00h only)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=73h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3224.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3226.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS-DOS 7 - DRIVE LOCKING AND FLUSHING</font></h3>
+<PRE>
+AH = 73h
+DL = drive (0=current, 1=A:, etc.)
+CL = which flag to get or set
+00h drive flag???
+01h drive's dirty-buffers flag
+AL = subfunction
+00h get indicated flag
+01h set ???
+CH = new value for indicated flag
+<p><b>bit 1:</b><br>??? (CL=00h only)
+<p><b>bit 3:</b><br>Dirty buffers exist for selected drive (CL=01h only)<br>
+<p><b>Return:</b><br>CF clear if successful
+for AL=00h:
+AL = value of CL on entry
+<p><b>for CL=00h:</b><br>AH = new flag and 06h (i.e. bits 1 and 2 used)
+<p><b>for CL=01h:</b><br>AH = new flag and 08h (i.e. bit 3 used)
+(flag being taken from a table of bytes).
+CF set on error
+AX = error code (01h,0Fh,etc.) <a href="rb-3012.htm#Table1680">(see #01680)</a>
+7300h if function not supported
+</PRE>
+<p><b>Note:</b>
+These two subfunctions are available even when only the MS-DOS kernel
+is running
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3224.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3226.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

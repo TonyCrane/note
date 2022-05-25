@@ -681,10 +681,10 @@ var _hmt = _hmt || [];
         
           <li class="md-nav__item">
   <a href="#8086_2" class="md-nav__link">
-    8086 汇编程序格式
+    8086 汇编程序编写
   </a>
   
-    <nav class="md-nav" aria-label="8086 汇编程序格式">
+    <nav class="md-nav" aria-label="8086 汇编程序编写">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -711,6 +711,27 @@ var _hmt = _hmt || [];
           <li class="md-nav__item">
   <a href="#_43" class="md-nav__link">
     汇编程序语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    子程序设计
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    中断
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bios" class="md-nav__link">
+    BIOS 中断
   </a>
   
 </li>
@@ -1814,10 +1835,10 @@ var _hmt = _hmt || [];
         
           <li class="md-nav__item">
   <a href="#8086_2" class="md-nav__link">
-    8086 汇编程序格式
+    8086 汇编程序编写
   </a>
   
-    <nav class="md-nav" aria-label="8086 汇编程序格式">
+    <nav class="md-nav" aria-label="8086 汇编程序编写">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1844,6 +1865,27 @@ var _hmt = _hmt || [];
           <li class="md-nav__item">
   <a href="#_43" class="md-nav__link">
     汇编程序语句
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    子程序设计
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    中断
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bios" class="md-nav__link">
+    BIOS 中断
   </a>
   
 </li>
@@ -3125,7 +3167,7 @@ var _hmt = _hmt || [];
 </ul>
 </div>
 </div>
-<h2 id="8086_2">8086 汇编程序格式<a class="headerlink" href="#8086_2" title="Permanent link">&para;</a></h2>
+<h2 id="8086_2">8086 汇编程序编写<a class="headerlink" href="#8086_2" title="Permanent link">&para;</a></h2>
 <h3 id="_34">汇编程序基本结构<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="__codelineno-4-1"></a><span class="nf">data</span><span class="w"> </span><span class="no">segment</span><span class="w">                            </span><span class="c1">; 汇编指示语句</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="__codelineno-4-2"></a><span class="nf">hey</span><span class="w">  </span><span class="no">db</span><span class="w"> </span><span class="err">&#39;</span><span class="no">Hello</span><span class="p">,</span><span class="no">world</span><span class="p">!</span><span class="err">&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="no">Dh</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="no">Ah</span><span class="p">,</span><span class="w"> </span><span class="err">&#39;</span><span class="no">$</span><span class="err">&#39;</span><span class="w">   </span><span class="c1">; 伪指令语句</span>
@@ -3208,6 +3250,222 @@ var _hmt = _hmt || [];
 <li>变量的引用可以直接使用变量名或者 [变量名]</li>
 <li>可以使用 变量名[偏移] 来类似数组引用值，但偏移记得偏移 1 就是加一个字节，而不是下一个元素</li>
 </ul>
+<h3 id="_44">子程序设计<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h3>
+<p>子程序又称过程，即类似高级语言中的函数，通过 call 调用 ret 返回，可以近调用或远调用。过程的定义：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="__codelineno-8-1"></a><span class="err">&lt;</span><span class="nf">name</span><span class="err">&gt;</span><span class="w"> </span><span class="mh">proc</span> <span class="p">&lt;</span><span class="no">attribute</span><span class="p">&gt;</span><span class="w"></span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="__codelineno-8-2"></a><span class="w">    </span><span class="na">...</span><span class="w"></span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="__codelineno-8-3"></a><span class="err">&lt;</span><span class="nf">name</span><span class="err">&gt;</span><span class="w"> </span><span class="no">endp</span><span class="w"></span>
+</code></pre></div>
+其中 attribute 为 near 或 far，near 定义近过程供近调用，只能在同一代码段内起作用；far 定义远过程供远调用，可以在同一代码段或不同代码段内使用</p>
+<p>如果达到函数的效果也可以不定义过程，只定义一个标号，然后使用 ret / retn 返回</p>
+<p>过程中要保护某些寄存器的值，此时要在过程开头 push 入堆栈，结尾从堆栈 pop 回来</p>
+<h4 id="_45">堆栈传递参数<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h4>
+<p>使用堆栈传递参数有三种标准方式</p>
+<h5 id="__cdecl">__cdecl 方式<a class="headerlink" href="#__cdecl" title="Permanent link">&para;</a></h5>
+<p>c 语言的标准方式，参数从右到左压入堆栈，并且由调用者清理堆栈。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="__codelineno-9-1"></a><span class="nl">f:</span><span class="w"></span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="__codelineno-9-2"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="__codelineno-9-3"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">bp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="w"></span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="__codelineno-9-4"></a><span class="w">    </span><span class="na">...</span><span class="w"></span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="__codelineno-9-5"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="__codelineno-9-6"></a><span class="w">    </span><span class="nf">pop</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="__codelineno-9-7"></a><span class="w">    </span><span class="nf">ret</span><span class="w"></span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="__codelineno-9-8"></a>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="__codelineno-9-9"></a><span class="nl">main:</span><span class="w"></span>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="__codelineno-9-10"></a><span class="w">    </span><span class="na">...</span><span class="w"></span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="__codelineno-9-11"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">a2</span><span class="w">         </span><span class="c1">; 压入参数</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="__codelineno-9-12"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">a1</span><span class="w"></span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="__codelineno-9-13"></a><span class="w">    </span><span class="nf">call</span><span class="w"> </span><span class="no">f</span><span class="w"></span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="__codelineno-9-14"></a><span class="w">    </span><span class="nf">add</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="w">       </span><span class="c1">; 清理堆栈</span>
+</code></pre></div></p>
+<h5 id="__pascal">__pascal 方式<a class="headerlink" href="#__pascal" title="Permanent link">&para;</a></h5>
+<p>pascal 语言的标准方式，参数从左到右压入堆栈，由被调用者清理堆栈。
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="__codelineno-10-1"></a><span class="nl">f:</span><span class="w"></span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="__codelineno-10-2"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="__codelineno-10-3"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">bp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="w"></span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="__codelineno-10-4"></a><span class="w">    </span><span class="na">...</span><span class="w"></span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="__codelineno-10-5"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="__codelineno-10-6"></a><span class="w">    </span><span class="nf">pop</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="__codelineno-10-7"></a><span class="w">    </span><span class="nf">ret</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="__codelineno-10-8"></a>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="__codelineno-10-9"></a><span class="nl">main:</span><span class="w"></span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="__codelineno-10-10"></a><span class="w">    </span><span class="na">...</span><span class="w"></span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="__codelineno-10-11"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">a1</span><span class="w"></span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="__codelineno-10-12"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">a2</span><span class="w"></span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="__codelineno-10-13"></a><span class="w">    </span><span class="nf">call</span><span class="w"> </span><span class="no">f</span><span class="w"></span>
+</code></pre></div></p>
+<h5 id="__stdcall">__stdcall 方法<a class="headerlink" href="#__stdcall" title="Permanent link">&para;</a></h5>
+<p>Windows API 的标准方法，参数从右到左压入堆栈，由被调用者清理堆栈</p>
+<h4 id="_46">动态变量与堆栈结构<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h4>
+<p>比如 c 语言的规范，在函数中会有动态局部变量，这些变量会存放在堆栈上。函数开头先 push bp 存下前帧指针，然后 mov bp, sp 将 bp 移动到栈顶。之后可以 sub sp, ... 来向上移动 sp 指针，这样就可以为函数留出堆栈上的一部分空间，这些空间被用来存放局部变量。执行过 sub sp, ... 后的堆栈结构如：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="__codelineno-11-1"></a>+-------------+
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="__codelineno-11-2"></a>|             |     &lt;- sp
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="__codelineno-11-3"></a>+-------------+     \
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="__codelineno-11-4"></a>|             |      |
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="__codelineno-11-5"></a>+-------------+      |
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="__codelineno-11-6"></a>|             |      |
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="__codelineno-11-7"></a>+-------------+      |- 局部变量空间
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="__codelineno-11-8"></a>|             |      |
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="__codelineno-11-9"></a>+-------------+      |
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="__codelineno-11-10"></a>|             |      |
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="__codelineno-11-11"></a>+-------------+     /
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="__codelineno-11-12"></a>|      bp     |     &lt;- bp
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="__codelineno-11-13"></a>+-------------+
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="__codelineno-11-14"></a>| return addr |     &lt;- 由 call 压入
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="__codelineno-11-15"></a>+-------------+
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="__codelineno-11-16"></a>|     arg0    |     &lt;- [bp+4]
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="__codelineno-11-17"></a>+-------------+
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="__codelineno-11-18"></a>|     arg1    |     &lt;- [bp+6]
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="__codelineno-11-19"></a>+-------------+
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="__codelineno-11-20"></a>|     ...     |
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="__codelineno-11-21"></a>+-------------+
+</code></pre></div>
+如图即为通过 sub sp, 10 开辟了 10 个字节的局部变量空间，此时再进行 push 和 pop 操作时则会向上增长不会覆盖该函数的空间。</p>
+<p>参数和局部变量也都通过 bp 来访问，比如参数从 [bp+4] 开始是第一个参数，然后 [bp+6] 是第二个，……。局部变量都是通过 [bp-...] 来进行访问的</p>
+<p>这样的帧栈结构在函数退出时先 mov sp, bp，此时 sp 回落回 bp 的位置，局部变量全部失效，然后 pop bp 取出前帧指针，再 ret，此时 pop 出返回地址返回，然后在调用者处情况堆栈中的参数</p>
+<p>C 语言的函数里 bp 不要被更改，同样也需要保护 bx si di 的值，使其在调用函数前后不变，且函数的返回值由 ax 提供，所以一般的函数写法就是：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="__codelineno-12-1"></a><span class="nl">f:</span><span class="w"></span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="__codelineno-12-2"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="__codelineno-12-3"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">bp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="w"></span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="__codelineno-12-4"></a><span class="w">    </span><span class="nf">sub</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">...</span><span class="w"></span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="__codelineno-12-5"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">bx</span><span class="w"></span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="__codelineno-12-6"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">si</span><span class="w"></span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="__codelineno-12-7"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">di</span><span class="w"></span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="__codelineno-12-8"></a><span class="w">    </span><span class="na">...</span><span class="w">             </span><span class="c1">; [bp+?] 为参数</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="__codelineno-12-9"></a><span class="w">    </span><span class="na">...</span><span class="w">             </span><span class="c1">; [bp-?] 为局部变量</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="__codelineno-12-10"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="no">...</span><span class="w">     </span><span class="c1">; 设置返回值</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="__codelineno-12-11"></a><span class="w">    </span><span class="nf">pop</span><span class="w"> </span><span class="no">di</span><span class="w"></span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="__codelineno-12-12"></a><span class="w">    </span><span class="nf">pop</span><span class="w"> </span><span class="no">si</span><span class="w"></span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="__codelineno-12-13"></a><span class="w">    </span><span class="nf">pop</span><span class="w"> </span><span class="no">bx</span><span class="w"></span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="__codelineno-12-14"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="__codelineno-12-15"></a><span class="w">    </span><span class="nf">pop</span><span class="w"> </span><span class="no">bp</span><span class="w"></span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="__codelineno-12-16"></a><span class="w">    </span><span class="nf">ret</span><span class="w"></span>
+</code></pre></div>
+这种写法下帧栈结构和寄存器都不会乱掉，即使是进行递归也没有问题</p>
+<h3 id="_47">中断<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h3>
+<p>中断是在 CPU 运行期间遇到某些情况暂时中止当前程序，去执行另一段特殊处理程序的过程。分为内部中断和外部中断，内部中断一般就是由 int 指令或者 CPU 的某些错误或者调试服务引起的，外部中断一般就是时钟中断、键盘中断等</p>
+<p>中断调用与返回在前面指令部分有介绍</p>
+<h4 id="_48">中断向量<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h4>
+<p>中断向量即中断服务程序入口的地址，为 4 个字节，前两个字节为偏移地址，后两个字节为段地址</p>
+<p>系统中一共有 256 个中断号，范围在 00h 到 0FFh，段地址 0000h 处为中断向量表，中断向量的地址位于 0000:[4*中断号]，例如 word ptr 0:[20h] 存放 8h 时钟中断的偏移地址，word ptr 0:[22h] 存放时钟中断的段地址</p>
+<h4 id="_49">更改中断向量<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h4>
+<p>可以直接通过令 es 为 0，通过 es:[...] 的方式来更改中断向量，但程序结束后并不会改回来，而产生错误。因此要在改之前存下原来的中断向量，程序结束前再改回原来的中断向量</p>
+<details class="example">
+<summary>例</summary>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="__codelineno-13-1"></a><span class="nf">code</span><span class="w"> </span><span class="no">segment</span><span class="w"></span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="__codelineno-13-2"></a><span class="nf">assume</span><span class="w"> </span><span class="no">cs</span><span class="p">:</span><span class="no">code</span><span class="w"></span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="__codelineno-13-3"></a><span class="nf">old_00h</span><span class="w"> </span><span class="no">dw</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="__codelineno-13-4"></a><span class="nl">int_00h:</span><span class="w"></span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="__codelineno-13-5"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ch</span><span class="p">,</span><span class="w"> </span><span class="mi">10</span><span class="no">h</span><span class="w"></span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="__codelineno-13-6"></a><span class="w">    </span><span class="nf">iret</span><span class="w"></span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="__codelineno-13-7"></a><span class="nl">main:</span><span class="w"></span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="__codelineno-13-8"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">cs</span><span class="w"></span>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="__codelineno-13-9"></a><span class="w">    </span><span class="nf">pop</span><span class="w"> </span><span class="no">ds</span><span class="w"></span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="__codelineno-13-10"></a><span class="w">    </span><span class="nf">xor</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="no">ax</span><span class="w"></span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="__codelineno-13-11"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">es</span><span class="p">,</span><span class="w"> </span><span class="no">ax</span><span class="w"></span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="__codelineno-13-12"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">bx</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="__codelineno-13-13"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="no">es</span><span class="p">:[</span><span class="no">bx</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="__codelineno-13-14"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">es</span><span class="p">:[</span><span class="no">bx</span><span class="err">+</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="__codelineno-13-15"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">old_00h</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span><span class="w"> </span><span class="no">ax</span><span class="w"></span>
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="__codelineno-13-16"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">old_00h</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="no">dx</span><span class="w"></span>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="__codelineno-13-17"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">word</span><span class="w"> </span><span class="no">ptr</span><span class="w"> </span><span class="no">es</span><span class="p">:[</span><span class="no">bx</span><span class="p">],</span><span class="w"> </span><span class="no">offset</span><span class="w"> </span><span class="no">int_00h</span><span class="w"></span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="__codelineno-13-18"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">es</span><span class="p">:[</span><span class="no">bx</span><span class="err">+</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="no">cs</span><span class="w"></span>
+<a id="__codelineno-13-19" name="__codelineno-13-19" href="__codelineno-13-19"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">123</span><span class="no">h</span><span class="w"></span>
+<a id="__codelineno-13-20" name="__codelineno-13-20" href="__codelineno-13-20"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ch</span><span class="p">,</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-13-21" name="__codelineno-13-21" href="__codelineno-13-21"></a><span class="w">    </span><span class="nf">div</span><span class="w"> </span><span class="no">ch</span><span class="w"></span>
+<a id="__codelineno-13-22" name="__codelineno-13-22" href="__codelineno-13-22"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="no">old_00h</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-13-23" name="__codelineno-13-23" href="__codelineno-13-23"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">dx</span><span class="p">,</span><span class="w"> </span><span class="no">old_00h</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="w"></span>
+<a id="__codelineno-13-24" name="__codelineno-13-24" href="__codelineno-13-24"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">es</span><span class="p">:[</span><span class="no">bx</span><span class="p">],</span><span class="w"> </span><span class="no">ax</span><span class="w"></span>
+<a id="__codelineno-13-25" name="__codelineno-13-25" href="__codelineno-13-25"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">es</span><span class="p">:[</span><span class="no">bx</span><span class="err">+</span><span class="mi">2</span><span class="p">],</span><span class="w"> </span><span class="no">dx</span><span class="w"></span>
+<a id="__codelineno-13-26" name="__codelineno-13-26" href="__codelineno-13-26"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ah</span><span class="p">,</span><span class="w"> </span><span class="mi">4</span><span class="no">Ch</span><span class="w"></span>
+<a id="__codelineno-13-27" name="__codelineno-13-27" href="__codelineno-13-27"></a><span class="w">    </span><span class="nf">int</span><span class="w"> </span><span class="mi">21</span><span class="no">h</span><span class="w"></span>
+<a id="__codelineno-13-28" name="__codelineno-13-28" href="__codelineno-13-28"></a><span class="nf">code</span><span class="w"> </span><span class="no">ends</span><span class="w"></span>
+<a id="__codelineno-13-29" name="__codelineno-13-29" href="__codelineno-13-29"></a><span class="nf">end</span><span class="w"> </span><span class="no">main</span><span class="w"></span>
+</code></pre></div>
+</details>
+<h4 id="_50">除法溢出<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h4>
+<p>除法溢出有两种情况：</p>
+<ul>
+<li>除以 0 会溢出</li>
+<li>商无法保存到 al 或 ax 中，会发生溢出</li>
+</ul>
+<p>溢出的时候会在 div 指令的前面插入一条 <code class="highlight"><span class="nf">int</span><span class="w"> </span><span class="mi">00</span><span class="no">h</span><span class="w"></span></code> 并运行，DOS 执行 0 号中断会输出溢出信息并终止程序</p>
+<p>因此也就可以修改 0 号中断的中断向量，使之继续运行，0 号中断退出后仍会重新运行刚刚出现问题的 div 指令，一个例子见上（即修改中断向量的那个例子）</p>
+<h4 id="_51">时钟延迟<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h4>
+<h4 id="dos">DOS 中断<a class="headerlink" href="#dos" title="Permanent link">&para;</a></h4>
+<p>DOS 中断即是 int 21h，它作为一个函数集包含了标准输入/输出、文件管理、内存管理、进程管理的中断调用，提供了诸多子功能（ah 为功能号），完整见 <a href="../asm_int_list/intr/int.htm">Ralf Brown's Interrupt List</a>，下面是一些常用功能</p>
+<div class="card">
+<div class="card-header">AH=01h</div>
+<div class="card-body">
+<ul>
+<li><strong>功能</strong>：输入字符功能</li>
+<li><strong>作用</strong>：从键盘读入单个字符，如果是 Ctrl-Break 则退出，否则将键值送入 al 中</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">AH=02h</div>
+<div class="card-body">
+<ul>
+<li><strong>功能</strong>：输出字符功能</li>
+<li><strong>作用</strong>：将 dl 以字符的形式（ASCII）打印出来</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">AH=09h</div>
+<div class="card-body">
+<ul>
+<li><strong>功能</strong>：输出字符串功能</li>
+<li><strong>作用</strong>：将 ds:dx 处字符串输出，该字符串必须以 '$' 结尾</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">AH=0Ah</div>
+<div class="card-body">
+<ul>
+<li><strong>功能</strong>：输入字符串功能</li>
+<li><strong>作用</strong>：ds:dx 为一个 buf，buf 的第一个字节为允许输入的最多字符数，中断后第二个字节变为实际输入的字符数，第三个字节开始是输入的字符内容。如果输入超过最大字符数，则会发出铃声，并且光标不再移动</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header">AH=4Ch</div>
+<div class="card-body">
+<ul>
+<li><strong>功能</strong>：终止程序功能</li>
+<li><strong>作用</strong>：退出当前程序，返回码为 al（DOS 中不会处理，可以不写）</li>
+</ul>
+</div>
+</div>
+<h3 id="bios">BIOS 中断<a class="headerlink" href="#bios" title="Permanent link">&para;</a></h3>
+<div class="card">
+<div class="card-header">int 10h</div>
+<div class="card-body">
+<ul>
+<li><strong>类型</strong>：视频中断</li>
+<li><strong>子功能</strong>：ah = 00h 号功能切换显示模式<ul>
+<li>al = 03h 表示 80*25 文本模式</li>
+<li>al = 13h 表示 320*200*256 图形模式</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h4 id="_52">文本模式编程<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h4>
+<p>程序运行时默认终端就处于文本模式，可以直接通过写入相应内存地址来更改显示文本的内容</p>
+<p>整个文本模式的屏幕左上角坐标为 (0, 0)，右下角坐标为 (79, 24)。内存结构为一个字表示一个字符（高 8 位为显示的字符，低 8 位中高 4 位为背景色，低 4 位为前景色），(x, y) 位置处的字符对应内存位于 word ptr B800:[(y*80+x)*2] 处</p>
+<p>编程时先设置 es 为 0B800h，然后计算出 bx = (y*80+x)*2，然后令 byte ptr es:[bx] = 字符，byte ptr es:[bx+1] = 颜色</p>
+<h4 id="_53">图形模式编程<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h4>
+<p>把显卡切换到图形模式使用 int 10h 中断，<code class="highlight"><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">0013</span><span class="no">h</span><span class="w"></span></code> 设置子功能号为 0，模式编号 al 为 13h 即图形模式，然后 <code class="highlight"><span class="nf">int</span><span class="w"> </span><span class="mi">10</span><span class="no">h</span><span class="w"></span></code> 即可切换到图形模式，这种情况下是 320*200 分辨率、256 色的模式。</p>
+<p>屏幕上的一个点对应显卡内存上的一个字节，表示颜色。点 (x, y) 位于内存 0A00:[320*y+x] 的位置，颜色：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="__codelineno-14-1"></a>0 黑    1 蓝    2 绿    3 青    4 红    5 洋红
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="__codelineno-14-2"></a>6 棕    7 白    8 灰    9 亮蓝  A 亮绿  B 亮青
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="__codelineno-14-3"></a>C 亮红  D 紫    E 黄    F 亮白
+</code></pre></div>
+编程时设置 es 为 0A00h，然后向 byte ptr es:[...] 中写入颜色码即可更改某处像素点颜色</p>
+<p>再使用 <code class="highlight"><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">0003</span><span class="no">h</span><span class="w"></span></code> 后 <code class="highlight"><span class="nf">int</span><span class="w"> </span><span class="mi">10</span><span class="no">h</span><span class="w"></span></code> 切换回文本模式</p>
 
   
     <hr>
@@ -3215,7 +3473,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年5月24日 12:55:02</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年5月25日 12:13:13</span>
       
         <br>
         创建日期:

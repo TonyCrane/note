@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2D
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2D - ALTERNATE MULTIPLEX INTERRUPT SPECIFICATION (AMIS) [v3.6] - 
+AH = multiplex number
+AL = function
+00h installation check
+01h get private entry point
+02h uninstall
+03h request popup
+04h determine chained interrupts
+05h get hotkey list
+06h get device-driver information
+07h-0Fh reserved for future enhancements
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2D
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4213.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4215.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ALTERNATE MULTIPLEX INTERRUPT SPECIFICATION (AMIS) [v3.6]</font></h3>
+<PRE>
+AH = multiplex number
+AL = function
+00h installation check
+01h get private entry point
+02h uninstall
+03h request popup
+04h determine chained interrupts
+05h get hotkey list
+06h get device-driver information
+07h-0Fh reserved for future enhancements
+<p><b>Return:</b><br>AL = 00h (not implemented)
+other  application-dependent.
+Other registers vary by function (also see individual entries below)<br>
+<p><b>Return:</b><br>Varies by function
+</PRE>
+<p><b>Notes:</b>
+Programs should not use fixed multiplex numbers; rather, a program
+should scan all multiplex numbers from 00h to FFh, remembering the
+first unused multiplex in case the program is not yet installed.
+For multiplex numbers which are in use, the program should compare
+the first 16 bytes of the signature string to determine whether it
+is already installed on that multiplex number.  If not previously
+installed, it should use the first free multiplex number..
+Functions other than 00h are not valid unless a program is installed
+on the selected multiplex number.
+To be considered fully compliant with version 3.6 of the specification,
+programs must implement at least functions 00h, 02h (no resident
+uninstall code required), and 04h (return value 04h).  TSRs that
+provide hotkeys with which the user can activate them must also
+implement function 05h.  TSRs which provide DOS device drivers must
+also implement function 06h.  The absolute minimum fully-compliant
+implementation has an overhead of 64 bytes (80 bytes with function
+05h) plus 22 bytes per hooked interrupt (for the interrupt sharing
+protocol header and hook list entry)..
+The signature string and description may be used by memory mappers
+to display the installed programs.
+To be considered fully compliant, users of this specification must
+adhere to the IBM interrupt sharing protocol <a href="rb-4214.htm#Table2568">(see #02568)</a>, which will
+permit removal of TSRs in arbitrary order and interrupt handler
+reordering.  All TSRs following this specification should be
+removable unless they are loaded from CONFIG.SYS, though they need
+not keep the code for removing themselves resident; it is acceptable
+for a separate program to perform the interrupt unhooking and
+memory-freeing steps of removal..
+A sample public-domain implementation including example TSRs and
+utility programs may be found in a separate package distributed as
+AMISLnnn.ZIP (AMISL092.ZIP as of this writing)..
+Please let me know if you choose to follow this proposal.  The
+signature and a list of the private API calls you use would be
+appreciated, as well.
+<p><b>See Also:</b>
+INT 2D/AL=00h - INT 2D/AL=01h - INT 2D/AL=02h - INT 2D/AL=03h - INT 2D/AL=04h
+<p><b>See Also:</b>
+INT 2D/AL=05h - INT 2D/AL=06h - <a href="rb-4251.htm">INT 2F"NOTES"</a>
+<PRE>
+<p>
+Format of interrupt sharing protocol interrupt handler entry point:
+<a name=table2568></a>
+Offset  Size    Description     (Table 02568)
+00h  2 BYTEs   short jump to actual start of interrupt handler, immediately
+following this data block (EBh 10h)
+02h    DWORD   address of next handler in chain
+06h    WORD    signature 424Bh
+08h    BYTE    EOI flag
+00h software interrupt or secondary hardware interrupt handler
+80h primary hardware interrupt handler (will issue EOI to
+interrupt controller)
+09h  2 BYTEs   short jump to hardware reset routine
+must point at a valid FAR procedure (may be just RETF)
+0Bh  7 BYTEs   reserved (0) by IBM for future expansion
+</PRE>
+<p><b>Note:</b>
+When chaining to the prior handler, the interrupt handler must perform
+an indirect jump/call using the address at offset 02h in the
+ISP header.  This permits another AMIS TSR to hook itself into
+the chain at a position other than as the first handler to receive
+an interrupt.
+<p><b>See Also:</b>
+<a href="rb-8674.htm">INT F1/AH=01h"Common ISDN API"</a> - <a href="rb-8674.htm">INT F1/AH=06h"CAPI"</a> - #04068
+<p>
+<b>Category: <a href="cat-042.htm">
+TSR Libraries</a>
+- <a href="int-2D.htm">
+Int 2Dh</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4213.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4215.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=4F04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=4F04h - VESA SuperVGA BIOS - SAVE/RESTORE SuperVGA VIDEO STATE - 
+AX = 4F04h
+DL = subfunction
+00h get state buffer size
+Return: BX = number of 64-byte blocks needed
+01h save video states
+ES:BX - buffer
+02h restore video states
+ES:BX - buffer
+CX = states to save/restore (see #00085)
+Return: AL = 4Fh if function supported
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=4F04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0276.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0278.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VESA SuperVGA BIOS - SAVE/RESTORE SuperVGA VIDEO STATE</font></h3>
+<PRE>
+AX = 4F04h
+DL = subfunction
+00h get state buffer size
+<p><b>Return:</b><br>BX = number of 64-byte blocks needed
+01h save video states
+ES:BX -> buffer
+02h restore video states
+ES:BX -> buffer.
+CX = states to save/restore <a href="rb-0277.htm#Table85">(see #00085)</a><br>
+<p><b>Return:</b><br>AL = 4Fh if function supported
+AH = status
+00h successful
+01h failed
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0222.htm">AH=1Ch</a> - <a href="rb-0358.htm">AX=5F90h</a> - <a href="rb-0361.htm">AX=5FA0h</a>
+<PRE>
+<p>
+Bitfields for VESA SuperVGA states to save/restore:
+<a name=table85></a>
+Bit(s)  Description     (Table 00085)
+0      video hardware state
+1      video BIOS data state
+2      video DAC state
+3      SuperVGA register state
+</PRE>
+<p><b>See Also:</b>
+#00048 - #00186
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0276.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0278.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AH=1Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AH=1Ah - PC/TCP kernel v2.05+ - net_write - WRITE TO THE NETWORK - 
+AH = 1Ah
+BX = network descriptor
+CX = number of bytes to transmit (0000h allowed)
+DX = send options (see #03464)
+DS:SI - data to be written
+Return: CF clear if successful
+AX = number of bytes actually written
+DX = ???
+CF set on error
+AX = error code (see #03319 at INT 61FTP Software)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AH=1Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6845.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6847.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC/TCP kernel v2.05+ - net_write - WRITE TO THE NETWORK</font></h3>
+<PRE>
+AH = 1Ah
+BX = network descriptor
+CX = number of bytes to transmit (0000h allowed)
+DX = send options <a href="rb-6846.htm#Table3464">(see #03464)</a>
+DS:SI -> data to be written<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually written
+DX = ???
+CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #03319 at INT 61"FTP Software")
+<p><b>InstallCheck:</b><br>Test for the signature "TCPTSR" three bytes beyond the start
+of the interrupt handler
+<p><b>Range:</b><br>INT 20h to INT E0h, selected by configuration
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6703.htm">INT 61"FTP Software"</a> - <a href="rb-6704.htm">INT 61/AH=00h"PC/TCP"</a> - <a href="rb-6848.htm">INT 61/AH=1Bh</a> - <a href="../i.html"
+<p><b>See Also:</b>
+<a href="rb-7225.htm">INT 63/AH=19h"BW-TCP"</a> - <a href="rb-7227.htm">INT 63/AH=1Bh"BW-TCP"</a>
+<PRE>
+<p>
+Bitfields for PC/TCP send options:
+<a name=table3464></a>
+Bit(s)  Description     (Table 03464)
+0      signal "URG"ent data
+3      attempt rerouting on non-stream calls if first attempt fails
+4      send data with PUSH flag (no override of Nagle)
+5      fail rather than truncating datagram
+6      fail rather than blocking
+7      broadcast packet
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6845.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6847.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

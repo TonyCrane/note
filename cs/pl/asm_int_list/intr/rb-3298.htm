@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=B4h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=B4h - Novell NetWare - AttachHandle - 
+AH = B4h
+DS:SI - input buffer (see #01802)
+Return: AX = DOS file handle or return code
+Note:  this is an interface provided by NetWare to give DOS file access to
+NetWare files on non-DOS systems such as Macintosh, OS/2, and Unix
+SeeAlso: AX=E909h
+Format of Novell NetWare input buffer:
+Offset Size  Description   (Table 01802)
+00h  BYTE  WorkFileServer
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=B4h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3297.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3299.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - AttachHandle</font></h3>
+<PRE>
+AH = B4h
+DS:SI -> input buffer <a href="rb-3298.htm#Table1802">(see #01802)</a><br>
+<p><b>Return:</b><br>AX = DOS file handle or return code
+</PRE>
+<p><b>Note:</b>
+This is an interface provided by NetWare to give DOS file access to
+NetWare files on non-DOS systems such as Macintosh, OS/2, and Unix
+<p><b>See Also:</b>
+<a href="rb-3607.htm">AX=E909h</a>
+<PRE>
+<p>
+Format of Novell NetWare input buffer:
+<a name=table1802></a>
+Offset  Size    Description     (Table 01802)
+00h    BYTE    "WorkFileServer"
+01h    BYTE    access code
+02h    DWORD   "OpenHandle"
+06h    WORD    "OpenHandleCount"
+08h    DWORD   "OpenFileSize"
+</PRE>
+<p><b>Note:</b>
+The six bytes at 02h-07h appear to be the six-byte NetWare handle
+returned by AX=E909h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3297.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3299.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

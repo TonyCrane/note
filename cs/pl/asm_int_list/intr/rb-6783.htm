@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0008h/BX=0002h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0008h/BX=0002h - Banyan VINES - TALKPORT SERVICE - POST MESSAGE ON LOCAL DISPLAY - 
+AX = 0008h
+BX = 0002h
+CX = message display flags (see #03441)
+DS:DX - ASCIZ string to display (only first 80 chars used)
+Return: AX = status
+0000h successful
+000Bh message display function currently busy
+000Ch message queue full
+Notes: queues up to three messages to be displayed on the bottom line
+This service is handled by the redirector
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0008h/BX=0002h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6782.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6784.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - TALKPORT SERVICE - POST MESSAGE ON LOCAL DISPLAY</font></h3>
+<PRE>
+AX = 0008h
+BX = 0002h
+CX = message display flags <a href="rb-6783.htm#Table3441">(see #03441)</a>
+DS:DX -> ASCIZ string to display (only first 80 chars used)<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+000Bh message display function currently busy
+000Ch message queue full
+</PRE>
+<p><b>Notes:</b>
+Queues up to three messages to be displayed on the bottom line.
+This service is handled by the redirector.
+In a DOS session, TalkPort messages are displayed on display line 25;
+in a Windows session, TalkPort messages are displayed in dialog boxes
+<p><b>See Also:</b>
+<a href="rb-6781.htm">AX=0008h/BX=0000h</a> - <a href="rb-6784.htm">AX=0008h/BX=0003h</a>
+<PRE>
+<p>
+Bitfields for VINES message display flags:
+<a name=table3441></a>
+Bit(s)  Description     (Table 03441)
+0      message will remain on screen until user presses ^X
+1      ring bell after displaying message
+2      blink
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6782.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6784.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

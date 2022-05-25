@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=252Bh/BH=0Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=252Bh/BH=0Bh - Phar Lap 386/DOS-Extender v4.1+ - MAP DATA FILE AT FILE OFFSET - 
+AX = 252Bh
+BH = 0Bh
+BL = subfunction
+00h by linear address
+ECX = linear address at which to map data file
+01h by logical address
+ES:ECX = logical address at which to map data file
+EDX = number of bytes to map
+DS:ESI - mapping structure (see #01373)
+DS:EDI - ASCIZ filename
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=252Bh/BH=0Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2653.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2655.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Phar Lap 386/DOS-Extender v4.1+ - MAP DATA FILE AT FILE OFFSET</font></h3>
+<PRE>
+AX = 252Bh
+BH = 0Bh
+BL = subfunction
+00h by linear address
+ECX = linear address at which to map data file
+01h by logical address
+ES:ECX = logical address at which to map data file
+EDX = number of bytes to map
+DS:ESI -> mapping structure <a href="rb-2654.htm#Table1373">(see #01373)</a>
+DS:EDI -> ASCIZ filename<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+EAX = error code
+0002h file error
+ECX = phase (01h opening file, 02h seeking, 03h reading)
+EDX = error code returned by DOS
+0009h invalid address
+0081h invalid parameters or 386|VMM not present
+0086h all 386|VMM file handles already in use
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2648.htm">AX=252Bh/BH=03h</a> - <a href="rb-2652.htm">AX=252Bh/BH=09h</a>
+<PRE>
+<p>
+Format of Phar Lap mapping structure:
+<a name=table1373></a>
+Offset  Size    Description     (Table 01373)
+00h    DWORD   starting file offset to be mapped
+04h    DWORD   DOS file access and sharing modes <a href="rb-0000.htm#Table0"></a>(see #01403 at INT 21/AH=3Dh)
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2653.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2655.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

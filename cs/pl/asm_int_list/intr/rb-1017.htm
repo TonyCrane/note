@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AX=8004h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AX=8004h - ARTICOM - ATTACH ASYNCHRONOUS RESOURCE - 
+AX = 8004h
+DX = port to redirect (COM1=0, COM2=1, ...)
+CH = attach type
+CL = adapter to use for attach, 0FFh to search all
+ES:DI - attachment structure (see #00361)
+Return: AX = error code, if error (see #00360)
+Note:  The wildcard '*' is supported in the server and resource fields. If
+wild cards are used then the first matching available server is
+attached.
+SeeAlso: AX=8000h,AX=8003h,AX=8005h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AX=8004h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1016.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1018.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ARTICOM - ATTACH ASYNCHRONOUS RESOURCE</font></h3>
+<PRE>
+AX = 8004h
+DX = port to redirect (COM1=0, COM2=1, ...)
+CH = attach type
+CL = adapter to use for attach, 0FFh to search all
+ES:DI -> attachment structure <a href="rb-1017.htm#Table361">(see #00361)</a><br>
+<p><b>Return:</b><br>AX = error code, if error (see #00360)
+</PRE>
+<p><b>Note:</b>
+The wildcard '*' is supported in the server and resource fields.  If
+wild cards are used then the first matching available server is
+attached.
+<p><b>See Also:</b>
+<a href="rb-1009.htm">AX=8000h</a> - <a href="rb-1015.htm">AX=8003h</a> - <a href="rb-1018.htm">AX=8005h</a>
+<PRE>
+<p>
+Format of ARTICOM attachment structure:
+<a name=table361></a>
+Offset  Size    Description     (Table 00361)
+00h 16 BYTEs   server to look for attach
+10h 16 BYTEs   attach to resource name
+20h 16 BYTEs   username for attach
+30h 16 BYTEs   password for username or resource
+40h    BYTE    attach type
+00h normal
+01h queue if resource is in use (not yet supported in v1.00)
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1016.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1018.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

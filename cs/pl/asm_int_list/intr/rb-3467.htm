@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=0Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=0Dh - Novell NetWare - DIRECTORY SERVICES - ADD TRUSTEE TO DIRECTORY - 
+AH = E2h subfn 0Dh
+DS:SI - request buffer (see #01861)
+ES:DI - reply buffer (see #01863)
+Return: AL = status (00h,8Ch,FCh) (see #01839)
+Note:  this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+SeeAlso: AH=E2h/SF=0Ch,AH=E2h/SF=0Eh,AH=E3h/SF=47h,AX=F216h/SF=0Dh
+Format of NetWare Add Trustee To Directory request buffer:
+Offset Size  Description   (Table 01861)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=0Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3466.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3468.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - ADD TRUSTEE TO DIRECTORY</font></h3>
+<PRE>
+AH = E2h subfn 0Dh
+DS:SI -> request buffer <a href="rb-3467.htm#Table1861">(see #01861)</a>
+ES:DI -> reply buffer <a href="rb-3468.htm#Table1863">(see #01863)</a><br>
+<p><b>Return:</b><br>AL = status (00h,8Ch,FCh) (see #01839)
+</PRE>
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3466.htm">AH=E2h/SF=0Ch</a> - <a href="rb-3468.htm">AH=E2h/SF=0Eh</a> - <a href="rb-3520.htm">AH=E3h/SF=47h</a> - <a href="rb-3679.htm"
+<PRE>
+<p>
+Format of NetWare "Add Trustee To Directory" request buffer:
+<a name=table1861></a>
+Offset  Size    Description     (Table 01861)
+00h    WORD    length of following data (max 107h)
+02h    BYTE    0Dh (subfunction "Add Trustee To Directory")
+03h    BYTE    directory handle
+04h    DWORD   (big-endian) object ID of trustee
+08h    BYTE    trustee directory rights <a href="rb-3460.htm#Table1849">(see #01849)</a>
+09h    BYTE    length of directory path (00h-FFh)
+0Ah  N BYTEs   directory path
+</PRE>
+<p><b>See Also:</b>
+#01863
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3466.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3468.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

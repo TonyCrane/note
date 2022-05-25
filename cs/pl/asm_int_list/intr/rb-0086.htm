@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AH=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AH=01h - VIDEO - SET TEXT-MODE CURSOR SHAPE - 
+AH = 01h
+CH = cursor start and options (see #00013)
+CL = bottom scan line containing cursor (bits 0-4)
+Return: nothing
+Desc:  specify the starting and ending scan lines to be occupied by the
+hardware cursor in text modes
+Notes: buggy on EGA systems--BIOS remaps cursor shape in 43 line modes, but
+returns unmapped cursor shape
+UltraVision scales size to the current font height by assuming 14-line
+monochrome and 8-line color fonts; this call is not valid if cursor
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AH=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0085.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0087.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - SET TEXT-MODE CURSOR SHAPE</font></h3>
+<PRE>
+AH = 01h
+CH = cursor start and options <a href="rb-0086.htm#Table13">(see #00013)</a>
+CL = bottom scan line containing cursor (bits 0-4)<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Desc:</b>
+Specify the starting and ending scan lines to be occupied by the
+hardware cursor in text modes
+<p><b>Notes:</b>
+Buggy on EGA systems--BIOS remaps cursor shape in 43 line modes, but
+returns unmapped cursor shape.
+UltraVision scales size to the current font height by assuming 14-line
+monochrome and 8-line color fonts; this call is not valid if cursor
+emulation has been disabled.
+Applications which wish to change the cursor by programming the
+hardware directly on EGA or above should call INT 10/AX=1130h or
+read 0040h:0085h first to determine the current font height.
+On some adapters, setting the end line greater than the number of lines
+in the font will result in the cursor extending to the top of the
+next character cell on the right
+<p><b>BUG:</b>
+AMI 386 BIOS and AST Premier 386 BIOS will lock up the system if AL
+is not equal to the current video mode
+<p><b>See Also:</b>
+<a href="rb-0088.htm">AH=03h</a> - <a href="rb-0528.htm">AX=CD05h</a> - <a href="rb-0171.htm">AH=12h/BL=34h</a> - #03885
+<PRE>
+<p>
+Bitfields for cursor start and options:
+<a name=table13></a>
+Bit(s)  Description     (Table 00013)
+7      should be zero
+6,5    cursor blink.
+(00=normal, 01=invisible, 10=erratic, 11=slow).
+(00=normal, other=invisible on EGA/VGA)
+4-0    topmost scan line containing cursor
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0085.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0087.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

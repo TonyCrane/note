@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2C/AX=002Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2C/AX=002Dh - Cloaking - SET PORT-TRAPPING PASSALONG - 
+AX = 002Dh
+DX:EBX = new I/O trapping passalong address (see #02566)
+Return: CF clear
+Notes: RM386 calls the passalong address whenever an access to a monitored
+I/O port is attempted; the handler should check whether it is a port
+that it is interested in, and if not call the previous passalong
+address (which was retrieved with AX=002Ch before installing the
+new handler)
+this function was first introduced with RM386 (RAM-MAN/386) v6.00
+SeeAlso: AX=0009h,AX=002Ch,INT 67/AX=5DEAh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2C/AX=002Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4203.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4205.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Cloaking - SET PORT-TRAPPING PASSALONG</font></h3>
+<PRE>
+AX = 002Dh
+DX:EBX = new I/O trapping passalong address <a href="rb-4204.htm#Table2566">(see #02566)</a><br>
+<p><b>Return:</b><br>CF clear
+</PRE>
+<p><b>Notes:</b>
+RM386 calls the passalong address whenever an access to a monitored
+I/O port is attempted; the handler should check whether it is a port
+that it is interested in, and if not call the previous passalong
+address (which was retrieved with AX=002Ch before installing the
+new handler).
+This function was first introduced with RM386 (RAM-MAN/386) v6.00
+<p><b>See Also:</b>
+<a href="rb-4180.htm">AX=0009h</a> - <a href="rb-4203.htm">AX=002Ch</a> - <a href="rb-7471.htm">INT 67/AX=5DEAh</a>
+<PRE>
+<p>
+<a name=table2566></a>
+(Table 02566)
+Values Cloaking port-trapping passalong address is called with:.
+EAX = CS:IP of faulting instruction (unless executing in protected-mode
+ring 3).
+SS:EBX -> caller register structure <a href="rb-4180.htm#Table2559">(see #02559)</a>
+check EFLAGS V86-mode bit for type.
+CX = first two bytes of I/O instruction which was trapped.
+DX = port to which I/O is being performed.
+CF clear<br>
+<p><b>Return:</b><br>CF clear if RM386 should perform I/O operation
+CF set if I/O should be skipped
+</PRE>
+<p><b>Note:</b>
+RM386 skips the trapped I/O instruction, so the passalong handler
+should not modify the client CS:EIP
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2C.htm">
+Int 2Ch</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4203.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4205.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

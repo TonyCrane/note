@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7F/AX=ABCDh/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7F/AX=ABCDh/BX=0000h - IBM 8516 Touch Screen Device Driver - GET API ENTRY - 
+AX = ABCDh
+BX = 0000h
+Return: AX = total number of functions available
+ES:BX - entry point array (see #03967)
+SeeAlso: AX=0104h,AX=0105h
+(Table 03967)
+Values for 8516 Touch Screen function number:
+00h  check initialization and reset (see #03968)
+14h  set user-defined subroutine (see #03969)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7F/AX=ABCDh/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8105.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8107.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>IBM 8516 Touch Screen Device Driver - GET API ENTRY</font></h3>
+<PRE>
+AX = ABCDh
+BX = 0000h<br>
+<p><b>Return:</b><br>AX = total number of functions available
+ES:BX -> entry point array <a href="rb-8106.htm#Table3967">(see #03967)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-8002.htm">AX=0104h</a> - <a href="rb-8003.htm">AX=0105h</a>
+<PRE>
+<p>
+<a name=table3967></a>
+(Table 03967)
+Values for 8516 Touch Screen function number:
+00h    check initialization and reset <a href="rb-8106.htm#Table3968">(see #03968)</a>
+14h    set user-defined subroutine <a href="rb-8106.htm#Table3969">(see #03969)</a>
+</PRE>
+<p><b>Notes:</b>
+Each driver function takes two stack parameters using Pascal calling
+<PRE>
+<p><b>conventions:</b><br>Address of parameter block and address of results buffer.
+All pointers are FAR pointers.
+On return, AX contains the status of the call:
+AX = 0000h successful
+0001h invalid input
+0002h interface error
+0003h unable to perform function
+<p>
+Format of 8516 Touch Screen Function 00h parameter block:
+<a name=table3968></a>
+Offset  Size    Description     (Table 03968)
+00h    WORD    0000h (function number)
+</PRE>
+<p><b>Note:</b>
+This function should be called before any other device driver functions
+<PRE>
+<p>
+Format of 8516 Touch Screen Function 00h results buffer:
+<a name=table3969></a>
+Offset  Size    Description     (Table 03969)
+00h    WORD    touch screen status
+0000h unavailable
+0001h uncalibrated
+FFFFh available
+02h    WORD    aux mouse status (0000h not present, FFFFh present)
+</PRE>
+<p><b>Notes:</b>
+The following driver parameters will have been reset to zero:
+touchdown counter, liftoff counter, position at last touch, position
+at last lift, int call mask, select on count, select off count,
+pos select on count, pos select off count..
+The following driver parameters will have been reset as listed:
+<PRE>
+<p><b>mouse emulation mode:</b><br>Left on
+<p><b>thresholds:</b><br>46 on screen, 96 push harder, 80 push release
+<p><b>x, y hysteresis:</b><br>400
+<p><b>data repeat rate:</b><br>40/sec
+<p><b>select mechanism:</b><br>Push-harder - first-touch
+<p><b>coordinate origin:</b><br>Upper left corner
+<p><b>filter frequency:</b><br>Medium
+<p><b>data block mask:</b><br>All enabled
+<p><b>click lock:</b><br>On
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-7F.htm">
+Int 7Fh</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8105.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8107.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A15h/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A15h/BX=0000h - MS EMM386.EXE v4.46+ - INSTALL I/O VIRTUALIZATION HANDLER - 
+AX = 4A15h
+BX = 0000h (function number)
+DX = starting I/O address
+EDX high word = ending I/O address
+CX = number of ports to trap
+DS:SI - I/O dispatch table (see #02815)
+DI = size of client's code and data (size of DS segment which must be
+made available to I/O dispatch function in protected mode)
+Return: CF clear if successful
+CF set on error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A15h/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4851.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4853.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS EMM386.EXE v4.46+ - INSTALL I/O VIRTUALIZATION HANDLER</font></h3>
+<PRE>
+AX = 4A15h
+BX = 0000h (function number)
+DX = starting I/O address
+EDX high word = ending I/O address
+CX = number of ports to trap
+DS:SI -> I/O dispatch table <a href="rb-4852.htm#Table2815">(see #02815)</a>
+DI = size of client's code and data (size of DS segment which must be
+made available to I/O dispatch function in protected mode)<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+</PRE>
+<p><b>Notes:</b>
+This interface is only available in virtual-86 mode; the I/O handlers
+will be called in protected mode.
+Only ports 0100h-FFFFh may be trapped; EMM386 reserved ports 0000h-
+00FFh
+<PRE>
+<p>
+Format of EMM386 I/O dispatch table [array]:
+<a name=table2815></a>
+Offset  Size    Description     (Table 02815)
+00h    WORD    I/O port number
+02h    WORD    offset of I/O handler for port <a href="rb-4852.htm#Table2816">(see #02816)</a>
+<p>
+<a name=table2816></a>
+(Table 02816)
+Values EMM386 I/O dispatch function is called with:.
+CX = Ring0 code selector for I/O handler's segment.
+DS = Ring0 data selector for I/O handler's segment (alias of CS).
+EDX = faulting I/O address.
+ECX = direction (00000008h for byte output, 00000000h for byte input)
+(reportedly 00h for byte/word input, 04h for byte/word output
+under DOS 6.22 EMM386).
+EAX = data in/out<br>
+<p><b>Return:</b><br>(via FAR RET)
+CF clear if I/O access successfully virtualized
+CF set if access not virtualized (default handler will be called to
+perform the I/O)
+</PRE>
+<p><b>BUG:</b>
+32-bit I/O on trapped ports hangs the DOS 6.22 EMM386
+<p><b>See Also:</b>
+#02815
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4851.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4853.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

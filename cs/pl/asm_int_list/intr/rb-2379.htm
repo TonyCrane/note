@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B10Ah/SF=100Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B10Ah/SF=100Bh - PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (National Semicond. device) - 
+AX = B10Ah subfn 100Bh
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) (see #00878)
+Return: CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) (see #00729)
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B10Ah/SF=100Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2378.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2380.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (National Semicond. device)</font></h3>
+<PRE>
+AX = B10Ah subfn 100Bh
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) <a href="rb-2377.htm#Table878">(see #00878)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) <a href="rb-2371.htm#Table729">(see #00729)</a>
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+</PRE>
+<p><b>Notes:</b>
+This function may require up to 1024 byte of stack; it will not enable
+interrupts if they were disabled before making the call.
+The meanings of BL and BH on entry were exchanged between the initial
+drafts of the specification and final implementation
+<p><b>See Also:</b>
+<a href="rb-2377.htm">AX=B10Ah</a> - <a href="rb-2387.htm">AX=B10Ah/SF=8086h</a>
+<PRE>
+<p>
+Format of National Semiconductor PC87410 EIDE Controller configuration:
+<a name=table921></a>
+Offset  Size    Description     (Table 00921)
+00h 64 BYTEs   header <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 100Bh, device ID D001h)
+<p><b>10h    DWORD   I/O base address for channel 0 control ports (def:</b><br>01F0h)
+<p><b>14h    DWORD   I/O base address for channel 0 status port (def:</b><br>03F6h)
+<p><b>18h    DWORD   I/O base address for channel 1 control ports (def:</b><br>0170h)
+<p><b>1Ch    DWORD   I/O base address for channel 1 status port (def:</b><br>0376h)
+40h    BYTE    IDE Channel 0 timing control
+41h    WORD    IDE Channel 0 read-ahead counter (write-only except bit 15)
+43h    BYTE    IDE Channel 0 function
+44h    BYTE    IDE Channel 1 timing control
+45h    WORD    IDE Channel 1 read-ahead counter (write-only except bit 15)
+47h    BYTE    IDE Channel 1 function
+48h    BYTE    PCI control
+49h  7 BYTEs   unused
+50h 176 BYTEs  ??? (unused?)
+!!!http://www.national.com/ds/PC/PC87410.pdf p.7
+</PRE>
+<p><b>See Also:</b>
+#00739 - #00922
+<PRE>
+<p>
+Format of National Semiconductor PC87415 IDE DMA-Master configuration:
+<a name=table922></a>
+Offset  Size    Description     (Table 00922)
+00h 64 BYTEs   header <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 100Bh, device ID 0002h)
+40h  3 BYTEs   control register
+43h    BYTE    write buffer status (read-only)
+44h    BYTE    Channel 1 master read timing
+45h    BYTE    Channel 1 master write timing
+48h    BYTE    Channel 1 slave read timing
+49h    BYTE    Channel 1 slave write timing
+4Ch    BYTE    Channel 2 master read timing
+4Dh    BYTE    Channel 2 master write timing
+50h    BYTE    Channel 2 slave read timing
+51h    BYTE    Channel 2 slave write timing
+54h    BYTE    command and control block timing
+55h    BYTE    sector size
+!!!http://www.national.com/ds/PC/PC87415.pdf p.8
+</PRE>
+<p><b>See Also:</b>
+#00739 - #00921
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2378.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2380.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

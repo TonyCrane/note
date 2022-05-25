@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7A/BX=0002h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7A/BX=0002h - Novell NetWare - IPX Driver - GET LOCAL TARGET - 
+BX = 0002h
+ES:SI - target internetwork address (see #03824 at INT 7A/BX=000Bh)
+ES:DI - 6-byte buffer for local target
+Return: AL = return code
+00h success
+CX = expected one-way transfer time (clock ticks) for a 576-byte
+packet
+ES:DI - local target
+FAh unsuccessful (no path to destination)
+Notes: the internetwork address consists of a 4-byte network address followed
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7A/BX=0002h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7843.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7845.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - IPX Driver - GET LOCAL TARGET</font></h3>
+<PRE>
+BX = 0002h
+ES:SI -> target internetwork address <a href="rb-0000.htm#Table0"></a>(see #03824 at INT 7A/BX=000Bh)
+ES:DI -> 6-byte buffer for local target<br>
+<p><b>Return:</b><br>AL = return code
+00h success
+CX = expected one-way transfer time (clock ticks) for a 576-byte
+packet
+ES:DI -> local target
+FAh unsuccessful (no path to destination)
+</PRE>
+<p><b>Notes:</b>
+The internetwork address consists of a 4-byte network address followed
+by a 6-byte node address.  The local target is only a 6-byte node
+address.  If the target is in the same network, the local target is
+just the node address of target; otherwise, the local target is the
+node address of the bridge that leads to the target..
+This function may be called from inside IPX and AES Event Service
+Routines, but not from other interrupt handlers.
+This function is supported by Advanced NetWare 1.02+
+<p><b>See Also:</b>
+<a href="rb-7851.htm">BX=0009h</a>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-7A.htm">
+Int 7Ah</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7843.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7845.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

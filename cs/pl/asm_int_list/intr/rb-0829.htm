@@ -1,0 +1,378 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=04h/DX=FFFFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=04h/DX=FFFFh - Connection Manager - OPEN COMMUNICATION - 
+AH = 04h
+DX = FFFFh
+ES:DI - Connection Request protocol vector (see #00311)
+Return: AH = return code
+00h successful
+AL = connection ID
+BH = connection type
+00h direct connection or no dialing
+01h Connection Server dialed phone
+01h no response from Connection Server
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=04h/DX=FFFFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0828.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0830.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Connection Manager - OPEN COMMUNICATION</font></h3>
+<PRE>
+AH = 04h
+DX = FFFFh
+ES:DI -> Connection Request protocol vector <a href="rb-0829.htm#Table311">(see #00311)</a><br>
+<p><b>Return:</b><br>AH = return code
+00h successful
+AL = connection ID
+BH = connection type
+00h direct connection or no dialing
+01h Connection Server dialed phone
+01h no response from Connection Server
+03h invalid request
+</PRE>
+<p><b>Program:</b>
+Connection Manager by Softwarehouse Corp. permits the sharing of
+serial ports over an IPX or NetBIOS-based network
+<p><b>Desc:</b>
+Initiate a connection to the Connection Server listed in the current
+Client parameter set
+<p><b>Notes:</b>
+If DX is 0-3 on entry, Connection Manager emulates the standard BIOS
+function, but redirects the port over the network; if DX is any other
+value, the call is chained.
+All subvectors of the Connection Request vector are optional; if
+missing, default values are provided by the default connection
+parameter set
+<p><b>See Also:</b>
+<a href="rb-0815.htm">AH=00h/DX=FFFFh</a> - <a href="rb-0846.htm">AH=05h/DX=FFFFh</a> - <a href="rb-0853.htm">AH=06h/DX=FFFFh</a> - <a href=http://www.ctyme.com/intr/rb-08
+<p><b>See Also:</b>
+<a href="rb-0875.htm">AH=0Ah/DX=FFFFh</a> - <a href="rb-0881.htm">AH=0Ch/DX=FFFFh</a>
+<PRE>
+<p>
+Format of Connection Manager protocol command vector:
+<a name=table311></a>
+Offset  Size    Description     (Table 00311)
+00h    WORD    (big-endian) total length of command (including this word)
+02h    WORD    (big-endian) command code
+EF01h Connection Request
+EF06h Modify Connection Parameters
+04h  N BYTEs   list of subvectors <a href="rb-0829.htm#Table313">(see #00313)</a>
+allowable subvector types are 01h-04h,17h,18h for command code
+EF01h; 03h,04h for command code EF06h <a href="rb-0829.htm#Table312">(see #00312)</a>
+<p>
+<a name=table312></a>
+(Table 00312)
+Values for Connection Manager subvector type code:
+01h    Connection ID
+02h    Destination ID
+03h    Asynchronous line parameters
+04h    Data transfer parameters
+09h    Line speed
+0Ah    Serial coding
+0Bh    Packet size
+0Ch    Timers
+0Dh    Special characters
+0Eh    Target ID
+0Fh    Telephone number
+10h    ASCII destination ID
+11h    Parity
+12h    Bits per character
+13h    Number of stop bits
+14h    Packet timer
+15h    Intercharacter timer
+17h    Flags
+18h    Parameter ranges
+19h    Flow control
+<p>
+Format of Connection Manager subvector:
+<a name=table313></a>
+Offset  Size    Description     (Table 00313)
+00h    BYTE    length of subvector
+01h    BYTE    type code <a href="rb-0829.htm#Table312">(see #00312)</a>
+02h N-2 BYTEs  data, which may include subvectors
+</PRE>
+<p><b>See Also:</b>
+#00314 - #00315 - #00316 - #00317 - #00318 - #00319 - #00320 - #00321 - #00322 - #00323 - #00324
+<p><b>See Also:</b>
+#00325 - #00326 - #00328 - #00329 - #00330 - #00331 - #00332 - #00333 - #00311
+<PRE>
+<p>
+Format of Connection ID subvector:
+<a name=table314></a>
+Offset  Size    Description     (Table 00314)
+00h    BYTE    03h (length)
+01h    BYTE    01h (subvector "Connection ID")
+02h    BYTE    connection ID
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Destination ID subvector:
+<a name=table315></a>
+Offset  Size    Description     (Table 00315)
+00h    BYTE    length
+01h    BYTE    02h (subvector "Destination ID")
+02h  N BYTEs   subvector(s) of type 0Eh, 0Fh, or 10h
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Asynchronous line parameters subvector:
+<a name=table316></a>
+Offset  Size    Description     (Table 00316)
+00h    BYTE    length
+01h    BYTE    03h (subvector "Asynchronous line parameters")
+02h  N BYTEs   subvector(s) of type 09h, 0Ah, or 19h
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Data transfer parameters subvector:
+<a name=table317></a>
+Offset  Size    Description     (Table 00317)
+00h    BYTE    length
+01h    BYTE    04h (subvector "Data transfer parameters")
+02h  N BYTEs   subvector(s) of type 0Bh, 0Ch, or 0Dh
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Line speed subvector:
+<a name=table318></a>
+Offset  Size    Description     (Table 00318)
+00h    BYTE    04h (length)
+01h    BYTE    09h (subvector "Line speed")
+02h    WORD    bit map, highest set bit selects speed
+<p><b>bit 0:</b><br>2400
+<p><b>bits 1-7:</b><br>1800, 1200, 600, 300, 115200, 150, 110 bps
+<p><b>bits 8-15:</b><br>57600, 38400, 19200, 14400, 9600, 7200, 4800, 3600
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Serial coding subvector:
+<a name=table319></a>
+Offset  Size    Description     (Table 00319)
+00h    BYTE    length
+01h    BYTE    0Ah (subvector "Serial coding")
+02h  N BYTEs   subvector(s) of type 11h, 12h, or 13h
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Packet size subvector:
+<a name=table320></a>
+Offset  Size    Description     (Table 00320)
+00h    BYTE    04h (length)
+01h    BYTE    0Bh (subvector "Packet size")
+02h    WORD    (big-endian) packet size, 1 to 1024
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Timers subvector:
+<a name=table321></a>
+Offset  Size    Description     (Table 00321)
+00h    BYTE    length
+01h    BYTE    0Ch (subvector "Timers")
+02h  8 BYTEs   subvector of type 14h or 15h
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Special characters subvector:
+<a name=table322></a>
+Offset  Size    Description     (Table 00322)
+00h    BYTE    length
+01h    BYTE    0Dh (subvector "Special characters")
+02h  N BYTEs   list of ASCII characters to be used as EOM or EOB
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Target ID:
+<a name=table323></a>
+Offset  Size    Description     (Table 00323)
+00h    BYTE    length
+01h    BYTE    0Eh (subvector "Target ID")
+02h  N BYTEs   target ID, 1-16 bytes
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Telephone number subvector:
+<a name=table324></a>
+Offset  Size    Description     (Table 00324)
+00h    BYTE    length
+01h    BYTE    0Fh (subvector "Telephone number")
+02h  N BYTEs   telephone number
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of ASCII destination ID subvector:
+<a name=table325></a>
+Offset  Size    Description     (Table 00325)
+00h    BYTE    length
+01h    BYTE    10h (subvector "ASCII destination ID")
+02h  N BYTEs   destination ID
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Parity subvector:
+<a name=table326></a>
+Offset  Size    Description     (Table 00326)
+00h    BYTE    03h (length)
+01h    BYTE    11h (subvector "Parity")
+02h    BYTE    parity type <a href="rb-0829.htm#Table327">(see #00327)</a>
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Bitfields for Connection Manager parity type:
+<a name=table327></a>
+Bit(s)  Description     (Table 00327)
+7      odd
+6      even
+5      mark
+4      space
+3      none
+</PRE>
+<p><b>See Also:</b>
+#00326
+<PRE>
+<p>
+Format of Bits per character subvector:
+<a name=table328></a>
+Offset  Size    Description     (Table 00328)
+00h    BYTE    03h (length)
+01h    BYTE    12h (subvector "Bits per character")
+02h    BYTE    bits per character
+<p><b>bit 7:</b><br>Seven
+<p><b>bit 6:</b><br>Eight
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Number of stop bits subvector:
+<a name=table329></a>
+Offset  Size    Description     (Table 00329)
+00h    BYTE    03h (length)
+01h    BYTE    13h (subvector "Number of stop bits")
+02h    BYTE    stop bits
+<p><b>bit 7:</b><br>One
+<p><b>bit 6:</b><br>1.5
+<p><b>bit 5:</b><br>Two
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Packet timer and Intercharacter timer subvectors:
+<a name=table330></a>
+Offset  Size    Description     (Table 00330)
+00h    BYTE    04h (length)
+01h    BYTE    subvector type
+14h Packet timer
+15h Intercharacter timer
+02h    WORD    (big-endian) unit of value representing 20ms
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Flags subvector:
+<a name=table331></a>
+Offset  Size    Description     (Table 00331)
+00h    BYTE    03h (length)
+01h    BYTE    17h (subvector "Flags")
+02h    BYTE    flags
+<p><b>bit 7:</b><br>Queueing requested
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Parameter ranges subvector:
+<a name=table332></a>
+Offset  Size    Description     (Table 00332)
+00h    BYTE    length
+01h    BYTE    18h (subvector "Parameter ranges")
+02h  N BYTEs   subvector(s) of type 09h, 11h, 12h, or 13h
+</PRE>
+<p><b>See Also:</b>
+#00313
+<PRE>
+<p>
+Format of Flow control subvector:
+<a name=table333></a>
+Offset  Size    Description     (Table 00333)
+00h    BYTE    length (02h-04h)
+01h    BYTE    19h (subvector "Flow control")
+02h    BYTE    XOFF character
+03h    BYTE    XON character
+</PRE>
+<p><b>Note:</b>
+If length is 02h, flow control is disabled; if length is 03h, any
+character will be accepted as XON after an XOFF
+<p><b>See Also:</b>
+#00313
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0828.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0830.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

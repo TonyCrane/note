@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int D4/AH=03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int D4/AH=03h - PC-MOS/386 v5.01 - GET/SET EXTENDED DIRECTORY INFORMATION - 
+AH = 03h
+AL = subfunction (00h get, 01h set)
+DS:(E)DX - pathname
+ES:(E)BX - 10-byte buffer for directory information (see #04005)
+Return: CF clear if successful
+AL = permitted access level for file (00h-03h)
+ES:(E)BX - modified buffer (AL=01h on entry)
+CF set on error
+AX = error code (see #01680 at INT 21/AH=59h/BX=0000h)
+Notes: BX/DX are used in V86 mode, EBX/EDX in native mode
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int D4/AH=03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8436.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8438.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC-MOS/386 v5.01 - GET/SET EXTENDED DIRECTORY INFORMATION</font></h3>
+<PRE>
+AH = 03h
+AL = subfunction (00h get, 01h set)
+DS:(E)DX -> pathname
+ES:(E)BX -> 10-byte buffer for directory information <a href="rb-8437.htm#Table4005">(see #04005)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AL = permitted access level for file (00h-03h)
+ES:(E)BX -> modified buffer (AL=01h on entry)
+CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #01680 at INT 21/AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+BX/DX are used in V86 mode, EBX/EDX in native mode.
+The file class cannot be changed for files because it affects the
+encryption method, but directories can have their classes changed
+<PRE>
+<p>
+Format of PC-MOS/386 directory information:
+<a name=table4005></a>
+Offset  Size    Description     (Table 04005)
+00h    BYTE    reserved (0)
+01h    BYTE    file class ('A'-'Z' or 00h)
+02h    DWORD   user ID of file creator
+06h    WORD    file creation time <a href="rb-0000.htm#Table0"></a>(see #01665 at INT 21/AX=5700h)
+08h    WORD    file creation date <a href="rb-0000.htm#Table0"></a>(see #01666 at INT 21/AX=5700h)
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-D4.htm">
+Int D4h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8436.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8438.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

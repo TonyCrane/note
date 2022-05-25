@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=05h - FLOPPY - FORMAT TRACK - 
+AH = 05h
+AL = number of sectors to format
+CH = track number
+DH = head number
+DL = drive number
+ES:BX - address field buffer (see #00235)
+Return: CF set on error
+CF clear if successful
+AH = status (see #00234)
+Notes: on AT or higher, call AH=17h first
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0609.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0611.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FLOPPY - FORMAT TRACK</font></h3>
+<PRE>
+AH = 05h
+AL = number of sectors to format
+CH = track number
+DH = head number
+DL = drive number
+ES:BX -> address field buffer <a href="rb-0610.htm#Table235">(see #00235)</a><br>
+<p><b>Return:</b><br>CF set on error
+CF clear if successful
+AH = status <a href="rb-0606.htm#Table234">(see #00234)</a>
+</PRE>
+<p><b>Notes:</b>
+On AT or higher, call AH=17h first.
+The number of sectors per track is read from the diskette parameter
+table pointed at by INT 1E
+<p><b>BUG:</b>
+Some old Compaq BIOSes have a bug when attempting to call this function
+from Windows Standard Mode with EMM386 loaded.  A possible workaround
+is to call this function from Real Mode e.g. through DPMI function
+"Call Real Mode function with FAR return" (see INT 31/AX=0301h).
+<p><b>See Also:</b>
+<a href="rb-0611.htm">AH=05h"FIXED"</a> - <a href="rb-0641.htm">AH=17h</a> - <a href="rb-0643.htm">AH=18h</a> - <a href="rb-2445.htm">INT 1E</a>
+<PRE>
+<p>
+Format of floppy format address field buffer entry (one per sector in track):
+<a name=table235></a>
+Offset  Size    Description     (Table 00235)
+00h    BYTE    track number
+01h    BYTE    head number (0-based)
+02h    BYTE    sector number
+03h    BYTE    sector size (00h=128 bytes, 01h=256 bytes, 02h=512, 03h=1024)
+</PRE>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0609.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0611.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

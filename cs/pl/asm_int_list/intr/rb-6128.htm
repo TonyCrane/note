@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 3E
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 3E - FLOATING POINT EMULATION - Borland LANGUAGES SHORTCUT CALL - 
+Notes: the two bytes following the INT 3E instruction are the subcode
+(see #03195) and a NOP (90h), except for subcodes DCh and DEh, where
+the second byte is a register count (01h-08h)
+this vector is modified but not restored by Direct Access v4.0, and
+may be left dangling by other programs written with the same version
+of compiled BASIC
+SeeAlso: INT 3D
+(Table 03195)
+Values for Borland floating-point shortcut subcode:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 3E
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6127.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6129.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FLOATING POINT EMULATION - Borland LANGUAGES SHORTCUT CALL</font></h3>
+<p><b>Notes:</b>
+The two bytes following the INT 3E instruction are the subcode
+<a href="rb-6128.htm#Table3195">(see #03195)</a> and a NOP (90h), except for subcodes DCh and DEh, where
+the second byte is a register count (01h-08h).
+This vector is modified but not restored by Direct Access v4.0, and
+may be left dangling by other programs written with the same version
+of compiled BASIC
+<p><b>See Also:</b>
+<a href="rb-6127.htm">INT 3D</a>
+<PRE>
+<p>
+<a name=table3195></a>
+(Table 03195)
+Values for Borland floating-point shortcut subcode:
+Subcode         Function
+DCh    load 8086 stack with 8087 registers; overwrites the 10*N bytes at the
+top of the stack prior to the INT 3E with the 8087 register contents
+DEh    load 8087 registers from top of 8086 stack; ST0 is furthest from top
+of 8086 stack
+E0h    round TOS and R1 to single precision, compare, pop twice
+returns AX=8087 status word, FLAGS=8087 condition bits
+E2h    round TOS and R1 to double precision, compare, pop twice
+returns AX=8087 status word, FLAGS=8087 condition bits.
+</PRE>
+<p><b>Note:</b>
+Buggy in TPas5.5, because it sets the 8087 precision control
+field to the undocumented value 01h; this results in actually
+rounding to single precision
+E4h    compare TOS/R1 with two POP's
+returns FLAGS=8087 condition bits
+E6h    compare TOS/R1 with POP
+returns FLAGS=8087 condition bits
+E8h    FTST (check TOS value)
+returns FLAGS=8087 condition bits
+EAh    FXAM (check TOS value)
+returns AX=8087 status word
+ECh    sine(ST0)
+EEh    cosine(ST0)
+F0h    tangent(ST0)
+F2h    arctangent(ST0)
+F4h    ST0 = ln(ST0)
+F6h    ST0 = log2(ST0)
+F8h    ST0 = log10(ST0)
+FAh    ST0 = e**ST0
+FCh    ST0 = 2**ST0
+FEh    ST0 = 10**ST0
+<p>
+<b>Category: <a href="cat-036.htm">
+Runtime Support</a>
+- <a href="int-3E.htm">
+Int 3Eh</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6127.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6129.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

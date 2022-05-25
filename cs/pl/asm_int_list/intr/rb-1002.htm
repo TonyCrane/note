@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AX=6F03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AX=6F03h - HP Vectra EX-BIOS - F14_GET_BUFFER - READ DATA INTO BUFFER - 
+AX = 6F03h
+CX = size of buffer
+DX = port number (0-3)
+ES:DI - buffer for received characters
+Return: AH = line status (see #00304)
+---on error (AH bit 7 set)---
+AL = 00h
+ES:DI - next byte to be transferred
+---if successful---
+AL = last byte read
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AX=6F03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1001.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1003.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HP Vectra EX-BIOS - F14_GET_BUFFER - READ DATA INTO BUFFER</font></h3>
+<PRE>
+AX = 6F03h
+CX = size of buffer
+DX = port number (0-3)
+ES:DI -> buffer for received characters<br>
+<p><b>Return:</b><br>AH = line status (see #00304)
+---on error (AH bit 7 set)---
+AL = 00h
+ES:DI -> next byte to be transferred
+---if successful---
+AL = last byte read
+ES:DI unchanged
+CX = number of bytes read
+</PRE>
+<p><b>Desc:</b>
+Read characters into the specified buffer until the buffer is filled
+or a timeout occurs
+<p><b>Notes:</b>
+Supported by original HP Vectra AT and by ES/QS/RS series Vectras.
+Polls the Data Set Ready modem status and Data Ready line status bits
+to determine when characters are available
+<p><b>See Also:</b>
+<a href="rb-0999.htm">AX=6F00h</a> - <a href="rb-1001.htm">AX=6F02h</a> - <a href="rb-1003.htm">AX=6F04h</a>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1001.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1003.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

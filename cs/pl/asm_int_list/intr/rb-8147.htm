@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE>Int 80/BL=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 80/BL=00h - SBSIM - STARTSND - START SOUND ON SPECIFIED DRIVER - 
+BL = 00h
+BH = driver number (01h = FM, 02h=DDBV, 03h=memvoice, 05h=MIDI)
+Return: AX = initialization result (see #03972)
+Program: SBSIM is Creative Labs' SoundBlaster Simplified Interface Module,
+which provides access to multiple drivers for the SoundBlaster
+board through a single interface
+Range: INT 80h to INT BFh, selected automatically
+Note:  the SBSIM installation check consists of testing for the signature
+SBSIM at offset 103h in the interrupt handler's segment.
+SeeAlso: INT 80/BL=01hSBSIM,INT 80/BL=02hSBSIM,INT 80/BL=03hSBSIM
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 80/BL=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8146.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8148.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SBSIM - STARTSND - START SOUND ON SPECIFIED DRIVER</font></h3>
+<PRE>
+BL = 00h
+BH = driver number (01h = FM, 02h=DDBV, 03h=memvoice, 05h=MIDI)<br>
+<p><b>Return:</b><br>AX = initialization result (see #03972)
+</PRE>
+<p><b>Program:</b>
+SBSIM is Creative Labs' SoundBlaster Simplified Interface Module,
+which provides access to multiple drivers for the SoundBlaster
+board through a single interface
+<PRE>
+<p><b>Range:</b><br>INT 80h to INT BFh, selected automatically
+</PRE>
+<p><b>Note:</b>
+The SBSIM installation check consists of testing for the signature
+"SBSIM" at offset 103h in the interrupt handler's segment.
+<p><b>See Also:</b>
+<a href="rb-8148.htm">INT 80/BL=01h"SBSIM"</a> - <a href="rb-8149.htm">INT 80/BL=02h"SBSIM"</a> - <a href="rb-8150.htm">INT 80/BL=03h"SBSIM"</a>
+<p><b>See Also:</b>
+<a href="rb-8154.htm">INT 80/BX=0000h"SBSIM"</a>
+<PRE>
+<p>
+<a name=table3972></a>
+(Table 03972)
+Values for SBSIM error code:
+01h    busy--currently in use
+02h    bad driver specified
+03h    invalid function
+04h    voice process already active
+05h    couldn't start CT-VOICE
+06h    couldn't start CTVDSK
+07h    invalid SBSIM handle
+08h    buffer not initialized yet
+09h    bad filename
+0Ah    bad file handle
+0Bh    driver not started yet
+0Ch    XMS driver not installed
+0Dh    no free SBSIM handles
+0Eh    bad file type
+0Fh    couldn't free XMS block
+10h    invalid source selected
+11h    get pan position failed
+12h    set pan position failed
+13h    set volume failed
+14h    couldn't start fade/pan
+15h    couldn't stop fade/pan
+16h    couldn't pause fade/pan
+17h    not a fade/pan operation
+18h    bad mode for fade/pan
+19h    couldn't start fade/pan
+1Ah    source not fading/panning
+1Bh    FM or MIDI already playing
+1Ch    bad MIDI mapper format
+</PRE>
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-80.htm">
+Int 80h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8146.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8148.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=2302h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=2302h - IBM BIOS - SMART ENERGY SYSTEM - GET ROM STARTUP VIDEO REG TABLES - 
+AX = 2302h
+BL = data index (00h-0Dh) (see #00459)
+Return: ES:BX - table for register (see #00460,#00461)
+CX = size of table in bytes (may be 0000h)
+Note:  IBM classifies this function as optional
+SeeAlso: AX=2300h,AX=2301h,AX=2303h
+(Table 00459)
+Values for PS/1 ROM startup video register tables:
+00h  DAC registers
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=2302h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1330.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1332.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>IBM BIOS - SMART ENERGY SYSTEM - GET ROM STARTUP VIDEO REG TABLES</font></h3>
+<PRE>
+AX = 2302h
+BL = data index (00h-0Dh) <a href="rb-1331.htm#Table459">(see #00459)</a><br>
+<p><b>Return:</b><br>ES:BX -> table for register (see #00460,#00461)
+CX = size of table in bytes (may be 0000h)
+</PRE>
+<p><b>Note:</b>
+IBM classifies this function as optional
+<p><b>See Also:</b>
+<a href="rb-1329.htm">AX=2300h</a> - <a href="rb-1330.htm">AX=2301h</a> - <a href="rb-1332.htm">AX=2303h</a>
+<PRE>
+<p>
+<a name=table459></a>
+(Table 00459)
+Values for PS/1 ROM startup video register tables:
+00h    DAC registers
+01h    ???
+02h    Palette registers
+03h-0Dh ???
+<p>
+Format of PS/1 ROM startup DAC register table:
+<a name=table460></a>
+Offset  Size    Description     (Table 00460)
+00h    WORD    number of DAC registers in table
+02h    var     array of 3-byte DAC register values, starting at register 00h
+</PRE>
+<p><b>See Also:</b>
+#00459
+<PRE>
+<p>
+Format of PS/1 ROM startup Palette register table:
+<a name=table461></a>
+Offset  Size    Description     (Table 00461)
+00h 16 BYTEs   colors for palette registers 00h through 0Fh
+10h    BYTE    border color
+</PRE>
+<p><b>See Also:</b>
+#00459 - #00018
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1330.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1332.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

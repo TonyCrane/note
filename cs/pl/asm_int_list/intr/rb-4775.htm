@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=43E0h/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=43E0h/BX=0000h - DOS Protected Mode Services (DPMS) v1.0 - INSTALLATION CHECK - 
+AX = 43E0h
+BX = 0000h
+CX = 4450h ('DP')
+DX = 4D53h ('MS')
+Return: AX = 0000h if installed
+CF clear
+ES:DI - server structure (see #02791)
+ES:BX - registration structure (pre-NWDOS 7 beta spec) (see #02793)
+Note:  the DPMS 1.0 server included with the original release of Novell DOS
+7.0 supports both the beta and 1.0 specification, setting ES:BX even
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=43E0h/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4774.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4776.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS Protected Mode Services (DPMS) v1.0 - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 43E0h
+BX = 0000h
+CX = 4450h ('DP')
+DX = 4D53h ('MS')<br>
+<p><b>Return:</b><br>AX = 0000h if installed
+CF clear
+ES:DI -> server structure <a href="rb-4775.htm#Table2791">(see #02791)</a>
+ES:BX -> registration structure (pre-NWDOS 7 beta spec) <a href="rb-4775.htm#Table2793">(see #02793)</a>
+</PRE>
+<p><b>Note:</b>
+The DPMS 1.0 server included with the original release of Novell DOS
+7.0 supports both the beta and 1.0 specification, setting ES:BX even
+if CX and DX are not as specified on entry (since the beta
+specification did not use those registers).  However, the DPMS 1.1
+server included with the March 1994 update does not support the beta
+specification
+<p><b>See Also:</b>
+<a href="rb-4776.htm">AX=43E1h</a> - <a href="rb-4777.htm">AX=43E2h</a> - <a href="rb-4778.htm">AX=43E3h</a> - <a href="rb-4621.htm">INT 2F/AX=1687
+<PRE>
+<p><b>Index:</b><br>Signature strings;DPMS
+<p>
+Format of DPMS 1.0 server structure:
+<a name=table2791></a>
+Offset  Size    Description     (Table 02791)
+00h  4 BYTEs   signature string "DPMS"
+04h  2 BYTEs   DPMS version (major,minor)
+06h  8 BYTEs   blank-padded server OEM name
+0Eh  2 BYTEs   OEM server version (major,minor)
+10h    WORD    DPMS flags <a href="rb-4775.htm#Table2792">(see #02792)</a>
+12h    BYTE    CPU type
+(02h = 286, 03h = 386 or higher, higher values allowed)
+<p>
+Bitfields for DPMS flags:
+<a name=table2792></a>
+Bit(s)  Description     (Table 02792)
+0      fast processor reset available (286 only)
+1      DPMS server is enabled
+2      memory is remapped
+3-15   reserved (undefined)
+<p>
+Format of beta DPMS registration structure:
+<a name=table2793></a>
+Offset  Size    Description     (Table 02793)
+00h    DWORD   real-mode API entry point <a href="rb-4776.htm#Table2795">(see #02795)</a>
+04h    DWORD   16-bit protected-mode API entry point <a href="rb-4776.htm#Table2795">(see #02795)</a>
+08h  8 BYTEs   reserved (0)
+10h  8 BYTEs   blank-padded server OEM name
+18h    WORD    flags
+<p><b>bit 0:</b><br>Fast processor reset available (286 only)
+bits 1-15 reserved (undefined)
+1Ah  2 BYTEs   DPMS version (major,minor)
+1Ch    BYTE    CPU type (02h = 286, 03h = 386 or higher)
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4774.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4776.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

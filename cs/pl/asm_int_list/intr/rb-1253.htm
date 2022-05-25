@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=12h/BH=0Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=12h/BH=0Eh - TopView - SEND MESSAGE - ERASE - ERASE OBJECT - 
+AH = 12h
+BH = 0Eh
+BL = object
+00h handle is DWORD on top of stack
+window:  clear from scroll origin to end of window
+keyboard: discard input
+timer:  cancel current interval
+pointer: discard all pending messages
+mailbox: discard all pending messages
+01h clear task's default window from scroll origin to end
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=12h/BH=0Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1252.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1254.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TopView - SEND MESSAGE - ERASE - ERASE OBJECT</font></h3>
+<PRE>
+AH = 12h
+BH = 0Eh
+BL = object
+00h handle is DWORD on top of stack
+<p><b>window:</b><br>Clear from scroll origin to end of window
+<p><b>keyboard:</b><br>Discard input
+<p><b>timer:</b><br>Cancel current interval
+<p><b>pointer:</b><br>Discard all pending messages
+<p><b>mailbox:</b><br>Discard all pending messages
+01h clear task's default window from scroll origin to end
+02h discard all queued messages in mailbox (handle on top of stack)
+03h discard all queued messages in current task's default mailbox
+04h discard all input queued to KEYBOARD (handle on top of stack)
+05h discard all input queued to task's default KEYBOARD
+06h remove all objects from OBJECTQ (task's handle on top of stack)
+07h remove all objects from current task's OBJECTQ
+0Ch (DV 2.26+) clear window of task owning handle on top of stack
+0Dh (DV 2.26+) clear default window of parent of current task<br>
+<p><b>Return:</b><br>STACK popped if handle passed on stack
+</PRE>
+<p><b>Note:</b>
+When an OBJECTQ is erased, each object in the OBJECTQ is also erased
+<p><b>See Also:</b>
+<a href="rb-1230.htm">AH=12h/BH=02h</a>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1252.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1254.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

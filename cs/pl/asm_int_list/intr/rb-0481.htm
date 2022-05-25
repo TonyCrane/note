@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=BF03h/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=BF03h/BX=0000h - VIDEO - Compaq Extensions - GET ENVIRONMENT - 
+AX = BF03h
+BX = 0000h
+Return: BH = active monitor
+(00h = external, 01h = internal, 03h both, 04h neither)
+BL = master mode (see #00211)
+CH = ASIC type and version
+00h (reserved, very early Compaq VGCs)
+31h if QVision VGA
+CL = switchable VDU modes supported (see #00212)
+DH = internal monitor type (see #00213)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=BF03h/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0480.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0482.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - Compaq Extensions - GET ENVIRONMENT</font></h3>
+<PRE>
+AX = BF03h
+BX = 0000h<br>
+<p><b>Return:</b><br>BH = active monitor
+(00h = external, 01h = internal, 03h both, 04h neither)
+BL = master mode <a href="rb-0481.htm#Table211">(see #00211)</a>
+CH = ASIC type and version
+00h (reserved, very early Compaq VGCs)
+31h if QVision VGA
+CL = switchable VDU modes supported <a href="rb-0481.htm#Table212">(see #00212)</a>
+DH = internal monitor type <a href="rb-0481.htm#Table213">(see #00213)</a>
+DL = external monitor type <a href="rb-0481.htm#Table213">(see #00213)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0219.htm">AX=1A00h</a> - <a href="rb-0478.htm">AX=BF00h</a> - <a href="rb-0479.htm">AX=BF01h</a> - <a href="rb-0480.htm">AX=BF02h</a> -
+<PRE>
+<p>
+<a name=table211></a>
+(Table 00211)
+Values for Compaq video master mode:
+00h    switchable VDU not present
+04h    CGA
+05h    EGA
+07h    MDA
+08h    switchable LCD controller present
+09h    plasma VGA
+0Ah    TFT (active-matrix) VGA
+<p>
+Bitfields for Compaq switchable VDU modes support:
+<a name=table212></a>
+Bit(s)  Description     (Table 00212)
+0      CGA supported
+1,2    reserved (1)
+3      MDA supported
+4      BitBLT engine available
+5      132-column support availble
+6      640x480x256 mode available
+7      8-bit DAC mode available
+<p>
+<a name=table213></a>
+(Table 00213)
+Values for Compaq monitor type:
+00h    none
+01h    dual-mode monitor
+02h    5153 RGB monitor (RGBI 16-color)
+03h    Compaq Color monitor
+04h    640x400 flat panel (Plasma CGA)
+05h    VGC monochrome
+06h    VGC color
+07h    8-level mono LCD VGA (internal).
+1024x768 mono VGA (external)
+08h    16-level mono plasma VGA (internal).
+1024x768 color VGA (external)
+09h    4-level mono LCD CGA
+0Ah    16-level mono LCD VGA
+0Bh    active-matrix color VGA
+0Ch    active-matrix mono VGA
+0Dh    STN color VGA
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0480.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0482.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

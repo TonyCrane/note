@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 60/DI=0205h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 60/DI=0205h - HP 95LX System Manager - INITIALIZE FILE SELECTION MENU - 
+DI = 0205h
+STACK: 2 WORDs unused dummies (for calls from high level languages)
+DWORD  pointer to file menu structure (see #03282)
+DWORD  pointer to edit record (see #03285 at INT 60/DI=0400h)
+DWORD  pointer to wildcard filespec for initial file list
+WORD  row???
+WORD  column???
+Return: ???
+STACK unchanged
+SeeAlso: INT 60/DI=0200h,INT 60/DI=0206h,INT 60/DI=0208h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 60/DI=0205h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6459.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6461.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HP 95LX System Manager - INITIALIZE FILE SELECTION MENU</font></h3>
+<PRE>
+DI = 0205h.
+<p><b>STACK:</b><br>2 WORDs unused dummies (for calls from high level languages)
+DWORD   pointer to file menu structure <a href="rb-6460.htm#Table3282">(see #03282)</a>
+DWORD   pointer to edit record <a href="rb-0000.htm#Table0"></a>(see #03285 at INT 60/DI=0400h)
+DWORD   pointer to wildcard filespec for initial file list
+WORD    row???
+WORD    column???<br>
+<p><b>Return:</b><br>???
+STACK unchanged
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6455.htm">INT 60/DI=0200h</a> - <a href="rb-6461.htm">INT 60/DI=0206h</a> - <a href="rb-6463.htm">INT 60/DI=0208h</a>
+<PRE>
+<p>
+Format of HP 95LX file menu structure:
+<a name=table3282></a>
+Offset  Size    Description     (Table 03282)
+00h    DWORD   pointer to ASCIZ base directory name
+04h    DWORD   pointer to ASCIZ file pattern (wildcard filespec)
+08h    DWORD   pointer to file list workspace, at least 1024 bytes <a href="rb-6460.htm#Table3283">(see #03283)</a>
+0Ch    WORD    size of file list workspace in bytes
+0Eh    WORD    starting row (-3 is topmost, 0 is first non-"reserved" line)
+10h    WORD    starting column
+12h    WORD    number of lines
+14h    WORD    number of columns
+16h    WORD    number of files displayed on each line
+---the remaining fields are initialized by the System Manager---
+18h    WORD    0000h if first edit character, else multiline
+1Ah    WORD    number of files in file list
+1Ch    WORD    max files workspace has room for
+1Eh    WORD    file at top of list
+20h    WORD    index of file to highlight
+22h    WORD    index of file to unhighlight
+24h    WORD    current focus (01h FMENU, 02h EDIT)
+<p>
+Format of HP 95LX file list workspace entry:
+<a name=table3283></a>
+Offset  Size    Description     (Table 03283)
+00h    BYTE    file attributes
+01h    WORD    file time <a href="rb-0000.htm#Table0"></a>(see #01665 at INT 21/AX=5700h)
+03h    WORD    file date <a href="rb-0000.htm#Table0"></a>(see #01666 at INT 21/AX=5700h)
+05h    DWORD   file size
+09h 13 BYTEs   ASCIZ filename
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-60.htm">
+Int 60h</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6459.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6461.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

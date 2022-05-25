@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AX=FFA5h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AX=FFA5h - Microsoft EMM386.EXE v4.20+ - INSTALLATION CHECK - 
+AX = FFA5h
+Return: AX = 845Ah/84A5h if loaded
+BX:CX - API entry point (see #03666)
+Notes: this call is available even if EMM386 is not providing EMS
+the returned AX is 845Ah inside of MSWindows, 84A5h under bare DOS
+if no other program has hooked INT 67, an alternate installation
+check is to test for the string
+MICROSOFT EXPANDED MEMORY MANAGER 386 at offset 14h in the INT 67
+handler's segment; the word immediately preceding this string
+contains the offset of the API entry point
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AX=FFA5h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7506.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7508.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Microsoft EMM386.EXE v4.20+ - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = FFA5h<br>
+<p><b>Return:</b><br>AX = 845Ah/84A5h if loaded
+BX:CX -> API entry point <a href="rb-7507.htm#Table3666">(see #03666)</a>
+</PRE>
+<p><b>Notes:</b>
+This call is available even if EMM386 is not providing EMS.
+The returned AX is 845Ah inside of MSWindows, 84A5h under bare DOS.
+If no other program has hooked INT 67, an alternate installation
+check is to test for the string
+"MICROSOFT EXPANDED MEMORY MANAGER 386" at offset 14h in the INT 67
+handler's segment; the word immediately preceding this string
+contains the offset of the API entry point
+<p><b>See Also:</b>
+<a href="rb-7414.htm">AH=3Fh</a> - <a href="rb-7508.htm">AX=FFA5h/BX=4345h</a> - <a href="rb-2846.htm">INT 21/AX=4402h"EMM386.EXE"</a>
+<PRE>
+<p>
+<a name=table3666></a>
+(Table 03666)
+Call EMM386.EXE API entry point with:.
+AH = 00h get memory manager's status
+<p><b>Return:</b><br>AH = status
+<p><b>bit 0:</b><br>Not active (OFF)
+<p><b>bit 1:</b><br>In "Auto" mode.
+AH = 01h set memory manager's state
+AL = new state (00h ON, 01h OFF, 02h AUTO).
+AH = 02h Weitek coprocessor support
+AL = subfunction
+00h get Weitek support state
+<p><b>Return:</b><br>AL = status
+<p><b>bit 0:</b><br>Weitek coprocessor is present
+<p><b>bit 1:</b><br>Weitek support is enabled
+01h turn on Weitek support
+02h turn off Weitek support
+--- v4.20-4.41 only ---.
+AH = 03h Windows support???
+AL = subfunction (00h, 01h).
+AH = 04h print copyright notice to standard output
+(using INT 21/AH=09h).
+AH = 05h print available report
+(the one shown when running EMM386 from the DOS prompt)
+</PRE>
+<p><b>See Also:</b>
+#01513 at INT 21/AX=4402h/SF=02h - #02617 at INT 2F/AX=12FFh/BX=0106h
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7506.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7508.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

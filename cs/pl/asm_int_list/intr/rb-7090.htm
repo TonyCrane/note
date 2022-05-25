@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 62/AX=00B7h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 62/AX=00B7h - FGDRIVER v4.02 - FG_SHEAR - SHEAR UNPACKED BITMAP - 
+AX = 00B7h
+ES:BX - variable pointer record (see #03502)
+CX = bitmap width (0 width = 1024)
+DX = bitmap height (0 height = 1024)
+SI = size of resulting image (width for horiz. shear, height for vert.)
+DI = shear type
+0000h horizontal shear to left
+0001h horizontal shear to right
+0002h vertical shear to left (left edge stretched up)
+0003h vertical shear to right (right edge stretched up)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 62/AX=00B7h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7089.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7091.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FGDRIVER v4.02 - FG_SHEAR - SHEAR UNPACKED BITMAP</font></h3>
+<PRE>
+AX = 00B7h
+ES:BX -> variable pointer record <a href="rb-7090.htm#Table3502">(see #03502)</a>
+CX = bitmap width (0 < width <= 1024)
+DX = bitmap height (0 < height <= 1024)
+SI = size of resulting image (width for horiz. shear, height for vert.)
+DI = shear type
+0000h horizontal shear to left
+0001h horizontal shear to right
+0002h vertical shear to left (left edge stretched up)
+0003h vertical shear to right (right edge stretched up)<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Note:</b>
+The FGDRIVER functions are rearranged with each major release, but
+their parameters do not change <a href="rb-6906.htm#Table3474">(see #03474)</a>
+<p><b>See Also:</b>
+<a href="rb-7070.htm">AX=00A3h</a>
+<PRE>
+<p>
+Format of FGDRIVER SHEAR variable pointer record:
+<a name=table3502></a>
+Offset  Size    Description     (Table 03502)
+00h    WORD    segment of source bitmap
+02h    WORD    offset of source bitmap
+04h    WORD    segment of buffer for resulting bitmap
+06h    WORD    offset of buffer for resulting bitmap
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-62.htm">
+Int 62h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7089.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7091.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

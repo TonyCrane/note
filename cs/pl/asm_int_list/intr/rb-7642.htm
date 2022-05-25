@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6F/AH=02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6F/AH=02h - 10NET - STATUS OF NODE - 
+AH = 02h
+DS:DX - 512-byte status record (see #03753)
+Return: CF clear if successful
+CF set on error
+AX = error code (see #03740)
+SeeAlso: INT 21/AX=5E01h10NET
+(Table 03752)
+Values for 10NET station type:
+00h  workstation
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6F/AH=02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7641.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7643.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>10NET - STATUS OF NODE</font></h3>
+<PRE>
+AH = 02h
+DS:DX -> 512-byte status record <a href="rb-7642.htm#Table3753">(see #03753)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code <a href="rb-7639.htm#Table3740">(see #03740)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3032.htm">INT 21/AX=5E01h"10NET"</a>
+<PRE>
+<p>
+<a name=table3752></a>
+(Table 03752)
+Values for 10NET station type:
+00h    workstation
+01h    superstation
+02h    gateway station
+03h    gateway active
+04h    logged into multiple superstations
+05h    reserved
+<p>
+Format of 10NET node status record:
+<a name=table3753></a>
+Offset  Size    Description     (Table 03753)
+00h  8 BYTEs   user name (0 if none)
+08h    BYTE    station type <a href="rb-7642.htm#Table3752">(see #03752)</a>
+09h 24 BYTEs   list of superstations logged into more than one superstation
+21h 12 BYTEs   node ID
+2Dh    WORD    message count for this station (send for user node, receive for
+superstations)
+---for superstations only---
+2Fh    WORD    drives allocated (bit 0=A:, bit 1=B:,...)
+31h    BYTE    user service flags <a href="rb-7642.htm#Table3754">(see #03754)</a>
+32h    BYTE    printers allocated (bit 0=LPT1,...)
+33h    BYTE    number of unprinted spool files
+34h    BYTE    number of opened files
+35h    BYTE    number of logged on nodes
+36h    BYTE    primary drive (1=A:)
+37h    BYTE    reserved
+38h  N BYTEs   list of logged on node IDs (each 12 bytes, max 37 IDs)
+<p><b>1F4h  3 BYTEs   time:</b><br>Sec/min/hrs
+<p><b>1F7h  3 BYTEs   date:</b><br>Day/mon/year-1980
+<p>
+Bitfields for 10NET user service flags:
+<a name=table3754></a>
+Bit(s)  Description     (Table 03754)
+7      gate
+6      print permit on
+4      SUBMIT is on
+3      mail waiting for node
+2      calendar waiting for you
+1      news waiting for you
+0      mail waiting for you
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-6F.htm">
+Int 6Fh</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7641.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7643.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=02h - Novell NetWare - CONNECTION SERVICES - CHANGE USER PASSWORD (OLD) - 
+AH = E3h subfn 02h
+DS:SI - request buffer (see #01892)
+ES:DI - reply buffer (see #01893)
+Return: AL = status
+00h successful
+else error code
+Note:  supported by NetWare 4.0+, Advanced NetWare 1.0+, and Alloy NTNX
+SeeAlso: AH=E3h/SF=01h,AH=E3h/SF=03h,AH=E3h/SF=0Ah
+Format of NetWare Get User Connection List (old) request packet:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3484.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3486.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - CONNECTION SERVICES - CHANGE USER PASSWORD (OLD)</font></h3>
+<PRE>
+AH = E3h subfn 02h
+DS:SI -> request buffer <a href="rb-3485.htm#Table1892">(see #01892)</a>
+ES:DI -> reply buffer <a href="rb-3485.htm#Table1893">(see #01893)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+else error code
+</PRE>
+<p><b>Note:</b>
+Supported by NetWare 4.0+, Advanced NetWare 1.0+, and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3484.htm">AH=E3h/SF=01h</a> - <a href="rb-3486.htm">AH=E3h/SF=03h</a> - <a href="rb-3487.htm">AH=E3h/SF=0Ah</a>
+<PRE>
+<p>
+Format of NetWare "Get User Connection List (old)" request packet:
+<a name=table1892></a>
+Offset  Size    Description     (Table 01892)
+00h    WORD    length of following data
+02h    BYTE    02h (subfunction "Get User Connection List (old)")
+03h    BYTE    length of user name
+04h  N BYTEs   user name
+</PRE>
+<p><b>See Also:</b>
+#01893 - #02162
+<PRE>
+<p>
+Format of NetWare "Get User Connection List (old)" reply packet:
+<a name=table1893></a>
+Offset  Size    Description     (Table 01893)
+00h    WORD    (call) length of following buffer
+02h    BYTE    length of connection list
+03h    BYTE    number of bytes in connection list
+04h  N BYTEs   list of connection numbers in use by user
+</PRE>
+<p><b>See Also:</b>
+#01892 - #02162
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3484.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3486.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

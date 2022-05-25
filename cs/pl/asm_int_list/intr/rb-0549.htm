@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AH=EFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AH=EFh - VIDEO - MSHERC.COM - GET VIDEO ADAPTER TYPE AND MODE - 
+AH = EFh
+Return: DL = video adapter type
+00h original Hercules
+01h Hercules Plus  (port 03BAh reads x001xxxxx)
+02h Hercules InColor (port 03BAh reads x101xxxxx)
+FFh not a Hercules-compatible card (port 03BAh bit 7 not pulsing)
+DH = memory mode byte
+00h half mode
+01h full mode
+FFh not a Hercules-compatible card
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AH=EFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0548.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0550.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - MSHERC.COM - GET VIDEO ADAPTER TYPE AND MODE</font></h3>
+<PRE>
+AH = EFh<br>
+<p><b>Return:</b><br>DL = video adapter type
+00h original Hercules
+01h Hercules Plus    (port 03BAh reads x001xxxxx)
+02h Hercules InColor (port 03BAh reads x101xxxxx)
+FFh not a Hercules-compatible card (port 03BAh bit 7 not pulsing)
+DH = memory mode byte
+00h "half" mode
+01h "full" mode
+FFh not a Hercules-compatible card
+</PRE>
+<p><b>Program:</b>
+MSHERC.COM/QBHERC.COM is a support program for the Microsoft Quick
+languages which makes their graphics libraries compatible with a
+Hercules card by adding video modes 08h and 88h, and supporting
+text in the new graphics modes.
+<p><b>Notes:</b>
+While in mode 08h or 88h, INT 10 supports the Hercules card much like
+a CGA..
+MSHERC performs an installation check by setting DL=FFh and testing
+whether it has been changed on return, which causes it to reinstall
+itself when no HGC is present (or HGC emulation has temporarily been
+disabled); a better installation check would be to use DX=80FFh and
+check whether DX has been changed.
+Reportedly returns DH=00h on some not-entirely-Hercules-compatible
+cards
+<PRE>
+<p><b>Index:</b><br>Installation check;MSHERC
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0548.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0550.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

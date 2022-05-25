@@ -1,0 +1,146 @@
+<HTML>
+<HEAD>
+<TITLE>Int 69/AH=0Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 69/AH=0Ah - DECnet DOS 2.1+ - DATA LINK LAYER - 
+AH = 0Ah
+AL = function number (see #03712)
+ES:BX - Datalink Communication Block (see #03714)
+Return: AX = status (see #03713)
+SeeAlso: INT 6DDECnet
+(Table 03712)
+Values for DECnet DOS Data Link Layer function:
+00h  initialize
+01h  open portal
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 69/AH=0Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7561.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7563.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DECnet DOS 2.1+ - DATA LINK LAYER</font></h3>
+<PRE>
+AH = 0Ah
+AL = function number <a href="rb-7562.htm#Table3712">(see #03712)</a>
+ES:BX -> Datalink Communication Block <a href="rb-7562.htm#Table3714">(see #03714)</a><br>
+<p><b>Return:</b><br>AX = status (see #03713)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7630.htm">INT 6D"DECnet"</a>
+<PRE>
+<p>
+<a name=table3712></a>
+(Table 03712)
+Values for DECnet DOS Data Link Layer function:
+00h    initialize
+01h    open portal
+02h    close portal
+03h    enable multicast address
+04h    disable multicast address
+05h    transmit
+06h    request transmit buffer
+07h    deallocate transmit buffer
+08h    read channel status
+09h    read datalink portal list
+0Ah    read information about a datalink portal
+0Bh    read and/or clear counters
+0Ch    request to boot from a network server
+0Dh    enable Ethernet channel
+0Eh    disable Ethernet channel
+0Fh    start MOP/send a System ID message
+10h    stop MOP
+11h    get DECPARM
+12h    set DECPARM
+13h    external loopback
+<p>
+<a name=table3713></a>
+(Table 03713)
+Values for DECnet DOS Data Link Layer status:
+00h    successful
+01h    hardware failed to initialize
+02h    channel state was not off (must be off to execute that command)
+03h    channel state is off (must be on to execute that command)
+04h    address not set
+05h    hardware missing
+06h    buffer too small
+07h    no more buffers available
+08h    no more resources available
+09h    promiscuous receiver active
+0Ah    non exclusive
+0Bh    unrecognized portal
+0Ch    protocol type in use
+0Dh    not a valid Multicast address
+0Eh    outstanding calls
+0Fh    hardware doesn't support receiving bad frames
+10h    none outstanding
+11h    no events
+12h    broken
+13h    buffer quota exceeded
+14h    already initialized
+15h    loopback failure
+<p><b>Index:</b><br>Error codes;DECnet DOS|DECnet DOS;error codes
+<p>
+Format of Datalink Communication Block:
+<a name=table3714></a>
+Offset  Size    Description     (Table 03714)
+00h    WORD    portal ID
+02h  6 BYTEs   source address
+08h  6 BYTEs   destination address
+0Eh    DWORD   buffer pointer
+12h    WORD    buffer length
+14h    WORD    operation
+16h    BYTE    pad flag (used on open)
+00h no pad
+01h pad
+17h    BYTE    mode flag (used on open)
+00h 802.3
+01h Ethernet
+02h promiscuous
+18h    DWORD   line status change function
+1Ch    DWORD   received data function
+20h    DWORD   transmitted data function
+24h    BYTE    maximum outstanding transmits/receives
+25h  2 BYTEs   protocol type
+27h    WORD    buffers lost
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-69.htm">
+Int 69h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7561.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7563.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

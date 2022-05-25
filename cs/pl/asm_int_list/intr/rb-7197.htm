@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 63
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 63 - DESQview/X - SOCKET API - 
+InstallCheck:  test for the string dvxunix (yes, lowercase) at offset 9
+from the interrupt handler start (see #03515)
+Notes: parameters are passed by patching (!) data field immediately following
+the entry point, as detailed below (see #03515); the preferred
+method for calling the socket API is via INT 15/AX=DE2Eh
+SeeAlso: INT 15/AX=DE2Eh,INT BEDESQview
+Index: installation check;DESQview/X socket interface
+Format of DESQview/X socket interrupt handler entry:
+Offset Size  Description   (Table 03515)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 63
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7196.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7198.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview/X - SOCKET API</font></h3>
+<PRE>
+<p><b>InstallCheck:</b><br>Test for the string "dvxunix" (yes, lowercase) at offset 9
+from the interrupt handler start <a href="rb-7197.htm#Table3515">(see #03515)</a>
+</PRE>
+<p><b>Notes:</b>
+Parameters are passed by patching (!) data field immediately following
+the entry point, as detailed below <a href="rb-7197.htm#Table3515">(see #03515)</a>; the preferred
+method for calling the socket API is via INT 15/AX=DE2Eh
+<p><b>See Also:</b>
+<a href="rb-1726.htm">INT 15/AX=DE2Eh</a> - <a href="rb-8387.htm">INT BE"DESQview"</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;DESQview/X socket interface
+<p>
+Format of DESQview/X socket interrupt handler entry:
+<a name=table3515></a>
+Offset  Size    Description     (Table 03515)
+00h  3 BYTEs   near jump or short jump + NOP to actual interrupt handler
+03h    WORD    offset from following pointer for initial top of local stack
+05h    DWORD   pointer to argument/stack block (see INT 15/AX=DE2Eh)
+09h  7 BYTEs   signature "dvxunix"
+</PRE>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-63.htm">
+Int 63h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7196.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7198.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

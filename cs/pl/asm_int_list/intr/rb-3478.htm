@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=18h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=18h - Novell NetWare - DIRECTORY SERVICES - RESTORE DIRECTORY HANDLE - 
+AH = E2h subfn 18h
+DS:SI - request buffer (see #01879)
+ES:DI - reply buffer (see #01880)
+Return: AL = status
+00h successful
+else network error code
+Desc:  restore a previously saved directory handle to reproduce an executing
+environment, possibly on a different execution site
+Note:  this function is supported by Advanced NetWare 2.0+ and Alloy NTNX
+SeeAlso: AH=E2h/SF=12h,AH=E2h/SF=17h,AX=F216h/SF=18h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=18h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3477.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3479.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - RESTORE DIRECTORY HANDLE</font></h3>
+<PRE>
+AH = E2h subfn 18h
+DS:SI -> request buffer <a href="rb-3478.htm#Table1879">(see #01879)</a>
+ES:DI -> reply buffer <a href="rb-3478.htm#Table1880">(see #01880)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+else network error code
+</PRE>
+<p><b>Desc:</b>
+Restore a previously saved directory handle to reproduce an executing
+environment, possibly on a different execution site
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 2.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3472.htm">AH=E2h/SF=12h</a> - <a href="rb-3477.htm">AH=E2h/SF=17h</a> - <a href="rb-3690.htm">AX=F216h/SF=18h</a>
+<PRE>
+<p>
+Format of NetWare "Restore Directory Handle" request buffer:
+<a name=table1879></a>
+Offset  Size    Description     (Table 01879)
+00h    WORD    0011h (length of following data)
+02h    BYTE    18h (subfunction "Restore Directory Handle")
+03h 16 BYTEs   save buffer
+</PRE>
+<p><b>See Also:</b>
+#01877 - #01880
+<PRE>
+<p>
+Format of NetWare "Restore Directory Handle" reply buffer:
+<a name=table1880></a>
+Offset  Size    Description     (Table 01880)
+00h    WORD    (call) 0002h (length of following results buffer)
+02h    BYTE    new directory handle
+03h    BYTE    effective rights <a href="rb-3460.htm#Table1849">(see #01849)</a>
+</PRE>
+<p><b>See Also:</b>
+#01879
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3477.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3479.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

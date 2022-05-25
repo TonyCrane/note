@@ -1,0 +1,141 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=0001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=0001h - MS Windows95 - VMM - GET API ENTRY POINT - 
+AX = 1684h
+BX = 0001h (virtual device ID for VMM) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02643)
+0000h:0000h if the VxD does not support an API
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+(Table 02643)
+Call Windows VMM 16-bit entry point with:
+AX = function number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=0001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4534.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4536.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows95 - VMM - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 0001h (virtual device ID for VMM) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02643)
+0000h:0000h if the VxD does not support an API
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2643></a>
+(Table 02643)
+Call Windows VMM 16-bit entry point with:.
+AX = function number
+---registry functions---
+0100h "RegOpenKey"
+<p><b>STACK:</b><br>DWORD   -> DWORD for returned key handle
+DWORD   -> ASCIZ registry key name
+DWORD   HKEY <a href="rb-4535.htm#Table2644">(see #02644)</a>
+0101h "RegCreateKey"
+<p><b>STACK:</b><br>DWORD   -> DWORD for returned key handle
+DWORD   -> ASCIZ registry key name
+DWORD   HKEY <a href="rb-4535.htm#Table2644">(see #02644)</a>
+0102h "RegCloseKey"
+<p><b>STACK:</b><br>DWORD   key handle from RegOpenKey or RegCreateKey
+0103h "RegDeleteKey"
+<p><b>STACK:</b><br>DWORD   -> ASCIZ registry key name
+DWORD   HKEY <a href="rb-4535.htm#Table2644">(see #02644)</a>
+0104h "RegSetValue"
+<p><b>STACK:</b><br>DWORD   ???
+DWORD   -> ???
+DWORD   ???
+DWORD   -> ???
+DWORD   HKEY <a href="rb-4535.htm#Table2644">(see #02644)</a>
+0105h "RegQueryValue"
+<p><b>STACK:</b><br>DWORD   -> DWORD for ???
+DWORD   -> ASCIZ ???
+DWORD   -> ASCIZ ???
+DWORD   HKEY <a href="rb-4535.htm#Table2644">(see #02644)</a>
+0106h "RegEnumKey"
+<p><b>STACK:</b><br>DWORD   ???
+DWORD   -> ASCIZ ???
+DWORD   ???
+DWORD   HKEY <a href="rb-4535.htm#Table2644">(see #02644)</a>
+0107h "RegDeleteValue"
+0108h "RegEnumValue"
+<p><b>STACK:</b><br>DWORD   -> DWORD for ???
+DWORD   -> BYTE ???
+DWORD   -> DWORD for ???
+DWORD   -> DWORD for ???
+DWORD   -> DWORD for ???
+DWORD   -> ASCIZ ???
+DWORD   ???
+DWORD   HKEY <a href="rb-4535.htm#Table2644">(see #02644)</a>
+0109h "RegQueryValueEx"
+010Ah "RegSetValueEx"
+010Bh "RegFlushKey"
+010Ch "RegLoadKey"
+010Dh "RegUnLoadKey"
+010Eh "RegSaveKey"
+010Fh "RegRestore"
+0110h "RegRemapPreDefKey"<br>
+<p><b>Return:</b><br>Parameters popped from stack
+DX:AX = return value
+<p>
+<a name=table2644></a>
+(Table 02644)
+Values for Windows95 VMM predefined HKEY values:
+80000000h      HKEY_CLASSES_ROOT
+80000001h      HKEY_CURRENT_USER
+80000002h      HKEY_LOCAL_MACHINE
+80000003h      HKEY_USERS
+80000004h      HKEY_PERFORMANCE_DATA
+80000005h      HKEY_CURRENT_CONFIG
+80000006h      HKEY_DYN_DATA
+</PRE>
+<p><b>See Also:</b>
+#02643
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4534.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4536.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

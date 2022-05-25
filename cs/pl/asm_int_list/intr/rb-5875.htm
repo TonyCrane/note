@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0D02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0D02h - DPMI 1.0+ - SERIALIZE SHARED MEMORY - 
+AX = 0D02h
+SI:DI = shared memory block handle
+DX = flags
+bit 0: return immediately rather than suspending if serialization
+unavailable
+bit 1: shared rather than exclusive serialization
+bits 2-15 reserved (0)
+Return: CF clear if successful
+CF set on error
+AX = error code (8004h,8005h,8017h-8019h,8023h) (see #03143)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0D02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5874.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5876.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 1.0+ - SERIALIZE SHARED MEMORY</font></h3>
+<PRE>
+AX = 0D02h
+SI:DI = shared memory block handle
+DX = flags
+<p><b>bit 0:</b><br>Return immediately rather than suspending if serialization
+unavailable
+<p><b>bit 1:</b><br>Shared rather than exclusive serialization
+bits 2-15 reserved (0)<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (8004h,8005h,8017h-8019h,8023h) <a href="rb-5802.htm#Table3143">(see #03143)</a>
+</PRE>
+<p><b>Notes:</b>
+An exclusive serialization blocks any other serialization attempts for
+the same block by another virtual machine; a shared serialization
+blocks attempts at exclusive serialization by another virtual machine.
+Hosts are not required to detect deadlock.
+A client's interrupt handler can cancel a serialization call which
+caused it to block by calling AX=0D03h
+<p><b>See Also:</b>
+<a href="rb-5873.htm">AX=0D00h</a> - <a href="rb-5876.htm">AX=0D03h</a>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5874.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5876.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

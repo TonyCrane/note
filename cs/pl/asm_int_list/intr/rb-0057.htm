@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>Int 0C
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 0C - IBM SYSTEM 36/38 WORKSTATION EMULATION - API POINTER - 
+Desc:  the IBM System 36/38 emulator may be invoked through a private API,
+whose entry point address (see #00007) is offset 100h in the segment
+pointed at by this vector
+(Table 00007)
+Call the System 36/38 emulator API entry point with:
+AH = function
+03h update screen
+05h select next session
+AL = session number (00h-03h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 0C
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0056.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0058.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>IBM SYSTEM 36/38 WORKSTATION EMULATION - API POINTER</font></h3>
+<p><b>Desc:</b>
+The IBM System 36/38 emulator may be invoked through a private API,
+whose entry point address <a href="rb-0057.htm#Table7">(see #00007)</a> is offset 100h in the segment
+pointed at by this vector
+<PRE>
+<p>
+<a name=table7></a>
+(Table 00007)
+Call the System 36/38 emulator API entry point with:.
+AH = function
+03h update screen
+05h select next session
+AL = session number (00h-03h)
+<p><b>Return:</b><br>AL = session type code
+00h not active
+01h display session
+02h printer session
+FEh invalid session number
+DS = requested session's data segment (0 if not active)
+<a href="rb-0057.htm#Table8">(see #00008)</a><br>
+<p><b>Return:</b><br>???
+<p>
+Format of System 36/38 emulator's data area:
+<a name=table8></a>
+Offset  Size    Description     (Table 00008)
+13Eh    BYTE    bit flags for status line indicators turned on since this byte
+last zerod
+13Fh    BYTE    bit flags for status line indicators turned off since this
+byte last set to FFh
+140h    WORD    offset of EBCDIC to ASCII translation
+146h    WORD    offset of EBCDIC screen buffer
+148h    WORD    offset of EC (engineering change) level signature
+150h    BYTE    "KEYI"
+151h    BYTE    5250 key scan code to be sent to remote
+15Bh    BYTE    "SYSAV"
+15Dh    BYTE    5250 cursor column
+15Eh    BYTE    5250 cursor row
+167h    BYTE    "DVCTAD"
+178h    BYTE    "FLAGS"
+184h    BYTE    "SESSNOAD"
+193h    BYTE    "STNAD"
+198h    BYTE    "NSDS"
+</PRE>
+<p><b>Note:</b>
+Offsets are from the interrupt handler's segment
+<p>
+<b>Category: <a href="cat-020.htm">
+IBM Workstation/Terminal Emulators</a>
+- <a href="int-0C.htm">
+Int 0Ch</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0056.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0058.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

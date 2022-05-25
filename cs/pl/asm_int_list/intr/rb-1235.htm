@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=12h/BH=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=12h/BH=04h - TopView - SEND MESSAGE - READ - GET NEXT RECORD FROM OBJECT - 
+AH = 12h
+BH = 04h
+BL = object
+00h handle is DWORD on top of stack
+mailbox: wait for and get next message
+keyboard: wait for and get pointer to next input buffer
+pointer: wait for and get next message
+02h get next message from mailbox (task's handle on top of stack)
+03h get next message from current task's mailbox
+04h get the next input from keyboard (handle on top of stack)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=12h/BH=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1234.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1236.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TopView - SEND MESSAGE - READ - GET NEXT RECORD FROM OBJECT</font></h3>
+<PRE>
+AH = 12h
+BH = 04h
+BL = object
+00h handle is DWORD on top of stack
+<p><b>mailbox:</b><br>Wait for and get next message
+<p><b>keyboard:</b><br>Wait for and get pointer to next input buffer
+<p><b>pointer:</b><br>Wait for and get next message
+02h get next message from mailbox (task's handle on top of stack)
+03h get next message from current task's mailbox
+04h get the next input from keyboard (handle on top of stack)
+05h get the next input from task's default keyboard
+06h wait for input from any object in OBJECTQ (handle on stack)
+07h wait for input from any object in task's default OBJECTQ<br>
+<p><b>Return:</b><br>STACK: (if objectq) DWORD handle of object with input
+(otherwise)  DWORD number of bytes
+DWORD address of pointer message <a href="rb-1235.htm#Table437">(see #00437)</a>
+</PRE>
+<p><b>Notes:</b>
+For a keyboard in keystroke mode, the input buffer is a single byte
+containing the character code as returned by the BIOS; the BIOS scan
+code is available via the STATUS call if the character is zero.
+For a keyboard in field mode, the input buffer format is determined
+by the field table header for the window the keyboard is attached to.
+Keyboard input buffers and mailbox message buffers may be invalidated
+by the next READ, ERASE, CLOSE, or FREE message to the same object
+<p><b>See Also:</b>
+<a href="rb-1147.htm">AH=12h/BH=05h"OBJECT"</a> - <a href="rb-1274.htm">AH=12h/BH=84h</a>
+<PRE>
+<p>
+Format of DESQview pointer message:
+<a name=table437></a>
+Offset  Size    Description     (Table 00437)
+00h    WORD    row
+02h    WORD    column
+04h    BYTE    status <a href="rb-1235.htm#Table438">(see #00438)</a>
+05h    BYTE    field number or zero (APILEVEL >= 2.00 only)
+<p>
+Bitfields for DESQview pointer status:
+<a name=table438></a>
+Bit(s)  Description     (Table 00438)
+7-2    number of clicks-1 if multiple-click mode active
+7      set when press/release mode active and button pressed
+6      set when press/release mode active and button released
+1-0    button pressed (00=none,01=button1,10=button2)
+</PRE>
+<p><b>See Also:</b>
+#00437
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1234.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1236.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

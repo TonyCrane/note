@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F256h/SF=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F256h/SF=05h - Novell NetWare - DUPLICATE EXTENDED ATTRIBUTES - 
+AX = F256h subfn 05h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02370)
+ES:DI - reply buffer (see #02371)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F256h/SF=01h,AX=F256h/SF=02h,AX=F256h/SF=04h
+Format of NetWare Duplicate Extended Attributes request packet:
+Offset Size  Description   (Table 02370)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F256h/SF=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3901.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3903.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DUPLICATE EXTENDED ATTRIBUTES</font></h3>
+<PRE>
+AX = F256h subfn 05h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3902.htm#Table2370">(see #02370)</a>
+ES:DI -> reply buffer <a href="rb-3902.htm#Table2371">(see #02371)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3898.htm">AX=F256h/SF=01h</a> - <a href="rb-3899.htm">AX=F256h/SF=02h</a> - <a href="rb-3901.htm">AX=F256h/SF=04h</a>
+<PRE>
+<p>
+Format of NetWare "Duplicate Extended Attributes" request packet:
+<a name=table2370></a>
+Offset  Size    Description     (Table 02370)
+00h    BYTE    05h (subfunction "Duplicate Extended Attributes")
+01h    WORD    source flags <a href="rb-3902.htm#Table2372">(see #02372)</a>
+03h    WORD    destination flags <a href="rb-3902.htm#Table2372">(see #02372)</a>
+05h  8 BYTEs   source extended attribute structure <a href="rb-3902.htm#Table2373">(see #02373)</a>
+0Dh  8 BYTEs   destination extended attribute structure <a href="rb-3902.htm#Table2373">(see #02373)</a>
+</PRE>
+<p><b>See Also:</b>
+#02371
+<PRE>
+<p>
+Format of NetWare "Duplicate Extended Attributes" reply packet:
+<a name=table2371></a>
+Offset  Size    Description     (Table 02371)
+00h    DWORD   number duplicated
+04h    DWORD   data size duplicated
+08h    DWORD   key size duplicated
+</PRE>
+<p><b>See Also:</b>
+#02370
+<PRE>
+<p>
+Bitfields for NetWare extended attribute flags:
+<a name=table2372></a>
+Bit(s)  Description     (Table 02372)
+1-0    extended attribute handle structure type.
+00 volume number and directory entry number.
+01 NetWare file handle.
+10 extended attribute handle.
+11 not used
+2      close handle on error
+6-4    information level (0,1,6,7)
+7      not used
+</PRE>
+<p><b>See Also:</b>
+#02370 - #02373
+<PRE>
+<p>
+Format of NetWare extended attribute structure:
+<a name=table2373></a>
+Offset  Size    Description     (Table 02373)
+---type 0---
+00h    DWORD   volume number
+04h    DWORD   directory entry number
+---type 1---
+00h    DWORD   NetWare file handle
+04h  4 BYTEs   unused
+---type 2---
+00h    DWORD   extended attribute handle
+04h  4 BYTEs   unused
+</PRE>
+<p><b>See Also:</b>
+#02372
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3901.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3903.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

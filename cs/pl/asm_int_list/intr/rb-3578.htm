@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=E7h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=E7h - Novell NetWare - FILE SERVER - GET FILE SERVER LAN I/O STATISTICS - 
+AH = E3h subfn E7h
+DS:SI - request buffer (see #02079)
+ES:DI - reply buffer (see #02080)
+Return: AL = status
+00h successful
+Note:  this function is supported by Advanced NetWare 2.1+
+SeeAlso: AH=E3h/SF=0Eh,AH=E3h/SF=11h,AH=E3h/SF=D3h,AH=E3h/SF=E8h
+SeeAlso: AH=E7hNovell,AX=F217h/SF=E7h
+Format of NetWare Get File Server LAN I/O Statistics request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=E7h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3577.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3579.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET FILE SERVER LAN I/O STATISTICS</font></h3>
+<PRE>
+AH = E3h subfn E7h
+DS:SI -> request buffer <a href="rb-3578.htm#Table2079">(see #02079)</a>
+ES:DI -> reply buffer <a href="rb-3578.htm#Table2080">(see #02080)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 2.1+
+<p><b>See Also:</b>
+<a href="rb-3490.htm">AH=E3h/SF=0Eh</a> - <a href="rb-3493.htm">AH=E3h/SF=11h</a> - <a href="rb-3559.htm">AH=E3h/SF=D3h</a> - <a href="rb-3579.htm"
+<p><b>See Also:</b>
+<a href="rb-3593.htm">AH=E7h"Novell"</a> - <a href="rb-3834.htm">AX=F217h/SF=E7h</a>
+<PRE>
+<p>
+Format of NetWare "Get File Server LAN I/O Statistics" request buffer:
+<a name=table2079></a>
+Offset  Size    Description     (Table 02079)
+00h    WORD    0001h (length of following data)
+02h    BYTE    E7h (subfunction "Get File Server LAN I/O Statistics")
+</PRE>
+<p><b>See Also:</b>
+#02080 - #02245 at AX=F217h/SF=E7h
+<PRE>
+<p>
+Format of NetWare "Get File Server LAN I/O Statistics" reply buffer:
+<a name=table2080></a>
+Offset  Size    Description     (Table 02080)
+00h    WORD    (call) 0042h (size of following results buffer)
+02h    DWORD   clock ticks since system started
+06h    WORD    total routing buffers
+08h    WORD    maximum routing buffers used
+0Ah    WORD    current routing buffers used
+0Ch    DWORD   total file service packets
+10h    WORD    number of file service packets buffered
+12h    WORD    number of invalid connection packets
+14h    WORD    packets with bad logical connection numbers
+16h    WORD    number of packets received during processing
+18h    WORD    number of requests reprocessed
+1Ah    WORD    packets with bad sequence numbers
+1Ch    WORD    number of duplicate replies sent
+1Eh    WORD    number of acknowledgements sent
+20h    WORD    number of packets with bad request types
+22h    WORD    requests to attach to ws for which a request is being processed
+24h    WORD    requests to attach from ws which is already attaching
+26h    WORD    number of forged detach requests
+28h    WORD    detach requests with bad connection number
+2Ah    WORD    requests to detach from ws for which requests pending
+2Ch    WORD    number of cancelled replies
+2Eh    WORD    packets discarded due to excessive hop count
+30h    WORD    packets discarded due to unknown net
+32h    WORD    incoming packets discarded for lack of DGroup buffer
+34h    WORD    outgoing packets discarded due to lack of buffer
+36h    WORD    received packets destined for B,C, or D side drivers
+38h    DWORD   number of NetBIOS packets propagated through net
+3Ch    DWORD   total number of non-file-service packets
+40h    DWORD   total number of routed packets
+</PRE>
+<p><b>Note:</b>
+All fields except the first are big-endian
+<p><b>See Also:</b>
+#02080 - #02245 at AX=F217h/SF=E7h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3577.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3579.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

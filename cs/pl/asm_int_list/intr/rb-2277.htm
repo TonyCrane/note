@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AH=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AH=04h - TIME - GET REAL-TIME CLOCK DATE (AT,XT286,PS) - 
+AH = 04h
+CF clear to avoid bug (see below)
+Return: CF clear if successful
+CH = century (BCD)
+CL = year (BCD)
+DH = month (BCD)
+DL = day (BCD)
+CF set on error
+Notes: DR-DOS 7.02 (after 1998-06-06) and 7.03 hook this function and correct
+the century to 20xx if the reported year is 1900..1980 to auto-fix
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AH=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2276.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2278.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TIME - GET REAL-TIME CLOCK DATE (AT,XT286,PS)</font></h3>
+<PRE>
+AH = 04h
+CF clear to avoid bug (see below)<br>
+<p><b>Return:</b><br>CF clear if successful
+CH = century (BCD)
+CL = year (BCD)
+DH = month (BCD)
+DL = day (BCD)
+CF set on error
+</PRE>
+<p><b>Notes:</b>
+DR-DOS 7.02 (after 1998-06-06) and 7.03 hook this function and correct
+the century to 20xx if the reported year is 1900..1980 to auto-fix
+ROM-BIOSes which are not Year 2000 compliant. On a running system,
+it would also correct the rollover bug from 1999/12/31 to 2000/01/01.
+The latter can be turned off using the new CONFIG.SYS YEAR2000=ON|OFF
+command, as hooking INT 1Ah can sometimes cause compatibility
+problems with 3rd party software, e.g. NCR/Symbios/LSI Logic-based
+SDMS PCI SCSI drivers (including all OEM drivers like from Asus,
+Noma, etc.), some Flash-BIOS software like Asus PFLASH, Quarterdeck's
+QEMM Stealth and Quick-Boot features..
+Using EXCLUDESTEALTHINT=1A, though, will allow QEMM's Stealth features
+to coexist with the DR-DOS Year 2000 rollover support..
+Actually, the Y2K-fix is provided since OpenDOS 7.02 BETA 2+
+(1997-08-13), but although these older releases corrected the
+ROM-BIOS, they didn't pass all Y2K-test suites and had some obscure
+and inexplicable PCI problems due to the fact that the original
+INT 1Ah was called via indirect means.  Newer releases, however, use
+a dynamically fixed-up direct jump to avoid these problems..
+PC DOS 7 plus Y2K fixes and PC DOS 2000 provide similar, though not
+identical means, which cannot be switched off..
+MS-DOS and older issues of PC DOS do not provide any such means, and
+thus requires extra Y2K-TSRs to be loaded when run on buggy BIOSes.
+<p><b>BUG:</b>
+Some BIOSes, such as the 1998/07/25 system ROM in the Compaq Deskpro
+EP/SB, leave CF unchanged if successful, so CF should be cleared
+before calling this function
+<p><b>See Also:</b>
+<a href="rb-2273.htm">AH=02h</a> - <a href="rb-2278.htm">AH=04h"Sperry"</a> - <a href="rb-2280.htm">AH=05h</a> - <a href="rb-2686.htm">INT 21/AH=2A
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2276.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2278.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

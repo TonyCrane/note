@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=96h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=96h - Novell NetWare - ACCOUNTING SERVICES - GET ACCOUNT STATUS - 
+AH = E3h subfn 96h
+DS:SI - request buffer (see #02003)
+ES:DI - reply buffer (see #02004)
+Return: AL = status (00h,C0h,C1h) (see #02002)
+Note:  this function is supported by Advanced NetWare 2.1+
+SeeAlso: AH=E3h/SF=97h,AH=E3h/SF=98h,AH=E3h/SF=99h,AX=F217h/SF=96h
+(Table 02002)
+Values for NetWare function status:
+00h  successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=96h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3543.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3545.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - ACCOUNTING SERVICES - GET ACCOUNT STATUS</font></h3>
+<PRE>
+AH = E3h subfn 96h
+DS:SI -> request buffer <a href="rb-3544.htm#Table2003">(see #02003)</a>
+ES:DI -> reply buffer <a href="rb-3544.htm#Table2004">(see #02004)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C0h,C1h) (see #02002)
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 2.1+
+<p><b>See Also:</b>
+<a href="rb-3545.htm">AH=E3h/SF=97h</a> - <a href="rb-3546.htm">AH=E3h/SF=98h</a> - <a href="rb-3547.htm">AH=E3h/SF=99h</a> - <a href="rb-3800.htm"
+<PRE>
+<p>
+<a name=table2002></a>
+(Table 02002)
+Values for NetWare function status:
+00h    successful
+C0h    no account privileges
+C1h    no account balance
+C2h    credit limit exceeded
+C3h    too many holds on account
+C6h    no console rights
+</PRE>
+<p><b>See Also:</b>
+#01961
+<PRE>
+<p>
+Format of NetWare "Get Account Status" request buffer:
+<a name=table2003></a>
+Offset  Size    Description     (Table 02003)
+00h    WORD    length of following data (max 33h)
+02h    BYTE    96h (subfunction "Get Account Status")
+03h    WORD    (big-endian) type of bindery object
+05h    BYTE    length of object name (01h to 2Fh)
+06h  N BYTEs   object name
+</PRE>
+<p><b>See Also:</b>
+#02004 - #02224 at AX=F217h/SF=96h
+<PRE>
+<p>
+Format of NetWare "Get Account Status" reply buffer:
+<a name=table2004></a>
+Offset  Size    Description     (Table 02004)
+00h    WORD    (call) length of following buffer space
+02h    DWORD   (big-endian) account balance
+06h    DWORD   (big-endian) credit limit
+signed number indicating lowest allowable account balance
+0Ah 120 BYTEs  reserved
+82h    DWORD   (big-endian) object ID, server 1
+86h    DWORD   (big-endian) hold amount, server 1.
+...
+F8h    DWORD   (big-endian) object ID, server 16
+FCh    DWORD   (big-endian) hold amount, server 16
+</PRE>
+<p><b>Note:</b>
+The reply buffer lists the servers which have placed holds on a portion
+of the account balance, and the amount reserved by each
+<p><b>See Also:</b>
+#02003 - #02224 at AX=F217h/SF=96h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3543.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3545.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

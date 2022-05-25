@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0203h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0203h - DPMI 0.9+ - SET PROCESSOR EXCEPTION HANDLER VECTOR - 
+AX = 0203h
+BL = exception number (00h-1Fh)
+CX:(E)DX = selector:offset of handler
+Return: CF clear if successful
+CF set on error
+AX = error code (DPMI 1.0+) (8021h,8022h) (see #03143)
+Notes: 32-bit programs must supply an offset in EDX and use a 32-bit interrupt
+stack frame on chaining to the next exception handler
+the handler should return using a FAR return
+all fault stack frames contain an error code, but it is only valid for
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0203h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5823.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5825.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - SET PROCESSOR EXCEPTION HANDLER VECTOR</font></h3>
+<PRE>
+AX = 0203h
+BL = exception number (00h-1Fh)
+CX:(E)DX = selector:offset of handler<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (DPMI 1.0+) (8021h,8022h) <a href="rb-5802.htm#Table3143">(see #03143)</a>
+</PRE>
+<p><b>Notes:</b>
+32-bit programs must supply an offset in EDX and use a 32-bit interrupt
+stack frame on chaining to the next exception handler.
+The handler should return using a FAR return.
+All fault stack frames contain an error code, but it is only valid for
+exceptions 08h and 0Ah-0Eh.
+Handlers will only be called if the exception occurs in protected mode,
+and the DPMI host does not transparently handle the exception.
+The handler may change certain values on the stack frame
+<a href="rb-0000.htm#Table0"></a>(see #03146,#03147).
+DPMI 1.0+ supports this function only for backward compatibility; use
+AX=0212h or AX=0213h instead.
+Not supported by MS Windows 3.0 in Standard mode
+<p><b>See Also:</b>
+<a href="rb-5823.htm">AX=0202h</a> - <a href="rb-5829.htm">AX=0212h</a> - <a href="rb-5830.htm">AX=0213h</a> - <a href="rb-5753.htm">INT 2F/AX=FB42
+<PRE>
+<p>
+<p><b>Format of stack frame for 16-bit programs:</b><br>(offset from SS:SP)
+<a name=table3146></a>
+Offset  Size    Description     (Table 03146)
+00h    DWORD   return CS:IP (do not change)
+04h    WORD    error code
+06h    DWORD   CS:IP of exception
+0Ah    WORD    flags
+0Ch    DWORD   SS:SP
+<p>
+<p><b>Format of stack frame for 32-bit programs:</b><br>(offset from SS:ESP)
+<a name=table3147></a>
+Offset  Size    Description     (Table 03147)
+00h    DWORD   return EIP (do not change)
+04h    WORD    return CS selector (do not change)
+06h    WORD    reserved (do not change)
+08h    DWORD   error code
+0Ch    DWORD   EIP of exception
+10h    WORD    CS selector of exception
+12h    WORD    reserved (do not change)
+14h    DWORD   EFLAGS
+18h    DWORD   ESP
+1Ch    WORD    SS
+1Eh    WORD    reserved (do not change)
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5823.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5825.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

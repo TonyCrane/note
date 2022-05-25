@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=D110h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=D110h - MDEBUG command driver - GET ADDRESS OF THE OLD INT 2F - 
+AX = D110h
+Return: DL = FFh
+ES:BX - next program in the chain for INT 2F
+CX = code segment of this driver
+DI = offset of driver identification table (see #03079) (v1.60+)
+Notes: only called by the transient part of the driver
+must be reentrant and the driver must not chain this function to the
+old INT 2F
+Format of the MDEBUG driver identification table:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=D110h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5510.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5512.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MDEBUG command driver - GET ADDRESS OF THE OLD INT 2F</font></h3>
+<PRE>
+AX = D110h<br>
+<p><b>Return:</b><br>DL = FFh
+ES:BX -> next program in the chain for INT 2F
+CX = code segment of this driver
+DI = offset of driver identification table <a href="rb-5511.htm#Table3079">(see #03079)</a> (v1.60+)
+</PRE>
+<p><b>Notes:</b>
+Only called by the transient part of the driver.
+Must be reentrant and the driver must not chain this function to the
+old INT 2F
+<PRE>
+<p>
+Format of the MDEBUG driver identification table:
+<a name=table3079></a>
+Offset  Size    Description     (Table 03079)
+00h  26 BYTEs   signature "Kommandotreiber fÅr MDEBUG"
+<p><b>^- Note:</b><br>ASCII 129,German U-umlaut
+27h  12 BYTEs   name of driver, e.g. "MDHISDRV.COM"
+each driver must have a unique name
+</PRE>
+<p>
+<b>Category: <a href="cat-006.htm">
+Debuggers/Debugging Tools</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5510.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5512.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

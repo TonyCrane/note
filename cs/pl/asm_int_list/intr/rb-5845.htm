@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0505h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0505h - DPMI 1.0+ - RESIZE LINEAR MEMORY BLOCK - 
+AX = 0505h
+ESI = memory block handle
+ECX = new size in bytes (nonzero)
+EDX = flags
+bit 0: create committed pages rather than uncommitted pages
+bit 1: segment descriptor update required
+ES:EBX - buffer containing array of WORDs with selectors
+EDI = number of selectors in array
+bits 2-31 reserved (0)
+Return: CF clear if successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0505h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5844.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5846.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 1.0+ - RESIZE LINEAR MEMORY BLOCK</font></h3>
+<PRE>
+AX = 0505h
+ESI = memory block handle
+ECX = new size in bytes (nonzero)
+EDX = flags
+<p><b>bit 0:</b><br>Create committed pages rather than uncommitted pages
+<p><b>bit 1:</b><br>Segment descriptor update required
+ES:EBX -> buffer containing array of WORDs with selectors
+EDI = number of selectors in array
+bits 2-31 reserved (0)<br>
+<p><b>Return:</b><br>CF clear if successful
+EBX = new linear base address
+ESI = new memory block handle
+CF set on error
+AX = error code (8001h,8012h-8014h,8016h,8021h,8023h)<a href="rb-5802.htm#Table3143">(see #03143)</a>
+</PRE>
+<p><b>Notes:</b>
+Only supported by 32-bit DPMI hosts, but may be used by 16-bit clients.
+The old memory block handle becomes invalid.
+If EDX bit 1 set and the block's base address is changed, DPMI updates
+all descriptors for selectors in the update buffer which fall within
+the memory block
+<p><b>See Also:</b>
+<a href="rb-5843.htm">AX=0503h</a> - <a href="rb-5844.htm">AX=0504h</a>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5844.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5846.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

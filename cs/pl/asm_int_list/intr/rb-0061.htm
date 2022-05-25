@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 0D
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 0D - CPU-generated (80286+) - GENERAL PROTECTION VIOLATION - 
+Desc:  the CPU generates this interrupt when it detects a protection violation
+which does not fit under any other category having a separate
+interrupt
+Notes: called in real mode when
+an instruction accesses a memory operand extending beyond offset
+FFFFh (i.e. WORD at FFFFh or DWORD at FFFDh or higher) in segment
+CS, DS, ES, FG, or GS
+a PUSH MEM or POP MEM instruction contains an invalid bit encoding
+in the second byte
+an instruction exceeds the maximum length allowed (10 bytes for
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 0D
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0060.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0062.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>CPU-generated (80286+) - GENERAL PROTECTION VIOLATION</font></h3>
+<p><b>Desc:</b>
+The CPU generates this interrupt when it detects a protection violation
+which does not fit under any other category having a separate
+interrupt
+<p><b>Notes:</b>
+Called in real mode when
+an instruction accesses a memory operand extending beyond offset
+FFFFh (i.e. WORD at FFFFh or DWORD at FFFDh or higher) in segment
+CS, DS, ES, FG, or GS
+a PUSH MEM or POP MEM instruction contains an invalid bit encoding
+in the second byte
+an instruction exceeds the maximum length allowed (10 bytes for
+80286, 15 bytes for 80386/80486)
+an instruction wraps from offset FFFFh to offset 0000h.
+Called in protected mode on protection violations not covered by INT 06
+through INT 0C, including
+segment limit violations
+write to read-only segments
+accesses using null DS or ES selectors
+accesses to segments with privilege greater than CPL
+wrong descriptor type.
+Called on 80486 protected-mode floating-point protection fault
+<p><b>See Also:</b>
+<a href="rb-0047.htm">INT 09"80486"</a> - <a href="rb-0056.htm">INT 0C"STACK"</a>
+<p>
+<b>Category: <a href="cat-050.htm">
+CPU-Generated</a>
+- <a href="int-0D.htm">
+Int 0Dh</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0060.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0062.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

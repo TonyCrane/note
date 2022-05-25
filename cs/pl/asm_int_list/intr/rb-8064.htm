@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7F/AH=16h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7F/AH=16h - Alloy NTNX, MW386 - DIRECT MEMORY TRANSFER - 
+AH = 16h
+DX:SI - transfer structure (see #03961)
+Return: AL = status
+00h successful
+0Ah source or destination out of range
+0Bh transfer kernel busy--try again
+Notes: this call transfers memory contents directly between users; both source
+and destination user IDs may differ from the caller's ID
+no segment wrap is allowed
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7F/AH=16h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8063.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8065.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Alloy NTNX, MW386 - DIRECT MEMORY TRANSFER</font></h3>
+<PRE>
+AH = 16h
+DX:SI -> transfer structure <a href="rb-8064.htm#Table3961">(see #03961)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+0Ah source or destination out of range
+0Bh transfer kernel busy--try again
+</PRE>
+<p><b>Notes:</b>
+This call transfers memory contents directly between users; both source
+and destination user IDs may differ from the caller's ID.
+No segment wrap is allowed
+<PRE>
+<p>
+Format of Alloy transfer structure:
+<a name=table3961></a>
+Offset  Size    Description     (Table 03961)
+00h    WORD    bytes to transfer
+02h    BYTE    source ID
+FEh = caller
+03h    DWORD   source address
+07h    BYTE    destination ID
+FFh = all slaves except caller
+FEh = caller
+08h    DWORD   destination address
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-7F.htm">
+Int 7Fh</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8063.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8065.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

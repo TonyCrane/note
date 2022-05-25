@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4310h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4310h - Helix Netroom RM386 v6.00 - XMS EXTENSIONS - 
+AX = 4310h
+Return: ES:BX - driver entry point (see #02783,#02784,#02785,#02786)
+Notes: HIMEM.SYS v2.77 chains to previous handler if AH is not 00h or 10h
+HIMEM.SYS requires at least 256 bytes free stack space when calling
+the driver entry point
+SeeAlso: AX=4300h,AX=4310hXMS,AX=4310hCloaking
+(Table 02783)
+Call the Netroom RM386 v6.00 Reallocate upper memory block function with:
+AH = 80h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4310h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4769.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4771.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Helix Netroom RM386 v6.00 - XMS EXTENSIONS</font></h3>
+<PRE>
+AX = 4310h<br>
+<p><b>Return:</b><br>ES:BX -> driver entry point (see #02783,#02784,#02785,#02786)
+</PRE>
+<p><b>Notes:</b>
+HIMEM.SYS v2.77 chains to previous handler if AH is not 00h or 10h.
+HIMEM.SYS requires at least 256 bytes free stack space when calling
+the driver entry point
+<p><b>See Also:</b>
+<a href="rb-4765.htm">AX=4300h</a> - <a href="rb-4524.htm">AX=4310h"XMS"</a> - <a href="rb-4769.htm">AX=4310h"Cloaking"</a>
+<PRE>
+<p>
+<a name=table2783></a>
+(Table 02783)
+Call the Netroom RM386 v6.00 "Reallocate upper memory block" function with:.
+AH = 80h.
+DX = segment address of UMB to resize.
+BX = new size of block in paragraphs<br>
+<p><b>Return:</b><br>AX = status
+0001h success
+0000h failure
+BL = error code (80h,B0h,B2h) <a href="rb-4768.htm#Table2775">(see #02775)</a>
+DX = maximum available size
+</PRE>
+<p><b>Note:</b>
+This function is identical to function 12h
+<p><b>See Also:</b>
+#02768 - #02784
+<PRE>
+<p>
+<a name=table2784></a>
+(Table 02784)
+Call the Netroom RM386 v6.00 "re-enable HMA allocation" function with:.
+AH = 81h<br>
+<p><b>Return:</b><br>AX = 0001h (success)
+</PRE>
+<p><b>See Also:</b>
+#02751 - #02783 - #02785
+<PRE>
+<p>
+<a name=table2785></a>
+(Table 02785)
+Call the Netroom RM386 v6.00 "Create new UMB entry" function with:.
+AH = 83h.
+BX = segment of high-memory block.
+DX = first page of start of block.
+CX = number of consecutive pages in block.
+DI = start of UMB in block<br>
+<p><b>Return:</b><br>AX = 0001h (success)
+DI = segment of first high-DOS block
+</PRE>
+<p><b>Note:</b>
+The new UMB is not linked into the high-memory chain
+<p><b>See Also:</b>
+#02766 - #02784 - #02786
+<PRE>
+<p>
+<a name=table2786></a>
+(Table 02786)
+Call the Netroom RM386 v6.00 "Get all XMS handles info" function with:.
+AH = 84h.
+CX = size of buffer for handle info.
+ES:DI -> buffer for handle info <a href="rb-4768.htm#Table2777">(see #02777)</a><br>
+<p><b>Return:</b><br>AX = 0001h (success)
+DX = current number of allocated XMS handles
+</PRE>
+<p><b>See Also:</b>
+#02785 - #02771
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4769.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4771.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

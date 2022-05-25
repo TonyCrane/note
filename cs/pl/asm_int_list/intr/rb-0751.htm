@@ -1,0 +1,133 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AX=8001h/CX=6572h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AX=8001h/CX=6572h - FAST! v4.02+ - GET CACHE INFORMATION - 
+AX = 8001h
+CX = 6572h
+DX = 1970h
+ES:BX - request packet (see #00292)
+Return: AH = 00h if successful
+SeeAlso: AH=80h,AX=8006h
+Format of FAST! request packet:
+Offset Size  Description   (Table 00292)
+00h  DWORD  - 19-byte signature string (see #00291)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AX=8001h/CX=6572h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0750.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0752.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FAST! v4.02+ - GET CACHE INFORMATION</font></h3>
+<PRE>
+AX = 8001h
+CX = 6572h
+DX = 1970h
+ES:BX -> request packet <a href="rb-0751.htm#Table292">(see #00292)</a><br>
+<p><b>Return:</b><br>AH = 00h if successful
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0750.htm">AH=80h</a> - <a href="rb-0752.htm">AX=8006h</a>
+<PRE>
+<p>
+Format of FAST! request packet:
+<a name=table292></a>
+Offset  Size    Description     (Table 00292)
+00h    DWORD   -> 19-byte signature string <a href="rb-0750.htm#Table291">(see #00291)</a>
+04h    DWORD   -> buffer for cache information <a href="rb-0751.htm#Table293">(see #00293)</a>
+<p>
+Format of FAST! cache information (v5.00-5.03):
+<a name=table293></a>
+Offset  Size    Description     (Table 00293)
+00h    WORD    binary version number of FAST! (v5.00 = 01F4h)
+02h    BYTE    revision letter (61h = X.XXa, 62h = X.XXb, etc.)
+03h    BYTE    FAST! variant
+(01h = FASTE, 02h = FASTX BIOS, 04h = FASTC, 20h = FASTX XMS)
+04h    DWORD   total number of read requests
+08h    DWORD   number of physical disk reads
+0Ch    DWORD   grabbed hash buckets
+10h    DWORD   "st_386mem"
+14h    DWORD   total number of writes (only counted when staging enabled)
+18h    DWORD   number of physical disk writes (only when staging enabled)
+1Ch    DWORD   number of write errors while flushing cache
+20h    WORD    flags1 <a href="rb-0751.htm#Table294">(see #00294)</a>
+22h    WORD    flags
+<p><b>bit 0:</b><br>???
+<p><b>bit 1:</b><br>Staged writes enabled
+24h    WORD    ???
+26h    WORD    maximum cache size in KB
+28h    WORD    minimum cache size in KB
+2Ah    WORD    segment of first cache buffer (FASTC)
+segment of EMS page frame (FASTE)
+XMS handle (FASTX XMS)
+2Ch    WORD    number of hash buckets containing no entries
+2Eh    WORD    number of hash buckets containing one entry
+30h    WORD    number of hash buckets containing two entries
+32h    WORD    number of hash buckets containing three entries
+34h    WORD    number of hash buckets containing four entries
+36h    WORD    number of hash buckets containing five entries
+38h    WORD    maximum contiguous sectors
+3Ah    WORD    hash factor
+3Ch    WORD    number of paragraphs of memory used below 1M
+3Eh    WORD    entries per hash bucket
+40h    WORD    idle delay in seconds
+42h  2 BYTEs   ???
+44h    WORD    staged write threshold percentage
+46h  2 BYTEs   ???
+48h    WORD    number of dirty sectors
+4Ah    WORD    number of staged write buffers
+4Ch    WORD    current cache size in KB
+4Eh    WORD    beep frequency in Hz
+50h    WORD    ???
+52h    WORD    ???
+<p>
+Bitfields for FAST! flags1:
+<a name=table294></a>
+Bit(s)  Description     (Table 00294)
+0      beep on flush
+3      hotkeys enabled
+4      mouse idle check enabled
+8      caching enabled
+13     ???
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0750.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0752.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

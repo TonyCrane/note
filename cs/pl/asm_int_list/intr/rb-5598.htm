@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=DE04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=DE04h - DESQview v2.26+ External Dev Interface - ADD PROCESS - 
+AX = DE04h
+BX = mapping context of new process (see #00416 at INT 15/AX=1016h)
+DX = handle of process
+Return: nothing
+Notes: XMS XDI handler (installed by default) allocates a 22-byte record
+(see #03104) from common memory to control access to XMS memory
+all DOS, BIOS, and DV API calls are valid in handler
+driver should pass this call to previous handler after processing it
+SeeAlso: AX=DE05h,AX=DE06h,INT 15/AX=5401h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=DE04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5597.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5599.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview v2.26+ External Dev Interface - ADD PROCESS</font></h3>
+<PRE>
+AX = DE04h
+BX = mapping context of new process <a href="rb-0000.htm#Table0"></a>(see #00416 at INT 15/AX=1016h)
+DX = handle of process<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Notes:</b>
+XMS XDI handler (installed by default) allocates a 22-byte record
+<a href="rb-5598.htm#Table3104">(see #03104)</a> from "common" memory to control access to XMS memory.
+All DOS, BIOS, and DV API calls are valid in handler.
+Driver should pass this call to previous handler after processing it
+<p><b>See Also:</b>
+<a href="rb-5599.htm">AX=DE05h</a> - <a href="rb-5600.htm">AX=DE06h</a> - <a href="rb-1451.htm">INT 15/AX=5401h</a>
+<PRE>
+<p>
+Format of XMS XDI structure:
+<a name=table3104></a>
+Offset  Size    Description     (Table 03104)
+00h    DWORD   pointer to 10-byte record???
+04h    DWORD   pointer to next XMS XDI structure
+08h    WORD    mapping context
+0Ah    BYTE    ???
+0Bh  5 BYTEs   XMS entry point to return for INT 2F/AX=4310h"XMS"
+(FAR jump to next field)
+10h  6 BYTEs   FAR handler for XMS driver entry point
+(consists of a FAR CALL followed by RETF)
+</PRE>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5597.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5599.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

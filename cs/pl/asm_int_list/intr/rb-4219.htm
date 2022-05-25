@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2D
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2D - AMIS v3.0+ - DETERMINE CHAINED INTERRUPTS - 
+AL = 04h
+AH = multiplex number for program
+BL = interrupt number (except 2Dh)
+Return: AL = status
+00h not implemented (makes TSR non-compliant with specification)
+01h (obsolete) unable to determine
+02h (obsolete) interrupt hooked
+03h (obsolete) interrupt hooked, address returned
+DX:BX - TSR's interrupt BL handler
+04h list of hooked interrupts returned
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2D
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4218.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4220.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AMIS v3.0+ - DETERMINE CHAINED INTERRUPTS</font></h3>
+<PRE>
+AL = 04h
+AH = multiplex number for program
+BL = interrupt number (except 2Dh)<br>
+<p><b>Return:</b><br>AL = status
+00h not implemented (makes TSR non-compliant with specification)
+01h (obsolete) unable to determine
+02h (obsolete) interrupt hooked
+03h (obsolete) interrupt hooked, address returned
+DX:BX -> TSR's interrupt BL handler
+04h list of hooked interrupts returned
+DX:BX -> interrupt hook list <a href="rb-4219.htm#Table2571">(see #02571)</a>
+FFh interrupt not hooked
+</PRE>
+<p><b>Notes:</b>
+BL is ignored if the TSR returns AL=04h; in that case, the caller
+needs to scan the return list rather than making additional calls
+to this function.  If the return is not 00h or 04h, then the caller
+must cycle through the remaining interrupt numbers it wishes to
+check..
+Return values 01h through 03h may not be used by AMIS v3.6-compliant
+programs; they are included here solely for compatibility with
+version 3.3, though they were probably never used in any
+implementation.
+For return values 01h through 03h, since INT 2D is known to be hooked,
+the resident code need not test for BL=2Dh (to minimize its size),
+and the return value is therefore undefined in that case..
+This function is not valid unless a program is installed on the
+specified multiplex number; use INT 2D/AL=00h to check
+<p><b>See Also:</b>
+INT 2D/AL=00h - INT 2D/AL=01h - INT 2D/AL=02h - INT 2D/AL=03h - INT 2D/AL=05h
+<p><b>See Also:</b>
+INT 2D/AL=06h
+<PRE>
+<p>
+Format of AMIS interrupt hook list [array]:
+<a name=table2571></a>
+Offset  Size    Description     (Table 02571)
+00h    BYTE    interrupt number (last entry in array is 2Dh)
+01h    WORD    offset within hook list's segment of the interrupt handler
+this will point at the initial short jump of the interrupt
+sharing protocol header <a href="rb-4214.htm#Table2568">(see #02568)</a>
+</PRE>
+<p><b>See Also:</b>
+#02572
+<p>
+<b>Category: <a href="cat-042.htm">
+TSR Libraries</a>
+- <a href="int-2D.htm">
+Int 2Dh</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4218.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4220.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

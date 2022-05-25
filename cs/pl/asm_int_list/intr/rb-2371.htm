@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B101h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B101h -  - 
+INT 1A - PCI BIOS v2.0c+ - INSTALLATION CHECK
+AX = B101h
+EDI = 00000000h
+Return: AH = 00h if installed
+CF clear
+EDX = 20494350h (' ICP')
+EDI = physical address of protected-mode entry point (see #00731)
+AL = PCI hardware characteristics (see #00730)
+BH = PCI interface level major version (BCD)
+BL = PCI interface level minor version (BCD)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B101h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2370.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2372.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040></font></h3>
+<PRE>
+INT 1A - PCI BIOS v2.0c+ - INSTALLATION CHECK
+AX = B101h
+EDI = 00000000h<br>
+<p><b>Return:</b><br>AH = 00h if installed
+CF clear
+EDX = 20494350h (' ICP')
+EDI = physical address of protected-mode entry point <a href="rb-2371.htm#Table731">(see #00731)</a>
+AL = PCI hardware characteristics <a href="rb-2371.htm#Table730">(see #00730)</a>
+BH = PCI interface level major version (BCD)
+BL = PCI interface level minor version (BCD)
+CL = number of last PCI bus in system
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+</PRE>
+<p><b>Notes:</b>
+This function may require up to 1024 byte of stack; it will not enable
+interrupts if they were disabled before making the call.
+Some BIOSes do not change EDI, so applications looking for the
+protected-mode entry point should set EDI to 00000000h before
+calling this function
+<p><b>See Also:</b>
+<a href="rb-2394.htm">AX=B181h</a>
+<PRE>
+<p>
+<a name=table729></a>
+(Table 00729)
+Values for PCI BIOS v2.0c+ status codes:
+00h    successful
+81h    unsupported function
+83h    bad vendor ID
+86h    device not found
+87h    bad PCI register number
+<p>
+Bitfields for PCI hardware characteristics:
+<a name=table730></a>
+Bit(s)  Description     (Table 00730)
+0      configuration space access mechanism 1 supported
+1      configuration space access mechanism 2 supported
+2-3    reserved
+4      Special Cycle generation mechanism 1 supported
+5      Special Cycle generation mechanism 2 supported
+6-7    reserved
+<p>
+<a name=table731></a>
+(Table 00731)
+Call protected-mode entry point with:.
+Registers as for real/V86-mode INT call.
+CS = ring 0 descriptor with access to full address space<br>
+<p><b>Return:</b><br>As for real/V86-mode call
+</PRE>
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2370.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2372.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

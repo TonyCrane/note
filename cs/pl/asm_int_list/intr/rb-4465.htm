@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=14FEh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=14FEh - DR DOS 5.0 NLSFUNC - GET EXTENDED COUNTRY INFORMATION - 
+AX = 14FEh
+BX = code page (FFFFh=global code page) (see #01757 at INT 21/AX=6602h)
+DX = country ID (FFFFh=current country) (see #01400 at INT 21/AH=38h)
+ES:DI - country information buffer
+CL = info ID
+01h get general internationalization info
+02h get pointer to uppercase table
+04h get pointer to filename uppercase table
+05h get pointer to filename terminator table
+06h get pointer to collating sequence table
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=14FEh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4464.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4466.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DR DOS 5.0 NLSFUNC - GET EXTENDED COUNTRY INFORMATION</font></h3>
+<PRE>
+AX = 14FEh
+BX = code page (FFFFh=global code page) <a href="rb-0000.htm#Table0"></a>(see #01757 at INT 21/AX=6602h)
+DX = country ID (FFFFh=current country) <a href="rb-0000.htm#Table0"></a>(see #01400 at INT 21/AH=38h)
+ES:DI -> country information buffer
+CL = info ID
+01h get general internationalization info
+02h get pointer to uppercase table
+04h get pointer to filename uppercase table
+05h get pointer to filename terminator table
+06h get pointer to collating sequence table
+07h get pointer to Double-Byte Character Set table
+CF set (used to return error if not installed)<br>
+<p><b>Return:</b><br>CF clear if successful
+DS:SI -> requested information
+CF set on error
+</PRE>
+<p><b>Notes:</b>
+DR DOS 5.0 NLSFUNC returns CF set and AX=0001h if AL was not 00h, FEh,
+or FFh on entry..
+The DR DOS kernel calls this function on INT 21/AX=6501h.
+The value in CL is not range-checked by the DR DOS 5.0 NLSFUNC
+<p><b>See Also:</b>
+#02626 - <a href="rb-4466.htm">AX=14FFh</a> - <a href="rb-3163.htm">INT 21/AH=65h</a>
+<PRE>
+<p>
+Format of DR DOS COUNTRY.SYS file:
+<a name=table2626></a>
+Offset  Size    Description     (Table 02626)
+00h 126 BYTEs  copyright notice (terminated with Ctrl-Z, padded with NULs)
+7Eh    WORD    signature EDC1h
+80h    var     country pointer records.
+Offset  Size    Description
+00h    WORD    country code (0000h if end of array)
+02h    WORD    code page <a href="rb-0000.htm#Table0"></a>(see #01757 at INT 21/AX=6602h)
+04h    WORD    ??? (0000h)
+06h  7 WORDs   offsets in file for data tables for subfunctions
+01h-07h
+var    var     country information
+</PRE>
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4464.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4466.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=DEh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=DEh - Novell NetWare - FILE SERVER - GET PHYSICAL RECORD LOCKS BY FILE - 
+AH = E3h subfn DEh
+DS:SI - request buffer (see #02058)
+ES:DI - reply buffer (see #02059)
+Return: AL = status (00h,C6h,FFh) (see #02053)
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have console operator privileges
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=DDh,AH=E3h/SF=DFh,AX=F217h/SF=DEh
+Format of NetWare Get Physical Record Locks by File request buffer:
+Offset Size  Description   (Table 02058)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=DEh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3569.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3571.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET PHYSICAL RECORD LOCKS BY FILE</font></h3>
+<PRE>
+AH = E3h subfn DEh
+DS:SI -> request buffer <a href="rb-3570.htm#Table2058">(see #02058)</a>
+ES:DI -> reply buffer <a href="rb-3570.htm#Table2059">(see #02059)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h,FFh) (see #02053)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have console operator privileges
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3569.htm">AH=E3h/SF=DDh</a> - <a href="rb-3571.htm">AH=E3h/SF=DFh</a> - <a href="rb-3826.htm"
+<PRE>
+<p>
+Format of NetWare "Get Physical Record Locks by File" request buffer:
+<a name=table2058></a>
+Offset  Size    Description     (Table 02058)
+00h    WORD    length of following data (max 104h)
+02h    BYTE    DEh (subfunction "Get Physical Record Locks by File")
+03h    WORD    (big-endian) last record seen (0000h on first call)
+05h    BYTE    directory handle
+06h    BYTE    length of filename
+07h  N BYTEs   ASCIZ filename
+</PRE>
+<p><b>See Also:</b>
+#02059 - #02237 at AX=F217h/SF=DEh
+<PRE>
+<p>
+Format of NetWare "Get Physical Record Locks by File" reply buffer:
+<a name=table2059></a>
+Offset  Size    Description     (Table 02059)
+00h    WORD    (call) size of following results record (max 1FEh)
+02h    WORD    next request record (place in "last record" on next call)
+0000h if no more records
+04h    BYTE    number of physical record locks
+05h    BYTE    number of records following
+06h    var     array of Physical Record Lock Info records <a href="rb-3570.htm#Table2060">(see #02060)</a>
+</PRE>
+<p><b>See Also:</b>
+#02058 - #02237 at AX=F217h/SF=DEh
+<PRE>
+<p>
+Format of NetWare Physical Record Lock Info:
+<a name=table2060></a>
+Offset  Size    Description     (Table 02060)
+00h    WORD    (big-endian) number of tasks logging record
+02h    WORD    (big-endian) number of tasks with shareable lock
+04h    DWORD   (big-endian) starting offset of record in file
+08h    DWORD   (big-endian) ending offset of record in file
+0Ch    WORD    (big-endian) logical connection number
+0Eh    BYTE    task number
+0Fh    BYTE    lock type
+00h none
+FEh file lock
+FFh Begin Share File Set lock
+</PRE>
+<p><b>See Also:</b>
+#02059
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3569.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3571.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

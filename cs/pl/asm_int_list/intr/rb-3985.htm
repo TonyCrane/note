@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=29h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=29h - Novell NetWare v4+ - GET PROTOCOL STACK BY BOARD - 
+AX = F27Bh subfn 29h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02515)
+ES:DI - reply buffer (see #02516)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get Protocol Stack by Board request buffer:
+Offset Size  Description   (Table 02515)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=29h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3984.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3986.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET PROTOCOL STACK BY BOARD</font></h3>
+<PRE>
+AX = F27Bh subfn 29h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3985.htm#Table2515">(see #02515)</a>
+ES:DI -> reply buffer <a href="rb-3985.htm#Table2516">(see #02516)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get Protocol Stack by Board" request buffer:
+<a name=table2515></a>
+Offset  Size    Description     (Table 02515)
+00h    WORD    0005h (length of following data)
+02h    BYTE    29h (subfunction "Get Protocol Stack by Board")
+03h    DWORD   LAN board number
+</PRE>
+<p><b>See Also:</b>
+#02516
+<PRE>
+<p>
+Format of NetWare "Get Protocol Stack by Board" reply buffer:
+<a name=table2516></a>
+Offset  Size    Description     (Table 02516)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    WORD    number of stacks listed (max 50)
+0Ah 50 DWORDs  protocol identifiers
+</PRE>
+<p><b>See Also:</b>
+#02515
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3984.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3986.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

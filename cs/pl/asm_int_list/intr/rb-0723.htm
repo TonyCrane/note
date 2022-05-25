@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AX=5001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AX=5001h - Enhanced Disk Drive Spec v3.0 - SEND PACKET COMMAND - 
+AX = 5001h
+DL = drive number
+ES:BX - command packet (see #00284)
+Return: CF clear if successful
+AH = 00h
+CF set on error
+AH = error code
+Desc:  send data to and from a serial packet-oriented device, such as IEEE1394
+and USB
+SeeAlso: AH=41hINT 13 Extensions,AH=4Eh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AX=5001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0722.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0724.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Enhanced Disk Drive Spec v3.0 - SEND PACKET COMMAND</font></h3>
+<PRE>
+AX = 5001h
+DL = drive number
+ES:BX -> command packet <a href="rb-0723.htm#Table284">(see #00284)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h
+CF set on error
+AH = error code
+</PRE>
+<p><b>Desc:</b>
+Send data to and from a serial packet-oriented device, such as IEEE1394
+and USB
+<p><b>See Also:</b>
+<a href="rb-0706.htm">AH=41h"INT 13 Extensions"</a> - <a href="rb-0722.htm">AH=4Eh</a>
+<PRE>
+<p>
+Format of Enhanced Disk Drive Spec v3.0 command packet:
+<a name=table284></a>
+Offset  Size    Description     (Table 00284)
+00h    WORD    signature B055h
+02h    BYTE    length of packet in bytes
+03h    BYTE    reserved (0)
+04h  N BYTEs   formatted packet data
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-e.htm">
+E</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0722.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0724.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

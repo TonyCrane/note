@@ -1,0 +1,133 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=000Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=000Fh - MS Windows - VPD - GET API ENTRY POINT - 
+AX = 1684h
+BX = 000Fh (virtual device ID for VPD device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02653)
+0000h:0000h if the VxD does not support API in current mode
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+(Table 02653)
+Call VPD entry point with:
+EDX = function number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=000Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4543.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4545.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - VPD - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 000Fh (virtual device ID for VPD device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02653)
+0000h:0000h if the VxD does not support API in current mode
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2653></a>
+(Table 02653)
+Call VPD entry point with:.
+EDX = function number
+0000h get VPD version
+<p><b>Return:</b><br>CF clear
+AH = major version
+AL = minor version
+DX = ??? (CB01h)
+0001h get valid??? printers
+<p><b>Return:</b><br>CF clear
+AX = bitmask of ??? printers (bits 0-2)
+0002h get ??? for printer
+CX = printer port (0-2)
+<p><b>Return:</b><br>CF clear if successful
+BX:AX = ???
+CF set on error (invalid port number)
+0003h set ??? for printer
+CX = printer port (0-2)
+BX:AX = ???
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (invalid port number)
+0004h ???
+CX = printer port (0-2)
+EAX = VM handle
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (invalid port number)
+0005h ???
+CX = printer port (0-2)
+EAX = VM handle
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (invalid port number or ???)
+0006h-000Eh unused
+<p><b>Return:</b><br>CF set
+000Fh ???
+CX = printer port (0-2)
+AX = ???
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (e.g. invalid port number)
+0010h ???
+CX = printer port (0-2)
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (e.g. invalid port number)
+0011h ???
+CX = printer port (0-2)
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (e.g. invalid port number)
+0012h get port status
+CX = printer port (0-2)
+<p><b>Return:</b><br>CF clear if successful
+AX = port status <a href="rb-0000.htm#Table0"></a>(see #P0658 at PORT 03BCh"LPT")
+CF set on error (e.g. invalid port number)
+else
+<p><b>Return:</b><br>CF set
+</PRE>
+<p><b>Note:</b>
+These functions are apparently only available from the system VM,
+returning CF set
+<p><b>See Also:</b>
+#02652 - #02654
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4543.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4545.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=39h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=39h - DOS 2+ - MKDIR - CREATE SUBDIRECTORY - 
+AH = 39h
+DS:DX - ASCIZ pathname
+Return: CF clear if successful
+AX destroyed
+CF set on error
+AX = error code (03h,05h) (see #01680 at AH=59h/BX=0000h)
+Notes: all directories in the given path except the last must exist
+fails if the parent directory is the root and is full
+DOS 2.x-3.3 allow the creation of a directory sufficiently deep that
+it is not possible to make that directory the current directory
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=39h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2774.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2776.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - MKDIR - CREATE SUBDIRECTORY</font></h3>
+<PRE>
+AH = 39h
+DS:DX -> ASCIZ pathname<br>
+<p><b>Return:</b><br>CF clear if successful
+AX destroyed
+CF set on error
+AX = error code (03h,05h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+All directories in the given path except the last must exist.
+Fails if the parent directory is the root and is full.
+DOS 2.x-3.3 allow the creation of a directory sufficiently deep that
+it is not possible to make that directory the current directory
+because the path would exceed 64 characters.
+Under the FlashTek X-32 DOS extender, the pointer is in DS:EDX
+<p><b>See Also:</b>
+<a href="rb-2776.htm">AH=3Ah</a> - <a href="rb-2777.htm">AH=3Bh</a> - <a href="rb-3181.htm">AH=6Dh</a> - <a href="rb-3197.htm">AX=7139h</a> - <a hr
+<p><b>See Also:</b>
+<a href="rb-4307.htm">INT 2F/AX=1103h</a> - <a href="rb-6504.htm">INT 60/DI=0511h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2774.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2776.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

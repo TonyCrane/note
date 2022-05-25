@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=D3h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=D3h - Novell NetWare - FILE SERVER - DOWN FILE SERVER - 
+AH = E3h subfn D3h
+DS:SI - request buffer (see #02026)
+ES:DI - reply buffer (see #02024)
+Return: AL = status (00h,C6h,FFh) (see #02025)
+Desc:  take down the file server
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have SUPERVISOR privileges
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=CBh,AH=E3h/SF=CFh,AH=E3h/SF=D1h
+(Table 02025)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=D3h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3558.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3560.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - DOWN FILE SERVER</font></h3>
+<PRE>
+AH = E3h subfn D3h
+DS:SI -> request buffer <a href="rb-3559.htm#Table2026">(see #02026)</a>
+ES:DI -> reply buffer <a href="rb-3558.htm#Table2024">(see #02024)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h,FFh) (see #02025)
+</PRE>
+<p><b>Desc:</b>
+Take down the file server
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have SUPERVISOR privileges
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3551.htm">AH=E3h/SF=CBh</a> - <a href="rb-3555.htm">AH=E3h/SF=CFh</a> - <a href="rb-3557.htm"
+<PRE>
+<p>
+<a name=table2025></a>
+(Table 02025)
+Values for NetWare function status:
+00h    successful
+C6h    no console rights
+FFh    files open
+</PRE>
+<p><b>See Also:</b>
+#02002 - #02053
+<PRE>
+<p>
+Format of NetWare "Down File Server" request buffer:
+<a name=table2026></a>
+Offset  Size    Description     (Table 02026)
+00h    WORD    0002h (length of following data)
+02h    BYTE    D3h (subfunction "Down File Server")
+<p><b>03h    BYTE    flag:</b><br>Force down even if files open if nonzero
+</PRE>
+<p><b>See Also:</b>
+#02024
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3558.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3560.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,137 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AH=12h/BH=55h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AH=12h/BH=55h - VIDEO - ALTERNATE FUNC SELECT (ATI,Tatung,Taxan) - ENHANCED FEATURES - 
+AH = 12h
+BH = 55h
+BL = subfunction
+00h disable enhanced features
+01h enable enhanced features
+02h get status
+Return: AL = status flags (see #00027)
+03h disable register trapping (CGA emulation)
+04h enable register trapping
+05h program video mode
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AH=12h/BH=55h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0179.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0181.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - ALTERNATE FUNC SELECT (ATI,Tatung,Taxan) - ENHANCED FEATURES</font></h3>
+<PRE>
+AH = 12h
+BH = 55h
+BL = subfunction
+00h disable enhanced features
+01h enable enhanced features
+02h get status
+<p><b>Return:</b><br>AL = status flags (see #00027)
+03h disable register trapping (CGA emulation)
+04h enable register trapping
+05h program video mode
+ES:BP -> video mode table <a href="rb-0180.htm#Table28">(see #00028)</a>
+06h get mode table
+AL = video mode
+<p><b>Return:</b><br>ES:BP -> table suitable for mode AL
+(and subfunc BL=05h) <a href="rb-0180.htm#Table28">(see #00028)</a>
+BP = FFFFh on error
+SI = 0000h (ATI Mach32)
+</PRE>
+<p><b>Note:</b>
+The ATI Mouse driver (MOUSE.COM/MOUSE.SYS) uses subfunction 06h to get
+the mode table for mode 03h, and then looks for a signature string
+beginning within 32 bytes of the offset specified by the word at
+ES:000Ch
+<p><b>See Also:</b>
+<a href="rb-0570.htm">AH=FFh"Oak"</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;ATI video adapters
+<p>
+Bitfields for status flags:
+<a name=table27></a>
+Bit(s)  Description     (Table 00027)
+3      set if enhanced features enabled
+7-5    monitor type.
+000 PS/2 mono.
+001 PS/2 color.
+010 multi-sync.
+011 Taxan 650 25kHz.
+100 RGB.
+101 mono.
+110 EGA.
+111 Compaq internal
+<p>
+Format of ATI VGA Wonder video mode table:
+<a name=table28></a>
+Offset  Size    Description     (Table 00028)
+00h    BYTE    number of columns
+01h    BYTE    maximum row (number of rows - 1)
+02h    BYTE    scan lines per row
+03h    WORD    video buffer size in bytes
+05h  4 BYTEs   values for Sequencer registers 1-4
+09h    BYTE    value for Miscellaneous Output register
+0Ah 25 BYTEs   values for CRTC registers 00h-18h
+00h horizontal total size (chars)
+01h horizontal displayed (chars)
+02h horizontal sync position (chars)
+03h horizontal sync width (chars)
+04h vertical total size (char rows)
+05h vertical total adjust (scan lines)
+06h vertical displayed (char rows)
+07h vertical sync position (char rows)
+08h interlace mode
+09h max scan line in row
+0Ah cursor start scan line
+0Bh cursor end scan line
+0Ch screen memory start (high)
+0Dh screen memory start (low)
+0Eh cursor address (high)
+0Fh cursor address (low)
+10h light pen (high)
+11h light pen (low)
+23h 20 BYTEs   default palette (values for Attribute Controller regs 00h-13h)
+37h  9 BYTEs   values for Graphics Controller registers 00h-08h
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0179.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0181.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,153 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=25h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=25h - HARD DISK - PS/1 and newer PS/2 - IDENTIFY DRIVE - 
+AH = 25h
+DL = drive number (80h,81h)
+ES:BX- 512 byte buffer for reply packet
+Return: CF clear if successful
+CF set on error
+AH = status (see #00234 at AH=01h)
+buffer filled with ATA/IDE-style drive information block (see #00267)
+Desc:  retrieves the 256 words of drive data stored on an IDE hard disk
+Notes: the byte at address 0040h:0074h is set to the status of the operation
+IBM officially classifies this function as optional
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=25h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0676.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0678.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HARD DISK - PS/1 and newer PS/2 - IDENTIFY DRIVE</font></h3>
+<PRE>
+AH = 25h
+DL = drive number (80h,81h)
+ES:BX-> 512 byte buffer for reply packet<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = status <a href="rb-0000.htm#Table0"></a>(see #00234 at AH=01h)
+buffer filled with ATA/IDE-style drive information block <a href="rb-0677.htm#Table267">(see #00267)</a>
+</PRE>
+<p><b>Desc:</b>
+Retrieves the 256 words of drive data stored on an IDE hard disk
+<p><b>Notes:</b>
+The byte at address 0040h:0074h is set to the status of the operation.
+IBM officially classifies this function as optional
+<p><b>See Also:</b>
+<a href="rb-0669.htm">AH=23h"PS/1"</a>
+<PRE>
+<p>
+Format of drive information block:
+<a name=table267></a>
+Offset  Size    Description     (Table 00267)
+00h    WORD    general drive configuration <a href="rb-0677.htm#Table268">(see #00268)</a>
+02h    WORD    number of cylinders
+04h    WORD    reserved
+06h    WORD    number of heads
+08h    WORD    number of unformatted bytes per track
+0Ah    WORD    number of unformatted bytes per sector
+0Ch    WORD    number of sectors per track
+0Eh  6 BYTEs   vendor unique
+14h 20 BYTEs   serial number in ASCII, 0000h=not specified)
+28h    WORD    buffer type
+2Ah    WORD    buffer size in 512 byte increments (0000h=not specified)
+2Ch    WORD    number of ECC bytes passed on Read/Write Long cmds
+0000h = not specified
+2Eh  8 BYTEs   firmware revision in ASCII, 0000h=not specified
+36h 40 BYTEs   model number in ASCII, 0000h=not specified
+5Eh    WORD    bits 15-8  Vendor Unique
+bits 7-0  00h = Read/Write Multiple commands not implemented
+xxh = Maximum number of sectors that can be
+transferred per interrupt on Read and Write
+Multiple commands
+60h    WORD    0000h = cannot perform doubleword I/O
+0001h = can perform doubleword I/O
+62h    WORD    capabilities
+bit 15-9  0=reserved
+bit 8  1=DMA Supported
+bit 7-0  Vendor Unique
+64h    WORD    reserved
+66h    WORD    bits 15-8 PIO data transfer cycle timing mode
+bits 7-0  Vendor Unique
+68h    WORD    bits 15-8 DMA data transfer cycle timing mode
+bits 7-0  Vendor Unique
+6Ah    WORD    bits 15-1 reserved
+bit 0   1=the fields reported in tranlation mode are valid
+0=the fields reported in translation mode may be valid
+6Ch    WORD    number of current cylinders
+6Eh    WORD    number of current heads
+70h    WORD    number of current sectors per track
+72h    DWORD   current capacity in sectors
+76h    WORD    reserved
+78h 136 BYTEs  not defined by ATA spec 2.6
+100h 64 BYTEs   vendor unique
+140h 96 BYTEs   reserved
+</PRE>
+<p><b>Note:</b>
+The above description is as in the ATA (AT Attachment) Specification.
+<p><b>See Also:</b>
+#P0516
+<PRE>
+<p>
+Bitfields for general drive configuration:
+<a name=table268></a>
+Bit(s)  Description     (Table 00268)
+15     0   reserved for non-magnetic drives
+14     format speed tolerance gap required
+13     track offset option available
+12     data strobe offset option available
+11     rotational speed tolerance is > 0.5%
+10     disk transfer rate > 10 Mbs
+9      disk transfer rate > 5Mbs but <= 10Mbs
+8      disk transfer rate <= 5Mbs
+7      removable cartridge drive
+6      fixed drive
+5      spindle motor control option implemented
+4      head switch time > 15 usec
+3      not MFM encoded
+2      soft sectored
+1      hard sectored
+0      reserved (0)
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0676.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0678.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

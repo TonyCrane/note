@@ -1,0 +1,143 @@
+<HTML>
+<HEAD>
+<TITLE>Int 92/AX=E108h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 92/AX=E108h - Da Vinci eMail Dispatcher - NetWrite - 
+AX = E108h
+BX = size of parameter block in words (0004h)
+CX:DX - parameter block (see #03983)
+Return: AX = amount written
+Desc:  This function is used to write transactions to the dispatcher.
+The command block is written first and then another call is used
+to write the associated data.
+SeeAlso: AX=E106h
+Format of Da Vinci eMail NetWrite parameter block:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 92/AX=E108h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8267.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8269.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Da Vinci eMail Dispatcher - NetWrite</font></h3>
+<PRE>
+AX = E108h
+BX = size of parameter block in words (0004h)
+CX:DX -> parameter block <a href="rb-8268.htm#Table3983">(see #03983)</a><br>
+<p><b>Return:</b><br>AX = amount written
+</PRE>
+<p><b>Desc:</b>
+This function is used to write transactions to the dispatcher.
+The command block is written first and then another call is used
+to write the associated data.
+<p><b>See Also:</b>
+<a href="rb-8266.htm">AX=E106h</a>
+<PRE>
+<p>
+Format of Da Vinci eMail "NetWrite" parameter block:
+<a name=table3983></a>
+Offset  Size    Description     (Table 03983)
+00h    WORD    buffer count <a href="rb-8268.htm#Table3985">(see #03985)</a>
+02h    WORD    segment of command buffer <a href="rb-8268.htm#Table3984">(see #03984)</a>
+04h    WORD    offset of command buffer
+06h    WORD    handle from NetOpen
+<p>
+Format of Da Vinci eMail command buffer:
+<a name=table3984></a>
+Offset  Size    Description     (Table 03984)
+00h    BYTE    command
+21h '!' Protocol commands for remote control
+41h 'A' Authorization protocol element
+42h 'B' Return(back) routing information
+<p><b>Associated data is the From:</b><br>Username
+43h 'C' Carbon Copy list
+Associated data is a comma delimitted list of usernames
+44h 'D' Distribution list
+Associated data is a comma delimitted list of usernames
+45h 'E' Mail end marker
+No associated data
+48h 'H' Mail message header
+Associated data is a message header buffer
+4Dh 'M' Mail message
+Associated data is the body of the message
+4Fh 'O' Object
+50h 'P' Paperclip attachment
+52h 'R' Routing information
+<p><b>Associated data is the To:</b><br>Username
+53h 'S' Subject
+Associated data is the subject of the message
+54h 'T' Trail of Reply/Forwards
+01h    BYTE    subcommand
+02h    DWORD   length of associated data
+<p>
+Format of Da Vinci eMail message header buffer:
+<a name=table3985></a>
+Offset  Size    Description     (Table 03985)
+00h 30 BYTEs   subject line
+1Eh 24 BYTEs   To
+36h 24 BYTEs   From
+4Eh    DWORD   Time
+BYTE    00h
+BYTE    hour
+BYTE    minute
+BYTE    second
+52h    DWORD   Date
+BYTE    00h
+BYTE    year
+BYTE    month
+BYTE    day
+56h    DWORD   serial number (00000000h)
+5Ah    WORD    mail types <a href="rb-8268.htm#Table3986">(see #03986)</a>
+5Ch    WORD    special types (0)
+<p>
+Bitfields for Da Vinci eMail mail types:
+<a name=table3986></a>
+Bit(s)  Description     (Table 03986)
+7      blind carbon copy
+6      carbon copy
+5      priority
+4      confidential
+3      certified
+2      bulk
+1-0    class (first, second, third, bulk)
+</PRE>
+<p>
+<b>Category: <a href="cat-012.htm">
+Electronic Mail</a>
+- <a href="int-92.htm">
+Int 92h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8267.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8269.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

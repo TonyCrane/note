@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=84h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=84h - Novell NetWare - QUEUE SERVICES - ABORT SERVICING QUEUE JOB - 
+AH = E3h subfn 84h
+DS:SI - request buffer (see #02000)
+ES:DI - reply buffer (see #02001)
+Return: AL = status (00h,96h,D0h,D1h,D6h,D9h) (see #01961)
+Desc:  inform the Queue Management System (QMS) that the queue server is
+unable to service a previously-accepted job
+Notes: this function is supported by Advanced NetWare 3.1+
+this variant of Abort Servicing Queue Job allows use of the high
+connection byte in the NCP packet header, unlike AH=E3h/SF=73h
+SeeAlso: AH=E3h/SF=6Fh,AH=E3h/SF=71h,AH=E3h/SF=72h,AH=E3h/SF=73h,AH=E3h/SF=76h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=84h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3542.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3544.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - ABORT SERVICING QUEUE JOB</font></h3>
+<PRE>
+AH = E3h subfn 84h
+DS:SI -> request buffer <a href="rb-3543.htm#Table2000">(see #02000)</a>
+ES:DI -> reply buffer <a href="rb-3543.htm#Table2001">(see #02001)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,D0h,D1h,D6h,D9h) (see #01961)
+</PRE>
+<p><b>Desc:</b>
+Inform the Queue Management System (QMS) that the queue server is
+unable to service a previously-accepted job
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 3.1+.
+This variant of Abort Servicing Queue Job allows use of the high
+connection byte in the NCP packet header, unlike AH=E3h/SF=73h
+<p><b>See Also:</b>
+<a href="rb-3532.htm">AH=E3h/SF=6Fh</a> - <a href="rb-3534.htm">AH=E3h/SF=71h</a> - <a href="rb-3535.htm">AH=E3h/SF=72h</a> - <a href="rb-3536.htm"
+<p><b>See Also:</b>
+<a href="rb-3796.htm">AX=F217h/SF=84h</a>
+<PRE>
+<p>
+Format of NetWare "Abort Servicing Queue Job" request buffer:
+<a name=table2000></a>
+Offset  Size    Description     (Table 02000)
+00h    WORD    0007h (length of following data)
+02h    BYTE    84h (subfunction "Abort Servicing Queue Job")
+03h    DWORD   (big-endian) object ID of queue
+07h    WORD    (big-endian) job number
+</PRE>
+<p><b>See Also:</b>
+#02001
+<PRE>
+<p>
+Format of NetWare "Abort Servicing Queue Job" reply buffer:
+<a name=table2001></a>
+Offset  Size    Description     (Table 02001)
+00h    WORD    (call) 0000h (no results returned)
+</PRE>
+<p><b>See Also:</b>
+#02000
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3542.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3544.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

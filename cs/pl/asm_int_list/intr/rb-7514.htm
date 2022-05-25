@@ -1,0 +1,207 @@
+<HTML>
+<HEAD>
+<TITLE>Int 68/AH=01h/SF=2100h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 68/AH=01h/SF=2100h - APPC/PC - NETWORK DEVICE CONTROL - ATTACH LOGICAL UNIT - 
+AH = 01h subfn 2100h
+DS:DX - control block (see #03670)
+Return: control block updated
+SeeAlso: #03673,#03674,#03676,AH=01h/SF=2000h,AH=01h/SF=2200h,AH=01h/SF=2B00h
+Format of APPC/PC Attach Logical Unit control block:
+Offset Size  Description   (Table 03670)
+00h 12 BYTEs  reserved
+0Ch  WORD  2100h (verb Attach Logical Unit)
+0Eh 6 BYTEs  00h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 68/AH=01h/SF=2100h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7513.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7515.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APPC/PC - NETWORK DEVICE CONTROL - ATTACH LOGICAL UNIT</font></h3>
+<PRE>
+AH = 01h subfn 2100h
+DS:DX -> control block <a href="rb-7514.htm#Table3670">(see #03670)</a><br>
+<p><b>Return:</b><br>Control block updated
+</PRE>
+<p><b>See Also:</b>
+#03673 - #03674 - #03676 - <a href="rb-7513.htm">AH=01h/SF=2000h</a> - <a href="rb-7515.htm">AH=01h/SF=2200h</a> - <a href="rb-7517.htm">AH=01h/SF=2B00h</a>
+<PRE>
+<p>
+Format of APPC/PC "Attach Logical Unit" control block:
+<a name=table3670></a>
+Offset  Size    Description     (Table 03670)
+00h 12 BYTEs   reserved
+0Ch    WORD    2100h (verb "Attach Logical Unit")
+0Eh  6 BYTEs   00h
+14h    DWORD   (big-endian) return code <a href="rb-7512.htm#Table3668">(see #03668)</a>
+18h    WORD    70  offset to partner logical unit record
+1Ah  8 BYTEs   (big-endian) logical unit name
+22h  8 BYTEs   (big-endian) logical unit ID
+2Ah    BYTE    logical unit local address
+2Bh    BYTE    logical unit session limit
+2Ch    DWORD   pointer to CREATE_TP_EXIT routine,
+FFFFFFFFh = reject incoming ALLOCATEs
+00000000h = queue ALLOCATEs
+30h    DWORD   00h
+34h    DWORD   pointer to SYSTEM_LOG_EXIT routine, FFFFFFFFh=don't log errors
+38h    DWORD   00h
+3Ch    BYTE    maximum TPs
+3Dh    BYTE    queue depth
+3Eh    DWORD   pointer to LU_LU_PASSWORD_EXIT routine, FFFFFFFFh=no pswd exit
+42h    DWORD   00h
+46h    WORD    total length of partner records
+48h    var     array of partner logical unit records <a href="rb-7514.htm#Table3671">(see #03671)</a>
+</PRE>
+<p><b>See Also:</b>
+#03673 - #03674 - #03676
+<PRE>
+<p>
+Format of APPC/PC partner logical unit record:
+<a name=table3671></a>
+Offset  Size    Description     (Table 03671)
+00h    WORD    length of this partner logical unit record
+02h    WORD    42  offset to mode records
+04h  8 BYTEs   (big-endian) partner logical unit name
+0Ch    BYTE    partner logical unit security capabilities
+<p><b>bit 7:</b><br>Already verified
+<p><b>bit 6:</b><br>Conversation level security
+<p><b>bit 5:</b><br>Session level security
+0Dh    BYTE    partner logical unit session limit
+0Eh    WORD    partner logical unit maximum MC_SEND_LL
+10h  8 BYTEs   (big-endian) partner logical unit DLC name
+18h    BYTE    partner logical unit adapter number
+19h 17 BYTEs   (counted string) partner logical unit adapter address
+2Ah    WORD    total length of mode records
+2Ch 16N BYTEs  array of mode records <a href="rb-7514.htm#Table3672">(see #03672)</a>
+<p>
+Format of mode record:
+<a name=table3672></a>
+Offset  Size    Description     (Table 03672)
+00h    WORD    16  length of this mode record
+02h  8 BYTEs   (big-endian) mode name
+0Ah    WORD    RU_SIZE high bound
+0Ch    WORD    RU_SIZE low bound
+0Eh    BYTE    mode maximum negotiable session limit
+0Fh    BYTE    pacing size for receive
+<p>
+Routines defined by LU_LU_PASSWORD_EXIT, CREATE_TP_EXIT, and SYSTEM_LOG_EXIT
+pointers are called by pushing the DWORD pointer to the verb on the stack and
+then performing a FAR call.
+<p>
+Format of ACCESS_LU_LU_PW verb:
+<a name=table3673></a>
+Offset  Size    Description     (Table 03673)
+00h 12 BYTEs   reserved
+0Ch    WORD    1900h (verb "ACCESS_LU_LU_PW")
+0Eh  8 BYTEs   (big-endian) logical unit ID
+16h  8 BYTEs   (big-endian) logical unit name
+1Eh  8 BYTEs   (big-endian) partner logical unit name
+26h 17 BYTEs   (counted string) partner fully qualified logical unit name
+37h    BYTE    password available (0=no, 1=yes)
+38h  8 BYTEs   password
+</PRE>
+<p><b>See Also:</b>
+#03670 - #03674 - #03676
+<PRE>
+<p>
+Format of CREATE_TP verb:
+<a name=table3674></a>
+Offset  Size    Description     (Table 03674)
+00h 12 BYTEs   reserved
+0Ch    WORD    2300h (verb "CREATE_TP")
+0Eh  6 BYTEs   00h
+14h    DWORD   (big-endian) sense code <a href="rb-7514.htm#Table3675">(see #03675)</a>
+18h  8 BYTEs   (big-endian) TP ID
+20h  8 BYTEs   (big-endian) logical unit ID
+28h    DWORD   (big-endian) conversation ID
+2Ch    BYTE    0 basic conversation, 1 mapped conversation
+2Dh    BYTE    0 no sync level, 1 confirm
+2Eh    BYTE    reserved
+2Fh 65 BYTEs   (counted string) transaction program name
+70h  6 BYTEs   00h
+76h    WORD    length of ERROR_LOG_DATA to return
+78h    DWORD   pointer to ERROR_LOG_DATA buffer
+7Ch  8 BYTEs   (big-endian) partner logical unit name
+84h 18 BYTEs   (counted string) partner fully qualified logical unit name
+96h  8 BYTEs   (big-endian) mode name
+9Eh 12 BYTEs   00h
+AAh 11 BYTEs   (counted string) password
+B5h 11 BYTEs   (counted string) user ID
+C0h    BYTE    0 verification should be performed
+1 already verified
+</PRE>
+<p><b>See Also:</b>
+#03673 - #03676
+<PRE>
+<p>
+<a name=table3675></a>
+(Table 03675)
+Values for APPC/PC sense code:
+00000000h      Ok
+080F6051h      SECURITY_NOT_VALID
+084B6031h      TP_NOT_AVAIL_RETRY
+084C0000h      TP_NOT_AVAIL_NO_RETRY
+10086021h      TP_NAME_NOT_RECOGNIZED
+10086034h      CONVERSATION_TYPE_MISMATCH
+10086041h      SYNC_LEVEL_NOT_SUPPORTED
+<p>
+Format of SYSLOG verb:
+<a name=table3676></a>
+Offset  Size    Description     (Table 03676)
+00h 12 BYTEs   reserved
+0Ch    WORD    2600h (verb "SYSLOG")
+0Eh 10 BYTEs   00h
+18h    WORD    (big-endian) type
+1Ah    DWORD   (big-endian) subtype
+1Eh    DWORD   pointer to ADDITIONAL_INFO
+22h    DWORD   (big-endian) conversation ID
+26h  8 BYTEs   (big-endian) TP ID
+2Eh  8 BYTEs   (big-endian) physical unit or logical unit name
+36h    WORD    length of data
+38h    DWORD   pointer to data
+3Ch    BYTE    00h
+</PRE>
+<p><b>See Also:</b>
+#03673 - #03674
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-68.htm">
+Int 68h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7513.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7515.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

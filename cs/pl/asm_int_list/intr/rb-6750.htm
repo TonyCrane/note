@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0004h/SF=0008h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0004h/SF=0008h - Banyan VINES - GET SERVER SERIAL NUMBER - 
+AX = 0004h subfn 0008h
+DS:DX - request block (see #03412)
+Return: AX = status (0000h,000Fh,0015h) (see #03400)
+Notes: The server ID is extracted from the IPC port address of the associated
+file service stored in the drive connection table
+The server serial number and the server subnet number are returned in
+big-endian (Motorola) format (i.e. MSB first)
+SeeAlso: AX=0004h/SF=0005h
+Format of VINES request block for getting server serial number:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0004h/SF=0008h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6749.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6751.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - GET SERVER SERIAL NUMBER</font></h3>
+<PRE>
+AX = 0004h subfn 0008h
+DS:DX -> request block <a href="rb-6750.htm#Table3412">(see #03412)</a><br>
+<p><b>Return:</b><br>AX = status (0000h,000Fh,0015h) (see #03400)
+</PRE>
+<p><b>Notes:</b>
+The server ID is extracted from the IPC port address of the associated
+file service stored in the drive connection table.
+The server serial number and the server subnet number are returned in
+big-endian (Motorola) format (i.e. MSB first)
+<p><b>See Also:</b>
+<a href="rb-6747.htm">AX=0004h/SF=0005h</a>
+<PRE>
+<p>
+Format of VINES request block for getting server serial number:
+<a name=table3412></a>
+Offset  Size    Description     (Table 03412)
+00h    WORD    0008h
+02h    WORD    drive number (0=default, 1=A, ...)
+04h    DWORD   buffer for server serial number
+08h    WORD    buffer for server subnet number (always 0001h)
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6749.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6751.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

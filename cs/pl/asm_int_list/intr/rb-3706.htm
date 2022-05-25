@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F216h/SF=28h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F216h/SF=28h - Novell NetWare - SCAN DIRECTORY DISK SPACE - 
+AX = F216h subfn 28h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #02142)
+ES:DI - reply buffer (see #02143)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F216h/SF=02h,AX=F216h/SF=20h
+Format of NetWare Scan Directory Disk Space request packet:
+Offset Size  Description   (Table 02142)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F216h/SF=28h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3705.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3707.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SCAN DIRECTORY DISK SPACE</font></h3>
+<PRE>
+AX = F216h subfn 28h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-3706.htm#Table2142">(see #02142)</a>
+ES:DI -> reply buffer <a href="rb-3706.htm#Table2143">(see #02143)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3671.htm">AX=F216h/SF=02h</a> - <a href="rb-3698.htm">AX=F216h/SF=20h</a>
+<PRE>
+<p>
+Format of NetWare "Scan Directory Disk Space" request packet:
+<a name=table2142></a>
+Offset  Size    Description     (Table 02142)
+00h    WORD    length of following data
+02h    BYTE    28h (subfunction "Scan Directory Disk Space")
+03h    BYTE    directory handle
+04h    BYTE    search attributes
+05h    DWORD   sequence number (set to FFFFFFFFh before first call)
+09h    BYTE    length of filespec
+0Ah  N BYTEs   search filespec
+</PRE>
+<p><b>See Also:</b>
+#02143
+<PRE>
+<p>
+Format of NetWare "Scan Directory Disk Space" reply packet:
+<a name=table2143></a>
+Offset  Size    Description     (Table 02143)
+00h    DWORD   next sequence number
+04h    DWORD   (big-endian) subdirectory number
+08h    DWORD   (big-endian) attributes
+0Ch    BYTE    unique ID
+0Dh    BYTE    flags
+0Eh    BYTE    name space <a href="rb-3908.htm#Table2387">(see #02387)</a>
+0Fh    BYTE    length of name
+10h 12 BYTEs   name
+1Ch    DWORD   creation date and time
+20h    DWORD   owner ID
+24h    DWORD   date and time last backed up
+28h    DWORD   last-backup ID
+2Ch    DWORD   date and time last modified
+30h    DWORD   last-modification ID
+34h    DWORD   data fork size
+38h    DWORD   data fork first FAT
+3Ch    DWORD   next trustee entry
+40h 36 BYTEs   reserved
+64h    WORD    inherited rights mask
+66h    WORD    last-access date
+68h    DWORD   deleted file date and time
+6Ch    DWORD   date and time file was deleted
+70h    DWORD   deleted ID
+74h  8 BYTEs   undefined
+7Ch    DWORD   primary entry
+80h    DWORD   name list
+84h    DWORD   other file fork size
+</PRE>
+<p><b>See Also:</b>
+#02142
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3705.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3707.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

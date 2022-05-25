@@ -1,0 +1,132 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6A/AH=D0h/DH=FFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6A/AH=D0h/DH=FFh - DECnet DOS LOCAL AREA TRANSPORT - OPEN SESSION - 
+AH = D0h
+DH = FFh
+AL = password flag
+FFh no password
+0Fh password at ES:DI
+ES:BX - LAT session control block (see #03727)
+ES:DI - 16-byte blank-padded password (optional)
+Return: AH = 00h success
+DL = handle
+SeeAlso: AX=D000h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6A/AH=D0h/DH=FFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7588.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7590.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DECnet DOS LOCAL AREA TRANSPORT - OPEN SESSION</font></h3>
+<PRE>
+AH = D0h
+DH = FFh
+AL = password flag
+FFh no password
+0Fh password at ES:DI
+ES:BX -> LAT session control block <a href="rb-7589.htm#Table3727">(see #03727)</a>
+ES:DI -> 16-byte blank-padded password (optional)<br>
+<p><b>Return:</b><br>AH = 00h success
+DL = handle
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7590.htm">AX=D000h</a>
+<PRE>
+<p>
+Format of LAT Session Control Block:
+<a name=table3727></a>
+Offset  Size    Description     (Table 03727)
+00h 18 BYTEs   service name
+12h 18 BYTEs   node name (future use)
+24h 18 BYTEs   port name (future use)
+36h    DWORD   -> session stopped post routine
+3Ah    DWORD   -> service table overflow post routine
+3Eh    DWORD   -> transmit post routine
+42h    DWORD   -> receive post routine
+46h    WORD    session status
+04h circuit failure
+08h stop slot received
+---LAT v???---
+48h    WORD    slot state (LAT driver use)
+4Ah    WORD    local credits (LAT driver use)
+4Ch    DWORD   -> VCB (LAT driver use)
+50h    WORD    backward slot (LAT driver use)
+52h    WORD    forward slot (LAT driver use)
+54h    WORD    remote slot ID (LAT driver use)
+56h    WORD    local slot ID (LAT driver use)
+58h    WORD    slot byte count (LAT driver use)
+5Ah    BYTE    remote credits (LAT driver use)
+5Bh 255 BYTEs  transmitted data slot
+15Ah    BYTE    number of receive data slots (4 recommended)
+15Bh    BYTE    number of occupied slots
+15Ch    BYTE    index of next receive slot to use
+15Dh    BYTE    index of current receive slot
+15Eh    WORD    pointer to first received character
+160h  N WORDs   pointers to receive slots (buffers); each is 259 bytes
+259N BYTEs buffers
+</PRE>
+<p><b>Note:</b>
+Set post routines to 0000h:0000h if polled operation will be used
+---LAT v4.1.17---
+48h    WORD    session state (LAT driver use)
+4Ah    BYTE    local credits (LAT driver use)
+4Bh    DWORD   -> VCB (LAT driver use)
+4Fh    WORD    backward slot (LAT driver use)
+51h    WORD    forward slot (LAT driver use)
+53h    BYTE    remote slot ID (LAT driver use)
+54h    BYTE    local slot ID (LAT driver use)
+55h    BYTE    slot byte count (LAT driver use)
+56h    BYTE    remote credits (LAT driver use)
+57h 255 BYTEs  transmitted data slot
+156h    BYTE    number of receive data slots (4 recommended)
+157h    BYTE    number of occupied slots
+158h    BYTE    index of next receive slot to use
+159h    BYTE    index of current receive slot
+15Ah    WORD    pointer to first received character
+15Ch  N WORDs   pointers to receive slots (buffers); each is 259 bytes
+259N BYTEs buffers
+<p><b>Note:</b>
+Set post routines to 0000h:0000h if polled operation will be used
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-6A.htm">
+Int 6Ah</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7588.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7590.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

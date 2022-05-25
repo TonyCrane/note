@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AH=0Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AH=0Ch - PC/TCP kernel v2.05+ - net_stat - GET CONNECTION STATISTICS - 
+AH = 0Ch
+BX = network descriptor or one of the following:
+FFFCh for kernel ICMP statistics (see #03459)
+FFFDh for kernel UDP statistics (see #03458)
+FFFEh for kernel IP statistics (see #03457)
+FFFFh for kernel TCP statistics (see #03456)
+DS:DX - 64-byte buffer
+Return: CF clear if successful
+buffer filled
+CF set on error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AH=0Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6820.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6822.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC/TCP kernel v2.05+ - net_stat - GET CONNECTION STATISTICS</font></h3>
+<PRE>
+AH = 0Ch
+BX = network descriptor or one of the following:
+FFFCh for kernel ICMP statistics <a href="rb-6821.htm#Table3459">(see #03459)</a>
+FFFDh for kernel UDP statistics <a href="rb-6821.htm#Table3458">(see #03458)</a>
+FFFEh for kernel IP statistics <a href="rb-6821.htm#Table3457">(see #03457)</a>
+FFFFh for kernel TCP statistics <a href="rb-6821.htm#Table3456">(see #03456)</a>
+DS:DX -> 64-byte buffer<br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled
+CF set on error
+AX = error code <a href="rb-6703.htm#Table3319">(see #03319)</a>
+</PRE>
+<p><b>Notes:</b>
+The fields filled in for a network descriptor depend on the protocol
+family used by that descriptor's connection.
+This function is not supported by Beame&Whiteside's BWPCTCP v3.0a shim
+<p><b>See Also:</b>
+<a href="rb-6703.htm">INT 61"FTP Software"</a> - <a href="rb-6704.htm">INT 61/AH=00h"PC/TCP"</a>
+<PRE>
+<p>
+Format of PC/TCP kernel TCP statistics:
+<a name=table3456></a>
+Offset  Size    Description     (Table 03456)
+00h 16 BYTEs   unused
+10h    DWORD   bytes sent
+14h    DWORD   bytes received
+18h  8 BYTEs   unused
+20h    DWORD   packets sent
+24h    DWORD   packets received
+28h    DWORD   bad checksums
+2Ch    DWORD   count of window ignored by remote
+30h    DWORD   timeouts
+34h    DWORD   resets
+38h    DWORD   duplicate packets
+3Ch    DWORD   retransmits
+</PRE>
+<p><b>See Also:</b>
+#03457 - #03458 - #03459
+<PRE>
+<p>
+Format of PC/TCP kernel IP statistics:
+<a name=table3457></a>
+Offset  Size    Description     (Table 03457)
+00h  8 BYTEs   unused
+08h    DWORD   invalid IP header length errors
+0Ch    DWORD   protocol errors (unwanted packets)
+10h    DWORD   duplicate fragments received
+14h    DWORD   bad fragments received
+18h    DWORD   security errors
+1Ch    DWORD   count of bad IP addresses received
+20h    DWORD   packets sent
+24h    DWORD   packets received
+28h    DWORD   bad checksums received
+2Ch    DWORD   total IP protocol errors
+30h    DWORD   fragmentation errors
+34h    DWORD   IP packets discarded + bad security + bad fragments
+38h    DWORD   fragments received
+3Ch  4 BYTEs   unused
+</PRE>
+<p><b>See Also:</b>
+#03456 - #03458 - #03459
+<PRE>
+<p>
+Format of PC/TCP kernel UDP statistics:
+<a name=table3458></a>
+Offset  Size    Description     (Table 03458)
+00h 28 BYTEs   unused
+1Ch    DWORD   packets dropped for lack of buffers
+20h    DWORD   packets sent
+24h    DWORD   packets received
+28h    DWORD   bad checksums
+2Ch    DWORD   port not listening errors
+30h  4 BYTEs   unused
+34h    DWORD   truncated receives
+38h  8 BYTEs   unused
+</PRE>
+<p><b>See Also:</b>
+#03456 - #03457 - #03459
+<PRE>
+<p>
+Format of PC/TCP kernel ICMP statistics:
+<a name=table3459></a>
+Offset  Size    Description     (Table 03459)
+00h    DWORD   "TimeEx" sent
+04h    DWORD   "TimeEx" received
+08h    DWORD   "ParamProb" sent
+0Ch    DWORD   "ParamProb" received
+10h    DWORD   redirects received
+14h    DWORD   source quenches received
+18h    DWORD   ICMP Echo Requests ("ping") sent
+1Ch    DWORD   ICMP Echo Requests received
+20h    DWORD   packets sent
+24h    DWORD   packets received
+28h    DWORD   bad packets received
+2Ch    DWORD   "DestUn" received
+30h    DWORD   packet send errors
+34h    DWORD   "DestUn" sent
+38h    DWORD   ICMP Echo replies received
+3Ch    DWORD   ICMP Echo replies sent
+</PRE>
+<p><b>See Also:</b>
+#03456 - #03457 - #03458
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6820.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6822.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

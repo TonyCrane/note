@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0000h - DPMI 0.9+ - ALLOCATE LDT DESCRIPTORS - 
+AX = 0000h
+CX = number of descriptors to allocate
+Return: CF clear if successful
+AX = base selector
+CF set on error
+AX = error code (DPMI 1.0+) (see #03143)
+Notes: DPMI is the DOS Protected-Mode Interface
+the base and limit of the returned descriptors will be 0, and the type
+will be data
+add the value returned by INT 31/AX=0003h to move to subsequent
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5801.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5803.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - ALLOCATE LDT DESCRIPTORS</font></h3>
+<PRE>
+AX = 0000h
+CX = number of descriptors to allocate<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = base selector
+CF set on error
+AX = error code (DPMI 1.0+) <a href="rb-5802.htm#Table3143">(see #03143)</a>
+</PRE>
+<p><b>Notes:</b>
+DPMI is the DOS Protected-Mode Interface.
+The base and limit of the returned descriptors will be 0, and the type
+will be "data".
+Add the value returned by INT 31/AX=0003h to move to subsequent
+descriptors if multiple descriptors were allocated.
+Not supported by MS Windows 3.0 in Standard mode
+<p><b>See Also:</b>
+<a href="rb-5803.htm">AX=0001h</a> - <a href="rb-5815.htm">AX=000Dh</a> - <a href="rb-2741.htm">INT 21/AX=3501h</a>
+<PRE>
+<p>
+<a name=table3143></a>
+(Table 03143)
+Values for DPMI 1.0 error code:
+0000h-7FFFh DOS error passed through by DPMI
+8001h  unsupported function
+8002h  object in wrong state for function
+8003h  system integrity would be endangered
+8004h  deadlock detected
+8005h  pending serialization request cancelled
+8010h  out of DPMI internal resources
+8011h  descriptor unavailable
+8012h  linear memory unavailable
+8013h  physical memory unavailable
+8014h  backing store unavailable
+8015h  callback unavailable
+8016h  handle unavailable
+8017h  maximum lock count exceeded
+8018h  shared memory already serialized exclusively by another
+8019h  shared memory already serialized shared by another client
+8021h  invalid value for numeric or flag parameter
+8022h  invalid segment selector
+8023h  invalid handle
+8024h  invalid callback
+8025h  invalid linear address
+8026h  request not supported by hardware
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5801.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5803.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

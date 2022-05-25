@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=37h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=37h - DOS 2.x and 3.3+ only - AVAILDEV - SPECIFY \DEV\ PREFIX USE - 
+AH = 37h
+AL = subfunction
+02h get availdev flag
+Return: DL = 00h \DEV\ must precede character device names
+= nonzero \DEV\ is optional
+03h set availdev flag
+DL = new state
+00h     \DEV\ is mandatory
+nonzero   \DEV\ is optional
+Return: AL = status
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=37h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2753.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2755.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2.x and 3.3+ only - AVAILDEV - SPECIFY \DEV\ PREFIX USE</font></h3>
+<PRE>
+AH = 37h
+AL = subfunction
+02h get availdev flag
+<p><b>Return:</b><br>DL = 00h \DEV\ must precede character device names
+= nonzero \DEV\ is optional
+03h set availdev flag
+DL = new state
+00h         \DEV\ is mandatory
+nonzero     \DEV\ is optional<br>
+<p><b>Return:</b><br>AL = status
+00h successful
+FFh unsupported subfunction
+</PRE>
+<p><b>Notes:</b>
+All versions of DOS from 2.00 allow \DEV\ to be prepended to device
+names without generating an error even if the directory \DEV does
+not actually exist (other paths generate an error if they do not
+exist); DOS 2.x has an AVAILDEV= option in CONFIG.SYS to make \DEV
+mandatory.
+Although MS-DOS 3.3+, DR DOS 3.41+, and Novell DOS 7 accept these
+calls, they have no effect, and AL=02h always returns DL=FFh (except
+for Novell DOS 7, which leaves AX unchanged for both subfunctions)
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2753.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2755.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

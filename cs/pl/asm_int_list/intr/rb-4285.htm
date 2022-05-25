@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1001h - DR DOS 6.0+ FDOS EXTENSIONS - INSTALL FDOS HOOK (SHARE / DELWATCH) - 
+AX = 1001h
+DX:BX - new FDOS stub entry function
+Return: nothing
+Notes: the default handler for the pointer set by this call under DELWATCH
+simply returns with CF set
+In Digital Research terminology FDOS is the part of the BDOS kernel
+(IBMDOS.COM) responsible for the file system and related tasks, and
+its functionality is also used by the BDOS kernel itself. However,
+for reasons of performance and code size, it uses direct calling.
+This interrupt allows external components like SHARE file locking or
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4284.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4286.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DR DOS 6.0+ FDOS EXTENSIONS - INSTALL FDOS HOOK (SHARE / DELWATCH)</font></h3>
+<PRE>
+AX = 1001h
+DX:BX -> new FDOS stub entry function<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Notes:</b>
+The default handler for the pointer set by this call under DELWATCH
+simply returns with CF set.
+In Digital Research terminology FDOS is the part of the BDOS kernel
+(IBMDOS.COM) responsible for the file system and related tasks, and
+its functionality is also used by the BDOS kernel itself. However,
+for reasons of performance and code size, it uses direct calling..
+This interrupt allows external components like SHARE file locking or
+DELWATCH delete tracking software to hook into the internal backdoor
+INT 2F/AH=10h/AL<=09h chain in the kernel, so that they can actually
+allows the kernel to ensure that several conditions are met when
+passing control to these registered components including proper
+maintaining A20, re-enterancy, or critical section mutexing
+(e.g. getting the disk sub-system queue "MXdisk")..
+The default handler in the BDOS just sets the carry flag and returns..
+Currently known clients to this shared interface are DR DOS 6.0
+SHARE 1.xx, DR DOS 6.0+ DELWATCH 1.00+, which both chain onto
+the same call far address, and the version of AddStor's SuperStor
+which is bundled with DR DOS 6.0.
+However, the DR PalmDOS, and Novell DOS 7 - DR-DOS 7.03 SHARE 2.00-2.05
+do not use this function to hook into the system. Instead they fix up
+the share stubs directly. DR PalmDOS SHARE 2.00 uses the stubs at
+Table !!! INT 21/AH=52h, while Novell DOS 7 - DR-DOS 7.03
+SHARE 2.01-2.05 use the private set of share stubs at Table !!! at
+INT 21/AX=4458h).  Future releases may possibly again fix up the
+share stubs at INT 21/AH=52h.
+<p><b>See Also:</b>
+<a href="rb-4284.htm">AX=1000h</a> - <a href="rb-5691.htm">AX=F800h</a>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4284.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4286.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,147 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=D9h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=D9h - Novell NetWare - FILE SERVER - GET DISK CHANNEL STATISTICS - 
+AH = E3h subfn D9h
+DS:SI - request buffer (see #02037)
+ES:DI - reply buffer (see #02038)
+Return: AL = status (00h,C6h) (see #02025)
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have console operator privileges
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=D8h,AH=E3h/SF=E6h,AH=E3h/SF=E9h
+SeeAlso: AX=F217h/SF=D9h
+Format of NetWare Get Disk Channel Statistics request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=D9h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3564.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3566.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET DISK CHANNEL STATISTICS</font></h3>
+<PRE>
+AH = E3h subfn D9h
+DS:SI -> request buffer <a href="rb-3565.htm#Table2037">(see #02037)</a>
+ES:DI -> reply buffer <a href="rb-3565.htm#Table2038">(see #02038)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02025)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have console operator privileges
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3564.htm">AH=E3h/SF=D8h</a> - <a href="rb-3577.htm">AH=E3h/SF=E6h</a> - <a href="rb-3580.htm"
+<p><b>See Also:</b>
+<a href="rb-3821.htm">AX=F217h/SF=D9h</a>
+<PRE>
+<p>
+Format of NetWare "Get Disk Channel Statistics" request buffer:
+<a name=table2037></a>
+Offset  Size    Description     (Table 02037)
+00h    WORD    0002h (length of following data)
+02h    BYTE    D9h (subfunction "Get Disk Channel Statistics")
+03h    BYTE    channel number
+</PRE>
+<p><b>See Also:</b>
+#02038 - #02232 at AX=F217h/SF=D9h
+<PRE>
+<p>
+Format of NetWare "Get Disk Channel Statistics" reply buffer:
+<a name=table2038></a>
+Offset  Size    Description     (Table 02038)
+00h    WORD    (call) 00A8h (size of following results record)
+02h    DWORD   (big-endian) clock ticks since system started
+06h    WORD    (big-endian) channel run state <a href="rb-3565.htm#Table2039">(see #02039)</a>
+08h    WORD    (big-endian) channel synchronization state <a href="rb-3565.htm#Table2040">(see #02040)</a>
+0Ah    BYTE    driver type
+0Bh    BYTE    major version of driver
+0Ch    BYTE    minor version of driver
+0Dh 65 BYTEs   ASCIZ driver description
+4Eh    WORD    (big-endian) first I/O address used
+50h    WORD    (big-endian) length of first I/O address
+52h    WORD    (big-endian) second I/O address used
+54h    WORD    (big-endian) length of second I/O address
+56h  3 BYTEs   first shared memory address
+59h  2 BYTEs   length of first shared memory address
+5Bh  3 BYTEs   second shared memory address
+5Eh  2 BYTEs   length of second shared memory address
+60h    BYTE    first interrupt number in-use flag
+61h    BYTE    first interrupt number used
+62h    BYTE    second interrupt number in-use flag
+63h    BYTE    second interrupt number used
+64h    BYTE    first DMA channel in-use flag
+65h    BYTE    first DMA channel used
+66h    BYTE    second DMA channel in-use flag
+67h    BYTE    second DMA channel used
+68h    BYTE    flags
+69h    BYTE    reserved
+6Ah 80 BYTEs   ASCIZ configuration description
+</PRE>
+<p><b>See Also:</b>
+#02037 - #02232 at AX=F217h/SF=D9h
+<PRE>
+<p>
+<a name=table2039></a>
+(Table 02039)
+Values for channel run state:
+0000h  running
+0001h  being stopped
+0002h  stopped
+0003h  nonfunctional
+</PRE>
+<p><b>See Also:</b>
+#02038 - #02040
+<PRE>
+<p>
+<a name=table2040></a>
+(Table 02040)
+Values for channel synchronization state:
+0000h  not in use
+0002h  used by NetWare, no other requests
+0004h  used by NetWare, other requests
+0006h  in use, not needed by NetWare
+0008h  in use, needed by NetWare
+000Ah  channel released, NetWare should use it
+</PRE>
+<p><b>See Also:</b>
+#02038 - #02039
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3564.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3566.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

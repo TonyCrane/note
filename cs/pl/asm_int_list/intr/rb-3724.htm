@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=11h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=11h - Novell NetWare - GET FILE SERVER INFORMATION - 
+AX = F217h subfn 11h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #01907 at AH=E3h/SF=11h)
+ES:DI - reply buffer (see #02166)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E3h/SF=11h,AX=F217h/SF=F1h
+Format of NetWare Get File Server Information reply packet:
+Offset Size  Description   (Table 02166)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=11h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3723.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3725.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET FILE SERVER INFORMATION</font></h3>
+<PRE>
+AX = F217h subfn 11h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-0000.htm#Table0"></a>(see #01907 at AH=E3h/SF=11h)
+ES:DI -> reply buffer <a href="rb-3724.htm#Table2166">(see #02166)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3493.htm">AH=E3h/SF=11h</a> - <a href="rb-3844.htm">AX=F217h/SF=F1h</a>
+<PRE>
+<p>
+Format of NetWare "Get File Server Information" reply packet:
+<a name=table2166></a>
+Offset  Size    Description     (Table 02166)
+00h 48 BYTEs   server's name
+30h    BYTE    NetWare version
+31h    BYTE    NetWare subversion (0-99)
+32h    WORD    (big-endian) number of connections supported
+NetWare 4.01 reportedly returns maximum simulataneously-used
+connections
+34h    WORD    (big-endian) number of connections in use
+36h    WORD    (big-endian) maximum connected volumes
+---Advanced NetWare 2.1+ ---
+38h    BYTE    operating system revision number
+39h    BYTE    fault tolerance (SFT) level
+3Ah    BYTE    TTS level
+3Bh    WORD    (big-endian) maximum simultaneously-used connections
+NetWare 4.01 reportedly returns number of connections in use
+3Dh    BYTE    accounting version
+3Eh    BYTE    VAP version
+3Fh    BYTE    queueing version
+40h    BYTE    print server version
+41h    BYTE    virtual console version
+42h    BYTE    security restrictions level
+43h    BYTE    internetwork bridge version
+44h 60 BYTEs   reserved
+</PRE>
+<p><b>See Also:</b>
+#01907
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3723.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3725.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

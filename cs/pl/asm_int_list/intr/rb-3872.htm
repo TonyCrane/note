@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F223h/SF=03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F223h/SF=03h - Novell NetWare v2+ - AFP DELETE FILE - 
+AX = F223h subfn 03h
+CX = length of request packet in bytes
+DX = 0000h (no reply packet)
+DS:SI - request packet (see #02306)
+ES:DI ignored
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+Note:  directories may be deleted if they are empty
+SeeAlso: AH=F2hNovell,AX=F223h/SF=02h,AX=F223h/SF=0Dh
+Format of NetWare AFP Delete File request packet:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F223h/SF=03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3871.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3873.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2+ - AFP DELETE FILE</font></h3>
+<PRE>
+AX = F223h subfn 03h
+CX = length of request packet in bytes
+DX = 0000h (no reply packet)
+DS:SI -> request packet <a href="rb-3872.htm#Table2306">(see #02306)</a>
+ES:DI ignored<br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>Note:</b>
+Directories may be deleted if they are empty
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3871.htm">AX=F223h/SF=02h</a> - <a href="rb-3882.htm">AX=F223h/SF=0Dh</a>
+<PRE>
+<p>
+Format of NetWare "AFP Delete File" request packet:
+<a name=table2306></a>
+Offset  Size    Description     (Table 02306)
+00h    WORD    (big-endian) length of following data
+02h    BYTE    03h (subfunction "AFP Delete File")
+03h    BYTE    volume number
+04h    DWORD   AFP entry ID
+08h    BYTE    path length
+09h  N BYTEs   AFP-style pathname (relative to AFP entry ID)
+</PRE>
+<p><b>See Also:</b>
+#02304
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3871.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3873.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

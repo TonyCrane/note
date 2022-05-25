@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=16h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=16h - Novell NetWare v4+ - GET LAN COMMON COUNTERS - 
+AX = F27Bh subfn 16h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02513)
+ES:DI - reply buffer (see #02514)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+SeeAlso: AX=F27Bh/SF=15h
+Format of NetWare Get LAN Common Counters request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=16h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3983.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3985.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET LAN COMMON COUNTERS</font></h3>
+<PRE>
+AX = F27Bh subfn 16h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3984.htm#Table2513">(see #02513)</a>
+ES:DI -> reply buffer <a href="rb-3984.htm#Table2514">(see #02514)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3983.htm">AX=F27Bh/SF=15h</a>
+<PRE>
+<p>
+Format of NetWare "Get LAN Common Counters" request buffer:
+<a name=table2513></a>
+Offset  Size    Description     (Table 02513)
+00h    WORD    0009h (length of following data)
+02h    BYTE    16h (subfunction "Get LAN Common Counters")
+03h    DWORD   LAN board number
+07h    DWORD   starting block number (set to 00000000h for first call)
+</PRE>
+<p><b>See Also:</b>
+#02514
+<PRE>
+<p>
+Format of NetWare "Get LAN Common Counters" reply buffer:
+<a name=table2514></a>
+Offset  Size    Description     (Table 02514)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    BYTE    statistics major version
+09h    BYTE    statistics minor version
+0Ah    DWORD   number of generic counters
+0Eh    DWORD   number of counter blocks
+12h    DWORD   number of custom variables
+16h    DWORD   next counter block number
+1Ah    DWORD   "notSupportedMask"
+1Eh    DWORD   total number of packets tranmitted
+22h    DWORD   total number of packets received
+26h    DWORD   number of times no ECBs were available
+2Ah    DWORD   number of transmitted packets which were too large
+2Eh    DWORD   number of transmitted packets which were too small
+32h    DWORD   number of packet receive overflows
+36h    DWORD   number of received packets which were too large
+3Ah    DWORD   number of received packets which were too small
+3Eh    DWORD   number of miscellaneous transmitted-packet errors
+42h    DWORD   number of miscellaneous received-packet errors
+46h    DWORD   number of times transmission retried
+4Ah    DWORD   number of checksum errors
+4Eh    DWORD   number of hardware receive mismatches
+52h 50 BYTEs   reserved
+</PRE>
+<p><b>See Also:</b>
+#02513
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3983.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3985.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

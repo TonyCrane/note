@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0001h/DS=0001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0001h/DS=0001h - Banyan VINES - INTERNAL VINES SOCKET API (NEAR DATA) - 
+AX = 0001h
+DS = 0001h (to distinguish from alternate AX=0001h socket interface)
+CX:BX - internal communications control block (see #03324)
+DX = caller's data segment
+Return: AX = status
+0000h successful
+0099h invalid operation
+00A5h resource not available
+Desc:  StreetTalk access with session handles
+Range: INT 60 to INT 66
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0001h/DS=0001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6707.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6709.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - INTERNAL VINES SOCKET API (NEAR DATA)</font></h3>
+<PRE>
+AX = 0001h
+DS = 0001h (to distinguish from alternate AX=0001h socket interface)
+CX:BX -> internal communications control block <a href="rb-6708.htm#Table3324">(see #03324)</a>
+DX = caller's data segment<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+0099h invalid operation
+00A5h resource not available
+</PRE>
+<p><b>Desc:</b>
+StreetTalk access with session handles
+<PRE>
+<p><b>Range:</b><br>INT 60 to INT 66
+</PRE>
+<p><b>Notes:</b>
+This service is handled by the adapter driver.
+The request dispatch table contains dummy entries for subfunctions
+06h, 0Dh, 0Eh, 0Fh, 10h, and 11h, which always return error 0099h
+(invalid operation) in the request block's result buffer.
+In recent VINES releases, this interface is superseded by the AX=000Fh
+interface, which allows FAR parameter block pointers (refer to that
+function's entries for more details on individual subfunctions).
+Some adapter drivers (e.g. the NDIS2 token ring driver NDTOKBAN for
+VINES 5.53) ignore the value in CX and use the value from DX instead
+<p><b>See Also:</b>
+<a href="rb-6791.htm">AX=000Fh</a>
+<PRE>
+<p>
+Format of internal communications control block:
+<a name=table3324></a>
+Offset  Size    Description     (Table 03324)
+00h    WORD    subfunction number
+02h    WORD    magic number (FEFEh)
+04h    WORD    (ret) result, should be set to 0 before calling
+06h    WORD    reserved (will be set to client DS)
+08h    WORD    caller's code segment if function 000Bh, 0 else
+0Ah    WORD    pointer to parameter block
+0Ch    WORD    reserved (segment of parameter block; will be set to client DS)
+0Eh    WORD    StreetTalk handle
+</PRE>
+<p><b>See Also:</b>
+#03323 - #03444 at INT 61/AX=000Fh
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6707.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6709.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=8220h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=8220h - MODRES - PLAY MODULE - 
+AX = 8220h
+DX:CX - MODPARM structure (see #02960)
+Return: AX = status
+5722h succesful
+2000h parameters out of range
+other MODRES not installed
+SeeAlso: AX=8221h,AX=8223h,AX=8225h,AX=8227h,AX=8200hRESPLAY
+Format of MODPARM Structure:
+Offset Size  Description   (Table 02960)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=8220h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5034.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5036.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MODRES - PLAY MODULE</font></h3>
+<PRE>
+AX = 8220h
+DX:CX -> MODPARM structure <a href="rb-5035.htm#Table2960">(see #02960)</a><br>
+<p><b>Return:</b><br>AX = status
+5722h succesful
+2000h parameters out of range
+other MODRES not installed
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5036.htm">AX=8221h</a> - <a href="rb-5038.htm">AX=8223h</a> - <a href="rb-5040.htm">AX=8225h</a> - <a href="rb-5042.htm">AX=8227h</a> -
+<PRE>
+<p>
+Format of MODPARM Structure:
+<a name=table2960></a>
+Offset  Size    Description     (Table 02960)
+00h    WORD    signature 504Dh ("MP" = Modparm)
+02h    BYTE    output device <a href="rb-0000.htm#Table0"></a>(see #02962 at INT 2F/AX=8221h)
+03h    WORD    segment of start of main module (pattern) data
+05h 31 WORDs   segment of start of sample numbers 1-31
+43h    BYTE    pattern at which to start playing (00h to 7Fh)
+44h    BYTE    function
+00h play from pattern [offset 43h] until end of the song
+01h play indicated pattern [offset 43h] only
+45h    BYTE    Machine speed
+00h 10-12Mhz
+01h 12-25Mhz (default)
+02h 25Mhz+
+03h mix speed 10kHz (fast 8Mhz machines)
+04h mix speed 12kHz (10Mhz machines)
+05h mix speed 13kHz
+06h mix speed 8kHz (test for 8Mhz machines)
+46h    BYTE    allow >64k sample playing
+80h MOD has samples >64k in it
+else all samples in MOD are <64k
+</PRE>
+<p><b>Notes:</b>
+Main module data and all samples must start on segment boundaries..
+In version 2.00 (ONLY) this function carries on playing (works in
+the background)
+<p><b>See Also:</b>
+#02961
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5034.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5036.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

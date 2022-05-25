@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E1h/SF=08h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E1h/SF=08h - Novell NetWare - MESSAGE SERVICES - CHECK PIPE STATUS - 
+AH = E1h subfn 08h
+DS:SI - request buffer (see #01835)
+ES:DI - reply buffer (see #01836)
+Return: AL = status (see #01834)
+Note:  this function is supported by NetWare 4.0+ and Advanced NetWare 1.0-2.x
+SeeAlso: AH=E1h/SF=05h,AH=E1h/SF=06h,AH=E1h/SF=07h,AX=F215h/SF=08h
+(Table 01834)
+Values for NetWare function status:
+00h  successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E1h/SF=08h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3452.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3454.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - MESSAGE SERVICES - CHECK PIPE STATUS</font></h3>
+<PRE>
+AH = E1h subfn 08h
+DS:SI -> request buffer <a href="rb-3453.htm#Table1835">(see #01835)</a>
+ES:DI -> reply buffer <a href="rb-3453.htm#Table1836">(see #01836)</a><br>
+<p><b>Return:</b><br>AL = status (see #01834)
+</PRE>
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+ and Advanced NetWare 1.0-2.x
+<p><b>See Also:</b>
+<a href="rb-3450.htm">AH=E1h/SF=05h</a> - <a href="rb-3451.htm">AH=E1h/SF=06h</a> - <a href="rb-3452.htm">AH=E1h/SF=07h</a> - <a href="rb-3666.htm"
+<PRE>
+<p>
+<a name=table1834></a>
+(Table 01834)
+Values for NetWare function status:
+00h    successful
+FCh    full message queue
+FEh    out of dynamic workspace
+</PRE>
+<p><b>See Also:</b>
+#01839
+<PRE>
+<p>
+Format of NetWare "Check Pipe Status" request buffer:
+<a name=table1835></a>
+Offset  Size    Description     (Table 01835)
+00h    WORD    length of following data (max 66h)
+02h    BYTE    08h (subfunction "Check Pipe Status")
+03h    BYTE    number of pipes to monitor (01h-64h)
+04h  N BYTEs   list of connection numbers
+</PRE>
+<p><b>See Also:</b>
+#01830 - #01836
+<PRE>
+<p>
+Format of NetWare "Check Pipe Status" reply buffer:
+<a name=table1836></a>
+Offset  Size    Description     (Table 01836)
+00h    WORD    (call) size of following results buffer (max 65h)
+02h    BYTE    number of connections
+03h  N BYTEs   list of pipe statuses
+00h open
+FEh incomplete
+FFh closed
+</PRE>
+<p><b>See Also:</b>
+#01831 - #01835 - #02108
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3452.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3454.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

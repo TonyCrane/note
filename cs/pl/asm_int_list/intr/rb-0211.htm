@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AH=13h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AH=13h - DOS/V - READ/WRITE DOUBLE-BYTE CHARACTER SET CHARACTERS/ATTRIBUTES - 
+AH = 13h
+AL = function
+10h read characters and standard attributes
+11h read characters and extended attributes
+12h write characters and standard attributes
+13h write characters and extended attributes
+BH = 00h
+CX = number of characters to transfer
+DH,DL = row,column at which to start transfer
+ES:BP - buffer for/containing characters and attributes (see #00036)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AH=13h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0210.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0212.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS/V - READ/WRITE DOUBLE-BYTE CHARACTER SET CHARACTERS/ATTRIBUTES</font></h3>
+<PRE>
+AH = 13h
+AL = function
+10h read characters and standard attributes
+11h read characters and extended attributes
+12h write characters and standard attributes
+13h write characters and extended attributes
+BH = 00h
+CX = number of characters to transfer
+DH,DL = row,column at which to start transfer
+ES:BP -> buffer for/containing characters and attributes <a href="rb-0211.htm#Table36">(see #00036)</a><br>
+<p><b>Return:</b><br>ES:BP buffer filled if reading
+</PRE>
+<p><b>Program:</b>
+DOS/V is a Japanese-language version of MS-DOS which can run on
+standard (non-Japanese) ATs and compatible equipped with a VGA or
+newer video adapter
+<p><b>Notes:</b>
+Subfunctions 11h and 13h are only valid when DOS/V is using video
+mode 73h.
+The cursor position is not changed by these functions.
+Extended attributes consist of three bytes; the first is the standard
+character attribute byte, the second is as described below, and the
+third is always zero in current versions
+<p><b>See Also:</b>
+<a href="rb-0069.htm">AH=00h</a> - <a href="rb-0210.htm">AH=13h"VIDEO"</a>
+<PRE>
+<p>
+Bitfields for DOS/V second extended attribute byte:
+<a name=table36></a>
+Bit(s)  Description     (Table 00036)
+7      underline using foreground color
+6      reverse foreground/background specified in standard attribute byte
+5-4    unused
+3      vertical white grid line in cell
+2      horizontal white grid line in cell
+1-0    unused
+</PRE>
+<p><b>See Also:</b>
+#00014 - #00026
+<p>
+<b>Category: <a href="cat-021.htm">
+Japanese</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0210.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0212.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

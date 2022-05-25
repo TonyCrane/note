@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AH=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AH=05h - DOS 3.0+ CRITICAL ERROR HANDLER - EXPAND ERROR INTO STRING - 
+AH = 05h
+---DOS 3.x---
+AL = extended error code (not zero)
+---DOS 4.0+ ---
+AL = error type
+01h DOS extended error code
+02h parameter error
+BX = error code
+Return: CF clear if successful
+ES:DI - ASCIZ error message (read-only)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AH=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4276.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4278.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.0+ CRITICAL ERROR HANDLER - EXPAND ERROR INTO STRING</font></h3>
+<PRE>
+AH = 05h
+---DOS 3.x---
+AL = extended error code (not zero)
+---DOS 4.0+ ---
+AL = error type
+01h DOS extended error code
+02h parameter error
+BX = error code<br>
+<p><b>Return:</b><br>CF clear if successful
+ES:DI -> ASCIZ error message (read-only)
+AL = completion state
+00h message requires completion with device name, drive, etc.
+01h message is complete as returned
+CF set if error code can't be converted to string
+AX,DI,ES destroyed
+other flags corrupted
+</PRE>
+<p><b>Notes:</b>
+Called at start of COMMAND.COM's default critical error handler if
+installed by a user program, allowing partial or complete overriding
+of the default error messages.
+Subfunction 02h is called by many DOS 4 external programs.
+DR DOS's COMMAND.COM appends additional info ("0 files copied") to the
+returned string
+<p><b>See Also:</b>
+<a href="rb-4276.htm">AX=0500h</a> - <a href="rb-4414.htm">AX=122Eh</a> - <a href="rb-4112.htm">INT 24</a>
+<p>
+<b>Category: <a href="cat-039.htm">
+Shells/Command Interpreters</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4276.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4278.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

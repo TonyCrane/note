@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE>Int 60/DI=0400h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 60/DI=0400h - HP 95LX System Manager - EDIT_INIT - 
+DI = 0400h
+STACK: 2 WORDs unused dummies (for calls from high level languages)
+DWORD  pointer to edit record (see #03285)
+DWORD  pointer to string to be edited
+WORD  initial length of string being edited
+WORD  maximum length of edited string
+WORD  row of edit field
+WORD  leftmost column of edit field
+Return: ???
+STACK unchanged
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 60/DI=0400h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6474.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6476.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HP 95LX System Manager - EDIT_INIT</font></h3>
+<PRE>
+DI = 0400h.
+<p><b>STACK:</b><br>2 WORDs unused dummies (for calls from high level languages)
+DWORD   pointer to edit record <a href="rb-6475.htm#Table3285">(see #03285)</a>
+DWORD   pointer to string to be edited
+WORD    initial length of string being edited
+WORD    maximum length of edited string
+WORD    row of edit field
+WORD    leftmost column of edit field<br>
+<p><b>Return:</b><br>???
+STACK unchanged
+<p>
+Format of HP 95LX edit record:
+<a name=table3285></a>
+Offset  Size    Description     (Table 03285)
+00h    WORD    current length of edit buffer
+02h    BYTE    flag for special processing on first character
+03h    BYTE    flags
+<p><b>bit 0:</b><br>Tab handling
+04h    WORD    editing in prompt window?
+06h    DWORD   pointer to top line of prompt window message
+0Ah    WORD    length of top line of prompt
+0Ch    DWORD   pointer to second line of prompt window message
+10h    WORD    length of second line of prompt
+12h 80 BYTEs   workspace for editing
+62h  2 WORDs   line array needed for multi-line editing
+66h 36 BYTEs   multi-line edit record <a href="rb-6475.htm#Table3286">(see #03286)</a>
+8Ah    WORD    displayable columns
+<p>
+Format of HP 95LX multi-line edit record:
+<a name=table3286></a>
+Offset  Size    Description     (Table 03286)
+00h    DWORD   pointer to user-supplied edit buffer
+04h    WORD    length of edit buffer
+06h    WORD    current cursor position
+08h    WORD    starting row of edit area (-3 is topmost, 0 is first user line)
+0Ah    WORD    starting column of edit area
+0Ch    WORD    height of edit area
+0Eh    WORD    width of edit area
+10h    WORD    current top row (-3 is topmost, 0 is first user line)
+12h    WORD    number of rows displayable
+14h    BYTE    cursor column
+15h    BYTE    01h if buffer has been modified
+16h    BYTE    first displayable column (ticker fields only)
+17h    BYTE    01h if wordwrap enabled, FFh if ticker field
+18h    DWORD   pointer to array of line starts (at least one bigger than edit
+area is high)
+1Ch    BYTE    currently marking?
+1Dh    BYTE    flag
+1Eh    WORD    offset of mark start
+20h    WORD    offset of mark end (inclusive)
+22h    WORD    displayable columns
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-60.htm">
+Int 60h</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6474.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6476.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

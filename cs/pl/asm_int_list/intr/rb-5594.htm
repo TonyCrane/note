@@ -1,0 +1,155 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=DE01h/BX=7575h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=DE01h/BX=7575h - DESQview v2.26+ XDI - CUSTOM SUBFUNCTION, DVSIXDI.COM - 
+AX = DE01h
+BX = 7575h
+CX = function
+0000h installation check
+Return: AX = 00FFh if installed
+0001h turn on notification (currently unused)
+Return: AX = 0001h
+0002h turn off notification (currently unused)
+Return: AX = 0001h
+0003h get process information
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=DE01h/BX=7575h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5593.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5595.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview v2.26+ XDI - CUSTOM SUBFUNCTION, DVSIXDI.COM</font></h3>
+<PRE>
+AX = DE01h
+BX = 7575h
+CX = function
+0000h installation check
+<p><b>Return:</b><br>AX = 00FFh if installed
+0001h turn on notification (currently unused)
+<p><b>Return:</b><br>AX = 0001h
+0002h turn off notification (currently unused)
+<p><b>Return:</b><br>AX = 0001h
+0003h get process information
+<p><b>Return:</b><br>AX = status
+0000h failed
+0001h successful
+BX = last instantaneous time slice
+in 1/100s (v1.10)
+in 1/18s (v1.11+)
+CX = number of processes
+DX = number of "(starting)" records (v2.00+)
+SI = number of records in process info array
+(v2.00+) (always 15 for v1.x)
+ES:DI -> process info array <a href="rb-0000.htm#Table0"></a>(see #03101,#03102)
+0004h get version
+<p><b>Return:</b><br>AH = major version
+AL = minor version
+0005h (v1.10+) get time since DESQview started
+<p><b>Return:</b><br>DX:AX = 1/100s since DV start (v1.10)
+DX:AX = 1/18s since DV start (v1.11+)
+0006h (v1.10+) get number of task switches
+<p><b>Return:</b><br>DX:AX = total task switches
+CX = task switches in last instantaneous interval
+</PRE>
+<p><b>Notes:</b>
+DVSIXDI is part of the DVSI (DESQview System Information) package by
+Daniel J. Bodoh.
+For v1.00, function 0003h allocates common memory, which the caller
+must deallocate after reading the process information; only the
+currently used records are placed in the buffer.
+For v1.10+, function 0003h merely returns a pointer to the internal
+array of process information; the caller should make a copy of the
+array while inside a critical section (see INT 15/AX=101Bh).  Only
+those records with bit 7 of the first byte set are valid.
+<PRE>
+<p><b>Index:</b><br>Installation check;DVSIXDI
+<p>
+Format of DVSIXDI v1.00 information for one process:
+<a name=table3101></a>
+Offset  Size    Description     (Table 03101)
+00h    BYTE    flags
+<p><b>bit 7:</b><br>Process slot is valid
+01h    WORD    offset into DESQVIEW.DVO of program's record if started from
+Open Windows menu, else undefined
+03h    WORD    Switch Windows window number
+05h    WORD    segment of process handle
+07h    WORD    number of tasks owned by process
+09h    WORD    mapping context of process <a href="rb-0000.htm#Table0"></a>(see #00416 at INT 15/AX=1016h)
+0Bh    DWORD   hook for other programs
+<p>
+Format of DVSIXDI v1.10-v2.00 information for one process:
+<a name=table3102></a>
+Offset  Size    Description     (Table 03102)
+00h    BYTE    process flags <a href="rb-5594.htm#Table3103">(see #03103)</a>
+01h    WORD    Open Window keys
+03h    WORD    Switch Windows number
+05h    WORD    segment of process handle
+07h    WORD    number of tasks for process
+09h    WORD    process mapping context
+0Bh    DWORD   time process started (relative to start of DESQview)
+0Fh    DWORD   time process last got CPU (relative to start of DESQview)
+13h    DWORD   time process last gave up CPU (relative to start of DESQview)
+17h    DWORD   total CPU time since process started
+1Bh    DWORD   CPU time at start of current instantaneous interval
+1Fh    DWORD   CPU time in current instantaneous interval
+23h    DWORD   hook for other programs
+</PRE>
+<p><b>Note:</b>
+All times are in 1/100s for v1.10, in 1/18s for v1.11+
+<PRE>
+<p>
+Bitfields for DVSIXDI process flags:
+<a name=table3103></a>
+Bit(s)  Description     (Table 03103)
+7      valid record
+6      (v2.00+) record is allocated; if bit 7 clear, process is "(starting)"
+and only offsets 01h and 09h are valid
+5      (v2.00+) this app currently owns the CPU
+4      reserved (0)
+3      DESQview system task
+2      reserved (0)
+1      task has keyboard (currently unused)
+0      task swapped out (currently unused)
+</PRE>
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5593.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5595.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

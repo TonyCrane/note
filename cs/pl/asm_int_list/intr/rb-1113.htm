@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=E4h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=E4h - TelAPI - telioctl - CONNECTION CONTROL - 
+AH = E4h
+BX = connection ID (see AH=E0hTelAPI)
+CX = Telnet command/option identifier (see #00400)
+ES:SI - buffer containing command/option argument (see #00399)
+Return: AX = status (0000h, etc.) (see #00397)
+Desc:  start filter control, initiate Telnet option negotiation, or get filter
+control status
+SeeAlso: AH=A9h,AH=E6h,AX=FF00h,INT 6B/AX=0600h
+Format of TelAPI Telnet command/option argument:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=E4h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1112.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1114.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TelAPI - telioctl - CONNECTION CONTROL</font></h3>
+<PRE>
+AH = E4h
+BX = connection ID (see AH=E0h"TelAPI")
+CX = Telnet command/option identifier <a href="rb-1113.htm#Table400">(see #00400)</a>
+ES:SI -> buffer containing command/option argument <a href="rb-1113.htm#Table399">(see #00399)</a><br>
+<p><b>Return:</b><br>AX = status (0000h, etc.) (see #00397)
+</PRE>
+<p><b>Desc:</b>
+Start filter control, initiate Telnet option negotiation, or get filter
+control status
+<p><b>See Also:</b>
+<a href="rb-1076.htm">AH=A9h</a> - <a href="rb-1115.htm">AH=E6h</a> - <a href="rb-1131.htm">AX=FF00h</a> - <a href="rb-7602.htm">INT 6B/AX=0600h</a
+<PRE>
+<p>
+Format of TelAPI Telnet command/option argument:
+<a name=table399></a>
+Offset  Size    Description     (Table 00399)
+00h  5 WORD    numeric arguments
+0Ah    DWORD   -> ASCIZ string
+</PRE>
+<p><b>See Also:</b>
+#00400
+<PRE>
+<p>
+<a name=table400></a>
+(Table 00400)
+Values for TelAPI Telnet command/option identifier:
+<p><b>01h    ASCII           args:</b><br>None
+<p><b>02h    BINARY          args:</b><br>None
+<p><b>03h    LOCALECHO       args:</b><br>None              client echos data
+<p><b>04h    REMOTEECHO      args:</b><br>None              server echos data
+<p><b>05h    SGA             args:</b><br>None              Suppress Go-Ahead signal
+<p><b>07h    CHARMODE        args:</b><br>None              no line-buffering
+<p><b>08h    LINEMODE        args:</b><br>-> erase-line ch  perform line-buffering
+<p><b>09h    RECVEOL         args:</b><br>EOL type
+<p><b>0Ah    SENDEOL         args:</b><br>EOL type
+<p><b>0Bh    EOR             args:</b><br>None              enable end-of-record sequence
+<p><b>0Dh    BREAK           args:</b><br>-> break char
+<p><b>0Eh    VERBOSE         args:</b><br>Verbosity         display Telnet negotiations?
+<p><b>0Fh    AYT             args:</b><br>-> AYT escape ch
+<p><b>10h    AO              args:</b><br>-> AO escape char
+<p><b>11h    IP              args:</b><br>-> IP escape char
+<p><b>12h    EC              args:</b><br>-> escape char
+<p><b>13h    EL              args:</b><br>-> escape char
+<p><b>14h    STATUS          args:</b><br>Type; returns data in structure
+<p><b>18h    TERMTYPE        args:</b><br>-> terminal type
+<p><b>19h    ATTACHPORT      args:</b><br>Port number ; returns session number
+<p><b>1Bh    TRANSMIT_EOR    args:</b><br>EOR enabled       append EOR to every telwrite?
+</PRE>
+<p><b>See Also:</b>
+#00399
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1112.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1114.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

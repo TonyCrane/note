@@ -1,0 +1,197 @@
+<HTML>
+<HEAD>
+<TITLE>Int 12/AX=FFFEh/CX=FFFEh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 12/AX=FFFEh/CX=FFFEh - Back&Forth v1.62+ - API - 
+AX = FFFEh
+CX = FFFEh
+BX = function
+00h installation check
+Return: AX = 0001h installed
+else not loaded
+01h (reserved)
+02h build program ID list (shareware Back&Forth)
+ES:DI - buffer of at least 100 bytes, to be filled with words
+Return: AX = number of programs defined
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 12/AX=FFFEh/CX=FFFEh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0603.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0605.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Back&Forth v1.62+ - API</font></h3>
+<PRE>
+AX = FFFEh
+CX = FFFEh
+BX = function
+00h installation check
+<p><b>Return:</b><br>AX = 0001h installed
+else  not loaded
+01h (reserved)
+02h build program ID list (shareware Back&Forth)
+ES:DI -> buffer of at least 100 bytes, to be filled with words
+<p><b>Return:</b><br>AX = number of programs defined
+ES:DI buffer filled with AX words
+02h get memory statistics (Back&Forth Professional)
+<p><b>Return:</b><br>AX = available swap memory, KBytes
+BX = maximum task size, KBytes
+DX = fixed overhead per task, excluding video/macro
+storage
+03h switch to specified task (task need not be open yet)
+DX = two-letter program ID
+<p><b>Return:</b><br>AX = status
+0000h if task undefined
+0001h task switch will occur when safe
+04h (reserved)
+05h (reserved)
+06h get version (documented only for Back&Forth Professional)
+<p><b>Return:</b><br>AX = version * 100 (v1.71 = 00ABh)
+07h spawn program (Back&Forth Professional only???)
+ES:DI -> BF_SPAWN record <a href="rb-0604.htm#Table232">(see #00232)</a>
+<p><b>Return:</b><br>AX = status
+0000h if no task handles free
+0001h spawn will occur when safe
+08h get open tasks (documented only for Back&Forth Professional)
+ES:DI -> task info buffer <a href="rb-0000.htm#Table0"></a>(see #00231,#00233)
+<p><b>Return:</b><br>AX = number of open tasks (max 20)
+</PRE>
+<p><b>Note:</b>
+The supplied buffer must be large enough to hold 21
+task entries
+09h (reserved)
+---Back&Forth Professional---
+0Ah get active clipboard filename
+<PRE>
+<p><b>Return:</b><br>DX:AX -> ASCIZ clipboard filename
+0Bh get active task number
+AX = active task number (00h-13h)
+BX = number of tasks allocated
+DX = maximum number of tasks
+0Ch (reserved)
+0Dh (reserved)
+0Eh (reserved)
+0Fh stuff string into keyboard buffer
+ES:DI -> ASCIZ string to be stuffed
+<p><b>Return:</b><br>Nothing
+10h check if in graphics mode
+<p><b>Return:</b><br>AX = state
+0000h color text mode
+0004h mono text mode
+FFFFh graphics mode
+11h get Back&Forth Professional user number
+<p><b>Return:</b><br>AX = user number (0000h-00FFh)
+12h switch task by task number
+DX = task number
+<p><b>Return:</b><br>AX = status
+0000h attempted to switch to active task
+0001h task switch will occur when safe
+FFFFh invalid task number
+13h delete (kill) task
+DX = task number
+<p><b>Return:</b><br>AX = status
+0000h attempted to delete the active task
+0001h successfully deleted
+FFFFh invalid task number
+</PRE>
+<p><b>Note:</b>
+The active task number will change if the deleted task
+was lower in the task list than the active task
+14h get next available task handle
+<PRE>
+<p><b>Return:</b><br>AX = next available task handle
+FFFFh if task table is full
+</PRE>
+<p><b>Program:</b>
+Back & Forth is a task switcher by Progressive Solutions, Inc.
+<p><b>See Also:</b>
+<a href="rb-0597.htm">INT 11/AX=FFFEh</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;BACK&FORTH
+<p>
+Format of Back&Forth task info buffer:
+<a name=table231></a>
+Offset  Size    Description     (Table 00231)
+00h 21 BYTEs   ASCIZ task name
+15h    BYTE    hotkey shift state (as for INT 16/AH=02h)
+16h    WORD    hotkey scan code (see also #00006)
+18h    WORD    program ID
+<p><b>Index:</b><br>Hotkeys;Back&Forth
+</PRE>
+<p><b>See Also:</b>
+#00232 - #00233
+<PRE>
+<p>
+Format of Back&Forth Professional BF_SPAWN record:
+<a name=table232></a>
+Offset  Size    Description     (Table 00232)
+00h 21 BYTEs   task description
+<p><b>15h    BYTE    flag:</b><br>Disable hotkeys
+16h    WORD    environment size in bytes
+18h    BYTE    hotkey shift flags
+19h    WORD    hotkey scancode
+1Bh    WORD    maximum number of EMS pages
+1Dh    WORD    required memory in KBytes
+1Fh  3 BYTEs   DESQview-style two-letter program ID
+22h 13 BYTEs   base name of program to be run (no path or extension)
+2Fh 66 BYTEs   directory from which to start program
+71h 66 BYTEs   initial current directory for program
+</PRE>
+<p><b>See Also:</b>
+#00231 - #00233
+<PRE>
+<p>
+Format of Back&Forth Professional BF_TASK record:
+<a name=table233></a>
+Offset  Size    Description     (Table 00233)
+00h    DWORD   Unix-style task start time (seconds since 1970/1/1)
+04h 21 BYTEs   task description
+19h    DWORD   elapsed time in task (seconds)
+1Dh    WORD    task ID
+1Fh    BYTE    task hotkey keyboard flags
+20h    WORD    task hotkey scan code (see also #00006)
+22h    DWORD   time task was suspended/exited
+26h    WORD    task handle
+</PRE>
+<p><b>See Also:</b>
+#00231 - #00232
+<p>
+<b>Category: <a href="cat-011.htm">
+DOS-Based Task Switchers/Multitaskers</a>
+- <a href="int-12.htm">
+Int 12h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0603.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0605.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

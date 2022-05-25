@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=CD09h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=CD09h - Intel Image Processing Interface - LOAD SCREEN - 
+AX = CD09h
+CX:BX - structure (see #03072)
+Return: AL = status (00h,80h) (see #03068)
+SeeAlso: AX=CD06hImage Processing,AX=CD0AhImage Processing
+Format of IPI load screen structure:
+Offset Size  Description   (Table 03072)
+00h  BYTE  style
+44h ('D') diamond style
+4Ch ('L') line style
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=CD09h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5484.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5486.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Intel Image Processing Interface - LOAD SCREEN</font></h3>
+<PRE>
+AX = CD09h
+CX:BX -> structure <a href="rb-5485.htm#Table3072">(see #03072)</a><br>
+<p><b>Return:</b><br>AL = status (00h,80h) (see #03068)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5459.htm">AX=CD06h"Image Processing"</a> - <a href="rb-5459.htm">AX=CD0Ah"Image Processing"</a>
+<PRE>
+<p>
+Format of IPI load screen structure:
+<a name=table3072></a>
+Offset  Size    Description     (Table 03072)
+00h    BYTE    style
+44h ('D') diamond style
+4Ch ('L') line style
+01h    BYTE    reserved (00h)
+02h    WORD    frequency in lines per inch [sic]
+currently, coerced to nearest of 50, 60, 68, 70, 75, 85, or 100
+04h    WORD    screen angle in degrees (-360 to 360)
+currently coerced to nearest of -45, 0, 45, or 90
+</PRE>
+<p>
+<b>Category: <a href="cat-032.htm">
+Printer Enhancements</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5484.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5486.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

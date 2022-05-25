@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=5307h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=5307h - Advanced Power Management v1.0+ - SET POWER STATE - 
+AX = 5307h
+BX = device ID (see #00474)
+CX = system state ID (see #00475)
+Return: CF clear if successful
+CF set on error
+AH = error code (01h,03h,09h,0Ah,0Bh,60h) (see #00473)
+Note:  should not be called from within a hardware interrupt handler to avoid
+reentrance problems
+SeeAlso: AX=530Ch
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=5307h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1400.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1402.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Advanced Power Management v1.0+ - SET POWER STATE</font></h3>
+<PRE>
+AX = 5307h
+BX = device ID <a href="rb-1401.htm#Table474">(see #00474)</a>
+CX = system state ID <a href="rb-1401.htm#Table475">(see #00475)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = error code (01h,03h,09h,0Ah,0Bh,60h) <a href="rb-1394.htm#Table473">(see #00473)</a>
+</PRE>
+<p><b>Note:</b>
+Should not be called from within a hardware interrupt handler to avoid
+reentrance problems
+<p><b>See Also:</b>
+<a href="rb-1409.htm">AX=530Ch</a>
+<PRE>
+<p>
+<a name=table474></a>
+(Table 00474)
+Values for APM device IDs:
+0000h  system BIOS
+0001h  all devices for which the system BIOS manages power
+01xxh  display (01FFh for all attached display devices)
+02xxh  secondary storage (02FFh for all attached secondary storage devices)
+03xxh  parallel ports (03FFh for all attached parallel ports)
+04xxh  serial ports (04FFh for all attached serial ports)
+---APM v1.1+ ---
+05xxh  network adapters (05FFh for all attached network adapters)
+06xxh  PCMCIA sockets (06FFh for all)
+0700h-7FFFh reserved
+80xxh  system battery devices (APM v1.2)
+8100h-DFFFh reserved
+Exxxh  OEM-defined power device IDs
+F000h-FFFFh reserved
+<p>
+<a name=table475></a>
+(Table 00475)
+Values for system state ID:
+0000h  ready (not supported for device ID 0001h)
+0001h  stand-by
+0002h  suspend
+0003h  off (not supported for device ID 0001h in APM v1.0)
+---APM v1.1---
+0004h  last request processing notification (only for device ID 0001h)
+0005h  last request rejected (only for device ID 0001h)
+0006h-001Fh reserved system states
+0020h-003Fh OEM-defined system states
+0040h-007Fh OEM-defined device states
+0080h-FFFFh reserved device states
+</PRE>
+<p>
+<b>Category: <a href="cat-031.htm">
+Power Management</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1400.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1402.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

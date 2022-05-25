@@ -1,0 +1,124 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=53B0h/BH=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=53B0h/BH=01h - Intel System Management Bus - INSTALLATION CHECK - 
+AX = 53B0h
+BH = 01h
+BL = 72h ('r')
+CX = 6164h ('ad')
+Return: CF clear if installed
+AH = SMBus BIOS Interface Specification major version (01h)
+AL = SMBus BIOS Interface Specification minor version (00h)
+BL = number of SMBus devices present
+CX = 6941h ('iA')
+DX = vendor-specified SMBus hardware code
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=53B0h/BH=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1436.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1438.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Intel System Management Bus - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 53B0h
+BH = 01h
+BL = 72h ('r')
+CX = 6164h ('ad')<br>
+<p><b>Return:</b><br>CF clear if installed
+AH = SMBus BIOS Interface Specification major version (01h)
+AL = SMBus BIOS Interface Specification minor version (00h)
+BL = number of SMBus devices present
+CX = 6941h ('iA')
+DX = vendor-specified SMBus hardware code
+0000h means undefined hardware type
+CF set if error
+AH = Error code 0Ah, 86h <a href="rb-1437.htm#Table484">(see #00484)</a>
+</PRE>
+<p><b>Note:</b>
+This function is only supported in INT 15h mode
+<p><b>See Also:</b>
+<a href="rb-1438.htm">AX=53B0h/BH=02h</a> - <a href="rb-1439.htm">AX=53B0h/BH=03h</a> - <a href="rb-1440.htm">AX=53B0h/BH=04h</a> - <a href=http://www.ctyme.com/intr/rb-14
+<p><b>See Also:</b>
+#01105 at INT 1A/AX=B10Ah/SF=8086h
+<PRE>
+<p>
+<a name=table484></a>
+(Table 00484)
+Values for Intel System Management Bus error codes:
+00h    SMBus OK
+01h    SMBus connect failed
+02h    SMBus already connected (see also #00485)
+03h    SMBus disconnect failed
+04h    SMBus not connected
+05h    SMBus INT 15 interface disabled
+06h    SMBus device address request out of range
+07h    SMBus unknown failure
+08h    SMBus message list empty
+09h    SMBus message list overflow
+0Ah    SMBus invalid signature
+10h    SMBus device address not acknowledged
+11h    SMBus device error detected
+12h    SMBus device command access denied
+13h    SMBus unknown error
+14h    SMBus transaction pending
+15h    SMBus no transaction pending
+16h    SMBus request does not match pending transaction
+17h    SMBus device access denied
+18h    SMBus timeout
+19h    SMBus protocol not supported
+1Ah    SMBus busy
+1Bh    SMBus SMI detected
+80h    SMBus OK (previously unreported SMI occurred)
+86h    SMBus not supported
+<p>
+<a name=table485></a>
+(Table 00485)
+Values for Intel System Management Bus Already Connected sub-error codes:
+01h    real mode connect already established
+02h    16-bit PMode connect already established
+03h    32-bit PMode connect already established
+</PRE>
+<p><b>See Also:</b>
+#00484
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1436.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1438.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AH=1Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AH=1Fh - PC/TCP kernel v2.05+ - net_asynch - SET UP ASYNCHRONOUS CALL-BACK - 
+AH = 1Fh
+BX = network descriptor
+CX = event type (see #03466)
+DS:SI - event handler routine (see #03467)
+ES:DI = 32-bit hint passed to handler
+Return: CF clear if successful
+DS:DX - previous handler
+CF set on error
+AX = error code (see #03319 at INT 61FTP Software)
+Note:  ICMP messages do not trigger events on stream connections
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AH=1Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6854.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6856.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC/TCP kernel v2.05+ - net_asynch - SET UP ASYNCHRONOUS CALL-BACK</font></h3>
+<PRE>
+AH = 1Fh
+BX = network descriptor
+CX = event type <a href="rb-6855.htm#Table3466">(see #03466)</a>
+DS:SI -> event handler routine <a href="rb-6855.htm#Table3467">(see #03467)</a>
+ES:DI = 32-bit hint passed to handler<br>
+<p><b>Return:</b><br>CF clear if successful
+DS:DX -> previous handler
+CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #03319 at INT 61"FTP Software")
+</PRE>
+<p><b>Note:</b>
+ICMP messages do not trigger events on stream connections
+<p><b>See Also:</b>
+<a href="rb-6703.htm">INT 61"FTP Software"</a> - <a href="rb-6704.htm">INT 61/AH=00h"PC/TCP"</a>
+<PRE>
+<p>
+<a name=table3466></a>
+(Table 03466)
+Values for PC/TCP event type:
+00h    alarm
+01h    open (successfully opened stream connection)
+02h    receive (data available)
+03h    transmit (ACK received on stream connection)
+04h    transmit flush???
+05h    foreign close (remote host closed data connection)
+06h    close (local host closed connection and protocol is complete)
+07h    error (error code passed to handler as arg)
+<p>
+<a name=table3467></a>
+(Table 03467)
+Values PC/TCP user event handler is called with:.
+BX = network descriptor.
+CX = event type <a href="rb-6855.htm#Table3466">(see #03466)</a>.
+DS:DX -> arg.
+ES:DI = 32-bit hint value.
+<p><b>STACK:</b><br>Small stack, possibly the DOS stack
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6854.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6856.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

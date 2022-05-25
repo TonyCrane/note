@@ -1,0 +1,106 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=000Fh/SF=0002h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=000Fh/SF=0002h - Banyan VINES - SEND MESSAGE ON A SOCKET - 
+AX = 000Fh subfn 0002h
+CX:BX - request block (see #03447)
+DX = application's data segment (should be = CX)
+ES = DS
+Return: AX = status
+0000h successful
+00A5h resource not available
+Desc:  send data to a socket identified by its socket handle
+Format of request block:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=000Fh/SF=0002h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6792.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6794.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - SEND MESSAGE ON A SOCKET</font></h3>
+<PRE>
+AX = 000Fh subfn 0002h
+CX:BX -> request block <a href="rb-6793.htm#Table3447">(see #03447)</a>
+DX = application's data segment (should be = CX)
+ES = DS<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+00A5h resource not available
+</PRE>
+<p><b>Desc:</b>
+Send data to a socket identified by its socket handle
+<PRE>
+<p>
+Format of request block:
+<a name=table3447></a>
+Offset  Size    Description     (Table 03447)
+00h    WORD    0002h
+02h    WORD    magic number (FEFEh)
+04h    WORD    buffer for return code (set to 0 before calling)
+06h    WORD    reserved (will be set to client DS)
+08h    WORD    reserved (obviously not used; set to 0 before calling)
+0Ah    DWORD   far pointer to parameter block <a href="rb-6793.htm#Table3448">(see #03448)</a>
+0Eh    WORD    process handle (see AX=000Fh/SF=0008h)
+<p>
+Format of parameter block:
+<a name=table3448></a>
+Offset  Size    Description     (Table 03448)
+00h    WORD    buffer for estimated communication cost in 220 msec ticks
+02h    WORD    buffer for return code (set to 0 before calling)
+04h    WORD    socket handle
+06h    DWORD   far pointer to IPC/SPP message buffer
+0Ah    WORD    length of IPC/SPP message buffer
+0Ch    WORD    option flags
+<p><b>bit 0:</b><br>Asynchronous communication
+<p><b>bit 1:</b><br>Reliable message
+<p><b>bit 3:</b><br>End of message
+<p><b>bit 4:</b><br>Vectored I/O
+0Eh 16 BYTEs   socket address (IPC port of source)
+1Eh    WORD    not used (set to 0 before calling)
+20h    WORD    SPP connection id (0 for IPC messages)
+22h    WORD    request type (1 = data, 2 = connect SPP, 3 = disconnect SPP)
+</PRE>
+<p><b>See Also:</b>
+#03447
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6792.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6794.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

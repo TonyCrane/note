@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=D042h/BL=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=D042h/BL=01h - Intel Pentium Pro BIOS UPDATE - WRITE BIOS UPDATE AREA - 
+AX = D042h
+BL = 01h
+ES:DI - microcode update block (see #00533)
+CX,DX,SI = segments of three 64K scratchpad areas for BIOS use
+Return: CF clear if successful
+CF set on error
+AH = status (see #00532)
+AL = OEM error (if AH is not 00h or 86h, otherwise undefined)
+00h successful
+Notes: a microcode update may also be initiated by a WRMSR instruction
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=D042h/BL=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1622.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1624.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Intel Pentium Pro BIOS UPDATE - WRITE BIOS UPDATE AREA</font></h3>
+<PRE>
+AX = D042h
+BL = 01h
+ES:DI -> microcode update block <a href="rb-1623.htm#Table533">(see #00533)</a>
+CX,DX,SI = segments of three 64K scratchpad areas for BIOS use<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = status <a href="rb-1623.htm#Table532">(see #00532)</a>
+AL = OEM error (if AH is not 00h or 86h, otherwise undefined)
+00h successful
+</PRE>
+<p><b>Notes:</b>
+A microcode update may also be initiated by a WRMSR instruction
+with ECX=0079h, EDX=00000000h, and EAX=linear address of update
+block <a href="rb-1623.htm#Table533">(see #00533)</a>.
+At least 32K stack space must be available when this function is called
+<p><b>See Also:</b>
+<a href="rb-1622.htm">AX=D042h/BL=00h</a> - <a href="rb-1624.htm">AX=D042h/BL=02h</a> - <a href="rb-1625.htm">AX=D042h/BL=03h</a> - MSR 00000079h
+<PRE>
+<p>
+<a name=table532></a>
+(Table 00532)
+Values for Pentium Pro BIOS update status:
+00h    successful
+86h    not implemented
+90h    unable to erase NVRAM device
+91h    unable to write to NVRAM device
+92h    unable to read storage
+93h    NVRAM is full
+94h    specified processor stepping is not present in system
+95h    invalid header or loader version
+96h    wrong checksum in header
+97h    processor rejected the update
+98h    the same or a more recent update is already stored
+99h    update block number was out of range
+<p>
+Format of Pentium Pro microcode update block:
+<a name=table533></a>
+Offset  Size    Description     (Table 00533)
+00h    DWORD   update header version number (currently 00000001h)
+FFFFFFFFh = unused block
+04h    DWORD   revision number of this microcode update
+08h    DWORD   update creation date, as BCD mmddyyyy (month,day,year)
+0Ch    DWORD   family/model/stepping of processor to which update applied
+(same value as returned by CPUID instruction)
+10h    DWORD   checksum (used to force sum of all 512 DWORDs of the update
+block to 00000000h)
+14h    DWORD   revision number of loader needed to install update
+(currently 00000001h)
+18h 24 BYTEs   reserved for future expansion
+30h 2000 BYTEs encrypted microcode data
+</PRE>
+<p><b>See Also:</b>
+MSR 00000079h - <a href="int-15.htm">OPCODE </a>"CPUID"
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1622.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1624.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

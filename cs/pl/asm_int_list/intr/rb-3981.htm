@@ -1,0 +1,111 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=0Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=0Dh - Novell NetWare v4+ - GET OS VERSION INFORMATION - 
+AX = F27Bh subfn 0Dh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02507)
+ES:DI - reply buffer (see #02508)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get OS Version Information request buffer:
+Offset Size  Description   (Table 02507)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=0Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3980.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3982.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET OS VERSION INFORMATION</font></h3>
+<PRE>
+AX = F27Bh subfn 0Dh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3981.htm#Table2507">(see #02507)</a>
+ES:DI -> reply buffer <a href="rb-3981.htm#Table2508">(see #02508)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get OS Version Information" request buffer:
+<a name=table2507></a>
+Offset  Size    Description     (Table 02507)
+00h    WORD    0001h (length of following data)
+02h    BYTE    0Dh (subfunction "Get OS Version Information")
+</PRE>
+<p><b>See Also:</b>
+#02508
+<PRE>
+<p>
+Format of NetWare "Get OS Version Information" reply buffer:
+<a name=table2508></a>
+Offset  Size    Description     (Table 02508)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    BYTE    operating system major version
+09h    BYTE    operating system minor version
+0Ah    BYTE    operating system revision number
+0Bh    BYTE    accounting version
+0Ch    BYTE    VAP version
+0Dh    BYTE    queueing version
+0Eh    BYTE    security restrictions level
+0Fh    BYTE    bridging support
+10h    DWORD   maximum number of volumes
+14h    DWORD   number of connection slots
+18h    DWORD   maximum number of logged-in connections
+1Ch    DWORD   maximum number of name spaces
+20h    DWORD   maximum number of LANs
+24h    DWORD   maximum number of media types
+28h    DWORD   maximum number of protocols
+2Ch    DWORD   maximum subdirectory tree depth
+30h    DWORD   maximum number of data streams
+34h    DWORD   maximum number of spooled printers
+38h    DWORD   serial number
+3Ch    WORD    application number
+</PRE>
+<p><b>See Also:</b>
+#02507
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3980.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3982.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

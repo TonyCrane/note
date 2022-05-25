@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E8h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E8h - DoubleDOS - SET/RESET KEYBOARD CONTROL FLAGS - 
+AH = E8h
+AL = program for which to set flags (00h this program, 01h other)
+DX = keyboard control flags (see #02088)
+Return: DX = previous flags
+Notes: disabling Ctrl-PrtSc will allow the program to intercept the keystroke;
+disabling any of the other keystrokes disables them completely
+identical to AH=F8h
+SeeAlso: AH=E1hDoubleDOS,AH=E2hDoubleDOS,AH=E3hDoubleDOS
+SeeAlso: AH=F8hDoubleDOS
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E8h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3597.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3599.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DoubleDOS - SET/RESET KEYBOARD CONTROL FLAGS</font></h3>
+<PRE>
+AH = E8h
+AL = program for which to set flags (00h this program, 01h other)
+DX = keyboard control flags <a href="rb-3598.htm#Table2088">(see #02088)</a><br>
+<p><b>Return:</b><br>DX = previous flags
+</PRE>
+<p><b>Notes:</b>
+Disabling Ctrl-PrtSc will allow the program to intercept the keystroke;
+disabling any of the other keystrokes disables them completely.
+Identical to AH=F8h
+<p><b>See Also:</b>
+<a href="rb-3443.htm">AH=E1h"DoubleDOS"</a> - <a href="rb-3456.htm">AH=E2h"DoubleDOS"</a> - <a href="rb-3482.htm">AH=E3h"DoubleDOS"</a>
+<p><b>See Also:</b>
+<a href="rb-3999.htm">AH=F8h"DoubleDOS"</a>
+<PRE>
+<p>
+Bitfields for DoubleDOS keyboard control flags:
+<a name=table2088></a>
+Bit(s)  Description     (Table 02088)
+0      menu
+1      exchange
+2      entire keyboard enable/disable
+3      Ctrl-C
+4      Ctrl-PrtSc
+5      Alt/Erase
+6      Ctrl-Break
+7      Ctrl-NumLock
+8      shift-PrtSc
+9-13   undefined
+14     cancel key (clear keyboard buffer)
+15     suspend key
+</PRE>
+<p><b>Note:</b>
+Setting a enables the corresponding key or operatin, clearing a
+disables it
+<p>
+<b>Category: <a href="cat-011.htm">
+DOS-Based Task Switchers/Multitaskers</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3597.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3599.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

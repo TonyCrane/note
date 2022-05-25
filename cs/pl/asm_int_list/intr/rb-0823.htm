@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=04h - SERIAL - EXTENDED INITIALIZE (CONVERTIBLE,PS) - 
+AH = 04h
+AL = break status
+00h if break
+01h if no break
+BH = parity (see #00307)
+BL = number of stop bits
+00h one stop bit
+01h two stop bits (1.5 if 5 bit word length)
+CH = word length (see #00308)
+CL = bps rate (see #00309)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0822.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0824.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SERIAL - EXTENDED INITIALIZE (CONVERTIBLE,PS)</font></h3>
+<PRE>
+AH = 04h
+AL = break status
+00h if break
+01h if no break
+BH = parity <a href="rb-0823.htm#Table307">(see #00307)</a>
+BL = number of stop bits
+00h one stop bit
+01h two stop bits (1.5 if 5 bit word length)
+CH = word length <a href="rb-0823.htm#Table308">(see #00308)</a>
+CL = bps rate <a href="rb-0823.htm#Table309">(see #00309)</a>
+DX = port number<br>
+<p><b>Return:</b><br>AX = port status code (see #00304,#00305)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0811.htm">AH=00h</a> - <a href="rb-0942.htm">AH=1Eh</a> - <a href="rb-1009.htm">AX=8000h"ARTICOM"</a>
+<PRE>
+<p>
+<a name=table307></a>
+(Table 00307)
+Values for serial port parity:
+00h    no parity
+01h    odd parity
+02h    even parity
+03h    stick parity odd
+04h    stick parity even
+</PRE>
+<p><b>See Also:</b>
+#00300 - #00308 - #00309 - #00310
+<PRE>
+<p>
+<a name=table308></a>
+(Table 00308)
+Values for serial port word length:
+00h    5 bits
+01h    6 bits
+02h    7 bits
+03h    8 bits
+</PRE>
+<p><b>See Also:</b>
+#00300 - #00307 - #00309 - #00345
+<PRE>
+<p>
+<a name=table309></a>
+(Table 00309)
+Values for serial port bps rate:
+00h    110 (19200 if ComShare installed)
+01h    150 (38400 if ComShare installed)
+02h    300
+03h    600 (14400 if ComShare installed)
+04h    1200
+05h    2400
+06h    4800 (28800 if ComShare installed)
+07h    9600
+08h    19200
+---ComShare---
+09h    38400
+0Ah    57600
+0Bh    115200
+</PRE>
+<p><b>See Also:</b>
+#00300 - #00307 - #00309 - #00346 - #00353 - <a href="rb-0978.htm">AH=36h</a> - #00364 - #00606 - #02923
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0822.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0824.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

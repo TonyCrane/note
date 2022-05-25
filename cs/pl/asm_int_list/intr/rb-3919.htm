@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F257h/SF=15h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F257h/SF=15h - Novell NetWare - GET PATH STRING FROM SHORT DIRECTORY HANDLE - 
+AX = F257h subfn 15h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02405)
+ES:DI - reply buffer (see #02406)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F257h/SF=13h,AX=F257h/SF=16h
+Format of NetWare Get Path String from Short Directory Handle request packet:
+Offset Size  Description   (Table 02405)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F257h/SF=15h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3918.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3920.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET PATH STRING FROM SHORT DIRECTORY HANDLE</font></h3>
+<PRE>
+AX = F257h subfn 15h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3919.htm#Table2405">(see #02405)</a>
+ES:DI -> reply buffer <a href="rb-3919.htm#Table2406">(see #02406)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3918.htm">AX=F257h/SF=13h</a> - <a href="rb-3920.htm">AX=F257h/SF=16h</a>
+<PRE>
+<p>
+Format of NetWare "Get Path String from Short Directory Handle" request packet:
+<a name=table2405></a>
+Offset  Size    Description     (Table 02405)
+00h    BYTE    15h (subfunction "Get Path String from Short Directory Handle")
+01h    BYTE    name space <a href="rb-3908.htm#Table2387">(see #02387)</a>
+02h    BYTE    short directory handle
+</PRE>
+<p><b>See Also:</b>
+#02406
+<PRE>
+<p>
+Format of NetWare "Get Path String from Short Directory Handle" reply packet:
+<a name=table2406></a>
+Offset  Size    Description     (Table 02406)
+00h    BYTE    length of path
+01h  N BYTEs   full directory path
+</PRE>
+<p><b>See Also:</b>
+#02405
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3918.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3920.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

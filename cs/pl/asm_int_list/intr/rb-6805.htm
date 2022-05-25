@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AH=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AH=06h - PC/TCP kernel v2.05 - net_info - GET INTERFACE STATISTICS - 
+AH = 06h
+BX = network descriptor (must be allocated and open)
+DS:SI - 38-byte buffer for interface statistics (see #03455)
+Return: CF clear if successful
+buffer filled
+CF set on error
+AX = error code (see #03319)
+Desc:  returns the statistics relevant to the particular network interface
+used by the specified network descriptor
+Range: INT 20 to INT E0, selected by configuration
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AH=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6804.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6806.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC/TCP kernel v2.05 - net_info - GET INTERFACE STATISTICS</font></h3>
+<PRE>
+AH = 06h
+BX = network descriptor (must be allocated and open)
+DS:SI -> 38-byte buffer for interface statistics <a href="rb-6805.htm#Table3455">(see #03455)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled
+CF set on error
+AX = error code <a href="rb-6703.htm#Table3319">(see #03319)</a>
+</PRE>
+<p><b>Desc:</b>
+Returns the statistics relevant to the particular network interface
+used by the specified network descriptor
+<PRE>
+<p><b>Range:</b><br>INT 20 to INT E0, selected by configuration
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6703.htm">INT 61"FTP Software"</a> - <a href="rb-6704.htm">INT 61/AH=00h"PC/TCP"</a> - <a href="rb-6803.htm">INT 61/AH=05h"PC/TCP"</a>
+<PRE>
+<p>
+Format of PC/TCP interface statistics:
+<a name=table3455></a>
+Offset  Size    Description     (Table 03455)
+00h    WORD    interface class (e.g. 802.3)
+02h    WORD    type (manufacturer) of interface
+04h    WORD    interface number
+06h    DWORD   (big-endian) IP address of interface
+0Ah    DWORD   subnet mask
+0Eh    WORD    0001h if interface is up
+10h    DWORD   total packets received
+14h    DWORD   total packets sent
+18h    DWORD   receive errors
+1Ch    DWORD   send errors
+20h    WORD    length of local net address (e.g. 0006h for Ethernet)
+22h    DWORD   pointer to local net address
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6804.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6806.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

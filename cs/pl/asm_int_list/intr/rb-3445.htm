@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E1h/SF=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E1h/SF=00h - Novell NetWare - MESSAGE SERVICES - SEND BROADCAST MESSAGE - 
+AH = E1h subfn 00h
+DS:SI - request buffer (see #01819)
+ES:DI - reply buffer (see #01820)
+Return: AL = status
+00h successful
+FEh I/O error or out of dynamic workspace
+Note:  this function is supported by NetWare 4.0+ and Advanced NetWare 1.0+
+SeeAlso: AH=DEhNetWare,AH=DEh/DL=04h,AH=E1h/SF=01h,AH=E1h/SF=04h
+SeeAlso: AH=E1h/SF=09h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E1h/SF=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3444.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3446.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - MESSAGE SERVICES - SEND BROADCAST MESSAGE</font></h3>
+<PRE>
+AH = E1h subfn 00h
+DS:SI -> request buffer <a href="rb-3445.htm#Table1819">(see #01819)</a>
+ES:DI -> reply buffer <a href="rb-3445.htm#Table1820">(see #01820)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+FEh I/O error or out of dynamic workspace
+</PRE>
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+ and Advanced NetWare 1.0+
+<p><b>See Also:</b>
+<a href="rb-3293.htm">AH=DEh"NetWare"</a> - <a href="rb-3407.htm">AH=DEh/DL=04h</a> - <a href="rb-3446.htm">AH=E1h/SF=01h</a> - <a href="rb-3449.htm">AH=E1h/SF=04h</a>
+<p><b>See Also:</b>
+<a href="rb-3454.htm">AH=E1h/SF=09h</a>
+<PRE>
+<p>
+Format of NetWare "Send Broadcast Message" request buffer:
+<a name=table1819></a>
+Offset  Size    Description     (Table 01819)
+00h    WORD    length of following data (max 9Eh)
+02h    BYTE    00h (subfunction "Send Broadcast Message")
+03h    BYTE    number of connections (01h-64h)
+04h  N BYTEs   list of connections to receive broadcast message.
+BYTE    length of message (01h-37h)
+N BYTEs   broadcast message (no control characters or characters > 7Eh)
+</PRE>
+<p><b>See Also:</b>
+#01820
+<PRE>
+<p>
+Format of NetWare "Send Broadcast Message" reply buffer:
+<a name=table1820></a>
+Offset  Size    Description     (Table 01820)
+00h    WORD    (call) size of following results buffer (max 65h)
+02h    BYTE    number of connections
+03h  N BYTEs   list of per-connection results
+00h successful
+FCh message rejected due to lack of buffer space
+FDh invalid connection number
+FFh blocked (see also AH=E1h/SF=02h)
+</PRE>
+<p><b>See Also:</b>
+#01819
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3444.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3446.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

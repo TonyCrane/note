@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=55h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=55h - DOS 2+ internal - CREATE CHILD PSP - 
+AH = 55h
+DX = segment at which to create new PSP
+SI = (DOS 3.0+) value to place in memory size field at DX:[0002h]
+Return: AL destroyed
+Notes: creates a child PSP rather than making an exact copy of the current
+PSP; the new PSP's parent pointer is set to the current PSP and the
+reference count for each inherited file is incremented
+(DOS 2.0+) sets current PSP to DX
+(DOS 3.0+) marks no inherit file handles as closed in child PSP
+this function is implemented using the same code as AH=26h, so unlike
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=55h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2988.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2990.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ internal - CREATE CHILD PSP</font></h3>
+<PRE>
+AH = 55h
+DX = segment at which to create new PSP
+SI = (DOS 3.0+) value to place in memory size field at DX:[0002h]<br>
+<p><b>Return:</b><br>AL destroyed
+</PRE>
+<p><b>Notes:</b>
+Creates a "child" PSP rather than making an exact copy of the current
+PSP; the new PSP's parent pointer is set to the current PSP and the
+reference count for each inherited file is incremented.
+(DOS 2.0+) sets current PSP to DX.
+(DOS 3.0+) marks "no inherit" file handles as closed in child PSP.
+This function is implemented using the same code as AH=26h, so unlike
+other DOS 2+ functions, it does not return status in CF, instead
+returning status in AL as DOS 1.x functions do (but it never puts an
+explicit return value in AL)
+<p><b>See Also:</b>
+<a href="rb-2682.htm">AH=26h</a> - <a href="rb-2980.htm">AH=50h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2988.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2990.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

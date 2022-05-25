@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=86h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=86h - European MS-DOS 4.0 - SETFILETABLE - INSTALL NEW FILE HANDLE TABLE - 
+AH = 86h
+BX = total number of file handles in new table
+Return: CF clear if successful
+CF set on error
+AX = error code (06h,08h) (see #01680 at AH=59h/BX=0000h)
+Desc:  adjust the size of the per-process open file table, thus raising or
+lowering the limit on the number of files the caller can open
+simultaneously
+Notes: any currently-open files are copied to the new table
+if the table is increased beyond the default 20 handles, only the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=86h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3249.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3251.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>European MS-DOS 4.0 - SETFILETABLE - INSTALL NEW FILE HANDLE TABLE</font></h3>
+<PRE>
+AH = 86h
+BX = total number of file handles in new table<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (06h,08h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Desc:</b>
+Adjust the size of the per-process open file table, thus raising or
+lowering the limit on the number of files the caller can open
+simultaneously
+<p><b>Notes:</b>
+Any currently-open files are copied to the new table.
+If the table is increased beyond the default 20 handles, only the
+first 20 will be inherited by child processes.
+Error 06h is returned if the requested number of handles exceeds
+system limits or would require closing currently-open files
+<p><b>See Also:</b>
+<a href="rb-2682.htm">AH=26h</a> - <a href="rb-3169.htm">AH=67h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-e.htm">
+E</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3249.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3251.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

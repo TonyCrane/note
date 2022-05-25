@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<TITLE>Int 4B/AX=8108h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 4B/AX=8108h - Virtual DMA Specification - RELEASE DMA BUFFFER - 
+AX = 8108h
+DX = flags
+bit 0: reserved (zero)
+bit 1: data should be copied out of buffer
+bits 2-15 reserved (zero)
+ES:DI - DMA descriptor structure (see #03221,#03222) with buffer ID set
+(also region size/region offset/segment if DX bit 1 set)
+Return: CF clear if successful
+CF set on error
+AL = error code (see #03218)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 4B/AX=8108h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6267.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6269.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Virtual DMA Specification - RELEASE DMA BUFFFER</font></h3>
+<PRE>
+AX = 8108h
+DX = flags
+<p><b>bit 0:</b><br>Reserved (zero)
+<p><b>bit 1:</b><br>Data should be copied out of buffer
+bits 2-15 reserved (zero).
+ES:DI -> DMA descriptor structure <a href="rb-0000.htm#Table0"></a>(see #03221,#03222) with buffer ID set
+(also region size/region offset/segment if DX bit 1 set)<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AL = error code <a href="rb-6262.htm#Table3218">(see #03218)</a>
+</PRE>
+<p><b>BUG:</b>
+Under Windows 3.0 Enhanced mode, you must specify that data be copied
+for this function to work correctly
+<p><b>See Also:</b>
+<a href="rb-6267.htm">AX=8107h</a>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-4B.htm">
+Int 4Bh</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6267.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6269.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

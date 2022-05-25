@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5FC8h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5FC8h - LANtastic v4.0+ - SCHEDULE SERVER SHUTDOWN - 
+AX = 5FC8h
+ES:DI - ASCIZ server name in form \\machine
+DS:SI - ASCIZ reason string (80 characters)
+CX = number of minutes until shutdown (0 = immediate)
+DX = option flags (see #01744)
+Return: CF clear if successful
+CF set on error
+AX = error code
+SeeAlso: AX=5FC9h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5FC8h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3124.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3126.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LANtastic v4.0+ - SCHEDULE SERVER SHUTDOWN</font></h3>
+<PRE>
+AX = 5FC8h
+ES:DI -> ASCIZ server name in form "\\machine"
+DS:SI -> ASCIZ reason string (80 characters)
+CX = number of minutes until shutdown (0 = immediate)
+DX = option flags <a href="rb-3125.htm#Table1744">(see #01744)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3126.htm">AX=5FC9h</a>
+<PRE>
+<p>
+Bitfields for LANtastic option flags:
+<a name=table1744></a>
+Bit(s)  Description     (Table 01744)
+0      auto reboot
+1      do not notify users
+2      halt after shutdown
+3      shutdown due to power fail (used by UPS)
+4-7    reserved
+8-14   user definable
+15     reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3124.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3126.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

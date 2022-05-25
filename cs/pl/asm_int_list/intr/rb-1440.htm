@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=53B0h/BH=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=53B0h/BH=04h - Intel System Management Bus - 32-BIT PROTECTED-MODE CONNECT - 
+AX = 53B0h
+BH = 04h
+CX = 6941h ('iA')
+Return: CF clear if successful
+AX = SMBus 32-bit code segment (real mode base address)
+EBX = offset of entry point into SMBus BIOS Interface
+CX = SMBus 16-bit code segment (real mode base address)
+DX = SMBus data segment (real mode base address)
+SI = code segment length in bytes
+DI = data segment length in bytes
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=53B0h/BH=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1439.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1441.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Intel System Management Bus - 32-BIT PROTECTED-MODE CONNECT</font></h3>
+<PRE>
+AX = 53B0h
+BH = 04h
+CX = 6941h ('iA')<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = SMBus 32-bit code segment (real mode base address)
+EBX = offset of entry point into SMBus BIOS Interface
+CX = SMBus 16-bit code segment (real mode base address)
+DX = SMBus data segment (real mode base address)
+SI = code segment length in bytes
+DI = data segment length in bytes
+CF set if error
+AH = error code (01h,02h,0Ah,86h) <a href="rb-1437.htm#Table484">(see #00484)</a>
+AL = sub-error code if error code is 02h <a href="rb-1437.htm#Table485">(see #00485)</a>
+</PRE>
+<p><b>Desc:</b>
+Connect to SMBus interface; once connected, all SMBus calls are made
+to the supplied entry point instead of INT 15 (with registers
+identical to those described here for INT 15)
+<p><b>Notes:</b>
+Before calling the entry point, two descriptors must be initialized in
+the GDT or LDT.  They must be consecutive and be in the order of
+32-bit code, 16-bit code, then data.  At the time of the call, the
+descriptors must be valid and have CPL=0..
+The code descriptors must be ring-0 privilege.
+This function is supported only in INT 15 mode
+<p><b>See Also:</b>
+<a href="rb-1437.htm">AX=53B0h/BH=01h</a> - <a href="rb-1438.htm">AX=53B0h/BH=02h</a> - <a href="rb-1439.htm">AX=53B0h/BH=03h</a> - <a href=http://www.ctyme.com/intr/rb-14
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1439.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1441.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

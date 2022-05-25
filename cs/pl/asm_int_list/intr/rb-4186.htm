@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2C/AX=0012h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2C/AX=0012h - Cloaking v1.01 - Query_Current_VM - 
+AX = 0012h
+Return: CF clear
+EBX = handle of active VM
+ESI = handle of system VM
+ECX = VM status flags (see #02562)
+EDX = shell flags (see #02563)
+Note:  this function is only available while MS Windows is running in enhanced
+mode
+SeeAlso: AX=000Fh,AX=0011h,AX=0013h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2C/AX=0012h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4185.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4187.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Cloaking v1.01 - Query_Current_VM</font></h3>
+<PRE>
+AX = 0012h<br>
+<p><b>Return:</b><br>CF clear
+EBX = handle of active VM
+ESI = handle of system VM
+ECX = VM status flags <a href="rb-4186.htm#Table2562">(see #02562)</a>
+EDX = shell flags <a href="rb-4186.htm#Table2563">(see #02563)</a>
+</PRE>
+<p><b>Note:</b>
+This function is only available while MS Windows is running in enhanced
+mode
+<p><b>See Also:</b>
+<a href="rb-4184.htm">AX=000Fh</a> - <a href="rb-4185.htm">AX=0011h</a> - <a href="rb-4187.htm">AX=0013h</a>
+<PRE>
+<p>
+Bitfields for VM status flags:
+<a name=table2562></a>
+Bit(s)  Description     (Table 02562)
+0      in exclusive mode
+1      runs in background
+2      being created
+3      suspended
+4      not executable
+5      executing in protected mode
+6      contains PM application
+7      32-bit PM application
+8      called from VxD
+9      high priority background
+10     blocked on semaphore
+11     awakening
+12     has pageable V86
+13     has locked V86
+14     is scheduled
+15     idle
+16     closing
+<p>
+Bitfields for shell flags:
+<a name=table2563></a>
+Bit(s)  Description     (Table 02563)
+2      windowed
+5      Alt-Tab reserved
+6      Alt-Esc reserved
+7      Alt-Space reserved
+8      Alt-PrtSc reserved
+9      Alt-Enter reserved
+10     Alt-PrtSc reserved
+11     PrtSc reserved
+12     polling enabled
+13     no HMA
+14     has shortcut key
+15     locked EMS handles
+16     locked XMS handles
+17     fast paste enabled
+18     locked V86 memory
+30     close-on-exit enabled
+</PRE>
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2C.htm">
+Int 2Ch</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4185.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4187.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

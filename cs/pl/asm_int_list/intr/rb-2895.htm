@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=440Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=440Ch - Greg Shenaut ASPITAPE.SYS - INTERFACE - 
+AX = 440Ch
+BX = device handle
+CH = category code
+07h tape (ASPITAPE.SYS)
+CL = function
+01h mtop - perform tape operation
+02h mtget - get tape status
+03h ignore end-of-tape errors
+04h enable end-of-tape errors
+DS:DX - parameter block (see #01554,#01555)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=440Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2894.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2896.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Greg Shenaut ASPITAPE.SYS - INTERFACE</font></h3>
+<PRE>
+AX = 440Ch
+BX = device handle
+CH = category code
+07h tape (ASPITAPE.SYS)
+CL = function
+01h "mtop" - perform tape operation
+02h "mtget" - get tape status
+03h ignore end-of-tape errors
+04h enable end-of-tape errors
+DS:DX -> parameter block <a href="rb-0000.htm#Table0"></a>(see #01554,#01555)<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+DS:DX -> data block
+</PRE>
+<p><b>Notes:</b>
+This device driver is a simple DOS interface to the Adaptec Advanced
+SCSI Programming Interface (ASPI).  It provides the following device
+names as access to the SCSI tape, 'RMTx' (rewind on close) and
+'NRMTx' (NO rewind on close) where x can go from 0 to 3.  There may
+also be the following names 'MTx' and 'NMTx' which default to 1024
+byte blocks.  The names may also have a '$' appended to try and make
+them unique from file names of 'RMT0' etc..
+Once opend these devices must be put into RAW mode
+<p><b>See Also:</b>
+<a href="rb-2832.htm">AX=4402h"ASPI"</a>
+<PRE>
+<p>
+Format of ASPITAPE.SYS mtop parameter block:
+<a name=table1554></a>
+Offset  Size    Description     (Table 01554)
+00h    WORD    operation code
+00h "MTWEOF" - write an end-of-file record
+01h "MTFSF" - forward space file
+02h "MTBSF" - backward space file
+03h "MTFSR" - forward space record
+04h "MTBSR" - backward space record
+05h "MTREW" - rewind
+06h "MTOFFL" - rewind and unload
+07h "MTNOP" - perform TEST UNIT READY
+02h    DWORD   repetition count
+<p>
+Format of ASPITAPE.SYS mtget parameter block:
+<a name=table1555></a>
+Offset  Size    Description     (Table 01555)
+00h    BYTE    ASPI host ID
+01h    BYTE    SCSI target ID
+02h    BYTE    SCSI logical unit number
+03h    BYTE    device parameters
+<p><b>bit 0:</b><br>Drive must use fixed-block read and write
+<p><b>bit 7:</b><br>Drive is an ASPI device
+04h    BYTE    current device state <a href="rb-2895.htm#Table1556">(see #01556)</a>
+05h    BYTE    unit number within driver
+06h    WORD    fixed block blocksize
+08h    BYTE    last SCSI status
+09h    BYTE    last SCSI sense key
+0Ah    WORD    last SCSI opcode (packed) <a href="rb-2895.htm#Table1557">(see #01557)</a>
+0Ch    WORD    residual bytes from SCSI opcode
+<p>
+Bitfields for ASPITAPE.SYS current device state:
+<a name=table1556></a>
+Bit(s)  Description     (Table 01556)
+0      device currently opened in buffered mode
+1      drive currently opened in nonbuffered mode
+2      rewind drive on last close
+3      drive has been written on
+4      drive has been read from
+5      next read will return 0 bytes
+6      EOM will resemble EOF
+7      drive may be busy rewinding
+<p>
+Bitfields for SCSI opcode:
+<a name=table1557></a>
+Bit(s)  Description     (Table 01557)
+0-7    SCSI operation (SCSI packet byte 0)
+8-10   SCSI flags (SCSI packet byte 1)
+11-12  ASPI "Direction Bits" (ASPI SRB byte 3)
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-g.htm">
+G</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2894.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2896.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

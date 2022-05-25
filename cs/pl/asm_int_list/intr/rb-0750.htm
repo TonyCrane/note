@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=80h/CX=6572h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=80h/CX=6572h - FAST! v4.02+ - API - 
+AH = 80h
+CX = 6572h
+DX = 1970h
+ES:BX - request packet (see #00290)
+AL = function number (see #00289)
+Return: AH = status (except function 06h)
+00h if successful
+01h invalid function
+05h not supported by the installed variant
+CF clear if successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=80h/CX=6572h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0749.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0751.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FAST! v4.02+ - API</font></h3>
+<PRE>
+AH = 80h
+CX = 6572h
+DX = 1970h
+ES:BX -> request packet <a href="rb-0750.htm#Table290">(see #00290)</a>
+AL = function number <a href="rb-0750.htm#Table289">(see #00289)</a><br>
+<p><b>Return:</b><br>AH = status (except function 06h)
+00h if successful
+01h invalid function
+05h not supported by the installed variant
+CF clear if successful
+CF set on error
+AL may be destroyed
+</PRE>
+<p><b>Program:</b>
+FAST! is a disk cache by Future Computing Systems and marketed by
+BLOC Publishing Corp.
+<p><b>See Also:</b>
+<a href="rb-0751.htm">AX=8001h</a> - <a href="rb-0752.htm">AX=8006h</a> - <a href="rb-0753.htm">AX=8007h</a>
+<PRE>
+<p><b>Index:</b><br>Hotkeys;FAST!
+<p>
+<a name=table289></a>
+(Table 00289)
+Values for FAST! function:
+01h    get cache information (see AX=8001h)
+04h    disable cache
+05h    enable cache and reset statistics
+06h    installation check (see AX=8006h)
+07h    unhook interrupts (see AX=8007h)
+09h    flush cache
+0Ah    (v4.02+) enable staged writes
+0Bh    (v4.02+) disable staged writes
+0Ch    (v4.02+) enable beep on flush
+0Dh    (v4.02+) disable beep on flush
+0Eh    ???
+0Fh    ???
+10h    (v4.12+) enable hotkeys
+11h    (v4.12+) disable hotkeys
+12h    (v4.13+) set idle delay
+13h    (v4.13+) set flush dirty percentage
+14h    (v5.00+) enable mouse checks
+15h    (v5.00+) disable mouse checks
+16h    (v5.00d+) reduce cache size to minimum
+17h    (v5.00d+) increase cache size to maximum
+<p>
+Format of FAST! request packet:
+<a name=table290></a>
+Offset  Size    Description     (Table 00290)
+00h    DWORD   pointer to 19-byte signature string <a href="rb-0750.htm#Table291">(see #00291)</a>
+04h    DWORD   pointer to buffer for data (if needed by function)
+<p>
+<a name=table291></a>
+(Table 00291)
+Values for FAST! v4.04-v5.03 signature string:
+13h 07h 06h 08h 11h 18h 0Fh 0Eh 02h 18h 13h 08h 0Bh 08h 01h 00h 04h 08h 15h
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0749.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0751.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

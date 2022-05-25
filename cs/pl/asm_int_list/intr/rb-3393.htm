@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=DAh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=DAh - Novell NetWare - DIRECTORY SERVICES - GET VOLUME INFO WITH NUMBER - 
+AH = DAh
+DL = volume number
+ES:DI - reply buffer (see #01812)
+Return: AL = 00h
+Notes: this function is supported by NetWare 4.0+ and Advanced NetWare 1.0+
+operator console rights are not required to make this call
+reported total blocks and total unused blocks include the Hot Fix
+Table; the NetWare shell's implementation of INT 21/AH=36h will
+report values larger than 268MB as 268MB.
+SeeAlso: AH=36h,AH=E2h/SF=15h,AH=E3h/SF=E9h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=DAh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3392.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3394.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - GET VOLUME INFO WITH NUMBER</font></h3>
+<PRE>
+AH = DAh
+DL = volume number
+ES:DI -> reply buffer <a href="rb-3393.htm#Table1812">(see #01812)</a><br>
+<p><b>Return:</b><br>AL = 00h
+</PRE>
+<p><b>Notes:</b>
+This function is supported by NetWare 4.0+ and Advanced NetWare 1.0+.
+Operator console rights are not required to make this call.
+Reported total blocks and total unused blocks include the Hot Fix
+Table; the NetWare shell's implementation of INT 21/AH=36h will
+report values larger than 268MB as 268MB.
+<p><b>See Also:</b>
+<a href="rb-2751.htm">AH=36h</a> - <a href="rb-3475.htm">AH=E2h/SF=15h</a> - <a href="rb-3580.htm">AH=E3h/SF=E9h</a>
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1812></a>
+Offset  Size    Description     (Table 01812)
+00h    WORD    sectors/block
+02h    WORD    total blocks on volume
+04h    WORD    unused blocks
+06h    WORD    total directory entries
+08h    WORD    unused directory entries
+0Ah 16 BYTEs   volume name, null padded
+1Ah    WORD    removable flag, 0000h = not removable
+</PRE>
+<p><b>Note:</b>
+All words are big-endian
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3392.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3394.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

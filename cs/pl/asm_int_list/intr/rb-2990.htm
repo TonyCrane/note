@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=56h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=56h - DOS 2+ - RENAME - RENAME FILE - 
+AH = 56h
+DS:DX - ASCIZ filename of existing file (no wildcards, but see below)
+ES:DI - ASCIZ new filename (no wildcards)
+CL = attribute mask (server call only, see below)
+Return: CF clear if successful
+CF set on error
+AX = error code (02h,03h,05h,11h) (see #01680)
+Notes: allows move between directories on same logical volume
+this function does not set the archive attribute
+(see #01420 at AX=4301h), which results in incremental backups not
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=56h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2989.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2991.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - RENAME - RENAME FILE</font></h3>
+<PRE>
+AH = 56h
+DS:DX -> ASCIZ filename of existing file (no wildcards, but see below)
+ES:DI -> ASCIZ new filename (no wildcards)
+CL = attribute mask (server call only, see below)<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (02h,03h,05h,11h) <a href="rb-3012.htm#Table1680">(see #01680)</a>
+</PRE>
+<p><b>Notes:</b>
+Allows move between directories on same logical volume.
+This function does not set the archive attribute
+<a href="rb-0000.htm#Table0"></a>(see #01420 at AX=4301h), which results in incremental backups not
+backing up the file under its new name.
+Open files should not be renamed.
+(DOS 2.x only) this function renames file by creating a new directory
+entry with the new name, then marking the old entry deleted.
+(DOS 3.0+) allows renaming of directories.
+(DOS 3.1+) wildcards are allowed if invoked via AX=5D00h, in which case
+error 12h (no more files) is returned on success, and both source and
+destination specs must be canonical (as returned by AH=60h).
+Wildcards in the destination are replaced by the corresponding char
+of each source file being renamed.  Under DOS 3.x, the call will fail
+if the destination wildcard is *.* or equivalent; under DR DOS 5.0,
+the call will fail with error code 03h if any wildcards are used.
+When invoked via AX=5D00h, only those files matching the attribute
+mask in CL are renamed..
+Under the FlashTek X-32 DOS extender, the old-name pointer is in DS:EDX
+and the new-name pointer is in ES:EDI (DS must equal ES)
+<p><b>BUG:</b>
+(DR DOS 3.41) when invoked via AX=5D00h, this function will generate
+a new directory entry with the new name (including any wildcards)
+which can only be removed with a sector editor
+<p><b>See Also:</b>
+<a href="rb-2582.htm">AH=17h</a> - <a href="rb-2803.htm">AX=4301h</a> - <a href="rb-2819.htm">AX=43FFh/BP=5053h</a> - <a href="rb-3017.htm">AX=5D00
+<p><b>See Also:</b>
+<a href="rb-3906.htm">AX=F257h/SF=04h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2989.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2991.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

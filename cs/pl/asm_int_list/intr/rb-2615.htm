@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=250Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=250Dh - Phar Lap 386/DOS-Extender - GET REAL-MODE LINK INFORMATION - 
+AX = 250Dh
+Return: CF clear
+EAX = CS:IP of real-mode callback procedure (see #01358) that will
+call through from real mode to a protected-mode routine
+EBX = 32-bit real-mode address of intermode call data buffer
+ECX = size in bytes of intermode call data buffer
+ES:EDX = protected-mode address of intermode call data buffer
+Notes: this function is also supported by FlashTek X-32VM
+X-32VM guarantees the intermode buffer to be at least 4 KB
+SeeAlso: AX=250Eh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=250Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2614.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2616.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Phar Lap 386/DOS-Extender - GET REAL-MODE LINK INFORMATION</font></h3>
+<PRE>
+AX = 250Dh<br>
+<p><b>Return:</b><br>CF clear
+EAX = CS:IP of real-mode callback procedure <a href="rb-2615.htm#Table1358">(see #01358)</a> that will
+call through from real mode to a protected-mode routine
+EBX = 32-bit real-mode address of intermode call data buffer
+ECX = size in bytes of intermode call data buffer
+ES:EDX = protected-mode address of intermode call data buffer
+</PRE>
+<p><b>Notes:</b>
+This function is also supported by FlashTek X-32VM.
+X-32VM guarantees the intermode buffer to be at least 4 KB
+<p><b>See Also:</b>
+<a href="rb-2616.htm">AX=250Eh</a>
+<PRE>
+<p>
+<a name=table1358></a>
+(Table 01358)
+Call Phar Lap real-mode callback with:.
+<p><b>STACK:</b><br>DWORD   offset to protected-mode code
+WORD    placeholder for protected-mode CS
+DWORD   pointer to selector structure <a href="rb-2615.htm#Table1359">(see #01359)</a>
+or 0000h:0000h for defaults
+var     parameters for protected-mode procedure<br>
+<p><b>Return:</b><br>Via FAR return
+<p>
+Format of Phar Lap selector structure:
+<a name=table1359></a>
+Offset  Size    Description     (Table 01359)
+00h    WORD    protected-mode GS selector
+02h    WORD    protected-mode FS selector
+04h    WORD    protected-mode ES selector
+06h    WORD    protected-mode DS selector
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2614.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2616.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=58h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=58h - DOS 2.11+ - GET OR SET MEMORY ALLOCATION STRATEGY - 
+AH = 58h
+AL = subfunction
+00h get allocation strategy
+Return: AX = current strategy (see #01679)
+01h set allocation strategy
+BL = new allocation strategy (see #01679)
+BH = 00h (DOS 5+)
+Return: CF clear if successful
+CF set on error
+AX = error code (01h) (see #01680)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=58h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3007.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3009.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2.11+ - GET OR SET MEMORY ALLOCATION STRATEGY</font></h3>
+<PRE>
+AH = 58h
+AL = subfunction
+00h get allocation strategy
+<p><b>Return:</b><br>AX = current strategy (see #01679)
+01h set allocation strategy
+BL = new allocation strategy <a href="rb-3008.htm#Table1679">(see #01679)</a>
+BH = 00h (DOS 5+)<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (01h) <a href="rb-3012.htm#Table1680">(see #01680)</a>
+</PRE>
+<p><b>Notes:</b>
+The Set subfunction accepts any value in BL for DOS 3.x and 4.x;
+2 or greater means last fit.
+The Get subfunction returns the last value set.
+Setting an allocation strategy involving high memory does not
+automatically link in the UMB memory chain; this must be done
+explicitly with AX=5803h in order to actually allocate high memory.
+A program which changes the allocation strategy should restore it
+before terminating.
+Toshiba MS-DOS v2.11 supports subfunctions 00h and 01h, as does the
+TI Professional MS-DOS v2.13.
+DR DOS 3.41 reportedly reverses subfunctions 00h and 01h
+<p><b>See Also:</b>
+<a href="rb-2934.htm">AH=48h</a> - <a href="rb-2935.htm">AH=49h</a> - <a href="rb-2936.htm">AH=4Ah</a> - <a href="rb-4524.htm">INT 2F/AX=4310h"XMS"</a> - <a href=http://www.
+<PRE>
+<p>
+<a name=table1679></a>
+(Table 01679)
+Values for DOS memory allocation strategy:
+00h low memory first fit
+01h low memory best fit
+02h low memory last fit
+---DOS 5+ ---
+40h high memory first fit
+41h high memory best fit
+42h high memory last fit
+80h first fit, try high then low memory
+81h best fit, try high then low memory
+82h last fit, try high then low memory
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3007.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3009.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

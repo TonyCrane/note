@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=E1h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=E1h - Novell NetWare - FILE SERVER - GET CONNECTION'S SEMAPHORES - 
+AH = E3h subfn E1h
+DS:SI - request buffer (see #02067)
+ES:DI - reply buffer (see #02068)
+Return: AL = status (00h,C6h) (see #02053)
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have console operator privileges
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=DBh,AH=E3h/SF=DFh,AH=E3h/SF=E2h
+SeeAlso: AX=F217h/SF=E1h
+Format of NetWare Get Connection's Semaphores request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=E1h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3572.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3574.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET CONNECTION'S SEMAPHORES</font></h3>
+<PRE>
+AH = E3h subfn E1h
+DS:SI -> request buffer <a href="rb-3573.htm#Table2067">(see #02067)</a>
+ES:DI -> reply buffer <a href="rb-3573.htm#Table2068">(see #02068)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02053)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have console operator privileges
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3567.htm">AH=E3h/SF=DBh</a> - <a href="rb-3571.htm">AH=E3h/SF=DFh</a> - <a href="rb-3574.htm"
+<p><b>See Also:</b>
+<a href="rb-3829.htm">AX=F217h/SF=E1h</a>
+<PRE>
+<p>
+Format of NetWare "Get Connection's Semaphores" request buffer:
+<a name=table2067></a>
+Offset  Size    Description     (Table 02067)
+00h    WORD    0005h (length of following data)
+02h    BYTE    E1h (subfunction "Get Connection's Semaphores")
+03h    WORD    (big-endian) logical connection number
+05h    WORD    (big-endian) last record seen (0000h on first call)
+</PRE>
+<p><b>See Also:</b>
+#02068 - #02240 at AX=F217h/SF=E1h
+<PRE>
+<p>
+Format of NetWare "Get Connection's Semaphores" reply buffer:
+<a name=table2068></a>
+Offset  Size    Description     (Table 02068)
+00h    WORD    (call) size of following results record (max 1FEh)
+02h    WORD    next request record (place in "last record" field on next call)
+04h    BYTE    number of records following
+05h    var     array of Semaphore Information Records <a href="rb-3573.htm#Table2069">(see #02069)</a>
+</PRE>
+<p><b>See Also:</b>
+#02067 - #02240 at AX=F217h/SF=E1h
+<PRE>
+<p>
+Format of NetWare Semaphore Information Record:
+<a name=table2069></a>
+Offset  Size    Description     (Table 02069)
+00h    WORD    (big-endian) open count
+02h    BYTE    semaphore value (-128 to 127)
+03h    BYTE    task number
+04h    BYTE    lock type
+05h    BYTE    length of semaphore's name
+06h  N BYTEs   semaphore's name
+14 BYTEs   filename
+</PRE>
+<p><b>See Also:</b>
+#02068
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3572.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3574.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

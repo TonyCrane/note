@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0004h/SF=000Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0004h/SF=000Fh - Banyan VINES - SET ACCESS RIGHTS LIST (ARL) - 
+AX = 0004h subfn 000Fh
+DS:DX - request block (see #03419)
+Return: AX = status (see also #03400)
+0000h request has been processed
+Desc:  Sets the owner, group, and extended access rights for the specified
+file or directory
+Note:  A status of 0000h does not necessarily indicate a successful request;
+check the status word at offset 000Eh of the request block too
+If the number of ARL entries is less than 1 or greater than 5, error
+0057h (invalid number of entries) is returned
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0004h/SF=000Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6754.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6756.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - SET ACCESS RIGHTS LIST (ARL)</font></h3>
+<PRE>
+AX = 0004h subfn 000Fh
+DS:DX -> request block <a href="rb-6755.htm#Table3419">(see #03419)</a><br>
+<p><b>Return:</b><br>AX = status (see also #03400)
+0000h request has been processed
+</PRE>
+<p><b>Desc:</b>
+Sets the owner, group, and extended access rights for the specified
+file or directory
+<p><b>Note:</b>
+A status of 0000h does not necessarily indicate a successful request;
+check the status word at offset 000Eh of the request block too.
+If the number of ARL entries is less than 1 or greater than 5, error
+0057h (invalid number of entries) is returned
+<p><b>See Also:</b>
+<a href="rb-6754.htm">AX=0004h/SF=000Eh</a>
+<PRE>
+<p>
+Format of VINES Function 0004h/Subfunction 000Fh request block:
+<a name=table3419></a>
+Offset  Size    Description     (Table 03419)
+00h    WORD    000Fh
+02h    BYTE    drive number (0=default, 1=A, ...)
+03h    BYTE    reserved
+04h    DWORD   pointer to path specification (drive letter ignored)
+08h    DWORD   pointer to ARL control block <a href="rb-6754.htm#Table3417">(see #03417)</a>
+0Ch    WORD    number of ARL entries (1..5)
+0Eh    WORD    buffer for status <a href="rb-6754.htm#Table3418">(see #03418)</a>
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6754.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6756.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

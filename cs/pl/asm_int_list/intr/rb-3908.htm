@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F257h/SF=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F257h/SF=06h - Novell NetWare v3+ - GET INFORMATION ABOUT FILE OR DIRECTORY - 
+AX = F257h subfn 06h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02385)
+ES:DI - reply buffer (see #02388)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+SeeAlso: AH=F2hNovell,AX=F257h/SF=02h,AX=F257h/SF=05h,AX=F257h/SF=07h
+Format of NetWare Get NS Entry Info request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F257h/SF=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3907.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3909.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v3+ - GET INFORMATION ABOUT FILE OR DIRECTORY</font></h3>
+<PRE>
+AX = F257h subfn 06h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3908.htm#Table2385">(see #02385)</a>
+ES:DI -> reply buffer <a href="rb-3908.htm#Table2388">(see #02388)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3904.htm">AX=F257h/SF=02h</a> - <a href="rb-3907.htm">AX=F257h/SF=05h</a> - <a href="rb-3909.htm">AX=F257h/SF=07h</a>
+<PRE>
+<p>
+Format of NetWare "Get NS Entry Info" request buffer:
+<a name=table2385></a>
+Offset  Size    Description     (Table 02385)
+00h    BYTE    06h (subfunction "Get NS Entry Info")
+01h    BYTE    name space <a href="rb-3908.htm#Table2387">(see #02387)</a>
+02h    BYTE    destination name space
+03h    WORD    search attributes
+05h    DWORD   return information mask <a href="rb-3908.htm#Table2386">(see #02386)</a>
+09h    BYTE    volume number
+0Ah    DWORD   directory base
+0Eh    BYTE    handle flag
+00h first byte of dir base is dir handle; ignore volume number
+01h dir base = unique ID, volume number set
+FFh volume number and dir base ignored, volume part of path
+0Fh    BYTE    number of path components
+10h  N BYTEs   list of path components (each a counted string)
+</PRE>
+<p><b>See Also:</b>
+#02388
+<PRE>
+<p>
+Bitfields for return information mask:
+<a name=table2386></a>
+Bit(s)  Description     (Table 02386)
+0      include filename
+1      data stream space allocated info
+2      attributes info
+3      data stream size info
+4      total space allocated for all data streams
+5      extended attributes info
+6      archive info
+7      modify info
+8      create info
+9      name space info
+10     directory info
+11     rights info
+<p>
+<a name=table2387></a>
+(Table 02387)
+Values for NetWare name space:
+00h    DOS
+01h    Macintosh
+02h    NFS
+03h    FTAM
+04h    OS/2
+</PRE>
+<p><b>See Also:</b>
+#02385 - #02393
+<PRE>
+<p>
+Format of NetWare "Get NS Entry Info" reply buffer:
+<a name=table2388></a>
+Offset  Size    Description     (Table 02388)
+00h 72 BYTEs   reserved
+48h    DWORD   creator's name space number
+4Ch 257 BYTEs  reserved
+</PRE>
+<p><b>See Also:</b>
+#02385
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3907.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3909.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

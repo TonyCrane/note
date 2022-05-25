@@ -1,0 +1,275 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B10Ah/SF=1066h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B10Ah/SF=1066h - PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (PicoPower devices) - 
+AX = B10Ah subfn 1066h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) (see #00878)
+Return: CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) (see #00729)
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B10Ah/SF=1066h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2383.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2385.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (PicoPower devices)</font></h3>
+<PRE>
+AX = B10Ah subfn 1066h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) <a href="rb-2377.htm#Table878">(see #00878)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) <a href="rb-2371.htm#Table729">(see #00729)</a>
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+</PRE>
+<p><b>Notes:</b>
+This function may require up to 1024 byte of stack; it will not enable
+interrupts if they were disabled before making the call.
+The meanings of BL and BH on entry were exchanged between the initial
+drafts of the specification and final implementation
+<p><b>See Also:</b>
+<a href="rb-2377.htm">AX=B10Ah</a> - <a href="rb-2387.htm">AX=B10Ah/SF=8086h</a>
+<PRE>
+<p>
+Format of PicoPower Vesuvius V3-LS ISA Bridge configuration:
+<a name=table971></a>
+Offset  Size    Description     (Table 00971)
+00h 64 BYTEs   header <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 1066h, device ID 0002h or 8002h)
+40h    WORD    distributed DMA control register <a href="rb-2384.htm#Table972">(see #00972)</a>
+42h    BYTE    distributed DMA status register <a href="rb-2384.htm#Table973">(see #00973)</a>
+44h    DWORD   slave DMAC CH0 base register <a href="rb-2384.htm#Table974">(see #00974)</a>
+48h    DWORD   slave DMAC CH1 base register <a href="rb-2384.htm#Table974">(see #00974)</a>
+4Ch    DWORD   slave DMAC CH2 base register <a href="rb-2384.htm#Table974">(see #00974)</a>
+50h    DWORD   slave DMAC CH3 base register <a href="rb-2384.htm#Table974">(see #00974)</a>
+54h    DWORD   slave DMAC CH5 base register <a href="rb-2384.htm#Table974">(see #00974)</a>
+58h    DWORD   slave DMAC CH6 base register <a href="rb-2384.htm#Table974">(see #00974)</a>
+5Ch    DWORD   slave DMAC CH7 base register <a href="rb-2384.htm#Table974">(see #00974)</a>
+90h    DWORD   PCI-to-ISA bridge configuration register <a href="rb-2384.htm#Table975">(see #00975)</a>
+94h    DWORD   ISA memory address positive decode <a href="rb-2384.htm#Table976">(see #00976)</a>
+98h    DWORD   I/O address positive decode <a href="rb-2384.htm#Table977">(see #00977)</a>
+9Ch    WORD    I/O configuration address register <a href="rb-2384.htm#Table978">(see #00978)</a>
+A0h    DWORD   programmable ISA I/O address decoder <a href="rb-2384.htm#Table979">(see #00979)</a>
+A4h  6 DWORD   programmable ISA range decoder registers 1-6 <a href="rb-2384.htm#Table980">(see #00980)</a>
+C0h 64 BYTEs   reserved
+</PRE>
+<p><b>See Also:</b>
+#00773
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS distributed DMA control register:
+<a name=table972></a>
+Bit(s)  Description     (Table 00972)
+15-6   reserved
+5      (revision BB & later) secondary slave floppy disk distributed access
+enable (if bit 1 = 0)
+4      (revision BB & later) secondary slave hard disk distributed access
+enable (if bit 1 = 0)
+3      slave floppy drive port distributed access enable (if bit 1 = 0)
+2      slave hard drive port distributed access enable (if bit 1 = 0)
+1      distributed DMA mode.
+0 = master.
+1 = slave
+0      distributed DMA function enable
+</PRE>
+<p><b>See Also:</b>
+#00971
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS distributed DMA status register:
+<a name=table973></a>
+Bit(s)  Description     (Table 00973)
+7-1    reserved
+0      DDMA status (write 1 to clear)
+</PRE>
+<p><b>See Also:</b>
+#00971
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS slave DMAC CH0-7 base register:
+<a name=table974></a>
+Bit(s)  Description     (Table 00974)
+31-16  reserved (0)
+15-7   channel base address
+6-4    channel base address (hardwired to channel number)
+3      extended address (0)
+2-1    size (00 for channel 0-3, 01 for channel 5-7)
+0      channel enable
+</PRE>
+<p><b>See Also:</b>
+#00971
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS PCI-to-ISA bridge configuration:
+<a name=table975></a>
+Bit(s)  Description     (Table 00975)
+31-15  reserved
+14     AD/SD/SA bus staggering enable
+13     ISA bridge PCI positive decode enable
+12     ISA bridge PCI subtractive decode disable
+11-10  reserved
+9      retry enable
+8      lock input enable
+7      SERR#/NMI status flag (write 1 to clear)
+6      PERR#/NMI status flag (write 1 to clear)
+5      SERR# triggers NMI enable
+4      PERR# triggers NMI enable
+3      reserved
+2-0    (revision BB and later) system configuration setting
+</PRE>
+<p><b>See Also:</b>
+#00971
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS ISA memory address positive decode:
+<a name=table976></a>
+Bit(s)  Description     (Table 00976)
+31-9   reserved
+8      ISA memory A0000h-AFFFFh and FFA0000h-FFFAFFFFh decode enable
+7      ISA memory B0000h-BFFFFh and FFB0000h-FFFBFFFFh decode enable
+6      ISA memory C0000h-C7FFFh and FFC0000h-FFFC7FFFh decode enable
+5      ISA memory C8000h-CFFFFh and FFC8000h-FFFCFFFFh decode enable
+4      ISA memory D0000h-D7FFFh and FFD0000h-FFFD7FFFh decode enable
+3      ISA memory D8000h-DFFFFh and FFD8000h-FFFDFFFFh decode enable
+2      ISA memory E0000h-E7FFFh and FFE0000h-FFFE7FFFh decode enable
+1      ISA memory E8000h-EFFFFh and FFE8000h-FFFEFFFFh decode enable
+0      ISA memory F0000h-FFFFFh and FFF0000h-FFFFFFFFh decode enable
+</PRE>
+<p><b>See Also:</b>
+#00971
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS I/O address positive decode:
+<a name=table977></a>
+Bit(s)  Description     (Table 00977)
+31-24  reserved
+23     (revision BB and later) I/O read 377h decode enable
+22     (revision BB and later) I/O read 3F7h decode enable
+21     PC NET (360h-36Fh) decode enable
+20     audio 5 (388h-38Bh) decode enable
+19     audio 4 (250h-25Fh) decode enable
+18     audio 3 (240h-24Fh) decode enable
+17     audio 2 (230h-23Fh) decode enable
+16     audio 1 (220h-22Fh) decode enable
+15     audio 0 (201h) decode enable
+14     (revision BB and later) ISA secondary floppy (370h-375h, 377h write)
+decode enable
+13     (revision BB and later) ISA primary floppy (3F0h-3F5h, 3F7h write)
+decode enable
+12     (revision BB and later) ISA secondary IDE (170h-177h, 376h) decode
+enable
+11     (revision BB and later) ISA primary IDE (1F0h-1F7h, 3F6h) decode enable
+10     ISA LPT3 (3BCh-3BFh, 7BCh-7BEh) decode enable
+9      ISA LPT2 (278h-27Fh, 678h-67Ah) decode enable
+8      ISA LPT1 (378h-37Fh, 778h-77Ah) decode enable
+7      ISA COM4 (2E8h-2EFh) decode enable
+6      ISA COM3 (3E8h-3EFh) decode enable
+5      ISA COM2 (2F8h-2FFh) decode enable
+4      ISA COM1 (3F8h-3FFh) decode enable
+3      ISA system I/O (00h-FFh) decode enable
+2      configuration (24h/26h) decode enable
+1-0    reserved
+</PRE>
+<p><b>See Also:</b>
+#00971
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS I/O configuration address register:
+<a name=table978></a>
+Bit(s)  Description     (Table 00978)
+15-10  reserved
+9-1    configuration I/O address
+0      configuration address register enable
+</PRE>
+<p><b>See Also:</b>
+#00971
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS programmable ISA I/O address decoder:
+<a name=table979></a>
+Bit(s)  Description     (Table 00979)
+31-18  reserved
+17     ISA range decoder 6 read enable
+16     ISA range decoder 6 write enable
+15     ISA range decoder 6 type.
+0 = memory.
+1 = I/O
+14     ISA range decoder 5 read enable
+13     ISA range decoder 5 write enable
+12     ISA range decoder 5 type (same values as bit 15)
+11     ISA range decoder 4 read enable
+10     ISA range decoder 4 write enable
+9      ISA range decoder 4 type (same values as bit 15)
+8      ISA range decoder 3 read enable
+7      ISA range decoder 3 write enable
+6      ISA range decoder 3 type (same values as bit 15)
+5      ISA range decoder 2 read enable
+4      ISA range decoder 2 write enable
+3      ISA range decoder 2 type (same values as bit 15)
+2      ISA range decoder 1 read enable
+1      ISA range decoder 1 write enable
+0      ISA range decoder 1 type (same values as bit 15)
+</PRE>
+<p><b>See Also:</b>
+#00971
+<PRE>
+<p>
+Bitfields for PicoPower Vesuvius V3-LS programmable ISA range decoder 1:
+<a name=table980></a>
+Bit(s)  Description     (Table 00980)
+31-16  ISA address compare
+15-0   ISA device address (memory address bits 23-8, I/O address bits 15-0)
+</PRE>
+<p><b>See Also:</b>
+#00971
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2383.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2385.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

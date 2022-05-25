@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=DA92h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=DA92h - AMI PCI BIOS - GET CPU TYPE AND SPEED - 
+AX = DA92h
+Return: CF clear (successful)
+AL = CPU stepping (see also #00529 at INT 15/AH=C9h)
+AH = CPU model
+BL = CPU family (05h = Pentium, etc.)
+CX = external clock speed in MHz (BCD)
+(0040h,0050h,0060h,0066h are possible return values on my
+Pentium with the Intel Neptune chipset)
+EAX high word destroyed
+Note:  90 MHz and faster Pentium CPUs can be configured to run at varying
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=DA92h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1666.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1668.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AMI PCI BIOS - GET CPU TYPE AND SPEED</font></h3>
+<PRE>
+AX = DA92h<br>
+<p><b>Return:</b><br>CF clear (successful)
+AL = CPU stepping (see also #00529 at INT 15/AH=C9h)
+AH = CPU model
+BL = CPU family (05h = Pentium, etc.)
+CX = external clock speed in MHz (BCD)
+(0040h,0050h,0060h,0066h are possible return values on my
+Pentium with the Intel "Neptune" chipset)
+EAX high word destroyed
+</PRE>
+<p><b>Note:</b>
+90 MHz and faster Pentium CPUs can be configured to run at varying
+multiples of the external clock speed, i.e. a typical 90 MHz Pentium
+system will run the motherboard at 60 MHz (my 90 MHz Pentium returns
+0060h in CX)
+<p><b>See Also:</b>
+<a href="rb-1613.htm">AH=C9h</a>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1666.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1668.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1A02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1A02h - DOS 4.0+ ANSI.SYS internal - MISCELLANEOUS REQUESTS - 
+AX = 1A02h
+DS:DX - parameter block (see #02735)
+Return: CF clear if successful
+CF set on error
+AX = error code
+Note:  DOS 5+ chains to previous handler if AL 02h on call
+SeeAlso: AX=1A01h
+Format of ANSI.SYS parameter block:
+Offset Size  Description   (Table 02735)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1A02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4657.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4659.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 4.0+ ANSI.SYS internal - MISCELLANEOUS REQUESTS</font></h3>
+<PRE>
+AX = 1A02h
+DS:DX -> parameter block <a href="rb-4658.htm#Table2735">(see #02735)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code
+</PRE>
+<p><b>Note:</b>
+DOS 5+ chains to previous handler if AL > 02h on call
+<p><b>See Also:</b>
+<a href="rb-4657.htm">AX=1A01h</a>
+<PRE>
+<p>
+Format of ANSI.SYS parameter block:
+<a name=table2735></a>
+Offset  Size    Description     (Table 02735)
+00h    BYTE    subfunction
+00h set/reset interlock
+01h get /L flag
+01h    BYTE    interlock state
+00h=reset, 01h=set
+This interlock prevents some of the ANSI.SYS post-processing
+in its hook onto INT 10, AH=00h mode set
+02h    BYTE    (returned)
+00h if /L not in effect
+01h if /L in effect
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4657.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4659.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

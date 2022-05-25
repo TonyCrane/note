@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F215h/SF=0Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F215h/SF=0Bh - Novell NetWare - GET BROADCAST MESSAGE - 
+AX = F215h subfn 0Bh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02109)
+ES:DI - reply buffer (see #02110)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E1h/SF=01h,AX=F215h/SF=01h
+Format of NetWare Get Broadcast Message request packet:
+Offset Size  Description   (Table 02109)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F215h/SF=0Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3667.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3669.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET BROADCAST MESSAGE</font></h3>
+<PRE>
+AX = F215h subfn 0Bh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3668.htm#Table2109">(see #02109)</a>
+ES:DI -> reply buffer <a href="rb-3668.htm#Table2110">(see #02110)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3446.htm">AH=E1h/SF=01h</a> - <a href="rb-3663.htm">AX=F215h/SF=01h</a>
+<PRE>
+<p>
+Format of NetWare "Get Broadcast Message" request packet:
+<a name=table2109></a>
+Offset  Size    Description     (Table 02109)
+00h    WORD    length of following data
+02h    BYTE    0Bh (subfunction "Get Broadcast Message")
+</PRE>
+<p><b>See Also:</b>
+#02110 - #01821
+<PRE>
+<p>
+Format of NetWare "Get Broadcast Message" reply packet:
+<a name=table2110></a>
+Offset  Size    Description     (Table 02110)
+00h    BYTE    length of message
+01h  N BYTEs   message
+</PRE>
+<p><b>See Also:</b>
+#02109 - #01822
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3667.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3669.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

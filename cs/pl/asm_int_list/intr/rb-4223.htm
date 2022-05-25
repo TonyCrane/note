@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2D
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2D - DLite 1.0+ - GET PARAMETER BLOCK ADDRESS - 
+AL = 10h
+AH = AMIS multiplex number for dLite
+Return: CF clear if successful
+ES:BX - parameter block (see #02577)
+CF set on error
+Program: dLite is a shareware TSR by Rainer Schuetze which transparently
+expands compressed files when they are read
+SeeAlso: AL=11hdLite,AL=12hdLite,INT 21/AX=FEDChPCMANAGE
+Format of dLite parameter block:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2D
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4222.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4224.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DLite 1.0+ - GET PARAMETER BLOCK ADDRESS</font></h3>
+<PRE>
+AL = 10h
+AH = AMIS multiplex number for dLite<br>
+<p><b>Return:</b><br>CF clear if successful
+ES:BX -> parameter block <a href="rb-4223.htm#Table2577">(see #02577)</a>
+CF set on error
+</PRE>
+<p><b>Program:</b>
+DLite is a shareware TSR by Rainer Schuetze which transparently
+expands compressed files when they are read
+<p><b>See Also:</b>
+<a href="rb-4223.htm">AL=11h"dLite"</a> - <a href="rb-4223.htm">AL=12h"dLite"</a> - <a href="rb-3398.htm">INT 21/AX=FEDCh"PCMANAGE"</a>
+<PRE>
+<p>
+Format of dLite parameter block:
+<a name=table2577></a>
+Offset  Size    Description     (Table 02577)
+00h    BYTE    TSR flags <a href="rb-4223.htm#Table2578">(see #02578)</a>
+01h    WORD    maximum number of programs needing original filesize
+03h    WORD    current number of programs needing original filesize
+05h    WORD    maximum number of files that can be handled by dLite (should
+be the same as FILES= in CONFIG.SYS)
+07h    WORD    offset (in the same segment as the parameter block) of the
+table of programs needing the original filesize (8 bytes
+each, without path or extension, uppercase, and zero \
+terminated if shorter than 8 bytes)
+<p>
+Bitfields for dLite TSR flags:
+<a name=table2578></a>
+Bit(s)  Description     (Table 02578)
+0      deny FCB access
+1      dLite sleeping rather than activated
+2      always indicate original filesize when reading directory entries,
+rather than only for specified programs
+3-7    reserved
+</PRE>
+<p><b>See Also:</b>
+#02577
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-2D.htm">
+Int 2Dh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4222.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4224.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

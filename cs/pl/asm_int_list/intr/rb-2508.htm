@@ -1,0 +1,123 @@
+<HTML>
+<HEAD>
+<TITLE>Int 20/Vx=0037h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 20/Vx=0037h - Microsoft Windows - VMINI / ENABLE - VxD SERVICES - 
+VxD = 0037h
+Note:  the desired VxD and service number are identified by the data
+immediately following the INT 20 instruction, as in:
+INT   20h
+DW   service number
+DW   VxD identifier
+SeeAlso: INT 2F/AX=1684hDEVICE API,INT 30Windows,#01265,#01340
+(Table 01300)
+Values for VMINI / ENABLE (VxD ID 0037h) service number:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 20/Vx=0037h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2507.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2509.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Microsoft Windows - VMINI / ENABLE - VxD SERVICES</font></h3>
+<PRE>
+VxD = 0037h
+</PRE>
+<p><b>Note:</b>
+The desired VxD and service number are identified by the data
+immediately following the INT 20 instruction, as in:
+INT     20h
+DW      service number
+DW      VxD identifier
+<p><b>See Also:</b>
+<a href="rb-4501.htm">INT 2F/AX=1684h"DEVICE API"</a> - <a href="rb-5799.htm">INT 30"Windows"</a> - #01265 - #01340
+<PRE>
+<p>
+<a name=table1300></a>
+(Table 01300)
+Values for VMINI / ENABLE (VxD ID 0037h) service number:
+0000h  get version.
+<p><b>Return:</b><br>CF clear
+EAX = version (AH = major, AL = minor)
+0001h  "VMINI_Update".
+??? (performs VMMCall 1800Eh, then falls through to service 04h).
+<p><b>Return:</b><br>EAX = system time???
+0002h  "VMINI_Status".
+Get current ???.
+<p><b>Return:</b><br>EAX = ???
+0003h  "VMINI_DisplayError" (schedules a global event via VMMCall 1800Eh).
+<p><b>Return:</b><br>???
+0004h  "VMINI_SetTimeStamp" (performs VMMCall 100CFh).
+<p><b>Return:</b><br>EAX = system time
+0005h  "VMINI_Siren" (call ??? priority event).
+<p><b>Return:</b><br>Nothing
+0006h  "VMINI_RegisterAccess" (set ??? / get ???).
+EDI -> buffer containing data to copy into VxD and space for results.
+<p><b>Return:</b><br>EDI buffer updated
+0007h  "VMINI_GetData".
+EBX = ??? flags (bits 2,15,17,18 checked).
+EDI -> ???.
+???.
+<p><b>Return:</b><br>???
+0008h  "VMINI_ShutDownItem" (schedules a global event via VMMCall 1800Eh).
+<p><b>Return:</b><br>???
+0009h  "VMINI_RegisterSK" (get ??? data).
+EDI -> buffer for data <a href="rb-2508.htm#Table1301">(see #01301)</a>.
+<p><b>Return:</b><br>EDI buffer updated if large enough
+</PRE>
+<p><b>See Also:</b>
+#01299 - #01302 - #02677 at INT 2F/AX=1684h/BX=0037h
+<PRE>
+<p>
+Format of ENABLE.VXD ??? data:
+<a name=table1301></a>
+Offset  Size    Description     (Table 01301)
+00h    DWORD   (ret) length of data, including this word
+(call) length of buffer
+04h    DWORD   -> 24-byte (or larger) buffer
+08h    DWORD   -> 20-byte buffer
+0Ch    DWORD   -> 260-byte buffer
+10h    DWORD   -> 260-byte buffer
+</PRE>
+<p><b>See Also:</b>
+#01300
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-20.htm">
+Int 20h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2507.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2509.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

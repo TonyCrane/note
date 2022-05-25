@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 62/AX=0062h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 62/AX=0062h - FGDRIVER v4.02 - FG_INTJOY - GET KEYCODES CORRESP TO JOYSTICK POS - 
+AX = 0062h
+CX = joystick number (0001h or 0002h)
+ES:BX - variable pointer record (see #03488)
+Notes: the FGDRIVER functions are rearranged with each major release, but
+their parameters do not change (see #03474 at AX=0000h)
+If the indicated joystick has not been initialized with AX=008Eh, both
+the button code and joystick position will be set to 00h
+If either button is pressed, a button code of 0Dh is returned;
+otherwise, a button code of 00h is returned
+SeeAlso: AX=0009h,AX=0052h,AX=0046h,AX=005Eh,AX=0077h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 62/AX=0062h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7004.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7006.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FGDRIVER v4.02 - FG_INTJOY - GET KEYCODES CORRESP TO JOYSTICK POS</font></h3>
+<PRE>
+AX = 0062h
+CX = joystick number (0001h or 0002h)
+ES:BX -> variable pointer record <a href="rb-7005.htm#Table3488">(see #03488)</a>
+</PRE>
+<p><b>Notes:</b>
+The FGDRIVER functions are rearranged with each major release, but
+their parameters do not change <a href="rb-0000.htm#Table0"></a>(see #03474 at AX=0000h).
+If the indicated joystick has not been initialized with AX=008Eh, both
+the button code and joystick position will be set to 00h.
+If either button is pressed, a button code of 0Dh is returned;
+otherwise, a button code of 00h is returned
+<p><b>See Also:</b>
+<a href="rb-6915.htm">AX=0009h</a> - <a href="rb-6988.htm">AX=0052h</a> - <a href="rb-6976.htm">AX=0046h</a> - <a href="rb-7000.htm">AX=005Eh</a> -
+<PRE>
+<p>
+Format of FGDRIVER INTJOY variable pointer record:
+<a name=table3488></a>
+Offset  Size    Description     (Table 03488)
+00h    WORD    segment of BYTE buffer for button code
+02h    WORD    offset of BYTE buffer for button code
+04h    WORD    segment of BYTE buffer for joystick position
+06h    WORD    offset of BYTE buffer for joystick position
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-62.htm">
+Int 62h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7004.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7006.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

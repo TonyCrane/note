@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=19h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=19h - Future Domain SCSI CONTROLLER - REINITIALIZE DRIVE - 
+AH = 19h
+DL = hard drive ID
+Return: CF set on error
+AH = status code (see #00234 at AH=01h)
+CF clear if successful
+AH = disk type (03h = fixed disk)
+CX:DX = number of 512-byte sectors
+Notes: sends SCSI Read Capacity command to get number of logical blocks and
+adjusts the result for 512-byte sectors
+displays either Error in Read Capacity Command or nnn Bytes per
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=19h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0647.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0649.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Future Domain SCSI CONTROLLER - REINITIALIZE DRIVE</font></h3>
+<PRE>
+AH = 19h
+DL = hard drive ID<br>
+<p><b>Return:</b><br>CF set on error
+AH = status code <a href="rb-0000.htm#Table0"></a>(see #00234 at AH=01h)
+CF clear if successful
+AH = disk type (03h = fixed disk)
+CX:DX = number of 512-byte sectors
+</PRE>
+<p><b>Notes:</b>
+Sends SCSI Read Capacity command to get number of logical blocks and
+adjusts the result for 512-byte sectors.
+Displays either "Error in Read Capacity Command" or "nnn Bytes per
+sector" (nnn=256 or 512, the only sizes supported in the translation
+code).
+Should probably be called when a removable device has its media changed.
+Returns the same values as AH=15h.
+The TMC-950 does not support any Future Domain BIOS calls; instead,
+it provides a full CAM implementation (see INT 4F/AX=8100h)
+<p><b>See Also:</b>
+<a href="rb-0639.htm">AH=15h</a> - <a href="rb-0649.htm">AH=1Ah</a> - <a href="rb-6300.htm">INT 4F/AX=8100h</a>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0647.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0649.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>Int 88
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 88 - WANG PC - GET CONFIGURATION - 
+AL = get info type
+01h Get System Console
+Return: ES:BX - Configuration structure (see #04089)
+else: ???
+SeeAlso: PORT 1010hWang,MEM F000h:0000h,MEM FC00h:3FC2h,INT 21/AX=4402h
+Format of Wang PC System Console configuration structure:
+Offset Size  Description   (Table 04089)
+00h  WORD  version
+02h  WORD  memory size
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 88
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8226.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8228.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>WANG PC - GET CONFIGURATION</font></h3>
+<PRE>
+AL = get info type
+01h Get System Console
+<p><b>Return:</b><br>ES:BX -> Configuration structure (see #04089)
+<p><b>else:</b><br>???
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-8227.htm">PORT 1010h"Wang"</a> - MEM F000h:0000h - MEM FC00h:3FC2h - <a href="rb-2822.htm">INT 21/AX=4402h</a>
+<PRE>
+<p>
+Format of Wang PC System Console configuration structure:
+<a name=table4089></a>
+Offset  Size    Description     (Table 04089)
+00h    WORD    version
+02h    WORD    memory size
+04h  2 WORDs   reserved
+08h    WORD    number of screens (1..4)
+0Ah  4 WORDs   offset of console screen info structure 1..4 within
+configuration structure's segment (ES) <a href="rb-8227.htm#Table4090">(see #04090)</a>
+<p>
+Format of Wang PC Screen Info structure:
+<a name=table4090></a>
+Offset  Size    Description     (Table 04090)
+00h    BYTE    state
+(bit 7 set appears to indicate the active console that is
+currently attached to the screen)
+01h    BYTE    scanoff
+02h    WORD    buffer segment
+04h    BYTE    colors
+05h    BYTE    row
+06h    BYTE    column
+07h    BYTE    attribute
+00h = ???
+02h = ???
+0Fh = white on black
+08h    BYTE    auxiliary mode
+09h    BYTE    auxiliary mode 2
+</PRE>
+<p><b>See Also:</b>
+#04089
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-88.htm">
+Int 88h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8226.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8228.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 88
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 88 - APL*PLUS/PC - CREATE OBJECT OF ARBITRARY RANK OR SHAPE - 
+AL = 00h
+BX = STPTR of the variable to be assigned
+ES:SI - model of type, rank, and shape (see #03978)
+Return: ES:DI - first data byte of object
+DX:CX = number of elements in the object
+SeeAlso: INT 88/AL=01h,INT 88/AL=08h,INT C8APL
+Format of APL*PLUS/PC shape model:
+Offset Size  Description   (Table 03978)
+00h  BYTE  type
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 88
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8227.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8229.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APL*PLUS/PC - CREATE OBJECT OF ARBITRARY RANK OR SHAPE</font></h3>
+<PRE>
+AL = 00h
+BX = STPTR of the variable to be assigned
+ES:SI -> model of type, rank, and shape <a href="rb-8228.htm#Table3978">(see #03978)</a><br>
+<p><b>Return:</b><br>ES:DI -> first data byte of object
+DX:CX = number of elements in the object
+</PRE>
+<p><b>See Also:</b>
+INT 88/AL=01h - INT 88/AL=08h - <a href="rb-8408.htm">INT C8"APL"</a>
+<PRE>
+<p>
+Format of APL*PLUS/PC shape model:
+<a name=table3978></a>
+Offset  Size    Description     (Table 03978)
+00h    BYTE    type
+01h character (2-byte dimension sizes)
+02h integer (2-byte dimension sizes)
+08h floating point (2-byte dimension sizes)
+11h character (4-byte dimension sizes)
+12h integer (4-byte dimension sizes)
+18h floating point (4-byte dimension sizes)
+01h    BYTE    rank
+02h    (D)WORD first dimension of shape
+N      (D)WORD second dimension of shape.
+...
+</PRE>
+<p>
+<b>Category: <a href="cat-036.htm">
+Runtime Support</a>
+- <a href="int-88.htm">
+Int 88h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8227.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8229.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

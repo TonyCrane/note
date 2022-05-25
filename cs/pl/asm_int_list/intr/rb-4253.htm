@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F - Ross Wentworth's Turbo Pascal POPUP LIBRARY - 
+AH = programmer-selected multiplex number
+AL = function
+00h installation check
+Return: AL = FFh if installed
+01h get TSR interrupt vectors
+Return: DX:AX - vector table (see #02587)
+02h get TSR code segment
+Return: AX = code segment for all interrupt handlers
+03h call user exit routine and release TSR's memory
+04h get signature string
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4252.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4254.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Ross Wentworth's Turbo Pascal POPUP LIBRARY</font></h3>
+<PRE>
+AH = programmer-selected multiplex number
+AL = function
+00h installation check
+<p><b>Return:</b><br>AL = FFh if installed
+01h get TSR interrupt vectors
+<p><b>Return:</b><br>DX:AX -> vector table (see #02587)
+02h get TSR code segment
+<p><b>Return:</b><br>AX = code segment for all interrupt handlers
+03h call user exit routine and release TSR's memory
+04h get signature string
+<p><b>Return:</b><br>DX:AX -> counted string containing signature
+05h get TSR's INT 2F handler
+<p><b>Return:</b><br>DX:AX -> INT 2F handler
+06h enable/disable TSR
+BL = new state (00h disabled, 01h enabled)
+07h activate TSR (popup if not disabled)
+08h get hotkeys
+BL = which hotkey (00h = hotkey 1, 01h = hotkey 2)
+<p><b>Return:</b><br>AX = hotkey (AH = keyflags, AL = scancode)
+09h set hotkey
+BL = which hotkey (00h = hotkey 1, 01h = hotkey 2)
+CX = new hotkey (CH = keyflags, CL = scancode)
+0Ah-1Fh reserved
+<p><b>Index:</b><br>Installation check;Ross Wentworth POPUP library
+<p><b>Index:</b><br>Hotkeys;Ross Wentworth POPUP library
+<p>
+Format of POPUP vector table entry:
+<a name=table2587></a>
+Offset  Size    Description     (Table 02587)
+00h    BYTE    vector number (00h = end of table)
+01h    DWORD   original vector
+05h    WORD    offset of interrupt handler in TSR's code segment
+</PRE>
+<p>
+<b>Category: <a href="cat-042.htm">
+TSR Libraries</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4252.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4254.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

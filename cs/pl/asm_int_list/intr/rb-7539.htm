@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Int 68/AH=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 68/AH=06h - APPC/PC - CHANGE NUMBER OF SESSIONS - 
+AH = 06h
+DS:DX - control block (see #03705)
+Return: control block updated
+Format of APPC/PC Change Number of Sessions control block:
+Offset Size  Description   (Table 03705)
+00h 12 BYTEs  reserved
+0Ch  WORD  1500h (verb Change Number of Sessions)
+0Eh 6 BYTEs  00h
+14h  WORD  (big-endian) primary return code (see #03681)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 68/AH=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7538.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7540.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APPC/PC - CHANGE NUMBER OF SESSIONS</font></h3>
+<PRE>
+AH = 06h
+DS:DX -> control block <a href="rb-7539.htm#Table3705">(see #03705)</a><br>
+<p><b>Return:</b><br>Control block updated
+<p>
+Format of APPC/PC "Change Number of Sessions" control block:
+<a name=table3705></a>
+Offset  Size    Description     (Table 03705)
+00h 12 BYTEs   reserved
+0Ch    WORD    1500h (verb "Change Number of Sessions")
+0Eh  6 BYTEs   00h
+14h    WORD    (big-endian) primary return code <a href="rb-7518.htm#Table3681">(see #03681)</a>
+16h    DWORD   (big-endian) secondary return code <a href="rb-0000.htm#Table0"></a>(see #03668,#03706)
+1Ah  8 BYTEs   (big-endian) logical unit ID
+22h  8 BYTEs   blanks
+2Ah  8 BYTEs   (big-endian) partner logical unit name
+32h  8 BYTEs   (big-endian) mode name
+<p><b>3Ah    BYTE    bit 7:</b><br>Use MODE_NAME_SELECT_ALL rather than MODE_NAME
+<p><b>bit 6:</b><br>Set negotiable values
+3Bh    BYTE    partner logical unit mode session limit
+3Ch    BYTE    minimum CONWINNERS_SOURCE
+3Dh    BYTE    maximum CONWINNERS_TARGET
+3Eh    BYTE    automatic activation
+3Fh    BYTE    00h
+40h    BYTE    flags
+<p><b>bit 7:</b><br>Drain target
+<p><b>bit 6:</b><br>Drain source
+<p><b>bit 5:</b><br>Target responsible, not source
+<p>
+<a name=table3706></a>
+(Table 03706)
+Values for secondary return code (see also AH=01h/SF=1B00h):
+0000h  accepted
+0001h  negotiated
+0003h  bad logical unit ID
+0004h  allocation failure, no retry
+0005h  allocation failure, retry
+0151h  can't raise limits
+0153h  all modes must reset
+0154h  bad SNASVCMG limits
+0155h  minimum greater than total
+0156h  mode closed (primary return code = 1).
+CNOS mode closed (primary return code = 18h)
+0157h  bad mode name (primary return code = 1).
+CNOS bad mode name (primary return code = 18h)
+0159h  reset SNA drains
+015Ah  single not SRC response
+015Bh  bad partner logical unit
+015Ch  exceeds maximum allowed
+015Dh  change SRC drains
+015Eh  logical unit detached
+015Fh  CNOS command race reject
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-68.htm">
+Int 68h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7538.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7540.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

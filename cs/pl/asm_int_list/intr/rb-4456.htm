@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1400h/BX=0EDCh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1400h/BX=0EDCh - DR-DOS NLSFUNC 4.01+ - ENHANCED INSTALLATION CHECK - 
+AX = 1400h
+BX = 0EDCh
+Return: AL = status
+00h not installed, OK to install
+01h not installed, not OK to install
+(for example under a multitasker)
+FFh installed
+ES:DI - version signature (4.01$..4.04$ for 4.01..4.04)
+flags may be destroyed
+Program: NLSFUNC 4.01+ is currently an independent project under
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1400h/BX=0EDCh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4455.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4457.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DR-DOS NLSFUNC 4.01+ - ENHANCED INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 1400h
+BX = 0EDCh<br>
+<p><b>Return:</b><br>AL = status
+00h not installed, OK to install
+01h not installed, not OK to install
+(for example under a multitasker)
+FFh installed
+ES:DI -> version signature ("4.01$".."4.04$" for 4.01..4.04)
+flags may be destroyed
+</PRE>
+<p><b>Program:</b>
+NLSFUNC 4.01+ is currently an independent project under
+development by Matthias Paul. It is not yet publically available,
+but as NLSFUNC 4.00 did, it will probably become available with
+future DR-DOS releases.
+<p><b>Notes:</b>
+If BX <> 0EDCh on entry, DR-DOS NLSFUNC 4.01+ performs the standard
+installation check (INT 2F/AX=1400h), and does not change ES:DI..
+DR DOS 5.0+ NLSFUNC 3.00+ returns CF set and AX=0001h, if AL was not
+00h, FEh, or FFh on entry..
+NLSFUNC 4.01+ will use the ES:DI enhancement to check the driver
+version and calculate displacements into the resident driver for
+runtime updates of internal structures like the local NLS database
+filespec, etc..
+If the returned ES points into the HMA (ES=FFFEh) care should be taken
+to actually access the HMA while checking the version signature and
+updating resident data (mutex with local A20 enable/disable)..
+While previous issues of NLSFUNC installed under a multitasker,
+DR-DOS NLSFUNC 4.01+ will actually adapt to work properly in this
+environment.
+<p><b>See Also:</b>
+<a href="rb-4455.htm">AX=1400h"NLSFUNC.COM"</a> - <a href="rb-4465.htm">AX=14FEh</a> - <a href="rb-4466.htm">AX=14FFh</a> - <a href="rb-3163.htm">I
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4455.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4457.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

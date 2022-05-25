@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=4E00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=4E00h - VESA XGA BIOS Extensions - GET XGA ENVIRONMENT INFORMATION - 
+AX = 4E00h
+ES:DI - 256-byte buffer for XGA information (see #00069)
+Return: AL = 4Eh if function supported
+AH = status
+00h successful
+else error code
+Desc:  determine whether VESA XGA extensions are present and the capabilities
+supported by the display adapter
+SeeAlso: AX=4E01h,AX=4E02h,AX=4F00h
+Index: installation check;VESA XGA
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=4E00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0265.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0267.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VESA XGA BIOS Extensions - GET XGA ENVIRONMENT INFORMATION</font></h3>
+<PRE>
+AX = 4E00h
+ES:DI -> 256-byte buffer for XGA information <a href="rb-0266.htm#Table69">(see #00069)</a><br>
+<p><b>Return:</b><br>AL = 4Eh if function supported
+AH = status
+00h successful
+else error code
+</PRE>
+<p><b>Desc:</b>
+Determine whether VESA XGA extensions are present and the capabilities
+supported by the display adapter
+<p><b>See Also:</b>
+<a href="rb-0267.htm">AX=4E01h</a> - <a href="rb-0268.htm">AX=4E02h</a> - <a href="rb-0273.htm">AX=4F00h</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;VESA XGA
+<p>
+Format of XGA information buffer:
+<a name=table69></a>
+Offset  Size    Description     (Table 00069)
+00h  4 BYTEs   signature ("VESA")
+04h    WORD    VESA version number
+06h    DWORD   pointer to ASCIZ OEM string
+0Ah    DWORD   environment flags <a href="rb-0266.htm#Table70">(see #00070)</a>
+0Eh    WORD    number of XGA adapters installed (other VESA XGA functions
+require a handle indicating which adapter to use)
+10h 240 BYTEs  reserved
+<p>
+Bitfields for XGA environment flags:
+<a name=table70></a>
+Bit(s)  Description     (Table 00070)
+0-1    system bus (00 = MCA, 01 = ISA, 10 = EISA)
+2      bus mastering available
+3-31   reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0265.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0267.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

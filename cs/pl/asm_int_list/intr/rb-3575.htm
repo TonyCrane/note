@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=E3h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=E3h - Novell NetWare - FILE SERVER - GET LAN DRIVER'S CONFIGURATION INFO - 
+AH = E3h subfn E3h
+DS:SI - request buffer (see #02073)
+ES:DI - reply buffer (see #02074)
+Return: AL = status (00h,C6h) (see #02053)
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have console operator privileges
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=E7h,AH=E3h/SF=E8h,AX=F217h/SF=E3h
+Format of NetWare Get LAN Driver's Configuration Info request buffer:
+Offset Size  Description   (Table 02073)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=E3h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3574.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3576.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET LAN DRIVER'S CONFIGURATION INFO</font></h3>
+<PRE>
+AH = E3h subfn E3h
+DS:SI -> request buffer <a href="rb-3575.htm#Table2073">(see #02073)</a>
+ES:DI -> reply buffer <a href="rb-3575.htm#Table2074">(see #02074)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02053)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have console operator privileges
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3578.htm">AH=E3h/SF=E7h</a> - <a href="rb-3579.htm">AH=E3h/SF=E8h</a> - <a href="rb-3831.htm"
+<PRE>
+<p>
+Format of NetWare "Get LAN Driver's Configuration Info" request buffer:
+<a name=table2073></a>
+Offset  Size    Description     (Table 02073)
+00h    WORD    0002h (length of following data)
+02h    BYTE    E3h (subfunction "Get LAN Driver's Configuration Information")
+03h    BYTE    LAN board (00h-03h)
+</PRE>
+<p><b>See Also:</b>
+#02074 - #02242 at AX=F217h/SF=E3h
+<PRE>
+<p>
+Format of NetWare "Get LAN Driver's Configuration Info" reply buffer:
+<a name=table2074></a>
+Offset  Size    Description     (Table 02074)
+00h    WORD    (call) 00ACh (size of following results buffer)
+02h  4 BYTEs   network number
+06h  6 BYTEs   node number
+0Ch    BYTE    LAN driver installed (00h no--remaining fields invalid)
+0Dh    BYTE    option number selected at configuration time
+0Eh 160 BYTEs  configuration text
+ASCIZ hardware type
+ASCIZ hardware settings
+</PRE>
+<p><b>See Also:</b>
+#02073 - #02242 at AX=F217h/SF=E3h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3574.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3576.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

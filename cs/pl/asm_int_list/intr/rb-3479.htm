@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=19h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=19h - Novell NetWare - DIRECTORY SERVICES - SET DIRECTORY INFORMATION - 
+AH = E2h subfn 19h
+DS:SI - request buffer (see #01881)
+ES:DI - reply buffer (see #01882)
+Return: AL = status (00h,9Bh,9Ch) (see #01839)
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=E2h/SF=02h,AH=E2h/SF=0Fh,AX=F216h/SF=19h
+Format of NetWare Set Directory Information request buffer:
+Offset Size  Description   (Table 01881)
+00h  WORD  length of following data (max 10Bh)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=19h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3478.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3480.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - SET DIRECTORY INFORMATION</font></h3>
+<PRE>
+AH = E2h subfn 19h
+DS:SI -> request buffer <a href="rb-3479.htm#Table1881">(see #01881)</a>
+ES:DI -> reply buffer <a href="rb-3479.htm#Table1882">(see #01882)</a><br>
+<p><b>Return:</b><br>AL = status (00h,9Bh,9Ch) (see #01839)
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3459.htm">AH=E2h/SF=02h</a> - <a href="rb-3469.htm">AH=E2h/SF=0Fh</a> - <a href="rb-3691.htm">AX=F216h/SF=19h</a>
+<PRE>
+<p>
+Format of NetWare "Set Directory Information" request buffer:
+<a name=table1881></a>
+Offset  Size    Description     (Table 01881)
+00h    WORD    length of following data (max 10Bh)
+02h    BYTE    19h (subfunction "Set Directory Information")
+03h    BYTE    directory handle
+04h    DWORD   (big-endian) date and time of creation
+08h    DWORD   (big-endian) object ID of owner
+0Ch    BYTE    maximum directory rights <a href="rb-3460.htm#Table1849">(see #01849)</a>
+0Dh    BYTE    length of directory path
+0Eh  N BYTEs   directory path
+</PRE>
+<p><b>See Also:</b>
+#01882
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1882></a>
+Offset  Size    Description     (Table 01882)
+00h    WORD    (call) 0000h (no results returned)
+</PRE>
+<p><b>See Also:</b>
+#01881
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3478.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3480.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

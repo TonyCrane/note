@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=36h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=36h - DOS 2+ - GET FREE DISK SPACE - 
+AH = 36h
+DL = drive number (00h = default, 01h = A:, etc)
+Return: AX = FFFFh if invalid drive
+else
+AX = sectors per cluster
+BX = number of free clusters
+CX = bytes per sector
+DX = total clusters on drive
+Notes: free space on drive in bytes is AX * BX * CX
+total space on drive in bytes is AX * CX * DX
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=36h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2750.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2752.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - GET FREE DISK SPACE</font></h3>
+<PRE>
+AH = 36h
+DL = drive number (00h = default, 01h = A:, etc)<br>
+<p><b>Return:</b><br>AX = FFFFh if invalid drive
+else
+AX = sectors per cluster
+BX = number of free clusters
+CX = bytes per sector
+DX = total clusters on drive
+</PRE>
+<p><b>Notes:</b>
+Free space on drive in bytes is AX * BX * CX.
+Total space on drive in bytes is AX * CX * DX.
+"lost clusters" are considered to be in use.
+According to Dave Williams' MS-DOS reference, the value in DX is
+incorrect for non-default drives after ASSIGN is run.
+This function does not return proper results on CD-ROMs;
+use AX=4402h"CD-ROM" instead.
+(FAT32 drive) the reported total and free space are limited to 2G-32K
+should they exceed that value
+<p><b>See Also:</b>
+<a href="rb-2590.htm">AH=1Bh</a> - <a href="rb-2591.htm">AH=1Ch</a> - <a href="rb-2829.htm">AX=4402h"CD-ROM"</a> - <a href="rb-3227.htm">AX=7303h</
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2750.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2752.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

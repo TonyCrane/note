@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5FA3h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5FA3h - LANtastic v3+ - GET PRINTER STATUS - 
+AX = 5FA3h
+BX = physical printer number (00h-02h = LPT1-LPT3, 03h-04h = COM1-COM2)
+DS:SI - buffer for printer status (see #01736)
+ES:DI - ASCIZ server name in form \\machine
+Return: CF clear if successful
+CF set on error
+AX = error code
+BX = next physical printer number
+Note:  you must be logged in to the specified server
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5FA3h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3110.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3112.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LANtastic v3+ - GET PRINTER STATUS</font></h3>
+<PRE>
+AX = 5FA3h
+BX = physical printer number (00h-02h = LPT1-LPT3, 03h-04h = COM1-COM2)
+DS:SI -> buffer for printer status <a href="rb-3111.htm#Table1736">(see #01736)</a>
+ES:DI -> ASCIZ server name in form "\\machine"<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code
+BX = next physical printer number
+</PRE>
+<p><b>Note:</b>
+You must be logged in to the specified server
+<PRE>
+<p>
+Format of LANtastic printer status:
+<a name=table1736></a>
+Offset  Size    Description     (Table 01736)
+00h    BYTE    printer state <a href="rb-3111.htm#Table1737">(see #01737)</a>
+01h    WORD    queue index of print job being despooled
+FFFFh if not despooling--ignore all following fields
+03h    WORD    actual characters per second being output
+05h    DWORD   number of characters actually output so far
+09h    DWORD   number of bytes read from spooled file so far
+0Dh    WORD    copies remaining to print
+<p>
+Bitfields for LANtastic printer state:
+<a name=table1737></a>
+Bit(s)  Description     (Table 01737)
+7      printer paused
+0-6    0 printer disabled.
+1 will stop at end of job.
+2 print multiple jobs
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3110.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3112.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

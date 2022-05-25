@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4402h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4402h - FTPSOFT.DOS v3.1 - GET ??? - 
+AX = 4402h
+BX = file handle for device FTPSOFT$
+CX = size of buffer
+DS:DX - buffer for data (see #01499)
+Return: CF clear if successful
+buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Program: FTPSOFT.DOS is a device driver for Protocol Manager support from
+FTP Software, Inc.
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4402h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2839.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2841.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FTPSOFT.DOS v3.1 - GET ???</font></h3>
+<PRE>
+AX = 4402h
+BX = file handle for device "FTPSOFT$"
+CX = size of buffer
+DS:DX -> buffer for data <a href="rb-2840.htm#Table1499">(see #01499)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Program:</b>
+FTPSOFT.DOS is a device driver for Protocol Manager support from
+FTP Software, Inc.
+<p><b>See Also:</b>
+<a href="rb-2785.htm">AH=3Fh"PC/TCP"</a> - <a href="rb-2823.htm">AX=4402h"NDIS"</a>
+<PRE>
+<p>
+Format of FTPSOFT.DOS data:
+<a name=table1499></a>
+Offset  Size    Description     (Table 01499)
+00h    WORD    (call) BA98h (if different, no data returned)
+02h    DWORD   -> NDIS common characteristics table
+<a href="rb-0000.htm#Table0"></a>(see #01435 at AX=4402h"NDIS")
+06h    DWORD   (call) -> new dispatch table <a href="rb-0000.htm#Table0"></a>(see #01437 at AX=4402h"NDIS")
+0Ah    DWORD   -> 28-byte buffer for ??? data
+0Eh    DWORD   ???
+12h    DWORD   -> FAR function to reset dispatch jump table to defaults
+16h    BYTE    ???
+</PRE>
+<p><b>Note:</b>
+The addresses in the new dispatch table are copied into an internal
+jump table which may be reset by calling the function pointed at by
+offset 12h
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2839.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2841.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=FB42h/BX=0002h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=FB42h/BX=0002h - Borland C++ 3.0 DPMILOAD.EXE - ALLOCATE MEMORY - 
+AX = FB42h
+BX = 0002h
+ES:SI - memory block info (see #03127)
+Return: ???
+Note:  The version of DPMILOAD distributed with BC++ v2.0 identifies itself
+as version 1.000, while the version distributed with BC++ 3.0
+identifies itself as version 1.0; the former is 10864 bytes, the
+latter 22180 bytes.
+SeeAlso: AX=FB42h/BX=0003h,AX=FB42h/BX=0008h,INT 31/AX=0501h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=FB42h/BX=0002h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5718.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5720.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Borland C++ 3.0 DPMILOAD.EXE - ALLOCATE MEMORY</font></h3>
+<PRE>
+AX = FB42h
+BX = 0002h
+ES:SI -> memory block info <a href="rb-5719.htm#Table3127">(see #03127)</a><br>
+<p><b>Return:</b><br>???
+</PRE>
+<p><b>Note:</b>
+The version of DPMILOAD distributed with BC++ v2.0 identifies itself
+as version 1.000, while the version distributed with BC++ 3.0
+identifies itself as version 1.0; the former is 10864 bytes, the
+latter 22180 bytes.
+<p><b>See Also:</b>
+<a href="rb-5720.htm">AX=FB42h/BX=0003h</a> - <a href="rb-5726.htm">AX=FB42h/BX=0008h</a> - <a href="rb-5841.htm">INT 31/AX=0501h</a>
+<PRE>
+<p>
+Format of DPMILOAD memory block info:
+<a name=table3127></a>
+Offset  Size    Description     (Table 03127)
+00h    WORD    flags <a href="rb-5719.htm#Table3128">(see #03128)</a>
+02h    DWORD   block size in bytes
+---DPMI memory block---
+06h    DWORD   DPMI memory block handle
+---DOS memory block---
+06h    WORD    real-mode segment of memory block
+08h    WORD    selector of memory block
+---
+0Ah    DWORD   linear address of memory
+0Eh    WORD    memory operation error code
+0008h no more free LDT descriptors
+---if flags bit 0 clear---
+10h    WORD    code segment selector for memory block or 0000h or FFFFh
+12h    WORD    data alias selector for memory block or 0000h or FFFFh
+---if flags bit 0 set---
+10h    WORD    data segment selector for memory block or 0000h or FFFFh
+12h    WORD    unused???
+<p>
+Bitfields for DPMILOAD memory block flags:
+<a name=table3128></a>
+Bit(s)  Description     (Table 03128)
+0      set if data segment rather than code segment
+1      information valid
+2      set if DOS memory block rather than DPMI memory block
+4      ???
+15     set if no LDT selectors for memory block???
+</PRE>
+<p><b>See Also:</b>
+#03127
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5718.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5720.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

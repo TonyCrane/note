@@ -1,0 +1,166 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AH=4Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AH=4Bh - FRIEZE - API - 
+AH = 4Bh
+CL = function
+00h (v6.x-) print window
+AL = mode
+00h character
+01h normal
+02h sideways
+01h load window
+ES:BX - ASCIZ filename from which to read
+02h save window
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AH=4Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0261.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0263.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FRIEZE - API</font></h3>
+<PRE>
+AH = 4Bh
+CL = function
+00h (v6.x-) print window
+AL = mode
+00h character
+01h normal
+02h sideways
+01h load window
+ES:BX -> ASCIZ filename from which to read
+02h save window
+ES:BX -> ASCIZ filename to which to write
+03h set print width
+AL = width in 1/4 inches
+04h set print height
+AL = height in 1/4 inches
+05h reserved
+06h set left margin
+AL = printout margin in 1/4 inches
+07h set window size
+ES:BX -> four-WORD structure with Xmin, Ymin, Xmax, Ymax
+08h reserved
+09h set patterns
+ES:BX -> 16-BYTE vector of screen->printer color correspondnces
+0Ah get patterns
+ES:BX -> 16-BYTE buffer for color correspondences
+0Bh set mode
+AL = mode
+0Ch (v7.41) ???
+AL = ???
+00h ??? (calls original INT 05)
+else ???
+0Dh (v7.41) ???
+AL = ???
+00h ??? (calls original INT 05)
+else ???
+0Eh (v7.41) ???
+???
+0Fh get window
+ES:BX -> four-WORD buffer for Xmin, Ymin, Xmax, Ymax
+10h set print options
+ES:BX -> printer options in same format as FRIEZE cmdline
+11h initialize
+ES:BX -> three-WORD array from CARDS.DAT for HRes, VRes, code
+12h (v7.41) ???
+???
+13h (v7.41) ???
+???
+14h get version
+<p><b>Return:</b><br>AH = major version (00h if FRIEZE version before 7)
+AL = minor version
+15h set parameters
+ES:BX -> parameter table <a href="rb-0262.htm#Table68">(see #00068)</a>
+16h get parameters
+ES:BX -> buffer for parameter table <a href="rb-0262.htm#Table68">(see #00068)</a>
+17h get printer resolution
+ES:BX -> 12-WORD table for six horizontal/vertical resol pairs
+18h (v8.0 only) reserved
+50h (v7.41) get ???
+<p><b>Return:</b><br>AX = ???
+51h (v7.41) get ???
+<p><b>Return:</b><br>ES = ??? (seen 2348h)
+AX = ??? (seen 8432h)<br>
+<p><b>Return:</b><br>AX = status (see #00067)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0110.htm">AH=0Fh/SI=F123h</a>
+<PRE>
+<p>
+<a name=table67></a>
+(Table 00067)
+Values for FRIEZE function status:
+00h    successful
+01h    user aborted printout with ESC
+02h    reserved
+03h    file read error
+04h    file write error or printer error
+05h    file not found
+06h    invalid header (not an image or wrong screen mode) or can't create file
+07h    file close error
+08h    disk error
+09h    (v7.0+) printer error
+0Ah    invalid function
+0Bh    (v7.0+) can't create file
+0Ch    (v7.0+) wrong video mode
+<p>
+Format of FRIEZE parameter table:
+<a name=table68></a>
+Offset  Size    Description     (Table 00068)
+00h    WORD    top margin (1/100 inch)
+02h    WORD    left margin (1/100 inch)
+04h    WORD    horizontal size (1/100 inch)
+06h    WORD    vertical size (1/100 inch)
+08h    WORD    quality/draft mode
+00h draft mode
+01h quality mode
+02h use horizontal/vertical resolution for output resolution
+0Ah    WORD    printer horizontal resolution (dots per inch)
+0Ch    WORD    printer vertical resolution (dots per inch)
+0Eh    WORD    reserved (FFFFh)
+</PRE>
+<p><b>Note:</b>
+Any field which should remain unchanged may be filled with FFFFh
+<p>
+<b>Category: <a href="cat-032.htm">
+Printer Enhancements</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0261.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0263.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

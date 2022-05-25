@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=DBh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=DBh - Novell NetWare v2.2+ - GET CONNECTION'S OPEN FILES (OLD) - 
+AX = F217h subfn DBh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02045 at AH=E3h/SF=DBh)
+ES:DI - reply buffer (see #02234)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E3h/SF=DBh,AX=F217h/SF=EBh
+Format of NetWare Get Connection's Open Files (old) reply packet:
+Offset Size  Description   (Table 02234)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=DBh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3822.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3824.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2.2+ - GET CONNECTION'S OPEN FILES (OLD)</font></h3>
+<PRE>
+AX = F217h subfn DBh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-0000.htm#Table0"></a>(see #02045 at AH=E3h/SF=DBh)
+ES:DI -> reply buffer <a href="rb-3823.htm#Table2234">(see #02234)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3567.htm">AH=E3h/SF=DBh</a> - <a href="rb-3838.htm">AX=F217h/SF=EBh</a>
+<PRE>
+<p>
+Format of NetWare "Get Connection's Open Files (old)" reply packet:
+<a name=table2234></a>
+Offset  Size    Description     (Table 02234)
+00h    WORD    next request record (place in "last record" field on next call)
+0000h if no more records
+02h    BYTE    number of records following
+03h    var     array of File Information Records <a href="rb-0000.htm#Table0"></a>(see #02047 at AH=E3h/SF=DBh)
+</PRE>
+<p><b>See Also:</b>
+#02045 - #02046 at AH=E3h/SF=DBh
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3822.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3824.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

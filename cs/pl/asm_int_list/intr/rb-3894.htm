@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F247h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F247h - Novell NetWare - GET CURRENT FILE SIZE - 
+AX = F247h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02352)
+ES:DI - reply buffer (see #02353)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=42h,AH=F2hNovell,AX=F23Eh,AX=F242h,AX=F24Ah,AX=F24Dh
+Format of NetWare Get Current Size of File request packet:
+Offset Size  Description   (Table 02352)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F247h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3893.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3895.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET CURRENT FILE SIZE</font></h3>
+<PRE>
+AX = F247h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3894.htm#Table2352">(see #02352)</a>
+ES:DI -> reply buffer <a href="rb-3894.htm#Table2353">(see #02353)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2799.htm">AH=42h</a> - <a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3889.htm">AX=F23Eh</a> - <a href="rb-3891.htm">AX=F242h</a> - <a href=http://www.ct
+<PRE>
+<p>
+Format of NetWare "Get Current Size of File" request packet:
+<a name=table2352></a>
+Offset  Size    Description     (Table 02352)
+00h    BYTE    reserved for future use
+01h  6 BYTEs   NetWare file handle
+</PRE>
+<p><b>See Also:</b>
+#02353
+<PRE>
+<p>
+Format of NetWare "Get Current Size of File" reply packet:
+<a name=table2353></a>
+Offset  Size    Description     (Table 02353)
+00h    DWORD   current size of file
+</PRE>
+<p><b>See Also:</b>
+#02352
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3893.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3895.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

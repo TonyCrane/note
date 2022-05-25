@@ -1,0 +1,167 @@
+<HTML>
+<HEAD>
+<TITLE>Int 47/AX=8000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 47/AX=8000h - SQL Base - DATABASE ENGINE API - 
+AX = 8000h
+DS:BX - parameter block, first word is function number (see #03203)
+Program: SQL Base is a network-oriented database engine by Gupta Technologies
+SeeAlso: AX=8001h
+(Table 03203)
+Values for SQL Base function number:
+01h  SQLFINI initalialize application's use of the database
+02h  SQLFDON application is done using the database
+03h  SQLFCON connect to a cursor/database
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 47/AX=8000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6191.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6193.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SQL Base - DATABASE ENGINE API</font></h3>
+<PRE>
+AX = 8000h
+DS:BX -> parameter block, first word is function number <a href="rb-6192.htm#Table3203">(see #03203)</a>
+</PRE>
+<p><b>Program:</b>
+SQL Base is a network-oriented database engine by Gupta Technologies
+<p><b>See Also:</b>
+<a href="rb-6193.htm">AX=8001h</a>
+<PRE>
+<p>
+<a name=table3203></a>
+(Table 03203)
+Values for SQL Base function number:
+01h    "SQLFINI" initalialize application's use of the database
+02h    "SQLFDON" application is done using the database
+03h    "SQLFCON" connect to a cursor/database
+04h    "SQLFDIS" disconnect from a cursor/database
+05h    "SQLFCOM" compile a SQL command
+06h    "SQLFEXE" execute a SQL command
+07h    "SQLFCEX" compile and execute a SQL command
+08h    "SQLFCMT" commit a transaction to the database
+09h    "SQLFDES" describe the items of a SELECT statement
+0Ah    "SQLFGFI" get fetch information
+0Bh    "SQLFFBK" fetch previous result row from SELECT statement
+0Ch    "SQLFFET" fetch next result row from SELECT statement
+0Dh    "SQLFEFB" enable fetch backwards
+0Eh    "SQLFPRS" position in result set
+0Fh    "SQLFURS" undo result set
+10h    "SQLFNBV" get number of bind variables
+11h    "SQLFBND" bind data variables
+12h    "SQLFBNN" bind numerics
+13h    "SQLFBLN" bind long number
+14h    "SQLFBLD" bind long data variables
+15h    "SQLFSRS" start restriction set processing
+16h    "SQLFRRS" restart restriction set processing
+17h    "SQLFCRS" close restriction set
+18h    "SQLFDRS" drop restriction set
+19h    "SQLFARF" apply Roll Forward journal
+1Ah    "SQLFERF" end Roll Forward journal
+1Bh    "SQLFSRF" start Roll Forward journal
+1Ch    "SQLFSTO" store a compiled SQL command
+1Dh    "SQLFRET" retrieve a compiled SQL command
+1Eh    "SQLFDST" drop a stored command
+1Fh    "SQLFCTY" get command type
+20h    "SQLFEPO" get error position
+21h    "SQLFGNR" get number of rows
+22h    "SQLFNSI" get number of select items
+23h    "SQLFRBF" get Roll Back flag
+24h    "SQLFRCD" get return code
+25h    "SQLFROW" get number of ROWs
+26h    "SQLFSCN" set cursor name
+27h    "SQLFSIL" set isolation level
+28h    "SQLFSLP" set log parameters
+29h    "SQLFSSB" set select buffer
+2Ah    "SQLFSSS" set sort space
+2Bh    "SQLFRLO" read long
+2Ch    "SQLFWLO" write long
+2Dh    "SQLFLSK" long seek
+2Eh    "SQLFGLS" get long size
+2Fh    "SQLFELO" end long operation
+30h    "SQLFRBK" roll back a transaction from the database
+31h    "SQLFERR" error message
+32h    "SQLFCPY" copy
+33h    "SQLFR01" reserved
+34h    "SQLFSYS" system
+35h    "SQLFSTA" statistics
+36h    "SQLFR02" reserved
+37h    "SQLFXAD" extra add
+38h    "SQLFXCN" extra character to number
+39h    "SQLFXDA" extra date add
+3Ah    "SQLFXDP" extra date picture
+3Bh    "SQLFXDV" extra divide
+3Ch    "SQLFXML" extra multiply
+3Dh    "SQLFXNP" extra number picture
+3Eh    "SQLFXPD" extra picture date
+3Fh    "SQLFXSB" extra subtract
+40h    "SQLFINS" install database
+41h    "SQLFDIN" deinstall database
+42h    "SQLFDIR" directory of databases
+43h    "SQLFTIO" timeout
+44h    "SQLFFQN" get fully qualified column name
+45h    "SQLFEXP" explain execution plan
+46h    "SQLFFER" get full error
+47h    "SQLFBKP" begin online backup
+48h    "SQLFRDC" read backup data chunk
+49h    "SQLFEBK" end backup
+4Ah    "SQLFRES" begin restore from backup
+4Bh    "SQLFWDC" write backup data chunk for restore
+4Ch    "SQLFRRD" recover restored database to consistent state
+4Dh    "SQLFERS" end restore
+4Eh    "SQLFNRR" return number of result set rows
+4Fh    "SQLFSTR" start restriction mode
+50h    "SQLFSPR" stop restriction mode
+51h    "SQLFCNC" connect 2
+52h    "SQLFCNR" connect with no recovery
+53h    "SQLFOMS" set output message size
+54h    "SQLFIMS" set input message size
+55h    "SQLFSCP" set cache pages
+56h    "SQLFDSC" describe items of a SELECT statement (external)
+57h    "SQLFLAB" get label info for items in SELECT statement
+58h    "SQLFCBV" clear bind variables
+59h    "SQLFGET" get database information
+5Ah    "SQLFSET" set database information
+5Bh    "SQLFTEC" translate error code
+</PRE>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-47.htm">
+Int 47h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6191.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6193.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

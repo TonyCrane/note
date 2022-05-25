@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A10h/BX=0003h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A10h/BX=0003h - SMARTDRV v4.00+ - STATUS - 
+AX = 4A10h
+BX = 0003h
+BP = drive number (0=A, 1=B, etc.)
+FFFFh = all drives (NWCACHE only)
+DL = subfunction
+00h only get information
+01h turn on read cache
+02h turn off read cache
+03h turn on write cache
+04h turn off write cache
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A10h/BX=0003h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4826.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4828.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SMARTDRV v4.00+ - STATUS</font></h3>
+<PRE>
+AX = 4A10h
+BX = 0003h
+BP = drive number (0=A, 1=B, etc.)
+FFFFh = all drives (NWCACHE only)
+DL = subfunction
+00h only get information
+01h turn on read cache
+02h turn off read cache
+03h turn on write cache
+04h turn off write cache
+---NWCACHE---
+05h reduce cache size
+CX = number of KB to reduce (can't shrink below min size)
+06h increase cache size
+CX = number of KB to increase (can't grow above max size)<br>
+<p><b>Return:</b><br>AX = BABEh if OK
+DL = status <a href="rb-4827.htm#Table2801">(see #02801)</a>
+DL = FFh if drive does not exist
+</PRE>
+<p><b>Notes:</b>
+If the read cache is off, reads will not be cached, but writes will
+continue to be cached if the write-cache is enabled..
+This function is also supported by PC-Cache v8.0..
+SMARTDRV flushes the cache if sub-functions 02h or 04h have been
+called to disable read or write caching..
+On calling this function, NWCACHE flushes any delayed writes,
+but you should not rely on this, since this behavior may vanish
+in future versions.
+<p><b>BUG:</b>
+The MS-DOS 6.20+ SCANDISK disables a SMARTDRV 4+ compatible cache
+for the drive it is about to process.  However, at least when the
+cache loaded is NWCACHE, the cache will still remain disabled for
+this drive after SCANDISK has finished.  The reason for this behavior
+is not yet known. The workaround is to re-enable with the
+<PRE>
+<p><b>NWCACHE d:+ syntax afterwards, where d:</b><br>Is the corresponding
+drive letter.
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4822.htm">AX=4A10h/BX=0000h</a>
+<PRE>
+<p>
+Bitfields for SMARTDRV status:
+<a name=table2801></a>
+Bit(s)  Description     (Table 02801)
+7      not cached (no read-caching)
+6      write-through (not write-cached)
+0-5    real drive number (0=A, 1=B...)
+</PRE>
+<p><b>Notes:</b>
+The "real" drive number is always set to 00h for RAM disks and to 3Fh
+for CD-ROMs; unfortunately, the latter means that an uncached CD-ROM
+has status FFh, just as a nonexistent drive does.
+Also supported by Novell DOS 7 - Caldera/Lineo DR-DOS 7.03 NWCACHE
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4826.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4828.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

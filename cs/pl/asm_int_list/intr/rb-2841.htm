@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4402h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4402h - PenDOS PENDEV.SYS - GET ENTRY POINTS - 
+AX = 4402h
+BX = file handle for device $$PENDOS or $$PD_REG
+CX = size of buffer (4 for $$PENDOS and a 4,8,12, or 16 for $$PD_REG)
+DS:DX - buffer for entry point record (see #01500)
+Return: CF clear if successful
+buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Program: A limited version of PenDOS by Communication Intelligence Corporation,
+which provides pen capability to keyboard-based programs, is bundled
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4402h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2840.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2842.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PenDOS PENDEV.SYS - GET ENTRY POINTS</font></h3>
+<PRE>
+AX = 4402h
+BX = file handle for device "$$PENDOS" or "$$PD_REG"
+CX = size of buffer (4 for $$PENDOS and a 4,8,12, or 16 for $$PD_REG)
+DS:DX -> buffer for entry point record <a href="rb-2841.htm#Table1500">(see #01500)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Program:</b>
+A limited version of PenDOS by Communication Intelligence Corporation,
+which provides pen capability to keyboard-based programs, is bundled
+with IBM DOS 6.1
+<p><b>See Also:</b>
+<a href="rb-2841.htm">AX=4403h"PENDEV.SYS"</a>
+<PRE>
+<p>
+Format of PENDEV.SYS entry point record:
+<a name=table1500></a>
+Offset  Size    Description     (Table 01500)
+00h    DWORD   -> array of jumps
+04h    WORD    offset of function to retrieve entry point <a href="rb-2841.htm#Table1501">(see #01501)</a>
+06h  2 BYTEs   signature "Pe"
+08h    WORD    offset of function to set entry point <a href="rb-2841.htm#Table1502">(see #01502)</a>
+0Ah  2 BYTEs   signature "nD"
+0Ch    WORD    offset of function to clear entry point <a href="rb-2841.htm#Table1503">(see #01503)</a>
+0Eh    WORD    signature "OS"
+<p>
+<a name=table1501></a>
+(Table 01501)
+Call PENDEV.SYS function to retrieve entry point with:.
+AX = index of entry point (0-9)<br>
+<p><b>Return:</b><br>CF clear if successful
+DX:AX -> desired entry point
+CF set on error (AX out of range)
+<p>
+<a name=table1502></a>
+(Table 01502)
+Call PENDEV.SYS function to set entry point with:
+AX = index of entry point (0-9)
+DX:SI -> new handler<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (AX out of range)
+<p>
+<a name=table1503></a>
+(Table 01503)
+Call PENDEV.SYS function to clear entry point with:
+AX = index of entry point (0-9)<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error (AX out of range)
+</PRE>
+<p><b>Note:</b>
+Resets the jump at the specified entry point to its default target,
+which simply returns
+<p>
+<b>Category: <a href="cat-028.htm">
+Non-Traditional Input Devices</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2840.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2842.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

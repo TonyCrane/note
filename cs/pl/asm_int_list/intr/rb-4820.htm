@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4A06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4A06h - DOS 5+ - DOS SUPERVISOR REBOOT PANEL - ADJUST MEMORY SIZE - 
+AX = 4A06h
+DX = segment following last byte of conventional memory
+Return: DX = segment following last byte of memory available for use by DOS
+Desc:  used to override the default memory size when booting diskless
+workstations
+Notes: called by MS-DOS 5+ IO.SYS and DR DOS 6.0+ IBMBIO.OCM startup code if
+the signature RPL is present three bytes beyond the INT 2F handler;
+this call overrides the value returned by INT 12
+hooked by RPL code at the top of memory to protect itself from being
+overwritten; DOS builds a memory block with owner = 0008h and name
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4A06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4819.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4821.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 5+ - DOS SUPERVISOR REBOOT PANEL - ADJUST MEMORY SIZE</font></h3>
+<PRE>
+AX = 4A06h
+DX = segment following last byte of conventional memory<br>
+<p><b>Return:</b><br>DX = segment following last byte of memory available for use by DOS
+</PRE>
+<p><b>Desc:</b>
+Used to override the default memory size when booting diskless
+workstations
+<p><b>Notes:</b>
+Called by MS-DOS 5+ IO.SYS and DR DOS 6.0+ IBMBIO.OCM startup code if
+the signature "RPL" is present three bytes beyond the INT 2F handler;
+this call overrides the value returned by INT 12.
+Hooked by RPL code at the top of memory to protect itself from being
+overwritten; DOS builds a memory block with owner = 0008h and name
+"RPL" which must be freed by the RPL code when it is done.
+Under DR DOS, it is sufficient to set the owner field of the MCB to
+0000h..
+In addition to the test for "RPL", DR PalmDOS (since 1992/08/25),
+DR DOS 6.0 "Business update March 1993", DR DOS "Panther" and
+"StarTrek", and Novell DOS 7+ also check for a "RPLOADER" signature.
+If this 2nd signature is found, IBMBIO.COM will store the INT 2Fh
+vector for later use after the BIOS init, when at several points it
+directly calls the RPLOADER via an emulated INT 2Fh with
+AX=12FFh/BX=5/CX=0/DX=1 and a phase code 1, 2 or 3 on the stack.
+This permits the RPLOADER to keep track of the initialization
+process and clean or fix up anything it wishes.  The "phase 1"
+broadcast is issued after the BIOS init code and data have been
+relocated (e.g. into the HMA), "phase 2" gets issued immediately
+before the CONFIG.SYS processing begins and the DOS code and data
+are relocated, and the closing "phase 3" happens to permit any
+final tidy ups before the memory manager gets acknowledgement of
+completion.
+<p><b>See Also:</b>
+<a href="rb-0598.htm">INT 12"BIOS"</a> - <a href="rb-2241.htm">INT 18"BOOT HOOK"</a> - <a href="rb-4821.htm">AX=4A07h</a> - <a href="rb-4442.htm">INT 2F/AX=12FFh/BX=0005h</a
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4819.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4821.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

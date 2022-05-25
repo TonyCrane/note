@@ -1,0 +1,171 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=5200h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=5200h - JAM.SYS v1.10+ - GetVersion - INSTALLATION CHECK - 
+AX = 5200h
+Return: AH = 80h (successful) if installed
+BX = internal JAM.SYS version number
+CX = size of JAMINFO structure (see #02831,#02832)
+DX = JAM.SYS segment address
+Program: JAM.SYS is a main component of the JAM Real-Time Data Compression
+Utilities by George A. Reznik and friends (JAM Software).
+SeeAlso: AX=5201h
+Format of JAMINFO v1.10 structure:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=5200h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4876.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4878.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>JAM.SYS v1.10+ - GetVersion - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 5200h<br>
+<p><b>Return:</b><br>AH = 80h (successful) if installed
+BX = internal JAM.SYS version number
+CX = size of JAMINFO structure <a href="rb-0000.htm#Table0"></a>(see #02831,#02832)
+DX = JAM.SYS segment address
+</PRE>
+<p><b>Program:</b>
+JAM.SYS is a main component of the JAM Real-Time Data Compression
+Utilities by George A. Reznik and friends (JAM Software).
+<p><b>See Also:</b>
+<a href="rb-4878.htm">AX=5201h</a>
+<PRE>
+<p>
+Format of JAMINFO v1.10 structure:
+<a name=table2831></a>
+Offset  Size    Description     (Table 02831)
+00h 25 BYTEs   extended BIOS parameter block (BPB)
+19h 11 BYTEs   ???
+25h    DWORD   total number of sectors in JAM archive file
+(size of compressed data area)
+29h    BYTE    flags <a href="rb-4877.htm#Table2833">(see #02833)</a>
+2Ah 127 BYTEs  full JAM archive file name
+A9h    WORD    the number of fragments in archive file
+ABh 96 BYTEs   archive file fragmentation list -
+array of 16 FRAGMENT structures <a href="rb-4877.htm#Table2834">(see #02834)</a>
+10Bh    DWORD   address of the host-drive DPB (Drive Parameter Block)
+10Fh    DWORD   number of free sectors in JAM archive file
+113h    WORD    device status word <a href="rb-4877.htm#Table2835">(see #02835)</a>
+</PRE>
+<p><b>See Also:</b>
+#02832
+<PRE>
+<p>
+Format of JAMINFO v1.20 structure:
+<a name=table2832></a>
+Offset  Size    Description     (Table 02832)
+00h 25 BYTEs   extended BIOS parameter block (BPB)
+19h    BYTE    physical driver number
+1Ah    BYTE    reserved
+1Bh    BYTE    extended boot record signature
+1Ch    DWORD   volume serial number
+20h 11 BYTEs   volume label
+2Bh  8 BYTEs   file system ID
+33h    DWORD   total number of sectors in JAM archive file
+(size of compressed data area)
+37h    BYTE    flags <a href="rb-4877.htm#Table2833">(see #02833)</a>
+38h 128 BYTEs  full JAM archive file name
+B8h    WORD    the number of fragments in archive file
+BAh 96 BYTEs   archive file fragmentation list -
+array of 16 FRAGMENT structures <a href="rb-4877.htm#Table2834">(see #02834)</a>
+11Ah    DWORD   address of the host-drive DPB (Drive Parameter Block)
+11Eh    DWORD   number of free sectors in JAM archive file
+122h    WORD    device status word <a href="rb-4877.htm#Table2835">(see #02835)</a>
+</PRE>
+<p><b>Note:</b>
+The first 33h bytes are copied from the archive file's boot sector
+<p><b>See Also:</b>
+#02831
+<PRE>
+<p>
+Bitfields for JAMINFO flags:
+<a name=table2833></a>
+Bit(s)  Description     (Table 02833)
+2-0    reserved
+3      (v1.20+)
+4      enable direct write requests (Int 26h, non-DOS requests, etc.)
+5      read-only mode
+6      no write-behind caching
+7      full undelete-compatible allocation strategy
+</PRE>
+<p><b>See Also:</b>
+#02831 - #02832
+<PRE>
+<p>
+Format of JAM FRAGMENT structure:
+<a name=table2834></a>
+Offset  Size    Description     (Table 02834)
+00h    WORD    starting sector (low word)
+02h    BYTE    starting sector (high byte)
+03h    WORD    size of fragment (low word)
+05h    BYTE    size of fragment (high byte)
+</PRE>
+<p><b>See Also:</b>
+#02831 - #02832
+<PRE>
+<p>
+<a name=table2835></a>
+(Table 02835)
+Values for JAM.SYS status (high byte):
+00h    successful
+01h    drive is not a JAM drive
+02h    drive is already attached
+03h    archive file cluster size value is larger than driver's one
+04h    drive is not attached
+05h    drive is locked
+06h    drive is not locked
+07h    bad physical-level request
+08h    host drive reading/writing error
+09h    bad entries in JAM descriptor table
+0Ah    compressed data integrity error
+0Bh    archive file overflow
+0Ch    bad DOS request
+0Dh    incorrect parameters in JAMINFO structure
+</PRE>
+<p><b>Note:</b>
+The low byte of the status is the DOS error code for the Host drive
+<p><b>See Also:</b>
+#02598 at INT 2F/AX=0802h
+<p>
+<b>Category: <a href="cat-017.htm">
+File/Disk Compression</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-j.htm">
+J</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4876.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4878.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

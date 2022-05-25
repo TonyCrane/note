@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AX=FFA5h/BX=4345h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AX=FFA5h/BX=4345h - Compaq CEMM v5.10+ - PRIVATE API - 
+AX = FFA5h
+BX = 4345h (CE)
+DX = subfunction
+0000h unshadow video ROM???
+0001h shadow video ROM???
+0002h map pages
+CX = number of pages (00h=one)
+ESI = linear address of first page to map into address space
+EDI = linear starting address at which pages are to be visible
+0003h get ???
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AX=FFA5h/BX=4345h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7507.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7509.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Compaq CEMM v5.10+ - PRIVATE API</font></h3>
+<PRE>
+AX = FFA5h
+BX = 4345h ("CE")
+DX = subfunction
+0000h unshadow video ROM???
+0001h shadow video ROM???
+0002h map pages
+CX = number of pages (00h=one)
+ESI = linear address of first page to map into address space
+EDI = linear starting address at which pages are to be visible
+0003h get ???
+<p><b>Return:</b><br>DX = ??? (0-2)
+<p><b>0004h BUG:</b><br>Crashes system due to fencepost error<br>
+<p><b>Return:</b><br>AH = 84h
+AL = status (84h = error, FFh = success)
+</PRE>
+<p><b>Note:</b>
+If BX <> 4345h or DX > 0004h on entry, CEMM behaves identically to
+Microsoft's EMM386 (see AX=FFA5h"EMM386")
+<p><b>See Also:</b>
+<a href="rb-7507.htm">AX=FFA5h"EMM386"</a> - #01513 at INT 21/AX=4402h/SF=02h - #03666
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7507.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7509.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

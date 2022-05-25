@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 78/AH=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 78/AH=00h - TARGA.DEV - CMC International SCSI device driver - SET I/O PORT - 
+AH = 00h
+DX = interface board I/O port
+Return: CF set on error
+AL = error code (see #03786)
+InstallCheck:  (used by TARGA.DEV) test for the string SCSI at offset 03h
+into the interrupt handler
+Note:  if this routine is not called, the port is the driver's default
+(usually 0280h or 0300h)
+SeeAlso: AH=01h,AH=02h
+Index: installation check;TARGA.DEV
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 78/AH=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7812.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7814.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TARGA.DEV - CMC International SCSI device driver - SET I/O PORT</font></h3>
+<PRE>
+AH = 00h
+DX = interface board I/O port<br>
+<p><b>Return:</b><br>CF set on error
+AL = error code <a href="rb-7813.htm#Table3786">(see #03786)</a>
+<p><b>InstallCheck:</b><br>(used by TARGA.DEV) test for the string "SCSI" at offset 03h
+into the interrupt handler
+</PRE>
+<p><b>Note:</b>
+If this routine is not called, the port is the driver's default
+(usually 0280h or 0300h)
+<p><b>See Also:</b>
+<a href="rb-7816.htm">AH=01h</a> - <a href="rb-7817.htm">AH=02h</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;TARGA.DEV
+<p>
+<a name=table3786></a>
+(Table 03786)
+Values for TARGA.DEV error code:
+00h    illegal command given to SCSI code
+01h    invalid I/O port specified (must be from 100H to 3F8H, and must be on
+an 8-port boundary)
+02h    invalid DMA channel specified (must be from 1 to 3)
+03h    invalid SCSI board number specified (must be from 0 to 7)
+04h    error from data register test during self-test
+05h    SCSI input signals not all 0 when SCSI RST activated
+06h    SCSI input signals not all 0 before selecting a SCSI device
+07h    BSY signal is active; SCSI bus is busy
+08h    SCSI board not selected, BSY signal did not come on in response to
+raising SEL
+09h    time-out waiting for status state, signifying end of DMA transfer
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-78.htm">
+Int 78h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7812.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7814.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=0104h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=0104h - DOS 3.0+ PRINT - FREEZE PRINT QUEUE TO READ JOB STATUS - 
+AX = 0104h
+Return: CF clear if successful
+DX = error count since status last read
+DS:SI - print queue
+CF set on error
+AX = error code (see #02594)
+Desc:  get the list of print jobs, temporarily suspending PRINT's activities
+to avoid changing the list while it is being examined
+Notes: the print queue is an array of 64-byte ASCIZ filenames terminated by
+an empty filename; the first name is the file currently being printed
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=0104h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4265.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4267.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.0+ PRINT - FREEZE PRINT QUEUE TO READ JOB STATUS</font></h3>
+<PRE>
+AX = 0104h<br>
+<p><b>Return:</b><br>CF clear if successful
+DX = error count since status last read
+DS:SI -> print queue
+CF set on error
+AX = error code <a href="rb-4262.htm#Table2594">(see #02594)</a>
+</PRE>
+<p><b>Desc:</b>
+Get the list of print jobs, temporarily suspending PRINT's activities
+to avoid changing the list while it is being examined
+<p><b>Notes:</b>
+The print queue is an array of 64-byte ASCIZ filenames terminated by
+an empty filename; the first name is the file currently being printed.
+Printing is stopped until AX=0105h is called to prevent the queue
+from changing while the filenames are being read
+<p><b>See Also:</b>
+<a href="rb-4262.htm">AX=0101h</a> - <a href="rb-4267.htm">AX=0105h</a>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4265.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4267.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

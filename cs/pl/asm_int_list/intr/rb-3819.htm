@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=D7h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=D7h - Novell NetWare - GET DRIVE MAPPING TABLE - 
+AX = F217h subfn D7h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02033 at AH=E3h/SF=D7h)
+ES:DI - reply buffer (see #02230)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AX=EF00h,AX=EF01h,AX=EF02h,AH=F2hNovell,AH=E3h/SF=D7h
+Format of NetWare Get Drive Mapping Table reply packet:
+Offset Size  Description   (Table 02230)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=D7h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3818.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3820.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET DRIVE MAPPING TABLE</font></h3>
+<PRE>
+AX = F217h subfn D7h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-0000.htm#Table0"></a>(see #02033 at AH=E3h/SF=D7h)
+ES:DI -> reply buffer <a href="rb-3819.htm#Table2230">(see #02230)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3632.htm">AX=EF00h</a> - <a href="rb-3633.htm">AX=EF01h</a> - <a href="rb-3634.htm">AX=EF02h</a> - <a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href=http://www.
+<PRE>
+<p>
+Format of NetWare "Get Drive Mapping Table" reply packet:
+<a name=table2230></a>
+Offset  Size    Description     (Table 02230)
+00h    DWORD   (big-endian) clock tick elapsed since system started
+04h    BYTE    fault tolerance (SFT) level
+05h    BYTE    number of logical drives attached to server
+06h    BYTE    number of physical drives attached to server
+07h  5 BYTEs   disk channel types (00h none, 01h XT, 02h AT, 03h SCSI,
+04h disk coprocessor drive, 32h-FFh value-added drive types)
+0Ch    WORD    (big-endian) number of outstanding controller commands
+0Eh 32 BYTEs   drive mapping table (FFh = no such drive)
+2Eh 32 BYTEs   drive mirror table (secondary physical drive, FFh = none)
+4Eh 32 BYTEs   dead mirror table (last drive mapped to, FFh if never mirrored)
+6Eh    BYTE    physical drive being remirrored (FFh = none)
+6Fh    BYTE    reserved
+70h    DWORD   (big-endian) remirrored block
+74h 60 BYTEs   SFT error table (internal error counters)
+</PRE>
+<p><b>See Also:</b>
+#02033 - #02034 at AH=E3h/SF=D7h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3818.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3820.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

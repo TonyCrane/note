@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=18h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=18h - Future Domain SCSI BIOS - GET SCSI CONTROLLER INFORMATION - 
+AH = 18h
+DL = hard drive ID
+Return: CF set on error
+AH = status code (see #00234 at AH=01h)
+CF clear if successful
+AX = 4321h (magic number)
+CX = controller family code (see #00249)
+---if family code=0200h
+DH = number of exclusively ROM-controlled SCSI devices
+DL = canonical SCSI device number for specified drive
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=18h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0643.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0645.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Future Domain SCSI BIOS - GET SCSI CONTROLLER INFORMATION</font></h3>
+<PRE>
+AH = 18h
+DL = hard drive ID<br>
+<p><b>Return:</b><br>CF set on error
+AH = status code <a href="rb-0000.htm#Table0"></a>(see #00234 at AH=01h)
+CF clear if successful
+AX = 4321h (magic number)
+CX = controller family code <a href="rb-0644.htm#Table249">(see #00249)</a>
+---if family code=0200h
+DH = number of exclusively ROM-controlled SCSI devices
+DL = canonical SCSI device number for specified drive
+---if family code <> 0200h
+BH = number of exclusively ROM-controlled SCSI devices
+BL = canonical SCSI device number for specified drive
+</PRE>
+<p><b>Notes:</b>
+Also sets an internal flag (non-resettable) which prevents some
+controller messages from being displayed, allows writes to
+removable devices (use caution!), and enables the INT 13 interface
+for more than one drive (i.e. DL >= 81h) in at least some ROM
+versions.
+The TMC-950 does not support any Future Domain BIOS calls; instead,
+it provides a full CAM implementation (see INT 4F/AX=8100h)
+<p><b>See Also:</b>
+<a href="rb-0612.htm">AH=05h"SCSI"</a> - <a href="rb-0612.htm">AX=1700h"SCSI"</a> - <a href="rb-0612.htm">AH=1Bh"SCSI"</a> - <a href="rb-6300.htm">INT 4F/AX=8100h</a>
+<PRE>
+<p>
+<a name=table249></a>
+(Table 00249)
+Values for Future Domain SCSI controller family code:
+0200h  TMC-1680/? (ROM 3.0)
+0203h  TMC-1650/1660/1670/1680 (ROM 2.0)
+040Ah  TMC-820/830/840/850/860/870/875/880/885 (ROM <= 6.0A)
+050Dh  TMC-840/841/880/881 (ROM 5.2D)
+0700h  TMC-830/850/860/875/885 (ROM 7.0)
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0643.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0645.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

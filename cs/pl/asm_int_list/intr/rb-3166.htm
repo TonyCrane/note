@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=65h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=65h - DOS 4.0+ internal - COUNTRY-DEPENDENT FILENAME CAPITALIZATION - 
+AH = 65h
+AL = function
+A0h capitalize filename character
+DL = character to capitalize
+Return: DL = capitalized character
+A1h capitalize counted filename string
+DS:DX - filename string to capitalize
+CX = length of string
+A2h capitalize ASCIZ filename
+DS:DX - ASCIZ filename to capitalize
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=65h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3165.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3167.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 4.0+ internal - COUNTRY-DEPENDENT FILENAME CAPITALIZATION</font></h3>
+<PRE>
+AH = 65h
+AL = function
+A0h capitalize filename character
+DL = character to capitalize
+<p><b>Return:</b><br>DL = capitalized character
+A1h capitalize counted filename string
+DS:DX -> filename string to capitalize
+CX = length of string
+A2h capitalize ASCIZ filename
+DS:DX -> ASCIZ filename to capitalize<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+</PRE>
+<p><b>Note:</b>
+Nonfunctional in MS-DOS 4.00 through 7.10 (Win98) due to a bug (the
+code sets a pointer depending on the high bit of AL, but doesn't
+clear the bit before branching by function number).  Supported and
+functional(!) in Novell DOS 7 (Update 15), as well as PC-DOS 7 and
+OS/2 MVDM
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3165.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3167.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

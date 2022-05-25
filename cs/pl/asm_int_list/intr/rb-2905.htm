@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=440Dh/CX=0871h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=440Dh/CX=0871h - MS-DOS 7.0+ - GENERIC IOCTL - GET FIRST CLUSTER - 
+AX = 440Dh
+CX = 0871h / 4871h
+(category code 08h for FAT12/16, 48h for FAT32; minor code 71h)
+BX = filename character set (see #01578)
+DS:DX - ASCIZ pathname for file or directory
+Return: CF set on error
+AX = error code (01h,02h,etc.) (see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+DX:AX = first cluster number
+Note:  this function finds any file or directory regardless of attributes,
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=440Dh/CX=0871h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2904.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2906.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS-DOS 7.0+ - GENERIC IOCTL - GET FIRST CLUSTER</font></h3>
+<PRE>
+AX = 440Dh
+CX = 0871h / 4871h
+(category code 08h for FAT12/16, 48h for FAT32; minor code 71h)
+BX = filename character set <a href="rb-2905.htm#Table1578">(see #01578)</a>
+DS:DX -> ASCIZ pathname for file or directory<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code (01h,02h,etc.) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+DX:AX = first cluster number
+</PRE>
+<p><b>Note:</b>
+This function finds any file or directory regardless of attributes,
+except that it will not find volume labels
+<p><b>See Also:</b>
+<a href="rb-2896.htm">AX=440Dh"DOS 3.2+"</a> - <a href="rb-2901.htm">AX=440Dh/CX=086Ch</a> - #01352
+<PRE>
+<p>
+<a name=table1578></a>
+(Table 01578)
+Values for character set:
+00h    Windows ANSI
+01h    current OEM character set
+02h    Unicode
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2904.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2906.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

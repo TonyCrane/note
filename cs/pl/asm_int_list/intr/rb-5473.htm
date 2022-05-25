@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=CD04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=CD04h - Intel Image Processing Interface - MOVE BITMAP TO SCANLINE - 
+AX = CD04h
+CX:BX - structure (see #03069)
+Return: AL = status (see #03068)
+SeeAlso: AX=CD03hImage
+(Table 03068)
+Values for IPI function status:
+00h  successful
+80h  unsuccessful
+81h  scan line out of range
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=CD04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5472.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5474.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Intel Image Processing Interface - MOVE BITMAP TO SCANLINE</font></h3>
+<PRE>
+AX = CD04h
+CX:BX -> structure <a href="rb-5473.htm#Table3069">(see #03069)</a><br>
+<p><b>Return:</b><br>AL = status (see #03068)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5459.htm">AX=CD03h"Image"</a>
+<PRE>
+<p>
+<a name=table3068></a>
+(Table 03068)
+Values for IPI function status:
+00h    successful
+80h    unsuccessful
+81h    scan line out of range
+82h    unsupported scan line density
+83h    out of memory
+84h    unrecognized source
+85h    initialization error
+<p>
+Format of structure:
+<a name=table3069></a>
+Offset  Size    Description     (Table 03069)
+00h    WORD    image source (0 = conventional memory, 1 = expanded memory)
+02h    DWORD   pointer to image data
+06h    WORD    scan line on which to place
+08h    WORD    bit offset from start of scan line at which to place
+0Ah    WORD    density of bitmap data (300, 600, or 1200 dpi)
+0Ch    WORD    width in bits of data
+0Eh    WORD    source logical page number
+10h    WORD    source handle (only if source in expanded memory)
+12h    WORD    source offset (only if source in expanded memory)
+</PRE>
+<p>
+<b>Category: <a href="cat-032.htm">
+Printer Enhancements</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5472.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5474.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=43h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=43h - IBM/MS INT 13 Extensions - EXTENDED WRITE - 
+AH = 43h
+AL = write flags
+---v1.0,2.0---
+bit 0: verify write
+bits 7-1 reserved (0)
+---v2.1+ ---
+00h,01h write without verify
+02h write with verify
+DL = drive number
+DS:SI - disk address packet (see #00272)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=43h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0709.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0711.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>IBM/MS INT 13 Extensions - EXTENDED WRITE</font></h3>
+<PRE>
+AH = 43h
+AL = write flags
+---v1.0,2.0---
+<p><b>bit 0:</b><br>Verify write
+bits 7-1 reserved (0)
+---v2.1+ ---
+00h,01h write without verify
+02h write with verify.
+DL = drive number.
+DS:SI -> disk address packet <a href="rb-0708.htm#Table272">(see #00272)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h
+CF set on error
+AH = error code <a href="rb-0606.htm#Table234">(see #00234)</a>
+disk address packet's block count field set to number of blocks
+successfully transferred
+</PRE>
+<p><b>Note:</b>
+The BIOS returns CF set/AH=01h (invalid function) if verify is
+requested but not supported
+<p><b>See Also:</b>
+<a href="rb-0608.htm">AH=03h</a> - <a href="rb-0706.htm">AH=41h"INT 13 Ext"</a> - <a href="rb-0706.htm">AH=42h"INT 13 Ext"</a> - <a href="rb-0711.htm">AH=44h</a>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0709.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0711.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

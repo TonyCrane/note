@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=97h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=97h - Novell NetWare - ACCOUNTING SERVICES - SUBMIT ACCOUNT CHARGE - 
+AH = E3h subfn 97h
+DS:SI - request buffer (see #02005)
+ES:DI - reply buffer (see #02007)
+Return: AL = status (00h,C0h-C2h) (see #02002)
+Note:  this function is supported by Advanced NetWare 2.1+
+SeeAlso: AH=E3h/SF=96h,AH=E3h/SF=98h,AX=F217h/SF=97h
+Format of NetWare Submit Account Charge request buffer:
+Offset Size  Description   (Table 02005)
+00h  WORD  length of following data (max 13Fh)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=97h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3544.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3546.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - ACCOUNTING SERVICES - SUBMIT ACCOUNT CHARGE</font></h3>
+<PRE>
+AH = E3h subfn 97h
+DS:SI -> request buffer <a href="rb-3545.htm#Table2005">(see #02005)</a>
+ES:DI -> reply buffer <a href="rb-3546.htm#Table2007">(see #02007)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C0h-C2h) (see #02002)
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 2.1+
+<p><b>See Also:</b>
+<a href="rb-3544.htm">AH=E3h/SF=96h</a> - <a href="rb-3546.htm">AH=E3h/SF=98h</a> - <a href="rb-3801.htm">AX=F217h/SF=97h</a>
+<PRE>
+<p>
+Format of NetWare "Submit Account Charge" request buffer:
+<a name=table2005></a>
+Offset  Size    Description     (Table 02005)
+00h    WORD    length of following data (max 13Fh)
+02h    BYTE    97h (subfunction "Submit Account Charge")
+03h    WORD    (big-endian) service type
+05h    DWORD   (big-endian) amount to be charged to account
+09h    DWORD   (big-endian) amount of prior hold to be cancelled
+0Dh    WORD    (big-endian) type of bindery object
+0Fh    WORD    (big-endian) type of comment
+8000h-FFFFh reserved for experimental use
+11h    BYTE    length of object's name
+12h  N BYTEs   object name.
+BYTE    length of comment
+N BYTEs   comment
+</PRE>
+<p><b>See Also:</b>
+#02007
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3544.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3546.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

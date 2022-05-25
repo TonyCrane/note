@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=4Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=4Ch - Novell NetWare - LIST RELATIONS OF AN OBJECT - 
+AX = F217h subfn 4Ch
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #02196)
+ES:DI - reply buffer (see #02197)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F217h/SF=39h
+Format of NetWare List Relations Of An Object request packet:
+Offset Size  Description   (Table 02196)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=4Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3763.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3765.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - LIST RELATIONS OF AN OBJECT</font></h3>
+<PRE>
+AX = F217h subfn 4Ch
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-3764.htm#Table2196">(see #02196)</a>
+ES:DI -> reply buffer <a href="rb-3764.htm#Table2197">(see #02197)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3745.htm">AX=F217h/SF=39h</a>
+<PRE>
+<p>
+Format of NetWare "List Relations Of An Object" request packet:
+<a name=table2196></a>
+Offset  Size    Description     (Table 02196)
+00h    WORD    length of following data
+02h    BYTE    4Ch (subfunction "List Relations Of An Object")
+03h    DWORD   last bindery ID seen (set to FFFFFFFFh on first call)
+07h    WORD    object type
+09h    BYTE    length of object's name
+0Ah  N BYTEs   object's name.
+BYTE    length of property name
+N BYTEs   property name
+</PRE>
+<p><b>See Also:</b>
+#02197
+<PRE>
+<p>
+Format of NetWare "List Relations Of An Object" reply packet:
+<a name=table2197></a>
+Offset  Size    Description     (Table 02197)
+00h    WORD    number of relations returned
+02h    var     relations
+</PRE>
+<p><b>See Also:</b>
+#02196
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3763.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3765.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

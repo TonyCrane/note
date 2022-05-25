@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=16h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=16h - FLOPPY DISK - DETECT DISK CHANGE (XT 1986/1/10 or later,XT286,AT,PS) - 
+AH = 16h
+DL = drive number (00h-7Fh)
+SI = 0000h (to avoid crash on AT&T 6300)
+Return: CF clear if change line inactive
+AH = 00h (disk not changed)
+CF set if change line active
+AH = status
+01h invalid command (SyQuest)
+06h change line active or not supported
+80h drive not ready or not present
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=16h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0639.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0641.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FLOPPY DISK - DETECT DISK CHANGE (XT 1986/1/10 or later,XT286,AT,PS)</font></h3>
+<PRE>
+AH = 16h
+DL = drive number (00h-7Fh)
+SI = 0000h (to avoid crash on AT&T 6300)<br>
+<p><b>Return:</b><br>CF clear if change line inactive
+AH = 00h (disk not changed)
+CF set if change line active
+AH = status
+01h invalid command (SyQuest)
+06h change line active or not supported
+80h drive not ready or not present
+</PRE>
+<p><b>Notes:</b>
+Call AH=15h first to determine whether the drive supports a change
+line.
+This call also clears the media-change status, so that a disk change
+is only reported once
+<p><b>BUGS:</b>
+Some versions of Award 386 Modular BIOS and AMI BIOS fail to clear
+the media-change status.
+AT&T 6300 WGS systems crash if SI <> 0 on entry..
+Some pre 1986/08/04 Compaq ROM BIOS have a serious bug where this
+function may re-configure a hard disk depending on what is located
+at ES:[BX] and data indexed to by it. MS-DOS/PC DOS IO.SYS/IBMBIO.COM
+install a special filter when they detect Compaq ROM BIOSes with
+earlier dates..
+Some Compaq 286 systems have a bug in all INT 13h functions >= 16h,
+which causes the byte at DS:0074h to be destroyed when called for
+hard disks (DL >= 80h). MS-DOS/PC DOS IO.SYS/IBMBIO.COM performs a
+test on this bug using this sub-function, and if found installs a
+special filter which points DS into ROM, so that it cannot cause
+any harm..
+Some drives (or controllers???) forget the change line status
+if another drive is accessed afterwards. The DOS BIOS takes care
+of this by not relying on the reported change line status when
+the change line is not active and a different drive is accessed,
+instead it reports "don't know" to the DOS kernel.
+<p><b>See Also:</b>
+<a href="rb-0639.htm">AH=15h</a> - <a href="rb-0716.htm">AH=49h</a>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0639.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0641.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

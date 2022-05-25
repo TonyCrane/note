@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 33/AX=002Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 33/AX=002Bh - MS MOUSE v7.0+ - LOAD ACCELERATION PROFILES - 
+AX = 002Bh
+BX = active acceleration profile
+0001h-0004h or FFFFh to restore default curves
+ES:SI - buffer containing acceleration profile data (see #03180)
+Return: AX = success flag
+SeeAlso: AX=002Ch,AX=002Dh,AX=0033h
+Format of acceleration profile data:
+Offset Size  Description   (Table 03180)
+00h  BYTE  length of acceleration profile 1
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 33/AX=002Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6000.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6002.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS MOUSE v7.0+ - LOAD ACCELERATION PROFILES</font></h3>
+<PRE>
+AX = 002Bh
+BX = active acceleration profile
+0001h-0004h or FFFFh to restore default curves
+ES:SI -> buffer containing acceleration profile data <a href="rb-6001.htm#Table3180">(see #03180)</a><br>
+<p><b>Return:</b><br>AX = success flag
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6002.htm">AX=002Ch</a> - <a href="rb-6003.htm">AX=002Dh</a> - <a href="rb-6009.htm">AX=0033h</a>
+<PRE>
+<p>
+Format of acceleration profile data:
+<a name=table3180></a>
+Offset  Size    Description     (Table 03180)
+00h    BYTE    length of acceleration profile 1
+01h    BYTE    length of acceleration profile 2
+02h    BYTE    length of acceleration profile 3
+03h    BYTE    length of acceleration profile 4
+04h 32 BYTEs   threshold speeds for acceleration profile 1
+24h 32 BYTEs   threshold speeds for acceleration profile 2
+44h 32 BYTEs   threshold speeds for acceleration profile 3
+64h 32 BYTEs   threshold speeds for acceleration profile 4
+84h 32 BYTEs   speedup factor for acceleration profile 1
+(10h = 1.0, 14h = 1.25, 20h = 2.0, etc)
+A4h 32 BYTEs   speedup factor for acceleration profile 2
+(10h = 1.0, 14h = 1.25, 20h = 2.0, etc)
+C4h 32 BYTEs   speedup factor for acceleration profile 3
+(10h = 1.0, 14h = 1.25, 20h = 2.0, etc)
+E4h 32 BYTEs   speedup factor for acceleration profile 4
+(10h = 1.0, 14h = 1.25, 20h = 2.0, etc)
+104h 16 BYTEs   name of acceleration profile 1 (blank-padded)
+114h 16 BYTEs   name of acceleration profile 2 (blank-padded)
+124h 16 BYTEs   name of acceleration profile 3 (blank-padded)
+134h 16 BYTEs   name of acceleration profile 4 (blank-padded)
+</PRE>
+<p><b>Note:</b>
+Unused bytes in the threshold speed fields are filled with 7Fh and
+unused bytes in the speedup factor fields are filled with 10h
+<p>
+<b>Category: <a href="cat-025.htm">
+Mouse/Pointing Device</a>
+- <a href="int-33.htm">
+Int 33h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6000.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6002.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

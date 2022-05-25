@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=D8h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=D8h - Novell NetWare - GET PHYSICAL DISK STATISTICS - 
+AX = F217h subfn D8h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02035 at AH=E3h/SF=D8h)
+ES:DI - reply buffer (see #02231)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E3h/SF=D8h,AX=F217h/SF=D9h
+Format of NetWare Get Physical Disk Statistics request packet:
+Offset Size  Description   (Table 02231)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=D8h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3819.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3821.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET PHYSICAL DISK STATISTICS</font></h3>
+<PRE>
+AX = F217h subfn D8h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-0000.htm#Table0"></a>(see #02035 at AH=E3h/SF=D8h)
+ES:DI -> reply buffer <a href="rb-3820.htm#Table2231">(see #02231)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3564.htm">AH=E3h/SF=D8h</a> - <a href="rb-3821.htm">AX=F217h/SF=D9h</a>
+<PRE>
+<p>
+Format of NetWare "Get Physical Disk Statistics" request packet:
+<a name=table2231></a>
+Offset  Size    Description     (Table 02231)
+00h    DWORD   (big-endian) clock ticks since system started
+04h    BYTE    physical disk channel
+<p><b>05h    BYTE    flag:</b><br>Drive removable if nonzero
+06h    BYTE    physical drive type
+07h    BYTE    drive number within controller
+08h    BYTE    controller number
+09h    BYTE    controller type
+0Ah    DWORD   (big-endian) size of drive in 4K disk blocks
+0Eh    WORD    (big-endian) number of cylinders on drive
+10h    BYTE    number of heads
+11h    BYTE    number of sectors per track
+12h 64 BYTEs   ASCIZ drive make and model
+52h    WORD    (big-endian) number of I/O errors
+56h    DWORD   (big-endian) start of Hot Fix table
+58h    WORD    (big-endian) size of Hot Fix table
+5Ah    WORD    (big-endian) number of Hot Fix blocks available
+<p><b>5Ch    BYTE    flag:</b><br>Hot Fix disabled if nonzero
+</PRE>
+<p><b>See Also:</b>
+#02035 - #02036 at AH=E3h/SF=D8h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3819.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3821.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

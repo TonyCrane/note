@@ -1,0 +1,78 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=120Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=120Bh - DOS 3.0+ internal - SIGNAL SHARING VIOLATION TO USER - 
+AX = 120Bh
+ES:DI - system file table entry for previous open of file
+STACK: WORD extended error code (should be 20h--sharing violation)
+Return: CF clear if operation should be retried
+CF set if operation should not be retried
+AX = error code (20h) (see #01680 at INT 21/AH=59h/BX=0000h)
+STACK unchanged
+Notes: can only be called during a DOS function call
+should only be called if an attempt was made to open an already-open
+file contrary to the sharing rules
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=120Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4378.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4380.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.0+ internal - SIGNAL SHARING VIOLATION TO USER</font></h3>
+<PRE>
+AX = 120Bh
+ES:DI -> system file table entry for previous open of file.
+<p><b>STACK:</b><br>WORD extended error code (should be 20h--sharing violation)<br>
+<p><b>Return:</b><br>CF clear if operation should be retried
+CF set if operation should not be retried
+AX = error code (20h) <a href="rb-0000.htm#Table0"></a>(see #01680 at INT 21/AH=59h/BX=0000h)
+STACK unchanged
+</PRE>
+<p><b>Notes:</b>
+Can only be called during a DOS function call.
+Should only be called if an attempt was made to open an already-open
+file contrary to the sharing rules.
+Invokes INT 24 if SFT file opened via FCB or in compatibility mode with
+inheritance allowed
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4378.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4380.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

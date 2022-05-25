@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=3Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=3Dh - Novell NetWare - BINDERY SERVICES - READ PROPERTY VALUE - 
+AH = E3h subfn 3Dh
+DS:SI - request buffer (see #01942)
+ES:DI - reply buffer (see #01943)
+Return: AL = status (see #01941)
+Desc:  retrieve one 128-byte segment of the specified property's value
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=E3h/SF=39h,AH=E3h/SF=3Ch,AH=E3h/SF=3Eh,AX=F217h/SF=3Dh
+(Table 01941)
+Values for NetWare function status:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=3Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3509.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3511.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - BINDERY SERVICES - READ PROPERTY VALUE</font></h3>
+<PRE>
+AH = E3h subfn 3Dh
+DS:SI -> request buffer <a href="rb-3510.htm#Table1942">(see #01942)</a>
+ES:DI -> reply buffer <a href="rb-3510.htm#Table1943">(see #01943)</a><br>
+<p><b>Return:</b><br>AL = status (see #01941)
+</PRE>
+<p><b>Desc:</b>
+Retrieve one 128-byte segment of the specified property's value
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3506.htm">AH=E3h/SF=39h</a> - <a href="rb-3509.htm">AH=E3h/SF=3Ch</a> - <a href="rb-3511.htm">AH=E3h/SF=3Eh</a> - <a href="rb-3749.htm"
+<PRE>
+<p>
+<a name=table1941></a>
+(Table 01941)
+Values for NetWare function status:
+00h    successful
+96h    server out of memory
+E8h    not item property
+ECh    no such segment
+F0h    wildcard not allowed
+F1h    invalid bindery security level
+F8h    not permitted to write property
+F9h    not permitted to read property
+FBh    no such property
+FCh    no such object
+FEh    server bindery locked
+FFh    bindery failure
+</PRE>
+<p><b>See Also:</b>
+#01937 - #01946
+<PRE>
+<p>
+Format of NetWare "Read Property Value" request buffer:
+<a name=table1942></a>
+Offset  Size    Description     (Table 01942)
+00h    WORD    length of following data (max 44h)
+02h    BYTE    3Dh (subfunction "Read Property Value")
+03h    WORD    (big-endian) type of object
+05h    BYTE    length of object's name (01h-2Fh)
+06h  N BYTEs   object name.
+BYTE    segment number (01h on first call, increment until done).
+BYTE    length of property's name (01h-0Fh)
+N BYTEs   property name
+</PRE>
+<p><b>See Also:</b>
+#01943 - #02188
+<PRE>
+<p>
+Format of NetWare "Read Property Value" reply buffer:
+<a name=table1943></a>
+Offset  Size    Description     (Table 01943)
+00h    WORD    (call) 0082h (length of following results buffer)
+02h 128 BYTEs  property's value
+82h    BYTE    more segments (00h no, FFh yes)
+83h    BYTE    property's flags
+</PRE>
+<p><b>See Also:</b>
+#01942 - #02188
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3509.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3511.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

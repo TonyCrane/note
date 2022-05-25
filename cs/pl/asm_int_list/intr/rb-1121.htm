@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=ECh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=ECh - TelAPI - telnblkopen - CREATE TELNET CONNECTION (NON-BLOCKING) - 
+AH = ECh
+BX = port number to connect with (default 0017h used if = 0)
+CX:DX = Internet address of remote host
+DS:DI - 2-byte remote host (connection) identifier
+ES:SI - 1700-byte buffer for Telnet state record
+0000h:0000h to use TelAPI internally-allocated space
+Return: AX = status (0000h-0009h,FED3h,FF37h,FFBDh,FFC0h,FFCDh) (see #00397)
+ES:SI buffer filled with state record
+ES:SI - internally-allocated state record in some versions
+Notes: the remote host identifier may be used to refer to this connection
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=ECh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1120.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1122.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TelAPI - telnblkopen - CREATE TELNET CONNECTION (NON-BLOCKING)</font></h3>
+<PRE>
+AH = ECh
+BX = port number to connect with (default 0017h used if <= 0)
+CX:DX = Internet address of remote host
+DS:DI -> 2-byte remote host (connection) identifier
+ES:SI -> 1700-byte buffer for Telnet state record
+0000h:0000h to use TelAPI internally-allocated space<br>
+<p><b>Return:</b><br>AX = status (0000h-0009h,FED3h,FF37h,FFBDh,FFC0h,FFCDh) (see #00397)
+ES:SI buffer filled with state record
+ES:SI -> internally-allocated state record in some versions
+</PRE>
+<p><b>Notes:</b>
+The remote host identifier may be used to refer to this connection.
+This function returns immediately; use AH=EDh to check whether the
+connection has been established yet.
+This function is not supported by the Microdyne TelAPI v3.7
+<p><b>See Also:</b>
+<a href="rb-1101.htm">AH=E0h"TelAPI"</a> - <a href="rb-1122.htm">AH=EDh</a> - <a href="rb-1131.htm">AX=FF00h</a>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1120.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1122.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

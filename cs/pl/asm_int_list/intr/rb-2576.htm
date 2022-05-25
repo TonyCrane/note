@@ -1,0 +1,192 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=11h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=11h - DOS 1+ - FIND FIRST MATCHING FILE USING FCB - 
+AH = 11h
+DS:DX - unopened FCB (see #01345), may contain '?' wildcards
+Return: AL = status
+00h successful
+[DTA] unopened FCB for first matching file
+FFh no matching filename, or bad FCB
+Notes: the type of the returned FCB depends on whether the input FCB was a
+normal or an extended FCB
+the data returned in the DTA (disk transfer area) is actually the
+drive number (or extended FCB header and drive number) followed by
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=11h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2575.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2577.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - FIND FIRST MATCHING FILE USING FCB</font></h3>
+<PRE>
+AH = 11h
+DS:DX -> unopened FCB <a href="rb-2574.htm#Table1345">(see #01345)</a>, may contain '?' wildcards<br>
+<p><b>Return:</b><br>AL = status
+00h successful
+[DTA] unopened FCB for first matching file
+FFh no matching filename, or bad FCB
+</PRE>
+<p><b>Notes:</b>
+The type of the returned FCB depends on whether the input FCB was a
+normal or an extended FCB.
+The data returned in the DTA (disk transfer area) is actually the
+drive number (or extended FCB header and drive number) followed by
+the file's directory entry <a href="rb-2576.htm#Table1352">(see #01352)</a>; this format happens to be
+compatible with an unopened FCB.
+For extended FCBs with search attribute 08h, the volume label (if any)
+will be returned even if the current directory is not the root dir..
+DOS 3.0+ also allows the '*' wildcard.
+The search FCB at DS:DX must not be modified if AH=12h will be used to
+continue searching; DOS 3.3 has set the following parts of the FCB:
+0Ch    BYTE    ???
+0Dh    WORD    directory entry number of matching file
+0Fh    WORD    cluster number of current directory
+11h  4 BYTEs   ???
+15h    BYTE    drive number (1=A:).
+This function is used by many copy protection schemes to obtain the
+starting cluster of a file
+<p><b>BUG:</b>
+Under Windows95, if a .EXE program ("MZ" header) rather than a true
+.COM calls this function from a DOS box, the ten bytes of the
+directory entry from 0Ch to 15h may be filled with zeros rather than
+the additional file times
+<p><b>See Also:</b>
+<a href="rb-2577.htm">AH=12h</a> - <a href="rb-2589.htm">AH=1Ah</a> - <a href="rb-2977.htm">AH=4Eh</a> - <a href="rb-4332.htm">INT 2F/AX=111Bh</a>
+<PRE>
+<p>
+Format of DOS directory entry:
+<a name=table1352></a>
+Offset  Size    Description     (Table 01352)
+00h  8 BYTEs   blank-padded filename
+first character is set to E5h for deleted files (05h for
+pending delete files under Novell DOS / OpenDOS)
+08h  3 BYTEs   blank-padded file extension
+0Bh    BYTE    attributes
+0Ch 10 BYTEs   (MS-DOS 1.0-6.22) reserved
+(DR DOS) used to store file password / owner <a href="rb-2576.htm#Table1354">(see #01354)</a>
+(see also INT 21/AX=4302h)
+(Novell DOS 7) DELWATCH data <a href="rb-2576.htm#Table1354">(see #01354)</a>
+(MS-DOS 7/Windows95) additional file times <a href="rb-2576.htm#Table1353">(see #01353)</a>
+16h    WORD    time of creation or last update <a href="rb-0000.htm#Table0"></a>(see #01665 at AX=5700h)
+18h    WORD    date of creation or last update <a href="rb-0000.htm#Table0"></a>(see #01666 at AX=5700h)
+1Ah    WORD    starting cluster number (see also AX=440Dh/CX=0871h)
+(may not be set in INT 21/AH=11h return data for FAT32 drives)
+1Ch    DWORD   file size
+</PRE>
+<p><b>See Also:</b>
+#01355 - #02628 - #02629
+<PRE>
+<p>
+Format of MS-DOS 7/Windows95 additional file times:
+<a name=table1353></a>
+Offset  Size    Description     (Table 01353)
+00h    BYTE    reserved
+01h    BYTE    10-millisecond units past creation time below
+02h    WORD    file creation time
+04h    WORD    file creation date
+06h    WORD    last-access date
+08h    WORD    (FAT32) high word of starting cluster number
+</PRE>
+<p><b>Note:</b>
+This data is stored beginning at offset 0Ch in a standard directory
+entry
+<p><b>See Also:</b>
+#01352
+<PRE>
+<p>
+Format of DR DOS 6/Novell DOS 7 additional file information:
+<a name=table1354></a>
+Offset  Size    Description     (Table 01354)
+0Ch    BYTE    reserved (00h)
+(DOSPLUS v1.2) user-defined attributes for CP/M compatibility
+(bit 7 = F1,...,bit 4 = F4, bits 3-0 reserved (0))
+0Dh    BYTE    first character of original filename for deleted file
+0Eh    WORD    encrypted file/directory password
+10h    WORD    reserved (00h)
+(Novell DOS 7 DELWATCH) original file time
+cleared when file is undeleted or purged
+12h    WORD    (DR DOS 6) file owner ID
+(Novell DOS 7 DELWATCH) original file date
+cleared when file is undeleted or purged
+14h    WORD    single/multiuser file/directory access rights (see AX=4302h)
+---deleted files---
+16h    WORD    (Novell DOS 7 DELWATCH) time of deletion
+18h    WORD    (Novell DOS 7 DELWATCH) date of deletion
+</PRE>
+<p><b>Note:</b>
+Offsets are within the full directory entry
+<p><b>See Also:</b>
+#01352
+<PRE>
+<p>
+Format of MS-DOS 7/Windows95 long-filename directory entry:
+<a name=table1355></a>
+Offset  Size    Description     (Table 01355)
+00h    BYTE    LFN record sequence and flags
+<p><b>bits 5-0:</b><br>Sequence number
+<p><b>bit 6:</b><br>Set if last long-filename record for file
+<p><b>bit 7:</b><br>Set if file deleted
+01h 10 BYTEs   long filename, first part
+0Bh    BYTE    0Fh (otherwise impossible file attribute, used as signature)
+0Ch    BYTE    reserved??? (00h)
+0Dh    BYTE    checksum for short filename
+0Eh 12 BYTEs   long filename, second part
+1Ah    WORD    first cluster number (always 0000h for LFN records)
+1Ch  4 BYTEs   long filename, third part
+</PRE>
+<p><b>Notes:</b>
+Long-filename entries are always stored in the directory just prior
+to the short-name entry for a file.
+Multiple LFN records are used if the long filename does not fit into
+a single record.
+The short-filename checksum byte is computed by adding up the
+eleven bytes of the short filename, rotating the intermediate
+sum right one bit before adding the next character.
+The long filename is encoded as 16-bit Unicode characters; for most
+filenames, this appears in the directory as the ASCII character
+followed by 00h
+<p><b>See Also:</b>
+#01352 - <a href="rb-3000.htm">INT 21/AX=5704h</a> - <a href="rb-3194.htm">INT 21/AH=71h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2575.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2577.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

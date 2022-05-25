@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 33/AX=000Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 33/AX=000Ch - MS MOUSE v1.0+ - DEFINE INTERRUPT SUBROUTINE PARAMETERS - 
+AX = 000Ch
+CX = call mask (see #03171)
+ES:DX - FAR routine (see #03172)
+SeeAlso: AX=0018h
+Bitfields for mouse call mask:
+Bit(s) Description   (Table 03171)
+0   call if mouse moves
+1   call if left button pressed
+2   call if left button released
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 33/AX=000Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5967.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5969.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS MOUSE v1.0+ - DEFINE INTERRUPT SUBROUTINE PARAMETERS</font></h3>
+<PRE>
+AX = 000Ch
+CX = call mask <a href="rb-5968.htm#Table3171">(see #03171)</a>
+ES:DX -> FAR routine <a href="rb-5968.htm#Table3172">(see #03172)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5981.htm">AX=0018h</a>
+<PRE>
+<p>
+Bitfields for mouse call mask:
+<a name=table3171></a>
+Bit(s)  Description     (Table 03171)
+0      call if mouse moves
+1      call if left button pressed
+2      call if left button released
+3      call if right button pressed
+4      call if right button released
+5      call if middle button pressed (Mouse Systems/Logitech/Genius mouse)
+6      call if middle button released (Mouse Systems/Logitech/Genius mouse)
+7-15   unused
+</PRE>
+<p><b>Note:</b>
+Some versions of the Microsoft documentation incorrectly state that CX
+bit 0 means call if mouse cursor moves
+<PRE>
+<p>
+<a name=table3172></a>
+(Table 03172)
+Values interrupt routine is called with:.
+AX = condition mask (same bit assignments as call mask).
+BX = button state.
+CX = cursor column.
+DX = cursor row.
+SI = horizontal mickey count.
+DI = vertical mickey count
+</PRE>
+<p><b>Notes:</b>
+Some versions of the Microsoft documentation erroneously swap the
+meanings of SI and DI.
+In text modes, the row and column will be reported as a multiple of
+the character cell size, typically 8x8 pixels
+<p>
+<b>Category: <a href="cat-025.htm">
+Mouse/Pointing Device</a>
+- <a href="int-33.htm">
+Int 33h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5967.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5969.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

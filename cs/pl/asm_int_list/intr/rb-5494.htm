@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=D000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=D000h - MDEBUG display driver - GET DRIVER STATUS - 
+AX = D000h
+Return: CF set on error
+all other registers must be unchanged)
+CF clear if successful
+AL = FFh
+AH = driver semaphor
+00h driver is not active
+01h driver is active
+BX = CS of the driver
+CX = driver version (CH = major, CL = minor, must be = 013Ch)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=D000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5493.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5495.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MDEBUG display driver - GET DRIVER STATUS</font></h3>
+<PRE>
+AX = D000h<br>
+<p><b>Return:</b><br>CF set on error
+all other registers must be unchanged)
+CF clear if successful
+AL = FFh
+AH = driver semaphor
+00h driver is not active
+01h driver is active
+BX = CS of the driver
+CX = driver version (CH = major, CL = minor, must be >= 013Ch)
+DL = buffer semaphor
+00h driver is not pending
+01h driver is pending between functions 02h and 03h
+DH = show semaphor
+00h driver is not pending
+01h driver is pending between functions 04h and 05h
+</PRE>
+<p><b>Program:</b>
+MDEBUG is a shareware memory-resident debugging tool by Bernd
+Schemmer, including a memory monitor, an interpreter and a
+disassembler
+<PRE>
+<p><b>Range:</b><br>AH=C0h to AH=FFh, selected by switch or programmatically
+</PRE>
+<p><b>Notes:</b>
+MDEBUG can use any two consecutive multiplex numbers between C0h and
+FFh; the default is D0h for the display driver and D1h for the
+command driver (call INT 60/AH=00h"MDEBUG" for the actual multiplex
+numbers used).
+This function MUST be reentrant, as MDEBUG calls it after every popup
+before any other actions.  The handler should not change any
+registers if the display is in an unsupported mode or in a mode
+MDEBUG supports itself, e.g. a normal text mode with at least 80x25
+characters (i.e. 80x43 or 132x44 (v1.60+)). In this case MDEBUG will
+not call any of the other functions for this popup session..
+MDEBUG will not call the other functions if the returned version is
+less than the actual version of MDEBUG..
+If the driver is reentrant, DL and DH should be 00h
+<p><b>See Also:</b>
+<a href="rb-5497.htm">AX=D001h</a> - <a href="rb-5498.htm">AX=D002h</a> - <a href="rb-5500.htm">AX=D003h</a> - <a href="rb-5501.htm">AX=D004h</a> -
+<p>
+<b>Category: <a href="cat-006.htm">
+Debuggers/Debugging Tools</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5493.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5495.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

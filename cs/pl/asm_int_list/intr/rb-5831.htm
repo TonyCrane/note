@@ -1,0 +1,116 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0300h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0300h - DPMI 0.9+ - SIMULATE REAL MODE INTERRUPT - 
+AX = 0300h
+BL = interrupt number
+BH = flags
+bit 0: reset the interrupt controller and A20 line (DPMI 0.9)
+reserved, must be 0 (DPMI 1.0+)
+others: reserved, must be 0
+CX = number of words to copy from protected mode to real mode stack
+ES:(E)DI = selector:offset of real mode call structure (see #03148)
+Return: CF clear if successful
+real mode call structure modified (all fields except SS:SP, CS:IP
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0300h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5830.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5832.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - SIMULATE REAL MODE INTERRUPT</font></h3>
+<PRE>
+AX = 0300h
+BL = interrupt number
+BH = flags
+<p><b>bit 0:</b><br>Reset the interrupt controller and A20 line (DPMI 0.9)
+reserved, must be 0 (DPMI 1.0+)
+<p><b>others:</b><br>Reserved, must be 0.
+CX = number of words to copy from protected mode to real mode stack.
+ES:(E)DI = selector:offset of real mode call structure <a href="rb-5831.htm#Table3148">(see #03148)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+real mode call structure modified (all fields except SS:SP, CS:IP
+filled with return values from real mode interrupt)
+CF set on error
+AX = error code (DPMI 1.0+) (8012h,8013h,8014h,8021h)<a href="rb-5802.htm#Table3143">(see #03143)</a>
+protected mode stack unchanged
+</PRE>
+<p><b>Notes:</b>
+16-bit programs use ES:DI as pointer, 32-bit programs use ES:EDI.
+CS:IP in the real mode call structure is ignored for this call,
+instead, the indicated interrupt vector is used for the address.
+The flags in the call structure are pushed on the real mode stack to
+form an interrupt stack frame, and the trace and interrupt flags are
+clear on entry to the handler.
+DPMI will provide a small (30 words) real mode stack if SS:SP is zero.
+The real mode handler must return with the stack in the same state as
+it was on being called
+<p><b>See Also:</b>
+<a href="rb-5833.htm">AX=0302h</a> - <a href="rb-5892.htm">AX=FF01h</a> - <a href="rb-2619.htm">INT 21/AX=2511h</a> - <a href="rb-3435.htm">INT 21/AH=E3h"OS/286"</a>
+<p><b>See Also:</b>
+<a href="rb-4197.htm">INT 2C/AX=0026h</a> - <a href="rb-5732.htm">INT 2F/AX=FB42h/BX=000Dh</a>
+<PRE>
+<p>
+Format of DPMI real mode call structure:
+<a name=table3148></a>
+Offset  Size    Description     (Table 03148)
+00h    DWORD   EDI
+04h    DWORD   ESI
+08h    DWORD   EBP
+0Ch    DWORD   reserved (00h)
+10h    DWORD   EBX
+14h    DWORD   EDX
+18h    DWORD   ECX
+1Ch    DWORD   EAX
+20h    WORD    flags
+22h    WORD    ES
+24h    WORD    DS
+26h    WORD    FS
+28h    WORD    GS
+2Ah    WORD    IP
+2Ch    WORD    CS
+2Eh    WORD    SP
+30h    WORD    SS
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5830.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5832.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

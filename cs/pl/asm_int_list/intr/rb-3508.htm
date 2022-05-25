@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=3Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=3Bh - Novell NetWare - BINDERY SERVICES - CHANGE PROPERTY SECURITY - 
+AH = E3h subfn 3Bh
+DS:SI - request buffer (see #01938)
+ES:DI - reply buffer (see #01935)
+Return: AL = status (see #01937)
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=E3h/SF=38h,AX=F217h/SF=3Bh
+(Table 01937)
+Values for NetWare function status:
+00h  successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=3Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3507.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3509.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - BINDERY SERVICES - CHANGE PROPERTY SECURITY</font></h3>
+<PRE>
+AH = E3h subfn 3Bh
+DS:SI -> request buffer <a href="rb-3508.htm#Table1938">(see #01938)</a>
+ES:DI -> reply buffer <a href="rb-3506.htm#Table1935">(see #01935)</a><br>
+<p><b>Return:</b><br>AL = status (see #01937)
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3505.htm">AH=E3h/SF=38h</a> - <a href="rb-3747.htm">AX=F217h/SF=3Bh</a>
+<PRE>
+<p>
+<a name=table1937></a>
+(Table 01937)
+Values for NetWare function status:
+00h    successful
+96h    server out of memory
+F0h    wildcard not allowed
+F1h    invalid bindery security level
+FBh    no such property
+FCh    no such object
+FEh    server bindery locked
+FFh    bindery failure
+</PRE>
+<p><b>See Also:</b>
+#01933 - #01941
+<PRE>
+<p>
+Format of NetWare "Change Property Security" request buffer:
+<a name=table1938></a>
+Offset  Size    Description     (Table 01938)
+00h    WORD    length of following data (max 44h)
+02h    BYTE    3Bh (subfunction "Change Property Security")
+03h    WORD    (big-endian) type of object
+05h    BYTE    length of object's name (01h-2Fh)
+06h  N BYTEs   object name.
+BYTE    new property security levels.
+BYTE    length of property's name
+N BYTEs   property name
+</PRE>
+<p><b>Note:</b>
+The object type may not be WILD (FFFFh)
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3507.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3509.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

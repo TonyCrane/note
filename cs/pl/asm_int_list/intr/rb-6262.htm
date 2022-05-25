@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<TITLE>Int 4B/AX=8102h/DX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 4B/AX=8102h/DX=0000h - Virtual DMA Specification (VDS) - GET VERSION - 
+AX = 8102h
+DX = 0000h
+Return: CF clear if successful
+AH = major version number
+AL = minor version number
+BX = product number (see #03217)
+CX = product revision number
+always 0000h for QMAPS and HPMM.SYS
+always 0001h for Microsoft's EMM386.EXE v4.20-4.41
+DX = flags (see #03219)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 4B/AX=8102h/DX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6261.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6263.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Virtual DMA Specification (VDS) - GET VERSION</font></h3>
+<PRE>
+AX = 8102h
+DX = 0000h<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = major version number
+AL = minor version number
+BX = product number <a href="rb-6262.htm#Table3217">(see #03217)</a>
+CX = product revision number
+always 0000h for QMAPS and HPMM.SYS
+always 0001h for Microsoft's EMM386.EXE v4.20-4.41
+DX = flags <a href="rb-6262.htm#Table3219">(see #03219)</a>
+SI:DI = maximum DMA buffer size
+CF set on error
+AL = error code <a href="rb-6262.htm#Table3218">(see #03218)</a>
+</PRE>
+<p><b>Note:</b>
+Bit 5 of 0040h:007Bh is supposed to be set if VDS is supported; this is
+apparently not always the case
+<p><b>See Also:</b>
+<a href="rb-4202.htm">INT 2C/AX=002Bh</a> - <a href="rb-5838.htm">INT 31/AX=0400h</a> - <a href="int-4B.htm">MEM 0040h:007Bh</a>"4Bh"
+<PRE>
+<p><b>Index:</b><br>Installation check;Virtual DMA Specification
+<p>
+<a name=table3217></a>
+(Table 03217)
+Values for VDS product number:
+0000h  for Quadtel's QMAPS and Hewlett-Packard's HPMM.SYS
+0001h  for Microsoft's EMM386.EXE
+0003h  for Windows 3.x WIN386.EXE
+0300h  OS/2 (all versions to date)
+0EDCh  for DR DOS 6.0 EMM386.SYS
+4560h  ("E`") for Qualitas' 386MAX
+4D43h  ("MC") for V Communications' Memory Commander
+5145h  ("QE") for Quarterdeck's QEMM-386
+524Dh  ("RM") for Helix's Netroom RM386
+<p>
+<a name=table3218></a>
+(Table 03218)
+Values for VDS error code:
+01h    region not in contiguous memory
+02h    region crossed a physical alignment boundary
+03h    unable to lock pages
+04h    no buffer available
+05h    region too large for buffer
+06h    buffer currently in use
+07h    invalid memory region
+08h    region was not locked
+09h    number of physical pages greater than table length
+0Ah    invalid buffer ID
+0Bh    copy out of buffer range
+0Ch    invalid DMA channel number
+0Dh    disable count overflow
+0Eh    disable count underflow
+0Fh    function not supported
+10h    reserved flag bits set in DX
+<p>
+Bitfields for VDS flags:
+<a name=table3219></a>
+Bit(s)  Description     (Table 03219)
+0      PC/XT bus (DMA in first megabyte only)
+1      physical buffer/remap region in first megabyte
+2      automatic remap enabled
+3      all memory is physically contiguous
+4-15   reserved (zero)
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-4B.htm">
+Int 4Bh</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6261.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6263.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

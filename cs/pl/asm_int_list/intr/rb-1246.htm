@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=12h/BH=0Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=12h/BH=0Ah - TopView - SEND MESSAGE - ADDTO - SET OBJECT BITS - 
+AH = 12h
+BH = 0Ah
+BL = object
+00h handle is DWORD on top of stack
+timer: start timer for specified interval
+pointer: set control flags (see #00451)
+keyboard: set control flags (see #00450)
+04h set control flags on KEYBOARD object (handle on top of stack)
+05h set control flags on task's default KEYBOARD object
+STACK: (if timer)  DWORD duration in 1/100 seconds
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=12h/BH=0Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1245.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1247.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TopView - SEND MESSAGE - ADDTO - SET OBJECT BITS</font></h3>
+<PRE>
+AH = 12h
+BH = 0Ah
+BL = object
+00h handle is DWORD on top of stack
+<p><b>timer:</b><br>Start timer for specified interval
+<p><b>pointer:</b><br>Set control flags (see #00451)
+<p><b>keyboard:</b><br>Set control flags (see #00450)
+04h set control flags on KEYBOARD object (handle on top of stack)
+05h set control flags on task's default KEYBOARD object.
+<p><b>STACK:</b><br>(if timer)   DWORD duration in 1/100 seconds
+(otherwise)  DWORD bits to set<br>
+<p><b>Return:</b><br>STACK popped
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-1147.htm">AH=12h/BH=0Bh"OBJECT"</a>
+<PRE>
+<p>
+Bitfields for DESQview keyboard object bits:
+<a name=table450></a>
+Bit(s)  Description     (Table 00450)
+15     reserved, can't be set
+14     unused
+13     reserved, can't be set
+12-6   unused
+5      (DV 2.2+) exclusive input
+4      filter all keys (used with handler established by SETESC).
+If 0, only keys that would normally be displayed are filtered
+3      program continues executing while input in progress
+2      insert mode active for field mode
+1      hardware cursor displayed when task is hardware cursor owner.
+Must be set if keyboard in field mode and field table includes input
+fields
+0      keyboard is in field mode rather than keystroke mode
+<p>
+Bitfields for DESQview pointer object bits:
+<a name=table451></a>
+Bit(s)  Description     (Table 00451)
+15     reserved, can't be set
+14-8   unused
+7      mouse pointer is hidden while in window
+6      get messages even if window not topmost
+5      get messages even if window not foreground
+4      multiple clicks separated by less than 1/3 second are counted and
+returned in a single message
+3      pointer position is relative to screen origin, not window origin
+2      send message on button release as well as button press
+1      (DV 2.23+) send message with row=FFFFh and col=FFFFh whenever the
+pointer leaves the window
+0      send message only on button activity, not movement.
+DV-specific, and INT 15/AX=DE0Fh must have been called first
+</PRE>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1245.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1247.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

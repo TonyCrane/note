@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=AC01h/DI=1092h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=AC01h/DI=1092h - QRIP/TSR - CHANGE INTERNAL FLAGS - 
+AX = AC01h
+DI = 1092h
+BX = flags to be turned on (see #02966)
+CX = flags to be turned off (see #02966)
+Return: AX = 9142h if installed
+DX = DOS-takeover flag (nonzero if QRIP able to take over DOS)
+---if DX nonzero---
+BX = QRIP version number in hex (BH = major, BL = minor)
+CX = new flags (see #02966)
+Note:  if DI 1092h on entry, QRIP chains the call
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=AC01h/DI=1092h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5136.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5138.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>QRIP/TSR - CHANGE INTERNAL FLAGS</font></h3>
+<PRE>
+AX = AC01h
+DI = 1092h
+BX = flags to be turned on <a href="rb-5137.htm#Table2966">(see #02966)</a>
+CX = flags to be turned off <a href="rb-5137.htm#Table2966">(see #02966)</a><br>
+<p><b>Return:</b><br>AX = 9142h if installed
+DX = DOS-takeover flag (nonzero if QRIP able to take over DOS)
+---if DX nonzero---
+BX = QRIP version number in hex (BH = major, BL = minor)
+CX = new flags <a href="rb-5137.htm#Table2966">(see #02966)</a>
+</PRE>
+<p><b>Note:</b>
+If DI <> 1092h on entry, QRIP chains the call
+<p><b>See Also:</b>
+<a href="rb-5136.htm">AX=AC00h/DI=1092h</a> - <a href="rb-5164.htm">AX=ACF0h</a>
+<PRE>
+<p>
+Bitfields for QRIP internal flags:
+<a name=table2966></a>
+Bit(s)  Description     (Table 02966)
+0      ANSI emulation enabled (default on)
+1      RIP emulation enabled (default on)
+2      graphical commands allowed (default on)
+3      TTY text allowed (default on)
+4      disable @ variables (default off in TSR mode)
+5      wait for key on RIP "end scene" command (default off)
+6      anti-stripping (default off in TSR mode)
+7      sound enabled (default on)
+8      automatic message filter (default off in TSR mode)
+9      display-only mode (no user prompts)
+10     TTY text suppression (default off in TSR mode)
+11-15  reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-q.htm">
+Q</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5136.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5138.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

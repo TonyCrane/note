@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=4F05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=4F05h - VESA SuperVGA BIOS - CPU VIDEO MEMORY CONTROL - 
+AX = 4F05h
+BH = subfunction
+00h select video memory window
+DX = window address in video memory (in granularity units)
+01h get video memory window
+Return: DX = window address in video memory (in gran. units)
+BL = window number
+00h window A
+01h window B
+ES = selector for memory-mapped registers (VBE 2.0+, when called from
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=4F05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0277.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0279.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VESA SuperVGA BIOS - CPU VIDEO MEMORY CONTROL</font></h3>
+<PRE>
+AX = 4F05h
+BH = subfunction
+00h select video memory window
+DX = window address in video memory (in granularity units)
+01h get video memory window
+<p><b>Return:</b><br>DX = window address in video memory (in gran. units).
+BL = window number
+00h window A
+01h window B.
+ES = selector for memory-mapped registers (VBE 2.0+, when called from
+32-bit protected mode)<br>
+<p><b>Return:</b><br>AL = 4Fh if function supported
+AH = status
+00h successful
+01h failed
+</PRE>
+<p><b>Note:</b>
+When using an accelerated video mode under VBE/AF v1.0P, the
+application must call EnableDirectAccess before switching banks if
+bit 9 of the video mode attributes flag is set <a href="rb-0274.htm#Table80">(see #00080)</a>
+<p><b>BUG:</b>
+Phoenix S3 Trio64V+ v1.02-02 reportedly returns garbage in DX for
+subfunction 01h
+<p><b>See Also:</b>
+<a href="rb-0274.htm">AX=4F01h</a> - <a href="rb-0279.htm">AX=4F06h</a> - <a href="rb-0282.htm">AX=4F07h</a> - <a href="rb-0391.htm">AX=7000h/BX=00
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0277.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0279.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

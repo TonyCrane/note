@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0003h/SF=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0003h/SF=01h - Banyan VINES - ASYNC TERMINAL EMULATION - SEND TO HOST - 
+AX = 0003h subfn 01h
+DS:BX - argument block (see #03374)
+Return: AX = status (see #03369)
+SeeAlso: AX=0003h/SF=00h,AX=0003h/SF=02h,AX=0003h/SF=14h
+Format of VINES argument block for Function 0003h subfunction 01h:
+Offset Size  Description   (Table 03374)
+00h  BYTE  session ID (00h)
+01h  BYTE  01h (function send to host)
+02h  BYTE  type
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0003h/SF=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6719.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6721.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - ASYNC TERMINAL EMULATION - SEND TO HOST</font></h3>
+<PRE>
+AX = 0003h subfn 01h
+DS:BX -> argument block <a href="rb-6720.htm#Table3374">(see #03374)</a><br>
+<p><b>Return:</b><br>AX = status (see #03369)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6719.htm">AX=0003h/SF=00h</a> - <a href="rb-6721.htm">AX=0003h/SF=02h</a> - <a href="rb-6739.htm">AX=0003h/SF=14h</a>
+<PRE>
+<p>
+Format of VINES argument block for Function 0003h subfunction 01h:
+<a name=table3374></a>
+Offset  Size    Description     (Table 03374)
+00h    BYTE    session ID (00h)
+01h    BYTE    01h (function "send to host")
+02h    BYTE    type
+00h ASCII byte
+01h ASCII string
+02h terminal function code
+03h up arrow
+04h down arrow
+05h left arrow
+06h right arrow
+07h break
+03h  N BYTEs   type-specific info <a href="rb-6720.htm#Table3375">(see #03375)</a>
+<p>
+Format of type-specific info:
+<a name=table3375></a>
+Offset  Size    Description     (Table 03375)
+---ASCII byte---
+03h    BYTE    byte to send to host
+---ASCII string---
+03h    WORD    length of string
+05h    WORD    pointer to string
+---terminal function code (VT52/VT100)---
+03h    BYTE    function code
+00h keypad 0
+01h keypad 1
+...
+09h keypad 9
+0Ah keypad -
+0Bh keypad ,
+0Ch keypad .
+0Dh keypad ENTER
+0Eh PF1
+0Fh PF2
+10h PF3
+11h PF4
+---terminal function code (IBM3101)---
+03h    BYTE    function code
+00h PF1
+...
+07h PF8
+08h Home
+</PRE>
+<p><b>See Also:</b>
+#03374
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6719.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6721.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

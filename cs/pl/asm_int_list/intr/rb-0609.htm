@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=04h - DISK - VERIFY DISK SECTOR(S) - 
+AH = 04h
+AL = number of sectors to verify (must be nonzero)
+CH = low eight bits of cylinder number
+CL = sector number 1-63 (bits 0-5)
+high two bits of cylinder (bits 6-7, hard disk only)
+DH = head number
+DL = drive number (bit 7 set for hard disk)
+ES:BX - data buffer (PC,XT,AT with BIOS prior to 1985/11/15)
+Return: CF set on error
+CF clear if successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0608.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0610.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DISK - VERIFY DISK SECTOR(S)</font></h3>
+<PRE>
+AH = 04h
+AL = number of sectors to verify (must be nonzero)
+CH = low eight bits of cylinder number
+CL = sector number 1-63 (bits 0-5)
+high two bits of cylinder (bits 6-7, hard disk only)
+DH = head number
+DL = drive number (bit 7 set for hard disk)
+ES:BX -> data buffer (PC,XT,AT with BIOS prior to 1985/11/15)<br>
+<p><b>Return:</b><br>CF set on error
+CF clear if successful
+AH = status <a href="rb-0606.htm#Table234">(see #00234)</a>
+AL = number of sectors verified
+</PRE>
+<p><b>Notes:</b>
+Errors on a floppy may be due to the motor failing to spin up quickly
+enough (timeout error 80h); the write should be retried at least
+three times, resetting the disk with AH=00h between attempts.
+On floppys, the operation should also be retried on media change
+(06h) detection..
+This function does not compare the disk with memory, it merely
+checks whether the sector's stored CRC matches the data's actual CRC.
+The IBM AT BIOS and many other BIOSes use only the low four bits of
+DH (head number) since the WD-1003 controller which is the standard
+AT controller (and the controller that IDE emulates) only supports
+16 heads.
+AWARD AT BIOS and AMI 386sx BIOS have been extended to handle more
+than 1024 cylinders by placing bits 10 and 11 of the cylinder number
+into bits 6 and 7 of DH
+<p><b>BUG:</b>
+Some Epson ROM BIOSes sometimes have problems properly handling this
+function. The workaround is to reset the disk (INT 13/AH=00h) before
+the call.
+<p><b>See Also:</b>
+<a href="rb-0607.htm">AH=02h</a> - <a href="rb-0711.htm">AH=44h</a> - <a href="rb-6284.htm">INT 4D/AH=04h</a> - <a href="rb-6286.htm">INT 4D/AH=06h
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0608.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0610.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

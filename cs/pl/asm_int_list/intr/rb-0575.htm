@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<TITLE>Int 11
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 11 - BIOS - GET EQUIPMENT LIST - 
+Return: (E)AX = BIOS equipment list word (see #00226,#03215 at INT 4BTandy)
+Note:  since older BIOSes do not know of the existence of EAX, the high word
+of EAX should be cleared before this call if any of the high bits
+will be tested
+SeeAlso: INT 4BTandy 2000,MEM 0040h:0010h
+Bitfields for BIOS equipment list:
+Bit(s) Description   (Table 00226)
+0   floppy disk(s) installed (number specified by bits 7-6)
+1   80x87 coprocessor installed
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 11
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0574.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0576.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>BIOS - GET EQUIPMENT LIST</font></h3>
+<PRE>
+<p><b>Return:</b><br>(E)AX = BIOS equipment list word (see #00226,#03215 at INT 4B"Tandy")
+</PRE>
+<p><b>Note:</b>
+Since older BIOSes do not know of the existence of EAX, the high word
+of EAX should be cleared before this call if any of the high bits
+will be tested
+<p><b>See Also:</b>
+<a href="rb-6256.htm">INT 4B"Tandy 2000"</a> - MEM 0040h:0010h
+<PRE>
+<p>
+Bitfields for BIOS equipment list:
+<a name=table226></a>
+Bit(s)  Description     (Table 00226)
+0      floppy disk(s) installed (number specified by bits 7-6)
+1      80x87 coprocessor installed
+3-2    number of 16K banks of RAM on motherboard (PC only).
+Number of 64K banks of RAM on motherboard (XT only)
+2      pointing device installed (PS)
+3      unused (PS)
+5-4    initial video mode.
+00 EGA, VGA, or PGA.
+01 40x25 color.
+10 80x25 color.
+11 80x25 monochrome
+7-6    number of floppies installed less 1 (if bit 0 set)
+8      DMA support installed (PCjr, Tandy 1400LT).
+DMA support *not* installed (Tandy 1000's)
+11-9   number of serial ports installed
+12     game port installed
+13     serial printer attached (PCjr).
+Internal modem installed (PC/Convertible)
+15-14  number of parallel ports installed
+---Compaq, Dell, and many other 386/486 machines--
+23     page tables set so that Weitek coprocessor addressable in real mode
+24     Weitek math coprocessor present
+---Compaq Systempro---
+25     internal DMA parallel port available
+26     IRQ for internal DMA parallel port (if bit 25 set).
+0 = IRQ5.
+1 = IRQ7
+28-27  parallel port DMA channel.
+00 DMA channel 0.
+01 DMA channel 0 ???.
+10 reserved.
+11 DMA channel 3
+</PRE>
+<p><b>Notes:</b>
+Some implementations of Remote (Initial) Program Loader (RPL/RIPL)
+don't set bit 0 to indicate a "virtual" floppy drive, although the
+RPL requires access to its memory image through a faked drive A:.
+This may have caused problems with releases of DOS 3.3x and earlier,
+<PRE>
+<p><b>which assumed A:</b><br>And B: to be invalid drives then and would discard
+any attempts to access these drives.  Implementations of RPL should
+set bit 0 to indicate a "virtual" floppy..
+The IBM PC DOS 3.3x-2000 IBMBIO.COM contains two occurences of code
+sequences like:
+INT 11h
+JMP SHORT skip
+DB 52h,50h,53h; "RPS"
+<p><b>skip:</b><br>OR AX,1
+TEST AX,1
+While at the first glance this seems to be a bug since it just
+wastes memory and the condition is always true, this could well be
+a signature for an applyable patch to stop it from forcing AX bit 0
+to be always on. MS-DOS IO.SYS does not contain these signatures,
+however.
+</PRE>
+<p><b>BUGs:</b>
+Some old BIOSes didn't properly report the count of floppy drives
+installed to the system.  In newer systems INT 13h/AH=15h can be
+used to retrieve the number of floppy drives installed..
+Award BIOS v4.50G and v4.51PG erroneously set bit 0 even if there are
+no floppy drives installed; use two calls to INT 13/AH=15h to
+determine whether any floppies are actually installed
+<p><b>See Also:</b>
+<a href="rb-0598.htm">INT 12"BIOS"</a> - <a href="int-11.htm">#03215 at INT 4B</a>"Tandy 2000"
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-11.htm">
+Int 11h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0574.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0576.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

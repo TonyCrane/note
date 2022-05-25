@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1902h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1902h - DOS 4.x only SHELLB.COM - COMMAND.COM INTERFACE - 
+AX = 1902h
+ES:DI - ASCIZ full filename of current batch file, with at least the
+final filename element uppercased
+DS:DX - buffer for results
+Return: AL = 00h failed, either
+(a) final filename element quoted at ES:DI does not match
+identity of shell batch file quoted as parameter of most
+recent call of SHELLB command, or
+(b) no more Program Start Commands available.
+AL= FFh success, then:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1902h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4647.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4649.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 4.x only SHELLB.COM - COMMAND.COM INTERFACE</font></h3>
+<PRE>
+AX = 1902h
+ES:DI -> ASCIZ full filename of current batch file, with at least the
+final filename element uppercased
+DS:DX -> buffer for results<br>
+<p><b>Return:</b><br>AL = 00h  failed, either
+(a) final filename element quoted at ES:DI does not match
+identity of shell batch file quoted as parameter of most
+recent call of SHELLB command, or
+(b) no more Program Start Commands available.
+AL= FFh  success, then:
+memory at DS:[DX+1] onwards filled as:
+<p><b>DX+1:</b><br>BYTE    count of bytes of PSC
+<p><b>DX+2:</b><br>N BYTEs   Program Start Command text
+BYTE    0Dh terminator
+</PRE>
+<p><b>Desc:</b>
+COMMAND.COM executes the result of this call in preference to
+reading a command from a batch file.  Thus the batch file does not
+advance in execution for so long as SHELLB provides PSCs from its
+workspace.
+<p><b>Note:</b>
+The PSCs are planted in SHELLB workspace by SHELLC, the user
+menu interface.  The final PSC of a sequence is finished with a
+GOTO COMMON, which causes a loop back in the batch file which called
+SHELLC so as to execute SHELLC again.  The check on batch file name
+permits PSCs to CALL nested batch files while PSCs are still stacked
+up for subsequent execution.
+<p>
+<b>Category: <a href="cat-039.htm">
+Shells/Command Interpreters</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4647.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4649.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

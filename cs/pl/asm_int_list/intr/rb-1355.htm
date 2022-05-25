@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=41h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=41h - SYSTEM - WAIT ON EXTERNAL EVENT (CONVERTIBLE and some others) - 
+AH = 41h
+AL = condition type (see #00463)
+BH = condition compare or mask value
+BL = timeout value times 55 milliseconds
+00h means no timeout
+DX = I/O port address if AL bit 4 set
+ES:DI - user byte if AL bit 4 clear
+Return: after event or timeout occurs
+Note:  call AH=C0h and examine bit 3 of feature byte 1 to determine whether
+this function is supported
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=41h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1354.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1356.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SYSTEM - WAIT ON EXTERNAL EVENT (CONVERTIBLE and some others)</font></h3>
+<PRE>
+AH = 41h
+AL = condition type <a href="rb-1355.htm#Table463">(see #00463)</a>
+BH = condition compare or mask value
+BL = timeout value times 55 milliseconds
+00h means no timeout
+DX = I/O port address if AL bit 4 set
+ES:DI -> user byte if AL bit 4 clear<br>
+<p><b>Return:</b><br>After event or timeout occurs
+</PRE>
+<p><b>Note:</b>
+Call AH=C0h and examine bit 3 of feature byte 1 to determine whether
+this function is supported
+<p><b>See Also:</b>
+<a href="rb-1512.htm">AH=83h</a> - <a href="rb-1525.htm">AH=86h</a> - <a href="rb-1594.htm">AH=C0h</a>
+<PRE>
+<p>
+Bitfields for external event wait condition type:
+<a name=table463></a>
+Bit(s)  Description     (Table 00463)
+0-2    condition to wait for.
+0 any external event.
+1 compare and return if equal.
+2 compare and return if not equal.
+3 test and return if not zero.
+4 test and return if zero
+3      reserved
+4      1=port address, 0=user byte
+5-7    reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1354.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1356.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

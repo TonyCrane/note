@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=00h - DOS 1+ - TERMINATE PROGRAM - 
+AH = 00h
+CS = PSP segment
+Notes: Microsoft recommends using INT 21/AH=4Ch for DOS 2+
+this function sets the program's return code (ERRORLEVEL) to 00h
+execution continues at the address stored in INT 22 after DOS performs
+whatever cleanup it needs to do (restoring the INT 22,INT 23,INT 24
+vectors from the PSP assumed to be located at offset 0000h in the
+segment indicated by the stack copy of CS, etc.)
+if the PSP is its own parent, the process's memory is not freed; if
+INT 22 additionally points into the terminating program, the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2550.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2552.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - TERMINATE PROGRAM</font></h3>
+<PRE>
+AH = 00h
+CS = PSP segment
+</PRE>
+<p><b>Notes:</b>
+Microsoft recommends using INT 21/AH=4Ch for DOS 2+.
+This function sets the program's return code (ERRORLEVEL) to 00h.
+Execution continues at the address stored in INT 22 after DOS performs
+whatever cleanup it needs to do (restoring the INT 22,INT 23,INT 24
+vectors from the PSP assumed to be located at offset 0000h in the
+segment indicated by the stack copy of CS, etc.).
+If the PSP is its own parent, the process's memory is not freed; if
+INT 22 additionally points into the terminating program, the
+process is effectively NOT terminated.
+Not supported by MS Windows 3.0 DOSX.EXE DOS extender
+<p><b>See Also:</b>
+<a href="rb-2682.htm">AH=26h</a> - <a href="rb-2723.htm">AH=31h</a> - <a href="rb-2974.htm">AH=4Ch</a> - <a href="rb-2470.htm">INT 20</a> - <a "http://www.ctyme.com/intr/href"
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2550.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2552.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

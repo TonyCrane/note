@@ -1,0 +1,133 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2D
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2D - Burnout Plus v3.00 - GET STATE/CONTROL INFORMATION - 
+AL = 10h
+AH = AMIS multiplex number for Burnout Plus
+Return: AL = 01h
+BX = Burnout Plus status (see #02579)
+CX = record of features loaded (see #02580)
+ES:DI - Burnout Plus control structure (see #02581)
+Program: Burnout Plus is a DOS screen saver from Cove Software
+SeeAlso: INT 14/AX=AA01h,INT 2DAMIS
+Index: screen saver;Burnout Plus
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2D
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4223.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4225.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Burnout Plus v3.00 - GET STATE/CONTROL INFORMATION</font></h3>
+<PRE>
+AL = 10h
+AH = AMIS multiplex number for Burnout Plus<br>
+<p><b>Return:</b><br>AL = 01h
+BX = Burnout Plus status <a href="rb-4224.htm#Table2579">(see #02579)</a>
+CX = record of features loaded <a href="rb-4224.htm#Table2580">(see #02580)</a>
+ES:DI -> Burnout Plus control structure <a href="rb-4224.htm#Table2581">(see #02581)</a>
+</PRE>
+<p><b>Program:</b>
+Burnout Plus is a DOS screen saver from Cove Software
+<p><b>See Also:</b>
+<a href="rb-1077.htm">INT 14/AX=AA01h</a> - <a href="rb-4215.htm">INT 2D"AMIS"</a>
+<PRE>
+<p><b>Index:</b><br>Screen saver;Burnout Plus
+<p>
+Bitfields for Burnout Plus status:
+<a name=table2579></a>
+Bit(s)  Description     (Table 02579)
+0      screen is blanked
+1      MS Windows is active (Burnout Plus deactivated)
+2-15   reserved
+<p>
+Bitfields for Burnout Plus features loaded/features enabled:
+<a name=table2580></a>
+Bit(s)  Description     (Table 02580)
+0      mouse activity monitor
+1      passkey support
+2      password support
+3      continuous clear
+4      software blanking
+5      video activity monitor
+6      disk activity monitor
+7      activating keystroke suppression
+</PRE>
+<p><b>See Also:</b>
+#02581
+<PRE>
+<p>
+Format of Burnout Plus control structure:
+<a name=table2581></a>
+Offset  Size    Description     (Table 02581)
+00h    BYTE    size of structure in bytes
+01h    WORD    Burnout Plus version
+03h    WORD    screen blanking reset count in clock ticks
+05h    WORD    current countdown value in clock ticks
+07h    BYTE    type of timeout specification
+08h    BYTE    instant-blank hotkey
+09h    WORD    extended status information <a href="rb-4224.htm#Table2582">(see #02582)</a>
+the bits for password, passkey, and software blanking are
+ignored and cannot be enabled or disabled externally
+0Bh    WORD    features enabled <a href="rb-4224.htm#Table2580">(see #02580)</a>
+</PRE>
+<p><b>Note:</b>
+All fields except the first two may be modified by external programs
+to affect the operation of Burnout Plus
+<PRE>
+<p><b>Index:</b><br>Hotkeys;Burnout Plus
+<p>
+Bitfields for extended Burnout Plus status information:
+<a name=table2582></a>
+Bit(s)  Description     (Table 02582)
+0      Burnout Plus disabled
+1      force screen to blank on next clock tick
+2      restore screen if currently blanked
+3-15   reserved
+</PRE>
+<p><b>Note:</b>
+1 and 2 are automatically cleared by Burnout Plus after blanking
+or restoring the screen
+<p><b>See Also:</b>
+#02581
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-2D.htm">
+Int 2Dh</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4223.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4225.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

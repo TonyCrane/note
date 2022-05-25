@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F257h/SF=09h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F257h/SF=09h - Novell NetWare - SET SHORT DIRECTORY HANDLE - 
+AX = F257h subfn 09h
+CX = length of request packet in bytes
+DX = 0000h (no reply packet)
+DS:SI - request packet (see #02392)
+ES:DI ignored
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F257h/SF=0Ch
+Format of NetWare Set Short Directory Handle request packet:
+Offset Size  Description   (Table 02392)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F257h/SF=09h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3910.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3912.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SET SHORT DIRECTORY HANDLE</font></h3>
+<PRE>
+AX = F257h subfn 09h
+CX = length of request packet in bytes
+DX = 0000h (no reply packet)
+DS:SI -> request packet <a href="rb-3911.htm#Table2392">(see #02392)</a>
+ES:DI ignored<br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3914.htm">AX=F257h/SF=0Ch</a>
+<PRE>
+<p>
+Format of NetWare "Set Short Directory Handle" request packet:
+<a name=table2392></a>
+Offset  Size    Description     (Table 02392)
+00h    BYTE    09h (subfunction "Set Short Directory Handle")
+01h    BYTE    name space <a href="rb-3908.htm#Table2387">(see #02387)</a>
+02h    BYTE    data stream
+03h    BYTE    destination directory handle
+04h    BYTE    reserved for future use
+05h            NetWare Handle/Path structure <a href="rb-3903.htm#Table2376">(see #02376)</a>
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3910.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3912.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

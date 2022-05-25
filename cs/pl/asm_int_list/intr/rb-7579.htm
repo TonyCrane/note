@@ -1,0 +1,185 @@
+<HTML>
+<HEAD>
+<TITLE>Int 6A/AX=0001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 6A/AX=0001h - Super-TCP DOS TSR Kernel v3.57 - ??? - 
+AX = 0001h
+BH = function number
+01h ???
+DS:SI - ??? 24-byte record1 (see #03717)
+ES:DI - buffer containing ???
+02h ???
+DS:SI - ??? 18-byte record2 (see #03718)
+ES:DI - buffer containing ???
+04h ???
+BL = subfunction
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 6A/AX=0001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7578.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7580.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Super-TCP DOS TSR Kernel v3.57 - ???</font></h3>
+<PRE>
+AX = 0001h
+BH = function number
+01h ???
+DS:SI -> ??? 24-byte record1 <a href="rb-7579.htm#Table3717">(see #03717)</a>
+ES:DI -> buffer containing ???
+02h ???
+DS:SI -> ??? 18-byte record2 <a href="rb-7579.htm#Table3718">(see #03718)</a>
+ES:DI -> buffer containing ???
+04h ???
+BL = subfunction
+01h
+DS:SI -> ??? 28-byte record3 <a href="rb-7579.htm#Table3719">(see #03719)</a>
+ES:DI -> buffer containing ???
+02h
+DS:SI -> ??? 28-byte record3 <a href="rb-7579.htm#Table3719">(see #03719)</a>
+ES:DI -> buffer containing ???
+03h
+DS:SI -> ??? 28-byte record3 <a href="rb-7579.htm#Table3719">(see #03719)</a>
+<p><b>else Return:</b><br>AX = 0005h
+05h ???
+DS:SI -> ??? 20-byte record4 <a href="rb-7579.htm#Table3720">(see #03720)</a>
+ES:DI -> buffer containing ???
+06h ???
+BL = subfunction
+01h
+DS:SI -> ??? 40-byte record5 <a href="rb-7579.htm#Table3721">(see #03721)</a>
+02h
+DS:SI -> ??? 20-byte record6 <a href="rb-7579.htm#Table3722">(see #03722)</a>
+ES:DI -> ???
+03h
+DS:SI -> ??? 20-byte record6 <a href="rb-7579.htm#Table3722">(see #03722)</a>
+04h
+DS:SI -> ??? 46-byte record7 <a href="rb-7579.htm#Table3723">(see #03723)</a>
+<p><b>else Return:</b><br>AX = 0005h
+11h ???
+DS:SI -> ??? 28-byte record8 <a href="rb-7579.htm#Table3724">(see #03724)</a>
+ES:DI -> ???<br>
+<p><b>Return:</b><br>AX = function status (see #03716)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7578.htm">AX=0000h</a>
+<PRE>
+<p>
+<a name=table3716></a>
+(Table 03716)
+Values for Super-TCP function status:
+0000h  successful
+0005h  unsupported function
+000Ah  out of memory
+<p>
+Format of record1:
+<a name=table3717></a>
+Offset  Size    Description     (Table 03717)
+00h  4 BYTEs   ???
+04h    WORD    size of ES:DI buffer
+06h 18 BYTEs   ???
+<p>
+Format of record2:
+<a name=table3718></a>
+Offset  Size    Description     (Table 03718)
+00h  4 BYTEs   ???
+04h    WORD    size of ES:DI buffer
+06h 12 BYTEs   ???
+<p>
+Format of record3:
+<a name=table3719></a>
+Offset  Size    Description     (Table 03719)
+00h  2 BYTEs   ???
+02h    WORD    ???
+04h    WORD    size of ES:DI buffer
+06h    WORD    ???
+08h    WORD    operation number (for function 0401h)
+0Ah    DWORD   -> ???
+0Eh    WORD    (ret) ???
+10h 12 BYTEs   ???
+<p>
+Format of record4:
+<a name=table3720></a>
+Offset  Size    Description     (Table 03720)
+00h  4 BYTEs   ???
+04h    WORD    size of ES:DI buffer
+06h 14 BYTEs   ???
+<p>
+Format of record5:
+<a name=table3721></a>
+Offset  Size    Description     (Table 03721)
+00h    BYTE    operation??? (00h-07h)
+01h    BYTE    ???
+02h    WORD    (ret) ???
+04h    DWORD   -> ???
+08h  4 BYTEs   ???
+0Ch    DWORD   -> ??? or 0000h:0000h
+10h 16 BYTEs   ???
+20h    DWORD   ???
+24h  4 BYTEs   ???
+<p>
+Format of record6:
+<a name=table3722></a>
+Offset  Size    Description     (Table 03722)
+00h  4 BYTEs   ???
+04h    WORD    size of ES:DI buffer
+06h 14 BYTEs   ???
+<p>
+Format of record7:
+<a name=table3723></a>
+Offset  Size    Description     (Table 03723)
+00h    WORD    ???
+02h    WORD    ???
+04h    WORD    ???
+06h 40 BYTEs   ???
+<p>
+Format of record8:
+<a name=table3724></a>
+Offset  Size    Description     (Table 03724)
+00h  4 BYTEs   ???
+04h    WORD    size of ES:DI buffer
+06h  6 BYTEs   ???
+0Ch    WORD    (ret) ???
+0Eh    WORD    operation??? (01h-03h)
+10h 12 BYTEs   ???
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-6A.htm">
+Int 6Ah</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7578.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7580.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

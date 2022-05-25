@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=71A0h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=71A0h - Windows95 - LONG FILENAME - GET VOLUME INFORMATION - 
+AX = 71A0h
+DS:DX - ASCIZ root name (e.g. C:\)
+ES:DI - buffer for file system name
+CX = size of ES:DI buffer
+Return: CF clear if successful
+AX destroyed (0000h and 0200h seen)
+BX = file system flags (see #01783)
+CX = maximum length of file name [usually 255]
+DX = maximum length of path [usually 260]
+ES:DI buffer filled (ASCIZ, e.g. FAT,NTFS,CDFS)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=71A0h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3209.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3211.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - LONG FILENAME - GET VOLUME INFORMATION</font></h3>
+<PRE>
+AX = 71A0h
+DS:DX -> ASCIZ root name (e.g. "C:\")
+ES:DI -> buffer for file system name
+CX = size of ES:DI buffer<br>
+<p><b>Return:</b><br>CF clear if successful
+AX destroyed (0000h and 0200h seen)
+BX = file system flags <a href="rb-3210.htm#Table1783">(see #01783)</a>
+CX = maximum length of file name [usually 255]
+DX = maximum length of path [usually 260]
+ES:DI buffer filled (ASCIZ, e.g. "FAT","NTFS","CDFS")
+CF set on error
+AX = error code
+7100h if function not supported
+</PRE>
+<p><b>Notes:</b>
+For the file system name buffer, 32 bytes should be sufficient; that's
+what is used in some sample code by Walter Oney from Microsoft..
+This function accesses the disk the first time it is called
+<p><b>BUG:</b>
+This function returns DX=0000h for CD-ROM drives under Win95 SP1
+<p><b>See Also:</b>
+<a href="rb-3203.htm">AX=714Eh</a> - <a href="rb-3206.htm">AX=7160h/CL=00h</a>
+<PRE>
+<p>
+Bitfields for long filename volume information flags:
+<a name=table1783></a>
+Bit(s)  Description     (Table 01783)
+0      searches are case sensitive
+1      preserves case in directory entries
+2      uses Unicode characters in file and directory names
+3-13   reserved (0)
+14     supports DOS long filename functions
+15     volume is compressed
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3209.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3211.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=49h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=49h - DOS 2+ - FREE MEMORY - 
+AH = 49h
+ES = segment of block to free
+Return: CF clear if successful
+CF set on error
+AX = error code (07h,09h) (see #01680 at AH=59h/BX=0000h)
+Notes: apparently never returns an error 07h, despite official docs; DOS 2.1+
+code contains only an error 09h exit
+DOS 2.1-6.0 does not coalesce adjacent free blocks when a block is
+freed, only when a block is allocated or resized
+the code for this function is identical in DOS 2.1-6.0 except for
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=49h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2934.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2936.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - FREE MEMORY</font></h3>
+<PRE>
+AH = 49h
+ES = segment of block to free<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (07h,09h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+Apparently never returns an error 07h, despite official docs; DOS 2.1+
+code contains only an error 09h exit.
+DOS 2.1-6.0 does not coalesce adjacent free blocks when a block is
+freed, only when a block is allocated or resized.
+The code for this function is identical in DOS 2.1-6.0 except for
+calls to start/end a critical section in DOS 3.0+
+<p><b>See Also:</b>
+<a href="rb-2934.htm">AH=48h</a> - <a href="rb-2936.htm">AH=4Ah</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2934.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2936.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

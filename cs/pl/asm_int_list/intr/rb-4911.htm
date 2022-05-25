@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=6282h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=6282h - PC Tools v7.0+ VDEFEND, VSAFE, VWATCH, DATAMON - SET ??? ADDRESS - 
+AX = 6282h
+CX:DX - ??? or 0000h:0000h
+DI = segment of ??? record (see #02846) or 0000h/FFFFh to ignore
+Return: BX = 0062h
+Note:  if CX:DX = 0000h:0000h on entry, the ??? address is not changed
+(DATAMON only)
+SeeAlso: INT 13/AH=FAhVSAFE,INT 21/AH=FAhVDEFEND
+Format of VSAFE/VWATCH record:
+Offset Size  Description   (Table 02846)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=6282h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4910.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4912.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC Tools v7.0+ VDEFEND, VSAFE, VWATCH, DATAMON - SET ??? ADDRESS</font></h3>
+<PRE>
+AX = 6282h
+CX:DX -> ??? or 0000h:0000h
+DI = segment of ??? record <a href="rb-4911.htm#Table2846">(see #02846)</a> or 0000h/FFFFh to ignore<br>
+<p><b>Return:</b><br>BX = 0062h
+</PRE>
+<p><b>Note:</b>
+If CX:DX = 0000h:0000h on entry, the ??? address is not changed
+(DATAMON only)
+<p><b>See Also:</b>
+<a href="rb-0804.htm">INT 13/AH=FAh"VSAFE"</a> - <a href="rb-4006.htm">INT 21/AH=FAh"VDEFEND"</a>
+<PRE>
+<p>
+Format of VSAFE/VWATCH record:
+<a name=table2846></a>
+Offset  Size    Description     (Table 02846)
+00h    DWORD   ???
+04h    WORD    offset of ??? in record's segment
+VSAFE 2.0 sets byte at +01h to 56h or 58h
+VWATCH 2.1 sets byte at +02h to 56h or 58h
+06h  2 BYTEs   ???
+08h    BYTE    ??? (01h/other)
+</PRE>
+<p>
+<b>Category: <a href="cat-047.htm">
+Virus/Antivirus</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4910.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4912.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

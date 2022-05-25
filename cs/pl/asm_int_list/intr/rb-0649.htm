@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=1Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=1Ah - ESDI FIXED DISK - FORMAT UNIT (PS) - 
+AH = 1Ah
+AL = defect table entry count
+CL = format modifiers (see #00250)
+DL = drive (80h,81h)
+ES:BX - defect table (see #00251), ignored if AL=00h
+Return: CF set on error
+CF clear if successful
+AH = status (see #00234 at AH=01h)
+Note:  if periodic interrupt selected, INT 15/AH=0Fh is called after each
+cylinder is formatted
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=1Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0648.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0650.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ESDI FIXED DISK - FORMAT UNIT (PS)</font></h3>
+<PRE>
+AH = 1Ah
+AL = defect table entry count
+CL = format modifiers <a href="rb-0649.htm#Table250">(see #00250)</a>
+DL = drive (80h,81h)
+ES:BX -> defect table <a href="rb-0649.htm#Table251">(see #00251)</a>, ignored if AL=00h<br>
+<p><b>Return:</b><br>CF set on error
+CF clear if successful
+AH = status <a href="rb-0000.htm#Table0"></a>(see #00234 at AH=01h)
+</PRE>
+<p><b>Note:</b>
+If periodic interrupt selected, INT 15/AH=0Fh is called after each
+cylinder is formatted
+<p><b>See Also:</b>
+<a href="rb-0618.htm">AH=07h</a> - <a href="rb-1187.htm">INT 15/AH=0Fh</a>
+<PRE>
+<p>
+Bitfields for ESDI format modifiers:
+<a name=table250></a>
+Bit(s)  Description     (Table 00250)
+4      generate periodic interrupt
+3      perform surface analysis
+2      update secondary defect map
+1      ignore secondary defect map
+0      ignore primary defect map
+<p>
+Format of defect table entry [array]:
+<a name=table251></a>
+Offset  Size    Description     (Table 00251)
+00h  3 BYTEs   relative sector address (little-endian)
+03h    BYTE    flags and defect count
+<p><b>bit 7:</b><br>Last logical sector on track
+<p><b>bit 6:</b><br>First logical sector on track
+<p><b>bit 5:</b><br>Last logical sector on cylinder
+<p><b>bit 4:</b><br>Logical sectors are pushed onto next track
+<p><b>bits 3-0:</b><br>Number of defects pushed from previous cylinder
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-e.htm">
+E</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0648.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0650.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

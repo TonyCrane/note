@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=B800h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=B800h - Novell NetWare - PRINT SERVICES - GET DEFAULT CAPTURE FLAGS - 
+AX = B800h
+CX = size of reply buffer (01h-3Fh)
+ES:BX - reply buffer for capture flags table (see #01805)
+Return: AL = status
+00h successful
+Note:  this function is supported by Advanced NetWare 2.0+
+SeeAlso: AX=B801h,AX=B802h,AH=DFh/DL=00h,AH=DFh/DL=04h
+Format of NetWare capture flags table:
+Offset Size  Description   (Table 01805)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=B800h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3308.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3310.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - PRINT SERVICES - GET DEFAULT CAPTURE FLAGS</font></h3>
+<PRE>
+AX = B800h
+CX = size of reply buffer (01h-3Fh)
+ES:BX -> reply buffer for capture flags table <a href="rb-3309.htm#Table1805">(see #01805)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 2.0+
+<p><b>See Also:</b>
+<a href="rb-3310.htm">AX=B801h</a> - <a href="rb-3311.htm">AX=B802h</a> - <a href="rb-3413.htm">AH=DFh/DL=00h</a> - <a href="rb-3417.htm">AH=DFh/DL
+<PRE>
+<p>
+Format of NetWare capture flags table:
+<a name=table1805></a>
+Offset  Size    Description     (Table 01805)
+00h    BYTE    status (used internally, should be set to 00h)
+01h    BYTE    print flags <a href="rb-3309.htm#Table1806">(see #01806)</a>
+02h    BYTE    tab size (01h-12h, default 08h)
+03h    BYTE    printer number on server (00h-04h, default 00h)
+04h    BYTE    number of copies to print (00h-FFh, default 01h)
+05h    BYTE    form type required in printer (default 00h)
+06h    BYTE    reserved
+07h 13 BYTEs   text to be placed on banner page
+14h    BYTE    reserved
+15h    BYTE    default local printer (00h = LPT1)
+16h    WORD    (big-endian) timeout in clock ticks for flushing capture file
+on inactivity, or 0000h to disable timeout
+18h    BYTE    flush capture file on LPT close if nonzero
+19h    WORD    (big-endian) maximum lines per page
+1Bh    WORD    (big-endian) maximum characters per line
+1Dh 13 BYTEs   name of form required in printer
+2Ah    BYTE    LPT capture flag
+00h inactive, FFh LPT device is being captured
+2Bh    BYTE    file capture flag
+00h if no file specified, FFh if capturing to file
+2Ch    BYTE    timing out (00h if no timeout in effect, FFh if timeout counter
+running)
+2Dh    DWORD   (big-endian) address of printer setup string
+31h    DWORD   (big-endian) address of printer reset string
+35h    BYTE    target connection ID
+36h    BYTE    capture in progress if FFh
+37h    BYTE    job queued for printing if FFh
+38h    BYTE    print job valid if FFh
+39h    DWORD   bindery object ID of print queue if previous byte FFh
+3Dh    WORD    (big-endian) print job number (1-999)
+<p>
+Bitfields for NetWare print flags:
+<a name=table1806></a>
+Bit(s)  Description     (Table 01806)
+2      print capture file if interrupted by loss of connection
+3      no automatic form feed after print job
+6      printing control sequences interpreted by print service
+7      print banner page before capture file
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3308.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3310.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

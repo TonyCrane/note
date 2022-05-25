@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 60/AH=02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 60/AH=02h - FTP Packet Driver - BASIC FUNC - ACCESS TYPE - 
+AH = 02h
+AL = interface class
+BX = interface type
+DL = interface number
+DS:SI - type
+CX = length of type (0000h for all packets)
+ES:DI - receiver function (see #03308)
+Return: CF set on error
+DH = error code (see #03305)
+CF clear if successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 60/AH=02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6656.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6658.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FTP Packet Driver - BASIC FUNC - ACCESS TYPE</font></h3>
+<PRE>
+AH = 02h
+AL = interface class
+BX = interface type
+DL = interface number
+DS:SI -> type
+CX = length of type (0000h for all packets)
+ES:DI -> receiver function <a href="rb-6657.htm#Table3308">(see #03308)</a><br>
+<p><b>Return:</b><br>CF set on error
+DH = error code <a href="rb-6655.htm#Table3305">(see #03305)</a>
+CF clear if successful
+AX = handle
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6660.htm">AH=03h"FTP"</a>
+<PRE>
+<p>
+<a name=table3308></a>
+(Table 03308)
+Values packet driver receiver is called with when a packet is received:.
+AX = subfunction
+00h get packet buffer
+CX = buffer length
+DX = lookahead length (v1.10+)
+DS:SI -> lookahead buffer if DX nonzero (v1.10+)
+DI = error flags (class dependent) (v1.10+)
+<p><b>Return:</b><br>ES:DI -> packet buffer
+0000h:0000h means throw away packet
+CX = size of buffer (v1.10+), may be smaller than
+incoming data
+01h copy completed
+DS:SI -> buffer
+CX = bytes actually copied (v1.10+).
+BX = handle
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-60.htm">
+Int 60h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6656.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6658.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=AE00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=AE00h - DOS 3.3+ internal - INSTALLABLE COMMAND - INSTALLATION CHECK - 
+AX = AE00h
+DX = magic value FFFFh
+CH = FFh
+CL = length of command line tail (4DOS v4.0)
+DS:BX - command line buffer (see #02977)
+DS:SI - command name buffer (see #02978)
+DI = 0000h (4DOS v4.0)
+Return: AL = FFh if this command is a TSR extension to COMMAND.COM
+AL = 00h if the command should be executed as usual
+Notes: This call provides a mechanism for TSRs to install permanent
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=AE00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5188.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5190.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.3+ internal - INSTALLABLE COMMAND - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = AE00h
+DX = magic value FFFFh
+CH = FFh
+CL = length of command line tail (4DOS v4.0)
+DS:BX -> command line buffer <a href="rb-5189.htm#Table2977">(see #02977)</a>
+DS:SI -> command name buffer <a href="rb-5189.htm#Table2978">(see #02978)</a>
+DI = 0000h (4DOS v4.0)<br>
+<p><b>Return:</b><br>AL = FFh if this command is a TSR extension to COMMAND.COM
+AL = 00h if the command should be executed as usual
+</PRE>
+<p><b>Notes:</b>
+This call provides a mechanism for TSRs to install permanent
+extensions to the command repertoire of COMMAND.COM.  It appears
+that COMMAND.COM makes this call before executing the current
+command line, and does not execute it itself if the return is FFh..
+APPEND hooks this call, to allow subsequent APPEND commands to
+execute without re-running APPEND
+<p><b>See Also:</b>
+<a href="rb-5190.htm">AX=AE01h</a>
+<PRE>
+<p>
+Format of COMMAND.COM command line buffer:
+<a name=table2977></a>
+Offset  Size    Description     (Table 02977)
+00h    BYTE    max length of command line, as in INT 21/AH=0Ah
+01h    BYTE    count of bytes to follow, excluding terminating 0Dh
+N BYTEs   command line text, terminated by 0Dh
+<p>
+Format of command name buffer:
+<a name=table2978></a>
+Offset  Size    Description     (Table 02978)
+00h    BYTE    length of command name
+01h  N BYTEs   uppercased command name (blank-padded to 11 chars by 4DOS v4)
+</PRE>
+<p>
+<b>Category: <a href="cat-039.htm">
+Shells/Command Interpreters</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5188.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5190.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

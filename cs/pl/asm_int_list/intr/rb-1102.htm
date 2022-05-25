@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AX=E000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AX=E000h - MX5 Extended FOSSIL - GET MNP STATUS BLOCK - 
+AX = E000h
+DX = port number (0-3)
+Return: ES:BX - status block (see #00398)
+Program: MX5 is a FOSSIL driver by MagicSoft which emulates MNP Level 5, and
+ships with the METZ terminal program as MTEMNP.DRV (a TSR despite
+the .DRV extension)
+SeeAlso: AX=E006h
+Format of MX5 Extended FOSSIL status block:
+Offset Size  Description   (Table 00398)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AX=E000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1101.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1103.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MX5 Extended FOSSIL - GET MNP STATUS BLOCK</font></h3>
+<PRE>
+AX = E000h
+DX = port number (0-3)<br>
+<p><b>Return:</b><br>ES:BX -> status block (see #00398)
+</PRE>
+<p><b>Program:</b>
+MX5 is a FOSSIL driver by MagicSoft which emulates MNP Level 5, and
+ships with the METZ terminal program as MTEMNP.DRV (a TSR despite
+the .DRV extension)
+<p><b>See Also:</b>
+<a href="rb-1108.htm">AX=E006h</a>
+<PRE>
+<p>
+Format of MX5 Extended FOSSIL status block:
+<a name=table398></a>
+Offset  Size    Description     (Table 00398)
+<p><b>00h    BYTE    flag:</b><br>Active (00h no, 01h yes)
+01h    BYTE    MNP level (2,4,5)
+02h    BYTE    series ID from remote MNP
+03h    DWORD   total packets transmitted
+07h    DWORD   duplicate packets transmitted
+0Bh    DWORD   maximum speed
+0Fh    DWORD   total packets received
+13h    DWORD   duplicate packets received
+17h    DWORD   maximum speed
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1101.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1103.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

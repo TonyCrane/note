@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E2h/SF=02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E2h/SF=02h - Novell NetWare - DIRECTORY SERVICES - SCAN DIRECTORY INFORMATION - 
+AH = E2h subfn 02h
+DS:SI - request buffer (see #01844)
+ES:DI - reply buffer (see #01845)
+Return: AL = status (00h,98h,9Bh,9Ch) (see #01839)
+Desc:  get information about the first or next subdirectory of the specified
+directory
+Note:  this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+SeeAlso: AH=E2h/SF=01h,AH=E2h/SF=03h,AH=E2h/SF=19h,AX=F216h/SF=02h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E2h/SF=02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3458.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3460.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - DIRECTORY SERVICES - SCAN DIRECTORY INFORMATION</font></h3>
+<PRE>
+AH = E2h subfn 02h
+DS:SI -> request buffer <a href="rb-3459.htm#Table1844">(see #01844)</a>
+ES:DI -> reply buffer <a href="rb-3459.htm#Table1845">(see #01845)</a><br>
+<p><b>Return:</b><br>AL = status (00h,98h,9Bh,9Ch) (see #01839)
+</PRE>
+<p><b>Desc:</b>
+Get information about the first or next subdirectory of the specified
+directory
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3458.htm">AH=E2h/SF=01h</a> - <a href="rb-3460.htm">AH=E2h/SF=03h</a> - <a href="rb-3479.htm">AH=E2h/SF=19h</a> - <a href="rb-3671.htm"
+<PRE>
+<p>
+Format of NetWare "Scan Directory Information" request buffer:
+<a name=table1844></a>
+Offset  Size    Description     (Table 01844)
+00h    WORD    length of following data (max 104h)
+02h    BYTE    02h (subfunction "Scan Directory Information")
+03h    BYTE    directory handle
+04h    WORD    (big-endian) subdirectory number
+0000h for first call, returned subdir number + 1 on next call
+06h    BYTE    length of directory path
+07h  N BYTEs   directory path
+</PRE>
+<p><b>See Also:</b>
+#01842 - #01845
+<PRE>
+<p>
+Format of NetWare "Scan Directory Information" reply buffer:
+<a name=table1845></a>
+Offset  Size    Description     (Table 01845)
+00h    WORD    (call) 001Ch (length of following data buffer)
+02h 16 BYTEs   subdirectory name
+12h    DWORD   (big-endian) date and time of creation <a href="rb-3459.htm#Table1846">(see #01846)</a>
+16h    DWORD   (big-endian) object ID of owner
+1Ah    BYTE    maximum directory rights <a href="rb-3460.htm#Table1849">(see #01849)</a>
+1Bh    BYTE    unused
+1Ch    WORD    (big-endian) subdirectory number
+</PRE>
+<p><b>See Also:</b>
+#01843 - #01844 - #02111 at AX=F216h/SF=02h
+<PRE>
+<p>
+Bitfields for NetWare date and time:
+<a name=table1846></a>
+Bit(s)  Description     (Table 01846)
+31-25  year-1980
+24-21  month
+20-16  day
+15-11  hour
+10-5   minute
+4-0    second
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3458.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3460.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

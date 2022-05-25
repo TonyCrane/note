@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=DCh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=DCh - Novell NetWare v2.2+ - GET CONNECTIONS USING A FILE (OLD) - 
+AX = F217h subfn DCh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02050 at AH=E3h/SF=DCh)
+ES:DI - reply buffer (see #02235)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E3h/SF=DCh,AX=F217h/SF=ECh
+Format of NetWare Get Connections Using A File (old) reply packet:
+Offset Size  Description   (Table 02235)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=DCh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3823.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3825.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2.2+ - GET CONNECTIONS USING A FILE (OLD)</font></h3>
+<PRE>
+AX = F217h subfn DCh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-0000.htm#Table0"></a>(see #02050 at AH=E3h/SF=DCh)
+ES:DI -> reply buffer <a href="rb-3824.htm#Table2235">(see #02235)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3568.htm">AH=E3h/SF=DCh</a> - <a href="rb-3839.htm">AX=F217h/SF=ECh</a>
+<PRE>
+<p>
+Format of NetWare "Get Connections Using A File (old)" reply packet:
+<a name=table2235></a>
+Offset  Size    Description     (Table 02235)
+00h    WORD    (big-endian) count of tasks which have opened or logged file
+02h    WORD    (big-endian) count of tasks which have opened file
+04h    WORD    (big-endian) count of opens for reading
+06h    WORD    (big-endian) count of opens for writing
+08h    WORD    (big-endian) deny read count
+0Ah    WORD    (big-endian) deny write count
+0Ch    WORD    next request record (place in "last record" field on next call)
+0000h if no more records
+0Eh    BYTE    locked flag
+00h not locked exclusively
+else locked exclusively
+0Fh    BYTE    number of records following
+10h    var     array of File Usage Information Records
+<a href="rb-0000.htm#Table0"></a>(see #02052 at AH=E3h/SF=DCh)
+</PRE>
+<p><b>See Also:</b>
+#02050 - #02051 at AH=E3h/SF=DCh
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3823.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3825.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

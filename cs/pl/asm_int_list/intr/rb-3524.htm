@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=67h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=67h - Novell NetWare - QUEUE SERVICES - SET QUEUE CURRENT STATUS (OLD) - 
+AH = E3h subfn 67h
+DS:SI - request buffer (see #01968)
+ES:DI - reply buffer (see #01969)
+Return: AL = status (00h,96h,9Ch,D0h,D1h,D3h,FEh,FFh) (see #01961)
+Notes: this function is supported by Advanced NetWare 2.1+
+caller must have operator privileges
+SeeAlso: AH=E3h/SF=64h,AH=E3h/SF=66h,AH=E3h/SF=6Fh,AH=E3h/SF=76h
+SeeAlso: AX=F217h/SF=67h
+Format of NetWare Set Queue Current Status (old) request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=67h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3523.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3525.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - SET QUEUE CURRENT STATUS (OLD)</font></h3>
+<PRE>
+AH = E3h subfn 67h
+DS:SI -> request buffer <a href="rb-3524.htm#Table1968">(see #01968)</a>
+ES:DI -> reply buffer <a href="rb-3524.htm#Table1969">(see #01969)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,9Ch,D0h,D1h,D3h,FEh,FFh) (see #01961)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Caller must have operator privileges
+<p><b>See Also:</b>
+<a href="rb-3521.htm">AH=E3h/SF=64h</a> - <a href="rb-3523.htm">AH=E3h/SF=66h</a> - <a href="rb-3532.htm">AH=E3h/SF=6Fh</a> - <a href="rb-3539.htm"
+<p><b>See Also:</b>
+<a href="rb-3768.htm">AX=F217h/SF=67h</a>
+<PRE>
+<p>
+Format of NetWare "Set Queue Current Status (old)" request buffer:
+<a name=table1968></a>
+Offset  Size    Description     (Table 01968)
+00h    WORD    0006h (length of following data)
+02h    BYTE    67h (subfunction "Set Queue Current Status")
+03h    DWORD   (big-endian) object ID of queue
+07h    BYTE    queue status <a href="rb-3523.htm#Table1967">(see #01967)</a>
+</PRE>
+<p><b>See Also:</b>
+#01969
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1969></a>
+Offset  Size    Description     (Table 01969)
+00h    WORD    (call) 0000h (no results returned)
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3523.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3525.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

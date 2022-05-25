@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=16h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=16h - Novell NetWare - CONNECTION SERVICES - GET CONNECTION INFORMATION - 
+AH = E3h subfn 16h
+DS:SI - request buffer (see #01917)
+ES:DI - reply buffer (see #01918)
+Return: AL = status
+00h successful
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=D7h,AH=DChNetWare,AH=E3h/SF=14h
+Format of NetWare Get Connection Information request buffer:
+Offset Size  Description   (Table 01917)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=16h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3497.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3499.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - CONNECTION SERVICES - GET CONNECTION INFORMATION</font></h3>
+<PRE>
+AH = E3h subfn 16h
+DS:SI -> request buffer <a href="rb-3498.htm#Table1917">(see #01917)</a>
+ES:DI -> reply buffer <a href="rb-3498.htm#Table1918">(see #01918)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3390.htm">AH=D7h</a> - <a href="rb-3293.htm">AH=DCh"NetWare"</a> - <a href="rb-3496.htm">AH=E3h/SF=14h</a>
+<PRE>
+<p>
+Format of NetWare "Get Connection Information" request buffer:
+<a name=table1917></a>
+Offset  Size    Description     (Table 01917)
+00h    WORD    0002h (length of following data)
+02h    BYTE    16h (subfunction "Get Connection Information")
+03h    BYTE    logical connection number (01h-64h)
+<p>
+Format of NetWare "Get Connection Information" reply buffer:
+<a name=table1918></a>
+Offset  Size    Description     (Table 01918)
+00h    WORD    (call) 003Eh (length of following results buffer)
+02h    DWORD   (big-endian) object ID for object logged in on the connection
+00000000h if no object logged in
+06h    WORD    (big-endian) type of object
+08h 48 BYTEs   name of object
+38h  7 BYTEs   login time <a href="rb-3498.htm#Table1919">(see #01919)</a>
+</PRE>
+<p><b>Note:</b>
+Much of the Novell documentation incorrectly states the reply buffer
+length as 3Fh instead of 40h, which corresponds to a results length
+of 3Dh (61) bytes instead of the correct 3Eh (62) bytes
+<PRE>
+<p>
+Format of NetWare login time:
+<a name=table1919></a>
+Offset  Size    Description     (Table 01919)
+00h    BYTE    year (80-99 = 1980-1999, 00-79 = 2000-2079)
+01h    BYTE    month (1-12)
+02h    BYTE    day (1-31)
+03h    BYTE    hour (0-23)
+04h    BYTE    minute (0-59)
+05h    BYTE    second (0-59)
+06h    BYTE    day of week (0 = Sunday)
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3497.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3499.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

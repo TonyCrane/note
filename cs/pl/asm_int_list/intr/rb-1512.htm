@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=83h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=83h - BIOS - SET EVENT WAIT INTERVAL (AT,PS50+) - 
+AH = 83h
+AL = subfunction
+00h set interval
+CX:DX = microseconds to delay
+ES:BX - byte whose high bit is to be set at end of interval
+01h cancel wait interval
+Return: CF set on error or function already busy
+AH = status
+80h invalid command (PC,PCjr)
+86h function not supported (XT and later)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=83h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1511.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1513.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>BIOS - SET EVENT WAIT INTERVAL (AT,PS50+)</font></h3>
+<PRE>
+AH = 83h
+AL = subfunction
+00h set interval
+CX:DX = microseconds to delay
+ES:BX -> byte whose high bit is to be set at end of interval
+01h cancel wait interval<br>
+<p><b>Return:</b><br>CF set on error or function already busy
+AH = status
+80h invalid command (PC,PCjr)
+86h function not supported (XT and later)
+CF clear if successful
+</PRE>
+<p><b>Notes:</b>
+The resolution of the wait period is 977 microseconds on many systems
+because many BIOSes use the 1/1024 second fast interrupt from the AT
+real-time clock chip which is available on INT 70.
+IBM AT 1984/1/10 BIOS ignores AL and always performs subfunction 00h
+<p><b>See Also:</b>
+<a href="rb-1355.htm">AH=41h</a> - <a href="rb-1525.htm">AH=86h</a> - <a href="rb-7797.htm">INT 70</a> - MEM 0040h:0098h - MEM 0040h:009Ch
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1511.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1513.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

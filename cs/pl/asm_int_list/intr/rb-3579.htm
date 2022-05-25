@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=E8h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=E8h - Novell NetWare - FILE SERVER - GET FILE SERVER MISC INFORMATION - 
+AH = E3h subfn E8h
+DS:SI - request buffer (see #02081)
+ES:DI - reply buffer (see #02082)
+Return: AL = status (00h,C6h) (see #02053)
+Note:  this function is supported by Advanced NetWare 2.1+
+SeeAlso: AH=E3h/SF=0Eh,AH=E3h/SF=11h,AH=E3h/SF=CDh,AH=E3h/SF=E7h
+SeeAlso: AX=F217h/SF=E8h
+Format of NetWare Get File Server Misc Information request buffer:
+Offset Size  Description   (Table 02081)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=E8h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3578.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3580.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET FILE SERVER MISC INFORMATION</font></h3>
+<PRE>
+AH = E3h subfn E8h
+DS:SI -> request buffer <a href="rb-3579.htm#Table2081">(see #02081)</a>
+ES:DI -> reply buffer <a href="rb-3579.htm#Table2082">(see #02082)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02053)
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 2.1+
+<p><b>See Also:</b>
+<a href="rb-3490.htm">AH=E3h/SF=0Eh</a> - <a href="rb-3493.htm">AH=E3h/SF=11h</a> - <a href="rb-3553.htm">AH=E3h/SF=CDh</a> - <a href="rb-3578.htm"
+<p><b>See Also:</b>
+<a href="rb-3835.htm">AX=F217h/SF=E8h</a>
+<PRE>
+<p>
+Format of NetWare "Get File Server Misc Information" request buffer:
+<a name=table2081></a>
+Offset  Size    Description     (Table 02081)
+00h    WORD    0001h (length of following data)
+02h    BYTE    E8h (subfunction "Get File Server Misc Information")
+</PRE>
+<p><b>See Also:</b>
+#02082 - #02246 at AX=F217h/SF=E8h
+<PRE>
+<p>
+Format of NetWare "Get File Server Misc Information" reply buffer:
+<a name=table2082></a>
+Offset  Size    Description     (Table 02082)
+00h    WORD    (call) size of following results buffer (max 0048h)
+02h    DWORD   (big-endian) clock ticks since system started
+06h    BYTE    CPU type
+00h Motorola 68000
+01h Intel 8086, 8088, or V20
+02h Intel 80286+
+07h    BYTE    reserved
+08h    BYTE    number of service processes in server
+09h    BYTE    server utilization in percent
+0Ah    WORD    (big-endian) maximum bindery objects set by configuration
+0000h = unlimited
+0Ch    WORD    (big-endian) maximum number of bindery objects used
+0Eh    WORD    (big-endian) current number of bindery objects in use
+10h    WORD    (big-endian) total server memory in KB
+12h    WORD    (big-endian) wasted server memory in KB
+normally 0000h
+14h    WORD    number of records following (01h-03h)
+16h    var     array of Dynamic Memory Information records <a href="rb-3579.htm#Table2083">(see #02083)</a>
+</PRE>
+<p><b>See Also:</b>
+#02081 - #02246 at AX=F217h/SF=E8h
+<PRE>
+<p>
+Format of NetWare Dynamic Memory Information:
+<a name=table2083></a>
+Offset  Size    Description     (Table 02083)
+00h    DWORD   (big-endian) total dynamic space
+04h    DWORD   (big-endian) maximum dynamic space used
+08h    DWORD   (big-endian) current dynamic space usage
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3578.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3580.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

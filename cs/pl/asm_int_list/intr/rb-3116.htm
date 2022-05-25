@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5FB0h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5FB0h - LANtastic - GET ACTIVE USER INFORMATION - 
+AX = 5FB0h
+BX = server login entry index
+DS:SI - buffer for active user entry (see #01739)
+ES:DI - ASCIZ machine name in form \\server
+Return: CF clear if successful
+CF set on error
+AX = error code
+BX = next login index
+SeeAlso: AX=5FB2h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5FB0h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3115.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3117.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LANtastic - GET ACTIVE USER INFORMATION</font></h3>
+<PRE>
+AX = 5FB0h
+BX = server login entry index
+DS:SI -> buffer for active user entry <a href="rb-3116.htm#Table1739">(see #01739)</a>
+ES:DI -> ASCIZ machine name in form "\\server"<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code
+BX = next login index
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3118.htm">AX=5FB2h</a>
+<PRE>
+<p>
+Format of LANtastic active user entry:
+<a name=table1739></a>
+Offset  Size    Description     (Table 01739)
+00h    WORD    virtual circuit number
+02h    BYTE    login state <a href="rb-3116.htm#Table1740">(see #01740)</a>
+03h    BYTE    last command issued <a href="rb-3116.htm#Table1741">(see #01741)</a>
+04h  5 BYTEs   number of I/O bytes (40-bit unsigned number)
+09h  3 BYTEs   number of server requests (24-bit unsigned)
+0Ch 16 BYTEs   name of user who is logged in
+1Ch 16 BYTEs   name of remote logged in machine
+2Ch    BYTE    extended privileges (v4+???)
+<p><b>bit 0:</b><br>User cannot change his password
+2Dh    WORD    time left in minutes (0000h = unlimited) (v4+???)
+<p>
+Bitfields for login state:
+<a name=table1740></a>
+Bit(s)  Description     (Table 01740)
+0      fully logged in
+1      remote program load login
+2      user has system manager privileges
+3      user can create audit entries
+4      bypass mail protection
+5      treat as local process
+6      bypass queue protection
+7      bypass access control lists
+<p>
+<a name=table1741></a>
+(Table 01741)
+Values for last LANtastic command:
+00h    login
+01h    process termination
+02h    open file
+03h    close file
+04h    create file
+05h    create new file
+06h    create unique file
+07h    commit data to disk
+08h    read file
+09h    write file
+0Ah    delete file
+0Bh    set file attributes
+0Ch    lock byte range
+0Dh    unlock byte range
+0Eh    create subdirectory
+0Fh    remove subdirectory
+10h    rename file
+11h    find first matching file
+12h    find next matching file
+13h    get disk free space
+14h    get a queue entry
+15h    set a queue entry
+16h    control the queue
+17h    return login information
+18h    return link description
+19h    seek on file
+1Ah    get server's time
+1Bh    create audit entry
+1Ch    open file in multitude of modes
+1Dh    change password
+1Eh    disable account
+1Fh    local server file copy
+---v3+---
+20h    get username from account file
+21h    translate server's logical path
+22h    make indirect file
+23h    get indirect file contents
+24h    get physical printer status
+25h    get logical print stream info
+26h    set logical print stream info
+27h    get user's account record
+---v4+---
+28h    request server shutdown
+29h    cancel server shutdown
+2Ah    stuff server's keyboard
+2Bh    write then commit data to disk
+2Ch    set extended queue entry
+2Dh    terminate user from server
+2Eh    enable/disable logins
+2Fh    flush server caches
+30h    change username
+31h    get extended queue entry.
+(same as get queue, but can return named fields blanked)
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3115.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3117.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

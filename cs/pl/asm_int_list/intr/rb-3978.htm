@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=09h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=09h - Novell NetWare v4+ - GET VOLUME SWITCH INFORMATION - 
+AX = F27Bh subfn 09h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02500)
+ES:DI - reply buffer (see #02501)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get Volume Switch Information request buffer:
+Offset Size  Description   (Table 02500)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=09h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3977.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3979.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET VOLUME SWITCH INFORMATION</font></h3>
+<PRE>
+AX = F27Bh subfn 09h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3978.htm#Table2500">(see #02500)</a>
+ES:DI -> reply buffer <a href="rb-3978.htm#Table2501">(see #02501)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get Volume Switch Information" request buffer:
+<a name=table2500></a>
+Offset  Size    Description     (Table 02500)
+00h    WORD    0005h (length of following data)
+02h    BYTE    09h (subfunction "Get Volume Switch Information")
+03h    DWORD   starting item number
+</PRE>
+<p><b>See Also:</b>
+#02501
+<PRE>
+<p>
+Format of NetWare "Get Volume Switch Information" reply buffer:
+<a name=table2501></a>
+Offset  Size    Description     (Table 02501)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    DWORD   total LFS counters
+0Ch    DWORD   current LFS counters
+10h    DWORD   "readFile"
+14h    DWORD   "writeFile"
+18h    DWORD   "deleteFile"
+1Ch    DWORD   "renMove"
+20h    DWORD   "openFile"
+24h    DWORD   "createFile"
+28h    DWORD   "createAndOpenFile"
+2Ch    DWORD   "closeFile"
+30h    DWORD   "scanDeleteFile"
+34h    DWORD   "salvageFile"
+38h    DWORD   "purgeFile"
+3Ch    DWORD   "migrateFile"
+40h    DWORD   "deMigrateFile"
+44h    DWORD   "createDir"
+48h    DWORD   "deleteDir"
+4Ch    DWORD   "directoryScans"
+50h    DWORD   "mapPathToDirNum"
+54h    DWORD   "modifyDirEntry"
+58h    DWORD   "getAccessRights"
+5Ch    DWORD   "getAccessRightsFromIDs"
+60h    DWORD   "mapDirNumToPath"
+64h    DWORD   "getEntryFromPathStrBase"
+68h    DWORD   "getOtherNSEntry"
+6Ch    DWORD   "getExtDirInfo"
+70h    DWORD   "getParentDirNum"
+74h    DWORD   "addTrusteeR"
+78h    DWORD   "scanTrusteeR"
+7Ch    DWORD   "delTrusteeR"
+80h    DWORD   "purgeTrust"
+84h    DWORD   "findNextTrustRef"
+88h    DWORD   "scanUserRestNodes"
+8Ch    DWORD   "addUserRest"
+90h    DWORD   "deleteUserRest"
+94h    DWORD   "rtnDirSpaceRest"
+98h    DWORD   "getActualAvailDskSp"
+9Ch    DWORD   "cntOwnedFilesAndDirs"
+A0h    DWORD   "migFileInfo"
+A4h    DWORD   "volMigInfo"
+A8h    DWORD   "readMigFileData"
+ACh    DWORD   "getVolusageStats"
+B0h    DWORD   "getActualVolUsageStats"
+B4h    DWORD   "getDirUsageStats"
+B8h    DWORD   "NMFileReadsCount"
+BCh    DWORD   "NMFileWritesCount"
+C0h    DWORD   "mapPathToDirNumOrPhantom"
+C4h    DWORD   "stationsHasAccessRgtsGntedBelow"
+C8h    DWORD   "gtDataSteamLensFromPathStrBase"
+CCh    DWORD   "checkAndGetDirectoryEntry"
+D0h    DWORD   "getDeletedEntry"
+D4h    DWORD   "getOriginalNameSpace"
+D8h    DWORD   "getActualFileSize"
+DCh    DWORD   "verifyNameSpaceNumber"
+E0h    DWORD   "verifyDataStreamNumber"
+E4h    DWORD   "checkVolumeNumber"
+E8h    DWORD   "commitFile"
+ECh    DWORD   "VMGetDirectoryEntry"
+F0h    DWORD   "createDMFileEntry"
+F4h    DWORD   "renameNameSpaceEntry"
+F8h    DWORD   "logFile"
+FCh    DWORD   "releaseFile"
+100h    DWORD   "clearFile"
+104h    DWORD   "setVolumeFlag"
+108h    DWORD   "clearVolumeFlag"
+10Ch    DWORD   "getOriginalInfo"
+110h    DWORD   "createMigratedDir"
+114h    DWORD   "F3OpenCreate"
+118h    DWORD   "F3InitFileSearch"
+11Ch    DWORD   "F3ContinueFileSearch"
+120h    DWORD   "F3RenameFile"
+124h    DWORD   "F3ScanForTrustees"
+128h    DWORD   "F3ObtainFileInfo"
+12Ch    DWORD   "F3ModifyInfo"
+130h    DWORD   "F3EraseFile"
+134h    DWORD   "F3SetDirHandle"
+138h    DWORD   "F3AddTrustees"
+13Ch    DWORD   "F3DeleteTrustees"
+140h    DWORD   "F3AllocDirHandle"
+144h    DWORD   "F3ScanSalvagedFiles"
+148h    DWORD   "F3RecoverSalvagedFiles"
+14Ch    DWORD   "F3PurgeSalvageableFile"
+150h    DWORD   "F3GetNSSpecificInfo"
+154h    DWORD   "F3ModifyNSSpecificInfo"
+158h    DWORD   "F3SearchSet"
+15Ch    DWORD   "F3GetDirBase"
+160h    DWORD   "F3QueryNameSpaceInfo"
+164h    DWORD   "F3GetNameSpaceList"
+168h    DWORD   "F3GetHugeInfo"
+16Ch    DWORD   "F3SetHugeInfo"
+170h    DWORD   "F3GetFullPathString"
+174h    DWORD   "F3GetEffectiveDirectoryRights"
+</PRE>
+<p><b>See Also:</b>
+#02500
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3977.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3979.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

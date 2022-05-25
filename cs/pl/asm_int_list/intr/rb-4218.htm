@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2D
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2D - AMIS v3.0+ - REQUEST POP-UP - 
+AL = 03h
+AH = multiplex number for program
+Return: AL = status
+00h not implemented or TSR is not a pop-up
+01h can not pop up at this time, try again later
+02h can not pop up yet, will do so when able
+03h already popped up
+04h unable to pop up, user intervention required
+BX = standard reason code
+0000h unknown failure
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2D
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4217.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4219.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AMIS v3.0+ - REQUEST POP-UP</font></h3>
+<PRE>
+AL = 03h
+AH = multiplex number for program<br>
+<p><b>Return:</b><br>AL = status
+00h not implemented or TSR is not a pop-up
+01h can not pop up at this time, try again later
+02h can not pop up yet, will do so when able
+03h already popped up
+04h unable to pop up, user intervention required
+BX = standard reason code
+0000h unknown failure
+0001h interrupt chain passes through memory
+which must be swapped out to pop up
+0002h swap-in failed
+CX = application's reason code if nonzero
+FFh TSR popped up and was exited by user
+BX = return value
+0000h no return value
+0001h TSR unloaded
+0002h-00FFh reserved
+0100h-FFFFh application-dependent
+</PRE>
+<p><b>Note:</b>
+This function is not valid unless a program is installed on the
+specified multiplex number; use INT 2D/AL=00h to check
+<p><b>See Also:</b>
+INT 2D/AL=00h - INT 2D/AL=01h - INT 2D/AL=02h - INT 2D/AL=04h - INT 2D/AL=05h
+<p><b>See Also:</b>
+INT 2D/AL=06h
+<p>
+<b>Category: <a href="cat-042.htm">
+TSR Libraries</a>
+- <a href="int-2D.htm">
+Int 2Dh</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4217.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4219.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

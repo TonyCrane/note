@@ -1,0 +1,128 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7F
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7F - Telebit ACS SERIAL I/O - 
+ES:SI- parameter block (see #03867)
+Return: CF set on error
+CF clear on success
+InstallCheck:  test for the signature PDGATEWRKSTNIF just prior to the
+interrupt handler
+Index: installation check;Telebit ACS Serial I/O
+Format of Telebit ACS parameter block:
+Offset Size  Description   (Table 03867)
+00h  BYTE  command (see #03868)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7F
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7986.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7988.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Telebit ACS SERIAL I/O</font></h3>
+<PRE>
+ES:SI-> parameter block <a href="rb-7987.htm#Table3867">(see #03867)</a><br>
+<p><b>Return:</b><br>CF set on error
+CF clear on success
+<p><b>InstallCheck:</b><br>Test for the signature "PDGATEWRKSTNIF" just prior to the
+interrupt handler
+<p><b>Index:</b><br>Installation check;Telebit ACS Serial I/O
+<p>
+Format of Telebit ACS parameter block:
+<a name=table3867></a>
+Offset  Size    Description     (Table 03867)
+00h    BYTE    command <a href="rb-7987.htm#Table3868">(see #03868)</a>
+01h    BYTE    gateway number
+02h    BYTE    reserved
+03h    BYTE    port
+04h 17 BYTEs   auxiliary buffer
+15h    BYTE    session
+16h    WORD    count of bytes passed to API
+18h    DWORD   buffer pointer passed to/from API
+1Ch    WORD    count of bytes passed from API
+1Eh    BYTE    return code <a href="rb-7987.htm#Table3869">(see #03869)</a>
+<p>
+<a name=table3868></a>
+(Table 03868)
+Values for Telebit ACS command:
+3Ch    status
+3Dh    connect
+3Eh    disconnect
+3Fh    read
+40h    data/command write
+41h    clear receive buffer
+42h    get configuration
+43h    get receiver status
+44h    raw write
+45h    search servers
+46h    set transmit buffer size
+<p>
+<a name=table3869></a>
+(Table 03869)
+Values for Telebit ACS return code:
+00h    success
+01h    invalid session
+05h    servername invalid
+06h    NetWare fileserver bindery is locked
+07h    communication server not active
+08h    general failure in NetWare fileserver
+09h    not logged into a fileserver
+10h    connection table full
+11h    no response from communication server
+12h    connection attempt terminated abnormally
+13h    connection refused - no sessions available
+14h    gateway number/port already in use
+15h    invalid connection response
+16h    port invalid
+17h    incorrect version in server response
+18h    gateway number/port combination not configured
+19h    initialization has not been completed
+20h    no more sockets are available
+21h    no active poolname
+23h    FATAL internal interface error
+24h    registration of host workstation failed - name is already in use
+25h    registration of host workstation failed - workstation name table full
+26h    registration of host workstation failed - only one session may be
+registered for dial-in
+FFh    Telebit ACS API is busy - retry later
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-7F.htm">
+Int 7Fh</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7986.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7988.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

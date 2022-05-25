@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5E04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5E04h - 10NET v5.0 - INITIATE PRINT JOB - 
+AX = 5E04h
+BX = zero-based redirection list index (see AX=5F02h)
+DS:DX - extended workstation printer setup structure (see #01698)
+Return: CF clear if successful
+CF set on error
+AX = error code (see #01680 at AH=59h/BX=0000h)
+SeeAlso: AX=5E05h10NET,AX=5E06h10NET
+Format of 10NET extended workstation printer setup structure:
+Offset Size  Description   (Table 01698)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5E04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3035.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3037.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>10NET v5.0 - INITIATE PRINT JOB</font></h3>
+<PRE>
+AX = 5E04h
+BX = zero-based redirection list index (see AX=5F02h)
+DS:DX -> extended workstation printer setup structure <a href="rb-3036.htm#Table1698">(see #01698)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3038.htm">AX=5E05h"10NET"</a> - <a href="rb-3039.htm">AX=5E06h"10NET"</a>
+<PRE>
+<p>
+Format of 10NET extended workstation printer setup structure:
+<a name=table1698></a>
+Offset  Size    Description     (Table 01698)
+00h    BYTE    notification flags <a href="rb-3036.htm#Table1699">(see #01699)</a>
+01h    BYTE    job control mask <a href="rb-3036.htm#Table1700">(see #01700)</a>
+02h    WORD    days to retain file
+04h    WORD    test print length
+06h    BYTE    number of copies to print
+07h    BYTE    compression algorithm
+08h    BYTE    tab width (00h = don't expand)
+09h    BYTE    initiation type (00h normal, 01h non-spooled)
+0Ah 38 BYTEs   job start operation notification instructions
+30h 32 BYTEs   comment for job
+50h 64 BYTEs   output filename or non-spooled file
+<p>
+Bitfields for 10NET notification flags:
+<a name=table1699></a>
+Bit(s)  Description     (Table 01699)
+0      user at print start
+1      operator at start, with reply
+2      user at print completion
+3      operator at completion, with reply
+4      user on queue switch
+5      operator on queue switch, with reply
+6      user on print error
+<p>
+Bitfields for 10NET job control mask:
+<a name=table1700></a>
+Bit(s)  Description     (Table 01700)
+0      print banner page
+1      eject page at end of job
+2      mark as "held" (queue but don't print)
+3      rush job (queue at top)
+4      overwrite file with zeros before deletion
+5      hyperspool if possible
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3035.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3037.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

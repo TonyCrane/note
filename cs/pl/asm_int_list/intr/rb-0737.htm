@@ -1,0 +1,117 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=59h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=59h - SyQuest - Generic SCSI pass through - 
+AH = 59h
+CX = HOST_ID, 0-based
+DX = 80h
+ES:BX pointer to SCSI structure (see #00286)
+Return: CF clear
+AH = 95h
+SeeAlso: AH=12hSyQuest,AH=13hSyQuest,AH=1FhSyQuest
+Format of SyQuest SCSI structure:
+Offset Size  Description   (Table 00286)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=59h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0736.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0738.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SyQuest - Generic SCSI pass through</font></h3>
+<PRE>
+AH = 59h
+CX = HOST_ID, 0-based
+DX = 80h
+ES:BX pointer to SCSI structure <a href="rb-0737.htm#Table286">(see #00286)</a><br>
+<p><b>Return:</b><br>CF clear
+AH = 95h
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0635.htm">AH=12h"SyQuest"</a> - <a href="rb-0637.htm">AH=13h"SyQuest"</a> - <a href="rb-0665.htm">AH=1Fh"SyQuest"</a>
+<PRE>
+<p>
+Format of SyQuest SCSI structure:
+<a name=table286></a>
+Offset  Size    Description     (Table 00286)
+00h    WORD    opcode <a href="rb-0737.htm#Table287">(see #00287)</a>
+02h    BYTE    target's SCSI ID
+03h    BYTE    target's logical unit number
+04h    BYTE    data direction (00h no data xfer, 01h data in, FFh data out)
+05h    BYTE    host status
+00h successful
+01h selection time out
+02h data over-run or under-run
+06h    BYTE    target status at command completion
+00h successful
+02h check status
+08h busy
+07h    BYTE    command data block length
+08h    DWORD   request data length
+0Ch    DWORD   result data length (actual length of data transferred)
+10h    DWORD   -> CDB <a href="rb-0000.htm#Table0"></a>(see #03236,#03237,#03238)
+14h    DWORD   -> data buffer
+</PRE>
+<p><b>Note:</b>
+The handler does not perform a 'Request Sense' command if there was an
+error
+<PRE>
+<p>
+<a name=table287></a>
+(Table 00287)
+Values for SCSI opcode:
+00h    verify interface.
+Clears carry flag and returns if function is available
+01h    returns the ID of the INT 13h Handler in a NULL terminated string of.
+Length less than 40 byte including the terminator..
+The string is stored in the buffer pointed by p_buf.
+02h    device mapping info. The caller provides a one byte buffer..
+The handler stores the Int 13h Device ID (80h or above) in the buffer..
+It stores 0 if that target does not exists.
+03h    execute SCSI command
+04h    device reset
+05h    SCSI bus reset
+</PRE>
+<p><b>See Also:</b>
+#00286
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0736.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0738.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5F04h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5F04h - DOS 3.1+ network - CANCEL REDIRECTION - 
+AX = 5F04h
+DS:SI - ASCIZ local device name or path
+CX = 4E57h (NW) for NetWare 4.0 requester
+Return: CF clear if successful
+CF set on error
+AX = error code (01h,03h,05h,08h,0Fh,12h) (see #01680 at AH=59h)
+Notes: the DS:SI string must be either a local device name, a drive letter
+followed by a colon, or a network directory beginning with two
+backslashes
+the DOS kernel calls INT 2F/AX=111Eh with AX on top of the stack
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5F04h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3043.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3045.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.1+ network - CANCEL REDIRECTION</font></h3>
+<PRE>
+AX = 5F04h
+DS:SI -> ASCIZ local device name or path
+CX = 4E57h ("NW") for NetWare 4.0 requester<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (01h,03h,05h,08h,0Fh,12h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h)
+</PRE>
+<p><b>Notes:</b>
+The DS:SI string must be either a local device name, a drive letter
+followed by a colon, or a network directory beginning with two
+backslashes.
+The DOS kernel calls INT 2F/AX=111Eh with AX on top of the stack.
+Also supported by Banyan VINES, LANtastic, and 10NET.
+For NetWare, if only a server name is specified (i.e. "\\SERVER"),
+the connection to that server will be closed
+<p><b>See Also:</b>
+<a href="rb-3043.htm">AX=5F03h</a> - <a href="rb-4335.htm">INT 2F/AX=111Eh</a> - <a href="rb-6644.htm">INT 60/AX=0003h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3043.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3045.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

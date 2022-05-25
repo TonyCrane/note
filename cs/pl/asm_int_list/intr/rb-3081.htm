@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5F4Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5F4Bh - LAN Manager Enhanced DOS - LOCAL NetRemoteMove - 
+AX = 5F4Bh
+DS:DX - NetRemoteMove parameter structure (see #01722)
+Return: CF clear if successful
+CF set on error
+AX = error code
+SeeAlso: AX=5F4Ah
+Format of LAN Manager NetRemoteMove parameter structure:
+Offset Size  Description   (Table 01722)
+00h  DWORD  - source name as UNC
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5F4Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3080.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3082.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LAN Manager Enhanced DOS - LOCAL NetRemoteMove</font></h3>
+<PRE>
+AX = 5F4Bh
+DS:DX -> NetRemoteMove parameter structure <a href="rb-3081.htm#Table1722">(see #01722)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3080.htm">AX=5F4Ah</a>
+<PRE>
+<p>
+Format of LAN Manager NetRemoteMove parameter structure:
+<a name=table1722></a>
+Offset  Size    Description     (Table 01722)
+00h    DWORD   -> source name as UNC
+04h    DWORD   -> destination name as UNC
+08h    DWORD   -> source password
+0Ch    DWORD   -> destination password
+10h    WORD    destination open bitmap
+if destination path exists
+0000h open fails
+0001h file is appended
+0002h file is overwritten
+if destination path doesn't exist
+0000h open fails
+0010h file is created
+12h    WORD    move control bitmap
+0001h destination must be a file
+0002h destination must be a directory
+14h    DWORD   -> move_info buffer
+18h    WORD    length of move_info buffer
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3080.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3082.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

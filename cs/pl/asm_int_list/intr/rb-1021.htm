@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AX=8008h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AX=8008h - ARTICOM - GET AVAILABLE SERVER NAME - 
+AX = 8008h
+BX = server index (0,1,...)
+ES:DI - server name structure (see #00365)
+Return: AX = error code, if error (see #00360)
+BX = next remote port, repeat call to get next available server
+Note:  the wildcard '*' is supported in the server name field. Set the
+server name to FFh to search for all servers.
+SeeAlso: AX=8000h,AX=8003h,AX=8007h
+Format of ARTICOM server name structure:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AX=8008h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1020.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1022.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ARTICOM - GET AVAILABLE SERVER NAME</font></h3>
+<PRE>
+AX = 8008h
+BX = server index (0,1,...)
+ES:DI -> server name structure <a href="rb-1021.htm#Table365">(see #00365)</a><br>
+<p><b>Return:</b><br>AX = error code, if error (see #00360)
+BX = next remote port, repeat call to get next available server
+</PRE>
+<p><b>Note:</b>
+The wildcard '*' is supported in the server name field.  Set the
+server name to FFh to search for all servers.
+<p><b>See Also:</b>
+<a href="rb-1009.htm">AX=8000h</a> - <a href="rb-1015.htm">AX=8003h</a> - <a href="rb-1020.htm">AX=8007h</a>
+<PRE>
+<p>
+Format of ARTICOM server name structure:
+<a name=table365></a>
+Offset   Size     Description   (Table 00365)
+00h 16 BYTEs    (call) ASCIZ server name
+10h    BYTE     (ret) the adapter server is found
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1020.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1022.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

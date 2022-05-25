@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B18Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B18Fh - PCI BIOS v2.1+ - SET PCI IRQ (32-bit) - 
+AX = B18Fh
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+CH = number of IRQ to connect
+CL = number of interrupt pin (0Ah=INTA# to 0Dh=INTD#) to reprogram
+DS = segment/selector for PCI BIOS data
+(real mode: F000h; 16-bit PM: physical 000F0000h; 32-bit PM: as
+specified by BIOS32 services directory)
+Return: CF clear if successful
+AH = 00h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B18Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2404.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2406.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.1+ - SET PCI IRQ (32-bit)</font></h3>
+<PRE>
+AX = B18Fh
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+CH = number of IRQ to connect
+CL = number of interrupt pin (0Ah=INTA# to 0Dh=INTD#) to reprogram
+DS = segment/selector for PCI BIOS data
+<p><b>(real mode:</b><br>F000h; 16-bit PM: physical 000F0000h; 32-bit PM: as
+specified by BIOS32 services directory)<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h
+CF set on error
+AH = error code (59h) <a href="rb-2408.htm#Table1243">(see #01243)</a>
+</PRE>
+<p><b>Note:</b>
+Assumes that the calling application has determined the IRQ routing
+topology (see AX=B10Eh), has ensured that the selected IRQ will not
+cause a conflict, and will update the interrupt line configuration
+register on all devices which currently use the IRQ line
+<p><b>See Also:</b>
+<a href="rb-2392.htm">AX=B10Eh</a>
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2404.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2406.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

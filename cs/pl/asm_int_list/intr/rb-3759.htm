@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=47h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=47h - Novell NetWare - SCAN BINDERY OBJECT TRUSTEE PATHS - 
+AX = F217h subfn 47h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #01959 at AH=E3h/SF=47h)
+ES:DI - reply buffer (see #02190)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E3h/SF=47h,AX=F216h/SF=0Ch,AX=F217h/SF=48h
+Format of NetWare Scan Bindery Object Trustee Paths reply packet:
+Offset Size  Description   (Table 02190)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=47h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3758.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3760.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SCAN BINDERY OBJECT TRUSTEE PATHS</font></h3>
+<PRE>
+AX = F217h subfn 47h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-0000.htm#Table0"></a>(see #01959 at AH=E3h/SF=47h)
+ES:DI -> reply buffer <a href="rb-3759.htm#Table2190">(see #02190)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3520.htm">AH=E3h/SF=47h</a> - <a href="rb-3678.htm">AX=F216h/SF=0Ch</a> - <a href="rb-3760.htm">AX=F217h/SF=48h</a>
+<PRE>
+<p>
+Format of NetWare "Scan Bindery Object Trustee Paths" reply packet:
+<a name=table2190></a>
+Offset  Size    Description     (Table 02190)
+00h    WORD    (big-endian) next sequence number
+02h    DWORD   (big-endian) object ID
+06h    BYTE    trustee directory rights <a href="rb-0000.htm#Table0"></a>(see #01849 at AH=E2h/SF=03h)
+07h    BYTE    length of trustee path
+08h  N BYTEs   trustee path
+</PRE>
+<p><b>See Also:</b>
+#01959 - #01960 at AH=E3h/SF=47h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3758.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3760.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

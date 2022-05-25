@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F27Bh/SF=0Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F27Bh/SF=0Ah - Novell NetWare v4+ - GET LOADED NLMs - 
+AX = F27Bh subfn 0Ah
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02502)
+ES:DI - reply buffer (see #02503)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get NLMs Loaded request buffer:
+Offset Size  Description   (Table 02502)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F27Bh/SF=0Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3978.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3980.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4+ - GET LOADED NLMs</font></h3>
+<PRE>
+AX = F27Bh subfn 0Ah
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3979.htm#Table2502">(see #02502)</a>
+ES:DI -> reply buffer <a href="rb-3979.htm#Table2503">(see #02503)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get NLMs Loaded" request buffer:
+<a name=table2502></a>
+Offset  Size    Description     (Table 02502)
+00h    WORD    0005h (length of following data)
+02h    BYTE    0Ah (subfunction "Get NLMs Loaded")
+03h    DWORD   first NLM number to report
+</PRE>
+<p><b>See Also:</b>
+#02503
+<PRE>
+<p>
+Format of NetWare "Get NLMs Loaded" reply buffer:
+<a name=table2503></a>
+Offset  Size    Description     (Table 02503)
+00h    DWORD   current server time
+04h    BYTE    vconsole version
+05h    BYTE    vconsole revision
+06h    WORD    reserved
+08h    DWORD   total number of NLMs
+0Ch    DWORD   number of NLM numbers following (max 50)
+10h 50 DWORDs  NLM numbers
+</PRE>
+<p><b>See Also:</b>
+#02502
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3978.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3980.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

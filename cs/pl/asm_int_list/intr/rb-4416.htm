@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1230h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1230h - Windows95 - FIND SFT ENTRY IN INTERNAL FILE TABLES - 
+AX = 1230h
+ES:DI - SFT entry
+Return: CF clear if SFT found in internal table
+CF set if SFT not in any internal file table
+AX = 0000h
+SI:CX = 32-bit starting cluster number for directory
+DX = directory entry number
+BX = index into new file system table
+Notes: the new file system table from which the return values are taken is
+reported to be statically allocated with 20 entries, and used only
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1230h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4415.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4417.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - FIND SFT ENTRY IN INTERNAL FILE TABLES</font></h3>
+<PRE>
+AX = 1230h
+ES:DI -> SFT entry<br>
+<p><b>Return:</b><br>CF clear if SFT found in internal table
+CF set if SFT not in any internal file table
+AX = 0000h
+SI:CX = 32-bit starting cluster number for directory
+DX = directory entry number
+BX = index into new file system table
+</PRE>
+<p><b>Notes:</b>
+The new file system table from which the return values are taken is
+reported to be statically allocated with 20 entries, and used only
+for FCB calls.
+This function is not supported by DR-DOS 7.03 or earlier, by S/DOS 1.0,
+or by PTS-DOS 6.51
+<p><b>BUG:</b>
+Win95-OSR2 is reported to have a bug that can potentially corrupt
+memory if SFT tables are "arranged poorly"
+<p><b>See Also:</b>
+<a href="rb-4417.htm">AX=1231h</a> - <a href="rb-4368.htm">AX=1200h</a>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4415.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4417.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F25Ah/SF=80h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F25Ah/SF=80h - Novell NetWare - MOVE FILE DATA TO DATA MIGRATION - 
+AX = F25Ah subfn 80h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02451)
+ES:DI - reply buffer (see #02452)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F25Ah/SF=82h,AX=F25Ah/SF=85h
+Format of NetWare Move File Data to Data Migration request packet:
+Offset Size  Description   (Table 02451)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F25Ah/SF=80h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3948.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3950.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - MOVE FILE DATA TO DATA MIGRATION</font></h3>
+<PRE>
+AX = F25Ah subfn 80h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3949.htm#Table2451">(see #02451)</a>
+ES:DI -> reply buffer <a href="rb-3949.htm#Table2452">(see #02452)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3951.htm">AX=F25Ah/SF=82h</a> - <a href="rb-3954.htm">AX=F25Ah/SF=85h</a>
+<PRE>
+<p>
+Format of NetWare "Move File Data to Data Migration" request packet:
+<a name=table2451></a>
+Offset  Size    Description     (Table 02451)
+00h    WORD    length of following data
+02h    BYTE    80h (subfunction "Move File Data to Data Migration")
+03h    DWORD   volume number
+07h    DWORD   directory entry number
+0Bh    DWORD   name space <a href="rb-3908.htm#Table2387">(see #02387)</a>
+0Fh    DWORD   support module ID
+13h    DWORD   save key flag
+00000010h to save key when file is demigrated
+</PRE>
+<p><b>See Also:</b>
+#02452
+<PRE>
+<p>
+Format of NetWare "Move File Data to Data Migration" reply packet:
+<a name=table2452></a>
+Offset  Size    Description     (Table 02452)
+00h    DWORD   volume-unique ID
+</PRE>
+<p><b>See Also:</b>
+#02451
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3948.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3950.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

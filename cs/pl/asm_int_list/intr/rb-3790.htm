@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=7Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=7Eh - Novell NetWare - SET QUEUE CURRENT STATUS - 
+AX = F217h subfn 7Eh
+CX = length of request packet in bytes
+DX = 0000h (no reply packet)
+DS:SI - request packet (see #02213)
+ES:DI ignored
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F217h/SF=7Dh
+Format of NetWare Set Queue Current Status request packet:
+Offset Size  Description   (Table 02213)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=7Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3789.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3791.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SET QUEUE CURRENT STATUS</font></h3>
+<PRE>
+AX = F217h subfn 7Eh
+CX = length of request packet in bytes
+DX = 0000h (no reply packet)
+DS:SI -> request packet <a href="rb-3790.htm#Table2213">(see #02213)</a>
+ES:DI ignored<br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3789.htm">AX=F217h/SF=7Dh</a>
+<PRE>
+<p>
+Format of NetWare "Set Queue Current Status" request packet:
+<a name=table2213></a>
+Offset  Size    Description     (Table 02213)
+00h    WORD    length of following data
+02h    BYTE    7Eh (subfunction "Set Queue Current Status")
+03h    DWORD   queue ID
+07h    DWORD   queue status
+<p><b>bit 0:</b><br>No more jobs can be added
+<p><b>bit 1:</b><br>No more queue servers can be attached
+<p><b>bit 2:</b><br>Attached queu servers can not service queue jobs
+</PRE>
+<p><b>See Also:</b>
+#02211
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3789.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3791.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

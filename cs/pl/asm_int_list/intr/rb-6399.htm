@@ -1,0 +1,204 @@
+<HTML>
+<HEAD>
+<TITLE>Int 5C
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 5C - ATALK.SYS - AppleTalk INTERFACE - 
+DX:BX - control block (see #03256)
+Return: none
+InstallCheck:  test for the signature AppleTalk 16 bytes prior to the
+interrupt handler
+Range: INT 5Ch to INT 70h
+Index: installation check;ATALK.SYS|installation check;AppleTalk interface
+(Table 03255)
+Values for ATALK.SYS command code:
+01h  AT_INIT      initialize the driver
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 5C
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6398.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6400.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ATALK.SYS - AppleTalk INTERFACE</font></h3>
+<PRE>
+DX:BX -> control block <a href="rb-6399.htm#Table3256">(see #03256)</a><br>
+<p><b>Return:</b><br>None
+<p><b>InstallCheck:</b><br>Test for the signature "AppleTalk" 16 bytes prior to the
+interrupt handler
+<p><b>Range:</b><br>INT 5Ch to INT 70h
+<p><b>Index:</b><br>Installation check;ATALK.SYS|installation check;AppleTalk interface
+<p>
+<a name=table3255></a>
+(Table 03255)
+Values for ATALK.SYS command code:
+01h    "AT_INIT"           initialize the driver
+02h    "AT_KILL"
+03h    "AT_GETNETINFO" get current network info incl init status
+04h    "AT_GETCLOCKTICKS"
+05h    "AT_STARTTIMER"
+06h    "AT_RESETTIMER"
+07h    "AT_CANCELTIMER"
+10h    "LAP_INSTALL"
+11h    "LAP_REMOVE"
+12h    "LAP_WRITE"
+13h    "LAP_READ"
+14h    "LAP_CANCEL"
+20h    "DDP_OPENSOCKET"
+21h    "DDP_CLOSESOCKET"
+22h    "DDP_WRITE"
+23h    "DDP_READ"
+24h    "DDP_CANCEL"
+30h    "NBP_REGISTER"
+31h    "NBP_REMOVE"
+32h    "NBP_LOOKUP"
+33h    "NBP_CONFIRM"
+34h    "NBP_CANCEL"
+35h    "ZIP_GETZONELIST"
+36h    "ZIP_GETMYZONE"
+37h    "ZIP_TAKEDOWN"
+38h    "ZIP_BRINGUP"
+40h    "ATP_OPENSOCKET"
+41h    "ATP_CLOSESOCKET"
+42h    "ATP_SENDREQUEST"
+43h    "ATP_GETREQUEST"
+44h    "ATP_SENDRESPONSE"
+45h    "ATP_ADDRESPONSE"
+46h    "ATP_CANCELTRANS"
+47h    "ATP_CANCELRESPONSE"
+48h    "ATP_CANCELREQUEST"
+50h    "ASP_GETPARMS"
+51h    "ASP_CLOSESESSION"
+52h    "ASP_CANCEL"
+53h    "ASP_INIT"
+54h    "ASP_KILL"
+55h    "ASP_GETSESSION"
+56h    "ASP_GETREQUEST"
+57h    "ASP_CMDREPLY"
+58h    "ASP_WRTCONTINUE"
+59h    "ASP_WRTREPLY"
+5Ah    "ASP_CLOSEREPLY"
+5Bh    "ASP_NEWSTATUS"
+5Ch    "ASP_ATTENTION"
+5Dh    "ASP_GETSTATUS"
+5Eh    "ASP_OPENSESSION"
+5Fh    "ASP_COMMAND"
+60h    "ASP_WRITE"
+61h    "ASP_GETATTENTION"
+70h    "PAP_OPEN"
+71h    "PAP_CLOSE"
+72h    "PAP_READ"
+73h    "PAP_WRITE"
+74h    "PAP_STATUS"
+75h    "PAP_REGNAME"
+76h    "PAP_REMNAME"
+77h    "PAP_INIT"
+78h    "PAP_NEWSTATUS"
+79h    "PAP_GETNEXTJOB"
+7Ah    "PAP_KILL"
+7Bh    "PAP_CANCEL"
+<p>
+Format of AppleTalk control block:
+<a name=table3256></a>
+Offset  Size    Description     (Table 03256)
+00h    WORD    command code <a href="rb-6399.htm#Table3255">(see #03255)</a>
+OR with the following flags
+8000h start command then return
+4000h wait for interrupt service to complete
+02h    WORD    returned status
+0000h success (already initialized if func 01h)
+04h    DWORD   pointer to completion function
+08h    WORD    network number
+0Ah    BYTE    node ID
+---if general func (01h,03h), control block continues:
+0Bh    BYTE    "inf_abridge"
+0Ch    WORD    "inf_config"
+0Eh    DWORD   pointer to buffer
+12h    WORD    buffer size
+---if DDP function (20h-24h), control block continues:
+0Bh    BYTE    "ddp_addr_socket"
+0Ch    BYTE    "ddp_socket"
+0Dh    BYTE    "ddp_type"
+0Eh    DWORD   pointer to buffer
+12h    WORD    buffer size
+14h    BYTE    "ddp_chksum"
+---if Name Binding Protocol (30h-34h), control block continues:
+0Bh    BYTE    "nbp_addr_socket"
+0Ch    WORD    "nbp_toget"
+0Eh    DWORD   pointer to buffer <a href="rb-6399.htm#Table3257">(see #03257)</a>
+12h    WORD    buffer size
+14h    BYTE    "nbp_interval"
+15h    BYTE    "nbp_retry"
+16h    DWORD   "nbp_entptr"
+---if AppleTalk Transaction Protocol (42h), control block continues:
+0Bh    BYTE    "atp_addr_socket"
+0Ch    WORD    "atp_socket"
+0Eh    DWORD   pointer to buffer
+12h    WORD    buffer size
+14h    BYTE    "atp_interval"
+15h    BYTE    "atp_retry"
+16h    BYTE    ATP flags
+<p><b>bit 5:</b><br>Exactly one transaction
+17h    BYTE    "atp_seqbit"
+18h    BYTE    transaction ID
+19h  4 BYTEs   ATP user bytes
+1Dh    BYTE    number of BDS buffers
+1Eh    BYTE    number of BDS responses
+1Fh    DWORD   pointer to BDS buffers <a href="rb-6399.htm#Table3258">(see #03258)</a>
+<p>
+Format of Name Binding Protocol Name-to-Address binding entries for NBP_LOOKUP:
+<a name=table3257></a>
+Offset  Size    Description     (Table 03257)
+00h    WORD    "tup_address_network"
+02h    BYTE    "tup_address_notid"
+03h    BYTE    "tup_address_socket"
+04h    BYTE    "tup_enum"
+05h 99 BYTEs   name
+<p>
+Format of BDS entries:
+<a name=table3258></a>
+Offset  Size    Description     (Table 03258)
+00h    DWORD   pointer to buffer
+04h    WORD    size of buffer
+06h    WORD    BDS data size
+08h  4 BYTEs   "bds_userbytes"
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-5C.htm">
+Int 5Ch</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6398.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6400.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

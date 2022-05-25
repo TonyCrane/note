@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B10Ah/SF=9004h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B10Ah/SF=9004h - PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (Adaptec devices) - 
+AX = B10Ah subfn 9004h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) (see #01241)
+Return: CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) (see #00729)
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B10Ah/SF=9004h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2387.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2389.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (Adaptec devices)</font></h3>
+<PRE>
+AX = B10Ah subfn 9004h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) <a href="rb-2388.htm#Table1241">(see #01241)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) <a href="rb-2371.htm#Table729">(see #00729)</a>
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+</PRE>
+<p><b>Notes:</b>
+This function may require up to 1024 byte of stack; it will not enable
+interrupts if they were disabled before making the call.
+The meanings of BL and BH on entry were exchanged between the initial
+drafts of the specification and final implementation
+<p><b>See Also:</b>
+<a href="rb-2377.htm">AX=B10Ah</a> - <a href="rb-2387.htm">AX=B10Ah/SF=8086h</a>
+<PRE>
+<p>
+Format of PCI Configuration Data for AIC-78xx PCI SCSI controllers:
+<a name=table1241></a>
+Offset  Size    Description     (Table 01241)
+00h 64 BYTEs   header <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 9004h) <a href="rb-0000.htm#Table0"></a>(see #00875 for device ID)
+40h    WORD    device configuration register (DEVCONFIG) <a href="rb-2388.htm#Table1242">(see #01242)</a>
+</PRE>
+<p><b>See Also:</b>
+#00734 - <a href="int-1A.htm">PORT xxxxh</a>"Adaptec AIC-78xx"
+<PRE>
+<p>
+Bitfields for AIC-78xx device configuration register (DEVCONFIG):
+<a name=table1242></a>
+Bit(s)  Description     (Table 01242)
+15-11  reserved
+10     (AIC-787x+) multi-port mode (MPORTMODE)
+9      (AIC-787x+) external SRAM present? (RAMPSM)
+8      "VOLSENSE"
+7      SCB RAM select (SCBRAMSEL)
+6      "MRDCEN"
+5      (AIC-787x+) external SCB SRAM access time  (EXTSCBTIME)
+4      (AIC-787x+) external SCB SRAM parity enable (EXTSCBPEN)
+3      "BERREN"
+2      "DACEN"
+1      SCSI terminator power level (STPWLEVEL)
+0      (AIC-787x+) differential active negation enable (DIFACTNEGEN)
+</PRE>
+<p><b>Note:</b>
+Clearing bit 7 allows access to the external SCB SRAM
+<p><b>See Also:</b>
+#01241
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2387.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2389.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7C/AX=000Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7C/AX=000Eh - SK-UPPS Data Link Interface API - DLI 2.5+ - GET DRIVER INFO - 
+AX = 000Eh
+ES:DI - Driver Information Block (see #03858)
+BX = offset of 1st field within DIB to be returned
+CX = number of bytes to be returned
+Return: AX = completion code (see #03846)
+CX = number of bytes copied (regardless of value returned in AX)
+Program: SK-UPPS is the Schneider & Koch Universal Portable Protocol Stack,
+which provides an API on top of its Data Link Interface, allowing the
+use of any of several network transport layers
+SeeAlso: AX=0000h,AX=0002h,AX=000Bh,AX=000Dh,AX=0015h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7C/AX=000Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7932.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7934.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SK-UPPS Data Link Interface API - DLI 2.5+ - GET DRIVER INFO</font></h3>
+<PRE>
+AX = 000Eh
+ES:DI -> Driver Information Block <a href="rb-7933.htm#Table3858">(see #03858)</a>
+BX = offset of 1st field within DIB to be returned
+CX = number of bytes to be returned<br>
+<p><b>Return:</b><br>AX = completion code (see #03846)
+CX = number of bytes copied (regardless of value returned in AX)
+</PRE>
+<p><b>Program:</b>
+SK-UPPS is the Schneider & Koch Universal Portable Protocol Stack,
+which provides an API on top of its Data Link Interface, allowing the
+use of any of several network transport layers
+<p><b>See Also:</b>
+<a href="rb-7919.htm">AX=0000h</a> - <a href="rb-7921.htm">AX=0002h</a> - <a href="rb-7930.htm">AX=000Bh</a> - <a href="rb-7932.htm">AX=000Dh</a> -
+<PRE>
+<p>
+Format of SK-UPPS Driver Information Block (DIB):
+<a name=table3858></a>
+Offset  Size    Description     (Table 03858)
+00h  6 BYTEs   physical node address (from adapter's ROM)
+06h  6 BYTEs   current node address (see AX=0003h)
+0Ch    BYTE    adapter id (defined by OEM)
+0Dh    BYTE    IRQ line (FFh if none)
+0Eh    DWORD   -> shared memory (zero if none)
+12h    DWORD   size of shared memory (zero if none)
+16h    WORD    base I/O port (zero if none)
+18h    BYTE    DMA line (FFh if none)
+19h    BYTE    DLI 2.4+ topology (see AX=0000h)
+1Ah    WORD    size of an Mbuf's DATA area <a href="rb-7923.htm#Table3847">(see #03847)</a>
+1Ch  2 BYTEs   reserved (currently unused)
+1Eh    WORD    total number of Mbufs the DLI has
+20h    WORD    maximum number of Mbufs that can be allocated via REQUEST
+BUFFER (AX=0004h) and SYNC REQUEST BUFFER (AX=0012h)
+---- end of Status Information Block returned by GET DRIVER STATUS (AX=0002h)
+22h    DWORD   -> ASCIZ adapter name
+26h    WORD    number of I/O ports used (zero if none)
+28h    DWORD   line speed in bits/sec.
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-7C.htm">
+Int 7Ch</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7932.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7934.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

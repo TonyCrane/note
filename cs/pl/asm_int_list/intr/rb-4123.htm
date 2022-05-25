@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>Int 28/AX=9999h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 28/AX=9999h - PCXDUMP v9.00+ - INSTALLATION CHECK - 
+AX = 9999h
+Return: AX = AAAAh if installed
+CX = version number * 100 (example: 03A2h = 930 = v9.30)
+DL = interrupt used by the dump function (see #02553)
+(00h if call not available)
+BX = CS of PCXDUMP's INT 28 handler (undocumented)
+ES = segment of PCXDUMP's memory block (v9.30, undocumented)
+Program: PCXDUMP is a shareware screen grabber saving in PCX format
+Notes: if DL00h a dump can be requested by calling INT DL as shown
+below (the user can choose the interrupt number at installation
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 28/AX=9999h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4122.ht.html">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4124.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCXDUMP v9.00+ - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 9999h<br>
+<p><b>Return:</b><br>AX = AAAAh if installed
+<p><b>CX = version number * 100 (example:</b><br>03A2h = 930 = v9.30)
+DL = interrupt used by the dump function <a href="rb-4123.htm#Table2553">(see #02553)</a>
+(00h if call not available)
+BX = CS of PCXDUMP's INT 28 handler (undocumented)
+ES = segment of PCXDUMP's memory block (v9.30, undocumented)
+</PRE>
+<p><b>Program:</b>
+PCXDUMP is a shareware screen grabber saving in PCX format
+<p><b>Notes:</b>
+If DL<>00h a dump can be requested by calling INT DL as shown
+below (the user can choose the interrupt number at installation
+time); if DL=00h the dump function can be called only by hotkeys
+(this is the default)
+<PRE>
+<p>
+<a name=table2553></a>
+(Table 02553)
+Call PCXDUMP screen-dump function with:.
+INT xx.
+AX = 1234h.
+BX = dump type
+0000h Color dump
+0001h Immediate color dump
+0002h Black/White dump
+0003h Immediate B/W dump
+0004h Inverted B/W dump
+0005h Gray scaled dump
+0006h Inverted gray scaled dump
+0007h Text screen dump to text file
+0008h Text screen dump to ansi file<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Notes:</b>
+If BX=0001h, 0003h, 0007h or 0008h the whole screen will be
+dumped; the other valid values will draw a selection frame
+on the screen except in text modes (text modes allow only
+full screen dumps).
+This function doesn't perform the dump, it only requests it;
+the dump will be performed after a few milliseconds if it's
+safe to do so, thus the author recommends putting a 60 ms delay
+after this call
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-28.htm">
+Int 28h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4122.ht.html">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4124.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=EBh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=EBh - Novell NetWare - SYNCHRONIZATION SERVICES - LOG FILE - 
+AH = EBh
+DS:DX - ASCIZ filename
+if function C6h lock mode 01h:
+AL = flags
+00h log file only
+01h lock as well as log file
+BP = lock timeout in timer ticks (1/18 second)
+0000h = don't wait if file already locked
+Return: AL = status (see #02090)
+Desc:  add the location and size of the specified file to the log table and
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=EBh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3610.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3612.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SYNCHRONIZATION SERVICES - LOG FILE</font></h3>
+<PRE>
+AH = EBh
+DS:DX -> ASCIZ filename
+if function C6h lock mode 01h:
+AL = flags
+00h log file only
+01h lock as well as log file
+BP = lock timeout in timer ticks (1/18 second)
+0000h = don't wait if file already locked<br>
+<p><b>Return:</b><br>AL = status (see #02090)
+</PRE>
+<p><b>Desc:</b>
+Add the location and size of the specified file to the log table and
+optionally lock the file
+<p><b>Note:</b>
+This function is supported by NetWare 4.6+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3293.htm">AH=BCh"NetWare"</a> - <a href="rb-3363.htm">AH=CAh</a> - <a href="rb-3375.htm">AH=D0h</a> - <a href="rb-3293.htm">AH=ECh"NetWare"</a> - <a href="rb-3293.htm">AH=EDh"NetWare"</a>
+<PRE>
+<p>
+<a name=table2090></a>
+(Table 02090)
+Values for NetWare status:
+00h    successful
+96h    no dynamic memory for file
+FEh    timed out
+FFh    failed
+</PRE>
+<p><b>See Also:</b>
+#02053
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3610.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3612.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

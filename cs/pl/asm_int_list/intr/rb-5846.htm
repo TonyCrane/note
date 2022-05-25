@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0506h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0506h - DPMI 1.0+ - GET PAGE ATTRIBUTES - 
+AX = 0506h
+ESI = memory block handle
+EBX = offset in memory block of first page
+ECX = number of pages
+ES:EDX - array of WORDs to hold page attributes (see #03156)
+Return: CF clear if successful
+buffer filled
+CF set on error
+AX = error code (8001h,8023h,8025h) (see #03143)
+Notes: only supported by 32-bit DPMI hosts, but may be used by 16-bit clients
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0506h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5845.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5847.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 1.0+ - GET PAGE ATTRIBUTES</font></h3>
+<PRE>
+AX = 0506h
+ESI = memory block handle
+EBX = offset in memory block of first page
+ECX = number of pages
+ES:EDX -> array of WORDs to hold page attributes <a href="rb-5846.htm#Table3156">(see #03156)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled
+CF set on error
+AX = error code (8001h,8023h,8025h) <a href="rb-5802.htm#Table3143">(see #03143)</a>
+</PRE>
+<p><b>Notes:</b>
+Only supported by 32-bit DPMI hosts, but may be used by 16-bit clients.
+If EBX is not page-aligned, it will be rounded down
+<p><b>See Also:</b>
+<a href="rb-5844.htm">AX=0504h</a> - <a href="rb-5847.htm">AX=0507h</a> - <a href="rb-2631.htm">INT 21/AX=251Dh</a> - <a href="rb-3613.htm">INT 21/
+<PRE>
+<p>
+Bitfields for DPMI page attribute word:
+<a name=table3156></a>
+Bit(s)  Description     (Table 03156)
+0-2    page type.
+000 uncommitted.
+001 committed.
+010 mapped (see AX=0508h,AX=0509h).
+Other currently unused
+3      page is read/write rather than read-only
+4      accessed/dirty bits supplied in bits 5 and 6
+5      page has been accessed (only valid if bit 4 set)
+6      page has been written (only valid if bit 4 set)
+7-15   reserved (0)
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5845.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5847.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

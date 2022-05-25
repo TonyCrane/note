@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E0h/SF=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E0h/SF=06h - Novell NetWare - PRINT SERVICES - GET PRINTER STATUS - 
+AH = E0h subfn 06h
+DS:SI - request buffer (see #01815)
+ES:DI - reply buffer (see #01816)
+Return: AL = status
+00h successful
+FFh no such printer
+Desc:  get current state of specified printer attached to the server
+Note:  this function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E0h/SF=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3438.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3440.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - PRINT SERVICES - GET PRINTER STATUS</font></h3>
+<PRE>
+AH = E0h subfn 06h
+DS:SI -> request buffer <a href="rb-3439.htm#Table1815">(see #01815)</a>
+ES:DI -> reply buffer <a href="rb-3439.htm#Table1816">(see #01816)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+FFh no such printer
+</PRE>
+<p><b>Desc:</b>
+Get current state of specified printer attached to the server
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+, Advanced NetWare 1.0+, and
+Alloy NTNX
+<PRE>
+<p>
+Format of NetWare "Get Printer Status" request buffer:
+<a name=table1815></a>
+Offset  Size    Description     (Table 01815)
+00h    WORD    0002h (length of following data)
+02h    BYTE    06h (subfunction "Get Printer Status")
+03h    BYTE    printer number (00h-04h)
+</PRE>
+<p><b>See Also:</b>
+#01816
+<PRE>
+<p>
+Format of NetWare "Get Printer Status" reply buffer:
+<a name=table1816></a>
+Offset  Size    Description     (Table 01816)
+00h    WORD    (call) 0004h (size of following results buffer)
+<p><b>02h    BYTE    flag:</b><br>00h printer active, FFh printer halted
+<p><b>03h    BYTE    flag:</b><br>00h printer online, 01h printer offline
+04h    BYTE    current form type
+05h    BYTE    target printer number (00h-04h)
+same as number in request buffer unless rerouted by server
+console
+</PRE>
+<p><b>See Also:</b>
+#01815
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3438.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3440.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

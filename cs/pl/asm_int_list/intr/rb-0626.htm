@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=0Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=0Bh - HARD DISK - WRITE LONG SECTOR(S) (AT and later) - 
+AH = 0Bh
+AL = number of sectors (01h may be only value supported)
+CH = low eight bits of cylinder number
+CL = sector number (bits 5-0)
+high two bits of cylinder number (bits 7-6)
+DH = head number
+DL = drive number (80h = first, 81h = second)
+ES:BX - data buffer
+Return: CF clear if successful
+CF set on error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=0Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0625.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0627.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HARD DISK - WRITE LONG SECTOR(S) (AT and later)</font></h3>
+<PRE>
+AH = 0Bh
+AL = number of sectors (01h may be only value supported)
+CH = low eight bits of cylinder number
+CL = sector number (bits 5-0)
+high two bits of cylinder number (bits 7-6)
+DH = head number
+DL = drive number (80h = first, 81h = second)
+ES:BX -> data buffer<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = status <a href="rb-0606.htm#Table234">(see #00234)</a>
+AL = number of sectors transferred
+</PRE>
+<p><b>Notes:</b>
+Each sector's worth of data must be followed by four to seven bytes of
+error-correction information.
+Used for diagnostics only on PS/2 systems; IBM officially classifies
+this function as optional
+<p><b>See Also:</b>
+<a href="rb-0608.htm">AH=03h</a> - <a href="rb-0625.htm">AH=0Ah</a> - MEM 0040h:0074h
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0625.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0627.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

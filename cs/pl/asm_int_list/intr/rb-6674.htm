@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 60/AH=0Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 60/AH=0Ch - FTP Packet Driver 1.10+ - HIGH-PERF FUNC - ASYNCHRONOUS SEND PACKET - 
+AH = 0Ch
+ES:DI - pointer to IOCB (see #03312)
+Return: CF set on error
+DH = error code (see #03305)
+CF clear if successful
+SeeAlso: AH=04hPacket Driver,AH=0BhPacket Driver
+Format of packet driver IOCB:
+Offset Size  Description   (Table 03312)
+00h  DWORD  pointer to buffer
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 60/AH=0Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6673.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6675.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FTP Packet Driver 1.10+ - HIGH-PERF FUNC - ASYNCHRONOUS SEND PACKET</font></h3>
+<PRE>
+AH = 0Ch
+ES:DI -> pointer to IOCB <a href="rb-6674.htm#Table3312">(see #03312)</a><br>
+<p><b>Return:</b><br>CF set on error
+DH = error code <a href="rb-6655.htm#Table3305">(see #03305)</a>
+CF clear if successful
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-6446.htm">AH=04h"Packet Driver"</a> - <a href="rb-6446.htm">AH=0Bh"Packet Driver"</a>
+<PRE>
+<p>
+Format of packet driver IOCB:
+<a name=table3312></a>
+Offset  Size    Description     (Table 03312)
+00h    DWORD   pointer to buffer
+04h    WORD    length of buffer
+06h    BYTE    flags
+<p><b>bit 0:</b><br>Packet driver is finished with IOCB
+<p><b>bit 1:</b><br>Application requests upcall when driver completes
+07h    DWORD   function address for upcall <a href="rb-6674.htm#Table3313">(see #03313)</a>
+0Bh  4 BYTEs   future gather write
+0Fh    BYTE    ???
+10h  8 BYTEs   private driver workspace
+<p>
+<a name=table3313></a>
+(Table 03313)
+Values completion function is called with:.
+ES:DI -> IOCB passed to INT 60/AH=0Ch
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-60.htm">
+Int 60h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6673.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6675.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

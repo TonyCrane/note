@@ -1,0 +1,140 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=FB42h/BX=0005h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=FB42h/BX=0005h - Borland C++ DPMILOAD.EXE - GET ADDRESS OF ??? BY NAME - 
+AX = FB42h
+BX = 0005h
+CX = selector of DPMILOAD data (see #03130)
+DS:DX - ASCIZ or CR-terminated name of ??? (case ignored)
+Return: DX = status (see #03129)
+0000h successful
+AX:BX - ??? FAR function (called with two words on top of stk)
+else
+BX destroyed
+SeeAlso: AX=FB42h/BX=0006h,AX=FB42h/BX=000Eh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=FB42h/BX=0005h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5721.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5723.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Borland C++ DPMILOAD.EXE - GET ADDRESS OF ??? BY NAME</font></h3>
+<PRE>
+AX = FB42h
+BX = 0005h
+CX = selector of DPMILOAD data <a href="rb-5722.htm#Table3130">(see #03130)</a>
+DS:DX -> ASCIZ or CR-terminated name of ??? (case ignored)<br>
+<p><b>Return:</b><br>DX = status (see #03129)
+0000h successful
+AX:BX -> ??? FAR function (called with two words on top of stk)
+else
+BX destroyed
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5723.htm">AX=FB42h/BX=0006h</a> - <a href="rb-5733.htm">AX=FB42h/BX=000Eh</a>
+<PRE>
+<p>
+Format of DPMILOAD data:
+<a name=table3130></a>
+Offset  Size    Description     (Table 03130)
+00h 12 BYTEs   ???
+0Ch    WORD    ??? bit flags
+0Eh 14 BYTEs   ???
+1Ch    WORD    number of memory control records <a href="rb-5722.htm#Table3133">(see #03133)</a>
+1Eh 25 BYTEs   ???
+37h    BYTE    ??? bit flags
+<p><b>bit 4:</b><br>Data valid???
+38h  4 BYTEs   ???
+3Ch    WORD    ???
+3Eh 12 BYTEs   ???
+46h    BYTE    ??? counter
+47h    BYTE    ???
+48h    BYTE    ???
+49h    BYTE    ???
+4Ah    WORD    ???
+4Ch  2 BYTEs   ???
+4Eh    WORD    offset of array of 64-byte memory control records
+52h    WORD    offset of name list <a href="rb-5722.htm#Table3131">(see #03131)</a>
+54h  4 BYTEs   ???
+58h    WORD    offset of array of 6-byte objects <a href="rb-5722.htm#Table3132">(see #03132)</a>
+5Ah  8 BYTEs   ???
+62h  9 BYTEs   ASCIZ name for ???
+6Bh  9 BYTEs   ASCIZ name for ???.
+???
+<p>
+Format of name list entry [array]:
+<a name=table3131></a>
+Offset  Size    Description     (Table 03131)
+00h    BYTE    length of name (00h if end of array)
+01h  N BYTEs   name
+N+1    WORD    1-based index into array of unknown 6-byte objects
+<p>
+Format of 6-byte objects:
+<a name=table3132></a>
+Offset  Size    Description     (Table 03132)
+00h    BYTE    ???
+01h    BYTE    ???
+02h    BYTE    ???
+03h    BYTE    1-based index of memory control record
+04h    WORD    ???
+<p>
+Format of memory control record:
+<a name=table3133></a>
+Offset  Size    Description     (Table 03133)
+00h 20 BYTEs   memory block info <a href="rb-5719.htm#Table3127">(see #03127)</a>
+14h  6 BYTEs   ???
+1Ah    BYTE    ???
+1Bh  2 BYTEs   ???
+1Dh    BYTE    ??? bit flags
+1Eh 14 BYTEs   ???
+2Ch    DWORD   pointer to ??? memory control record or 0000h:0000h
+30h    DWORD   pointer to ??? memory control record or 0000h:0000h
+34h    DWORD   pointer to next??? memory control record or 0000h:0000h
+38h    DWORD   pointer to prev??? memory control record or 0000h:0000h
+3Ch  4 BYTEs   ???
+</PRE>
+<p><b>Note:</b>
+The pointers at offsets 2Ch and 30h form a doubly-linked list, as do
+the pointers at offsets 34h and 38h
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5721.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5723.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

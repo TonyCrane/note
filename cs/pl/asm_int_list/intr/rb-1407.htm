@@ -1,0 +1,134 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=530Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=530Ah - Advanced Power Management v1.0+ - GET POWER STATUS - 
+AX = 530Ah
+BX = device ID
+0001h all devices power-managed by APM
+80xxh specific battery unit number XXh (01h-FFh) (APM v1.2)
+Return: CF clear if successful
+BH = AC line status
+00h off-line
+01h on-line
+02h on backup power (APM v1.1)
+FFh unknown
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=530Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1406.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1408.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Advanced Power Management v1.0+ - GET POWER STATUS</font></h3>
+<PRE>
+AX = 530Ah
+BX = device ID
+0001h all devices power-managed by APM
+80xxh specific battery unit number XXh (01h-FFh) (APM v1.2)<br>
+<p><b>Return:</b><br>CF clear if successful
+BH = AC line status
+00h off-line
+01h on-line
+02h on backup power (APM v1.1)
+FFh unknown
+other reserved
+BL = battery status <a href="rb-1407.htm#Table476">(see #00476)</a>
+CH = battery flag (APM v1.1+) <a href="rb-1407.htm#Table477">(see #00477)</a>
+CL = remaining battery life, percentage
+00h-64h (0-100) percentage of full charge
+FFh unknown
+DX = remaining battery life, time (APM v1.1) <a href="rb-1407.htm#Table478">(see #00478)</a>
+---if specific battery unit specified---
+SI = number of battery units currently installed
+CF set on error
+AH = error code (09h,0Ah) <a href="rb-1394.htm#Table473">(see #00473)</a>
+</PRE>
+<p><b>Notes:</b>
+Should not be called from within a hardware interrupt handler to avoid
+reentrance problems.
+Supported in real mode (INT 15) and both 16-bit and 32-bit protected
+mode
+<PRE>
+<p>
+<a name=table476></a>
+(Table 00476)
+Values for APM v1.0+ battery status:
+00h    high
+01h    low
+02h    critical
+03h    charging
+FFh    unknown
+other  reserved
+</PRE>
+<p><b>See Also:</b>
+#00477 - #00478
+<PRE>
+<p>
+Bitfields for APM v1.1+ battery flag:
+<a name=table477></a>
+Bit(s)  Description     (Table 00477)
+0      high
+1      low
+2      critical
+3      charging
+4      selected battery not present (APM v1.2)
+5-6    reserved (0)
+7      no system battery
+</PRE>
+<p><b>Note:</b>
+All bits set (FFh) if unknown
+<p><b>See Also:</b>
+#00476 - #00478
+<PRE>
+<p>
+Bitfields for APM v1.1+ remaining battery life:
+<a name=table478></a>
+Bit(s)  Description     (Table 00478)
+<p><b>15     time units:</b><br>0=seconds, 1=minutes
+14-0   battery life in minutes or seconds
+</PRE>
+<p><b>Note:</b>
+All bits set (FFFFh) if unknown
+<p><b>See Also:</b>
+#00476 - #00477
+<p>
+<b>Category: <a href="cat-031.htm">
+Power Management</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1406.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1408.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4B20h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4B20h - MS Windows 3+ - WIN.COM - SET PROGRAM TO EXECUTE ON EXIT - 
+AX = 4B20h
+Return: AX = 0000h if successful
+DX:CX - 256-byte buffer for pathname and commandline (see #02824)
+Notes: when the Windows function ExitWindows is called with an exit code of
+44h, WIN.COM executes the program specified in the returned buffer
+and then restarts Windows
+the returned address is a real-mode segment:offset value
+SeeAlso: AX=4B21h
+Format of WIN.COM buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4B20h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4866.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4868.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows 3+ - WIN.COM - SET PROGRAM TO EXECUTE ON EXIT</font></h3>
+<PRE>
+AX = 4B20h<br>
+<p><b>Return:</b><br>AX = 0000h if successful
+DX:CX -> 256-byte buffer for pathname and commandline <a href="rb-4867.htm#Table2824">(see #02824)</a>
+</PRE>
+<p><b>Notes:</b>
+When the Windows function ExitWindows is called with an exit code of
+44h, WIN.COM executes the program specified in the returned buffer
+and then restarts Windows.
+The returned address is a real-mode segment:offset value
+<p><b>See Also:</b>
+<a href="rb-4868.htm">AX=4B21h</a>
+<PRE>
+<p>
+Format of WIN.COM buffer:
+<a name=table2824></a>
+Offset  Size    Description     (Table 02824)
+00h 128 BYTEs  commandline for program (count byte, command tail, 0Dh)
+80h 128 BYTEs  ASCIZ pathname of program to execute
+</PRE>
+<p><b>Note:</b>
+The order above is for a Windows95 DOS box; it may be reversed under
+Windows 3.x
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4866.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4868.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

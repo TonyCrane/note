@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4B03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4B03h - DOS 5+ TASK SWITCHER - ALLOCATE SWITCHER ID - 
+AX = 4B03h
+ES:DI - task switcher entry point (see #02819)
+Return: AX = 0000h
+BX = switcher ID (0001h-000Fh), or 0000h if no more available
+Notes: if a task switcher has determined that it is the first to be loaded, it
+must allocate an identifier for itself and provide this function to
+all subsequent task switchers; if it is not the first to be loaded,
+it must call this function to allocate an ID. The switcher ID is
+used as the high four bits of all session identifiers to ensure
+unique session IDs.
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4B03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4862.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4864.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 5+ TASK SWITCHER - ALLOCATE SWITCHER ID</font></h3>
+<PRE>
+AX = 4B03h
+ES:DI -> task switcher entry point <a href="rb-4862.htm#Table2819">(see #02819)</a><br>
+<p><b>Return:</b><br>AX = 0000h
+BX = switcher ID (0001h-000Fh), or 0000h if no more available
+</PRE>
+<p><b>Notes:</b>
+If a task switcher has determined that it is the first to be loaded, it
+must allocate an identifier for itself and provide this function to
+all subsequent task switchers; if it is not the first to be loaded,
+it must call this function to allocate an ID.  The switcher ID is
+used as the high four bits of all session identifiers to ensure
+unique session IDs..
+If no more switcher IDs are available, the new task switcher making the
+call must terminate or disable itself.
+The task switcher providing the identifiers may call the new task
+switcher's entry point as needed.
+This call is available from within DOSSHELL even if the task switcher
+is not installed.
+This function is supported by PC Tools v8+ CPTASK, but appears to
+always return an ID of 0000h
+<p><b>See Also:</b>
+<a href="rb-4862.htm">AX=4B02h</a> - <a href="rb-4864.htm">AX=4B04h</a>
+<p>
+<b>Category: <a href="cat-011.htm">
+DOS-Based Task Switchers/Multitaskers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4862.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4864.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

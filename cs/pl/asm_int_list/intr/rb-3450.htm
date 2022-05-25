@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E1h/SF=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E1h/SF=05h - Novell NetWare - MESSAGE SERVICES - GET PERSONAL MESSAGE - 
+AH = E1h subfn 05h
+DS:SI - request buffer (see #01828)
+ES:DI - reply buffer (see #01829)
+Return: AL = status
+00h successful
+FEh out of dynamic workspace
+Desc:  return the oldest message in the default file server's message queue
+for the calling workstation
+Note:  this function is supported by NetWare 4.0+ and Advanced NetWare 1.0-2.x
+SeeAlso: AH=E1h/SF=01h,AH=E1h/SF=04h,AH=E1h/SF=06h,AH=E1h/SF=08h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E1h/SF=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3449.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3451.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - MESSAGE SERVICES - GET PERSONAL MESSAGE</font></h3>
+<PRE>
+AH = E1h subfn 05h
+DS:SI -> request buffer <a href="rb-3450.htm#Table1828">(see #01828)</a>
+ES:DI -> reply buffer <a href="rb-3450.htm#Table1829">(see #01829)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+FEh out of dynamic workspace
+</PRE>
+<p><b>Desc:</b>
+Return the oldest message in the default file server's message queue
+for the calling workstation
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+ and Advanced NetWare 1.0-2.x
+<p><b>See Also:</b>
+<a href="rb-3446.htm">AH=E1h/SF=01h</a> - <a href="rb-3449.htm">AH=E1h/SF=04h</a> - <a href="rb-3451.htm">AH=E1h/SF=06h</a> - <a href="rb-3453.htm"
+<PRE>
+<p>
+Format of NetWare "Get Personal Message" request buffer:
+<a name=table1828></a>
+Offset  Size    Description     (Table 01828)
+00h    WORD    0001h (length of following data)
+02h    BYTE    05h (subfunction "Get Personal Message")
+</PRE>
+<p><b>See Also:</b>
+#01829
+<PRE>
+<p>
+Format of NetWare "Get Personal Message" reply buffer:
+<a name=table1829></a>
+Offset  Size    Description     (Table 01829)
+00h    WORD    (call) size of following results buffer (max 80h)
+02h    BYTE    connection number of sending station
+03h    BYTE    length of message (00h-7Eh)
+00h if no personal messages pending
+04h  N BYTEs   message (no control characters or characters > 7Eh)
+</PRE>
+<p><b>See Also:</b>
+#01828
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3449.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3451.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

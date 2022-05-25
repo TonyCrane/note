@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4402h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4402h - WORKGRP.SYS - GET API ENTRY POINT - 
+AX = 4402h
+BX = file handle for device NET$HLP$
+CX = 0008h
+DS:DX - buffer for entry point record (see #01485)
+Return: CF clear if successful
+AX = number of bytes actually read
+CF set on error
+AX = error code
+Program: WORKGRP.SYS is the portion of Microsoft's Workgroup Connection which
+permits communication with PCs running Windows for Workgroups or
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4402h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2835.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2837.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>WORKGRP.SYS - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 4402h
+BX = file handle for device "NET$HLP$"
+CX = 0008h
+DS:DX -> buffer for entry point record <a href="rb-2836.htm#Table1485">(see #01485)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually read
+CF set on error
+AX = error code
+</PRE>
+<p><b>Program:</b>
+WORKGRP.SYS is the portion of Microsoft's Workgroup Connection which
+permits communication with PCs running Windows for Workgroups or
+LAN Manager
+<p><b>See Also:</b>
+<a href="rb-2786.htm">AH=3Fh"WORKGRP.SYS"</a>
+<PRE>
+<p>
+Format of WORKGRP.SYS entry point record:
+<a name=table1485></a>
+Offset  Size    Description     (Table 01485)
+00h    WORD    3633h  \ signature???
+02h    WORD    EF6Fh  /
+04h    DWORD   address of entry point <a href="rb-2836.htm#Table1486">(see #01486)</a>
+</PRE>
+<p><b>Note:</b>
+First four bytes of buffer must be 6Fh E9h 33h 36h on entry when using
+IOCTL rather than READ to get the entry point record
+<PRE>
+<p>
+<a name=table1486></a>
+(Table 01486)
+Call WORKGRP entry point with:.
+<p><b>STACK:</b><br>WORD    function number (0000h-0009h)<br>
+<p><b>Return:</b><br>STACK unchanged
+</PRE>
+<p><b>See Also:</b>
+#01487 - #01488 - #01489 - #01490 - #01491 - #01492 - #01493 - #01494
+<PRE>
+<p>
+<a name=table1487></a>
+(Table 01487)
+Call WORKGRP function 00h with:.
+<p><b>STACK:</b><br>WORD    0000h (function "get ???")<br>
+<p><b>Return:</b><br>DX:AX -> data table
+<p>
+<a name=table1488></a>
+(Table 01488)
+Call WORKGRP function 01h with:.
+<p><b>STACK:</b><br>WORD    0001h (function "hook ???")<br>
+<p><b>Return:</b><br>STACK:  DWORD   pointer to ???
+WORD    0001h (function number)
+<p>
+<a name=table1489></a>
+(Table 01489)
+Call WORKGRP function 02h with:.
+<p><b>STACK:</b><br>WORD    0002h (function "unhook ???").
+???<br>
+<p><b>Return:</b><br>???
+<p>
+<a name=table1490></a>
+(Table 01490)
+Call WORKGRP function 03h with:.
+<p><b>STACK:</b><br>WORD    0003h (function "reenable printer port")
+WORD    LPT port number<br>
+<p><b>Return:</b><br>???
+<p>
+<a name=table1491></a>
+(Table 01491)
+Call WORKGRP function 04h with:.
+<p><b>STACK:</b><br>WORD    0004h (function "disable printer port")
+WORD    LPT port number<br>
+<p><b>Return:</b><br>???
+<p>
+<a name=table1492></a>
+(Table 01492)
+Call WORKGRP function 05h with:.
+<p><b>STACK:</b><br>WORD    0005h (function "???")
+???<br>
+<p><b>Return:</b><br>???
+<p>
+<a name=table1493></a>
+(Table 01493)
+Call WORKGRP function 06h with:.
+<p><b>STACK:</b><br>WORD    0006h (function "???")<br>
+<p><b>Return:</b><br>STACK unchanged
+AX = 0000h
+DX = 0000h
+<p>
+<a name=table1494></a>
+(Table 01494)
+Call WORKGRP functions 07h-09h with:.
+<p><b>STACK:</b><br>WORD    0007h-0009h (NOP functions)<br>
+<p><b>Return:</b><br>STACK unchanged
+AX = 0001h
+DX = 0000h
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2835.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2837.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

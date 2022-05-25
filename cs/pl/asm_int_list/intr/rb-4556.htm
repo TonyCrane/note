@@ -1,0 +1,184 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=002Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=002Ah - MS Windows - VWIN32 - GET API ENTRY POINT - 
+AX = 1684h
+BX = 002Ah (virtual device ID for VWIN32 device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02669)
+0000h:0000h if the VxD does not support API in current mode
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+(Table 02669)
+Call VWIN32.VXD entry point with:
+AH = function number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=002Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4555.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4557.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - VWIN32 - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 002Ah (virtual device ID for VWIN32 device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02669)
+0000h:0000h if the VxD does not support API in current mode
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2669></a>
+(Table 02669)
+Call VWIN32.VXD entry point with:.
+AH = function number
+00h get VWIN32 version and ???
+<p><b>Return:</b><br>CF clear
+AH = major version
+AL = minor version
+EDX = ???
+01h ???
+EBX = ???
+ECX = ???
+<p><b>Return:</b><br>CF clear
+EAX = ???
+02h ???
+<p><b>Return:</b><br>CF clear
+AX = ??? or 0000h
+03h address allocation
+DS:??? -> buffer containing/for page data
+ECX = length of buffer
+AL = subfunction
+00h reserve page(s)
+01h commit page(s)
+02h decommit page(s)
+03h free page(s)
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+</PRE>
+<p><b>Note:</b>
+This function uses ECX bytes of stack
+04h get ???
+<PRE>
+<p><b>Return:</b><br>CF clear
+EAX = ???
+05h ???
+EBX = ???
+<p><b>Return:</b><br>CF clear
+EAX = ???
+06h ???
+EBX = ???
+<p><b>Return:</b><br>CF clear
+EAX = ???
+07h ???
+EBX = ???
+<p><b>Return:</b><br>CF clear
+EAX = ???
+08h get ???
+<p><b>Return:</b><br>CF clear
+AX = ???
+09h ???
+EBX = ???
+ECX = ???
+<p><b>Return:</b><br>CF clear
+0Ah ???
+EBX = ???
+<p><b>Return:</b><br>CF clear
+0Bh ???
+EBX = ???
+<p><b>Return:</b><br>CF clear
+0Ch ???
+EBX = ???
+ECX = ???
+EDX = ???
+???
+<p><b>Return:</b><br>CF clear if successful
+EAX = ???
+CF set on error
+0Dh clear ???
+<p><b>Return:</b><br>CF clear
+0Eh ???
+EBX = ???
+ECX = ???
+<p><b>Return:</b><br>CF clear
+0Fh ???
+EBX = ???
+ECX = ???
+<p><b>Return:</b><br>CF clear
+10h ???
+<p><b>Return:</b><br>CF clear
+</PRE>
+<p><b>Note:</b>
+Invokes VMMcall 00010184h
+11h ???
+<PRE>
+<p><b>Return:</b><br>CF clear
+</PRE>
+<p><b>Note:</b>
+Invokes VMMcall 00010160h
+12h ???
+???
+13h pop up system error dialogue
+<PRE>
+<p><b>Return:</b><br>CF clear
+AX = ??? or 0000h
+14h "IFSMgr_GetConversionTablePtrs"
+<p><b>Return:</b><br>CF clear
+DX:AX -> ???
+</PRE>
+<p><b>Note:</b>
+Invokes VxDcall 00400051h
+15h "Boost_With_Decay"
+EBX = ???
+ECX = ???
+EDX = ???
+<PRE>
+<p><b>Return:</b><br>CF clear
+else
+<p><b>Return:</b><br>CF set
+</PRE>
+<p><b>See Also:</b>
+#02668 - #02670
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4555.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4557.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,159 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1605h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1605h - MS Windows - WINDOWS ENHANCED MODE & 286 DOSX INIT BROADCAST - 
+AX = 1605h
+ES:BX = 0000h:0000h
+DS:SI = 0000h:0000h
+CX = 0000h
+DX = flags
+bit 0 = 0 if Windows enhanced-mode initialization
+bit 0 = 1 if Microsoft 286 DOS extender initialization
+bits 1-15 reserved (undefined)
+DI = version number (major in upper byte, minor in lower)
+Return: CX = 0000h if okay for Windows to load
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1605h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4497.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4499.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - WINDOWS ENHANCED MODE & 286 DOSX INIT BROADCAST</font></h3>
+<PRE>
+AX = 1605h
+ES:BX = 0000h:0000h
+DS:SI = 0000h:0000h
+CX = 0000h
+DX = flags
+bit 0 = 0 if Windows enhanced-mode initialization
+bit 0 = 1 if Microsoft 286 DOS extender initialization
+bits 1-15 reserved (undefined)
+DI = version number (major in upper byte, minor in lower)<br>
+<p><b>Return:</b><br>CX = 0000h if okay for Windows to load
+CX = FFFFh (other registers unchanged) if Windows 3.0 in standard mode
+CX <> 0 if Windows should not load
+ES:BX -> startup info structure <a href="rb-4498.htm#Table2631">(see #02631)</a>
+DS:SI -> virtual86 mode enable/disable callback or 0000h:0000h
+<a href="rb-4498.htm#Table2634">(see #02634)</a>
+</PRE>
+<p><b>Notes:</b>
+The Windows enhanced mode loader and Microsoft 286 DOS extender will
+broadcast an INT 2F/AX=1605h call when initializing.  Any DOS device
+driver or TSR can watch for this broadcast and return the appropriate
+values.  If the driver or TSR returns CX <> 0, it is also its
+responsibility to display an error message (however, Windows95 is
+reported to load regardless of the returned CX)..
+Each handler must first chain to the prior INT 2F handler with
+registers unchanged before processing the call.
+If the handler requires local data on a per-VM basis, it must store the
+returned ES:BX in the "next" field of a startup info structure and
+return a pointer to that structure in ES:BX.
+A single TSR may set the V86 mode enable/disable callback; if DS:SI is
+already nonzero, the TSR must fail the initialization by setting CX
+nonzero.
+MSD checks for Windows 3.0 running in standard mode by testing whether
+CX=FFFFh and other registers are unchanged on return.
+Novell DOS v7.0 (Update 8 - Update 11) TASKMGR in multitasking mode
+uses this broadcast, even if TASKMGR.INI sets WinPresent= to OFF.
+Microsoft's EMM386.EXE for DOS 5+ when installed with the NOEMS option
+changes its driver name from EMMQXXX0 to EMMXXXX0 while Windows is
+active
+<p><b>See Also:</b>
+<a href="rb-4499.htm">AX=1606h</a> - <a href="rb-4517.htm">AX=1608h</a> - <a href="rb-4865.htm">AX=4B05h</a>
+<PRE>
+<p>
+Format of Windows Startup Information Structure:
+<a name=table2631></a>
+Offset  Size    Description     (Table 02631)
+00h  2 BYTEs   major, minor version of info structure
+02h    DWORD   pointer to next startup info structure or 0000h:0000h
+06h    DWORD   pointer to ASCIZ name of virtual device file or 0000h:0000h
+0Ah    DWORD   virtual device reference data <a href="rb-4498.htm#Table2633">(see #02633)</a>
+(only used if above nonzero)
+0Eh    DWORD   pointer to instance data records <a href="rb-4498.htm#Table2632">(see #02632)</a> or 0000h:0000h
+---structure version >= 4.0---
+12h    DWORD   pointer to optionally-instanced data records <a href="rb-4498.htm#Table2632">(see #02632)</a>
+or 0000h:0000h
+<p>
+Format of one Instance Item in array:
+<a name=table2632></a>
+Offset  Size    Description     (Table 02632)
+00h    DWORD   address of instance data (end of array if 0000h:0000h)
+04h    WORD    size of instance data
+</PRE>
+<p><b>See Also:</b>
+#02631
+<PRE>
+<p>
+Format of Virtual Device Reference Data:
+<a name=table2633></a>
+Offset  Size    Description     (Table 02633)
+00h    DWORD   physical address of ??? or 00000000h
+04h    DWORD   physical address of ??? table
+08h    DWORD   "DEST_PAGE" address to which pages must be mapped
+0Ch  N DWORDs  "SRC_PAGE" physical addresses of the pages
+00000000h = end of table
+</PRE>
+<p><b>Note:</b>
+EMM386.EXE sets the first pointer to the start of the device driver
+chain, the second pointer to a field of 40h bytes followed by a
+16-bit offset to the end of the SRC_PAGE table, and DEST_PAGE to
+the start segment of the UMB area
+<p><b>See Also:</b>
+#02631
+<PRE>
+<p>
+<a name=table2634></a>
+(Table 02634)
+Values Windows virtual mode enable/disable procedure is called with:.
+AX = 0000h disable V86 mode.
+AX = 0001h enable V86 mode.
+Interrupts disabled<br>
+<p><b>Return:</b><br>CF set on error
+CF clear if successful
+interrupts disabled
+</PRE>
+<p><b>See Also:</b>
+#02631
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4497.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4499.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

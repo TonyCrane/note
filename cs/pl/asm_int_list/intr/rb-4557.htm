@@ -1,0 +1,139 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=002Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=002Bh - MS Windows - VCOMM - GET API ENTRY POINT - 
+AX = 1684h
+BX = 002Bh (virtual device ID for VCOMM device) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02670)
+0000h:0000h if the VxD does not support API in current mode
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+(Table 02670)
+Call VCOMM.VXD entry point with:
+AX = function number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=002Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4556.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4558.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - VCOMM - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 002Bh (virtual device ID for VCOMM device) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02670)
+0000h:0000h if the VxD does not support API in current mode
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2670></a>
+(Table 02670)
+Call VCOMM.VXD entry point with:.
+AX = function number
+0000h open COM/LPT port
+BX = port number (00h-7Fh = COMx, 80h-FFh = LPTx)
+<p><b>Return:</b><br>DX:AX = handle???
+0001h set comm state
+???
+<p><b>Return:</b><br>AX = ???
+0002h setup comm port
+???
+<p><b>Return:</b><br>AX = status (0000h failed, FFFFh success)
+0003h transmit character
+EBX = handle???
+CL = character to transmit
+<p><b>Return:</b><br>AX = status???
+0004h close comm port
+EBX = handle???
+<p><b>Return:</b><br>???
+0005h clear comm error
+EBX = handle???
+EAX = ???
+<p><b>Return:</b><br>AX = status???
+0006h "EscapeCommFunction"
+EBX = handle???
+CX = ???
+EAX = ???
+<p><b>Return:</b><br>DX:AX = ???
+0007h purge buffers
+EBX = handle???
+CX = ???
+<p><b>Return:</b><br>AX = status???
+0008h set comm event mask
+EBX = handle???
+CX = new event mask
+<p><b>Return:</b><br>AX = status???
+0009h get comm event mask
+EBX = handle???
+<p><b>Return:</b><br>AX = current event mask
+000Ah ???
+EBX = handle???
+<p><b>Return:</b><br>???
+000Bh "WriteComm"
+EBX = handle???
+CX = number of characters to write
+ES???:BX -> buffer (if CX > 1)
+SI??? low byte contains character if CX=1
+<p><b>Return:</b><br>AX = status
+EAX high word may be destroyed
+000Ch "ReadComm"
+EBX = handle???
+CX = number of bytes to read
+ES???:DI -> buffer
+<p><b>Return:</b><br>AX = status ???
+ZF = ???
+000Dh set ??? callback
+EBX = handle???
+CX = ???
+DX = ???
+<p><b>Return:</b><br>AX = status???
+else
+<p><b>Return:</b><br>AX = 0000h
+</PRE>
+<p><b>See Also:</b>
+#02669 - #02671
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4556.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4558.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

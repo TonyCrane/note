@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E1h/SF=07h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E1h/SF=07h - Novell NetWare - MESSAGE SERVICES - CLOSE MESSAGE PIPE - 
+AH = E1h subfn 07h
+DS:SI - request buffer (see #01832)
+ES:DI - reply buffer (see #01833)
+Return: AL = status
+00h successful
+FCh full message queue
+FEh out of dynamic workspace
+Note:  this function is supported by NetWare 4.0+ and Advanced NetWare 1.0-2.x
+SeeAlso: AH=E1h/SF=05h,AH=E1h/SF=06h,AH=E1h/SF=08h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E1h/SF=07h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3451.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3453.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - MESSAGE SERVICES - CLOSE MESSAGE PIPE</font></h3>
+<PRE>
+AH = E1h subfn 07h
+DS:SI -> request buffer <a href="rb-3452.htm#Table1832">(see #01832)</a>
+ES:DI -> reply buffer <a href="rb-3452.htm#Table1833">(see #01833)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+FCh full message queue
+FEh out of dynamic workspace
+</PRE>
+<p><b>Note:</b>
+This function is supported by NetWare 4.0+ and Advanced NetWare 1.0-2.x
+<p><b>See Also:</b>
+<a href="rb-3450.htm">AH=E1h/SF=05h</a> - <a href="rb-3451.htm">AH=E1h/SF=06h</a> - <a href="rb-3453.htm">AH=E1h/SF=08h</a>
+<PRE>
+<p>
+Format of NetWare "Close Mesage Pipe" request buffer:
+<a name=table1832></a>
+Offset  Size    Description     (Table 01832)
+00h    WORD    length of following data (max 66h)
+02h    BYTE    07h (subfunction "Close Message Pipe")
+03h    BYTE    number of pipes to close (01h-64h)
+04h  N BYTEs   list of connection numbers
+</PRE>
+<p><b>See Also:</b>
+#01830 - #01833
+<PRE>
+<p>
+Format of NetWare "Close Message Pipe" reply buffer:
+<a name=table1833></a>
+Offset  Size    Description     (Table 01833)
+00h    WORD    (call) size of following results buffer (max 65h)
+02h    BYTE    number of connections
+03h  N BYTEs   list of results
+00h successful
+FDh failed
+FFh no such pipe
+</PRE>
+<p><b>See Also:</b>
+#01831 - #01832
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3451.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3453.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

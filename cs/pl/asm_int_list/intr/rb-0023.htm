@@ -1,0 +1,126 @@
+<HTML>
+<HEAD>
+<TITLE>Int 03/AX=0913h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 03/AX=0913h - Soft-ICE v2.5x - BACK DOOR COMMANDS - SET Soft-ICE BREAKPOINT - 
+AX = 0913h
+SI = magic value 4647h ('FG')
+DI = magic value 4A4Dh ('JM')
+DS:DX - breakpoint structure (see #00003)
+Return: AX = status
+00h successful
+BX = breakpoint number
+03h breakpoint table full
+06h memory limit error
+07h I/O limit error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 03/AX=0913h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0022.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0024.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Soft-ICE v2.5x - BACK DOOR COMMANDS - SET Soft-ICE BREAKPOINT</font></h3>
+<PRE>
+AX = 0913h
+SI = magic value 4647h ('FG')
+DI = magic value 4A4Dh ('JM')
+DS:DX -> breakpoint structure <a href="rb-0023.htm#Table3">(see #00003)</a><br>
+<p><b>Return:</b><br>AX = status
+00h successful
+BX = breakpoint number
+03h breakpoint table full
+06h memory limit error
+07h I/O limit error
+09h range limit error
+16h duplicate breakpoint
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0021.htm">AX=0911h</a> - <a href="rb-0022.htm">AX=0912h</a> - <a href="rb-0024.htm">AX=0914h</a>
+<PRE>
+<p>
+Format of Soft-ICE breakpoint structure:
+<a name=table3></a>
+Offset  Size    Description     (Table 00003)
+00h    BYTE    breakpoint type <a href="rb-0023.htm#Table4">(see #00004)</a>
+01h    DWORD   breakpoint address 1
+(lower range limit for memory BPs,
+interrupt number for interrupt BPs,
+address of BP for execution BPs,
+I/O address (only word) for I/O BPs)
+05h    DWORD   breakpoint address 2
+(upper range limit for memory BPs,
+optional value to check for for interrupt BPs,
+overlay number (0 = root) for execution BPs)
+09h    DWORD   breakpoint address 3
+0Dh    BYTE    breakpoint mode 1 <a href="rb-0023.htm#Table5">(see #00005)</a>
+(for interrupt BPs = register to check
+00h  no value checking
+01h  check AL
+02h  check AH
+03h  check AX)
+0Eh    BYTE    breakpoint mode 2 <a href="rb-0023.htm#Table5">(see #00005)</a>
+0Fh    BYTE    breakpoint size (00h byte, 01h word, 03h dword)
+10h    BYTE    breakpoint pass count before program stop
+11h    BYTE    breakpoint state
+</PRE>
+<p><b>Note:</b>
+All unused fields should contain zeros
+<PRE>
+<p>
+<a name=table4></a>
+(Table 00004)
+Values for Soft-ICE breakpoint type:
+00h    memory location
+01h    memory range
+03h    I/O
+04h    interrupt
+05h    execution break
+<p>
+<a name=table5></a>
+(Table 00005)
+Values for Soft-ICE breakpoint mode:
+01h    read
+02h    write
+04h    execution
+</PRE>
+<p>
+<b>Category: <a href="cat-006.htm">
+Debuggers/Debugging Tools</a>
+- <a href="int-03.htm">
+Int 03h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0022.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0024.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

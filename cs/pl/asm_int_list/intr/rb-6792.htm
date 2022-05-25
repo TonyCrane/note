@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=000Fh/SF=0001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=000Fh/SF=0001h - Banyan VINES - OPEN SOCKET - 
+AX = 000Fh subfn 0001h
+CX:BX - request block (see #03445)
+DX = application's data segment (should be = CX)
+ES = DS
+Return: AX = status
+0000h successful
+00A5h resource not available
+Desc:  Opens a socket and returns a socket handle
+Format of request block:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=000Fh/SF=0001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6791.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6793.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - OPEN SOCKET</font></h3>
+<PRE>
+AX = 000Fh subfn 0001h
+CX:BX -> request block <a href="rb-6792.htm#Table3445">(see #03445)</a>
+DX = application's data segment (should be = CX)
+ES = DS<br>
+<p><b>Return:</b><br>AX = status
+0000h successful
+00A5h resource not available
+</PRE>
+<p><b>Desc:</b>
+Opens a socket and returns a socket handle
+<PRE>
+<p>
+Format of request block:
+<a name=table3445></a>
+Offset  Size    Description     (Table 03445)
+00h    WORD    0001h
+02h    WORD    magic number (FEFEh)
+04h    WORD    buffer for return code (set to 0 before calling)
+06h    WORD    reserved (will be set to client DS)
+08h    WORD    reserved (obviously not used; set to 0 before calling)
+0Ah    DWORD   far pointer to parameter block <a href="rb-6792.htm#Table3446">(see #03446)</a>
+0Eh    WORD    process handle (see AX=000Fh/SF=0008h)
+<p>
+Format of parameter block:
+<a name=table3446></a>
+Offset  Size    Description     (Table 03446)
+00h    WORD    reserved
+02h    WORD    address family (0003h = VINES)
+04h    WORD    socket type (0001h = IPC, 0002h = SPP)
+06h    WORD    protocol number (FFFFh = default protocol)
+08h    WORD    reserved
+0Ah    WORD    local port number (0 = transient, 1..1FFh = well-known port)
+0Ch    DWORD   far pointer to socket handle buffer (2 bytes)
+10h    DWORD   far pointer to IPC port buffer (16 bytes)
+</PRE>
+<p><b>See Also:</b>
+#03445
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6791.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6793.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

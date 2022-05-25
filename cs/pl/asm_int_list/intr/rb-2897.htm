@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=440Dh/CX=084Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=440Dh/CX=084Ah - MS-DOS 7.0+ - GENERIC IOCTL - LOCK LOGICAL VOLUME - 
+AX = 440Dh
+CX = 084Ah / 484Ah
+(category code 08h for FAT12/16, 48h for FAT32; minor code 4Ah)
+BL = drive number (01h=A:,02h=B:,etc)
+BH = lock level (00h-04h)
+DX = drive permissions (see #01575) for Level 1 lock or second
+Level 0 lock when formatting
+Return: CF set on error
+AX = error code (01h,02h,etc.) (see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=440Dh/CX=084Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2896.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2898.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS-DOS 7.0+ - GENERIC IOCTL - LOCK LOGICAL VOLUME</font></h3>
+<PRE>
+AX = 440Dh
+CX = 084Ah / 484Ah
+(category code 08h for FAT12/16, 48h for FAT32; minor code 4Ah)
+BL = drive number (01h=A:,02h=B:,etc)
+BH = lock level (00h-04h)
+DX = drive permissions <a href="rb-2897.htm#Table1575">(see #01575)</a> for Level 1 lock or second
+Level 0 lock when formatting<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code (01h,02h,etc.) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+</PRE>
+<p><b>Notes:</b>
+The logical volume must be locked before direct disk accesses are
+permitted by Windows95/98.
+The commandline LOCK issues a level 4 lock.
+Windows98 only permits lock levels 0 and 4
+<p><b>BUG:</b>
+Windows98 will return an error (invalid function) if the specified
+drive number is zero or more than 32, but only allocated 26 bytes
+for recording locks, so BL=1Bh..20h will trash internal data
+structures
+<p><b>See Also:</b>
+<a href="rb-2896.htm">AX=440Dh"DOS 3.2+"</a> - <a href="rb-2898.htm">AX=440Dh/CX=084Bh</a> - <a href="rb-2899.htm">AX=440Dh/CX=086Ah</a>
+<p><b>See Also:</b>
+<a href="rb-2901.htm">AX=440Dh/CX=086Ch</a>
+<PRE>
+<p>
+Bitfields for drive permissions:
+<a name=table1575></a>
+Bit(s)  Description     (Table 01575)
+0      allow writes
+1      disallow new file mappings
+2      volume locked for formatting
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2896.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2898.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,107 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AX=DE0Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AX=DE0Ch - Virtual Control Program Interface - SWITCH TO PROTECTED MODE - 
+AX = DE0Ch
+ESI = linear address in first megabyte of values for system
+registers (see #03665)
+interrupts disabled
+Return: interrupts disabled
+GDTR, IDTR, LDTR, TR loaded
+SS:ESP must have at least 16 bytes space, and the entry point is
+required to set up a new stack before enabling interrupts
+EAX, ESI, DS, ES, FS, GS destroyed
+Note:  in protected mode, calling the protected-mode VCPI entry point with
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AX=DE0Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7502.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7504.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Virtual Control Program Interface - SWITCH TO PROTECTED MODE</font></h3>
+<PRE>
+AX = DE0Ch
+ESI = linear address in first megabyte of values for system
+registers <a href="rb-7503.htm#Table3665">(see #03665)</a>
+interrupts disabled<br>
+<p><b>Return:</b><br>Interrupts disabled
+GDTR, IDTR, LDTR, TR loaded
+SS:ESP must have at least 16 bytes space, and the entry point is
+required to set up a new stack before enabling interrupts
+EAX, ESI, DS, ES, FS, GS destroyed
+</PRE>
+<p><b>Note:</b>
+In protected mode, calling the protected-mode VCPI entry point with
+AX = DE0Ch
+DS = segment selector mapping entire linear address space obtained
+via AX=DE01h
+SS:ESP in first megabyte of linear memory
+STACK:QWORD  return address from FAR call to 32-bit segment
+DWORD  EIP
+DWORD  CS
+DWORD  reserved for EFLAGS
+DWORD  ESP
+DWORD  SS
+DWORD  ES
+DWORD  DS
+DWORD  FS
+DWORD  GS
+and interrupts disabled, will switch to virtual86 mode with
+interrupts disabled, all segment registers loaded, and EAX
+destroyed.
+<p><b>See Also:</b>
+<a href="rb-7414.htm">AH=3Fh</a> - <a href="rb-1531.htm">INT 15/AH=89h</a> - <a href="rb-8440.htm">INT D4/AH=10h</a>
+<PRE>
+<p>
+Format of system register values for switch to protected mode:
+<a name=table3665></a>
+Offset  Size    Description     (Table 03665)
+00h    DWORD   value for CR3
+04h    DWORD   linear address in first megabyte of value for GDTR
+08h    DWORD   linear address in first megabyte of value for IDTR
+0Ch    WORD    value for LDTR
+0Eh    WORD    value for TR
+10h    PWORD   CS:EIP of protected mode entry-point
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7502.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7504.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

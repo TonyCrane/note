@@ -1,0 +1,130 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B10Ah/SF=1022h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B10Ah/SF=1022h - PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (AMD devices) - 
+AX = B10Ah subfn 1022h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) (see #00878)
+Return: CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) (see #00729)
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B10Ah/SF=1022h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2380.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2382.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (AMD devices)</font></h3>
+<PRE>
+AX = B10Ah subfn 1022h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) <a href="rb-2377.htm#Table878">(see #00878)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) <a href="rb-2371.htm#Table729">(see #00729)</a>
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+</PRE>
+<p><b>Notes:</b>
+This function may require up to 1024 byte of stack; it will not enable
+interrupts if they were disabled before making the call.
+The meanings of BL and BH on entry were exchanged between the initial
+drafts of the specification and final implementation
+<p><b>See Also:</b>
+<a href="rb-2377.htm">AX=B10Ah</a> - <a href="rb-2382.htm">AX=B10Ah/SF=1042h</a> - <a href="rb-2387.htm">AX=B10Ah/SF=8086h</a>
+<PRE>
+<p>
+Format of AMD Am53C974A PC-SCSI PCI configuration data:
+<a name=table925></a>
+Offset  Size    Description     (Table 00925)
+00h 64 BYTEs   header <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 1022h, device ID 2020h)
+10h    DWORD   I/O base address (see PORT xxxxh"Am53C974A")
+40h 16 BYTEs   scratch registers
+(used by AMD's PC-SCSI drivers as follows:
+40h/41h  SCSI configuration register 0 <a href="rb-0000.htm#Table0"></a>(see #00926,#00927)
+...
+4Eh/4Fh  SCSI configuration register 7)
+</PRE>
+<p><b>See Also:</b>
+#00747
+<PRE>
+<p>
+Bitfields for AMD Am53C974A Target Device Configuration Register:
+<a name=table926></a>
+Bit(s)  Description     (Table 00926)
+15-14  reserved
+13     "FSCSI" Fast SCSI drive is present
+12-8   "SPD" synchronous period
+7-4    synchronous offset (0 = asynchronous transfers)
+3-1    SCSI bus status
+0      target device is present and active.
+If 0, all other bits must be cleared to zero for target devices
+</PRE>
+<p><b>See Also:</b>
+#00925 - #00927
+<PRE>
+<p>
+Bitfields for AMD Am53C974A Host Configuration Register:
+<a name=table927></a>
+Bit(s)  Description     (Table 00927)
+15-9   reserved
+8      SCSI bus has been reset
+7      starting BIOS number (bits 6-4) is valid
+6-4    starting BIOS number (000 = BIOS drive 80h, 001 = drive 81h, etc)
+3      this device is a SCSI host
+2      protected-mode driver initialized
+1      real-mode driver initialized
+0      target device present.
+=0 indicates that this is a host if bit 3 is set
+</PRE>
+<p><b>See Also:</b>
+#00925 - #00926
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2380.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2382.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

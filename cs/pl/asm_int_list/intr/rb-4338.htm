@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1121h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1121h - NETWORK REDIRECTOR - SEEK FROM END OF REMOTE FILE - 
+AX = 1121h
+CX:DX = offset (in bytes) from end
+ES:DI - SFT
+SFT DPB field - DPB of drive with file
+SS = DOS DS
+Return: CF set on error
+AL = DOS error code (see #01680 at INT 21/AH=59h/BX=0000h)
+CF clear if successful
+DX:AX = new file position
+Note:  this function is called by the DOS 3.1+ kernel, but only when seeking
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1121h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4337.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4339.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>NETWORK REDIRECTOR - SEEK FROM END OF REMOTE FILE</font></h3>
+<PRE>
+AX = 1121h
+CX:DX = offset (in bytes) from end
+ES:DI -> SFT
+SFT DPB field -> DPB of drive with file
+SS = DOS DS<br>
+<p><b>Return:</b><br>CF set on error
+AL = DOS error code <a href="rb-0000.htm#Table0"></a>(see #01680 at INT 21/AH=59h/BX=0000h)
+CF clear if successful
+DX:AX = new file position
+</PRE>
+<p><b>Note:</b>
+This function is called by the DOS 3.1+ kernel, but only when seeking
+from the end of a file opened with sharing modes set in such a
+manner that another process is able to change the size of the file
+while it is already open
+<p><b>See Also:</b>
+<a href="rb-4408.htm">AX=1228h</a> - <a href="rb-2799.htm">INT 21/AH=42h</a>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4337.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4339.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

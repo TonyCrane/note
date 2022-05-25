@@ -1,0 +1,161 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=D102h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=D102h - MDEBUG command driver - EXECUTE INTERPRETER COMMAND - 
+AX = D102h
+BL = first character of the interpreter command
+BH = last character of the interpreter command (or blank)
+DS:SI - parameter for the interpreter command as ASCIZ string
+DS:DI - MDEBUG data structure (see #03078)
+Return: AL = FFh
+CF set on error
+AH = error number (see #03077)
+DS:SI - ASCIZ error message (max 30 characters) if AH=0Ch
+CF clear if successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=D102h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5506.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5508.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MDEBUG command driver - EXECUTE INTERPRETER COMMAND</font></h3>
+<PRE>
+AX = D102h
+BL = first character of the interpreter command
+BH = last character of the interpreter command (or blank)
+DS:SI -> parameter for the interpreter command as ASCIZ string
+DS:DI -> MDEBUG data structure <a href="rb-5507.htm#Table3078">(see #03078)</a><br>
+<p><b>Return:</b><br>AL = FFh
+CF set on error
+AH = error number <a href="rb-5507.htm#Table3077">(see #03077)</a>
+DS:SI -> ASCIZ error message (max 30 characters) if AH=0Ch
+CF clear if successful
+AH = return code
+00h continue processing the command line
+01h leave MDEBUG popup session
+02h leave MDEBUG popup session and automatically popup again
+if the InDOS flag is zero
+03h not used (same as 00h)
+04h not used (same as 00h)
+05h put new command line into the input buffer,
+DS:SI -> new command line (ASCIZ string, max 66 chars)
+06h process new command line
+DS:SI -> new command line (ASCIZ string, max 66 chars)
+else unknown status, but continue processing commmand line
+</PRE>
+<p><b>Note:</b>
+This function must end with a far call to the old INT 2F handler (with
+registers unchanged) if the driver does not support the interpreter
+command in BX.  Otherwise, the driver must not chain to the old
+INT 2F.
+<PRE>
+<p>
+<a name=table3077></a>
+(Table 03077)
+Values for MDEBUG error number:
+01h    syntax error
+02h    first shell of the command.com is activ
+03h    Esc pressed
+04h    break pressed
+05h    DOS is busy
+06h    command ended
+07h    division by zero
+08h    invalid display driver
+09h    invalid command driver
+0Ah    error 8 and 9
+0Bh    unknown error
+0Ch    new error
+else   unknown error
+<p>
+Format of MDEBUG data structure:
+<a name=table3078></a>
+Offset  Size    Description     (Table 03078)
+00h    WORD    register SE
+02h    WORD    register OF
+04h    WORD    register FS
+06h    WORD    register FO
+08h    WORD    register AX
+0Ah    WORD    register BX
+0Ch    WORD    register CX
+0Eh    WORD    register DX
+10h    WORD    register SI
+12h    WORD    register DI
+14h    WORD    register DS
+16h    WORD    register ES
+18h    WORD    register BP
+1Ah    WORD    register SS
+1Ch    WORD    register SP
+1Eh    WORD    register FL (flags)
+20h    WORD    register R0
+22h    WORD    register R1
+24h    WORD    register R2
+26h    WORD    register R3
+28h    WORD    register R4
+2Ah    WORD    register R5
+2Ch    WORD    register R6
+2Eh    WORD    register R7
+30h    WORD    register R8
+32h    WORD    register CS, return-address
+34h    WORD    register IP, return-address
+36h    DWORD   saved pointer to data for key <F6> (v1.60)
+saved monitor address (v1.70)
+3Ah 12 WORDs   saved register values on last popup entry (for <F8> key)
+(original register values at popup entry of MDEBUG)
+AX, BX, CX, DX, SI, DI, DS, ES, BP, SS, SP, flags
+52h 12 WORDs   saved register values on last popup exit (for <SHIFT-F8> key)
+AX, BX, CX, DX, SI, DI, DS, ES, BP, SS, SP, flags
+6Ah    DWORD   address of the DOS-invars-table
+6Eh    DWORD   address of the InDOS flag
+72h    WORD    offset of the register which is used for the segment of the
+first monitor window
+74h    WORD    offset of the register which is used for the offset of the
+first monitor window
+76h    WORD    name of the register which is used for the segment of the
+first monitor segment
+78h    WORD    name of the register which is used for the offset of the first
+monitor window
+7Ah    WORD    pseudo register 1
+7Ch    WORD    pseudo register 2
+</PRE>
+<p>
+<b>Category: <a href="cat-006.htm">
+Debuggers/Debugging Tools</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5506.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5508.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

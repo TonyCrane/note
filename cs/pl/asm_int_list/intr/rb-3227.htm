@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=7303h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=7303h - Windows95 - FAT32 - GET EXTENDED FREE SPACE ON DRIVE - 
+AX = 7303h
+DS:DX - ASCIZ string for drive (C:\ or \\SERVER\Share)
+ES:DI - buffer for extended free space structure (see #01789)
+CX = length of buffer for extended free space
+Return: CF clear if successful
+ES:DI buffer filled
+CF set on error
+AX = error code
+Notes: on DOS versions which do not support the FAT32 calls, this function
+returns CF clear/AL=00h (which is the DOS v1+ method for reporting
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=7303h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3226.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3228.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - FAT32 - GET EXTENDED FREE SPACE ON DRIVE</font></h3>
+<PRE>
+AX = 7303h
+DS:DX -> ASCIZ string for drive ("C:\" or "\\SERVER\Share")
+ES:DI -> buffer for extended free space structure <a href="rb-3227.htm#Table1789">(see #01789)</a>
+CX = length of buffer for extended free space<br>
+<p><b>Return:</b><br>CF clear if successful
+ES:DI buffer filled
+CF set on error
+AX = error code
+</PRE>
+<p><b>Notes:</b>
+On DOS versions which do not support the FAT32 calls, this function
+returns CF clear/AL=00h (which is the DOS v1+ method for reporting
+unimplemented functions).
+Under DOS 7.x (i.e. "MSDOS Mode" under Windows95), the ASCIZ string
+pointed at by DS:DX *must* include the drive letter, or this function
+will return CF set/AX=0015h (invalid drive).  In a DOS box, omitting
+the drive letter (DS:DX -> "\") results in the free space for the
+current default drive, as expected
+<p><b>BUG:</b>
+This function returns a maximum of 2GB free space even on an FAT32
+partition larger than 2GB under some versions of Win95 and Win98,
+apparently by limiting the number of reported free clusters to no
+more than 64K -- but only in a DOS window if a TSR has hooked INT 21h
+<p><b>See Also:</b>
+<a href="rb-3226.htm">AX=7302h</a> - <a href="rb-3228.htm">AX=7304h</a> - <a href="rb-3229.htm">AX=7305h</a> - <a href="rb-2751.htm">AH=36h</a>
+<PRE>
+<p>
+Format of extended free space structure:
+<a name=table1789></a>
+Offset  Size    Description     (Table 01789)
+00h    WORD    (ret) size of returned structure
+02h    WORD    (call) structure version (0000h)
+(ret) actual structure version (0000h)
+04h    DWORD   number of sectors per cluster (with adjustment for compression)
+08h    DWORD   number of bytes per sector
+0Ch    DWORD   number of available clusters
+10h    DWORD   total number of clusters on the drive
+14h    DWORD   number of physical sectors available on the drive, without
+adjustment for compression
+18h    DWORD   total number of physical sectors on the drive, without
+adjustment for compression
+1Ch    DWORD   number of available allocation units, without adjustment
+for compression
+20h    DWORD   total allocation units, without adjustment for compression
+24h  8 BYTEs   reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3226.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3228.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=E0h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=E0h - TelAPI - telopen - CREATE TELNET CONNECTION (BLOCKING) - 
+AH = E0h
+BX = port number to connect with (default 0017h used if = 0)
+CX:DX = Internet address of remote host
+DS:DI - 2-byte remote host (session) identifier
+ES:SI - 1700-byte buffer for Telnet state record
+0000h:0000h to use TelAPI internally-allocated space
+Return: AX = status (0000h-0009h,FED3h,FF37h,FFBDh,FFC0h,FFCDh) (see #00397)
+ES:SI buffer filled with state record
+ES:SI - internally-allocated state record in some versions
+Note:  the remote host identifier may be used to refer to this connection
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=E0h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1100.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1102.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TelAPI - telopen - CREATE TELNET CONNECTION (BLOCKING)</font></h3>
+<PRE>
+AH = E0h
+BX = port number to connect with (default 0017h used if <= 0)
+CX:DX = Internet address of remote host
+DS:DI -> 2-byte remote host (session) identifier
+ES:SI -> 1700-byte buffer for Telnet state record
+0000h:0000h to use TelAPI internally-allocated space<br>
+<p><b>Return:</b><br>AX = status (0000h-0009h,FED3h,FF37h,FFBDh,FFC0h,FFCDh) (see #00397)
+ES:SI buffer filled with state record
+ES:SI -> internally-allocated state record in some versions
+</PRE>
+<p><b>Note:</b>
+The remote host identifier may be used to refer to this connection
+<p><b>See Also:</b>
+<a href="rb-1110.htm">AH=E1h</a> - <a href="rb-1121.htm">AH=ECh</a> - <a href="rb-1131.htm">AX=FF00h</a>
+<PRE>
+<p>
+<a name=table397></a>
+(Table 00397)
+Values for TelAPI status:
+0000h-7FFFh    successful (session number)
+FED3h  (-301)  no session allocated, or out of TelAPI data space
+FF37h  (-201)  all sessions in use
+FFBDh  (-67)   unknown hostname
+FFC0h  (-64)   host not functioning
+FFC3h  (-61)   connection attempt refused
+FFC4h  (-60)   connection attempt timed out
+FFC8h  (-56)   socket already connected
+FFCDh  (-51)   network is unreachable
+FFDDh  (-35)   operation would block
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1100.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1102.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

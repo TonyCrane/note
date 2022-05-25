@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=530Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=530Bh - Advanced Power Management v1.0+ - GET POWER MANAGEMENT EVENT - 
+AX = 530Bh
+Return: CF clear if successful
+BX = event code (see #00479)
+CX = event information (APM v1.2) if BX=0003h or BX=0004h
+bit 0: PCMCIA socket was powered down in suspend state
+CF set on error
+AH = error code (03h,0Bh,80h) (see #00473)
+Notes: although power management events are often asynchronous, notification
+will not be made until polled via this call to permit software to
+only receive event notification when it is prepared to process
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=530Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1407.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1409.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Advanced Power Management v1.0+ - GET POWER MANAGEMENT EVENT</font></h3>
+<PRE>
+AX = 530Bh<br>
+<p><b>Return:</b><br>CF clear if successful
+BX = event code <a href="rb-1408.htm#Table479">(see #00479)</a>
+CX = event information (APM v1.2) if BX=0003h or BX=0004h
+<p><b>bit 0:</b><br>PCMCIA socket was powered down in suspend state.
+CF set on error
+AH = error code (03h,0Bh,80h) <a href="rb-1394.htm#Table473">(see #00473)</a>
+</PRE>
+<p><b>Notes:</b>
+Although power management events are often asynchronous, notification
+will not be made until polled via this call to permit software to
+only receive event notification when it is prepared to process
+power management events; since these events are not very time-
+critical, it should be sufficient to poll once or twice per second.
+The critical resume notification is made after the system resumes
+from an emergency suspension; normally, the system BIOS only notifies
+its partner that it wishes to suspend and relies on the partner to
+actually request the suspension, but no notification is made on an
+emergency suspension.
+Should not be called from within a hardware interrupt handler to avoid
+reentrance problems
+<p><b>See Also:</b>
+<a href="rb-1401.htm">AX=5307h</a> - <a href="rb-1402.htm">AX=5307h/CX=0001h"STAND-BY"</a> - <a href="rb-1156.htm">AX=5307h/CX=0002h"SUSPEND"</a>
+<PRE>
+<p>
+<a name=table479></a>
+(Table 00479)
+Values for APM event code:
+0001h  system stand-by request
+0002h  system suspend request
+0003h  normal resume system notification
+0004h  critical resume system notification
+0005h  battery low notification
+---APM v1.1---
+0006h  power status change notification
+0007h  update time notification
+0008h  critical system suspend notification
+0009h  user system standby request notification
+000Ah  user system suspend request notification
+000Bh  system standby resume notification
+---APM v1.2---
+000Ch  capabilities change notification (see AX=5310h)
+------
+000Dh-00FFh reserved system events
+01xxh  reserved device events
+02xxh  OEM-defined APM events
+0300h-FFFFh reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-031.htm">
+Power Management</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1407.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1409.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

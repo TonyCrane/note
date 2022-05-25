@@ -1,0 +1,179 @@
+<HTML>
+<HEAD>
+<TITLE>Int E0/CL=40h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int E0/CL=40h - REAL/32 - N_LOGON - LOG ONTO A SERVER - 
+CL = 40h
+DS:DX - LPB (see #04025)
+Return: AX = status (0000h,00FFh,07FFh,0DFFh,0EFFh,FFFFh) (see #04030)
+may destroy SI,DI,DS???
+SeeAlso: INT E0/CL=41h
+Format of REAL/32 Logon/Logoff Parameter Block:
+Offset Size  Description   (Table 04025)
+00h  BYTE  node ID
+01h 8 BYTEs  password for server access
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int E0/CL=40h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8522.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8524.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>REAL/32 - N_LOGON - LOG ONTO A SERVER</font></h3>
+<PRE>
+CL = 40h
+DS:DX -> LPB <a href="rb-8523.htm#Table4025">(see #04025)</a><br>
+<p><b>Return:</b><br>AX = status (0000h,00FFh,07FFh,0DFFh,0EFFh,FFFFh) (see #04030)
+may destroy SI,DI,DS???
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-8524.htm">INT E0/CL=41h</a>
+<PRE>
+<p>
+Format of REAL/32 Logon/Logoff Parameter Block:
+<a name=table4025></a>
+Offset  Size    Description     (Table 04025)
+00h    BYTE    node ID
+01h  8 BYTEs   password for server access
+09h    DWORD   -> process descriptor of process to be logged on <a href="rb-8523.htm#Table4026">(see #04026)</a>
+<p>
+Format of REAL/32 Process Descriptor:
+<a name=table4026></a>
+Offset  Size    Description     (Table 04026)
+00h    WORD    offset of next entry in current descriptor list
+02h    WORD    offset of thread list
+04h    BYTE    current processor status <a href="rb-8523.htm#Table4027">(see #04027)</a>
+05h    BYTE    priority
+06h    WORD    runtime flags <a href="rb-8523.htm#Table4028">(see #04028)</a>
+08h  8 BYTEs   process name
+10h    WORD    segment of User Data Area (UDA) (256 or 352 bytes)
+12h    BYTE    current default disk drive
+13h    BYTE    drive from which process was loaded
+14h    WORD    reserved (0)
+16h    WORD    offset of memory descriptor list for memory owned by process
+18h  6 BYTEs   reserved
+1Eh    WORD    offset of process descriptor for parent process
+0000h if parent has already terminated
+20h    BYTE    number of default console
+21h    BYTE    number of default AUX device
+22h  2 BYTEs   reserved
+24h    BYTE    number of default list device
+25h    BYTE    reserved
+26h    WORD    flags <a href="rb-8523.htm#Table4029">(see #04029)</a>
+28h 12 BYTEs   reserved
+34h    WORD    offset of memory page allocation root
+36h 22 BYTEs   reserved
+</PRE>
+<p><b>Note:</b>
+At least offset 10h (UDA) is also supported by MDOS 5.00, 5.01, 5.10,
+as the DR DOS MEM utility retrieves this UDA segment through
+INT E0/CL=9Ah when INT 21/AX=4451h returns 1463h, 1465h, or 1466h.
+<p><b>See Also:</b>
+#04025
+<PRE>
+<p>
+<a name=table4027></a>
+(Table 04027)
+Values for REAL/32 processor status:
+00h    process is ready to run
+01h    process is polling a device
+02h    delaying for a number of ticks
+03h    in swap list
+04h    terminating
+05h    asleep
+06h    waiting to read a message from a queue
+07h    waiting to write a message
+08h    waiting on system flag or semaphore
+09h    waiting to attach to an I/O device
+0Ah    waiting on sync block
+0Bh    waiting for system flag or semaphore with timeout
+0Ch    forced dispatch
+</PRE>
+<p><b>See Also:</b>
+#04026
+<PRE>
+<p>
+Bitfields for REAL/32 process flags:
+<a name=table4028></a>
+Bit(s)  Description     (Table 04028)
+0      system process
+1      do not terminate
+2      special rsp process
+3      from process descriptor table
+14-4   unused???
+15     uses math coprocessor
+</PRE>
+<p><b>See Also:</b>
+#04026 - #04029
+<PRE>
+<p>
+Bitfields for REAL/32 secondary flags:
+<a name=table4029></a>
+Bit(s)  Description     (Table 04029)
+0      suspend when in background
+1      ???
+2      in foreground
+3      enable APPEND processing on file opens
+4      Ctrl-C was typed
+5      Ctrl-C will reset disk system
+6      OK to read locked record
+7      ???
+8      do not perform banking
+</PRE>
+<p><b>See Also:</b>
+#04026 - #04028
+<PRE>
+<p>
+<a name=table4030></a>
+(Table 04030)
+Values for REAL/32 "N_LOGON" status:
+0000h  successful
+00FFh  server could not create shadow process
+07FFh  incorrect password
+0CFFh  not logged into specified server
+0DFFh  process already logged onto 16 servers,.
+LPB process not attached to network
+0EFFh  physical transmission prevented message or response from getting thru.
+Network error during logoff
+FFFFh  calling process not attached to network
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-E0.htm">
+Int E0h</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8522.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8524.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 96
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 96 - KILL.COM, QKILL.COM - POP UP - 
+Program: KILL.COM is a TSR utility that allows you to terminate programs
+by calling INT 21/AH=4Ch or reboot the computer (author unknown);
+QKILL.COM is a modification of KILL.COM by Solar Designer that
+supports QEMM's Quick Boot feature
+Notes: This interrupt is intercepted but not chained by KILL.COM; it is never
+called by KILL.COM itself. It points into the middle of KILL.COM's
+INT 09 handler and assumes specific values have been placed on the
+stack (thus it can't be called as an interrupt).
+To invoke KILL, use the following code:
+pushf
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 96
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8317.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8319.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>KILL.COM, QKILL.COM - POP UP</font></h3>
+<p><b>Program:</b>
+KILL.COM is a TSR utility that allows you to terminate programs
+by calling INT 21/AH=4Ch or reboot the computer (author unknown);
+QKILL.COM is a modification of KILL.COM by Solar Designer that
+supports QEMM's Quick Boot feature
+<p><b>Notes:</b>
+This interrupt is intercepted but not chained by KILL.COM; it is never
+called by KILL.COM itself. It points into the middle of KILL.COM's
+INT 09 handler and assumes specific values have been placed on the
+stack (thus it can't be called as an interrupt)..
+To invoke KILL, use the following code:
+pushf
+push cs
+push offset $+0Dh
+push ax
+push es
+push 0
+pop  es
+jmp  dword ptr es:[96h*4]
+<p>
+<b>Category: <a href="cat-035.htm">
+Resident Utilities</a>
+- <a href="int-96.htm">
+Int 96h</a>
+- <a href="alpha-k.htm">
+K</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8317.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8319.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

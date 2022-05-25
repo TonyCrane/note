@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=C207h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=C207h - SYSTEM - POINTING DEVICE BIOS INTERFACE (PS) - SET DEVICE HANDLER ADDR - 
+AX = C207h
+ES:BX - FAR user device handler or 0000h:0000h to cancel
+Return: CF set on error
+AH = status (see #00522)
+Note:  when the subroutine is called, it is passed the following values on
+the stack; the handler should return with a FAR return without
+popping the stack:
+WORD 1: status (see #00525)
+WORD 2: X data (high byte = 00h)
+WORD 3: Y data (high byte = 00h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=C207h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1602.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1604.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SYSTEM - POINTING DEVICE BIOS INTERFACE (PS) - SET DEVICE HANDLER ADDR</font></h3>
+<PRE>
+AX = C207h
+ES:BX -> FAR user device handler or 0000h:0000h to cancel<br>
+<p><b>Return:</b><br>CF set on error
+AH = status <a href="rb-1596.htm#Table522">(see #00522)</a>
+</PRE>
+<p><b>Note:</b>
+When the subroutine is called, it is passed the following values on
+the stack; the handler should return with a FAR return without
+popping the stack:
+<PRE>
+<p><b>WORD 1:</b><br>Status (see #00525)
+<p><b>WORD 2:</b><br>X data (high byte = 00h)
+<p><b>WORD 3:</b><br>Y data (high byte = 00h)
+<p><b>WORD 4:</b><br>0000h
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5968.htm">INT 33/AX=000Ch</a>
+<PRE>
+<p>
+Bitfields for pointing device status:
+<a name=table525></a>
+Bit(s)  Description     (Table 00525)
+15-8   reserved (0)
+7      Y data overflowed
+6      X data overflowed
+5      Y data is negative
+4      X data is negative
+3      reserved (1)
+2      reserved (0)
+1      right button pressed
+0      left button pressed
+</PRE>
+<p>
+<b>Category: <a href="cat-025.htm">
+Mouse/Pointing Device</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1602.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1604.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

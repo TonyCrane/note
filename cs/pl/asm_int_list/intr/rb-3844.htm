@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=F1h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=F1h - Novell NetWare v3+ - GET CONNECTION'S SEMAPHORES - 
+AX = F217h subfn F1h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02264)
+ES:DI - reply buffer (see #02265)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F217h/SF=E1h
+Format of NetWare Get Connection's Semaphores request packet:
+Offset Size  Description   (Table 02264)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=F1h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3843.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3845.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v3+ - GET CONNECTION'S SEMAPHORES</font></h3>
+<PRE>
+AX = F217h subfn F1h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3844.htm#Table2264">(see #02264)</a>
+ES:DI -> reply buffer <a href="rb-3844.htm#Table2265">(see #02265)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3829.htm">AX=F217h/SF=E1h</a>
+<PRE>
+<p>
+Format of NetWare "Get Connection's Semaphores" request packet:
+<a name=table2264></a>
+Offset  Size    Description     (Table 02264)
+00h    WORD    length of following data
+02h    BYTE    F1h (subfunction "Get Connection's Semaphores")
+03h    WORD    connection number
+05h    WORD    last record seen (set to 0000h before first call)
+</PRE>
+<p><b>See Also:</b>
+#02265
+<PRE>
+<p>
+Format of NetWare "Get Connection's Semaphores" reply packet:
+<a name=table2265></a>
+Offset  Size    Description     (Table 02265)
+00h    WORD    next record (place in last-seen field on next call)
+02h    WORD    number of semaphores returned
+04h    BYTEs   semaphore information records [packed array] <a href="rb-3844.htm#Table2266">(see #02266)</a>
+</PRE>
+<p><b>See Also:</b>
+#02264
+<PRE>
+<p>
+Format of NetWare semaphore information record:
+<a name=table2266></a>
+Offset  Size    Description     (Table 02266)
+00h    WORD    semaphore's current value
+02h    WORD    number of connections using semaphore
+04h    WORD    task number
+06h    BYTE    length of semaphore's name
+07h  N BYTEs   semaphore name
+</PRE>
+<p><b>See Also:</b>
+#02265
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3843.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3845.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

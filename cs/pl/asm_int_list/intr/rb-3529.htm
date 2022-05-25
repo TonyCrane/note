@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=6Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=6Ch - Novell NetWare - QUEUE SERVICES - READ QUEUE JOB ENTRY (OLD) - 
+AH = E3h subfn 6Ch
+DS:SI - request buffer (see #01978)
+ES:DI - reply buffer (see #01979)
+Return: AL = status (00h,96h,D0h-D3h,D5h,FCh,FEh,FFh) (see #01961)
+Notes: this function is supported by Advanced NetWare 2.1+
+caller must be on a workstation which is security-equivalent to a
+member of the Q_USERS, Q_OPERATORS, or Q_SERVERS properties
+SeeAlso: AH=E3h/SF=68h,AH=E3h/SF=6Ah,AH=E3h/SF=6Eh,AX=F217h/SF=6Ch
+Format of NetWare Read Queue Job Entry (old) request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=6Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3528.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3530.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - READ QUEUE JOB ENTRY (OLD)</font></h3>
+<PRE>
+AH = E3h subfn 6Ch
+DS:SI -> request buffer <a href="rb-3529.htm#Table1978">(see #01978)</a>
+ES:DI -> reply buffer <a href="rb-3529.htm#Table1979">(see #01979)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,D0h-D3h,D5h,FCh,FEh,FFh) (see #01961)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Caller must be on a workstation which is security-equivalent to a
+member of the Q_USERS, Q_OPERATORS, or Q_SERVERS properties
+<p><b>See Also:</b>
+<a href="rb-3525.htm">AH=E3h/SF=68h</a> - <a href="rb-3527.htm">AH=E3h/SF=6Ah</a> - <a href="rb-3531.htm">AH=E3h/SF=6Eh</a> - <a href="rb-3773.htm"
+<PRE>
+<p>
+Format of NetWare "Read Queue Job Entry (old)" request buffer:
+<a name=table1978></a>
+Offset  Size    Description     (Table 01978)
+00h    WORD    0007h (length of following data)
+02h    BYTE    6Ch (subfunction "Read Queue Job Entry (old)")
+03h    DWORD   (big-endian) object ID of queue
+07h    WORD    (big-endian) job number
+</PRE>
+<p><b>See Also:</b>
+#01979
+<PRE>
+<p>
+Format of NetWare "Read Queue Job Entry (old)" reply buffer:
+<a name=table1979></a>
+Offset  Size    Description     (Table 01979)
+00h    WORD    (call) 0100h (size of following results)
+02h    BYTE    client station number
+03h    BYTE    client task number
+04h    DWORD   object ID of client
+08h    DWORD   (big-endian) object ID of target server
+FFFFFFFFh if any server acceptable
+0Ch  6 BYTEs   target execution time (year,month,day,hour,minute,second)
+FFFFFFFFFFFFh if serviced as soon as possible
+12h  6 BYTEs   job entry time (year,month,day,hour,minute,second)
+18h    WORD    (big-endian) job number
+1Ah    WORD    (big-endian) job type
+1Ch    BYTE    job position
+1Dh    BYTE    job control flags <a href="rb-3529.htm#Table1980">(see #01980)</a>
+1Eh 14 BYTEs   ASCIZ job filename
+2Ch  6 BYTEs   job file handle
+32h    BYTE    server station
+33h    BYTE    server task number
+34h    DWORD   object ID of server
+38h 50 BYTEs   ASCIZ job description string
+6Ah 152 BYTEs  client record area
+</PRE>
+<p><b>See Also:</b>
+#01978
+<PRE>
+<p>
+Bitfields for NetWare job control flags:
+<a name=table1980></a>
+Bit(s)  Description     (Table 01980)
+3      job will be serviced automatically if connection broken
+4      job remains in queue after server aborts job
+5      client has not filled associated job file
+6      User Hold--job advances, but cannot be serviced until this is
+cleared by user or operator
+7      Operator Hold--job advances, but cannot be serviced until this is
+cleared by an operator
+</PRE>
+<p><b>See Also:</b>
+#01979
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3528.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3530.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

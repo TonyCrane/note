@@ -1,0 +1,79 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1228h/BP=4200h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1228h/BP=4200h - DOS 3.3+ internal - MOVE FILE POINTER - 
+AX = 1228h
+BP = 4200h, 4201h, 4202h (see INT 21/AH=42h)
+BX = file handle
+CX:DX = offset in bytes
+SS = DOS DS (must be using a DOS internal stack)
+Return: as for INT 21/AH=42h
+Notes: equivalent to INT 21/AH=42h, but may only be called from inside a DOS
+function call
+sets user stack frame pointer to dummy buffer, moves BP to AX, performs
+LSEEK, and restores frame pointer
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1228h/BP=4200h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4407.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4409.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.3+ internal - MOVE FILE POINTER</font></h3>
+<PRE>
+AX = 1228h
+BP = 4200h, 4201h, 4202h (see INT 21/AH=42h)
+BX = file handle
+CX:DX = offset in bytes
+SS = DOS DS (must be using a DOS internal stack)<br>
+<p><b>Return:</b><br>As for INT 21/AH=42h
+</PRE>
+<p><b>Notes:</b>
+Equivalent to INT 21/AH=42h, but may only be called from inside a DOS
+function call.
+Sets user stack frame pointer to dummy buffer, moves BP to AX, performs
+LSEEK, and restores frame pointer.
+Used by NLSFUNC to access COUNTRY.SYS when invoked by the DOS kernel
+<p><b>See Also:</b>
+<a href="rb-2799.htm">INT 21/AH=42h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4407.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4409.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

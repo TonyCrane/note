@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=2520h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=2520h - Phar Lap 386/DOS-Extender VMM - GET MEMORY STATISTICS - 
+AX = 2520h
+DS:EDX - pointer to buffer at least 100 bytes in size (see #01364)
+BL = 0 (don't reset VM stats), 1 (reset VM stats)
+Return: carry flag clear
+Format of Phar Lap VM statistics buffer:
+Offset Size  Description   (Table 01364)
+00h  DWORD  VM status
+0001h VM subsystem is present
+0000h VM not present
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=2520h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2633.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2635.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Phar Lap 386/DOS-Extender VMM - GET MEMORY STATISTICS</font></h3>
+<PRE>
+AX = 2520h
+DS:EDX -> pointer to buffer at least 100 bytes in size <a href="rb-2634.htm#Table1364">(see #01364)</a>
+BL = 0 (don't reset VM stats), 1 (reset VM stats)<br>
+<p><b>Return:</b><br>Carry flag clear
+<p>
+Format of Phar Lap VM statistics buffer:
+<a name=table1364></a>
+Offset  Size    Description     (Table 01364)
+00h    DWORD   VM status
+0001h VM subsystem is present
+0000h VM not present
+04h    DWORD   "nconvpg" number of conventional memory pages available
+08h    DWORD   "nbimpg" number of Compaq built-in memory pages available
+0Ch    DWORD   "nextpg" total number of extended memory pages
+10h    DWORD   "extlim" extender memory pages limit
+14h    DWORD   "aphyspg" number of physical memory pages allocated to appl
+18h    DWORD   "alockpg" number of locked pages owned by application
+1Ch    DWORD   "sysphyspg" number physical memory pages allocated to system
+20h    DWORD   "nfreepg" number of free physical pages; approx if EMS VCPI
+24h    DWORD   linear address of beginning of application address space
+28h    DWORD   linear address of end of application address space
+2Ch    DWORD   number of seconds since last time VM stats were reset
+30h    DWORD   number of page faults since last time
+34h    DWORD   number of pages written to swap file since last time
+38h    DWORD   number of reclaimed pages (page faults on swapped pages)
+3Ch    DWORD   number of virtual pages allocated to the application
+40h    DWORD   size in pages of swap file
+44h    DWORD   number of system pages allocated with EMS calls
+48h    DWORD   minimum number of conventional memory pages
+4Ch    DWORD   maximum size in pages to which swap file can be increased
+50h    DWORD   "vmflags"
+bit 0 = 1 if page fault in progress
+---v4.0+ ---
+54h    DWORD   number of physical pages guaranteed to be free
+58h    DWORD   number of free physical pages currently available
+5Ch    DWORD   size in pages of largest free block of memory (including disk
+swap space)
+60h    DWORD   reserved
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2633.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2635.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=7160h/CL=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=7160h/CL=01h - Windows95 - LONG FILENAME - GET SHORT (8.3) FILENAME FOR FILE - 
+AX = 7160h
+CL = 01h
+CH = SUBST expansion flag
+00h return a path containing true path for a SUBSTed drive letter
+80h return a path containing the SUBSTed drive letter
+DS:SI - ASCIZ long filename or path
+ES:DI - 67-byte (possibly 128-byte) buffer for short filename
+Return: CF set on error
+AX = error code
+02h invalid component in directory path or drive letter only
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=7160h/CL=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3206.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3208.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - LONG FILENAME - GET SHORT (8.3) FILENAME FOR FILE</font></h3>
+<PRE>
+AX = 7160h
+CL = 01h
+CH = SUBST expansion flag
+00h return a path containing true path for a SUBSTed drive letter
+80h return a path containing the SUBSTed drive letter
+DS:SI -> ASCIZ long filename or path
+ES:DI -> 67-byte (possibly 128-byte) buffer for short filename<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code
+02h invalid component in directory path or drive letter only
+03h malformed path or invalid drive letter
+ES:DI buffer unchanged
+CF clear if successful
+ES:DI buffer filled with equivalent short filename (full path,
+even if relative path given, and all uppercase)
+</PRE>
+<p><b>Note:</b>
+This call returns the short name for any long-filename portions of
+the provided pathname or filename
+<p><b>See Also:</b>
+<a href="rb-3137.htm">AH=60h</a> - <a href="rb-3206.htm">AX=7160h/CL=00h</a> - <a href="rb-3208.htm">AX=7160h/CL=02h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3206.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3208.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

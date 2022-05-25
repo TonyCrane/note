@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 68/AH=FEh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 68/AH=FEh - APPC/PC - SET TRACE DESTINATION - 
+AH = FEh
+AL = trace destinations (see #03708)
+DS:DX - trace stats record if AL bit 0 set (see #03709)
+SeeAlso: AH=FCh,AH=FDh
+Bitfields for trace destinations:
+Bit(s) Description   (Table 03708)
+0   storage (DS:DX - trace stats record)
+1   display
+2   file (trace written to file OUTPUT.PC)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 68/AH=FEh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7547.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7549.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APPC/PC - SET TRACE DESTINATION</font></h3>
+<PRE>
+AH = FEh
+AL = trace destinations <a href="rb-7548.htm#Table3708">(see #03708)</a>
+DS:DX -> trace stats record if AL bit 0 set <a href="rb-7548.htm#Table3709">(see #03709)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7546.htm">AH=FCh</a> - <a href="rb-7547.htm">AH=FDh</a>
+<PRE>
+<p>
+Bitfields for trace destinations:
+<a name=table3708></a>
+Bit(s)  Description     (Table 03708)
+0      storage (DS:DX -> trace stats record)
+1      display
+2      file (trace written to file OUTPUT.PC)
+3      printer
+<p>
+Format of APPC/PC Trace Statistics Record:
+<a name=table3709></a>
+Offset  Size    Description     (Table 03709)
+00h    DWORD   pointer to storage trace buffer
+04h    WORD    max number of 80-byte records in trace
+06h    WORD    (high-order byte first!) current record number (must init to 0)
+08h    DWORD   (high-order byte first!) number of records written (init to 0)
+0Ch    DWORD   reserved
+</PRE>
+<p><b>Note:</b>
+Do not move record while trace is active
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-68.htm">
+Int 68h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7547.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7549.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

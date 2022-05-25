@@ -1,0 +1,119 @@
+<HTML>
+<HEAD>
+<TITLE>Int 16/AH=4Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 16/AH=4Bh - Frank Klemm Keyboard Driver v2.0 - API - 
+AH = 4Bh
+CX = code or action
+0000h-FEFFh key code
+FF00h-FFFFh action (see #00594)
+BL = scan code (normal keys) or scan code + 60h (enhanced keys)
+BH = shift state (see #00595)
+Return: CX = previous code or action
+(Table 00594)
+Values for Frank Klemm Keyboard Driver action code:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 16/AH=4Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1804.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1806.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Frank Klemm Keyboard Driver v2.0 - API</font></h3>
+<PRE>
+AH = 4Bh
+CX = code or action
+0000h-FEFFh key code
+FF00h-FFFFh action <a href="rb-1805.htm#Table594">(see #00594)</a>
+BL = scan code (normal keys) or scan code + 60h (enhanced keys)
+BH = shift state <a href="rb-1805.htm#Table595">(see #00595)</a><br>
+<p><b>Return:</b><br>CX = previous code or action
+<p>
+<a name=table594></a>
+(Table 00594)
+Values for Frank Klemm Keyboard Driver action code:
+FF00h  no action
+FF01h  hardcopy
+FF02h  left shift
+FF03h  right shift
+FF04h  left Ctrl
+FF05h  right Ctrl
+FF06h  left Alt
+FF07h  right Alt / AltGr
+FF08h  CapsLock
+FF09h  NumLock
+FF0Ah  ScrlLock
+FF0Bh  Insert (returns code 5200h or 52E0h)
+FF0Ch  Pause
+FF0Dh  Ctrl-Break function
+FF0Eh  warm boot via far jump to F000h:FFF0h
+FF0Fh  terminate current program
+FF10h  key for entering keys via Alt-numpad (read-only)
+FF11h  clear keyboard buffer
+FF12h  reset (warmboot on XT)
+FF13h  mouse sensitivity (read-only)
+FF14h  keyjobs (read-only)
+FF15h  SysRq
+FF16h  turn on CPU cache (486+)
+FF17h  turn off CPU cache (486+)
+</PRE>
+<p><b>See Also:</b>
+#00595
+<PRE>
+<p>
+<a name=table595></a>
+(Table 00595)
+Values for Frank Klemm Keyboard Driver shift state:
+00h    no shift keys
+01h    either Shift
+02h    either Ctrl
+03h    left Alt
+04h    Ctrl + Alt
+---standard keyboard---
+05h    right Alt / AltGr
+---Russian keyboard---
+05h    Russian + no shift keys
+06h    Russian + either Shift
+</PRE>
+<p><b>See Also:</b>
+#00594
+<p>
+<b>Category: <a href="cat-023.htm">
+Keyboard Enhancers</a>
+- <a href="int-16.htm">
+Int 16h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1804.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1806.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

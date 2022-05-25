@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5F87h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5F87h - LANtastic v3+ - GET ACCOUNT - 
+AX = 5F87h
+DS:SI - 128-byte buffer for account information (see #01728)
+ES:DI - ASCIZ machine name in form \\machine
+Return: CF clear if successful
+CF set on error
+AX = error code
+BX destroyed
+Note:  must be logged into the specified machine
+Format of LANtastic user account structure:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5F87h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3097.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3099.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LANtastic v3+ - GET ACCOUNT</font></h3>
+<PRE>
+AX = 5F87h
+DS:SI -> 128-byte buffer for account information <a href="rb-3098.htm#Table1728">(see #01728)</a>
+ES:DI -> ASCIZ machine name in form "\\machine"<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code
+BX destroyed
+</PRE>
+<p><b>Note:</b>
+Must be logged into the specified machine
+<PRE>
+<p>
+Format of LANtastic user account structure:
+<a name=table1728></a>
+Offset  Size    Description     (Table 01728)
+00h 16 BYTEs   blank-padded username (zero-padded for v4.x)
+10h 16 BYTEs   reserved (00h)
+20h 32 BYTEs   user description
+40h    BYTE    privilege bits <a href="rb-3098.htm#Table1729">(see #01729)</a>
+41h    BYTE    maximum concurrent users
+42h 42 BYTEs   bit map for disallowed half hours, beginning on Sunday
+(bit set if half-hour not an allowed time)
+6Ch    WORD    internal (0002h)
+6Eh  2 WORDs   last login time
+72h  2 WORDs   account expiration date (MS-DOS-format year/month:day)
+76h  2 WORDs   password expiration date (0 = none)
+7Ah    BYTE    number of days to extend password after change (1-31)
+00h if no extension required
+---v3.x---
+7Bh  5 BYTEs   reserved
+---v4.x---
+7Bh    BYTE    storage for first letter of user name when deleted (first
+character is changed to 00h when deleting account)
+7Ch    BYTE    extended privileges
+7Dh  3 BYTEs   reserved
+<p>
+Bitfields for LANtastic privilege bits:
+<a name=table1729></a>
+Bit(s)  Description     (Table 01729)
+7      bypass access control lists
+6      bypass queue protection
+5      treat as local process
+4      bypass mail protection
+3      allow audit entry creation
+2      system manager
+0      user cannot change password
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3097.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3099.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

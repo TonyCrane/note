@@ -1,0 +1,125 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=DCh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=DCh - Novell NetWare - FILE SERVER - GET CONNECTIONS USING A FILE - 
+AH = E3h subfn DCh
+DS:SI - request buffer (see #02050)
+ES:DI - reply buffer (see #02051)
+Return: AL = status (00h,C6h) (see #02053)
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have console operator privileges
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=DAh,AH=E3h/SF=DBh,AH=E3h/SF=DFh,AH=E3h/SF=E1h
+SeeAlso: AX=F217h/SF=DCh
+Format of NetWare Get Connections Using a File request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=DCh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3567.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3569.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET CONNECTIONS USING A FILE</font></h3>
+<PRE>
+AH = E3h subfn DCh
+DS:SI -> request buffer <a href="rb-3568.htm#Table2050">(see #02050)</a>
+ES:DI -> reply buffer <a href="rb-3568.htm#Table2051">(see #02051)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02053)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have console operator privileges
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3566.htm">AH=E3h/SF=DAh</a> - <a href="rb-3567.htm">AH=E3h/SF=DBh</a> - <a href="rb-3571.htm"
+<p><b>See Also:</b>
+<a href="rb-3824.htm">AX=F217h/SF=DCh</a>
+<PRE>
+<p>
+Format of NetWare "Get Connections Using a File" request buffer:
+<a name=table2050></a>
+Offset  Size    Description     (Table 02050)
+00h    WORD    length of following data (max 104h)
+02h    BYTE    DCh (subfunction "Get Connections Using a File")
+03h    WORD    (big-endian) last record (0000h on first call)
+05h    BYTE    directory handle
+06h    BYTE    length of file path
+07h  N BYTEs   ASCIZ file path
+</PRE>
+<p><b>See Also:</b>
+#02051 - #02235 at AX=F217h/SF=DCh
+<PRE>
+<p>
+Format of NetWare "Get Connections Using a File" reply buffer:
+<a name=table2051></a>
+Offset  Size    Description     (Table 02051)
+00h    WORD    (call) size of following results record (max 1FEh)
+02h    WORD    (big-endian) count of tasks which have opened or logged file
+04h    WORD    (big-endian) count of tasks which have opened file
+06h    WORD    (big-endian) count of opens for reading
+08h    WORD    (big-endian) count of opens for writing
+0Ah    WORD    (big-endian) deny read count
+0Ch    WORD    (big-endian) deny write count
+0Eh    WORD    next request record (place in "last record" field on next call)
+0000h if no more records
+10h    BYTE    locked flag
+00h not locked exclusively
+else locked exclusively
+11h    BYTE    number of records following
+12h    var     array of File Usage Information Records <a href="rb-3568.htm#Table2052">(see #02052)</a>
+</PRE>
+<p><b>See Also:</b>
+#02050 - #02235 at AX=F217h/SF=DCh
+<PRE>
+<p>
+Format of NetWare File Usage Information Record:
+<a name=table2052></a>
+Offset  Size    Description     (Table 02052)
+00h    WORD    (big-endian) logical connection number
+02h    BYTE    task number
+03h    BYTE    lock flags <a href="rb-3567.htm#Table2048">(see #02048)</a>
+04h    BYTE    access flags <a href="rb-3567.htm#Table2049">(see #02049)</a>
+05h    BYTE    lock type
+00h no lock
+FEh file lock
+FFh locked by Begin Share File Set
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3567.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3569.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

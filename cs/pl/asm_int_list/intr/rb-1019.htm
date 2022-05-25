@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AX=8006h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AX=8006h - ARTICOM - GET RESOURCE INFORMATION - 
+AX = 8006h
+BX = remote port (COM1=0, COM2=1, ...)
+CL = adapter number, FFh to try all adapters
+ES:DI - resource information structure (see #00362)
+DS:SI - 16 byte server name. See note.
+Return: AX = error code, if error (see #00360)
+BX = next remote port, recall to get next resource info
+Note:  Wild cards supported in both the resource field and server name
+string DS:SI. If wild cards used then first matching available
+resource information is searched. Set the resource field to FFh to
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AX=8006h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1018.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1020.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ARTICOM - GET RESOURCE INFORMATION</font></h3>
+<PRE>
+AX = 8006h
+BX = remote port (COM1=0, COM2=1, ...)
+CL = adapter number, FFh to try all adapters
+ES:DI -> resource information structure <a href="rb-1019.htm#Table362">(see #00362)</a>
+DS:SI -> 16 byte server name. See note.<br>
+<p><b>Return:</b><br>AX = error code, if error (see #00360)
+BX = next remote port, recall to get next resource info
+</PRE>
+<p><b>Note:</b>
+Wild cards supported in both the resource field and server name
+string DS:SI. If wild cards used then first matching available
+resource information is searched. Set the resource field to FFh to
+return all resources.
+<p><b>See Also:</b>
+<a href="rb-1009.htm">AX=8000h</a> - <a href="rb-1013.htm">AX=8002h</a> - <a href="rb-1015.htm">AX=8003h</a> - <a href="rb-1020.htm">AX=8007h</a>
+<PRE>
+<p>
+Format of ARTICOM resource information structure:
+<a name=table362></a>
+Offset  Size    Description     (Table 00362)
+00h    BYTE    00h = free, else used
+01h 16 BYTEs   resource name
+11h 16 BYTEs   username of resource user
+21h    WORD    amount of time used
+23h    WORD    amount of time remaining
+53h 48 BYTEs   description of resource
+93h 64 BYTEs   initialization string for modem
+B3h 32 BYTEs   dial string for modem
+D3h 32 BYTEs   hang-up string for modem
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1018.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1020.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

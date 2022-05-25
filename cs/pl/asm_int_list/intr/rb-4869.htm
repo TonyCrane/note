@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4B52h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4B52h - KeyRus v7.3 - API - 
+AX = 4B52h ('KR')
+BL = function number
+00h installation check
+Return: AL = 82h if installed
+BH = major version number
+BL = minor version number
+ES destroyed
+01h get driver status
+Return: AL??? = current status (see #02825)
+02h set driver state
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4B52h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4868.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4870.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>KeyRus v7.3 - API</font></h3>
+<PRE>
+AX = 4B52h ('KR')
+BL = function number
+00h installation check
+<p><b>Return:</b><br>AL = 82h if installed
+BH = major version number
+BL = minor version number
+ES destroyed
+01h get driver status
+<p><b>Return:</b><br>AL??? = current status (see #02825)
+02h set driver state
+AL = new driver state <a href="rb-4869.htm#Table2825">(see #02825)</a>
+03h blank screen (if blanking enabled when TSR was loaded)
+04h unblank screen
+4Ch switch to English keyboard mode
+90h switch to Russian keyboard mode
+Return:
+<p>
+Bitfields for KeyRus driver status:
+<a name=table2825></a>
+Bit(s)  Description     (Table 02825)
+1-0    language mode.
+00 Latin.
+01 Russian.
+10 Alternative.
+11 unused
+2      allow character loading (if disabled, use ROM fonts)
+3      English keyboard support
+7-4    used internally (read-only)
+</PRE>
+<p>
+<b>Category: <a href="cat-023.htm">
+Keyboard Enhancers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-k.htm">
+K</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4868.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4870.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

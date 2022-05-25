@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=42h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=42h - DOS 2+ - LSEEK - SET CURRENT FILE POSITION - 
+AH = 42h
+AL = origin of move
+00h start of file
+01h current file position
+02h end of file
+BX = file handle
+CX:DX = (signed) offset from origin of new file position
+Return: CF clear if successful
+DX:AX = new file position in bytes from start of file
+CF set on error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=42h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2798.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2800.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - LSEEK - SET CURRENT FILE POSITION</font></h3>
+<PRE>
+AH = 42h
+AL = origin of move
+00h start of file
+01h current file position
+02h end of file
+BX = file handle
+CX:DX = (signed) offset from origin of new file position<br>
+<p><b>Return:</b><br>CF clear if successful
+DX:AX = new file position in bytes from start of file
+CF set on error
+AX = error code (01h,06h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+For origins 01h and 02h, the pointer may be positioned before the
+start of the file; no error is returned in that case (except under
+Windows NT), but subsequent attempts at I/O will produce errors.
+If the new position is beyond the current end of file, the file will
+be extended by the next write (see AH=40h); for FAT32 drives, the
+file must have been opened with AX=6C00h with the "extended size"
+flag in order to expand the file beyond 2GB
+<p><b>BUG:</b>
+Using this method to grow a file from zero bytes to a very large size
+can corrupt the FAT in some versions of DOS; the file should first
+be grown from zero to one byte and then to the desired large size
+<p><b>See Also:</b>
+<a href="rb-2601.htm">AH=24h</a> - <a href="rb-4408.htm">INT 2F/AX=1228h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2798.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2800.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=1Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=1Bh - FOSSIL - RETURN INFORMATION ABOUT THE DRIVER - 
+AH = 1Bh
+DX = port number
+CX = size of user buffer
+ES:DI - user buffer for driver info (see #00343)
+Return: AX = number of characters transferred
+CX = 3058h (0X) (X00 FOSSIL only)
+DX = 2030h ( 0) (X00 FOSSIL only)
+Format of FOSSIL driver info:
+Offset Size  Description   (Table 00343)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=1Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0938.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0940.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FOSSIL - RETURN INFORMATION ABOUT THE DRIVER</font></h3>
+<PRE>
+AH = 1Bh
+DX = port number
+CX = size of user buffer
+ES:DI -> user buffer for driver info <a href="rb-0939.htm#Table343">(see #00343)</a><br>
+<p><b>Return:</b><br>AX = number of characters transferred
+CX = 3058h ("0X") (X00 FOSSIL only)
+DX = 2030h (" 0") (X00 FOSSIL only)
+<p>
+Format of FOSSIL driver info:
+<a name=table343></a>
+Offset  Size    Description     (Table 00343)
+00h    WORD    size of structure in bytes
+02h    BYTE    FOSSIL spec driver conforms to
+03h    BYTE    revision level of this specific driver
+04h    DWORD   pointer to ASCIZ identification string
+08h    WORD    size of the input buffer
+0Ah    WORD    number of bytes left in buffer
+0Ch    WORD    size of the output buffer
+0Eh    WORD    number of bytes left in buffer
+10h    BYTE    width of screen
+11h    BYTE    length of screen
+12h    BYTE    actual baud rate, computer to modem
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0938.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0940.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

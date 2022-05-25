@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1687h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1687h - DOS Protected-Mode Interface - INSTALLATION CHECK - 
+AX = 1687h
+Return: AX = 0000h if installed
+BX = flags
+bit 0: 32-bit programs supported
+CL = processor type (02h=80286, 03h=80386, 04h=80486)
+DH = DPMI major version
+DL = two-digit DPMI minor version (binary)
+SI = number of paragraphs of DOS extender private data
+ES:DI - DPMI mode-switch entry point (see #02718)
+AX nonzero if not installed
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1687h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4620.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4622.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS Protected-Mode Interface - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 1687h<br>
+<p><b>Return:</b><br>AX = 0000h if installed
+BX = flags
+<p><b>bit 0:</b><br>32-bit programs supported
+CL = processor type (02h=80286, 03h=80386, 04h=80486)
+DH = DPMI major version
+DL = two-digit DPMI minor version (binary)
+SI = number of paragraphs of DOS extender private data
+ES:DI -> DPMI mode-switch entry point <a href="rb-4621.htm#Table2718">(see #02718)</a>.
+AX nonzero if not installed
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4620.htm">AX=1686h</a> - <a href="rb-4775.htm">AX=43E0h</a> - <a href="rb-5591.htm">AX=DE01h/BX=4450h</a> - <a href="rb-5717.htm">AX=FB
+<p><b>See Also:</b>
+<a href="rb-5838.htm">INT 31/AX=0400h</a> - <a href="rb-5880.htm">INT 31/AX=5702h</a> - <a href="rb-8440.htm">INT D4/AH=10h</a>
+<PRE>
+<p>
+<a name=table2718></a>
+(Table 02718)
+Call DPMI mode switch entry point with:.
+AX = flags
+<p><b>bit 0:</b><br>Set if 32-bit program.
+ES = real mode segment of buffer for DPMI private data (ignored if
+SI was zero)<br>
+<p><b>Return:</b><br>CF set on error
+program still in real mode
+AX = error code (DPMI 1.0+)
+8011h unable to allocate all necessary descriptors
+8021h 32-bit program specified, but 16-bit DPMI host
+CF clear if successful
+CS = 16-bit selector corresponding to real-mode CS
+SS = selector corresponding to real-mode SS (64K limit)
+DS = selector corresponding to real-mode DS (64K limit)
+ES = selector to program's PSP (100h byte limit)
+FS = GS = 0
+high word of ESP = 0 if 32-bit program
+program now in protected mode
+</PRE>
+<p><b>Note:</b>
+This entry point is only called for the initial switch to protected
+mode
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4620.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4622.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

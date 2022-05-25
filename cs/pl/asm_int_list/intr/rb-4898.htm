@@ -1,0 +1,121 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=5600h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=5600h - INTERLNK - INSTALLATION CHECK - 
+AX = 5600h
+DX = magic value FFFFh
+BL = instance number (00h = any, 01h = first loaded, etc.)
+(BH = 00h and CX = 0000h, see note)
+Return: AL = FFh if installed
+BL = instance number
+CX = version number (CL = major, CH = minor)
+DX = resident CS of driver, DX:0000h - header (see #02845)
+Notes: INTERLNK was derived from Sewell Development Corporation's FASTLYNX.
+Some Microsoft software explicitly clears the BH and CX registers
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=5600h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4897.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4899.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>INTERLNK - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 5600h
+DX = magic value FFFFh
+BL = instance number (00h = any, 01h = first loaded, etc.)
+(BH = 00h and CX = 0000h, see note)<br>
+<p><b>Return:</b><br>AL = FFh if installed
+BL = instance number
+CX = version number (CL = major, CH = minor)
+DX = resident CS of driver, DX:0000h -> header <a href="rb-4898.htm#Table2845">(see #02845)</a>
+</PRE>
+<p><b>Notes:</b>
+INTERLNK was derived from Sewell Development Corporation's FASTLYNX..
+Some Microsoft software explicitly clears the BH and CX registers
+before calling this function.
+<p><b>BUG:</b>
+Reportedly, the MS-DOS INTERSRV program (though not INTERLNK) causes
+serious FAT corruption and data loss when run under Novell DOS 7.
+INTERSRV apparently checks for DR-DOS by testing the "OS"
+environment variable for the value "DRDOS", which is no longer
+correct for PalmDOS, Novell DOS, or OpenDOS.  A workaround may be
+to explicitly set the OS variable to "DRDOS".
+<p><b>See Also:</b>
+<a href="rb-4899.htm">AX=5601h</a> - <a href="rb-4900.htm">AX=5602h</a> - <a href="rb-6641.htm">INT 60/AX=0000h</a>
+<PRE>
+<p>
+Format of Interlnk device driver header:
+<a name=table2845></a>
+Offset  Size    Description     (Table 02845)
+00h    DWORD   pointer to next driver, offset=FFFFh if last driver
+04h    WORD    device attributes <a href="rb-0000.htm#Table0"></a>(see #01647,#01648)
+06h    WORD    device strategy entry point
+08h    WORD    device interrupt entry point
+0Ah  8 BYTEs   character device name "NUL2    "
+12h 165 BYTEs  ???
+B7h 67 BYTEs   fully qualified Interlnk filename
+FAh  6 BYTEs   ???
+100h    DWORD   pointer back to Interlnk filename at offset B7h
+104h  8 BYTEs   ???
+10Ch    BYTE    total number of redirected drives
+10Dh    BYTE    first local drive number (0=A:)
+10Eh    BYTE    printer redirection (0=no, 1=yes)
+10Fh    BYTE    ???
+110h  3 BYTEs   LPT1...3 status (0FFh=invalid)
+113h 26 BYTEs   remote drive number (0=A:, 0FEh=unused) (refer to note below)
+12Dh 26 BYTEs   always 0FEh ???
+147h 26 BYTEs   always 0FFh ???
+</PRE>
+<p><b>Note:</b>
+To obtain the remote drive number, subtract the value at offset 10Ch
+from the local drive number before indexing into the table at 113h
+<PRE>
+<p><b>(example:</b><br>If local drives F, G, H are remote drives C, F, E then
+the first three bytes at offset 113h are 02h, 05h, 04h).
+For each instance of Interlnk, an extra device driver is loaded, but
+all have the same device name NUL2
+</PRE>
+<p><b>See Also:</b>
+#01646 at INT 21/AH=52h
+<p>
+<b>Category: <a href="cat-033.htm">
+Remote Control/File Access</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4897.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4899.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

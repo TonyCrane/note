@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=12FFh/BX=0106h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=12FFh/BX=0106h - Novell DOS 7+ - MEMORYMAX INSTALLATION CHECK - 
+AX = 12FFh
+BX = 0106h
+Return: CF clear if successful
+AX = 0000h (successful)
+BX = EDC0h (signature European Development Centre)
+CL = memory manager variant
+00h if HIMEM.SYS present
+01h if EMMXMA.SYS present
+02h if EMM386.EXE present (DPMI/VCPI disabled)
+03h if multitasking EMM386.EXE present (DPMI/VCPI loaded)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=12FFh/BX=0106h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4445.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4447.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell DOS 7+ - MEMORYMAX INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 12FFh
+BX = 0106h<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = 0000h (successful)
+BX = EDC0h (signature "European Development Centre")
+CL = memory manager variant
+00h if HIMEM.SYS present
+01h if EMMXMA.SYS present
+02h if EMM386.EXE present (DPMI/VCPI disabled)
+03h if multitasking EMM386.EXE present (DPMI/VCPI loaded)
+CH = ??? (00h)
+DX = binary driver version, DH is major, DL is minor
+ES = segment of EMM386 device driver header (low-memory stub)
+CF set on error
+AX = 0001h
+</PRE>
+<p><b>Notes:</b>
+BL specifies which program handles the call, BH is the function number.
+If the word at ES:0012h is nonzero, if contains the offset within
+segment ES of the CEMM-compatible entry point <a href="rb-4446.htm#Table2617">(see #02617)</a>.
+If no other program has hooked INT 67, an alternate installation
+check is to test for the string
+"NOVELL EXPANDED MEMORY MANAGER 386" at offset 14h in the INT 67
+handler's segment; the word immediately preceding this string
+contains the offset of the API entry point if it is nonzero
+<PRE>
+<p><b>Index:</b><br>Entry point;Novell EMM386
+<p>
+<a name=table2617></a>
+(Table 02617)
+Call Novell EMM386.EXE entry point with:.
+AH = 00h get memory manager's status???
+???.
+AH = 01h set memory manager's status???
+???.
+AH = 02h Weitek coprocessor support???
+AL = subfunction???.
+More functions???
+</PRE>
+<p><b>See Also:</b>
+#01513 at INT 21/AX=4402h/SF=02h - #03666 at INT 67/AX=FFA5h
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4445.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4447.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F216h/SF=02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F216h/SF=02h - Novell NetWare - SCAN DIRECTORY INFORMATION - 
+AX = F216h subfn 02h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #01844 at AH=E2h/SF=02h)
+ES:DI - reply buffer (see #02111)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AH=E2h/SF=02h,AX=F216h/SF=01h,AX=F216h/SF=03h
+Format of NetWare Scan Directory Information reply packet:
+Offset Size  Description   (Table 02111)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F216h/SF=02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3670.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3672.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SCAN DIRECTORY INFORMATION</font></h3>
+<PRE>
+AX = F216h subfn 02h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-0000.htm#Table0"></a>(see #01844 at AH=E2h/SF=02h)
+ES:DI -> reply buffer <a href="rb-3671.htm#Table2111">(see #02111)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3459.htm">AH=E2h/SF=02h</a> - <a href="rb-3670.htm">AX=F216h/SF=01h</a> - <a href="rb-3672.htm">AX=F216h/SF=03h</a>
+<PRE>
+<p>
+Format of NetWare "Scan Directory Information" reply packet:
+<a name=table2111></a>
+Offset  Size    Description     (Table 02111)
+00h 16 BYTEs   subdirectory name
+10h    DWORD   (big-endian) date and time of creation <a href="rb-3459.htm#Table1846">(see #01846)</a>
+14h    DWORD   (big-endian) object ID of owner
+18h    BYTE    maximum directory rights <a href="rb-3460.htm#Table1849">(see #01849)</a>
+19h    BYTE    unused
+1Ah    WORD    (big-endian) subdirectory number
+</PRE>
+<p><b>See Also:</b>
+#01844 - #01845 at AH=E2h/SF=02h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3670.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3672.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

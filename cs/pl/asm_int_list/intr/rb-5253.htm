@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=B80Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=B80Eh - DOS LAN Requester - GET XSI2 ADDRESS / DATA - 
+AX = B80Eh
+Return: DS:DI - XSI2 TSR's resident data (see #02983)
+Note:  this function is used by NET.COM to locate the USERID and DOMAIN of
+the logged-in user (which may differ from the NET START domain
+name from DOSLAN.INI which is returned by AX=B80Fh)
+SeeAlso: AX=B800h,AX=B80Fh
+Format of XSI2 resident data:
+Offset Size  Description   (Table 02983)
+00h 254 BYTEs ???
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=B80Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5252.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5254.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS LAN Requester - GET XSI2 ADDRESS / DATA</font></h3>
+<PRE>
+AX = B80Eh<br>
+<p><b>Return:</b><br>DS:DI -> XSI2 TSR's resident data (see #02983)
+</PRE>
+<p><b>Note:</b>
+This function is used by NET.COM to locate the USERID and DOMAIN of
+the logged-in user (which may differ from the NET START domain
+name from DOSLAN.INI which is returned by AX=B80Fh)
+<p><b>See Also:</b>
+<a href="rb-5244.htm">AX=B800h</a> - <a href="rb-5254.htm">AX=B80Fh</a>
+<PRE>
+<p>
+Format of XSI2 resident data:
+<a name=table2983></a>
+Offset  Size    Description     (Table 02983)
+00h 254 BYTEs  ???
+FEh 10 BYTEs   user ID 1
+108h 10 BYTEs   user ID 2
+112h 10 BYTEs   domain name 1
+11Ch 10 BYTEs   domain name 2
+126h  ? BYTEs   domain controller
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5252.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5254.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=6F02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=6F02h - DOS 5+ ROM - GET EXCLUSION REGION LIST - 
+AX = 6F02h
+ES:BX - buffer for exclusion region list (see #01773)
+Return: CF clear
+AL = 00h
+ES:BX = 0000h:0000h on error, unchanged if buffer filled
+Note:  for DOS versions which do not support this function, the return value
+is AL=00h, CF unchanged, ES:BX unchanged, and the ES:BX buffer
+unchanged
+SeeAlso: AX=6F00h,AX=6F03h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=6F02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3188.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3190.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 5+ ROM - GET EXCLUSION REGION LIST</font></h3>
+<PRE>
+AX = 6F02h
+ES:BX -> buffer for exclusion region list <a href="rb-3189.htm#Table1773">(see #01773)</a><br>
+<p><b>Return:</b><br>CF clear
+AL = 00h
+ES:BX = 0000h:0000h on error, unchanged if buffer filled
+</PRE>
+<p><b>Note:</b>
+For DOS versions which do not support this function, the return value
+is AL=00h, CF unchanged, ES:BX unchanged, and the ES:BX buffer
+unchanged
+<p><b>See Also:</b>
+<a href="rb-3186.htm">AX=6F00h</a> - <a href="rb-3190.htm">AX=6F03h</a>
+<PRE>
+<p>
+Format of ROM exclusion region list:
+<a name=table1773></a>
+Offset  Size    Description     (Table 01773)
+00h    WORD    number of entries
+02h 2N WORDs   start/end segments of N excluded regions
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3188.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3190.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

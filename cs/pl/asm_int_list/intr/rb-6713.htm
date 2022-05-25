@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0001h/SF=0005h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0001h/SF=0005h - Banyan VINES - Sowait - WAIT FOR ASYNCHRONOUS EVENT COMPLETION - 
+AX = 0001h subfn 0005h
+DS:DX - communications control block (see #03340)
+Return: AX = status (0000h-000Ah,00A2h,00A3h) (see #03339)
+Desc:  returns results for all asynchronous operations invoked from the
+data segment used for this call
+Range: INT 60h to INT 66h
+Notes: The Banyan interrupt handler is identified by the string BANV in
+the four bytes immediately preceding the interrupt handler
+SeeAlso: AX=0001h/SF=0002h,AX=0001h/SF=0009h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0001h/SF=0005h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6712.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6714.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - Sowait - WAIT FOR ASYNCHRONOUS EVENT COMPLETION</font></h3>
+<PRE>
+AX = 0001h subfn 0005h
+DS:DX -> communications control block <a href="rb-6713.htm#Table3340">(see #03340)</a><br>
+<p><b>Return:</b><br>AX = status (0000h-000Ah,00A2h,00A3h) (see #03339)
+</PRE>
+<p><b>Desc:</b>
+Returns results for all asynchronous operations invoked from the
+data segment used for this call
+<PRE>
+<p><b>Range:</b><br>INT 60h to INT 66h
+</PRE>
+<p><b>Notes:</b>
+The Banyan interrupt handler is identified by the string "BANV" in
+the four bytes immediately preceding the interrupt handler
+<p><b>See Also:</b>
+<a href="rb-6710.htm">AX=0001h/SF=0002h</a> - AX=0001h/SF=0009h
+<PRE>
+<p>
+<a name=table3339></a>
+(Table 03339)
+Values for VINES function status:
+0000h  successful
+0001h  service not installed
+0002h  invalid service ID
+0003h-000Ah reserved for BANV interface errors
+00A2h  no more buffer space available
+00A3h  timeout event
+<p>
+Format of VINES control block for subfunction 0005h:
+<a name=table3340></a>
+Offset  Size    Description     (Table 03340)
+00h    WORD    0005h
+02h    WORD    pointer to argument block <a href="rb-6713.htm#Table3341">(see #03341)</a>
+04h    WORD    error return code
+06h  4 BYTEs   reserved
+</PRE>
+<p><b>See Also:</b>
+#03337 - #03342
+<PRE>
+<p>
+Format of VINES argument block for subfunction 0005h:
+<a name=table3341></a>
+Offset  Size    Description     (Table 03341)
+00h    WORD    pointer to WORD event pointer
+02h    WORD    timeout in multiples of 200ms, FFFFh = infinite
+</PRE>
+<p><b>See Also:</b>
+#03338 - #03340
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6712.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6714.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

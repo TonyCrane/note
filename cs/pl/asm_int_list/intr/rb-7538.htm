@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 68/AH=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 68/AH=05h - APPC/PC - TRANSFER MESSAGE DATA - 
+AH = 05h
+DS:DX - control block (see #03703)
+Return: control block updated
+Format of APPC/PC Transfer Message Data control block:
+Offset Size  Description   (Table 03703)
+00h 12 BYTEs  reserved
+0Ch  WORD  1C00h (verb Transfer Message Data)
+0Eh  BYTE  data type
+00h user defined
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 68/AH=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7537.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7539.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>APPC/PC - TRANSFER MESSAGE DATA</font></h3>
+<PRE>
+AH = 05h
+DS:DX -> control block <a href="rb-7538.htm#Table3703">(see #03703)</a><br>
+<p><b>Return:</b><br>Control block updated
+<p>
+Format of APPC/PC "Transfer Message Data" control block:
+<a name=table3703></a>
+Offset  Size    Description     (Table 03703)
+00h 12 BYTEs   reserved
+0Ch    WORD    1C00h (verb "Transfer Message Data")
+0Eh    BYTE    data type
+00h user defined
+01h NMVT
+02h alert subvectors
+03h PDSTATS subvectors
+0Fh  5 BYTEs   00h
+14h    DWORD   (big-endian) return code <a href="rb-7512.htm#Table3668">(see #03668)</a>
+18h 12 BYTEs   00h
+24h    BYTE    flags <a href="rb-7538.htm#Table3704">(see #03704)</a>
+25h    BYTE    00h
+26h    WORD    length of data
+28h  N BYTEs   data
+<p>
+Bitfields for APPC/PC message transfer flags:
+<a name=table3704></a>
+Bit(s)  Description     (Table 03704)
+0      don't add correlation subvector
+1      don't add product set ID subvector
+2      don't do SYSLOG
+3      don't send SSCP_PU_SESSION
+</PRE>
+<p><b>See Also:</b>
+#03703
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-68.htm">
+Int 68h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7537.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7539.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

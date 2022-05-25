@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AH=12h/BL=F1h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AH=12h/BL=F1h - Tseng ET-4000 BIOS - GET/SET SCREEN REFRESH RATE - 
+AH = 12h
+BL = F1h
+AL = subfunction
+00h set refresh rate
+01h get refresh rate
+BH = video mode
+00h 640x480
+01h 800x600
+02h 1024x768
+03h 1280x1024
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AH=12h/BL=F1h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0208.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0210.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Tseng ET-4000 BIOS - GET/SET SCREEN REFRESH RATE</font></h3>
+<PRE>
+AH = 12h
+BL = F1h
+AL = subfunction
+00h set refresh rate
+01h get refresh rate
+BH = video mode
+00h  640x480
+01h  800x600
+02h  1024x768
+03h  1280x1024
+CX = new refresh rate <a href="rb-0209.htm#Table35">(see #00035)</a> if AL = 00h<br>
+<p><b>Return:</b><br>AL = 12h if supported
+CX = current rate (for AL=00h, a changed CX indicates failure)
+<p>
+<a name=table35></a>
+(Table 00035)
+Values for Tseng ET4000 refresh rate:
+CX     640x480 800x600   1024x768/1280x1024
+00h    60 Hz    56 Hz     interlaced
+01h    72 Hz    60 Hz     60 Hz
+02h    75 Hz    72 Hz     70 Hz
+03h    90 Hz    75 Hz     75 Hz
+04h    --       90 Hz     --
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0208.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0210.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

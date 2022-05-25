@@ -1,0 +1,80 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=B711h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=B711h - DOS 4.0+ APPEND - SET RETURN FOUND NAME STATE - 
+AX = B711h
+Note:  if the next INT 21h call (and ONLY the next) is function 3Dh, 43h, or
+6Ch (also 4B03h and 4Eh if /X active), the fully qualified filename
+is written over top of the filename passed to the INT 21h call. The
+application must provide a sufficiently large buffer. This state is
+reset after the next INT 21h call processed by APPEND.
+APPEND uses the byte at offset 3Dh in the PSP
+(see #01378 at INT 21/AH=26h) to store the flag telling it to
+overwrite the filename
+BUG:  DOS 4.0 APPEND reportedly overwrites DS:DX instead of DS:SI for
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=B711h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5242.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5244.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 4.0+ APPEND - SET RETURN FOUND NAME STATE</font></h3>
+<PRE>
+AX = B711h
+</PRE>
+<p><b>Note:</b>
+If the next INT 21h call (and ONLY the next) is function 3Dh, 43h, or
+6Ch (also 4B03h and 4Eh if /X active), the fully qualified filename
+is written over top of the filename passed to the INT 21h call.  The
+application must provide a sufficiently large buffer.  This state is
+reset after the next INT 21h call processed by APPEND..
+APPEND uses the byte at offset 3Dh in the PSP
+<a href="rb-0000.htm#Table0"></a>(see #01378 at INT 21/AH=26h) to store the flag telling it to
+overwrite the filename
+<p><b>BUG:</b>
+DOS 4.0 APPEND reportedly overwrites DS:DX instead of DS:SI for
+INT 21/AH=6Ch
+<p><b>See Also:</b>
+<a href="rb-2682.htm">INT 21/AH=26h</a> - <a href="rb-2977.htm">INT 21/AH=4Eh</a>
+<p>
+<b>Category: <a href="cat-016.htm">
+File Manipulation</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5242.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5244.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

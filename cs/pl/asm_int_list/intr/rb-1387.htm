@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=4Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=4Fh - KEYBOARD - KEYBOARD INTERCEPT (AT model 3x9,XT2,XT286,CONV,PS) - 
+AH = 4Fh
+AL = hardware scan code (see #00006)
+CF set
+Return: CF set to continue processing scan code
+AL = possibly-altered hardware scan code (see #00006)
+CF clear
+scan code should be ignored
+Notes: called by INT 09 handler to translate scan codes; the INT 09 code does
+not examine the scan code it reads from the keyboard until after
+this function returns. This permits software to rearrange the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=4Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1386.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1388.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>KEYBOARD - KEYBOARD INTERCEPT (AT model 3x9,XT2,XT286,CONV,PS)</font></h3>
+<PRE>
+AH = 4Fh
+AL = hardware scan code <a href="rb-0045.htm#Table6">(see #00006)</a>
+CF set<br>
+<p><b>Return:</b><br>CF set to continue processing scan code
+AL = possibly-altered hardware scan code <a href="rb-0045.htm#Table6">(see #00006)</a>
+CF clear
+scan code should be ignored
+</PRE>
+<p><b>Notes:</b>
+Called by INT 09 handler to translate scan codes; the INT 09 code does
+not examine the scan code it reads from the keyboard until after
+this function returns.  This permits software to rearrange the
+keyboard; for example, swapping the CapsLock and Control keys, or
+turning the right Shift key into Enter..
+DOS 6 KEYB.COM will not pass through this function if Ctrl-Alt-Del is
+pressed and a SmartDrive v4-compatible cache is installed which has
+dirty cache buffers; some other disk caches such as HyperDisk
+operate similarly in order to prevent loss of cached data which has
+not yet been written to disk.
+IBM classifies this function as required
+<p><b>See Also:</b>
+<a href="rb-0045.htm">INT 09</a> - <a href="rb-1594.htm">INT 15/AH=C0h</a>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-k.htm">
+K</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1386.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1388.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

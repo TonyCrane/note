@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=23h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=23h - DOS 1+ - GET FILE SIZE FOR FCB - 
+AH = 23h
+DS:DX - unopened FCB (see #01345), wildcards not allowed
+Return: AL = status
+00h successful (matching file found)
+FCB random record field filled with size in records, rounded up
+to next full record
+FFh failed (no matching file found)
+Notes: not supported by MS Windows 3.0 DOSX.EXE DOS extender
+MS-DOS returns nonsense if the FCB record number field is set to a very
+large positive number, and status FFh if negative; DR DOS returns the
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=23h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2599.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2601.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 1+ - GET FILE SIZE FOR FCB</font></h3>
+<PRE>
+AH = 23h
+DS:DX -> unopened FCB <a href="rb-2574.htm#Table1345">(see #01345)</a>, wildcards not allowed<br>
+<p><b>Return:</b><br>AL = status
+00h successful (matching file found)
+FCB random record field filled with size in records, rounded up
+to next full record
+FFh failed (no matching file found)
+</PRE>
+<p><b>Notes:</b>
+Not supported by MS Windows 3.0 DOSX.EXE DOS extender.
+MS-DOS returns nonsense if the FCB record number field is set to a very
+large positive number, and status FFh if negative; DR DOS returns the
+correct file size in both cases
+<p><b>BUG:</b>
+APPEND for DOS 3.3+ corrupts DX if the file is not found
+<p><b>See Also:</b>
+<a href="rb-2799.htm">AH=42h</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2599.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2601.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

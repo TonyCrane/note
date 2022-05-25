@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=1F01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=1F01h - VIDEO - XGA - READ DMQS DATA - 
+AX = 1F01h
+ES:DI - user buffer for return data (call AX=1F00h for size)
+Return: AL = 1Fh if function supported
+user buffer filled with DMQS data (see #00060)
+Note:  not supported on the original IBM XGA, only on XGA-NI (non-interlaced)
+and later models.
+SeeAlso: AH=1Bh,AX=1F00h,AX=3000h
+Format of XGA DMQS buffer:
+Offset Size  Description   (Table 00060)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=1F01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0237.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0239.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - XGA - READ DMQS DATA</font></h3>
+<PRE>
+AX = 1F01h
+ES:DI -> user buffer for return data (call AX=1F00h for size)<br>
+<p><b>Return:</b><br>AL = 1Fh if function supported
+user buffer filled with DMQS data <a href="rb-0238.htm#Table60">(see #00060)</a>
+</PRE>
+<p><b>Note:</b>
+Not supported on the original IBM XGA, only on XGA-NI (non-interlaced)
+and later models.
+<p><b>See Also:</b>
+<a href="rb-0221.htm">AH=1Bh</a> - <a href="rb-0237.htm">AX=1F00h</a> - <a href="rb-0241.htm">AX=3000h</a>
+<PRE>
+<p>
+Format of XGA DMQS buffer:
+<a name=table60></a>
+Offset  Size    Description     (Table 00060)
+00h    WORD    offset (in bytes) to DMQS data for next XGA instance
+02h    BYTE    slot number
+03h    BYTE    XGA implementation function level identifier
+04h    BYTE    XGA implementation resolution level identifier
+05h    WORD    vendor identifier - identifies card vendor
+07h    WORD    vendor defined field
+09h    WORD    XGA adapter I/O register base address
+0Bh    WORD    XGA coprocessor register base address
+(paragraph--multiply by 10h to get physical address)
+0Dh    WORD    1 Megabyte system video memory aperture
+0000h if not allocated
+(Multiply by 100000h to get physical address)
+0Fh    WORD    4 Megabyte system video memory aperture
+0000h if not allocated
+(multiply by 100000h to get physical address)
+11h    WORD    video memory base address
+(multiply by 100000h to get physical address)
+13h    WORD    composite ID of the attached display
+15h    BYTE    amount of video memory available, in multiples of 256K bytes
+16h    DWORD   alternate XGA coprocessor register base address.  0 = none.
+1Ah    var     DMQS Data for further XGA Instances (as above)
+</PRE>
+<p><b>Note:</b>
+"Instances" refers to the capability of having up to 8 XGA
+adapters in one computer.
+<p><b>See Also:</b>
+#00061
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0237.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0239.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

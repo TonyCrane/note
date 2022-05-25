@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=3Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=3Ch - DOS 2+ - CREAT - CREATE OR TRUNCATE FILE - 
+AH = 3Ch
+CX = file attributes (see #01401)
+DS:DX - ASCIZ filename
+Return: CF clear if successful
+AX = file handle
+CF set on error
+AX = error code (03h,04h,05h) (see #01680 at AH=59h/BX=0000h)
+Notes: if a file with the given name exists, it is truncated to zero length
+under the FlashTek X-32 DOS extender, the pointer is in DS:EDX
+DR DOS checks the system password or explicitly supplied password at
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=3Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2777.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2779.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - CREAT - CREATE OR TRUNCATE FILE</font></h3>
+<PRE>
+AH = 3Ch
+CX = file attributes <a href="rb-2778.htm#Table1401">(see #01401)</a>
+DS:DX -> ASCIZ filename<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = file handle
+CF set on error
+AX = error code (03h,04h,05h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+If a file with the given name exists, it is truncated to zero length.
+Under the FlashTek X-32 DOS extender, the pointer is in DS:EDX.
+DR DOS checks the system password or explicitly supplied password at
+the end of the filename against the reserved field in the directory
+entry before allowing access
+<p><b>See Also:</b>
+<a href="rb-2581.htm">AH=16h</a> - <a href="rb-2779.htm">AH=3Dh</a> - <a href="rb-3014.htm">AH=5Ah</a> - <a href="rb-3015.htm">AH=5Bh</a> - <a "http://www.ctyme.com/intr/href"
+<PRE>
+<p>
+Bitfields for file attributes:
+<a name=table1401></a>
+Bit(s)  Description     (Table 01401)
+0      read-only
+1      hidden
+2      system
+3      volume label (ignored)
+4      reserved, must be zero (directory)
+5      archive bit
+7      if set, file is shareable under Novell NetWare
+</PRE>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2777.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2779.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

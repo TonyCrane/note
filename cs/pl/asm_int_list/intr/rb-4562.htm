@@ -1,0 +1,169 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=0034h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=0034h - Intel Plug-and-Play - CONFIGURATION MANAGER - GET ENTRY POINT - 
+AX = 1684h
+BX = 0034h (ID for Configuration Manager) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - API entry point (see #02673)
+0000h:0000h if Configuration Manager not loaded
+Note:  this API is often provided by a DOS device driver, in which case it
+is available whether or not MSWindows is running
+Index: installation check;Plug-and-Play Configuration Manager
+SeeAlso: AX=1684h/BX=304Ch
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=0034h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4561.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4563.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Intel Plug-and-Play - CONFIGURATION MANAGER - GET ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 0034h (ID for Configuration Manager) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> API entry point (see #02673)
+0000h:0000h if Configuration Manager not loaded
+</PRE>
+<p><b>Note:</b>
+This API is often provided by a DOS device driver, in which case it
+is available whether or not MSWindows is running
+<PRE>
+<p><b>Index:</b><br>Installation check;Plug-and-Play Configuration Manager
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4606.htm">AX=1684h/BX=304Ch</a>
+<PRE>
+<p>
+<a name=table2673></a>
+(Table 02673)
+Call Configuration Manager entry point with:.
+AX = function
+0000h "CM_GetVersion" get supported DDI version
+<p><b>Return:</b><br>AH = BCD major version
+AL = BCD minor version
+BX = number of devices identified by configuration
+</PRE>
+<p><b>Note:</b>
+Returns AX = 0000h if no config manager installed
+0001h "CM_GetConfig" get device configuration
+BX = device index
+ES:DI -> buffer for configuration information <a href="rb-4562.htm#Table2675">(see #02675)</a>
+<PRE>
+<p><b>Return:</b><br>AX = status
+0000h successful
+ES:DI buffer filled
+other error code (0001h = index out of range)
+0002h "CM_LockConfig" lock device configuration
+ES:DI -> configuration information <a href="rb-4562.htm#Table2675">(see #02675)</a>
+<p><b>Return:</b><br>AX = status
+0000h successful
+ES:DI buffer filled with assigned config
+0001h resources conflict
+0002h invalid request or configuration info
+0003h "CM_UnlockConfig" unlock device configuration
+ES:DI -> configuration information <a href="rb-4562.htm#Table2675">(see #02675)</a>
+<p><b>Return:</b><br>AX = status
+0000h successful
+ES:DI buffer filled with assigned config
+0001h invalid request or configuration info
+0004h "CME_QueryResources" get hot-swappable resources
+ES:DI -> configuration information <a href="rb-4562.htm#Table2675">(see #02675)</a>
+<p><b>Return:</b><br>AX = status (see #02674)
+0005h "CME_AllocResources" remove resources from available pool
+ES:DI -> configuration information <a href="rb-4562.htm#Table2675">(see #02675)</a>
+<p><b>Return:</b><br>AX = status (see #02674)
+0006h "CME_DeallocResources" return resources to available pool
+ES:DI -> configuration information <a href="rb-4562.htm#Table2675">(see #02675)</a>
+<p><b>Return:</b><br>AX = status (see #02674)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4416.htm">#01298 at INT 20"Windows"</a> - #02672 - #02676
+<PRE>
+<p>
+<a name=table2674></a>
+(Table 02674)
+Values for Configuration Manager status:
+00h    successful
+01h    device not found, configuration error
+02h    I/O port unavailable
+04h    IRQ unavailable
+08h    DMA channel unavailable
+10h    memory range unavailable
+</PRE>
+<p><b>See Also:</b>
+#02673
+<PRE>
+<p>
+Format of Configuration Information Structure:
+<a name=table2675></a>
+Offset  Size    Description     (Table 02675)
+00h    DWORD   bus ID
+04h    DWORD   device ID
+08h    DWORD   serial number
+0Ch    DWORD   logical ID
+10h    DWORD   flags
+---ISA bus---
+14h    BYTE    Card Select Number
+15h    BYTE    logical device number
+16h    WORD    Read Data port
+------
+18h    WORD    number of memory windows
+1Ah  9 DWORDs  physical base addresses of memory windows
+3Eh  9 DWORDs  length of memory windows
+62h  9 WORDs   memory window attributes
+74h    WORD    number of I/O ports
+76h 20 WORDs   I/O port base addresses
+B6h 20 WORDs   lengths of I/O port ranges
+F6h    WORD    number of IRQs
+F8h  7 BYTEs   IRQ registers
+FFh  7 BYTEs   IRQ attributes
+106h    WORD    number of DMA channels
+108h  7 BYTEs   DMA channels used
+10Fh  7 WORDs   DMA channel attributes
+11Dh  3 BYTEs   reserved
+</PRE>
+<p><b>See Also:</b>
+#02673
+<p>
+<b>Category: <a href="cat-029.htm">
+Non-Volatile Config Storage</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4561.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4563.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

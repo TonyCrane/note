@@ -1,0 +1,85 @@
+<HTML>
+<HEAD>
+<TITLE>Int E0/CL=96h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int E0/CL=96h - REAL/32 - P_CLI - RUN COMMAND LINE INTERFACE - 
+CL = 96h
+DS:DX - Command Line Buffer (CLBUF) (see #04047)
+Return: AX = status
+Desc:  execute the indicated command concurrently with the calling process;
+system queue commands, .BAT, .CMD, .COM, and .EXE files can be
+executed
+Note:  the calling process will lose its virtual console and must reattach it
+before attempting any I/O
+SeeAlso: INT E0/CL=92h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int E0/CL=96h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8558.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8560.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>REAL/32 - P_CLI - RUN COMMAND LINE INTERFACE</font></h3>
+<PRE>
+CL = 96h
+DS:DX -> Command Line Buffer (CLBUF) <a href="rb-8559.htm#Table4047">(see #04047)</a><br>
+<p><b>Return:</b><br>AX = status
+</PRE>
+<p><b>Desc:</b>
+Execute the indicated command concurrently with the calling process;
+system queue commands, .BAT, .CMD, .COM, and .EXE files can be
+executed
+<p><b>Note:</b>
+The calling process will lose its virtual console and must reattach it
+before attempting any I/O
+<p><b>See Also:</b>
+<a href="rb-8555.htm">INT E0/CL=92h</a>
+<PRE>
+<p>
+Format of REAL/32 Command Line Buffer (CLBUF):
+<a name=table4047></a>
+Offset  Size    Description     (Table 04047)
+00h    BYTE    reserved (0)
+01h 128 BYTEs  ASCIZ command line
+81h    BYTE    (0)
+</PRE>
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-E0.htm">
+Int E0h</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8558.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8560.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

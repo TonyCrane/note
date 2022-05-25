@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=DE22h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=DE22h - DESQview v2.26+ - PROCESSMEM - GET TASK MEMORY STATUS - 
+AX = DE22h
+DX = segment of task handle
+Return: DX = total amount of memory in paragraphs
+BX = amount of system memory in paragraphs
+CX = largest block of system memory available in paragraphs
+AX = memory flags (see #00552)
+Notes: if the task handle is a child task, the returned values will be for the
+process containing the task, rather than the task itself
+if the process's system memory is swapped out, BX,CX,DX remain
+unchanged, because the memory usage cannot be determined
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=DE22h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1708.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1710.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview v2.26+ - PROCESSMEM - GET TASK MEMORY STATUS</font></h3>
+<PRE>
+AX = DE22h
+DX = segment of task handle<br>
+<p><b>Return:</b><br>DX = total amount of memory in paragraphs
+BX = amount of system memory in paragraphs
+CX = largest block of system memory available in paragraphs
+AX = memory flags <a href="rb-1709.htm#Table552">(see #00552)</a>
+</PRE>
+<p><b>Notes:</b>
+If the task handle is a child task, the returned values will be for the
+process containing the task, rather than the task itself.
+If the process's system memory is swapped out, BX,CX,DX remain
+unchanged, because the memory usage cannot be determined
+<p><b>See Also:</b>
+<a href="rb-1678.htm">AX=DE04h</a> - <a href="rb-1679.htm">AX=DE05h</a> - <a href="rb-1680.htm">AX=DE06h</a>
+<PRE>
+<p>
+Bitfields for DESQview process memory flags:
+<a name=table552></a>
+Bit(s)  Description     (Table 00552)
+0      system memory resides in shared memory
+1      process's memory is swapped out
+2      process's system memory is swapped out
+</PRE>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1708.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1710.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

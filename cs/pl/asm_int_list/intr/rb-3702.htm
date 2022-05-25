@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F216h/SF=24h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F216h/SF=24h - Novell NetWare v3+ - SET DIRECTORY DISK SPACE RESTRICTION - 
+AX = F216h subfn 24h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02136)
+ES:DI - reply buffer (ignored)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AX=F216h/SF=21h,AX=F216h/SF=22h,AX=F216h/SF=23h,AX=F216h/SF=25h
+Format of NetWare Set Directory Disk Space Restriction request buffer:
+Offset Size  Description   (Table 02136)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F216h/SF=24h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3701.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3703.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v3+ - SET DIRECTORY DISK SPACE RESTRICTION</font></h3>
+<PRE>
+AX = F216h subfn 24h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3702.htm#Table2136">(see #02136)</a>
+ES:DI -> reply buffer (ignored)<br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3699.htm">AX=F216h/SF=21h</a> - <a href="rb-3700.htm">AX=F216h/SF=22h</a> - <a href="rb-3701.htm">AX=F216h/SF=23h</a> - <a href=http://www.ctyme.com/intr/rb-37
+<PRE>
+<p>
+Format of NetWare "Set Directory Disk Space Restriction" request buffer:
+<a name=table2136></a>
+Offset  Size    Description     (Table 02136)
+00h    WORD    0006h (length of following data)
+02h    BYTE    24h (subfunction "Set Directory Disk Space Restriction")
+03h    BYTE    directory handle
+04h    DWORD   (big-endian) disk space limit in 4K blocks
+00000000h to remove restriction, negative to set to 0 blocks
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3701.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3703.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

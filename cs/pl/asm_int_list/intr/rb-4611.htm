@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=31CFh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=31CFh - MS Windows - STAT.386 - GET API ENTRY POINT - 
+AX = 1684h
+BX = 31CFh (virtual device ID for STAT.386) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02706)
+0000h:0000h if the VxD does not support an API
+SeeAlso: AX=1684hDEVICE API,INT 20Windows
+(Table 02706)
+Call STAT.386 entry point with:
+AX = function
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=31CFh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4610.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4612.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - STAT.386 - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 31CFh (virtual device ID for STAT.386) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02706)
+0000h:0000h if the VxD does not support an API
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2706></a>
+(Table 02706)
+Call STAT.386 entry point with:.
+AX = function
+0000h get version
+<p><b>Return:</b><br>AX = STAT.386 version (AH = major, AL = minor)
+0001h execute RDMSR/WRMSR/RDTSC
+BH = 00h
+BL = second opcode byte (30h=WRMSR,31h=RDTSC,32h=RDMSR)
+EDX:EDI = value to be written (for BL=30h)
+ECX = MSR number for RDMSR/WRMSR
+<p><b>Return:</b><br>EDX:EAX = value read (RDTSR/RDMSR only)
+</PRE>
+<p><b>See Also:</b>
+#02703 - #02707
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4610.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4612.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

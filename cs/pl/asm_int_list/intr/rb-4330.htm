@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1119h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1119h - NETWORK REDIRECTOR - FIND FIRST FILE WITHOUT CDS - 
+AX = 1119h
+SS = DS = DOS DS
+[DTA] = uninitialized 21-byte findfirst search data
+(see #01626 at INT 21/AH=4Eh)
+SDA first filename pointer - fully-qualified search template
+SDA search attribute = attribute mask for search
+Return: CF set on error
+AX = DOS error code (see #01680 at INT 21/AH=59h/BX=0000h)
+CF clear if successful
+[DTA] = updated findfirst search data
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1119h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4329.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4331.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>NETWORK REDIRECTOR - FIND FIRST FILE WITHOUT CDS</font></h3>
+<PRE>
+AX = 1119h
+SS = DS = DOS DS
+[DTA] = uninitialized 21-byte findfirst search data
+<a href="rb-0000.htm#Table0"></a>(see #01626 at INT 21/AH=4Eh)
+SDA first filename pointer -> fully-qualified search template
+SDA search attribute = attribute mask for search<br>
+<p><b>Return:</b><br>CF set on error
+AX = DOS error code <a href="rb-0000.htm#Table0"></a>(see #01680 at INT 21/AH=59h/BX=0000h)
+CF clear if successful
+[DTA] = updated findfirst search data
+(bit 7 of first byte must be set)
+[DTA+15h] = standard directory entry for file <a href="rb-2576.htm#Table1352">(see #01352)</a>
+</PRE>
+<p><b>Notes:</b>
+This function is called by the DOS 3.1+ kernel.
+DOS 4.x IFSFUNC returns CF set, AX=0003h
+<p><b>See Also:</b>
+<a href="rb-4331.htm">AX=111Ah</a> - <a href="rb-4332.htm">AX=111Bh</a> - <a href="rb-2589.htm">INT 21/AH=1Ah</a>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4329.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4331.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

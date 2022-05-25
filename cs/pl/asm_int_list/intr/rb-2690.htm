@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=2Bh/CX=4445h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=2Bh/CX=4445h - DESQview - INSTALLATION CHECK - 
+AH = 2Bh
+CX = 4445h ('DE')
+DX = 5351h ('SQ')
+AL = subfunction (DV v2.00+)
+01h get version
+Return: BX = version (BH = major, BL = minor)
+Note: early copies of v2.00 return 0002h
+02h get shadow buffer info, and start shadowing
+Return: BH = rows in shadow buffer
+BL = columns in shadow buffer
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=2Bh/CX=4445h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2689.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2691.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview - INSTALLATION CHECK</font></h3>
+<PRE>
+AH = 2Bh
+CX = 4445h ('DE')
+DX = 5351h ('SQ')
+AL = subfunction (DV v2.00+)
+01h get version
+<p><b>Return:</b><br>BX = version (BH = major, BL = minor)
+</PRE>
+<p><b>Note:</b>
+Early copies of v2.00 return 0002h
+02h get shadow buffer info, and start shadowing
+<PRE>
+<p><b>Return:</b><br>BH = rows in shadow buffer
+BL = columns in shadow buffer
+DX = segment of shadow buffer
+04h get shadow buffer info
+<p><b>Return:</b><br>BH = rows in shadow buffer
+BL = columns in shadow buffer
+DX = segment of shadow buffer
+05h stop shadowing<br>
+<p><b>Return:</b><br>AL = FFh if DESQview not installed
+</PRE>
+<p><b>Notes:</b>
+In DESQview v1.x, there were no subfunctions; this call only identified
+whether or not DESQview was loaded.  DESQview v2.52 performs function
+01h for all subfunction requests 0Ch and higher and appears to ignore
+all lower-numbered functions not listed here..
+DESQview versions 2.50-2.52 are part of DESQview/X v1.0x; version 2.53
+is part of DESQview/X v1.10; and version 2.63 is part of DESQview/X
+v2.00.
+<p><b>BUG:</b>
+Subfunction 05h does not appear to work correctly in DESQview 2.52
+<p><b>See Also:</b>
+<a href="rb-0567.htm">INT 10/AH=FEh</a> - <a href="rb-0568.htm">INT 10/AH=FFh</a> - <a href="rb-1214.htm">INT 15/AX=1024h</a> - <a href="rb-1728.h.html"
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2689.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2691.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

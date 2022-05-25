@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F257h/SF=05h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F257h/SF=05h - Novell NetWare - SCAN FILE OR SUBDIRECTORY FOR TRUSTEES - 
+AX = F257h subfn 05h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02383)
+ES:DI - reply buffer (see #02384)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F257h/SF=04h,AX=F257h/SF=06h
+Format of NetWare Scan File or Subdirectory for Trustees request packet:
+Offset Size  Description   (Table 02383)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F257h/SF=05h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3906.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3908.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SCAN FILE OR SUBDIRECTORY FOR TRUSTEES</font></h3>
+<PRE>
+AX = F257h subfn 05h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3907.htm#Table2383">(see #02383)</a>
+ES:DI -> reply buffer <a href="rb-3907.htm#Table2384">(see #02384)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3906.htm">AX=F257h/SF=04h</a> - <a href="rb-3908.htm">AX=F257h/SF=06h</a>
+<PRE>
+<p>
+Format of NetWare "Scan File or Subdirectory for Trustees" request packet:
+<a name=table2383></a>
+Offset  Size    Description     (Table 02383)
+00h    BYTE    05h (subfunction "Scan File or Subdirectory for Trustees")
+01h    BYTE    name space <a href="rb-3908.htm#Table2387">(see #02387)</a>
+02h    BYTE    reserved for future use
+03h    DWORD   scan sequence (set to 00000000h before first call)
+07h            NetWare Handle/Path structure <a href="rb-3903.htm#Table2376">(see #02376)</a>
+</PRE>
+<p><b>See Also:</b>
+#02384
+<PRE>
+<p>
+Format of NetWare "Scan File or Subdirectory for Trustees" reply packet:
+<a name=table2384></a>
+Offset  Size    Description     (Table 02384)
+00h    DWORD   next scan sequence or FFFFFFFFh if no more
+04h    WORD    number of trustee object IDs returned
+06h            trustee structure
+</PRE>
+<p><b>See Also:</b>
+#02383
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3906.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3908.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

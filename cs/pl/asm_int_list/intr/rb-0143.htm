@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=1110h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=1110h - VIDEO - TEXT-MODE CHARGEN - LOAD USER-SPECIFIED PATTERNS (PS,EGA,VGA) - 
+AX = 1110h
+ES:BP - user table
+CX = count of patterns to store
+DX = character offset into map 2 block
+BL = block to load in map 2
+BH = number of bytes per character pattern
+Return: nothing
+Notes: This function will cause a mode set, completely resetting
+the video environment, but without clearing the video buffer
+This function is designed to be called immediately after a mode set,
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=1110h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0142.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0144.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - TEXT-MODE CHARGEN - LOAD USER-SPECIFIED PATTERNS (PS,EGA,VGA)</font></h3>
+<PRE>
+AX = 1110h
+ES:BP -> user table
+CX = count of patterns to store
+DX = character offset into map 2 block
+BL = block to load in map 2
+BH = number of bytes per character pattern<br>
+<p><b>Return:</b><br>Nothing
+</PRE>
+<p><b>Notes:</b>
+This function will cause a mode set, completely resetting
+the video environment, but without clearing the video buffer.
+This function is designed to be called immediately after a mode set,
+it is equivalent to AX=110xh except that:
+Page 0 must be active.
+Bytes/character is recalculated.
+Max character rows is recalculated.
+CRT buffer length is recalculated.
+CRTC registers are reprogrammed as follows:
+R09 = bytes/char-1 ; max scan line (mode 7 only)
+R0A = bytes/char-2 ; cursor start
+R0B = 0            ; cursor end
+R12 = ((rows+1)*(bytes/char))-1 ; vertical display end
+R14 = bytes/char   ; underline loc
+<PRE>
+<p><b>(*** BUG:</b><br>Should be 1 less ***).
+The current block specifiers may be determined with INT 10/AH=1Bh,
+looking at offsets 2Bh and 2Ch of the returned data (VGA only)
+(see AH=1Bh,#00040)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0136.htm">AX=1100h</a> - <a href="rb-0145.htm">AX=1111h</a> - <a href="rb-0147.htm">AX=1112h</a> - <a href="rb-0149.htm">AX=1114h</a> -
+<PRE>
+<p><b>Index:</b><br>Text mode;font|text mode;screen rows
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0142.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0144.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

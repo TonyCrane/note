@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AX=1C09h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AX=1C09h - ESDI FIXED DISK - GET DEVICE STATUS - 
+AX = 1C09h
+DL = drive (80h,81h)
+ES:BX - buffer for Device Status Block (see #00259)
+Return: CF set on error
+CF clear if successful
+AH = status (see #00234 at AH=01h)
+SeeAlso: AX=1C08h,AX=1C0Ah,PORT 3510hESDI
+Format of ESDI Device Status Block:
+Offset Size  Description   (Table 00259)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AX=1C09h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0655.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0657.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ESDI FIXED DISK - GET DEVICE STATUS</font></h3>
+<PRE>
+AX = 1C09h
+DL = drive (80h,81h)
+ES:BX -> buffer for Device Status Block <a href="rb-0656.htm#Table259">(see #00259)</a><br>
+<p><b>Return:</b><br>CF set on error
+CF clear if successful
+AH = status <a href="rb-0000.htm#Table0"></a>(see #00234 at AH=01h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0655.htm">AX=1C08h</a> - <a href="rb-0657.htm">AX=1C0Ah</a> - <a href="rb-0621.htm">PORT 3510h"ESDI"</a>
+<PRE>
+<p>
+Format of ESDI Device Status Block:
+<a name=table259></a>
+Offset  Size    Description     (Table 00259)
+00h    BYTE    08h
+01h    BYTE    number of words in block (09h)
+02h    BYTE    error flags
+03h    BYTE    unused
+04h    BYTE    command error code <a href="rb-0655.htm#Table255">(see #00255)</a>
+05h    BYTE    command status code <a href="rb-0655.htm#Table256">(see #00256)</a>
+06h    WORD    ESDI standard status
+08h  5 WORDs   ESDI vendor-specific status codes
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-e.htm">
+E</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0655.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0657.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

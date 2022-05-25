@@ -1,0 +1,105 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=4F0Ah/BL=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=4F0Ah/BL=00h - VESA SuperVGA BIOS v2.0+ - GET PROTECTED-MODE INTERFACE - 
+AX = 4F0Ah
+BL = 00h
+Return: AL = 4Fh if function supported
+AH = status
+00h successful
+ES:DI - protected-mode table (see #00087)
+CX = length of table in bytes, included protected-mode code
+01h failed
+SeeAlso: AX=4F00h,AX=4F05h,AX=4F07h,AX=4F09h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=4F0Ah/BL=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0286.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0288.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VESA SuperVGA BIOS v2.0+ - GET PROTECTED-MODE INTERFACE</font></h3>
+<PRE>
+AX = 4F0Ah
+BL = 00h<br>
+<p><b>Return:</b><br>AL = 4Fh if function supported
+AH = status
+00h successful
+ES:DI -> protected-mode table <a href="rb-0287.htm#Table87">(see #00087)</a>
+CX = length of table in bytes, included protected-mode code
+01h failed
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0273.htm">AX=4F00h</a> - <a href="rb-0278.htm">AX=4F05h</a> - <a href="rb-0282.htm">AX=4F07h</a> - <a href="rb-0286.htm">AX=4F09h</a>
+<PRE>
+<p>
+Format of VESA VBE 2.0 protected-mode table:
+<a name=table87></a>
+Offset  Size    Description     (Table 00087)
+00h    WORD    offset (within table) of protected-mode code for Function 5
+(Set Window)
+02h    WORD    offset of protected-mode code for Function 7 (Set Disp Start)
+04h    WORD    offset of protected-mode code for Function 9 (Set Primary
+Palette)
+06h    WORD    offset (within table) of list of I/O ports and memory locations
+for which I/O privilege may be required in protected mode
+(0000h if no list) <a href="rb-0287.htm#Table4085">(see #04085)</a>
+08h    var     code and optional port/memory list
+<p>
+Format of VESA VBE 2.0+ protected-mode port/memory list:
+<a name=table4085></a>
+Offset  Size    Description     (Table 04085)
+00h    WORD    I/O port number.
+....
+WORD    FFFFh marking end of I/O port list.
+DWORD   memory region base address.
+WORD    memory region limit (one less than length).
+WORD    FFFFh marking end of memory region list
+</PRE>
+<p><b>Note:</b>
+The memory region is optional; if not present, there will be a word
+of FFFFh immediately following the FFFFh marking the end of the I/O
+port list
+<p><b>See Also:</b>
+#00087
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0286.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0288.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

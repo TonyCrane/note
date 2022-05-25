@@ -1,0 +1,148 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5F44h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5F44h - LAN Manager Enhanced DOS - LOCAL NetWkstaGetInfo - 
+AX = 5F44h
+BX = information level (00h, 01h, or 0Ah)
+CX = buffer size
+DX = 0000h
+ES:DI - buffer in which to store info (see #01714,#01715,#01716),
+including any returned strings
+Return: AX = error code
+DX = amount of buffer required, unchanged if supplied buffer large
+enough to hold data
+SeeAlso: AX=5F45h,AX=5F49h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5F44h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3073.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3075.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LAN Manager Enhanced DOS - LOCAL NetWkstaGetInfo</font></h3>
+<PRE>
+AX = 5F44h
+BX = information level (00h, 01h, or 0Ah)
+CX = buffer size
+DX = 0000h
+ES:DI -> buffer in which to store info <a href="rb-0000.htm#Table0"></a>(see #01714,#01715,#01716),
+including any returned strings<br>
+<p><b>Return:</b><br>AX = error code
+DX = amount of buffer required, unchanged if supplied buffer large
+enough to hold data
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3075.htm">AX=5F45h</a> - <a href="rb-3079.htm">AX=5F49h</a>
+<PRE>
+<p>
+Format of LAN Manager wksta_info_0 structure:
+<a name=table1714></a>
+Offset  Size    Description     (Table 01714)
+00h    WORD     reserved (0)
+02h    DWORD    reserved (0)
+06h    DWORD    -> path to computer's LANMAN directory
+0Ah    DWORD    -> computername of the workstation
+0Eh    DWORD    -> username of user logged onto workstation
+12h    DWORD    -> domain to which workstation belongs
+16h    WORD     LAN Manager version number (2 bytes, Major, Minor)
+18h    DWORD    reserved (0)
+1Ch    WORD     number of seconds workstation waits for resource availability
+1Eh    DWORD    delay (in millsecs) before sending data to resource
+22h    WORD     reserved (0)
+24h    WORD     reserved (0)
+26h    WORD     ???
+28h    WORD     number of seconds to maintain an inactive connection
+2Ah    WORD     number of seconds an inactive search continues
+2Ch    WORD     threads to dedicate to network (not supported in MSDOS)
+2Eh    WORD     number of simultaneous commands sent to network
+30h    WORD     reserved6 (must be 0)
+32h    WORD     number of internal buffers
+34h    WORD     size (in bytes) of each internal buffer
+36h    WORD     max size (in bytes) of an internal cache buffer (not MSDOS)
+38h    WORD     seconds before disconnecting inactive session (not MSDOS)
+3Ah    WORD     size (in bytes) of an internal error buffer (not MSDOS)
+3Ch    WORD     number of clients that can receive alert messages (not MSDOS)
+3Eh    WORD     number of services that can be started on workstation
+40h    WORD     max size (in kilobytes) of error log (not MSDOS)
+42h    WORD     number of secs before closing inactive print jobs (not MSDOS)
+44h    WORD     number of character buffers for workstation
+46h    WORD     max size (in bytes) of character buffer
+48h    DWORD    -> name of server that validated logon
+4Ch    DWORD    -> workstation heuristics
+50h    WORD     number of mailslots allowed
+</PRE>
+<p><b>Note:</b>
+Pointers to strings are set to 0000h:0000h if there is insufficient
+space in the buffer to hold them
+<p><b>See Also:</b>
+#01715 - #01716
+<PRE>
+<p>
+Format of LAN Manager wksta_info_1 structure:
+<a name=table1715></a>
+Offset  Size    Description     (Table 01715)
+00h 82 BYTEs   wksta_info_0 structure <a href="rb-3074.htm#Table1714">(see #01714)</a>
+52h    DWORD    -> name of domain which user is logged on to
+56h    DWORD    -> all domains in which computer is enlisted
+5Ah    WORD     number of buffers to allocate for receiving datagrams
+</PRE>
+<p><b>See Also:</b>
+#01716
+<PRE>
+<p>
+Format of LAN Manager wksta_info_10 structure:
+<a name=table1716></a>
+Offset  Size    Description     (Table 01716)
+00h    DWORD    -> computername of the workstation
+04h    DWORD    -> username of user logged onto workstation
+08h    DWORD    -> domain to which workstation belongs
+0Ch    WORD     LAN Manager version number (2 bytes, Major, Minor)
+0Eh    DWORD    -> name of domain which user is loggod on to
+12h    DWORD    -> all domains in which computer is enlisted
+</PRE>
+<p><b>Note:</b>
+Pointers to strings are set to 0000h:0000h if there is insufficient
+space in the buffer to hold them
+<p><b>See Also:</b>
+#01714 - #01715
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3073.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3075.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

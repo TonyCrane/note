@@ -1,0 +1,142 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=53h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=53h - DOS 2+ internal - TRANSLATE BIOS PARAMETER BLOCK TO DRIVE PARAM BLOCK - 
+AH = 53h
+DS:SI - BIOS Parameter Block (see #01663)
+ES:BP - buffer for Drive Parameter Block (see #01395 at AH=32h)
+DBP drive byte must be set to valid drive (Windows95-OSR2)
+---Windows95---
+CX = signature 4558h ('EX') for FAT32 extended BPB/DPB (see #01664)
+DX = signature 4152h ('AR') for FAT32 extended BPB/DPB
+Return: ES:BP buffer filled
+Notes: for DOS 3.0+, the cluster at which to start searching is set to 0000h
+and the number of free clusters is set to FFFFh (unknown)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=53h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2984.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2986.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ internal - TRANSLATE BIOS PARAMETER BLOCK TO DRIVE PARAM BLOCK</font></h3>
+<PRE>
+AH = 53h
+DS:SI -> BIOS Parameter Block <a href="rb-2985.htm#Table1663">(see #01663)</a>
+ES:BP -> buffer for Drive Parameter Block <a href="rb-0000.htm#Table0"></a>(see #01395 at AH=32h)
+DBP drive byte must be set to valid drive (Windows95-OSR2)
+---Windows95---
+CX = signature 4558h ('EX') for FAT32 extended BPB/DPB <a href="rb-2985.htm#Table1664">(see #01664)</a>
+DX = signature 4152h ('AR') for FAT32 extended BPB/DPB<br>
+<p><b>Return:</b><br>ES:BP buffer filled
+</PRE>
+<p><b>Notes:</b>
+For DOS 3.0+, the cluster at which to start searching is set to 0000h
+and the number of free clusters is set to FFFFh (unknown).
+If the number of sectors per cluster is set to zero, MS-DOS will hang
+at startup because it computes the internally-used shift count by
+shifting this value right until the carry flag is set; since this
+will never happen when the field is zero, MS-DOS hangs.
+Not supported by Windows NT 3.1
+<PRE>
+<p>
+Format of BIOS Parameter Block:
+<a name=table1663></a>
+Offset  Size    Description     (Table 01663)
+00h    WORD    number of bytes per sector
+02h    BYTE    number of sectors per cluster
+03h    WORD    number of reserved sectors at start of disk
+05h    BYTE    number of FATs
+06h    WORD    number of entries in root directory
+08h    WORD    total number of sectors
+for DOS 4.0+, set to zero if partition >32M, then set DWORD at
+15h to actual number of sectors
+0Ah    BYTE    media ID byte <a href="rb-2590.htm#Table1356">(see #01356)</a>
+0Bh    WORD    number of sectors per FAT
+---DOS 2.13---
+0Dh    WORD    number of sectors per track
+0Fh    WORD    number of heads
+11h    WORD    number of hidden sectors
+---DOS 3.0+ ---
+0Dh    WORD    number of sectors per track
+0Fh    WORD    number of heads
+11h    DWORD   number of hidden sectors
+15h 11 BYTEs   reserved
+---DOS 4.0+ ---
+15h    DWORD   total number of sectors if word at 08h contains zero
+19h  6 BYTEs   ???
+1Fh    WORD    number of cylinders
+21h    BYTE    device type
+22h    WORD    device attributes (removable or not, etc)
+---DR DOS 5+ ---
+15h    DWORD   total number of sectors if word at 08h contains zero
+19h  6 BYTEs   reserved
+---European MS-DOS 4.00---
+15h    DWORD   total number of sectors if word at 08h contains zero
+(however, this DOS does not actually implement >32M partitions)
+</PRE>
+<p><b>See Also:</b>
+#01395 - #01664
+<PRE>
+<p>
+Format of Extended BIOS Parameter Block:
+<a name=table1664></a>
+Offset  Size    Description     (Table 01664)
+00h 25 BYTEs   same as standard DOS 4-6 BPB <a href="rb-2985.htm#Table1663">(see #01663)</a>
+19h    DWORD   sectors per FAT if WORD at 0Bh is 0000h
+1Dh    WORD    extended flags
+<p><b>bit 7:</b><br>Do not mirror active FAT to inactive FATs
+<p><b>bits 6-4:</b><br>Reserved (0)
+<p><b>bits 3-0:</b><br>The 0-based FAT number of the active FAT
+(if mirroring disabled)
+1Fh    WORD    file system version (high byte=major, low byte=minor)
+0000h = Win95-OSR2
+21h    DWORD   starting cluster number of root directory
+25h    WORD    file system information sector number (see also #01788)
+FFFFh if none
+27h    WORD    sector number of backup boot sector (FFFFh if none)
+29h  6 WORDs   reserved
+</PRE>
+<p><b>See Also:</b>
+#01560 - #01787
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2984.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2986.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

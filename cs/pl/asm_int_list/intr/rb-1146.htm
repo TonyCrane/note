@@ -1,0 +1,152 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=01h - Amstrad PC1512 - WRITE DATA TO NON-VOLATILE RAM - 
+AH = 01h
+AL = NVRAM location (00h to 3Fh) (see #00405)
+BL = NVRAM data value
+Return: AH = return code
+00h OK
+01h address bad
+02h write error
+SeeAlso: AH=02hAmstrad
+Format of Amstrad NVRAM:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1145.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1147.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Amstrad PC1512 - WRITE DATA TO NON-VOLATILE RAM</font></h3>
+<PRE>
+AH = 01h
+AL = NVRAM location (00h to 3Fh) <a href="rb-1146.htm#Table405">(see #00405)</a>
+BL = NVRAM data value<br>
+<p><b>Return:</b><br>AH = return code
+00h OK
+01h address bad
+02h write error
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-1150.htm">AH=02h"Amstrad"</a>
+<PRE>
+<p>
+Format of Amstrad NVRAM:
+<a name=table405></a>
+Offset  Size    Description     (Table 00405)
+<p><b>00h    BYTE    time of day:</b><br>Seconds
+<p><b>01h    BYTE    alarm time:</b><br>Seconds
+<p><b>02h    BYTE    time of day:</b><br>Minutes
+<p><b>03h    BYTE    alarm time:</b><br>Minutes
+<p><b>04h    BYTE    time of day:</b><br>Hours
+<p><b>05h    BYTE    alarm time:</b><br>Hours
+06h    BYTE    day of week, 1 = Sunday
+07h    BYTE    day of month
+08h    BYTE    month
+09h    BYTE    year mod 100
+0Ah    BYTE    RTC status register A <a href="rb-1146.htm#Table406">(see #00406)</a>
+0Bh    BYTE    RTC status register B <a href="rb-1146.htm#Table407">(see #00407)</a>
+0Ch    BYTE    RTC status register C (read-only) <a href="rb-1146.htm#Table408">(see #00408)</a>
+0Dh    BYTE    RTC status register D
+<p><b>bit 7:</b><br>Battery good
+0Eh  6 BYTEs   time and date machine last used
+14h    BYTE    user RAM checksum
+15h    WORD    Enter key scancode/ASCII code
+17h    WORD    Forward delete key scancode/ASCII code
+19h    WORD    Joystick fire button 1 scancode/ASCII code
+1Bh    WORD    Joystick fire button 2 scancode/ASCII code
+1Dh    WORD    mouse button 1 scancode/ASCII code
+1Fh    WORD    mouse button 2 scancode/ASCII code
+21h    BYTE    mouse X scaling factor
+22h    BYTE    mouse Y scaling factor
+23h    BYTE    initial VDU mode and drive count
+24h    BYTE    initial VDU character attribute
+25h    BYTE    size of RAM disk in 2K blocks
+26h    BYTE    initial system UART setup byte
+27h    BYTE    initial external UART setup byte
+28h 24 BYTEs   available for user application
+</PRE>
+<p><b>Note:</b>
+Bytes 00h-0Dh are the same on the IBM AT as they are used/updated by
+the clock chip
+<PRE>
+<p>
+Bitfields for RTC status register A:
+<a name=table406></a>
+Bit(s)  Description     (Table 00406)
+7      set if date/time being updated
+6-4    time base speed, default 010 = 32768 Hz
+3-0    interrupt rate selection, default 0110 = 1024 Hz
+</PRE>
+<p><b>See Also:</b>
+#00405
+<PRE>
+<p>
+Bitfields for RTC status register B:
+<a name=table407></a>
+Bit(s)  Description     (Table 00407)
+7      clear if normal update, set if abort update
+6      periodic interrupt enable
+5      alarm interrupt enable
+4      update end interrupt enable
+3      square wave enable
+2      date mode (clear = BCD, set = binary)
+1      24-hour format
+0      daylight saving time enable
+</PRE>
+<p><b>See Also:</b>
+#00405
+<PRE>
+<p>
+Bitfields for RTC status register C:
+<a name=table408></a>
+Bit(s)  Description     (Table 00408)
+7      IRQF flag
+6      PF flag
+5      AF flag
+4      UF flag
+</PRE>
+<p><b>See Also:</b>
+#00405
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1145.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1147.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

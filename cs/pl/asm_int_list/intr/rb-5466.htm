@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=CD01h/BX=0000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=CD01h/BX=0000h - InterWave Game API - GET NUMBER OF INTERWAVE PROGRAMS / PROGRAM ID - 
+AX = CD01h
+BX = 0000h
+Return: BX = number of programs currently installed on the Game API
+Desc:  get the number of programs supporting the InterWave Game API which are
+currently installed in memory, which also forms the next program ID
+number if the caller wishes to go resident on the API
+Range: AH=CDh-ECh, selected by scanning for an available multiplex number
+Notes: the first program to install on the IW Game API must use ID 00h
+the AMD-recommended implementation is for the handler to increment
+BX and chain to the previous handler (if any), but this will fail
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=CD01h/BX=0000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5465.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5467.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>InterWave Game API - GET NUMBER OF INTERWAVE PROGRAMS / PROGRAM ID</font></h3>
+<PRE>
+AX = CD01h
+BX = 0000h<br>
+<p><b>Return:</b><br>BX = number of programs currently installed on the Game API
+</PRE>
+<p><b>Desc:</b>
+Get the number of programs supporting the InterWave Game API which are
+currently installed in memory, which also forms the next program ID
+number if the caller wishes to go resident on the API
+<PRE>
+<p><b>Range:</b><br>AH=CDh-ECh, selected by scanning for an available multiplex number
+</PRE>
+<p><b>Notes:</b>
+The first program to install on the IW Game API must use ID 00h.
+The AMD-recommended implementation is for the handler to increment
+BX and chain to the previous handler (if any), but this will fail
+if TSRs are unloaded out-of-order
+<p><b>See Also:</b>
+<a href="rb-5463.htm">AX=CD00h"InterWave"</a> - <a href="rb-5469.htm">AX=CD02h"InterWave"</a> - <a href="rb-5472.htm">AX=CD03h"InterWave"</a>
+<p><b>See Also:</b>
+<a href="rb-5478.htm">AX=CD05h"InterWave"</a> - <a href="rb-5490.htm">AX=CD21h"InterWave"</a> - <a href="rb-5492.htm">AX=CD80h"InterWave"</a>
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5465.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5467.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

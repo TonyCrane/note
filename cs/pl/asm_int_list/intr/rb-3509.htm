@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=3Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=3Ch - Novell NetWare - BINDERY SERVICES - SCAN PROPERTY - 
+AH = E3h subfn 3Ch
+DS:SI - request buffer (see #01939)
+ES:DI - reply buffer (see #01940)
+Return: AL = status (00h,96h,F1h,FBh,FCh,FEh,FFh) (see #01937)
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=E3h/SF=37h,AH=E3h/SF=3Bh,AX=F217h/SF=3Ch
+Format of NetWare Scan Property request buffer:
+Offset Size  Description   (Table 01939)
+00h  WORD  length of following data (max 47h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=3Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3508.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3510.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - BINDERY SERVICES - SCAN PROPERTY</font></h3>
+<PRE>
+AH = E3h subfn 3Ch
+DS:SI -> request buffer <a href="rb-3509.htm#Table1939">(see #01939)</a>
+ES:DI -> reply buffer <a href="rb-3509.htm#Table1940">(see #01940)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,F1h,FBh,FCh,FEh,FFh) (see #01937)
+</PRE>
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3504.htm">AH=E3h/SF=37h</a> - <a href="rb-3508.htm">AH=E3h/SF=3Bh</a> - <a href="rb-3748.htm">AX=F217h/SF=3Ch</a>
+<PRE>
+<p>
+Format of NetWare "Scan Property" request buffer:
+<a name=table1939></a>
+Offset  Size    Description     (Table 01939)
+00h    WORD    length of following data (max 47h)
+02h    BYTE    3Ch (subfunction "Scan Property")
+03h    WORD    (big-endian) type of object
+05h    BYTE    length of object's name (01h-2Fh)
+06h  N BYTEs   object name.
+DWORD   (big-endian) sequence number
+FFFFFFFFh for first call.
+BYTE    length of property's name (01h-0Fh)
+N BYTEs   property's name
+</PRE>
+<p><b>See Also:</b>
+#01940 - #02187
+<PRE>
+<p>
+Format of NetWare "Scan Property" reply buffer:
+<a name=table1940></a>
+Offset  Size    Description     (Table 01940)
+00h    WORD    (call) 0018h (length of following results buffer)
+02h 16 BYTEs   property name
+12h    BYTE    property flags
+13h    BYTE    property security levels
+14h    DWORD   (big-endian) sequence number
+18h    BYTE    property value flag (00h no, FFh yes)
+19h    BYTE    more properties (00h no, FFh yes)
+</PRE>
+<p><b>See Also:</b>
+#01939 - #02187
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3508.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3510.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

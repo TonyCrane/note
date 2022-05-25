@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2D
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2D - CDTSR - GET INTERNAL VARIABLE TABLE - 
+AL = 10h
+AH = AMIS multiplex number for CDTSR
+Return: CX:DX - CDTSR internal variable structure (see #02583)
+Program: CDTSR is a resident audio CD player by Colin Hill
+SeeAlso: INT 2D/AL=11hCDTSR,INT 2D/AL=12hCDTSR,INT 2D/AL=13hCDTSR
+Format of CDTSR internal variable structure:
+Offset Size  Description   (Table 02583)
+00h  BYTE  hotkey scan code (see #00006)
+01h  BYTE  hotkey shift states
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2D
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4227.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4229.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>CDTSR - GET INTERNAL VARIABLE TABLE</font></h3>
+<PRE>
+AL = 10h
+AH = AMIS multiplex number for CDTSR<br>
+<p><b>Return:</b><br>CX:DX -> CDTSR internal variable structure (see #02583)
+</PRE>
+<p><b>Program:</b>
+CDTSR is a resident audio CD player by Colin Hill
+<p><b>See Also:</b>
+<a href="rb-4228.htm">INT 2D/AL=11h"CDTSR"</a> - <a href="rb-4228.htm">INT 2D/AL=12h"CDTSR"</a> - <a href="rb-4228.htm">INT 2D/AL=13h"CDTSR"</a>
+<PRE>
+<p>
+Format of CDTSR internal variable structure:
+<a name=table2583></a>
+Offset  Size    Description     (Table 02583)
+00h    BYTE    hotkey scan code <a href="rb-0045.htm#Table6">(see #00006)</a>
+01h    BYTE    hotkey shift states
+<p><b>02h    BYTE    flag:</b><br>Repeat
+<p><b>03h    BYTE    flag:</b><br>Custom repeat
+<p><b>04h    BYTE    flag:</b><br>Background polling
+05h    DWORD   (read-only) internal timing variable
+09h    DWORD   current track play position, in frames
+0Dh    DWORD   current disk play position, in frames
+11h    BYTE    number of entries in track program
+12h    BYTE    index into track program currently playing (FFh if not playing)
+13h 100 BYTEs  track program (each byte contains one track number)
+77h    BYTE    saved cursor end scan line
+78h    BYTE    saved cursor start scan line
+79h    BYTE    currently playing track
+7Ah    BYTE    CD driver media-change flag
+7Bh    WORD    video base segment during last popup
+7Dh    WORD    video page offset during last popup
+7Fh    BYTE    currently-selected track
+80h    DWORD   begin of custom repeat, in frames
+84h    DWORD   end of custom repeat, in frames
+88h    WORD    track program index of top list item
+</PRE>
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-2D.htm">
+Int 2Dh</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4227.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4229.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

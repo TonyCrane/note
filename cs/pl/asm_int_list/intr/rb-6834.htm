@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AH=13h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AH=13h - PC/TCP kernel v2.05 - net_connect - OPEN A NETWORK CONNECTION - 
+AH = 13h
+BX = network descriptor (FFFFh for automatic net_getdesc)
+DX = protocol (see #03461)
+DS:SI - buffer for addr structure (see #03462)
+Return: CF clear if successful
+AX = network descriptor used or allocated
+CF set on error
+AX = error code (see #03319 at INT 61FTP Software)
+Notes: resets the connection with AH=19h in various cases
+will wait for protocol on stream connections unless non-blocking was
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AH=13h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6833.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6835.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC/TCP kernel v2.05 - net_connect - OPEN A NETWORK CONNECTION</font></h3>
+<PRE>
+AH = 13h
+BX = network descriptor (FFFFh for automatic net_getdesc)
+DX = protocol <a href="rb-6834.htm#Table3461">(see #03461)</a>
+DS:SI -> buffer for "addr" structure <a href="rb-6834.htm#Table3462">(see #03462)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = network descriptor used or allocated
+CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #03319 at INT 61"FTP Software")
+</PRE>
+<p><b>Notes:</b>
+Resets the connection with AH=19h in various cases.
+Will wait for protocol on stream connections unless non-blocking was
+set with AH=20h
+<p><b>See Also:</b>
+<a href="rb-6703.htm">INT 61"FTP Software"</a> - <a href="rb-6704.htm">INT 61/AH=00h"PC/TCP"</a> - <a href="rb-6842.htm">INT 61/AH=18h</a> - <a href="../i.html"
+<p><b>See Also:</b>
+<a href="rb-7220.htm">INT 63/AH=14h"BW-TCP"</a>
+<PRE>
+<p>
+<a name=table3461></a>
+(Table 03461)
+Values for PC/TCP protocol:
+0001h  raw net (undocumented)
+0002h  raw IP
+0003h  datagram (UDP)
+0004h  stream (TCP)
+0005h  raw ICMP
+<p>
+Format of structure "addr":
+<a name=table3462></a>
+Offset  Size    Description     (Table 03462)
+00h    DWORD   Internet address (network order)
+04h    WORD    remote socket number (network order)
+06h    WORD    local socket number (network order) 0000h means "you choose"
+08h    BYTE    protocol <a href="rb-6834.htm#Table3461">(see #03461)</a>
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6833.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6835.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

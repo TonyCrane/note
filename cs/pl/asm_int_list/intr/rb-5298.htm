@@ -1,0 +1,114 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=C000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=C000h - PrintCache v3.1 PCACHE.EXE - INSTALLATION CHECK - 
+AX = C000h
+Return: AL = FFh if installed
+SI = signature value 20D6h
+DI = signature value 8761h
+ES:BX - configuration table (see #03029)
+CX = ??? (0300h)
+DX = ??? (0020h)
+Program: PCACHE is the resident print spooler portion of PrintCache by
+LaserTools; it may use either memory or disk space to spool output
+Range: AH=C0h to AH=FFh, selected by commandline switch
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=C000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5297.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5299.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PrintCache v3.1 PCACHE.EXE - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = C000h<br>
+<p><b>Return:</b><br>AL = FFh if installed
+SI = signature value 20D6h
+DI = signature value 8761h
+ES:BX -> configuration table <a href="rb-5298.htm#Table3029">(see #03029)</a>
+CX = ??? (0300h)
+DX = ??? (0020h)
+</PRE>
+<p><b>Program:</b>
+PCACHE is the resident print spooler portion of PrintCache by
+LaserTools; it may use either memory or disk space to spool output
+<PRE>
+<p><b>Range:</b><br>AH=C0h to AH=FFh, selected by commandline switch
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4261.htm">AX=0100h/SI=20D6h</a> - <a href="rb-5298.htm">AX=C001h"PCACHE"</a>
+<PRE>
+<p>
+Format of PrintCache configuration table:
+<a name=table3029></a>
+Offset  Size    Description     (Table 03029)
+<p><b>00h 26 BYTEs   ASCIZ signature string "TORQ Configuration Table:</b><br>"
+1Ah  2 BYTEs   ???
+1Ch    DWORD   -> data table <a href="rb-5298.htm#Table3030">(see #03030)</a>
+20h  4 BYTEs   ASCIZ version string ("3.1" for v3.1)
+24h  5 BYTEs   ???
+29h 12 BYTEs   ASCIZ version date string ("Aug 31 1993" for v3.1)
+35h    WORD    buffered port type (01h = LPT, 02h = COM)
+37h    WORD    buffered port BIOS port number
+39h  5 BYTEs   ASCIZ buffered port name ("LPTn" or "COMn")
+3Eh    WORD    physical port type (01h = LPT, 02h = COM)
+40h    WORD    physical port BIOS port number
+42h  5 BYTEs   ASCIZ physical port name ("LPTn" or "COMn")
+47h    BYTE    port driver IRQ
+48h 21 BYTEs   ???
+5Dh    WORD    buffer size in K
+5Fh 27 BYTEs   ???
+7Ah    BYTE    popup hotkey shift states <a href="rb-0000.htm#Table0"></a>(see #00582 at INT 16/AH=02h)
+7Bh    BYTE    popup hotkey scan code <a href="rb-0000.htm#Table0"></a>(see #00006 at INT 09"IRQ1")
+7Ch  4 BYTEs   ???
+80h 20 BYTEs   ASCIZ printer type name.
+???
+<p>
+Format of PrintCache data table:
+<a name=table3030></a>
+Offset  Size    Description     (Table 03030)
+00h  2 BYTEs   ???
+02h    DWORD   -> ??? entry point.
+???
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5297.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5299.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

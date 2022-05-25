@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=1Fh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=1Fh - Novell NetWare v4 - GET CONNECTION LIST - 
+AX = F217h subfn 1Fh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02182)
+ES:DI - reply buffer (see #02183)
+Return: AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+Format of NetWare Get Connection List request buffer:
+Offset Size  Description   (Table 02182)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=1Fh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3736.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3738.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v4 - GET CONNECTION LIST</font></h3>
+<PRE>
+AX = F217h subfn 1Fh
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3737.htm#Table2182">(see #02182)</a>
+ES:DI -> reply buffer <a href="rb-3737.htm#Table2183">(see #02183)</a><br>
+<p><b>Return:</b><br>AL = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+<p>
+Format of NetWare "Get Connection List" request buffer:
+<a name=table2182></a>
+Offset  Size    Description     (Table 02182)
+00h    WORD    length of following data
+02h    BYTE    1Fh (subfunction "Get Connection List")
+03h    DWORD   object ID
+07h    DWORD   ??? (initialize to FFFFFFFFh before first call)
+</PRE>
+<p><b>See Also:</b>
+#02183
+<PRE>
+<p>
+Format of NetWare "Get Connection List" reply buffer:
+<a name=table2183></a>
+Offset  Size    Description     (Table 02183)
+00h    WORD    number of connections following (max 50)
+02h 50 DWORDs  connection numbers
+</PRE>
+<p><b>See Also:</b>
+#02182
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3736.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3738.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F223h/SF=13h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F223h/SF=13h - Novell NetWare v2+ - AFP GET MACINTOSH INFORMATION ON DELETED FILE - 
+AX = F223h subfn 13h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02341)
+ES:DI - reply buffer (see #02342)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F223h/SF=04h,AX=F223h/SF=05h,AX=F223h/SF=09h
+Format of NetWare AFP Get Macintosh Info on Deleted File request packet:
+Offset Size  Description   (Table 02341)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F223h/SF=13h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3886.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3888.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2+ - AFP GET MACINTOSH INFORMATION ON DELETED FILE</font></h3>
+<PRE>
+AX = F223h subfn 13h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3887.htm#Table2341">(see #02341)</a>
+ES:DI -> reply buffer <a href="rb-3887.htm#Table2342">(see #02342)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3873.htm">AX=F223h/SF=04h</a> - <a href="rb-3874.htm">AX=F223h/SF=05h</a> - <a href="rb-3878.htm">AX=F223h/SF=09h</a>
+<PRE>
+<p>
+Format of NetWare "AFP Get Macintosh Info on Deleted File" request packet:
+<a name=table2341></a>
+Offset  Size    Description     (Table 02341)
+00h    WORD    (big-endian) length of following data
+02h    BYTE    13h (subfunction "AFP Get Macintosh Info on Deleted File")
+03h    BYTE    volume number
+04h    DWORD   server's DOS directory entry index
+</PRE>
+<p><b>See Also:</b>
+#02342
+<PRE>
+<p>
+Format of NetWare "AFP Get Macintosh Info on Deleted File" reply packet:
+<a name=table2342></a>
+Offset  Size    Description     (Table 02342)
+00h 32 BYTEs   Finder information
+20h  6 BYTEs   ProDOS information
+26h    DWORD   size of resource fork
+2Ah    BYTE    length of filename
+2Bh  N BYTEs   filename
+</PRE>
+<p><b>See Also:</b>
+#02341
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3886.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3888.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

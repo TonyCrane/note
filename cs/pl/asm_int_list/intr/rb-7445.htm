@@ -1,0 +1,102 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AH=5Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AH=5Bh - LIM EMS 4.0 - ALTERNATE MAP REGISTER SET - 
+AH = 5Bh
+AL = subfunction
+00h get alternate map register set
+Return: BL = current active alternate map register set number
+ES:DI - map register context save area if BL=00h
+01h set alternate map register set
+BL = new alternate map register set number
+ES:DI - map register context save area if BL=0
+02h get alternate map save array size
+Return: DX = array size in bytes
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AH=5Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7444.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7446.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LIM EMS 4.0 - ALTERNATE MAP REGISTER SET</font></h3>
+<PRE>
+AH = 5Bh
+AL = subfunction
+00h get alternate map register set
+<p><b>Return:</b><br>BL = current active alternate map register set number
+ES:DI -> map register context save area if BL=00h
+01h set alternate map register set
+BL = new alternate map register set number
+ES:DI -> map register context save area if BL=0
+02h get alternate map save array size
+<p><b>Return:</b><br>DX = array size in bytes
+03h allocate alternate map register set
+<p><b>Return:</b><br>BL = number of map register set; 00h = not supported
+04h deallocate alternate map register set
+BL = number of alternate map register set<br>
+<p><b>Return:</b><br>AH = status (00h,80h,81h,84h,8Fh,9Ah-9Dh,A3h,A4h) (see #03656)
+</PRE>
+<p><b>Note:</b>
+This function is for use by operating systems only, and can be
+enabled or disabled at any time by the operating system
+<PRE>
+<p>
+<a name=table3656></a>
+(Table 03656)
+Values for EMS function status:
+00h    successful
+80h    internal error
+81h    hardware malfunction
+84h    undefined function requested
+8Fh    undefined subfunction
+9Ah    specified alternate map register or DMA register set not supported
+9Bh    all alternate map register or DMA register sets currently allocated
+9Ch    alternate map register or DMA register sets not supported
+9Dh    undefined or unallocated alternate map register/DMA register set
+9Eh    dedicated DMA channels not supported
+9Fh    specified dedicated DMA channel not supported
+A3h    source array corrupted
+A4h    operating system denied access
+</PRE>
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7444.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7446.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

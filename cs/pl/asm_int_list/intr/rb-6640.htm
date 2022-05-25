@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 60/AH=00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 60/AH=00h - MDEBUG - GET STATUS - 
+AH = 00h
+DS:SI - password or a null byte
+Return: AX = return code
+FFFEh password is invalid
+FFFDh display mode is invalid
+else successful
+ES = value of the monitor register SE
+DI = value of the monitor register OF
+CH = monitor color
+CL = interpreter color
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 60/AH=00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6639.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6641.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MDEBUG - GET STATUS</font></h3>
+<PRE>
+AH = 00h
+DS:SI -> password or a null byte<br>
+<p><b>Return:</b><br>AX = return code
+FFFEh password is invalid
+FFFDh display mode is invalid
+else successful
+ES = value of the monitor register SE
+DI = value of the monitor register OF
+CH = monitor color
+CL = interpreter color
+BH = monitor start line
+BL = interpreter start line
+AH = makecode of the hotkey
+AL = ASCII code of the hotkey
+DL = status of special keys (only SHIFT, ALT, CTRL) for the
+hotkey (coded as for the keyboard flag at 0040h:0017h)
+DH = basic process number for the communication with drivers
+process number for the display driver, DH+1 = process
+number for the command driver(s)
+DS:SI -> MDEBUG identification table <a href="rb-6640.htm#Table3304">(see #03304)</a>
+</PRE>
+<p><b>Program:</b>
+MDEBUG is a shareware memory-resident debugging tool by Bernd
+Schemmer, including a memory monitor, an interpreter, and a
+disassembler
+<p><b>Notes:</b>
+MDEBUG uses INT 60 by default, but may be directed to any of INT 60
+through INT 67; the interrupt handler is preceded by the signature
+"USERINT" and is not chained.
+If DS:SI points at a null byte, MDEBUG will prompt for a password if
+passwords are active; enough stack space must be provided for an
+INT 10h call (which MDEBUG uses while prompting for the password)
+<p><b>See Also:</b>
+<a href="rb-6656.htm">AH=02h"MDEBUG"</a>
+<PRE>
+<p><b>Index:</b><br>Hotkeys;MDEBUG
+<p>
+Format of MDEBUG identification table:
+<a name=table3304></a>
+Offset  Size    Description     (Table 03304)
+-2     WORD    entry offset
+00h    WORD    CS of MDEBUG
+02h    DWORD   old INT 08h vector
+06h    DWORD   old INT 09h vector
+0Ah    DWORD   address INT 16h routine used by MDEBUG
+0Eh    BYTE    length of version string
+0Fh  N BYTEs   version string
+</PRE>
+<p>
+<b>Category: <a href="cat-006.htm">
+Debuggers/Debugging Tools</a>
+- <a href="int-60.htm">
+Int 60h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6639.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6641.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

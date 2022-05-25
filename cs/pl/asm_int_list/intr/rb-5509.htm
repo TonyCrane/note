@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=D104h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=D104h - MDEBUG command driver - EXECUTE KEY IN THE INTERPRETER - 
+AX = D104h
+DS:SI - MDEBUG data structure (see #03078)
+Return: AL = FFh
+AH = return code
+00h key processed, read next key
+01h leave MDEBUG popup session
+02h leave MDEBUG popup session and automactically popup again if
+DOS is not busy
+03h signal an error (beep)
+04h driver has redefined the key, proceed with the new key
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=D104h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5508.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5510.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MDEBUG command driver - EXECUTE KEY IN THE INTERPRETER</font></h3>
+<PRE>
+AX = D104h
+DS:SI -> MDEBUG data structure <a href="rb-5507.htm#Table3078">(see #03078)</a><br>
+<p><b>Return:</b><br>AL = FFh
+AH = return code
+00h key processed, read next key
+01h leave MDEBUG popup session
+02h leave MDEBUG popup session and automactically popup again if
+DOS is not busy
+03h signal an error (beep)
+04h driver has redefined the key, proceed with the new key
+BX = new key code
+MDEBUG won't pass the new key to the command driver(s)
+05h put new command line into the input buffer
+DS:SI -> new command line (ASCIZ string, max 66 chars)
+06h process new command line
+DS:SI -> new command line (ASCIZ string, max 66 chars)
+else treat like code 00h
+</PRE>
+<p><b>Note:</b>
+This function must end with a far call to the old INT 2F handler if the
+driver does not support the key in BX.  Otherwise, the driver must
+not chain to the old INT 2F.
+<p><b>See Also:</b>
+<a href="rb-5508.htm">AX=D103h</a>
+<p>
+<b>Category: <a href="cat-006.htm">
+Debuggers/Debugging Tools</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5508.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5510.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

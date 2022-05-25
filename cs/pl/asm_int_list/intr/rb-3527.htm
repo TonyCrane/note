@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=6Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=6Ah - Novell NetWare - QUEUE SERVICES - REMOVE JOB FROM QUEUE (OLD) - 
+AH = E3h subfn 6Ah
+DS:SI - request buffer (see #01975)
+ES:DI - reply buffer (see #01974)
+Return: AL = status (00h,96h,D0h,D1h,D5h,D6h,FEh,FFh) (see #01961)
+Notes: this function is supported by Advanced NetWare 2.1+
+caller must have created the job or be an operator
+SeeAlso: AH=E3h/SF=68h,AH=E3h/SF=6Ah,AH=E3h/SF=6Eh,AX=F217h/SF=6Ah
+Format of NetWare Remove Job From Queue (old) request buffer:
+Offset Size  Description   (Table 01975)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=6Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3526.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3528.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - QUEUE SERVICES - REMOVE JOB FROM QUEUE (OLD)</font></h3>
+<PRE>
+AH = E3h subfn 6Ah
+DS:SI -> request buffer <a href="rb-3527.htm#Table1975">(see #01975)</a>
+ES:DI -> reply buffer <a href="rb-3526.htm#Table1974">(see #01974)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,D0h,D1h,D5h,D6h,FEh,FFh) (see #01961)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+Caller must have created the job or be an operator
+<p><b>See Also:</b>
+<a href="rb-3525.htm">AH=E3h/SF=68h</a> - <a href="rb-3527.htm">AH=E3h/SF=6Ah</a> - <a href="rb-3531.htm">AH=E3h/SF=6Eh</a> - <a href="rb-3771.htm"
+<PRE>
+<p>
+Format of NetWare "Remove Job From Queue (old)" request buffer:
+<a name=table1975></a>
+Offset  Size    Description     (Table 01975)
+00h    WORD    0007h (length of following data)
+02h    BYTE    6Ah (subfunction "Remove Job From Queue (old)")
+03h    DWORD   (big-endian) object ID of queue
+07h    WORD    (big-endian) job number
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3526.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3528.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

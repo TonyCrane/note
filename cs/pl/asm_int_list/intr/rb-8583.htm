@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int E0/CL=B5h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int E0/CL=B5h - REAL/32 - MP_MAP - MAP PHYSICAL MEMORY - 
+CL = B5h
+DS:DX - Memory Physical Parameter Block (see #04057)
+Return: AX = status (0000h successful, FFFFh error)
+may destroy SI,DI,DS
+SeeAlso: INT E0/CL=B3h
+Format of REAL/32 Memory Physical Parameter Block:
+Offset Size  Description   (Table 04057)
+00h  WORD  4K page number in first megabyte to be mapped
+02h  WORD  number of page to map into above page, or 0000h to unmap
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int E0/CL=B5h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8582.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8584.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>REAL/32 - MP_MAP - MAP PHYSICAL MEMORY</font></h3>
+<PRE>
+CL = B5h
+DS:DX -> Memory Physical Parameter Block <a href="rb-8583.htm#Table4057">(see #04057)</a><br>
+<p><b>Return:</b><br>AX = status (0000h successful, FFFFh error)
+may destroy SI,DI,DS
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-8581.htm">INT E0/CL=B3h</a>
+<PRE>
+<p>
+Format of REAL/32 Memory Physical Parameter Block:
+<a name=table4057></a>
+Offset  Size    Description     (Table 04057)
+00h    WORD    4K page number in first megabyte to be mapped
+02h    WORD    number of page to map into above page, or 0000h to unmap
+04h    WORD    window number (0000h, as only one window currently supported)
+06h    WORD    reserved
+</PRE>
+<p><b>Note:</b>
+All users of the system share the window, so applications should not
+use it for arguments to system calls, attempt to read/write to/from
+files via the window, etc.
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-E0.htm">
+Int E0h</a>
+- <a href="alpha-r.htm">
+R</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8582.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8584.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

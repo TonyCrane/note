@@ -1,0 +1,160 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F - CiriSOFT Spanish University of Valladolid TSR's Interface - 
+AH = xx (dynamically assigned based upon a search for a multiplex
+number from C0h to FFh which doesn't answer installed)
+AL = 00h installation check
+ES:DI = 1492h:1992h
+Return: AL = 00h not installed
+01h not installed, not OK to install
+FFh installed; and if ES:DI was 1492h:1992h on entry, ES:DI will
+point to author_name_ver table (see #02588)
+AH = FFh
+Note:  this interface permits advanced communication with TSRs: it is possible
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4253.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4255.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>CiriSOFT Spanish University of Valladolid TSR's Interface</font></h3>
+<PRE>
+AH = xx (dynamically assigned based upon a search for a multiplex
+number from C0h to FFh which doesn't answer installed)
+AL = 00h installation check
+ES:DI = 1492h:1992h<br>
+<p><b>Return:</b><br>AL = 00h not installed
+01h not installed, not OK to install
+FFh installed; and if ES:DI was 1492h:1992h on entry, ES:DI will
+point to author_name_ver table <a href="rb-4254.htm#Table2588">(see #02588)</a>
+AH = FFh
+</PRE>
+<p><b>Note:</b>
+This interface permits advanced communication with TSRs: it is possible
+to make a generic uninstall utility, advanced TSR relocator programs
+in order to fit fragmented memory areas, etc.
+<PRE>
+<p><b>See also:</b><br>INT 2D"AMIS",INT 2F"Compuscience"
+<p><b>Index:</b><br>Installation check;CiriSOFT TSR interface
+<p><b>Index:</b><br>Uninstall;CiriSOFT TSR interface
+<p>
+Format of CiriSOFT author_name_ver table:
+<a name=table2588></a>
+Offset  Size    Description     (Table 02588)
+-16    WORD    segment of the start of the resident TSR code (CS in programs
+with PSP, XMS upper memory segment if installed as UMB...)
+-14    WORD    offset of the start of the resident TSR code (frequently 100h
+in *.COM programs and 0 in upper memory TSR's).
+-12    WORD    memory used by TSR (in paragraphs). Knowing the memory area
+used by TSR is possible to determine if hooked vectors are
+still pointing it (and if it is safe to uninstall).
+-10    BYTE    characteristics byte <a href="rb-4254.htm#Table2589">(see #02589)</a>
+-9     BYTE    number of multiplex entry used (redefinition available). Note
+that the TSR must use THIS variable in it's INT 2Fh handler.
+-8     WORD    offset to vector_area table <a href="rb-4254.htm#Table2590">(see #02590)</a>
+-6     WORD    offset to extra_area table <a href="rb-0000.htm#Table0"></a>(see #02591,#02589 [bit 7])
+-4   4 BYTEs   signature string "*##*"
+00h    var     "AUTHOR:PROGRAM_NAME:VERSION",0  (variable length, this area
+is used in order to determine if the TSR is already resident
+and it's version code; the ':' char is used as delimiter)
+<p>
+Bitfields for CiriSOFT characteristics byte:
+<a name=table2589></a>
+Bit(s)  Description     (Table 02589)
+0-2    type.
+000 normal program (with PSP).
+001 upper XMS memory block (needed HIMEM.SYS function to free memory
+when uninstalling).
+010 device driver (*.SYS).
+011 device driver in EXE format.
+1xx others (reserved)
+3-6    reserved
+7      set if extra_table defined and supported <a href="rb-4254.htm#Table2591">(see #02591)</a>
+</PRE>
+<p><b>See Also:</b>
+#02588
+<PRE>
+<p>
+Format of CiriSOFT vector_area table:
+<a name=table2590></a>
+Offset  Size    Description     (Table 02590)
+-1     BYTE    number of vectors intercepted by TSR
+00h    BYTE    first vector number
+01h    DWORD   first vector pointer before installing the TSR
+05h    BYTE    second vector number
+06h    DWORD   second vector pointer before installing the TSR
+0Ah    ...     (and so on)
+</PRE>
+<p><b>Note:</b>
+The TSR must use these variables to invoke the previous interrupt
+handler routines
+<p><b>See Also:</b>
+#02588
+<PRE>
+<p>
+Format of extra_area table (needed only to improve relocation feature):
+<a name=table2591></a>
+Offset  Size    Description     (Table 02591)
+00h    WORD    offset to external_ctrl table <a href="rb-4254.htm#Table2592">(see #02592)</a>
+0000h if not supported
+02h    WORD    reserved for future use (0)
+</PRE>
+<p><b>See Also:</b>
+#02588
+<PRE>
+<p>
+Format of CiriSOFT external_ctrl table:
+<a name=table2592></a>
+Offset  Size    Description     (Table 02592)
+<p><b>00h    BYTE    bit 0:</b><br>TSR is relocatable (no absolute segment references)
+01h    WORD    offset to a variable which can activate/inhibit the TSR
+---And if bit 0 in offset 00h is off:
+03h    DWORD   pointer to ASCIZ pathname for executable file which supports
+/SR parameter (silent installation & inhibit)
+07h    DWORD   pointer to first variable to initialize on the copy reloaded
+from the previous TSR still resident
+0Bh    DWORD   pointer to last variable (all variables packed in one block)
+</PRE>
+<p>
+<b>Category: <a href="cat-042.htm">
+TSR Libraries</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4253.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4255.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

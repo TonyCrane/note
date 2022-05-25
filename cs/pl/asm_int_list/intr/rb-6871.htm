@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AH=2Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AH=2Ah - PC/TCP kernel v2.05+ - GET CONFIGURATION INFORMATION - 
+AH = 2Ah
+DS:SI - 26-byte buffer for configuration information (see #03472)
+Return: CF clear
+AX = 0000h
+buffer filled
+Notes: size of buffer may vary with kernel version; 26 bytes is the size for
+versions 2.05 through 2.2
+this function is not supported by Beame&Whiteside's BWPCTCP v3.0a shim
+SeeAlso: INT 61FTP Software,INT 61/AH=00hPC/TCP
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AH=2Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6870.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6872.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC/TCP kernel v2.05+ - GET CONFIGURATION INFORMATION</font></h3>
+<PRE>
+AH = 2Ah
+DS:SI -> 26-byte buffer for configuration information <a href="rb-6871.htm#Table3472">(see #03472)</a><br>
+<p><b>Return:</b><br>CF clear
+AX = 0000h
+buffer filled
+</PRE>
+<p><b>Notes:</b>
+Size of buffer may vary with kernel version; 26 bytes is the size for
+versions 2.05 through 2.2.
+This function is not supported by Beame&Whiteside's BWPCTCP v3.0a shim
+<p><b>See Also:</b>
+<a href="rb-6703.htm">INT 61"FTP Software"</a> - <a href="rb-6704.htm">INT 61/AH=00h"PC/TCP"</a>
+<PRE>
+<p>
+Format of PC/TCP configuration information:
+<a name=table3472></a>
+Offset  Size    Description     (Table 03472)
+00h    BYTE    maximum TCP connections available
+01h    BYTE    maximum UDP connections available
+02h    BYTE    maximum IP connections available
+03h    BYTE    maximum Raw Net connections available
+04h    BYTE    number of TCP connections currently in use
+05h    BYTE    number of UDP connections currently in use
+06h    BYTE    number of IP connections currently in use
+07h    BYTE    number of Raw Net connections currently in use
+08h    WORD    number of local network descriptors active
+0Ah    WORD    number of global network descriptors active
+0Ch    BYTE    maximum header size on network
+0Dh    BYTE    maximum trailer size on network
+0Eh    WORD    size of large packet buffer
+10h    WORD    number of network interfaces attached
+12h    DWORD   milliseconds since kernel started
+16h    DWORD   IP broadcast address
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6870.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6872.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

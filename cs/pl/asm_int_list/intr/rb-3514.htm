@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=41h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=41h - Novell NetWare - BINDERY SERVICES - ADD BINDERY OBJECT TO SET - 
+AH = E3h subfn 41h
+DS:SI - request buffer (see #01951)
+ES:DI - reply buffer (see #01949)
+Return: AL = status (see #01950)
+Desc:  add the specified object to an object's group property
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=E3h/SF=40h,AH=E3h/SF=42h,AH=E3h/SF=43h,AX=F217h/SF=41h
+(Table 01950)
+Values for NetWare function status:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=41h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3513.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3515.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - BINDERY SERVICES - ADD BINDERY OBJECT TO SET</font></h3>
+<PRE>
+AH = E3h subfn 41h
+DS:SI -> request buffer <a href="rb-3514.htm#Table1951">(see #01951)</a>
+ES:DI -> reply buffer <a href="rb-3513.htm#Table1949">(see #01949)</a><br>
+<p><b>Return:</b><br>AL = status (see #01950)
+</PRE>
+<p><b>Desc:</b>
+Add the specified object to an object's group property
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3513.htm">AH=E3h/SF=40h</a> - <a href="rb-3515.htm">AH=E3h/SF=42h</a> - <a href="rb-3516.htm">AH=E3h/SF=43h</a> - <a href="rb-3753.htm"
+<PRE>
+<p>
+<a name=table1950></a>
+(Table 01950)
+Values for NetWare function status:
+00h    successful
+96h    server out of memory
+E9h    member already exists
+EAh    member does not exist
+EBh    not a group property
+F0h    wildcard not allowed
+F8h    can't write property
+F9h    not permitted to read property
+FBh    no such property
+FCh    no such object
+FEh    server bindery locked
+FFh    bindery failure
+</PRE>
+<p><b>See Also:</b>
+#01946 - #01961
+<PRE>
+<p>
+Format of NetWare "Add Bindery Object to Set" request buffer:
+<a name=table1951></a>
+Offset  Size    Description     (Table 01951)
+00h    WORD    length of following data (max 75h)
+02h    BYTE    41h (subfunction "Add Bindery Object to Set")
+03h    WORD    (big-endian) type of object
+05h    BYTE    length of object's name
+06h  N BYTEs   object name.
+BYTE    length of property name (01h-0Fh)
+N BYTEs   property name.
+WORD    (big-endian) type of member object.
+BYTE    length of member object's name
+N BYTEs   member object's name
+</PRE>
+<p><b>See Also:</b>
+#01949
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3513.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3515.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

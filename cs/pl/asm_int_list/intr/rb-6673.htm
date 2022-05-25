@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 60/AH=0Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 60/AH=0Bh - FTP Packet Driver 1.09 - HIGH-PERF FUNC - ASYNCHRONOUS SEND PACKET - 
+AH = 0Bh
+DS:SI - buffer
+CX = length of buffer
+ES:DI - FAR function to call when buffer becomes available (see #03311)
+Return: CF set on error
+DH = error code (0Bh,0Ch) (see #03305)
+CF clear if successful
+Notes: unlike function 04h, the buffer is not available for modification as
+soon as the call returns; the buffer may be queued by the driver and
+not processed until later
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 60/AH=0Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6672.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6674.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FTP Packet Driver 1.09 - HIGH-PERF FUNC - ASYNCHRONOUS SEND PACKET</font></h3>
+<PRE>
+AH = 0Bh
+DS:SI -> buffer
+CX = length of buffer
+ES:DI -> FAR function to call when buffer becomes available <a href="rb-6673.htm#Table3311">(see #03311)</a><br>
+<p><b>Return:</b><br>CF set on error
+DH = error code (0Bh,0Ch) <a href="rb-6655.htm#Table3305">(see #03305)</a>
+CF clear if successful
+</PRE>
+<p><b>Notes:</b>
+Unlike function 04h, the buffer is not available for modification as
+soon as the call returns; the buffer may be queued by the driver and
+not processed until later.
+This function has been dropped from v1.10+ of the specification and
+replaced by function 0Ch
+<p><b>See Also:</b>
+<a href="rb-6446.htm">AH=04h"Packet Driver"</a> - <a href="rb-6446.htm">AH=0Ch"Packet Driver"</a>
+<PRE>
+<p>
+<a name=table3311></a>
+(Table 03311)
+Values packet driver completion function is called with:.
+AX = result
+00h copy OK
+nonzero error.
+ES:DI -> buffer passed to INT 60/AH=0Bh call
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-60.htm">
+Int 60h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6672.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6674.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

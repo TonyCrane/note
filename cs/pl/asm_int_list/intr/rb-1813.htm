@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 16/AX=55FEh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 16/AX=55FEh - Microsoft QBASIC internal - MICROSOFT COOPERATION WITH TSR - 
+AX = 55FEh
+DX = function
+0000h initialize
+ES:BX - ??? function
+ES:CX - ??? structure
+FFFFh shutdown/reset
+Return: AX = result
+4D4Bh only the INT 1B handler will be installed.
+other: handlers for INT 08, INT 09, INT 16, INT 1B, and INT 1C
+are installed
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 16/AX=55FEh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1812.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1814.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Microsoft QBASIC internal - MICROSOFT COOPERATION WITH TSR</font></h3>
+<PRE>
+AX = 55FEh
+DX = function
+0000h initialize
+ES:BX -> ??? function
+ES:CX -> ??? structure
+FFFFh shutdown/reset<br>
+<p><b>Return:</b><br>AX = result
+4D4Bh only the INT 1B handler will be installed.
+<p><b>other:</b><br>Handlers for INT 08, INT 09, INT 16, INT 1B, and INT 1C
+are installed
+</PRE>
+<p><b>Notes:</b>
+The pointer in ES:CX seems to point at a structure defining a callback
+function when new keyboard keys are pressed. If a TSR returns
+AX=4D4Bh, QBASIC will stop (with IRQ's and interrupts enabled)..
+These calls are also made by MS-DOS 6.0's DOSSHELL at startup, exit,
+and before/after shelling out.
+Since EDIT.COM and HELP.COM merely invoke QBASIC, those two programs
+will also cause this interface to be invoked.
+K3PLUS v6.07+ supports this function, but will never invoke the
+callback function
+<p><b>See Also:</b>
+<a href="rb-1812.htm">AX=5500h</a> - <a href="rb-1875.htm">AX=AF4Dh</a> - <a href="rb-2296.htm">INT 1A/AX=3601h</a>
+<p>
+<b>Category: <a href="cat-002.htm">
+Applications</a>
+- <a href="int-16.htm">
+Int 16h</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1812.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1814.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,115 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=E0h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=E0h - Novell NetWare - FILE SERVER - GET LOGICAL RECORD INFORMATION - 
+AH = E3h subfn E0h
+DS:SI - request buffer (see #02064)
+ES:DI - reply buffer (see #02065)
+Return: AL = status (00h,C6h) (see #02053)
+Notes: this function is supported by Advanced NetWare 2.1+
+the calling workstation must have console operator privileges
+SeeAlso: AH=E3h/SF=C8h,AH=E3h/SF=DDh,AH=E3h/SF=DFh,AH=E3h/SF=E2h
+SeeAlso: AX=F217h/SF=E0h
+Format of NetWare Get Logical Record Information request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=E0h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3571.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3573.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - GET LOGICAL RECORD INFORMATION</font></h3>
+<PRE>
+AH = E3h subfn E0h
+DS:SI -> request buffer <a href="rb-3572.htm#Table2064">(see #02064)</a>
+ES:DI -> reply buffer <a href="rb-3572.htm#Table2065">(see #02065)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02053)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The calling workstation must have console operator privileges
+<p><b>See Also:</b>
+<a href="rb-3548.htm">AH=E3h/SF=C8h</a> - <a href="rb-3569.htm">AH=E3h/SF=DDh</a> - <a href="rb-3571.htm">AH=E3h/SF=DFh</a> - <a href="rb-3574.htm"
+<p><b>See Also:</b>
+<a href="rb-3828.htm">AX=F217h/SF=E0h</a>
+<PRE>
+<p>
+Format of NetWare "Get Logical Record Information" request buffer:
+<a name=table2064></a>
+Offset  Size    Description     (Table 02064)
+00h    WORD    length of following data (max 67h)
+02h    BYTE    E0h (subfunction "Get Logical Record Information")
+03h    WORD    (big-endian) last record seen (0000h on first call)
+05h    BYTE    length of logical record's name
+06h  N BYTEs   logical record's name
+</PRE>
+<p><b>See Also:</b>
+#02065 - #02239 at AH=E3h/SF=E0h
+<PRE>
+<p>
+Format of NetWare "Get Logical Record Information" reply buffer:
+<a name=table2065></a>
+Offset  Size    Description     (Table 02065)
+00h    WORD    (call) size of following results record (max 200h)
+02h    WORD    (big-endian) number of logical connections logging the record
+04h    WORD    (big-endian) number of logical connections with shareable lock
+06h    WORD    (big-endian) next request record (place in "last record" field
+on next call)
+08h    BYTE    locked exclusively if nonzero
+09h    BYTE    number of records following
+0Ah    var     array of Task Information Records <a href="rb-3572.htm#Table2066">(see #02066)</a>
+</PRE>
+<p><b>See Also:</b>
+#02064 - #02239 at AH=E3h/SF=E0h
+<PRE>
+<p>
+Format of NetWare Task Information Record:
+<a name=table2066></a>
+Offset  Size    Description     (Table 02066)
+00h    WORD    (big-endian) logical connection number
+02h    BYTE    task number
+03h    BYTE    lock status <a href="rb-3569.htm#Table2057">(see #02057)</a>
+</PRE>
+<p><b>See Also:</b>
+#02065
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3571.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3573.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,129 @@
+<HTML>
+<HEAD>
+<TITLE>Int 61/AX=0004h/SF=0013h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 61/AX=0004h/SF=0013h - Banyan VINES - GET VALUE OF GLOBAL VARIABLE - 
+AX = 0004h subfn 0013h
+DS:DX - request block (see #03421)
+Return: AX = status (see also #03400)
+0000h successful
+0033h invalid request ID (returned if variable index out of range)
+Desc:  Returns the value of the specified global variable
+Note:  The data will be truncated if the specified buffer is not large enough.
+Check the length word in the request block to find out how many
+bytes should have been copied.
+SeeAlso: AX=0004h/SF=0014h,AX=0006h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 61/AX=0004h/SF=0013h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6756.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6758.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Banyan VINES - GET VALUE OF GLOBAL VARIABLE</font></h3>
+<PRE>
+AX = 0004h subfn 0013h
+DS:DX -> request block <a href="rb-6757.htm#Table3421">(see #03421)</a><br>
+<p><b>Return:</b><br>AX = status (see also #03400)
+0000h successful
+0033h invalid request ID (returned if variable index out of range)
+</PRE>
+<p><b>Desc:</b>
+Returns the value of the specified global variable
+<p><b>Note:</b>
+The data will be truncated if the specified buffer is not large enough.
+Check the length word in the request block to find out how many
+bytes should have been copied.
+<p><b>See Also:</b>
+<a href="rb-6758.htm">AX=0004h/SF=0014h</a> - <a href="rb-6766.htm">AX=0006h</a>
+<PRE>
+<p>
+Format of request block:
+<a name=table3421></a>
+Offset  Size    Description     (Table 03421)
+00h    WORD    0013h
+02h    WORD    variable index (0000h-001Fh) <a href="rb-6757.htm#Table3422">(see #03422)</a>
+04h    WORD    buffer length (on exit set to # of bytes actually needed)
+06h    DWORD   far pointer to result buffer
+</PRE>
+<p><b>See Also:</b>
+#03423
+<PRE>
+<p>
+<a name=table3422></a>
+(Table 03422)
+Values for variable indices:
+Index   Length  Description
+0000h     1    ???
+0001h    16    StreetTalk port
+0002h     4    StreetTalk session handle
+0003h     6    colors
+0004h    64    StreetTalk name of currently logged in user
+0005h     0    old clear text password (not applicable)
+0006h     0    default group (not applicable)
+0007h     1    number of messages in message queue
+0008h     1    message flag
+0009h    16    TalkPort
+000Ah     2    TalkPort socket
+000Bh    64    StreetTalk name of mail service
+000Ch     2    message timeout
+000Dh     2    next message place
+000Eh   246    message queue (3 times 80 characters + 2 flag bytes)
+000Fh    14    system nonce
+0010h     2    failed login count
+0011h     1    new mail message received
+0012h     8    mail service capabilities
+0013h     3    printer port diverted
+0014h    32    international location
+0015h    16    IPC port of drive Z:
+0016h  1024    pointer to current directory table
+0017h     2    maximum number of file volume mappings
+0018h    24    routine to call back for messages (6 far pointers)
+0019h     4    current virtual machine
+001Ah    20    DOS redirector message bell tones
+001Bh     2    various flags used for internal communication
+001Ch     0    OS/2 client configuration (not applicable)
+001Dh     8    redirector/IFS file version
+001Eh     0    reserved (not applicable)
+001Fh     4    address of VVINESD.386 dispatch
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-61.htm">
+Int 61h</a>
+- <a href="alpha-b.htm">
+B</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6756.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6758.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

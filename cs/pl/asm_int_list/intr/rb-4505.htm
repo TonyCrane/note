@@ -1,0 +1,89 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1607h/BX=0014h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1607h/BX=0014h - MS Windows - VNETBIOS VIRTUAL DEVICE API - 
+AX = 1607h
+BX = 0014h (VxD identifier of VNETBIOS)
+Return: ES:DI - 128-byte table specifying VNETBIOS actions for each NetBIOS
+command code (see #02635)
+Note:  VNETBIOS (Virtual NetBIOS) calls this function to determine whether
+the NetBIOS has an extensions Windows should know about
+SeeAlso: AX=1607h/BX=000Ch,AX=1607h/BX=0010h,AX=1607h/BX=0015h
+(Table 02635)
+Values for VNETBIOS action code:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1607h/BX=0014h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4504.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4506.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - VNETBIOS VIRTUAL DEVICE API</font></h3>
+<PRE>
+AX = 1607h
+BX = 0014h (VxD identifier of "VNETBIOS")<br>
+<p><b>Return:</b><br>ES:DI -> 128-byte table specifying VNETBIOS actions for each NetBIOS
+command code <a href="rb-4505.htm#Table2635">(see #02635)</a>
+</PRE>
+<p><b>Note:</b>
+VNETBIOS (Virtual NetBIOS) calls this function to determine whether
+the NetBIOS has an extensions Windows should know about
+<p><b>See Also:</b>
+<a href="rb-4502.htm">AX=1607h/BX=000Ch</a> - <a href="rb-4504.htm">AX=1607h/BX=0010h</a> - <a href="rb-4506.htm">AX=1607h/BX=0015h</a>
+<PRE>
+<p>
+<a name=table2635></a>
+(Table 02635)
+Values for VNETBIOS action code:
+00h    "VN_Unknown" unknown command
+04h    "VN_No_Map"  no memory mapping necessary
+08h    "VN_Map_In"  input buffer is quickly used, so no global mapping needed
+0Ch    "VN_Map_In"  output buffer is quickly used, so no global mapping needed
+10h    "VN_Map_In_Out"  buffer is quickly used, so no global mapping needed
+14h    "VN_Chain_Send"  the chain-send command
+18h    "VN_Cancel"     special case for cancel command
+1Ch    "VN_Buffer_In"  buffer is incoming
+20h    "VN_Buffer_Out" buffer is outgoing
+24h    "VN_Buffer_In_Out" buffer used for both incoming and outgoing data
+</PRE>
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4504.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4506.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

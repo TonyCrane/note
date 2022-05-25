@@ -1,0 +1,103 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AX=1E00h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AX=1E00h - VIDEO - FLAT-PANEL - READ INFORMATION - 
+AX = 1E00h
+Return: AL = 1Eh if function supported
+BL = flat-panel status (see #00052)
+ES:DI - information table (see #00053)
+Note:  IBM classifies this function as optional
+SeeAlso: AX=1E01h,AX=1E02h,AX=1E03h,AX=1E04h,AX=1E05h,AX=1EFEh
+Bitfields for flat-panel status:
+Bit(s) Description   (Table 00052)
+7-3  reserved
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AX=1E00h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0226.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0228.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - FLAT-PANEL - READ INFORMATION</font></h3>
+<PRE>
+AX = 1E00h<br>
+<p><b>Return:</b><br>AL = 1Eh if function supported
+BL = flat-panel status <a href="rb-0227.htm#Table52">(see #00052)</a>
+ES:DI -> information table <a href="rb-0227.htm#Table53">(see #00053)</a>
+</PRE>
+<p><b>Note:</b>
+IBM classifies this function as optional
+<p><b>See Also:</b>
+<a href="rb-0228.htm">AX=1E01h</a> - <a href="rb-0229.htm">AX=1E02h</a> - <a href="rb-0230.htm">AX=1E03h</a> - <a href="rb-0231.htm">AX=1E04h</a> -
+<PRE>
+<p>
+Bitfields for flat-panel status:
+<a name=table52></a>
+Bit(s)  Description     (Table 00052)
+7-3    reserved
+2      color display
+1      flat panel is active
+0      flat panel is attached
+</PRE>
+<p><b>See Also:</b>
+#00053
+<PRE>
+<p>
+Format of flat-panel information table:
+<a name=table53></a>
+Offset  Size    Description     (Table 00053)
+00h    BYTE    number of WORDs in the remainder of the table
+01h    WORD    number of vertical pixels per meter
+03h    WORD    number of horizontal pixels per meter
+05h    WORD    total number of vertical pixels
+07h    WORD    total number of horizontal pixels
+09h    WORD    vertical pixel separation in micrometers (center-to-center)
+0Bh    WORD    horizontal pixel separation in micrometers
+0Dh    WORD    range of gray levels available, less 1
+0Fh    WORD    number of red levels available, less 1 (0000h if nonochrome)
+11h    WORD    number of green levels available, less 1 (0000h if nonochrome)
+13h    WORD    number of blue levels available, less 1 (0000h if nonochrome)
+</PRE>
+<p><b>See Also:</b>
+#00052
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0226.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0228.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

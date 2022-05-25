@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=35h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=35h - Novell NetWare - BINDERY SERVICES - GET BINDERY OBJECT ID - 
+AH = E3h subfn 35h
+DS:SI - request buffer (see #01925)
+ES:DI - reply buffer (see #01926)
+Return: AL = status (00h,96h,FCh,FEh,FFh) (see #01927)
+Notes: this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+the requesting workstation must be logged into the file server with
+read access to the bindery object
+SeeAlso: AH=E3h/SF=36h,AH=E3h/SF=44h,AX=F217h/SF=35h
+Format of NetWare Get Bindery Object ID request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=35h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3501.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3503.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - BINDERY SERVICES - GET BINDERY OBJECT ID</font></h3>
+<PRE>
+AH = E3h subfn 35h
+DS:SI -> request buffer <a href="rb-3502.htm#Table1925">(see #01925)</a>
+ES:DI -> reply buffer <a href="rb-3502.htm#Table1926">(see #01926)</a><br>
+<p><b>Return:</b><br>AL = status (00h,96h,FCh,FEh,FFh) (see #01927)
+</PRE>
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX.
+The requesting workstation must be logged into the file server with
+read access to the bindery object
+<p><b>See Also:</b>
+<a href="rb-3503.htm">AH=E3h/SF=36h</a> - <a href="rb-3517.htm">AH=E3h/SF=44h</a> - <a href="rb-3741.htm">AX=F217h/SF=35h</a>
+<PRE>
+<p>
+Format of NetWare "Get Bindery Object ID" request buffer:
+<a name=table1925></a>
+Offset  Size    Description     (Table 01925)
+00h    WORD    length of following data (max 33h)
+02h    BYTE    35h (subfunction "Get Bindery Object ID")
+03h    WORD    (big-endian) type of object
+05h    BYTE    length of object's name
+06h  N BYTEs   object's name
+</PRE>
+<p><b>See Also:</b>
+#01926 - #02184
+<PRE>
+<p>
+Format of NetWare "Get Bindery Object ID" reply buffer:
+<a name=table1926></a>
+Offset  Size    Description     (Table 01926)
+00h    WORD    (call) 0036h (length of following buffer space)
+02h    DWORD   (big-endian) object ID
+06h    WORD    (big-endian) type of object
+08h 48 BYTEs   object name
+</PRE>
+<p><b>See Also:</b>
+#01925 - #02184 at AX=F217h/SF=35h
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3501.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3503.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,109 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=F5h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=F5h - Novell NetWare - GET FILE SERVER EXTENDED MISC INFORMATION - 
+AX = F217h subfn F5h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02273)
+ES:DI - reply buffer (see #02274)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F217h/SF=11h,AX=F217h/SF=C9h,AX=F217h/SF=E8h
+Format of NetWare Get File Server Extended Misc Information request packet:
+Offset Size  Description   (Table 02273)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=F5h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3847.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3849.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - GET FILE SERVER EXTENDED MISC INFORMATION</font></h3>
+<PRE>
+AX = F217h subfn F5h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3848.htm#Table2273">(see #02273)</a>
+ES:DI -> reply buffer <a href="rb-3848.htm#Table2274">(see #02274)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3724.htm">AX=F217h/SF=11h</a> - <a href="rb-3805.htm">AX=F217h/SF=C9h</a> - <a href="rb-3835.htm">AX=F217h/SF=E8h</a>
+<PRE>
+<p>
+Format of NetWare "Get File Server Extended Misc Information" request packet:
+<a name=table2273></a>
+Offset  Size    Description     (Table 02273)
+00h    WORD    length of following data
+02h    BYTE    F5h (subfunction "Get File Server Extended Misc Information")
+03h    BYTE    length of reply buffer
+</PRE>
+<p><b>See Also:</b>
+#02274
+<PRE>
+<p>
+Format of NetWare "Get File Server Extended Misc Information" reply packet:
+<a name=table2274></a>
+Offset  Size    Description     (Table 02274)
+00h    DWORD   system interval marker
+(up-time in clock ticks, wraps to 0 on reaching FFFFFFFFh)
+04h    BYTE    processor type
+00h Motorola 680x0
+01h Intel 8088/8086
+02h 80286
+05h    BYTE    reserved for future use
+06h    BYTE    number of service processes
+07h    BYTE    server utilization percentage
+08h    WORD    maximum bindery objects set by configuration
+0Ah    WORD    actual maximum bindery objects
+0Ch    WORD    current number of bindery objects
+0Eh    WORD    (big-endian) total server memory
+10h    WORD    (big-endian) wasted server memory
+12h    WORD    (big-endian) number of dynamic memory areas
+14h    DWORD   (big-endian) total space in dynamic memory area
+18h    DWORD   maximum dynamic space used
+1Ch    DWORD   dynamic space currently used
+</PRE>
+<p><b>See Also:</b>
+#02273
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3847.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3849.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

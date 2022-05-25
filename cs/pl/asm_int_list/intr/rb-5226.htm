@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=AFDEh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=AFDEh - Disk-Emu - INSTALLATION CHECK / GET VERSION - 
+AX = AFDEh
+ES:DI - 14-byte buffer for data (see #02979)
+Return: AX = CFDEh (Carlos Fernandez Disk-Emu) if installed
+BX = version (BH = major, BL = minor)
+Format of Disk-Emu information data:
+Offset Size  Description   (Table 02979)
+00h  BYTE  number of tracks
+01h  BYTE  sectors per track
+02h  WORD  bytes per sector
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=AFDEh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5225.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5227.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Disk-Emu - INSTALLATION CHECK / GET VERSION</font></h3>
+<PRE>
+AX = AFDEh
+ES:DI -> 14-byte buffer for data <a href="rb-5226.htm#Table2979">(see #02979)</a><br>
+<p><b>Return:</b><br>AX = CFDEh (Carlos Fernandez Disk-Emu) if installed
+BX = version (BH = major, BL = minor)
+<p>
+Format of Disk-Emu information data:
+<a name=table2979></a>
+Offset  Size    Description     (Table 02979)
+00h    BYTE    number of tracks
+01h    BYTE    sectors per track
+02h    WORD    bytes per sector
+04h    BYTE    number of heads
+<p><b>05h    BYTE    flag:</b><br>00h inactive, 01h active
+06h    BYTE    write protection (00h none, 01h full, 02h pseudo)
+07h    BYTE    saved (00h some unsaved data, 01h all data saved)
+08h    BYTE    disk in memory (00h no, 01h yes)
+09h    WORD    EMS handle
+0Bh    WORD    XMS handle
+0Dh    BYTE    memory type used for disk (00h XMS, 01h EMS)
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5225.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5227.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F223h/SF=01h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F223h/SF=01h - Novell NetWare v2+ - AFP CREATE DIRECTORY - 
+AX = F223h subfn 01h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02302)
+ES:DI - reply buffer (see #02303)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F223h/SF=02h,AX=F223h/SF=0Dh
+Format of NetWare AFP Create Directory request packet:
+Offset Size  Description   (Table 02302)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F223h/SF=01h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3869.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3871.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2+ - AFP CREATE DIRECTORY</font></h3>
+<PRE>
+AX = F223h subfn 01h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3870.htm#Table2302">(see #02302)</a>
+ES:DI -> reply buffer <a href="rb-3870.htm#Table2303">(see #02303)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3871.htm">AX=F223h/SF=02h</a> - <a href="rb-3882.htm">AX=F223h/SF=0Dh</a>
+<PRE>
+<p>
+Format of NetWare "AFP Create Directory" request packet:
+<a name=table2302></a>
+Offset  Size    Description     (Table 02302)
+00h    WORD    (big-endian) length of following data
+02h    BYTE    01h (subfunction "AFP Create Directory")
+03h    BYTE    volume number
+04h    DWORD   AFP entry ID
+08h    BYTE    reserved for future use
+09h 32 BYTEs   Finder information
+29h    BYTE    path length
+2Ah  N BYTEs   AFP-style directory pathname (relative to AFP entry ID)
+</PRE>
+<p><b>See Also:</b>
+#02303 - #02304 - #02330
+<PRE>
+<p>
+Format of NetWare "AFP Create Directory" reply packet:
+<a name=table2303></a>
+Offset  Size    Description     (Table 02303)
+00h    DWORD   new directory ID
+</PRE>
+<p><b>See Also:</b>
+#02302 - #02331
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3869.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3871.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

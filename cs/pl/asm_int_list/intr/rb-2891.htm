@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4409h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4409h - DOS 3.1+ - IOCTL - CHECK IF BLOCK DEVICE REMOTE - 
+AX = 4409h
+BL = drive number (00h = default, 01h = A:, etc)
+Return: CF clear if successful
+DX = device attribute word
+bit 15: drive is SUBSTituted
+bit 13: (DR DOS 3.41/5.0 local drives only) always set
+media ID needed
+bit 12: drive is remote
+bit 9: direct I/O not allowed
+CF set on error
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4409h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2890.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2892.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.1+ - IOCTL - CHECK IF BLOCK DEVICE REMOTE</font></h3>
+<PRE>
+AX = 4409h
+BL = drive number (00h = default, 01h = A:, etc)<br>
+<p><b>Return:</b><br>CF clear if successful
+DX = device attribute word
+<p><b>bit 15:</b><br>Drive is SUBSTituted
+<p><b>bit 13:</b><br>(DR DOS 3.41/5.0 local drives only) always set
+media ID needed
+<p><b>bit 12:</b><br>Drive is remote
+<p><b>bit  9:</b><br>Direct I/O not allowed.
+CF set on error
+AX = error code (01h,0Fh,15h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+On local drives, DX bits not listed above are the attribute word from
+the device driver header <a href="rb-0000.htm#Table0"></a>(see #01646 at AH=52h); for remote drives,
+the other bits appear to be undefined for MS-DOS versions prior to
+5.0 (they are all cleared in DOS 5+).
+Checking whether DX=0800h on return appears to be a fairly reliable
+method for detecting Microsoft's RAMDRIVE, though not for other
+ramdisks (there appears to be no simple yet foolproof method for
+detecting ramdisks, although the presence of only a single copy of
+the FAT and only a single head on non-removable devices is a fairly
+good indicator); for Windows95, RAMDRIVE returns DX=4800h.
+For non-existent remote drives, this function sometimes returns
+AX=0015h (drive not ready) instead of AX=000Fh (invalid drive) on
+the first call; a subsequent call will return the correct error
+code.
+This function was not supported by Digital Research's DOS Plus
+<p><b>See Also:</b>
+<a href="rb-2820.htm">AX=4400h</a> - <a href="rb-2890.htm">AX=4408h</a> - <a href="rb-2892.htm">AX=440Ah</a> - <a href="rb-4411.htm">INT 2F/AX=122B
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2890.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2892.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2A/AX=0300h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2A/AX=0300h - NETWORK - CHECK DIRECT I/O - 
+AX = 0300h
+DS:SI - ASCIZ device name (may be full path or only drive specifier--
+must include the colon)
+Return: CF clear if direct physical addressing (INT 13,INT 25) permissible
+CF set if access via files only
+Notes: do not use direct disk accesses if this function returns CF set or the
+device is redirected (INT 21/AX=5F02h)
+use AH=00h to determine whether the network is installed; if not,
+direct physical access is allowed
+may take some time to execute, so programs which need to check
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2A/AX=0300h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4129.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4131.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>NETWORK - CHECK DIRECT I/O</font></h3>
+<PRE>
+AX = 0300h
+DS:SI -> ASCIZ device name (may be full path or only drive specifier--
+must include the colon)<br>
+<p><b>Return:</b><br>CF clear if direct physical addressing (INT 13,INT 25) permissible
+CF set if access via files only
+</PRE>
+<p><b>Notes:</b>
+Do not use direct disk accesses if this function returns CF set or the
+device is redirected (INT 21/AX=5F02h).
+Use AH=00h to determine whether the network is installed; if not,
+direct physical access is allowed.
+May take some time to execute, so programs which need to check
+frequently should save the result of the first call.
+This function is called by the DOS kernel on INT 25 and INT 26.
+Supported by PC LAN Program, LAN Manage, LANtastic, NetWare, 10NET,
+etc.
+<p><b>See Also:</b>
+<a href="rb-0607.htm">INT 13/AH=02h</a> - <a href="rb-0608.htm">INT 13/AH=03h</a> - <a href="rb-4113.htm">INT 25</a> - <a href="rb-4117.htm">INT 26
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2A.htm">
+Int 2Ah</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4129.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4131.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

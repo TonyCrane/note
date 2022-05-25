@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=71A6h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=71A6h - Windows95 - LONG FILENAME - GET FILE INFO BY HANDLE - 
+AX = 71A6h
+BX = file handle
+DS:DX - buffer for file information (see #01784)
+CF set
+Return: CF clear if successful
+file information record filled
+CF set on error
+AX = error code
+7100h if function not supported
+SeeAlso: AX=71A7h/BL=00h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=71A6h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3215.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3217.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Windows95 - LONG FILENAME - GET FILE INFO BY HANDLE</font></h3>
+<PRE>
+AX = 71A6h
+BX = file handle
+DS:DX -> buffer for file information <a href="rb-3216.htm#Table1784">(see #01784)</a>
+CF set<br>
+<p><b>Return:</b><br>CF clear if successful
+file information record filled
+CF set on error
+AX = error code
+7100h if function not supported
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3217.htm">AX=71A7h/BL=00h</a>
+<PRE>
+<p>
+Format of Windows95 file information:
+<a name=table1784></a>
+Offset  Size    Description     (Table 01784)
+00h    DWORD   file attributes
+04h    QWORD   creation time (0 = unsupported)
+0Ch    QWORD   last access time (0 = unsupported)
+14h    QWORD   last write time
+1Ch    DWORD   volume serial number
+20h    DWORD   high 32 bits of file size
+24h    DWORD   low 32 bits of file size
+28h    DWORD   number of links to file
+2Ch    DWORD   unique file identifier (high 32 bits)
+30h    DWORD   unique file identifier (low 32 bits)
+</PRE>
+<p><b>Note:</b>
+The file identifer and volume serial number together uniquely identify
+a file while it is open; the identifier may change when the system
+is restarted or the file is first opened
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3215.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3217.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

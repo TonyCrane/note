@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=81h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=81h - COMM-DRV - EXTENDED INITIALIZATION - 
+AH = 81h
+BX:DI - port control block (see #00367)
+DX = port number
+Return: AH = line status register (see #00304)
+error if bit 7 set
+AL = modem status register (see #00305)
+Program: COMM-DRV is a universal serial communications driver by Willies'
+Computer Software Company, which supports standard INT 14 and
+FOSSIL calls as well as its own interfaces
+Note:  AX=8001h should be called first to fill in the port control block
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=81h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1026.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1028.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>COMM-DRV - EXTENDED INITIALIZATION</font></h3>
+<PRE>
+AH = 81h
+BX:DI -> port control block <a href="rb-1027.htm#Table367">(see #00367)</a>
+DX = port number<br>
+<p><b>Return:</b><br>AH = line status register (see #00304)
+error if bit 7 set
+AL = modem status register <a href="rb-0821.htm#Table305">(see #00305)</a>
+</PRE>
+<p><b>Program:</b>
+COMM-DRV is a universal serial communications driver by Willies'
+Computer Software Company, which supports standard INT 14 and
+FOSSIL calls as well as its own interfaces
+<p><b>Note:</b>
+AX=8001h should be called first to fill in the port control block
+<p><b>See Also:</b>
+<a href="rb-0811.htm">AH=00h</a> - <a href="rb-1011.htm">AX=8001h</a> - <a href="rb-1034.htm">AH=82h"COMM-DRV"</a> - <a href="rb-1043.htm">AH=86h"C
+<PRE>
+<p>
+Format of COMM-DRV port control block:
+<a name=table367></a>
+Offset  Type    Description     (Table 00367)
+00h    WORD    port IO address
+02h    WORD    port IRQ
+04h    WORD    baud rate
+06h    WORD    parity
+08h    WORD    data bits
+0Ah    WORD    stop bits
+0Ch    WORD    break status (0000h off)
+0Eh    WORD    flow control protocol
+10h    BYTE    input block
+11h    BYTE    output block
+12h    WORD    low threshold
+14h    WORD    high threshold
+16h    WORD    segment of buffer
+18h    WORD    offset of buffer
+1Ah    WORD    input buffer length
+1Ch    WORD    output buffer length
+1Eh    BYTE    auxiliary address
+1Fh    BYTE    spare
+20h  4 WORDs   spares
+</PRE>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1026.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1028.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

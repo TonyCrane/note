@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1223h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1223h - DOS 3.0+ internal - CHECK IF CHARACTER DEVICE - 
+AX = 1223h
+DS = DOS DS
+SS = DOS DS (must be using a DOS internal stack)
+SDA+218h (DOS 3.10-3.30) = eight-character blank-padded name
+SDA+22Bh (DOS 4.0-6.0) = eight-character blank-padded name
+SDA file attribute field set
+direction flag clear (i.e. CLD)
+Return: CF set if no character device by that name found
+CF clear if found
+BH bits 4-0 copied from low byte of device attribute word
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1223h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4402.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4404.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 3.0+ internal - CHECK IF CHARACTER DEVICE</font></h3>
+<PRE>
+AX = 1223h
+DS = DOS DS
+SS = DOS DS (must be using a DOS internal stack)
+SDA+218h (DOS 3.10-3.30) = eight-character blank-padded name
+SDA+22Bh (DOS 4.0-6.0) = eight-character blank-padded name
+SDA file attribute field set
+direction flag clear (i.e. CLD)<br>
+<p><b>Return:</b><br>CF set if no character device by that name found
+CF clear if found
+BH bits 4-0 copied from low byte of device attribute word
+BH bit 5 set, bits 7-6 clear
+</PRE>
+<p><b>Notes:</b>
+Can only be called from within DOS.
+The check is skipped (always says "not device") if the volume ID bit
+of the file attribute field is set on entry
+<p><b>See Also:</b>
+<a href="rb-3023.htm">INT 21/AX=5D06h</a> - <a href="rb-3028.htm">INT 21/AX=5D0Bh</a>
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4402.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4404.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

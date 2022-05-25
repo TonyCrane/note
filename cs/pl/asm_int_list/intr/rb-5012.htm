@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=8000h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=8000h - CS_TSR specification - TSR INSTALLATION CHECK - 
+AX = 8000h
+DS:SI - 4-byte CS_TSR signature (11h 43h 53h 10h)
+Return: AL = status
+00h no CS_TSR-compliant TSRs installed
+01h installed, but signature did not match
+FFh installed, signature matches
+ES:DI - resident process block (see #02928) of last installed
+TSR (if DS:SI pointed at signature on entry)
+Program: the CS_TSR specification is a standardized TSR interface by Compact
+Soft group in Kiev, Ukraine
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=8000h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5011.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5013.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>CS_TSR specification - TSR INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 8000h
+DS:SI -> 4-byte CS_TSR signature (11h 43h 53h 10h)<br>
+<p><b>Return:</b><br>AL = status
+00h no CS_TSR-compliant TSRs installed
+01h installed, but signature did not match
+FFh installed, signature matches
+ES:DI -> resident process block <a href="rb-5012.htm#Table2928">(see #02928)</a> of last installed
+TSR (if DS:SI pointed at signature on entry)
+</PRE>
+<p><b>Program:</b>
+The CS_TSR specification is a standardized TSR interface by Compact
+Soft group in Kiev, Ukraine
+<p><b>Desc:</b>
+Determine whether any CS_TSR-compliant TSRs are installed on the
+selected multiplex number
+<PRE>
+<p><b>Range:</b><br>AH=80h to AH=FFh
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-5015.htm">AX=8001h"CS_TSR"</a> - <a href="rb-5016.htm">AX=8002h"CS_TSR"</a> - <a href="rb-5017.htm">AX=8003h"CS_TSR"</a>
+<PRE>
+<p>
+Format of CS_TSR process block:
+<a name=table2928></a>
+Offset  Size    Description     (Table 02928)
+00h  4 BYTEs   CS_TSR signature 11h 43h 53h 10h
+04h    BYTE    INT 2F multiplex number
+05h    WORD    virtual process handle (unique among loaded TSRs)
+07h  2 BYTEs   version (binary minor version, then major version)
+09h    WORD    PSP segment of TSR
+0Bh    DWORD   pointer to ASCIZ program name
+0Fh  3 BYTEs   program creation date (day, month, year)
+12h  3 BYTEs   process start time (seconds, minutes, hours)
+15h  3 BYTEs   process start date (day, month, year)
+</PRE>
+<p>
+<b>Category: <a href="cat-042.htm">
+TSR Libraries</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5011.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5013.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

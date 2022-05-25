@@ -1,0 +1,87 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=D042h/BL=03h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=D042h/BL=03h - Intel Pentium Pro BIOS UPDATE - READ BIOS UPDATE AREA - 
+AX = D042h
+BL = 03h
+ES:DI - buffer for microcode update block (see #00533)
+ECX = two real-mode 64K scratchpad segments (upper and lower words)
+DX = segment of 64K scratchpad area for BIOS use
+SI = zero-based index number of update block to retrieve
+Return: CF clear if successful
+CF set on error
+AH = status
+00h successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=D042h/BL=03h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1624.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1626.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Intel Pentium Pro BIOS UPDATE - READ BIOS UPDATE AREA</font></h3>
+<PRE>
+AX = D042h
+BL = 03h
+ES:DI -> buffer for microcode update block <a href="rb-1623.htm#Table533">(see #00533)</a>
+ECX = two real-mode 64K scratchpad segments (upper and lower words)
+DX = segment of 64K scratchpad area for BIOS use
+SI = zero-based index number of update block to retrieve<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AH = status
+00h successful
+ES:DI buffer filled with 2048-byte update block
+86h not implemented
+AL = OEM error (if AH is not 00h or 86h, otherwise undefined)
+00h successful
+</PRE>
+<p><b>Program:</b>
+The Pentium Pro BIOS update allows the system BIOS or other software
+to install a microcode patch into the Pentium Pro processor
+<p><b>Notes:</b>
+This API must be called from actual real mode, not V86 mode.
+At least 32K stack space must be available when this function is called
+<p><b>See Also:</b>
+<a href="rb-1622.htm">AX=D042h/BL=00h</a> - <a href="rb-1623.htm">AX=D042h/BL=01h</a> - <a href="rb-1625.htm">AX=D042h/BL=03h</a>
+<p>
+<b>Category: <a href="cat-043.htm">
+Uncatagorized</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1624.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1626.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

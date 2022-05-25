@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=CD02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=CD02h - InterWave Game API - GET PROGRAM STATUS AND INFORMATION - 
+AX = CD02h
+BX = program identifier
+Return: CX = program status
+bit 0: using synthesizer
+bit 1: using Codec
+bit 2: supports at least one Game Device (see AX=CD21h,AX=CD22h)
+BX = supported API version (BCD, BH=major, BL=minor) if CX bit 2 set
+ES:DI - ASCIZ identification string
+Range: AH=CDh-ECh, selected by scanning for an available multiplex number
+Note:  ordinarily, an application will loop through all valid program
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=CD02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5468.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5470.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>InterWave Game API - GET PROGRAM STATUS AND INFORMATION</font></h3>
+<PRE>
+AX = CD02h
+BX = program identifier<br>
+<p><b>Return:</b><br>CX = program status
+<p><b>bit 0:</b><br>Using synthesizer
+<p><b>bit 1:</b><br>Using Codec
+<p><b>bit 2:</b><br>Supports at least one Game Device (see AX=CD21h,AX=CD22h).
+BX = supported API version (BCD, BH=major, BL=minor) if CX bit 2 set.
+ES:DI -> ASCIZ identification string
+<p><b>Range:</b><br>AH=CDh-ECh, selected by scanning for an available multiplex number
+</PRE>
+<p><b>Note:</b>
+Ordinarily, an application will loop through all valid program
+identifiers (as returned by AX=CD01h); if any of the installed
+programs conflicts with the use the caller wishes to make of the
+InterWave chip, it should be disabled with AX=CD03h first
+<p><b>See Also:</b>
+<a href="rb-5463.htm">AX=CD00h"InterWave"</a> - <a href="rb-5463.htm">AX=CD01h"InterWave"</a> - <a href="rb-5472.htm">AX=CD03h"InterWave"</a>
+<p><b>See Also:</b>
+<a href="rb-5478.htm">AX=CD05h"InterWave"</a> - <a href="rb-5490.htm">AX=CD21h"InterWave"</a> - <a href="rb-5492.htm">AX=CD80h"InterWave"</a>
+<p>
+<b>Category: <a href="cat-040.htm">
+Sound/Speech</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5468.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5470.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

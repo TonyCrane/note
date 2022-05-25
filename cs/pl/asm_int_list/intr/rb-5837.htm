@@ -1,0 +1,90 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0306h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0306h - DPMI 0.9+ - GET RAW MODE SWITCH ADDRESSES - 
+AX = 0306h
+Return: CF clear
+BX:CX - procedure to switch from real to protected mode (see #03151)
+SI:(E)DI - procedure to switch from protected to real mode
+Notes: 16-bit programs should jump to SI:DI, 32-bit programs should use SI:EDI
+the caller must save and restore the state of the task with AX=0305h
+not supported by MS Windows 3.0 in Standard mode
+SeeAlso: AX=0305h
+(Table 03151)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0306h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5836.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5838.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - GET RAW MODE SWITCH ADDRESSES</font></h3>
+<PRE>
+AX = 0306h<br>
+<p><b>Return:</b><br>CF clear
+BX:CX -> procedure to switch from real to protected mode <a href="rb-5837.htm#Table3151">(see #03151)</a>
+SI:(E)DI -> procedure to switch from protected to real mode
+</PRE>
+<p><b>Notes:</b>
+16-bit programs should jump to SI:DI, 32-bit programs should use SI:EDI.
+The caller must save and restore the state of the task with AX=0305h.
+Not supported by MS Windows 3.0 in Standard mode
+<p><b>See Also:</b>
+<a href="rb-5836.htm">AX=0305h</a>
+<PRE>
+<p>
+<a name=table3151></a>
+(Table 03151)
+Values to JUMP at mode-switch procedures with:.
+AX = new DS.
+CX = new ES.
+DX = new SS.
+(E)BX = new (E)SP.
+SI:(E)DI = new CS:(E)IP
+</PRE>
+<p><b>Notes:</b>
+BP/EBP is preserved across the call, but AX/EAX, BX/EBX, CX/ECX,
+DX/EDX, SI/ESI, and DI/EDI will be undefined; FS and GS will be 0000h.
+Interrupts will stay disabled during the entire mode switch if they
+are disabled on entry to the mode-switch procedure
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5836.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5838.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

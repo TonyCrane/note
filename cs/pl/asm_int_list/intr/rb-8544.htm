@@ -1,0 +1,99 @@
+<HTML>
+<HEAD>
+<TITLE>Int E0/CL=86h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int E0/CL=86h - ConcCP/M,DR Multiuser DOS - Q_MAKE - CREATE MESSAGE QUEUE - 
+CL = 86h
+DS:DX - queue descriptor (see #04042)
+Return: AX = status (0000h success, FFFFh failure)
+CX = error code (see #04021)
+Note:  also supported by REAL/32
+SeeAlso: INT E0/CL=87h
+Format of DR Multiuser DOS queue descriptor:
+Offset Size  Description   (Table 04042)
+00h 2 WORDs  internal use, initialize to zeros
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int E0/CL=86h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8543.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8545.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ConcCP/M,DR Multiuser DOS - Q_MAKE - CREATE MESSAGE QUEUE</font></h3>
+<PRE>
+CL = 86h
+DS:DX -> queue descriptor <a href="rb-8544.htm#Table4042">(see #04042)</a><br>
+<p><b>Return:</b><br>AX = status (0000h success, FFFFh failure)
+CX = error code <a href="rb-8501.htm#Table4021">(see #04021)</a>
+</PRE>
+<p><b>Note:</b>
+Also supported by REAL/32
+<p><b>See Also:</b>
+<a href="rb-8545.htm">INT E0/CL=87h</a>
+<PRE>
+<p>
+Format of DR Multiuser DOS queue descriptor:
+<a name=table4042></a>
+Offset  Size    Description     (Table 04042)
+00h  2 WORDs   internal use, initialize to zeros
+04h    WORD    queue flags <a href="rb-8544.htm#Table4043">(see #04043)</a>
+06h  8 BYTEs   queue name
+0Eh    WORD    length of message
+10h    WORD    number of messages
+12h  4 WORDs   internal use, initialize to zeros
+1Ah    WORD    offset in system area of buffer for messages
+<p>
+Bitfields for REAL/32 queue flags:
+<a name=table4043></a>
+Bit(s)  Description     (Table 04043)
+0      mutual exclusion queue
+1      can not be deleted
+2      restricted to system processes
+3      RSP message queue
+4      reserved for internal use
+5      RPL address queue
+7-6    reserved for internal use
+15-8   reserved for future use
+</PRE>
+<p><b>See Also:</b>
+#04042
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-E0.htm">
+Int E0h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-8543.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-8545.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

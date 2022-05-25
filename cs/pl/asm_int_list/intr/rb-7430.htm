@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 67/AH=4Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 67/AH=4Eh - LIM EMS - GET OR SET PAGE MAP - 
+AH = 4Eh
+AL = subfunction
+00h get mapping registers
+01h set mapping registers
+02h get and set mapping registers at once
+03h get size of page-mapping array
+DS:SI - array holding information (AL=01h/02h)
+ES:DI - array to receive information (AL=00h/02h)
+Return: AH = status (00h,80h,81h,84h,8Fh,A3h) (see also AH=40h)
+00h successful
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 67/AH=4Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7429.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7431.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LIM EMS - GET OR SET PAGE MAP</font></h3>
+<PRE>
+AH = 4Eh
+AL = subfunction
+00h get mapping registers
+01h set mapping registers
+02h get and set mapping registers at once
+03h get size of page-mapping array
+DS:SI -> array holding information (AL=01h/02h)
+ES:DI -> array to receive information (AL=00h/02h)<br>
+<p><b>Return:</b><br>AH = status (00h,80h,81h,84h,8Fh,A3h) (see also AH=40h)
+00h successful
+AL = bytes in page-mapping array (AL=03h only)
+array pointed to by ES:DI receives mapping info (AL=00h/02h)
+</PRE>
+<p><b>Notes:</b>
+This function was designed to be used by multitasking operating systems
+and should not ordinarily be used by appplication software..
+MD386 returns the size of the page-mapping array in AX instead of AL
+<p><b>See Also:</b>
+<a href="rb-7431.htm">AH=4Fh</a>
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-67.htm">
+Int 67h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7429.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7431.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2E
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2E - DOS 2+ - PASS COMMAND TO COMMAND INTERPRETER FOR EXECUTION - 
+DS:SI - commandline to execute (see #02585)
+Return: all registers except CS:IP destroyed
+AX = status (4DOS v4.0)
+0000h successful
+FFFFh error before processing command (not enough memory, etc)
+other error number returned by command
+Notes: this call allows execution of arbitrary commands (including COMMAND.COM
+internal commands) without loading another copy of COMMAND.COM
+if COMMAND.COM is the user's command interpreter, the primary copy
+executes the command; this allows the master environment to be
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2E
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4247.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4249.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - PASS COMMAND TO COMMAND INTERPRETER FOR EXECUTION</font></h3>
+<PRE>
+DS:SI -> commandline to execute <a href="rb-4248.htm#Table2585">(see #02585)</a><br>
+<p><b>Return:</b><br>All registers except CS:IP destroyed
+AX = status (4DOS v4.0)
+0000h successful
+FFFFh error before processing command (not enough memory, etc)
+other error number returned by command
+</PRE>
+<p><b>Notes:</b>
+This call allows execution of arbitrary commands (including COMMAND.COM
+internal commands) without loading another copy of COMMAND.COM.
+If COMMAND.COM is the user's command interpreter, the primary copy
+executes the command; this allows the master environment to be
+modified by issuing a "SET" command, but changes in the master
+environment will not become effective until all programs descended
+from the primary COMMAND.COM terminate.
+Since COMMAND.COM processes the string as if typed from the keyboard,
+the transient portion needs to be present, and the calling program
+must ensure that sufficient memory to load the transient portion can
+be allocated by DOS if necessary.
+Results are unpredictable if invoked by a program run from a batch file
+because this call is not reentrant and COMMAND.COM uses the same
+internal variables when processing a batch file.
+Hooked but ignored by 4DOS v3.0 COMMAND.COM replacement unless SHELL2E
+has been loaded.
+The MS-DOS 5 Programmer's Reference calls this "Reload Transient"
+<PRE>
+<p>
+Format of DOS commandline:
+<a name=table2585></a>
+Offset  Size    Description     (Table 02585)
+00h    BYTE    length of command string, not counting trailing CR
+01h    var     command string
+N     BYTE    0Dh (CR)
+</PRE>
+<p>
+<b>Category: <a href="cat-039.htm">
+Shells/Command Interpreters</a>
+- <a href="int-2E.htm">
+Int 2Eh</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4247.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4249.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

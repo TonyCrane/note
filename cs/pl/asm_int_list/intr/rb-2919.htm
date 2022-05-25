@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4451h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4451h - Concurrent DOS v3.2+ - INSTALLATION CHECK - 
+AX = 4451h
+Return: CF set if not Concurrent DOS
+AX = error code (see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+AH = single-user/multiuser nature (see #01581)
+10h single-user
+AL = operating system version ID (see #01580)
+14h multiuser
+AL = operating system version ID (see #01579)
+Notes: as of Concurrent DOS/XM 5.0 (possibly earlier), the version is stored
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4451h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2918.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2920.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Concurrent DOS v3.2+ - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 4451h<br>
+<p><b>Return:</b><br>CF set if not Concurrent DOS
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+CF clear if successful
+AH = single-user/multiuser nature <a href="rb-2920.htm#Table1581">(see #01581)</a>
+10h single-user
+AL = operating system version ID <a href="rb-2920.htm#Table1580">(see #01580)</a>
+14h multiuser
+AL = operating system version ID <a href="rb-2919.htm#Table1579">(see #01579)</a>
+</PRE>
+<p><b>Notes:</b>
+As of Concurrent DOS/XM 5.0 (possibly earlier), the version is stored
+in the environment variable VER and the OS type in variable OS.
+Use this function if you are looking for multiuser capabilities,
+AX=4452h for single-user.
+This function should never return the single-user values; however, an
+application should be prepared to accept single-user values, i.e. it
+should check the returned AH and AL separately.
+CCI Multiuser DOS 7.22 returns AX=DX=1466h..
+DR DOS 3.31+ error returns with AX=0001h
+<p><b>See Also:</b>
+<a href="rb-2920.htm">AX=4452h</a> - <a href="rb-2926.htm">AX=4459h</a>
+<PRE>
+<p>
+<a name=table1579></a>
+(Table 01579)
+Values for Digital Research operating system version ID:
+32h    Concurrent PC DOS 3.2
+41h    Concurrent DOS 4.1
+50h    Concurrent DOS/XM 5.0 or Concurrent DOS/386 1.1
+60h    Concurrent DOS/XM 6.0 or Concurrent DOS/386 2.0
+62h    Concurrent DOS/XM 6.2 or Concurrent DOS/386 3.0
+66h    DR Multiuser DOS 5.1, CCT Multiuser DOS 7.x
+67h    Concurrent DOS 5.1
+</PRE>
+<p><b>See Also:</b>
+#01581 - #04023
+<p>
+<b>Category: <a href="cat-030.htm">
+Other Operating Systems</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2918.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2920.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 32/AH=6Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 32/AH=6Eh - NOISE.SYS 0.53 - API - 
+AH = 6Eh (function ID)
+AL = subfunction (see INT 32/AX=6E00h)
+Return: CF set on error
+AL = error code (see #03166)
+CF clear if successful
+Notes: INT 32 is only a proposed interface for NOISE.SYS. Use the IOCTL READ
+from the RANDOM device to determine the interrupt and function ID
+used by the driver, since future versions may use the Alternate
+Multiplex Interrupt (AMIS) at INT 2Dh.
+the beta v0.51 had a substantially different API on INT 32/AH=6Eh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 32/AH=6Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5940.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5942.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>NOISE.SYS 0.53 - API</font></h3>
+<PRE>
+AH = 6Eh (function ID)
+AL = subfunction (see INT 32/AX=6E00h)<br>
+<p><b>Return:</b><br>CF set on error
+AL = error code <a href="rb-5941.htm#Table3166">(see #03166)</a>
+CF clear if successful
+</PRE>
+<p><b>Notes:</b>
+INT 32 is only a proposed interface for NOISE.SYS. Use the IOCTL READ
+from the RANDOM device to determine the interrupt and function ID
+used by the driver, since future versions may use the Alternate
+Multiplex Interrupt (AMIS) at INT 2Dh..
+The beta v0.51 had a substantially different API on INT 32/AH=6Eh
+<PRE>
+<p>
+<a name=table3166></a>
+(Table 03166)
+Values for NOISE.SYS error codes:
+00h    subfunction not supported
+FBh    random pool is empty
+FCh    quality of sample is too low
+FDh    too many processes using the API or driver
+FEh    subfunction is disabled in the current build
+FFh    successful
+</PRE>
+<p>
+<b>Category: <a href="cat-037.htm">
+Security</a>
+- <a href="int-32.htm">
+Int 32h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5940.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5942.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

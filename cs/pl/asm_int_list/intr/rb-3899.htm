@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F256h/SF=02h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F256h/SF=02h - Novell NetWare - WRITE EXTENDED ATTRIBUTE - 
+AX = F256h subfn 02h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02361)
+ES:DI - reply buffer (see #02362)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F256h/SF=01h,AX=F256h/SF=03h,AX=F256h/SF=05h
+Format of NetWare Write Extended Attribute request packet:
+Offset Size  Description   (Table 02361)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F256h/SF=02h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3898.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3900.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - WRITE EXTENDED ATTRIBUTE</font></h3>
+<PRE>
+AX = F256h subfn 02h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3899.htm#Table2361">(see #02361)</a>
+ES:DI -> reply buffer <a href="rb-3899.htm#Table2362">(see #02362)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3898.htm">AX=F256h/SF=01h</a> - <a href="rb-3900.htm">AX=F256h/SF=03h</a> - <a href="rb-3902.htm">AX=F256h/SF=05h</a>
+<PRE>
+<p>
+Format of NetWare "Write Extended Attribute" request packet:
+<a name=table2361></a>
+Offset  Size    Description     (Table 02361)
+00h    BYTE    02h (subfunction "Write Extended Attribute")
+01h    WORD    flags <a href="rb-3902.htm#Table2372">(see #02372)</a>
+03h  8 BYTEs   extended attribute handle structure <a href="rb-3902.htm#Table2373">(see #02373)</a>
+0Bh    DWORD   write size
+0Fh    DWORD   write position
+13h    DWORD   access flag
+17h    WORD    length of value
+19h    WORD    key length
+1Bh  N BYTEs   key
+N BYTEs   value
+</PRE>
+<p><b>See Also:</b>
+#02361 - #02363
+<PRE>
+<p>
+Format of NetWare "Write Extended Attribute" reply packet:
+<a name=table2362></a>
+Offset  Size    Description     (Table 02362)
+00h    DWORD   error code
+04h    DWORD   number of bytes written
+08h    DWORD   new extended attribute handle
+</PRE>
+<p><b>See Also:</b>
+#02361
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3898.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3900.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

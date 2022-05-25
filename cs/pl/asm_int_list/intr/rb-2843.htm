@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4402h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4402h - PC Tools 9 CPRLOW.EXE - GET CODE AND DATA ADDRESSES - 
+AX = 4402h
+BX = file handle referencing device RECLOWLD
+DS:DX - buffer for address list (see #01505)
+CX ignored
+Return: CF clear if successful
+buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Format of CPRLOW address list:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4402h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2842.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2844.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PC Tools 9 CPRLOW.EXE - GET CODE AND DATA ADDRESSES</font></h3>
+<PRE>
+AX = 4402h
+BX = file handle referencing device "RECLOWLD"
+DS:DX -> buffer for address list <a href="rb-2843.htm#Table1505">(see #01505)</a>
+CX ignored<br>
+<p><b>Return:</b><br>CF clear if successful
+buffer filled
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+<p>
+Format of CPRLOW address list:
+<a name=table1505></a>
+Offset  Size    Description     (Table 01505)
+00h    WORD    segment of CPRLOW code
+02h    WORD    offset in code segment of ??? entry point
+(switches into protected mode)
+04h    WORD    offset in code segment of jump array <a href="rb-2843.htm#Table1506">(see #01506)</a>
+06h    WORD    segment of copy of interrupt vector table at CPRLOW load time
+</PRE>
+<p><b>Note:</b>
+Neither the entry point nor the jump array is valid until after a
+CPR /LOAD, because CPR.EXE installs the code into CPRLOW at runtime.
+<PRE>
+<p>
+Format of CPRLOW jump array:
+<a name=table1506></a>
+Offset  Size    Description     (Table 01506)
+00h  3 BYTEs   initialize CPRLOW interrupt hooks
+03h  3 BYTEs   reset timers and enable CPR (hotkey enable)
+06h  3 BYTEs   disable CPR (hotkey disable)
+09h  3 BYTEs   clear ??? flag, hotkey disable, and ???
+0Ch  3 BYTEs   initialize delay loop counter (destroys AX,BX,CX,DX)
+0Fh  3 BYTEs   disable CPR completely (commandline /DISABLE)
+12h  3 BYTEs   enable ??? if CPR enabled by both cmdline and hotkey
+15h  3 BYTEs   enable CPR (commandline /ENABLE)
+</PRE>
+<p>
+<b>Category: <a href="cat-037.htm">
+Security</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2842.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2844.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

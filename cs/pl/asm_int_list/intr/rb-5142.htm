@@ -1,0 +1,104 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=AC06h/DI=1092h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=AC06h/DI=1092h - QRIP/TSR - RECEIVE CHARACTERS FROM QRIP - 
+AX = AC06h
+DI = 1092h
+Return: AX = character to send to BBS (0001h-00FFh) or special code (see #02967)
+BX = string-waiting flag
+0001h entire string waiting to be sent to terminal (call AX=AC0Ch)
+CX = DX = AX
+Note:  if DI 1092h on entry, QRIP chains the call
+SeeAlso: AX=AC04h,AX=AC05h,AX=AC0Ch,AX=AC16h,AX=AC18h,AX=AC1Ah
+(Table 02967)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=AC06h/DI=1092h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5141.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5143.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>QRIP/TSR - RECEIVE CHARACTERS FROM QRIP</font></h3>
+<PRE>
+AX = AC06h
+DI = 1092h<br>
+<p><b>Return:</b><br>AX = character to send to BBS (0001h-00FFh) or special code (see #02967)
+BX = string-waiting flag
+0001h entire string waiting to be sent to terminal (call AX=AC0Ch)
+CX = DX = AX
+</PRE>
+<p><b>Note:</b>
+If DI <> 1092h on entry, QRIP chains the call
+<p><b>See Also:</b>
+<a href="rb-5140.htm">AX=AC04h</a> - <a href="rb-5141.htm">AX=AC05h</a> - <a href="rb-5148.htm">AX=AC0Ch</a> - <a href="rb-5158.htm">AX=AC16h</a> -
+<PRE>
+<p>
+<a name=table2967></a>
+(Table 02967)
+Values for QRIP special codes:
+0000h  if none
+0100h  wait for user keypress (must call AX=AC16h/BL=00h or AX=AC18h)
+0101h  both/middle mouse button pressed
+0102h  entering block mode (up/download) (call AX=AC1Ah)
+0103h  right mouse button pressed
+0104h  BBS requested status bar on
+0105h  BBS requested status bar off
+0106h  BBS requested VT-102 terminal emulation.
+(keypad keys should send VT-102 escape codes)
+0107h  BBS requested VT-102 mode off
+0108h  BBS requested doorway mode (raw IBM keyboard ASCII/scan code pairs)
+0109h  BBS requested doorway mode off
+010Ah  hotkey mode on
+010Bh  hotkey mode off
+010Ch  BBS requested Tab-key button changing on
+010Dh  BBS requested Tab-key mode off
+010Eh  XOFF (use flow control to stop incoming characters)
+010Fh  XON (use flow control to resume incoming characters)
+0110h-0119h BBS requested application (0-9) be run.
+Application 0 should be a standard text editor
+01FFh  send ASCII 00h to BBS
+</PRE>
+<p><b>Note:</b>
+For special codes 0104h to 010Dh, the terminal program should report
+any mode changes it make in response by calling AX=AC16h
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-q.htm">
+Q</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5141.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5143.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

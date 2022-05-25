@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=40h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=40h - DOS 2+ - WRITE - WRITE TO FILE OR DEVICE - 
+AH = 40h
+BX = file handle
+CX = number of bytes to write
+DS:DX - data to write
+Return: CF clear if successful
+AX = number of bytes actually written
+CF set on error
+AX = error code (05h,06h) (see #01680 at AH=59h/BX=0000h)
+Notes: if CX is zero, no data is written, and the file is truncated or
+extended to the current position
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=40h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2790.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2792.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - WRITE - WRITE TO FILE OR DEVICE</font></h3>
+<PRE>
+AH = 40h
+BX = file handle
+CX = number of bytes to write
+DS:DX -> data to write<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually written
+CF set on error
+AX = error code (05h,06h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Notes:</b>
+If CX is zero, no data is written, and the file is truncated or
+extended to the current position.
+Data is written beginning at the current file position, and the file
+position is updated after a successful write.
+For FAT32 drives, the file must have been opened with AX=6C00h with
+the "extended size" flag in order to expand the file beyond 2GB;
+otherwise the write will fail with error code 0005h (access denied).
+The usual cause for AX < CX on return is a full disk
+<p><b>BUG:</b>
+A write of zero bytes will appear to succeed when it actually failed
+if the write is extending the file and there is not enough disk
+space for the expanded file (DOS 5.0-6.0); one should therefore check
+whether the file was in fact extended by seeking to 0 bytes from
+the end of the file (INT 21/AX=4202h/CX=0000h/DX=0000h).
+Under the FlashTek X-32 DOS extender, the pointer is in DS:EDX
+<p><b>See Also:</b>
+<a href="rb-2684.htm">AH=28h</a> - <a href="rb-2783.htm">AH=3Fh"DOS"</a> - <a href="rb-3268.htm">AH=93h</a> - <a href="rb-4313.htm">INT 2F/AX=1109h
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2790.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2792.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

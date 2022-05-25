@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 14/AH=B3h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 14/AH=B3h - 3com BAPI SERIAL I/O - GET/SET CONFIGURATION INFO - 
+AH = B3h
+AL = direction (00h get, 01h set)
+DH = session ID (00h for external session managment)
+DL = configuration item (00h = end-of-line mapping)
+CX = new configuration item value (if AL=01h)
+---if DL=00h---
+CH = application EOL type (app to Telnet client)
+01h application will send lone CR
+02h application will send CR-? pair
+CL = driver EOL type (Telnet client to Telnet server)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 14/AH=B3h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1099.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1101.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>3com BAPI SERIAL I/O - GET/SET CONFIGURATION INFO</font></h3>
+<PRE>
+AH = B3h
+AL = direction (00h get, 01h set)
+DH = session ID (00h for external session managment)
+DL = configuration item (00h = end-of-line mapping)
+CX = new configuration item value (if AL=01h)
+---if DL=00h---
+CH = application EOL type (app to Telnet client)
+01h application will send lone CR
+02h application will send CR-? pair
+CL = driver EOL type (Telnet client to Telnet server)
+01h driver should send CR-NUL pair
+02h driver should send CR-LF pair<br>
+<p><b>Return:</b><br>AH = return code (00h,03h,09h-0Bh) (see #00394)
+---if AL=00h---
+CX = configuration item value (above)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-1099.htm">AH=B2h</a>
+<p>
+<b>Category: <a href="cat-038.htm">
+Serial I/O</a>
+- <a href="int-14.htm">
+Int 14h</a>
+- <a href="alpha-@.htm">
+@</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1099.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1101.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,112 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AX=B10Ah/SF=1066h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AX=B10Ah/SF=1066h - PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (Brooktree devices) - 
+AX = B10Ah subfn 1066h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) (see #00878)
+Return: CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) (see #00729)
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AX=B10Ah/SF=1066h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2384.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2386.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>PCI BIOS v2.0c+ - READ CONFIGURATION DWORD (Brooktree devices)</font></h3>
+<PRE>
+AX = B10Ah subfn 1066h
+BH = bus number
+BL = device/function number (bits 7-3 device, bits 2-0 function)
+DI = register number (0000h-00FFh) <a href="rb-2377.htm#Table878">(see #00878)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+ECX = dword read
+CF set on error
+AH = status (00h,87h) <a href="rb-2371.htm#Table729">(see #00729)</a>
+EAX, EBX, ECX, and EDX may be modified
+all other flags (except IF) may be modified
+</PRE>
+<p><b>Notes:</b>
+This function may require up to 1024 byte of stack; it will not enable
+interrupts if they were disabled before making the call.
+The meanings of BL and BH on entry were exchanged between the initial
+drafts of the specification and final implementation
+<p><b>See Also:</b>
+<a href="rb-2377.htm">AX=B10Ah</a> - <a href="rb-2387.htm">AX=B10Ah/SF=8086h</a>
+<PRE>
+<p>
+Format of Brooktree Bt8230 ATM controller configuration:
+<a name=table981></a>
+Offset  Size    Description     (Table 00981)
+00h 64 BYTEs   header <a href="rb-2377.htm#Table878">(see #00878)</a>
+(vendor ID 109Eh, device ID 8230h)
+10h    DWORD   address at which to map external memory (multiple of 16M)
+internal registers are mapped at offsets 0000h-01FFh; Bt8222
+registers are mapped at 0200h-03FFh, and T1/E1 Framer
+registers are mapped at 0800h-0FFFh.  Only 32-bit memory
+accesses are used
+40h    BYTE    maximum burst length (00h not allowed, default = 10h)
+41h    BYTE    "SPECIAL_STATUS"
+<p><b>bit 3:</b><br>Attempted to perform DMA on PCI while bus-mastering
+disabled in PCI command word
+<p><b>bit 2:</b><br>PCI/DMA synchronization error occurred
+<p><b>bit 1:</b><br>PCI bus master encountered fatal error
+<p><b>bit 0:</b><br>Direction of transaction which encountered error
+=0 write (refer to offset 48h)
+=1 read (refer to offset 44h)
+</PRE>
+<p><b>Note:</b>
+Bits 3-1 are write-clear, bit 0 is read-only
+42h  2 BYTEs   unused
+44h    DWORD   current read target address for PCI bus master (read-only)
+48h    DWORD   current write target address for PCI bus master (read-only)
+4Ch 180 BYTEs  reserved
+<p><b>See Also:</b>
+#00790
+<p>
+<b>Category: <a href="cat-014.htm">
+Expansion Bus Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2384.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2386.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

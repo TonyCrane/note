@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=4330h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=4330h - HIMEM.SYS v2.77+ - GET EXTERNAL A20 HANDLER ADDRESS - 
+AX = 4330h
+Return: AL = 80h if external A20 handler provided
+ES:BX - external A20 handler (see #02790)
+CL = A20 detection support
+00h handler is unable to report A20 state
+01h handler supports function 0002h to report A20 state
+Note:  HIMEM.SYS calls this function to allow an external program to provide
+an A20 handler (i.e. to support a machine not supported by HIMEM
+itself)
+SeeAlso: AX=4308h,AX=4310h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=4330h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4772.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4774.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>HIMEM.SYS v2.77+ - GET EXTERNAL A20 HANDLER ADDRESS</font></h3>
+<PRE>
+AX = 4330h<br>
+<p><b>Return:</b><br>AL = 80h if external A20 handler provided
+ES:BX -> external A20 handler <a href="rb-4773.htm#Table2790">(see #02790)</a>
+CL = A20 detection support
+00h handler is unable to report A20 state
+01h handler supports function 0002h to report A20 state
+</PRE>
+<p><b>Note:</b>
+HIMEM.SYS calls this function to allow an external program to provide
+an A20 handler (i.e. to support a machine not supported by HIMEM
+itself)
+<p><b>See Also:</b>
+<a href="rb-4766.htm">AX=4308h</a> - <a href="rb-4768.htm">AX=4310h</a>
+<PRE>
+<p>
+<a name=table2790></a>
+(Table 02790)
+Call parameters for external A20 handler are:.
+AX = function
+0000h disable A20
+0001h enable A20
+0002h get A20 state<br>
+<p><b>Return:</b><br>AX = status (functions 0000h and 0001h)
+0000h failure
+0001h successful
+AX = A20 state (function 0002h)
+0000h disabled
+0001h enabled
+</PRE>
+<p><b>Note:</b>
+HIMEM.SYS only calls function 0002h if the returned CL indicated that
+the handler supports the call
+<p>
+<b>Category: <a href="cat-024.htm">
+Memory Management</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-h.htm">
+H</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4772.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4774.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

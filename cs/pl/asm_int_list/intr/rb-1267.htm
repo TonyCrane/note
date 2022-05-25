@@ -1,0 +1,101 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AH=12h/BH=15h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AH=12h/BH=15h - DESQview v2.20+ - SEND MESSAGE - SETFLAGS - SET OBJECT FLAGS - 
+AH = 12h
+BH = 15h
+BL = object
+00h DWORD on top of stack
+mailbox, keyboard, or pointer only
+02h mailbox for task whose handle is on top of stack
+03h mailbox for current task
+04h keyboard for task whose handle is on top of stack
+05h keyboard for current task
+STACK: DWORD flags (see #00453,#00454)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AH=12h/BH=15h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1266.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1268.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DESQview v2.20+ - SEND MESSAGE - SETFLAGS - SET OBJECT FLAGS</font></h3>
+<PRE>
+AH = 12h
+BH = 15h
+BL = object
+00h DWORD on top of stack
+mailbox, keyboard, or pointer only
+02h mailbox for task whose handle is on top of stack
+03h mailbox for current task
+04h keyboard for task whose handle is on top of stack
+05h keyboard for current task.
+<p><b>STACK:</b><br>DWORD flags (see #00453,#00454)<br>
+<p><b>Return:</b><br>STACK popped
+</PRE>
+<p><b>Notes:</b>
+Only available if the API level has been set to at least 2.20.
+Equivalent to performing SUBFROM and ADDTO calls on the object.
+If a mailbox has bits 4 or 5 set, you must use "READINTO" rather than
+"READ" (see AH=12h/BH=13h"READINTO") to retrieve messages
+<p><b>See Also:</b>
+<a href="rb-1244.htm">AH=12h/BH=0Ah</a> - <a href="rb-1247.htm">AH=12h/BH=0Bh</a> - <a href="rb-1268.htm">AH=12h/BH=16h</a>
+<PRE>
+<p>
+Bitfields for DESQview mailbox object flags:
+<a name=table453></a>
+Bit(s)  Description     (Table 00453)
+0      all mail messages in common memory
+1      allow write even if closed
+2      don't erase messages when mailbox closed
+4      (DV/X) append messages with like status and sender (stream-oriented
+mail)
+5      (DV/X) store mail in expanded memory (pool grows as needed)
+6      (DV/X) make mailbox into non-owned mailbox
+<p>
+Bitfields for DESQview keyboard object flags:
+<a name=table454></a>
+Bit(s)  Description     (Table 00454)
+5      exclusive input when keyboard in use for input
+</PRE>
+<p>
+<b>Category: <a href="cat-007.htm">
+DESQview/TopView and Quarterdeck Programs</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1266.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1268.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<TITLE>Int 1A/AH=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 1A/AH=06h - TIME - SET ALARM (AT,XT286,PS) - 
+AH = 06h
+CH = hour (BCD)
+CL = minutes (BCD)
+DH = seconds (BCD)
+Return: CF set on error (alarm already set or clock stopped for update)
+CF clear if successful
+Notes: the alarm occurs every 24 hours until turned off, invoking INT 4A each
+time
+the BIOS does not check for invalid values for the time, so the CMOS
+clock chip's don't care setting (any values between C0h and FFh)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 1A/AH=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2281.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2283.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TIME - SET ALARM (AT,XT286,PS)</font></h3>
+<PRE>
+AH = 06h
+CH = hour (BCD)
+CL = minutes (BCD)
+DH = seconds (BCD)<br>
+<p><b>Return:</b><br>CF set on error (alarm already set or clock stopped for update)
+CF clear if successful
+</PRE>
+<p><b>Notes:</b>
+The alarm occurs every 24 hours until turned off, invoking INT 4A each
+time.
+The BIOS does not check for invalid values for the time, so the CMOS
+clock chip's "don't care" setting (any values between C0h and FFh)
+may be used for any or all three parts.  For example, to create an
+alarm once a minute, every minute, call with CH=FFh, CL=FFh, and
+DH=00h.
+<p><b>See Also:</b>
+<a href="rb-2283.htm">AH=07h</a> - <a href="rb-2288.htm">AH=0Ch</a> - <a href="rb-6244.htm">INT 4A"SYSTEM"</a>
+<p>
+<b>Category: <a href="cat-003.htm">
+Bios</a>
+- <a href="int-1A.htm">
+Int 1Ah</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2281.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2283.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

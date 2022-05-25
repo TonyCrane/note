@@ -1,0 +1,195 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=3Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=3Dh - DOS 2+ - OPEN - OPEN EXISTING FILE - 
+AH = 3Dh
+AL = access and sharing modes (see #01402)
+DS:DX - ASCIZ filename
+CL = attribute mask of files to look for (server call only)
+Return: CF clear if successful
+AX = file handle
+CF set on error
+AX = error code (01h,02h,03h,04h,05h,0Ch,56h) (see #01680 at AH=59h)
+Notes: file pointer is set to start of file
+if SHARE or a network is loaded, the file open may fail if the file
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=3Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2778.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2780.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DOS 2+ - OPEN - OPEN EXISTING FILE</font></h3>
+<PRE>
+AH = 3Dh
+AL = access and sharing modes <a href="rb-2779.htm#Table1402">(see #01402)</a>
+DS:DX -> ASCIZ filename
+CL = attribute mask of files to look for (server call only)<br>
+<p><b>Return:</b><br>CF clear if successful
+AX = file handle
+CF set on error
+AX = error code (01h,02h,03h,04h,05h,0Ch,56h) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h)
+</PRE>
+<p><b>Notes:</b>
+File pointer is set to start of file.
+If SHARE or a network is loaded, the file open may fail if the file
+is already open, depending on the combination of sharing modes
+<a href="rb-0000.htm#Table0"></a>(see #01403,#01404).
+File handles which are inherited from a parent also inherit sharing
+and access restrictions.
+Files may be opened even if given the hidden or system attributes.
+Under the FlashTek X-32 DOS extender, the pointer is in DS:EDX.
+DR DOS checks the system password or explicitly supplied password at
+the end of the filename (following a semicolon) against the reserved
+field in the directory entry before allowing access.
+Sharing modes are only effective on local drives if SHARE is loaded
+<p><b>BUG:</b>
+Novell DOS 7 SHARE v1.00 would refuse file access in the cases in
+#01403 marked with [1] (read-only open of a read-only file
+which had previously been opened in compatibility mode); this was
+fixed in SHARE v1.01 of 09/29/94
+<p><b>See Also:</b>
+<a href="rb-2574.htm">AH=0Fh</a> - <a href="rb-2778.htm">AH=3Ch</a> - <a href="rb-2803.htm">AX=4301h</a> - <a href="rb-3017.htm">AX=5D00h</a> - <a
+<PRE>
+<p>
+Bitfields for access and sharing modes:
+<a name=table1402></a>
+Bit(s)  Description     (Table 01402)
+2-0    access mode.
+000 read only.
+001 write only.
+010 read/write.
+011 (DOS 5+ internal) passed to redirector on EXEC to allow
+case-sensitive filenames
+3      reserved (0)
+6-4    sharing mode (DOS 3.0+) <a href="rb-2779.htm#Table1403">(see #01403)</a>.
+000 compatibility mode.
+001 "DENYALL" prohibit both read and write access by others.
+010 "DENYWRITE" prohibit write access by others.
+011 "DENYREAD" prohibit read access by others.
+100 "DENYNONE" allow full access by others.
+111 network FCB (only available during server call)
+7      inheritance.
+If set, file is private to current process and will not be inherited
+by child processes
+</PRE>
+<p><b>See Also:</b>
+#01782 - #01403
+<PRE>
+<p>
+<a name=table1403></a>
+(Table 01403)
+Values of DOS 2-6.22 file sharing behavior:
+|     Second and subsequent Opens
+First    |Compat  Deny   Deny   Deny   Deny
+Open     |        All    Write  Read   None
+|R W RW R W RW R W RW R W RW R W RW
+- - - - -| - - - - - - - - - - - - - - - - -
+Compat R |Y Y Y  N N N  1 N N  N N N  1 N N.
+W |Y Y Y  N N N  N N N  N N N  N N N.
+RW|Y Y Y  N N N  N N N  N N N  N N N
+- - - - -|
+Deny   R |C C C  N N N  N N N  N N N  N N N
+All    W |C C C  N N N  N N N  N N N  N N N.
+RW|C C C  N N N  N N N  N N N  N N N
+- - - - -|
+Deny   R |2 C C  N N N  Y N N  N N N  Y N N
+Write  W |C C C  N N N  N N N  Y N N  Y N N.
+RW|C C C  N N N  N N N  N N N  Y N N
+- - - - -|
+Deny   R |C C C  N N N  N Y N  N N N  N Y N
+Read   W |C C C  N N N  N N N  N Y N  N Y N.
+RW|C C C  N N N  N N N  N N N  N Y N
+- - - - -|
+Deny   R |2 C C  N N N  Y Y Y  N N N  Y Y Y
+None   W |C C C  N N N  N N N  Y Y Y  Y Y Y.
+RW|C C C  N N N  N N N  N N N  Y Y Y
+<p><b>Legend:</b><br>Y = open succeeds, N = open fails with error code 05h.
+C = open fails, INT 24 generated.
+1 = open succeeds if file read-only, else fails with error code.
+2 = open succeeds if file read-only, else fails with INT 24
+</PRE>
+<p><b>See Also:</b>
+#01636 - #01404
+<PRE>
+<p>
+<a name=table1404></a>
+(Table 01404)
+Values for DOS 7.x file sharing behavior:
+|     Second and subsequent Opens
+First    |Compat    Deny      Deny      Deny      Deny
+Open     |          All       Write     Read      None
+|R W RW A  R W RW A  R W RW A  R W RW A  R W RW A
+- - - - -| - - - - - - - - - - - - - - - - - - - - - - - -
+Compat R |Y Y Y Y   N N N N   Y N N Y   N N N Y   Y N N Y.
+W |Y Y Y C   N N N N   N N N N   N N N Y   Y N N Y.
+RW|Y Y Y C   N N N N   N N N N   N N N Y   Y N N Y.
+NA|Y C C Y   N N N N   Y N N Y   N N N Y   Y N N Y
+- - - - -|
+Deny   R |C C C C   N N N N   N N N N   N N N N   N N N N
+All    W |C C C C   N N N N   N N N N   N N N N   N N N N.
+RW|C C C C   N N N N   N N N N   N N N N   N N N N.
+NA|C C C C   N N N N   N N N N   N N N N   N N N N
+- - - - -|
+Deny   R |Y C C Y   N N N N   Y N N Y   N N N Y   Y N N Y
+Write  W |C C C C   N N N N   N N N N   Y N N Y   Y N N Y.
+RW|C C C C   N N N N   N N N N   N N N Y   Y N N Y.
+NA|Y C C Y   N N N N   Y N N Y   N N N Y   Y N N Y
+- - - - -|
+Deny   R |C C C C   N N N N   N Y N N   N N N N   N Y N N
+Read   W |C C C C   N N N N   N N N N   N Y N N   N Y N N.
+RW|C C C C   N N N N   N N N N   N N N N   N Y N N.
+NA|Y Y Y Y   N N N N   Y Y Y Y   N N N Y   Y Y Y Y
+- - - - -|
+Deny   R |Y Y Y Y   N N N N   Y Y Y Y   N N N Y   Y Y Y Y
+None   W |C C C C   N N N N   N N N N   Y Y Y Y   Y Y Y Y.
+RW|C C C C   N N N N   N N N N   N N N Y   Y Y Y Y.
+NA|Y Y Y Y   N N N N   Y Y Y Y   N N N Y   Y Y Y Y
+<p><b>Legend:</b><br>R -> reading, W -> writing, RW -> both reading & writing,.
+A/NA -> reading without access time update.
+Y = open succeeds, N = open fails with error code 05h.
+C = open fails, INT 24 generated
+</PRE>
+<p><b>See Also:</b>
+#01403 - #01636
+<p>
+<b>Category: <a href="cat-010.htm">
+DOS Kernel</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2778.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2780.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

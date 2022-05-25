@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F217h/SF=F3h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F217h/SF=F3h - Novell NetWare v3+ - MAP DIRECTORY NUMBER TO PATH - 
+AX = F217h subfn F3h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02269)
+ES:DI - reply buffer (see #02270)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+SeeAlso: AX=F217h/SF=F4h
+Format of NetWare Map Directory Number to Path request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F217h/SF=F3h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3845.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3847.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v3+ - MAP DIRECTORY NUMBER TO PATH</font></h3>
+<PRE>
+AX = F217h subfn F3h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3846.htm#Table2269">(see #02269)</a>
+ES:DI -> reply buffer <a href="rb-3846.htm#Table2270">(see #02270)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+reply buffer filled
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3847.htm">AX=F217h/SF=F4h</a>
+<PRE>
+<p>
+Format of NetWare "Map Directory Number to Path" request buffer:
+<a name=table2269></a>
+Offset  Size    Description     (Table 02269)
+00h    WORD    0007h (length of following data)
+02h    BYTE    F3h (subfunction "Map Directory Number to Path")
+03h    BYTE    volume number
+04h    DWORD   directory entry number
+08h    BYTE    name space type
+</PRE>
+<p><b>See Also:</b>
+#02270
+<PRE>
+<p>
+Format of NetWare "Map Directory Number to Path" reply buffer:
+<a name=table2270></a>
+Offset  Size    Description     (Table 02270)
+00h    BYTE    directory path length
+01h  N BYTEs   directory path (NetWare style, separated by length descriptors
+rather than slashes or backslashes)
+</PRE>
+<p><b>See Also:</b>
+#02269
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3845.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3847.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

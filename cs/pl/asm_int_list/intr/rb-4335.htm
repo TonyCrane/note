@@ -1,0 +1,108 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=111Eh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=111Eh - NETWORK REDIRECTOR - DO REDIRECTION - 
+AX = 111Eh
+SS = DOS DS
+STACK: WORD function to execute
+5F00h get redirection mode
+BL = type (03h printer, 04h disk)
+Return: BH = state (00h off, 01h on)
+5F01h set redirection mode
+BL = type (03h printer, 04h disk)
+BH = state (00h off, 01h on)
+5F02h get redirection list entry
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=111Eh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4334.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4336.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>NETWORK REDIRECTOR - DO REDIRECTION</font></h3>
+<PRE>
+AX = 111Eh
+SS = DOS DS.
+<p><b>STACK:</b><br>WORD function to execute
+5F00h  get redirection mode
+BL = type (03h printer, 04h disk)
+<p><b>Return:</b><br>BH = state (00h off, 01h on)
+5F01h  set redirection mode
+BL = type (03h printer, 04h disk)
+BH = state (00h off, 01h on)
+5F02h  get redirection list entry
+BX = redirection list index
+DS:SI -> 16-byte local device name buffer
+ES:DI -> 128-byte network name buffer
+<p><b>Return:</b><br>Must set user's BX to device type and CX to
+stored parameter value, using AX=1218h to get
+stack frame address
+5F03h  redirect device
+BL = device type (see INT 21/AX=5F03h)
+CX = stored parameter value
+DS:SI -> ASCIZ source device name
+ES:DI -> destination ASCIZ network path + ASCIZ passwd
+5F04h  cancel redirection
+DS:SI -> ASCIZ device name or network path
+5F05h  get redirection list extended entry
+BX = redirection list index
+DS:SI -> buffer for ASCIZ source device name
+ES:DI -> buffer for destination ASCIZ network path
+<p><b>Return:</b><br>BH = status flag
+BL = type (03h printer, 04h disk)
+CX = stored parameter value
+BP = NETBIOS local session number
+5F06h  similar to 5F05h???<br>
+<p><b>Return:</b><br>CF set on error
+AX = error code <a href="rb-0000.htm#Table0"></a>(see #01680 at INT 21/AH=59h/BX=0000h)
+STACK unchanged
+</PRE>
+<p><b>Notes:</b>
+This function is called by the DOS 3.1+ kernel on INT 21/AH=5Fh
+(including LAN Manager calls).
+The PC Network 1.00 redirector does not support function 5F06h
+<p><b>See Also:</b>
+<a href="rb-3040.htm">INT 21/AX=5F00h</a> - <a href="rb-3041.htm">INT 21/AX=5F01h</a> - <a href="rb-3042.htm">INT 21/AX=5F02h</a> - <a href=http://www.ctyme.com/intr/rb-30
+<p><b>See Also:</b>
+<a href="rb-3044.htm">INT 21/AX=5F04h</a> - <a href="rb-3045.htm">INT 21/AX=5F05h</a> - <a href="rb-3047.htm">INT 21/AX=5F06h</a>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4334.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4336.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

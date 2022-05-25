@@ -1,0 +1,113 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=4404h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=4404h - COMBI-disk v1.13 - GET DATA RECORD - 
+AX = 4404h
+BL = drive number (00h = default, 01h = A:, etc)
+CX = 0032h (length of data packet)
+DS:DX - buffer for data packet (see #01535)
+Return: CF clear if successful
+AX = number of bytes actually transferred
+CF set on error
+AX = error code (01h,05h,06h,0Dh) (see #01680 at AH=59h/BX=0000h)
+Program: COMBI-disk is a shareware combination cache and RAMdisk sharing a
+single pool of memory by Vadim V. Vlasov
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=4404h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2878.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2880.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>COMBI-disk v1.13 - GET DATA RECORD</font></h3>
+<PRE>
+AX = 4404h
+BL = drive number (00h = default, 01h = A:, etc)
+CX = 0032h (length of data packet)
+DS:DX -> buffer for data packet <a href="rb-2879.htm#Table1535">(see #01535)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AX = number of bytes actually transferred
+CF set on error
+AX = error code (01h,05h,06h,0Dh) <a href="rb-0000.htm#Table0"></a>(see #01680 at AH=59h/BX=0000h)
+</PRE>
+<p><b>Program:</b>
+COMBI-disk is a shareware combination cache and RAMdisk sharing a
+single pool of memory by Vadim V. Vlasov
+<PRE>
+<p><b>InstallCheck:</b><br>Scan the valid drives for one which returns a correctly-sized
+data packet with the proper signature in the first field
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2885.htm">AX=4405h"COMBI"</a>
+<PRE>
+<p><b>Index:</b><br>Installation check;COMBI-disk
+<p>
+Format of COMBI-disk data packet:
+<a name=table1535></a>
+Offset  Size    Description     (Table 01535)
+00h  6 BYTEs   ASCIZ signature "COMBI"
+06h    WORD    version (high byte = major, low = decimal minor version)
+08h    BYTE    current options
+09h    BYTE    sectors per allocation block
+0Ah    WORD    maximum buffer in KB
+0Ch    WORD    current buffer in KB (less than max if XMS memory being lent)
+0Eh    WORD    total number of allocation blocks
+10h    WORD    current number of allocation blocks
+12h    WORD    number of blocks being used by RAM disk
+14h    WORD    number of blocks being used by cache or unused
+16h    WORD    number of dirty cache blocks
+18h    WORD    number of blocks which could not be written out due to errors
+1Ah    WORD    total number of read requests
+1Ch    WORD    total number of sectors read
+1Eh    WORD    number of BIOS read requests (cache misses)
+20h    WORD    number of sectors read via BIOS (cache misses)
+22h    WORD    total number of write requests
+24h    WORD    total number of sectors written
+26h    WORD    number of BIOS write requests
+28h    WORD    number of sectors written via BIOS
+2Ah    WORD    number of RAM disk read requests
+2Ch    WORD    number of sectors read from RAM disk
+2Eh    WORD    number of RAM disk write requests
+30h    WORD    number of sectors written to RAM disk
+</PRE>
+<p>
+<b>Category: <a href="cat-004.htm">
+Caches/Spoolers</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-c.htm">
+C</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2878.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2880.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

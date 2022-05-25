@@ -1,0 +1,84 @@
+<HTML>
+<HEAD>
+<TITLE>Int 62/AX=0032h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 62/AX=0032h - FGDRIVER v4.02 - FG_FLICSIZE - GET IMAGE SIZE - 
+AX = 0032h
+ES:BX - FLICSIZE variable pointer record (see #03480)
+Return: image height/width buffers updated; height is set to FFFFh on error
+Note:  the FGDRIVER functions are rearranged with each major release, but
+their parameters do not change (see #03474 at AX=0000h)
+SeeAlso: AX=002Eh,AX=0030h
+Format of FGDRIVER FLICSIZE variable pointer record:
+Offset Size  Description   (Table 03480)
+00h  WORD  segment of buffer for 128-byte FLI/FLC file header
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 62/AX=0032h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6955.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6957.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>FGDRIVER v4.02 - FG_FLICSIZE - GET IMAGE SIZE</font></h3>
+<PRE>
+AX = 0032h
+ES:BX -> FLICSIZE variable pointer record <a href="rb-6956.htm#Table3480">(see #03480)</a><br>
+<p><b>Return:</b><br>Image height/width buffers updated; height is set to FFFFh on error
+</PRE>
+<p><b>Note:</b>
+The FGDRIVER functions are rearranged with each major release, but
+their parameters do not change <a href="rb-0000.htm#Table0"></a>(see #03474 at AX=0000h)
+<p><b>See Also:</b>
+<a href="rb-6952.htm">AX=002Eh</a> - <a href="rb-6954.htm">AX=0030h</a>
+<PRE>
+<p>
+Format of FGDRIVER FLICSIZE variable pointer record:
+<a name=table3480></a>
+Offset  Size    Description     (Table 03480)
+00h    WORD    segment of buffer for 128-byte FLI/FLC file header
+02h    WORD    offset of buffer for 128-byte FLI/FLC file header
+04h    WORD    segment of WORD buffer for image width in pixels
+06h    WORD    offset of WORD buffer for image width in pixels
+08h    WORD    segment of WORD buffer for image height in pixels
+0Ah    WORD    offset of WORD buffer for image height in pixels
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-62.htm">
+Int 62h</a>
+- <a href="alpha-f.htm">
+F</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-6955.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-6957.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

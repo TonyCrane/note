@@ -1,0 +1,91 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=5F3Bh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=5F3Bh - LAN Manager Enhanced DOS - NetHandleSetInfo - 
+AX = 5F3Bh
+BX = handle
+CX = handle_info_1 structure length or sizeof DWORD
+DI = parameter number to set
+0000h all
+0001h number of milliseconds
+0002h number of characters
+DS:DX - handle_info_1 structure (DI=0000h) (see #01705)
+or DWORD (DI=0001h or 0002h)
+SI = level of information (0001h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=5F3Bh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3064.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3066.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>LAN Manager Enhanced DOS - NetHandleSetInfo</font></h3>
+<PRE>
+AX = 5F3Bh
+BX = handle
+CX = handle_info_1 structure length or sizeof DWORD
+DI = parameter number to set
+0000h all
+0001h number of milliseconds
+0002h number of characters
+DS:DX -> handle_info_1 structure (DI=0000h) <a href="rb-3065.htm#Table1705">(see #01705)</a>
+or DWORD (DI=0001h or 0002h)
+SI = level of information (0001h)<br>
+<p><b>Return:</b><br>CF clear if successful
+CX = total bytes available
+CF set if error
+AX = error code
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-3066.htm">AX=5F3Ch</a>
+<PRE>
+<p>
+Format of LAN Manager handle_info_1 structure:
+<a name=table1705></a>
+Offset  Size    Description     (Table 01705)
+00h    DWORD   number of milliseconds which workstation collects data before
+it sends the data to the named pipe
+04h    DWORD   number of characters which workstation collects before it
+sends the data to the named pipe
+</PRE>
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-l.htm">
+L</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3064.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3066.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

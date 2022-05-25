@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1AA6h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1AA6h - ANSIPLUS v4.00+ - ENABLE/DISABLE ANSIPLUS DRIVER - 
+AX = 1AA6h
+BH = function
+00h get hooked interrupts
+01h set hooked interrupts mask
+BL = new interrupts mask (see #02737)
+Return: BL = previous interrupts mask (see #02737)
+SeeAlso: AX=1A00h/BX=414Eh,AX=1AA7h
+Desc:  used to temporarily disable any prior copies of ANSIPLUS when a new
+copy is installed, such as in a multitasking system like DESQview
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1AA6h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4675.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4677.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>ANSIPLUS v4.00+ - ENABLE/DISABLE ANSIPLUS DRIVER</font></h3>
+<PRE>
+AX = 1AA6h
+BH = function
+00h get hooked interrupts
+01h set hooked interrupts mask
+BL = new interrupts mask <a href="rb-4676.htm#Table2737">(see #02737)</a><br>
+<p><b>Return:</b><br>BL = previous interrupts mask (see #02737)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4655.htm">AX=1A00h/BX=414Eh</a> - <a href="rb-4677.htm">AX=1AA7h</a>
+<PRE>
+<p>
+</PRE>
+<p><b>Desc:</b>
+Used to temporarily disable any prior copies of ANSIPLUS when a new
+copy is installed, such as in a multitasking system like DESQview
+<p><b>Note:</b>
+Only the most-recently loaded copy of ANSIPLUS on the current INT 2F
+chain responds to this call
+<PRE>
+<p>
+Bitfields for ANSIPLUS hooked interrupts mask:
+<a name=table2737></a>
+Bit(s)  Description     (Table 02737)
+0      INT 09 hook disabled
+1      INT 10 hook disabled
+2      INT 15 hook disabled
+3      INT 16 hook disabled
+4      INT 1C hook disabled
+5      reset all bits when INT 29 called
+6      INT 29 hook disabled
+7      INT 33, INT 74, or other mouse event hook disabled
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4675.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4677.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

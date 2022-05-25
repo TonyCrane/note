@@ -1,0 +1,118 @@
+<HTML>
+<HEAD>
+<TITLE>Int 10/AH=08h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 10/AH=08h - VIDEO - READ CHARACTER AND ATTRIBUTE AT CURSOR POSITION - 
+AH = 08h
+BH = page number (00h to number of pages - 1) (see #00010)
+Return: AH = character's attribute (text mode only) (see #00014)
+AH = character's color (Tandy 2000 graphics mode only)
+AL = character
+Notes: for monochrome displays, a foreground of 1 with background 0 is
+underlined
+the blink bit may be reprogrammed to enable intense background colors
+using AX=1003h or by programming the CRT controller
+the foreground intensity bit (3) can be programmed to switch between
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 10/AH=08h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0097.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0099.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>VIDEO - READ CHARACTER AND ATTRIBUTE AT CURSOR POSITION</font></h3>
+<PRE>
+AH = 08h
+BH = page number (00h to number of pages - 1) <a href="rb-0069.htm#Table10">(see #00010)</a><br>
+<p><b>Return:</b><br>AH = character's attribute (text mode only) (see #00014)
+AH = character's color (Tandy 2000 graphics mode only)
+AL = character
+</PRE>
+<p><b>Notes:</b>
+For monochrome displays, a foreground of 1 with background 0 is
+underlined.
+The blink bit may be reprogrammed to enable intense background colors
+using AX=1003h or by programming the CRT controller.
+The foreground intensity bit (3) can be programmed to switch between
+character sets A and B on EGA and VGA cards, thus enabling 512
+simultaneous characters on screen.  In this case the bit's usual
+function (intensity) is regularly turned off..
+In graphics modes, only characters drawn with white foreground pixels
+are matched by the pattern-comparison routine.
+On the Tandy 2000, BH=FFh specifies that the current page should be
+used.
+Because of the IBM BIOS specifications, there may exist some clone
+BIOSes which do not preserve SI or DI; the Novell DOS kernel
+preserves SI, DI, and BP before many INT 10h calls to avoid problems
+due to those registers not being preserved by the BIOS.
+<p><b>BUG:</b>
+Some IBM PC ROM BIOSes destroy BP when in graphics modes
+<p><b>See Also:</b>
+<a href="rb-0099.htm">AH=09h</a> - <a href="rb-0117.htm">AX=1003h</a> - <a href="rb-0139.htm">AX=1103h</a> - <a href="rb-0174.htm">AH=12h/BL=37h</a
+<PRE>
+<p>
+Bitfields for character's display attribute:
+<a name=table14></a>
+Bit(s)  Description     (Table 00014)
+7      foreground blink or (alternate) background bright (see also AX=1003h)
+6-4    background color <a href="rb-0098.htm#Table15">(see #00015)</a>
+3      foreground bright or (alternate) alternate character set (see AX=1103h)
+2-0    foreground color <a href="rb-0098.htm#Table15">(see #00015)</a>
+</PRE>
+<p><b>See Also:</b>
+#00026
+<PRE>
+<p>
+<a name=table15></a>
+(Table 00015)
+Values for character color:.
+Normal          Bright
+000b   black           dark gray
+001b   blue            light blue
+010b   green           light green
+011b   cyan            light cyan
+100b   red             light red
+101b   magenta         light magenta
+110b   brown           yellow
+111b   light gray      white
+</PRE>
+<p>
+<b>Category: <a href="cat-046.htm">
+Video</a>
+- <a href="int-10.htm">
+Int 10h</a>
+- <a href="alpha-v.htm">
+V</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0097.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0099.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

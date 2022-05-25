@@ -1,0 +1,95 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=0Ch
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=0Ch - Novell NetWare - VERIFY NETWORK SERIAL NUMBER - 
+AH = E3h subfn 0Ch
+DS:SI - request buffer (see #01896)
+ES:DI - reply buffer (see #01897)
+Return: AL = status
+00h successful
+Note:  if the network serial number to be verified is correct, the reply
+buffer will contain the corresponding application number
+SeeAlso: AH=E3h/SF=12h,AX=F217h/SF=0Ch
+Format of NetWare Verify Network Serial Number request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=0Ch
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3487.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3489.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - VERIFY NETWORK SERIAL NUMBER</font></h3>
+<PRE>
+AH = E3h subfn 0Ch
+DS:SI -> request buffer <a href="rb-3488.htm#Table1896">(see #01896)</a>
+ES:DI -> reply buffer <a href="rb-3488.htm#Table1897">(see #01897)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Note:</b>
+If the network serial number to be verified is correct, the reply
+buffer will contain the corresponding application number
+<p><b>See Also:</b>
+<a href="rb-3494.htm">AH=E3h/SF=12h</a> - <a href="rb-3720.htm">AX=F217h/SF=0Ch</a>
+<PRE>
+<p>
+Format of NetWare "Verify Network Serial Number" request buffer:
+<a name=table1896></a>
+Offset  Size    Description     (Table 01896)
+00h    WORD    0005h (length of following data)
+02h    BYTE    0Ch (subfunction "Verify Network Serial Number")
+03h    DWORD   (big-endian) network serial number to verify
+</PRE>
+<p><b>See Also:</b>
+#01897 - #02163
+<PRE>
+<p>
+Format of NetWare "Verify Network Serial Number" reply buffer:
+<a name=table1897></a>
+Offset  Size    Description     (Table 01897)
+00h    WORD    (call) 0002h (size of following results buffer)
+02h    WORD    (big-endian) application number
+</PRE>
+<p><b>See Also:</b>
+#01896 - #02163
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3487.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3489.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

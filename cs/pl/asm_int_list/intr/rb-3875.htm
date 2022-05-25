@@ -1,0 +1,94 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F223h/SF=06h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F223h/SF=06h - Novell NetWare v2+ - AFP GET ENTRY ID FROM NETWARE HANDLE - 
+AX = F223h subfn 06h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI - request buffer (see #02314)
+ES:DI - reply buffer (see #02315)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F223h/SF=04h,AX=F223h/SF=0Ch,AX=F223h/SF=12h
+Format of NetWare AFP Get Entry ID from NetWare Handle request packet:
+Offset Size  Description   (Table 02314)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F223h/SF=06h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3874.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3876.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare v2+ - AFP GET ENTRY ID FROM NETWARE HANDLE</font></h3>
+<PRE>
+AX = F223h subfn 06h
+CX = length of request buffer in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request buffer <a href="rb-3875.htm#Table2314">(see #02314)</a>
+ES:DI -> reply buffer <a href="rb-3875.htm#Table2315">(see #02315)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3873.htm">AX=F223h/SF=04h</a> - <a href="rb-3881.htm">AX=F223h/SF=0Ch</a> - <a href="rb-3886.htm">AX=F223h/SF=12h</a>
+<PRE>
+<p>
+Format of NetWare "AFP Get Entry ID from NetWare Handle" request packet:
+<a name=table2314></a>
+Offset  Size    Description     (Table 02314)
+00h    WORD    (big-endian) length of following data
+02h    BYTE    06h (subfunction "AFP Get Entry ID from NetWare Handle")
+03h  6 BYTEs   NetWare file handle
+</PRE>
+<p><b>See Also:</b>
+#02315 - #02307
+<PRE>
+<p>
+Format of NetWare "AFP Get Entry ID from NetWare Handle" reply packet:
+<a name=table2315></a>
+Offset  Size    Description     (Table 02315)
+00h    BYTE    volume number
+01h    DWORD   AFP entry ID corresponding to same file as NetWare handle
+05h    BYTE    fork indicator (00h data fork, 01h resource fork)
+</PRE>
+<p><b>See Also:</b>
+#02314 - #02308
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3874.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3876.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

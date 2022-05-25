@@ -1,0 +1,83 @@
+<HTML>
+<HEAD>
+<TITLE>Int 31/AX=0205h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 31/AX=0205h - DPMI 0.9+ - SET PROTECTED MODE INTERRUPT VECTOR - 
+AX = 0205h
+BL = interrupt number
+CX:(E)DX = selector:offset of handler
+Return: CF clear if successful
+CF set on error
+AX = error code (DPMI 1.0+) (8022h) (see #03143)
+Notes: 16-bit programs use CX:DX, 32-bit programs use CX:EDX
+32-bit programs must use a 32-bit interrupt stack frame when chaining
+to the next handler
+DPMI implementations are required to support all 256 vectors
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 31/AX=0205h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5825.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5827.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>DPMI 0.9+ - SET PROTECTED MODE INTERRUPT VECTOR</font></h3>
+<PRE>
+AX = 0205h
+BL = interrupt number
+CX:(E)DX = selector:offset of handler<br>
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+AX = error code (DPMI 1.0+) (8022h) <a href="rb-5802.htm#Table3143">(see #03143)</a>
+</PRE>
+<p><b>Notes:</b>
+16-bit programs use CX:DX, 32-bit programs use CX:EDX.
+32-bit programs must use a 32-bit interrupt stack frame when chaining
+to the next handler.
+DPMI implementations are required to support all 256 vectors.
+Hardware interrupts are reflected to the virtual machine's primary
+client, software interrupts to the current client.
+Not supported by MS Windows 3.0 in Standard mode
+<p><b>See Also:</b>
+<a href="rb-5822.htm">AX=0201h</a> - <a href="rb-5825.htm">AX=0204h</a> - <a href="rb-2606.htm">INT 21/AX=2504h</a> - <a href="rb-4178.htm">INT 2C/
+<p><b>See Also:</b>
+<a href="rb-5756.htm">INT 2F/AX=FB42h/BX=0025h</a>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-31.htm">
+Int 31h</a>
+- <a href="alpha-d.htm">
+D</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5825.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5827.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

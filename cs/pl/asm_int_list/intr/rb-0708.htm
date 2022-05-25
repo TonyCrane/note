@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 13/AH=42h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 13/AH=42h - IBM/MS INT 13 Extensions - EXTENDED READ - 
+AH = 42h
+DL = drive number
+DS:SI - disk address packet (see #00272)
+Return: CF clear if successful
+AH = 00h
+CF set on error
+AH = error code (see #00234)
+disk address packet's block count field set to number of blocks
+successfully transferred
+SeeAlso: AH=02h,AH=41hINT 13 Ext,AH=43hINT 13 Ext
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 13/AH=42h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0707.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0709.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>IBM/MS INT 13 Extensions - EXTENDED READ</font></h3>
+<PRE>
+AH = 42h
+DL = drive number
+DS:SI -> disk address packet <a href="rb-0708.htm#Table272">(see #00272)</a><br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h
+CF set on error
+AH = error code <a href="rb-0606.htm#Table234">(see #00234)</a>
+disk address packet's block count field set to number of blocks
+successfully transferred
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-0607.htm">AH=02h</a> - <a href="rb-0706.htm">AH=41h"INT 13 Ext"</a> - <a href="rb-0706.htm">AH=43h"INT 13 Ext"</a>
+<PRE>
+<p>
+Format of disk address packet:
+<a name=table272></a>
+Offset  Size    Description     (Table 00272)
+00h    BYTE    size of packet (10h or 18h)
+01h    BYTE    reserved (0)
+02h    WORD    number of blocks to transfer (max 007Fh for Phoenix EDD)
+04h    DWORD   -> transfer buffer
+08h    QWORD   starting absolute block number
+(for non-LBA devices, compute as
+(Cylinder*NumHeads + SelectedHead) * SectorPerTrack +
+SelectedSector - 1
+10h    QWORD   (EDD-3.0, optional) 64-bit flat address of transfer buffer;
+used if DWORD at 04h is FFFFh:FFFFh
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-13.htm">
+Int 13h</a>
+- <a href="alpha-i.htm">
+I</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-0707.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-0709.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

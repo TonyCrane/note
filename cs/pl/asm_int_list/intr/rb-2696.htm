@@ -1,0 +1,264 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=2B01h/CX=5441h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=2B01h/CX=5441h - TAME v2.10+ - INSTALLATION CHECK - 
+AX = 2B01h
+CX = 5441h ('TA')
+DX = 4D45h ('ME')
+---v2.60---
+BH = ???
+00h skip ???, else do
+Return: AL = 02h if installed
+ES:DX - data area in TAME-RES (see #01382,#01386,#01388)
+Program: TAME is a shareware program by David G. Thomas which gives up CPU
+time to other partitions under a multitasker when the current
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=2B01h/CX=5441h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2695.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2697.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TAME v2.10+ - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 2B01h
+CX = 5441h ('TA')
+DX = 4D45h ('ME')
+---v2.60---
+BH = ???
+00h skip ???, else do<br>
+<p><b>Return:</b><br>AL = 02h if installed
+ES:DX -> data area in TAME-RES <a href="rb-0000.htm#Table0"></a>(see #01382,#01386,#01388)
+</PRE>
+<p><b>Program:</b>
+TAME is a shareware program by David G. Thomas which gives up CPU
+time to other partitions under a multitasker when the current
+partition's program incessantly polls the keyboard or system time
+<PRE>
+<p>
+Format of TAME 2.10-2.20 data area:
+<a name=table1382></a>
+Offset  Size    Description     (Table 01382)
+00h    BYTE    data structure minor version number (01h in TAME 2.20)
+01h    BYTE    data structure major version number (07h in TAME 2.20)
+02h    DWORD   number of task switches
+06h    DWORD   number of keyboard polls
+0Ah    DWORD   number of time polls
+0Eh    DWORD   number of times DESQview told program runs only in foreground
+12h    DWORD   original INT 10h
+16h    DWORD   original INT 14h
+1Ah    DWORD   original INT 15h
+1Eh    DWORD   original INT 16h
+22h    DWORD   original INT 17h
+26h    DWORD   original INT 21h
+2Ah    DWORD   original INT 28h
+2Eh    WORD    offset of TAME INT 10h handler
+30h    WORD    offset of TAME INT 14h handler
+32h    WORD    offset of TAME INT 15h handler
+34h    WORD    offset of TAME INT 16h handler
+36h    WORD    offset of TAME INT 17h handler
+38h    WORD    offset of TAME INT 21h handler
+3Ah    WORD    offset of TAME INT 28h handler
+3Ch    WORD    X in /max:X,Y or /freq:X,Y
+3Eh    WORD    Y in /max:X,Y or /freq:X,Y
+40h    WORD    number of polls remaining before next task switch
+42h    WORD    /KEYIDLE value
+44h    BYTE    interrupts already grabbed by TAME <a href="rb-2696.htm#Table1383">(see #01383)</a>
+45h    BYTE    flags for interrupts which may be acted on (same bits as above)
+46h    BYTE    TAME enabled (01h) or disabled (00h)
+47h    BYTE    /TIMEPOLL (01h) or /NOTIMEPOLL (00h)
+48h    BYTE    /NOTIMER (01h) or /TIMER (00h)
+49h    BYTE    window or task number for this task
+4Ah    BYTE    multitasker type <a href="rb-2696.htm#Table1384">(see #01384)</a>
+4Bh    BYTE    type of task switching selected
+<p><b>bit 0:</b><br>DESQview???
+<p><b>bit 1:</b><br>DoubleDOS???
+<p><b>bit 2:</b><br>TopView???
+<p><b>bit 3:</b><br>KeySwitch
+<p><b>bit 4:</b><br>HLT instruction
+4Ch    BYTE    ???
+4Dh    BYTE    flags
+<p><b>bit 1:</b><br>/FREQ instead of /MAX
+<p><b>4Eh    BYTE    /FG:</b><br>Value
+4Fh    BYTE    task switches left until next FGONLY DESQview API call
+50h    BYTE    ???
+<p>
+Bitfields for interrupts already grabbed by TAME:
+<a name=table1383></a>
+Bit(s)  Description     (Table 01383)
+0      INT 10h
+1      INT 14h
+2      INT 15h
+3      INT 16h
+4      INT 17h
+5      INT 21h
+6      INT 28h
+<p>
+<a name=table1384></a>
+(Table 01384)
+Values for multitasker type:
+01h    DESQview
+02h    DoubleDOS
+03h    TopView
+04h    OmniView
+05h    VM/386
+<p>
+Bitfields for type of task switching selected:
+<a name=table1385></a>
+Bit(s)  Description     (Table 01385)
+0      DESQview
+1      DoubleDOS
+2      TopView
+3      OmniView
+4      KeySwitch
+5      HLT instruction
+<p>
+Format of TAME 2.30 data area:
+<a name=table1386></a>
+Offset  Size    Description     (Table 01386)
+00h    BYTE    data structure minor version number (02h in TAME 2.30)
+01h    BYTE    data structure major version number (0Ah in TAME 2.30)
+02h    DWORD   number of task switches
+06h    DWORD   number of keyboard polls
+0Ah    DWORD   number of time polls
+0Eh    DWORD   number of times DESQview told program runs only in foreground
+12h    DWORD   time of last /CLEAR or TAME-RES load
+16h    DWORD   time yielded
+1Ah    DWORD   time spent polling
+1Eh    DWORD   time spent waiting on key input with INT 16/AH=01h,11h
+22h    DWORD   original INT 10h
+26h    DWORD   original INT 14h
+2Ah    DWORD   original INT 15h
+2Eh    DWORD   original INT 16h
+32h    DWORD   original INT 17h
+36h    DWORD   original INT 21h
+3Ah    DWORD   original INT 28h
+3Eh    WORD    offset of TAME INT 10h handler
+40h    WORD    offset of TAME INT 14h handler
+42h    WORD    offset of TAME INT 15h handler
+44h    WORD    offset of TAME INT 16h handler
+46h    WORD    offset of TAME INT 17h handler
+48h    WORD    offset of TAME INT 21h handler
+4Ah    WORD    offset of TAME INT 28h handler
+4Ch    WORD    X in /max:X,Y or /freq:X,Y
+4Eh    WORD    Y in /max:X,Y or /freq:X,Y
+50h    WORD    number of polls remaining before next task switch
+52h    WORD    /KEYIDLE value
+<p><b>54h    WORD    /FG:</b><br>Value
+56h    WORD    task switches left until next FGONLY DESQview API call
+58h    WORD    multitasker version
+5Ah    WORD    virtual screen segment
+5Ch    BYTE    interrupts already grabbed by TAME <a href="rb-2696.htm#Table1383">(see #01383)</a>
+5Dh    BYTE    flags for interrupts which may be acted on (same bits as above)
+5Eh    BYTE    window or task number for this task
+5Fh    BYTE    multitasker type <a href="rb-2696.htm#Table1384">(see #01384)</a>
+60h    BYTE    type of task switching selected (bit flags) <a href="rb-2696.htm#Table1385">(see #01385)</a>
+61h    BYTE    watch_DOS
+62h    BYTE    action flags <a href="rb-2696.htm#Table1387">(see #01387)</a>
+63h    BYTE    old status
+64h    WORD    signature DA34h
+<p>
+Bitfields for TAME action flags:
+<a name=table1387></a>
+Bit(s)  Description     (Table 01387)
+0      TAME enabled
+1      /FREQ instead of /MAX (X and Y count fields are per tick)
+2      /TIMEPOLL
+3      /KEYPOLL
+4      inhibit timer
+5      enable status monitoring
+</PRE>
+<p><b>See Also:</b>
+#01386 - #01388
+<PRE>
+<p>
+Format of TAME 2.60 data area:
+<a name=table1388></a>
+Offset  Size    Description     (Table 01388)
+00h    BYTE    data structure minor version number (02h in TAME 2.60)
+01h    BYTE    data structure major version number (0Bh in TAME 2.60)
+02h    DWORD   number of task switches
+06h    DWORD   number of keyboard polls
+0Ah    DWORD   number of time polls
+0Eh    DWORD   number of times DESQview told program runs only in foreground
+12h    DWORD   time of last /CLEAR or TAME-RES load
+16h    DWORD   time yielded
+1Ah    DWORD   time spent polling
+1Eh    DWORD   time spent waiting on key input with INT 16/AH=01h,11h
+22h  4 BYTEs   ???
+26h    DWORD   original INT 10h
+2Ah    DWORD   original INT 14h
+2Eh    DWORD   original INT 15h
+32h    DWORD   original INT 16h
+36h    DWORD   original INT 17h
+3Ah    DWORD   original INT 21h
+3Eh    DWORD   original INT 28h
+42h    WORD    offset of TAME INT 10h handler
+44h    WORD    offset of TAME INT 14h handler
+46h    WORD    offset of TAME INT 15h handler
+48h    WORD    offset of TAME INT 16h handler
+4Ah    WORD    offset of TAME INT 17h handler
+4Ch    WORD    offset of TAME INT 21h handler
+4Eh    WORD    offset of TAME INT 28h handler
+50h    WORD    X in /max:X,Y or /freq:X,Y
+52h    WORD    Y in /max:X,Y or /freq:X,Y
+54h    WORD    number of polls remaining before next task switch
+56h    WORD    /KEYIDLE value
+58h  4 BYTEs   ???
+5Ch    WORD    X in /boost:X,Y
+5Eh    WORD    Y in /boost:X,Y
+<p><b>60h    WORD    /FG:</b><br>Value
+62h    WORD    task switches remaining until next FGONLY DESQview API call
+64h    WORD    multitasker version ???
+66h    WORD    virtual screen segment
+68h    BYTE    interrupts already grabbed by TAME <a href="rb-2696.htm#Table1383">(see #01383)</a>
+69h    BYTE    flags for interrupts which may be acted on (same bits as above)
+6Ah    BYTE    window or task number for this task
+6Bh    BYTE    multitasker type <a href="rb-2696.htm#Table1384">(see #01384)</a>
+6Ch    BYTE    type of task switching selected (bit flags) <a href="rb-2696.htm#Table1385">(see #01385)</a>
+6Dh    BYTE    watch_DOS
+6Eh    BYTE    action flags <a href="rb-2696.htm#Table1387">(see #01387)</a>
+6Fh    BYTE    old status
+70h    WORD    signature DA34h
+</PRE>
+<p>
+<b>Category: <a href="cat-011.htm">
+DOS-Based Task Switchers/Multitaskers</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2695.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2697.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

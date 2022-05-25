@@ -1,0 +1,122 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=1684h/BX=3110h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=1684h/BX=3110h - MS Windows - VSGLX16.386 - GET API ENTRY POINT - 
+AX = 1684h
+BX = 3110h (virtual device ID for VSGLX16.386) (see #02642)
+ES:DI = 0000h:0000h
+Return: ES:DI - VxD API entry point (see #02705)
+0000h:0000h if the VxD does not support an API
+SeeAlso: AX=1684h/BX=045Fh,AX=1684hDEVICE API,INT 20Windows
+(Table 02705)
+Call VSGLX16.386 entry point with:
+DX = function number
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=1684h/BX=3110h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4609.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4611.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>MS Windows - VSGLX16.386 - GET API ENTRY POINT</font></h3>
+<PRE>
+AX = 1684h
+BX = 3110h (virtual device ID for VSGLX16.386) <a href="rb-4534.htm#Table2642">(see #02642)</a>
+ES:DI = 0000h:0000h<br>
+<p><b>Return:</b><br>ES:DI -> VxD API entry point (see #02705)
+0000h:0000h if the VxD does not support an API
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-4583.htm">AX=1684h/BX=045Fh</a> - <a href="rb-4501.htm">AX=1684h"DEVICE API"</a> - <a href="rb-2473.htm">INT 20"Windows"</a>
+<PRE>
+<p>
+<a name=table2705></a>
+(Table 02705)
+Call VSGLX16.386 entry point with:.
+DX = function number
+0000h get azt16 version
+<p><b>Return:</b><br>CF clear
+AX = version returned by "azt16" device
+0001h get ???
+AX = ??? (always fails if nonzero)
+ES:BX -> buffer for ???
+first DWORD of buffer must be set to length of buffer
+(in bytes, 1 <= size <= 92) before calling
+<p><b>Return:</b><br>CF clear if successful
+AX = 0001h
+CF set on error (invalid pointer, bad buffer size)
+AX = 0000h
+0002h
+AX = ???
+BX = ???
+<p><b>Return:</b><br>CF clear if successful
+AX = ???
+CF set on error
+AX = error code
+0003h
+AX = ???
+BX = ???
+<p><b>Return:</b><br>CF clear if successful
+CF set on error
+0004h set ???
+ES:DI -> buffer containing ???
+BX = ???
+CX = number of bytes to copy
+<p><b>Return:</b><br>CF clear if successful
+AX = 0001h
+CF set on error
+AX = 0000h
+0005h get ???
+ES:DI -> buffer for ???
+BX = ???
+CX = number of bytes to copy
+<p><b>Return:</b><br>CF clear if successful
+AX = 0001h
+CF set on error
+AX = 0000h
+else
+<p><b>Return:</b><br>CF set
+</PRE>
+<p><b>See Also:</b>
+#02686
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-m.htm">
+M</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4609.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4611.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

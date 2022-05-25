@@ -1,0 +1,96 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7C/AX=000Dh
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7C/AX=000Dh - SK-UPPS Data Link Interface API - GET DRIVER STATISTICS - 
+AX = 000Dh
+BX = flag: 0=don't clear statistics, 1=clear statistics
+ES:DI - Statistics Data Block (see #03857)
+Return: AX = completion code (see #03846)
+SeeAlso: AX=0002h,AX=0015h
+Format of SK-UPPS Statistics Data Block (SDB):
+Offset Size  Description   (Table 03857)
+00h  DWORD  node uptime in ticks (1/18.21 sec.)
+04h  DWORD  bytes received
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7C/AX=000Dh
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7931.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7933.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SK-UPPS Data Link Interface API - GET DRIVER STATISTICS</font></h3>
+<PRE>
+AX = 000Dh.
+<p><b>BX = flag:</b><br>0=don't clear statistics, 1=clear statistics.
+ES:DI -> Statistics Data Block <a href="rb-7932.htm#Table3857">(see #03857)</a><br>
+<p><b>Return:</b><br>AX = completion code (see #03846)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7921.htm">AX=0002h</a> - <a href="rb-7940.htm">AX=0015h</a>
+<PRE>
+<p>
+Format of SK-UPPS Statistics Data Block (SDB):
+<a name=table3857></a>
+Offset  Size    Description     (Table 03857)
+00h    DWORD   node uptime in ticks (1/18.21 sec.)
+04h    DWORD   bytes received
+08h    DWORD   bytes transmitted
+0Ch    DWORD   frames received
+10h    DWORD   frames transmitted
+14h    DWORD   multicast bytes received
+18h    DWORD   multicast frames received
+1Ch    DWORD   unrecognized frames
+20h    WORD    missed frames
+22h    WORD    frame check sequence (FCS) errors
+24h    WORD    framing errors
+26h    WORD    babbling errors
+28h    WORD    late collision errors
+2Ah    WORD    loss of carrier errors
+2Ch    WORD    16 retries failed errors
+2Eh    WORD    overflow errors
+</PRE>
+<p><b>Note:</b>
+Fields 26h through 2Ch are always zero, except in some very old
+versions of the DLI.  Use GET MEDIA STATISTICS (AX=0015h) to get
+more detailed information.
+<p>
+<b>Category: <a href="cat-027.htm">
+Network</a>
+- <a href="int-7C.htm">
+Int 7Ch</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7931.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7933.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

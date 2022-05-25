@@ -1,0 +1,92 @@
+<HTML>
+<HEAD>
+<TITLE>Int 15/AX=2403h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 15/AX=2403h - SYSTEM - later PS/2s - QUERY A20 GATE SUPPORT - 
+AX = 2403h
+Return: CF clear if successful
+AH = 00h
+BX = status of A20 gate support (see #00462)
+CF set on error
+AH = status
+01h keyboard controller is in secure mode
+86h function not supported
+Notes: also supported by AMI PCI BIOS and Qualitas 386MAX v6.01+
+IBM classifies this function as optional
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 15/AX=2403h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1337.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1339.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SYSTEM - later PS/2s - QUERY A20 GATE SUPPORT</font></h3>
+<PRE>
+AX = 2403h<br>
+<p><b>Return:</b><br>CF clear if successful
+AH = 00h
+BX = status of A20 gate support <a href="rb-1338.htm#Table462">(see #00462)</a>
+CF set on error
+AH = status
+01h keyboard controller is in secure mode
+86h function not supported
+</PRE>
+<p><b>Notes:</b>
+Also supported by AMI PCI BIOS and Qualitas 386MAX v6.01+.
+IBM classifies this function as optional
+<p><b>BUG:</b>
+At one point early in processing INT 15/AH=24h, the AMI PCI BIOS
+version 1.00.05.AX1 compares whether AL==03h instead of AL>=03h,
+thus causing a random branch on any value of AL greater than 3.
+<p><b>See Also:</b>
+<a href="rb-1337.htm">AX=2402h</a>
+<PRE>
+<p>
+Bitfields for A20 gate support status:
+<a name=table462></a>
+Bit(s)  Description     (Table 00462)
+0      supported on keyboard controller
+1      supported with bit 1 of I/O port 92h
+14-2   reserved
+15     additional data is available (location not yet defined)
+</PRE>
+<p>
+<b>Category: <a href="cat-044.htm">
+Vendor-specific BIOS Extensions</a>
+- <a href="int-15.htm">
+Int 15h</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-1337.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-1339.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,86 @@
+<HTML>
+<HEAD>
+<TITLE>Int 78/AH=14h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 78/AH=14h - TARGA.DEV - SEND SCSI COMMAND AND DATA (DMA) - 
+AH = 14h
+DS:SI - command bytes (see #03808)
+ES:BX - data storage area
+DX:CX = number of data bytes to transfer
+Return: AH = SCSI status byte (if early return mode is clear)
+CF clear if successful
+AL = SCSI message byte (if early return mode is clear)
+CF set on error
+AL = error code (see #03786)
+Note:  this command sends data using DMA
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 78/AH=14h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7827.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7829.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>TARGA.DEV - SEND SCSI COMMAND AND DATA (DMA)</font></h3>
+<PRE>
+AH = 14h
+DS:SI -> command bytes <a href="rb-7828.htm#Table3808">(see #03808)</a>
+ES:BX -> data storage area
+DX:CX = number of data bytes to transfer<br>
+<p><b>Return:</b><br>AH = SCSI status byte (if early return mode is clear)
+CF clear if successful
+AL = SCSI message byte (if early return mode is clear)
+CF set on error
+AL = error code <a href="rb-7813.htm#Table3786">(see #03786)</a>
+</PRE>
+<p><b>Note:</b>
+This command sends data using DMA
+<p><b>See Also:</b>
+<a href="rb-7826.htm">AH=12h</a> - <a href="rb-7827.htm">AH=13h</a>
+<PRE>
+<p>
+Format of TARGA.DEV SCSI Command:
+<a name=table3808></a>
+Offset  Size    Description     (Table 03808)
+00h    BYTE    length of command
+01h    ???     command bytes
+</PRE>
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-78.htm">
+Int 78h</a>
+- <a href="alpha-t.htm">
+T</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7827.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7829.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

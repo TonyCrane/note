@@ -1,0 +1,97 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=F216h/SF=20h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=F216h/SF=20h - Novell NetWare - SCAN VOLUME'S USER DISK RESTRICTIONS - 
+AX = F216h subfn 20h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI - request packet (see #02130)
+ES:DI - reply buffer (see #02131)
+Return: AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+SeeAlso: AH=F2hNovell,AX=F216h/SF=23h,AX=F216h/SF=29h
+Format of NetWare Scan Volume's User Disk Restrictions request packet:
+Offset Size  Description   (Table 02130)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=F216h/SF=20h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3697.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3699.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - SCAN VOLUME'S USER DISK RESTRICTIONS</font></h3>
+<PRE>
+AX = F216h subfn 20h
+CX = length of request packet in bytes
+DX = length of reply buffer in bytes
+DS:SI -> request packet <a href="rb-3698.htm#Table2130">(see #02130)</a>
+ES:DI -> reply buffer <a href="rb-3698.htm#Table2131">(see #02131)</a><br>
+<p><b>Return:</b><br>AX = status (see #02860 at INT 2F/AX=7A20h/BX=0000h)
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2571.htm">AH=F2h"Novell"</a> - <a href="rb-3701.htm">AX=F216h/SF=23h</a> - <a href="rb-3707.htm">AX=F216h/SF=29h</a>
+<PRE>
+<p>
+Format of NetWare "Scan Volume's User Disk Restrictions" request packet:
+<a name=table2130></a>
+Offset  Size    Description     (Table 02130)
+00h    WORD    length of following data
+02h    BYTE    20h (subfunction "Scan Volume's User Disk Restrictions")
+03h    BYTE    volume number
+04h    DWORD   sequence number (set to 00000000h before first call)
+</PRE>
+<p><b>See Also:</b>
+#02131
+<PRE>
+<p>
+Format of NetWare "Scan Volume's User Disk Restrictions" reply packet:
+<a name=table2131></a>
+Offset  Size    Description     (Table 02131)
+00h    BYTE    number of entries returned (max 12)
+01h 2N DWORDs  restriction entries [array]
+Offset  Size    Description
+00h    DWORD   object ID
+04h    DWORD   maximum usage allowed (in 4K blocks)
+</PRE>
+<p><b>See Also:</b>
+#02130
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3697.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3699.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

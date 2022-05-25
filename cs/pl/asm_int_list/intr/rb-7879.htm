@@ -1,0 +1,93 @@
+<HTML>
+<HEAD>
+<TITLE>Int 7A/AX=0001h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 7A/AX=0001h - AutoCAD Device Interface - DISPLAY - INITIALIZE (INIT1) - 
+AX = 0001h
+BX = configuration
+CX = interface level (0001h)
+Return: AX = status
+0000h initialization failed
+0001h pre-v4.0 driver initialized successfully
+0003h post-v3.1 driver initialized successfully (driver truncates
+excessivly long packets)
+BX = width of graphics area in pixels, or 0000h if using packet
+communication
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 7A/AX=0001h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7878.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7880.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>AutoCAD Device Interface - DISPLAY - INITIALIZE (INIT1)</font></h3>
+<PRE>
+AX = 0001h
+BX = configuration
+CX = interface level (0001h)<br>
+<p><b>Return:</b><br>AX = status
+0000h initialization failed
+0001h pre-v4.0 driver initialized successfully
+0003h post-v3.1 driver initialized successfully (driver truncates
+excessivly long packets)
+BX = width of graphics area in pixels, or 0000h if using packet
+communication
+DX:CX -> packet-mode entry point <a href="rb-7879.htm#Table3832">(see #03832)</a>
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-7879.htm">AX=0001h</a> - <a href="rb-7880.htm">AX=0200h</a> - <a href="rb-7883.htm">AX=07D0h</a> - <a href="rb-6768.htm">INT 61/AX=0007
+<p><b>See Also:</b>
+<a href="rb-7834.htm">INT 79/AX=0001h</a> - <a href="rb-7911.htm">INT 7B/AX=8001h"AutoCAD"</a> - <a href="rb-7917.htm">INT 7C"AutoShade"</a>
+<PRE>
+<p>
+<a name=table3832></a>
+(Table 03832)
+Call packet-mode entry point with:
+<p><b>STACK:</b><br>DWORD   pointer to request packet (see #03833).
+WORD    length of packet
+<p>
+Format of request packet:
+<a name=table3833></a>
+Offset  Size    Description     (Table 03833)
+00h    WORD    function number (00h-45h for Compaq VGADI41.EXE)
+</PRE>
+<p>
+<b>Category: <a href="cat-002.htm">
+Applications</a>
+- <a href="int-7A.htm">
+Int 7Ah</a>
+- <a href="alpha-a.htm">
+A</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-7878.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-7880.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

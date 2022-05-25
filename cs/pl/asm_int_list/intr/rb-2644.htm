@@ -1,0 +1,110 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AX=252Ah
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AX=252Ah - Phar Lap 386/DOS-Extender VMM - NEW LOAD PROGRAM FOR DEBUG - 
+AX = 252Ah
+DS:EDX - ASCIZ program name
+ES:EBX - parameter block (see #01363)
+ECX = size of LDT buffer in bytes
+ESI = bit flags
+bit 0: allow demand paging rather than loading entire program
+bit 1: demand page from swap file rather than from .EXP
+Return: CF clear if successful
+EAX = VMM handle or FFFFFFFFh if none
+ECX = number of descriptors in LDT buffer
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AX=252Ah
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2643.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2645.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Phar Lap 386/DOS-Extender VMM - NEW LOAD PROGRAM FOR DEBUG</font></h3>
+<PRE>
+AX = 252Ah
+DS:EDX -> ASCIZ program name
+ES:EBX -> parameter block <a href="rb-2620.htm#Table1363">(see #01363)</a>
+ECX = size of LDT buffer in bytes
+ESI = bit flags
+<p><b>bit 0:</b><br>Allow demand paging rather than loading entire program
+<p><b>bit 1:</b><br>Demand page from swap file rather than from .EXP<br>
+<p><b>Return:</b><br>CF clear if successful
+EAX = VMM handle or FFFFFFFFh if none
+ECX = number of descriptors in LDT buffer
+CF set on error
+EAX = error code
+02h file error
+EBX = file error code <a href="rb-2644.htm#Table1370">(see #01370)</a>
+ECX = DOS error code if EBX=1,2,3, or 8
+08h insufficient memory
+EBX = memory error code <a href="rb-2644.htm#Table1371">(see #01371)</a>
+80h LDT buffer too small
+87h called twice without intervening call to AX=2531h
+</PRE>
+<p><b>See Also:</b>
+<a href="rb-2620.htm">AX=2512h</a> - <a href="rb-2625.htm">AX=2517h</a> - <a href="rb-2643.htm">AX=2529h</a> - <a href="rb-2660.htm">AX=2531h</a>
+<PRE>
+<p>
+<a name=table1370></a>
+(Table 01370)
+Values for Phar Lap file error code:
+01h    DOS open error
+02h    DOS seek error
+03h    DOS read error
+04h    not an .EXP or .REX file
+05h    invalid file format
+06h    -OFFSET is not a multiple of 64K
+07h    -NOPAGE incompatible with -REALBREAK/-OFFSET
+08h    DOS error loading .EXE file
+<p>
+<a name=table1371></a>
+(Table 01371)
+Values for Phar Lap memory error code:
+01h    out of physical memory
+02h    out of swap space
+04h    unable to change extended memory allocation
+05h    -MAXPGMMEM exceeded
+06h    insufficient low memory to REALBREAK value
+07h    insufficient low memory for PSP and environment
+</PRE>
+<p>
+<b>Category: <a href="cat-009.htm">
+DOS Extenders</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-p.htm">
+P</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-2643.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-2645.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

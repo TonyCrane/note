@@ -1,0 +1,98 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=D2h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=D2h - Novell NetWare - FILE SERVER - CLEAR CONNECTION NUMBER - 
+AH = E3h subfn D2h
+DS:SI - request buffer (see #02023)
+ES:DI - reply buffer (see #02024)
+Return: AL = status (00h,C6h) (see #02025)
+Desc:  close the open files and release all file locks for a connection,
+abort transactions if a TTS file server, and detach from the file
+server
+Notes: this function is supported by Advanced NetWare 2.1+
+the caller must have SUPERVISOR privileges
+SeeAlso: AH=E3h/SF=C9h,AH=E3h/SF=D1h,AX=F217h/SF=D2h,AX=F217h/SF=FEh
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=D2h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3557.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3559.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - FILE SERVER - CLEAR CONNECTION NUMBER</font></h3>
+<PRE>
+AH = E3h subfn D2h
+DS:SI -> request buffer <a href="rb-3558.htm#Table2023">(see #02023)</a>
+ES:DI -> reply buffer <a href="rb-3558.htm#Table2024">(see #02024)</a><br>
+<p><b>Return:</b><br>AL = status (00h,C6h) (see #02025)
+</PRE>
+<p><b>Desc:</b>
+Close the open files and release all file locks for a connection,
+abort transactions if a TTS file server, and detach from the file
+server
+<p><b>Notes:</b>
+This function is supported by Advanced NetWare 2.1+.
+The caller must have SUPERVISOR privileges
+<p><b>See Also:</b>
+<a href="rb-3549.htm">AH=E3h/SF=C9h</a> - <a href="rb-3557.htm">AH=E3h/SF=D1h</a> - <a href="rb-3814.htm">AX=F217h/SF=D2h</a> - <a href="rb-3850.h.html"
+<PRE>
+<p>
+Format of NetWare "Clear Connection Number" request buffer:
+<a name=table2023></a>
+Offset  Size    Description     (Table 02023)
+00h    WORD    0002h (length of following data)
+02h    BYTE    D2h (subfunction "Clear Connection Number")
+03h    BYTE    connection number
+</PRE>
+<p><b>See Also:</b>
+#02024 - #02277
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table2024></a>
+Offset  Size    Description     (Table 02024)
+00h    WORD    (call) 0000h (no results returned)
+</PRE>
+<p><b>See Also:</b>
+#02022 - #02023 - #02026
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3557.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3559.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

@@ -1,0 +1,82 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=F201h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=F201h - WINX - RETURN ADDRESS OF SERVER BUFFER - 
+AX = F201h
+Return: AX = status
+FFFFh if WINX is busy processing a different request
+0000h if successful
+BX:CX = address of server buffer (see #03125)
+Format of WINX server buffer:
+Offset Size  Description   (Table 03125)
+00h  BYTE  command/status
+00h buffer available
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=F201h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5680.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5682.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>WINX - RETURN ADDRESS OF SERVER BUFFER</font></h3>
+<PRE>
+AX = F201h<br>
+<p><b>Return:</b><br>AX = status
+FFFFh if WINX is busy processing a different request
+0000h if successful
+BX:CX = address of server buffer <a href="rb-5681.htm#Table3125">(see #03125)</a>
+<p>
+Format of WINX server buffer:
+<a name=table3125></a>
+Offset  Size    Description     (Table 03125)
+00h    BYTE    command/status
+00h buffer available
+01h buffer contains result
+02h change directory
+03h execute program
+FFh terminate windows portion of WINX
+01h  ? BYTEs   command (03h) or directory (02h)
+or
+01h    DWORD   result (01h)
+</PRE>
+<p>
+<b>Category: <a href="cat-049.htm">
+Windows</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-w.htm">
+W</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-5680.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-5682.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

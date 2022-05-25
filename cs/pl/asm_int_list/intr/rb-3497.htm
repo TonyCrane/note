@@ -1,0 +1,100 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h/SF=15h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h/SF=15h - Novell NetWare - CONNECTION SERVICES - GET OBJECT CONNECTION LIST(OLD) - 
+AH = E3h subfn 15h
+DS:SI - request buffer (see #01915)
+ES:DI - reply buffer (see #01916)
+Return: AL = status
+00h successful
+Desc:  this function retrieves a list indicating the connection numbers under
+which a bindery object is logged into the default file server
+Note:  this function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+SeeAlso: AH=DChNetWare,AH=E3h/SF=16h,AX=F217h/SF=15h
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h/SF=15h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3496.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3498.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - CONNECTION SERVICES - GET OBJECT CONNECTION LIST(OLD)</font></h3>
+<PRE>
+AH = E3h subfn 15h
+DS:SI -> request buffer <a href="rb-3497.htm#Table1915">(see #01915)</a>
+ES:DI -> reply buffer <a href="rb-3497.htm#Table1916">(see #01916)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+</PRE>
+<p><b>Desc:</b>
+This function retrieves a list indicating the connection numbers under
+which a bindery object is logged into the default file server
+<p><b>Note:</b>
+This function is supported by Advanced NetWare 1.0+ and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3293.htm">AH=DCh"NetWare"</a> - <a href="rb-3498.htm">AH=E3h/SF=16h</a> - <a href="rb-3728.htm">AX=F217h/SF=15h</a>
+<PRE>
+<p>
+Format of NetWare "Get Object Connection Numbers" request buffer:
+<a name=table1915></a>
+Offset  Size    Description     (Table 01915)
+00h    WORD    length of following data (max 33h)
+02h    BYTE    15h (subfunction "Get Object Connection Numbers")
+03h    WORD    (big-endian) type of object
+05h    BYTE    length of object's name (01h-2Fh)
+06h  N BYTEs   object's name
+</PRE>
+<p><b>See Also:</b>
+#01916 - #02169
+<PRE>
+<p>
+Format of NetWare "Get Object Connection Numbers" reply buffer:
+<a name=table1916></a>
+Offset  Size    Description     (Table 01916)
+00h    WORD    (call) length of following results buffer (max 65h)
+02h    BYTE    number of connections
+03h  N BYTEs   connection list
+</PRE>
+<p><b>See Also:</b>
+#01915 - #02169
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3496.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3498.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

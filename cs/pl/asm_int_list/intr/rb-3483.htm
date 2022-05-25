@@ -1,0 +1,172 @@
+<HTML>
+<HEAD>
+<TITLE>Int 21/AH=E3h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 21/AH=E3h - Novell NetWare - CONNECTION CONTROL - 
+AH = E3h
+DS:SI - request buffer (see #01885)
+ES:DI - reply buffer (see #01886)
+Return: AL = status
+00h successful
+else error code
+Note:  supported by NetWare 4.0+, Advanced NetWare 1.0+, and Alloy NTNX
+SeeAlso: AH=E3h/SF=0Ah,AH=E3h/SF=32h,AH=E3h/SF=64h,AH=E3h/SF=C8h
+Format of NetWare request buffer:
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 21/AH=E3h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3482.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3484.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>Novell NetWare - CONNECTION CONTROL</font></h3>
+<PRE>
+AH = E3h
+DS:SI -> request buffer <a href="rb-3483.htm#Table1885">(see #01885)</a>
+ES:DI -> reply buffer <a href="rb-3483.htm#Table1886">(see #01886)</a><br>
+<p><b>Return:</b><br>AL = status
+00h successful
+else error code
+</PRE>
+<p><b>Note:</b>
+Supported by NetWare 4.0+, Advanced NetWare 1.0+, and Alloy NTNX
+<p><b>See Also:</b>
+<a href="rb-3487.htm">AH=E3h/SF=0Ah</a> - <a href="rb-3499.htm">AH=E3h/SF=32h</a> - <a href="rb-3521.htm">AH=E3h/SF=64h</a> - <a href="rb-3548.htm"
+<PRE>
+<p>
+Format of NetWare request buffer:
+<a name=table1885></a>
+Offset  Size    Description     (Table 01885)
+00h    WORD    length of following data
+02h    BYTE    subfunction number (see also AH=E3h/SF=01h,AH=E3h/SF=02h)
+00h login
+03h map object to number
+04h map number to object
+05h get station's logged information
+06h get station's root mask (obsolete)
+07h map group name to number
+08h map number to group name
+09h get memberset M of group G.
+Var     depends on subfunction
+</PRE>
+<p><b>Notes:</b>
+The above subfunctions are not described in _NetWare_System_Calls--DOS_.
+See separate entries below for other subfunctions
+<p><b>See Also:</b>
+#01886 - #01887 - #01890
+<PRE>
+<p>
+Format of NetWare reply buffer:
+<a name=table1886></a>
+Offset  Size    Description     (Table 01886)
+00h    WORD    (call) length of following buffer space for results.
+Var     depends on subfunction
+</PRE>
+<p><b>See Also:</b>
+#01885
+<PRE>
+<p>
+Format of NetWare object property:
+<a name=table1887></a>
+Offset  Size    Description     (Table 01887)
+00h 1-16 BYTEs property name (see also #01888)
+N     BYTE    flags
+<p><b>bit 0:</b><br>Property is dynamic
+<p><b>bit 1:</b><br>Property is a set rather than an item
+N+1    BYTE    security levels <a href="rb-3483.htm#Table1889">(see #01889)</a>.
+???
+<p>
+<a name=table1888></a>
+(Table 01888)
+Values for names of well-known NetWare properties:
+ACCOUNT_BALANCE
+ACCOUNT_SERVERS
+GROUP_MEMBERS
+GROUPS_I'M_IN
+IDENTIFICATION         user's name
+LOGIN_CONTROL
+NET_ADDRESS
+OPERATORS
+PASSWORD
+SECURITY_EQUALS
+<p>
+<a name=table1889></a>
+(Table 01889)
+Values for NetWare security levels:
+00h    "anyone" everyone may access
+01h    "logged" only logged-in clients may access
+02h    "object" only clients logged-in with object's name, type, and password
+03h    "supervisor" only clients logged-in with supervisor privileges
+04h    "NetWare" only NetWare may access
+</PRE>
+<p><b>Note:</b>
+The above values are stored in a nybble; the high half-byte is write
+access and the low half-byte is read access
+<PRE>
+<p>
+<a name=table1890></a>
+(Table 01890)
+Values for NetWare object type:
+0000h  unknown
+0001h  user
+0002h  user group
+0003h  print queue / print server
+0004h  file server
+0005h  job server
+0006h  gateway
+0007h  print server
+0008h  archive queue
+0009h  archive server
+000Ah  job queue
+000Bh  administration
+0021h  NAS SNA gateway
+0024h  remote bridge server???
+0026h  remote bridge server
+0027h  TCPIP gateway
+002Dh  time synchronization server
+002Eh  archive server dynamic SAP
+0047h  advertising print server
+0053h  print queue uwer
+0048h-8000h reserved
+FFFFh  wild (used only for finding objects)
+</PRE>
+<p>
+<b>Category: <a href="cat-026.htm">
+Netware</a>
+- <a href="int-21.htm">
+Int 21h</a>
+- <a href="alpha-n.htm">
+N</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-3482.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-3484.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>

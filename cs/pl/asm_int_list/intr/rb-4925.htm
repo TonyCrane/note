@@ -1,0 +1,88 @@
+<HTML>
+<HEAD>
+<TITLE>Int 2F/AX=7200h
+</TITLE>
+<META NAME="Description" CONTENT="
+Int 2F/AX=7200h - SRDISK v1.30+ - INSTALLATION CHECK - 
+AX = 7200h
+Return: AL = FFh if installed
+ES = segment of device driver header (see #02856)
+Program: SRDISK is a freeware resizeable RAMdisk by Marko Kohtala
+SeeAlso: AX=7201h
+Format of SRDISK device driver header:
+Offset Size  Description   (Table 02856)
+00h 10 BYTEs  same as standard device driver header
+(see #01646 at INT 21/AH=52h)
+">
+<META NAME="robots" CONTENT="none">
+</HEAD>
+<BODY BGCOLOR="#FFD0A0">
+<center>
+<h2>Int 2F/AX=7200h
+</h2>
+</center><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4924.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4926.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+<p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<h3><font color=#C00040>SRDISK v1.30+ - INSTALLATION CHECK</font></h3>
+<PRE>
+AX = 7200h<br>
+<p><b>Return:</b><br>AL = FFh if installed
+ES = segment of device driver header <a href="rb-4925.htm#Table2856">(see #02856)</a>
+</PRE>
+<p><b>Program:</b>
+SRDISK is a freeware resizeable RAMdisk by Marko Kohtala
+<p><b>See Also:</b>
+<a href="rb-4926.htm">AX=7201h</a>
+<PRE>
+<p>
+Format of SRDISK device driver header:
+<a name=table2856></a>
+Offset  Size    Description     (Table 02856)
+00h 10 BYTEs   same as standard device driver header
+<a href="rb-0000.htm#Table0"></a>(see #01646 at INT 21/AH=52h)
+0Ah    BYTE    number of subunits (drives) supported by driver
+0Bh  3 BYTEs   signature "SRD"
+0Eh  4 BYTEs   memory type string ("XMS "/"EMS ")
+12h  4 BYTEs   ASCII driver version string "N.NN"
+16h    BYTE    00h
+17h    BYTE    configuration format version (currently 00h or 01h)
+18h    WORD    offset of drive configuration data
+</PRE>
+<p><b>See Also:</b>
+#01646
+<p>
+<b>Category: <a href="cat-008.htm">
+Disk I/O Enhancements</a>
+- <a href="int-2F.htm">
+Int 2Fh</a>
+- <a href="alpha-s.htm">
+S</a>
+</b><p><p><img src=./gif/rbline.gif width="100%" alt="------"><p>
+<table border=1 cellpadding=3 cellspacing=1>
+<td>
+<a href="rb-4924.htm">
+<img src=./gif/lup.gif border=0 alt=Prev></a>
+<a href="rb-4926.htm">
+<img src=./gif/ldown.gif border=0 alt=Next></a>
+<a href="../rbrown.htm">
+<img src=./gif/lhome.gif border=0 alt=Ralf Brown Page></a>
+<td><a href="int.htm">Interrups</a></td>
+<td><a href="cat.htm">Categories</a></td>
+<td><a href="alpha.htm">Contents</a></td>
+</td></table><p>
+
+
+
+</BODY>
+</HTML>
