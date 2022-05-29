@@ -10,3 +10,4 @@
 - [C/C++](c_cpp)
 - [Haskell](haskell)
 - [x86 Assembly](asm)
+- [RISC-V ISA](riscv)
