@@ -487,6 +487,8 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
       
       
         
@@ -741,10 +743,44 @@ var _hmt = _hmt || [];
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    保护模式程序设计
+  </a>
+  
+    <nav class="md-nav" aria-label="保护模式程序设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    实模式与保护模式的区别
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
       </ul>
     
   </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../riscv/" class="md-nav__link">
+        RISC-V ISA
+      </a>
     </li>
   
 
@@ -821,6 +857,14 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
+          
+        
+          
+        
+          
+        
       
       
         
@@ -871,6 +915,62 @@ var _hmt = _hmt || [];
 
             
           
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic3/" class="md-nav__link">
+        Combinational Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic4/" class="md-nav__link">
+        Sequential Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic5/" class="md-nav__link">
+        Instruction Set Arch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic6/" class="md-nav__link">
+        Processor
+      </a>
+    </li>
+  
+
+            
+          
         </ul>
       </nav>
     </li>
@@ -905,6 +1005,8 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
       
       
         
@@ -935,6 +1037,20 @@ var _hmt = _hmt || [];
     <li class="md-nav__item">
       <a href="../../web/svg/" class="md-nav__link">
         SVG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web/log4j_vuln/" class="md-nav__link">
+        log4j vuln
       </a>
     </li>
   
@@ -1886,6 +2002,26 @@ var _hmt = _hmt || [];
           <li class="md-nav__item">
   <a href="#bios" class="md-nav__link">
     BIOS 中断
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    保护模式程序设计
+  </a>
+  
+    <nav class="md-nav" aria-label="保护模式程序设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    实模式与保护模式的区别
   </a>
   
 </li>
@@ -3466,6 +3602,85 @@ var _hmt = _hmt || [];
 </code></pre></div>
 编程时设置 es 为 0A00h，然后向 byte ptr es:[...] 中写入颜色码即可更改某处像素点颜色</p>
 <p>再使用 <code class="highlight"><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">0003</span><span class="no">h</span><span class="w"></span></code> 后 <code class="highlight"><span class="nf">int</span><span class="w"> </span><span class="mi">10</span><span class="no">h</span><span class="w"></span></code> 切换回文本模式</p>
+<h2 id="_54">保护模式程序设计<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h2>
+<h3 id="_55">实模式与保护模式的区别<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h3>
+<ul>
+<li>实模式（real mode）<ul>
+<li>段地址和偏移地址均为 16 位</li>
+<li>段地址*10h + 偏移地址 = 物理地址</li>
+<li>每个段的最大长度 = 10000h 字节</li>
+<li>每个段同时具有 Read Write eXecute 属性</li>
+<li>操作系统和用户代码没有权限上的差别，都是 ring0（最高权限）</li>
+</ul>
+</li>
+<li>保护模式（protected mode）<ul>
+<li>段地址和偏移地址可以是 16位:16位 也可以是 16位:32位</li>
+<li>gdt[段地址].base_addr + 偏移地址 = 物理地址</li>
+<li>每个段的最大长度 = 4G 字节</li>
+<li>数据段的属性：只读、读写</li>
+<li>代码段的属性：只执行不可读、可执行可读</li>
+<li>操作系统和用户代码有权限上的差别，操作系统为 ring0，用户代码为 ring3</li>
+</ul>
+</li>
+</ul>
+<p>阻止 ring3 的代码访问 ring0 的数据：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="__codelineno-15-1"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="err">段地址</span><span class="w"></span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="__codelineno-15-2"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ds</span><span class="p">,</span><span class="w"> </span><span class="no">ax</span><span class="w">          </span><span class="c1">; 这一步会被限制</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="__codelineno-15-3"></a><span class="nf">mov</span><span class="w"> </span><span class="no">ebx</span><span class="p">,</span><span class="w"> </span><span class="err">偏移地址</span><span class="w"></span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="__codelineno-15-4"></a><span class="nf">mov</span><span class="w"> </span><span class="no">al</span><span class="p">,</span><span class="w"> </span><span class="no">ds</span><span class="p">:[</span><span class="no">ebx</span><span class="p">]</span><span class="w"></span>
+</code></pre></div>
+<p>当段寄存器被赋值的时候，CPU 会进行权限检查，把当前 cs 的低 2 位和段地址对应的描述符所包含的 DPL 进行比较如果 “cs.cpl &lt;= 段地址-&gt;描述符.DPL” 则允许访问，否则产生 General Protection Fault</p>
+<p>CPL（current privilege level）即 cs 的低 2 位，表示当前程序的权限，DPL（descriptor privilege level）表示段地址对应描述符的权限。意义即是 ring?，数字越小权限越大</p>
+<p>gdt（global descriptor table）全局描述符表，是一个结构数组，每个元素均为 8 字节。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="__codelineno-16-1"></a>gdt+00h
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="__codelineno-16-2"></a>gdt+08h
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="__codelineno-16-3"></a>                    +---+---+-base_addr--+
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="__codelineno-16-4"></a>                    |   |   |            |
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="__codelineno-16-5"></a>                    --  --  --          --
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="__codelineno-16-6"></a>gdt+10h     FF, FF, 00, 80, 0B, F3, 0F, 00      ; 整体 8 字节是段地址 10h 的描述符（descriptor）
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="__codelineno-16-7"></a>            ~~  ~~              ==  ^~
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="__codelineno-16-8"></a>            +---+---------------|---|+
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="__codelineno-16-9"></a>                |               |   +-- Granularity = bit 7
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="__codelineno-16-10"></a>                |               +-- DPL = bit 6, 5 = 11
+<a id="__codelineno-16-11" name="__codelineno-16-11" href="__codelineno-16-11"></a>                +-- limit           ||
+<a id="__codelineno-16-12" name="__codelineno-16-12" href="__codelineno-16-12"></a>                                    ||
+<a id="__codelineno-16-13" name="__codelineno-16-13" href="__codelineno-16-13"></a>                       1111 0011 &lt;- 0F
+<a id="__codelineno-16-14" name="__codelineno-16-14" href="__codelineno-16-14"></a>                       |--| | ||
+<a id="__codelineno-16-15" name="__codelineno-16-15" href="__codelineno-16-15"></a>                       |  | | |+-- Accessed 
+<a id="__codelineno-16-16" name="__codelineno-16-16" href="__codelineno-16-16"></a>                       |  | | +-- bit 1
+<a id="__codelineno-16-17" name="__codelineno-16-17" href="__codelineno-16-17"></a>                       |  | +-- bit 3
+<a id="__codelineno-16-18" name="__codelineno-16-18" href="__codelineno-16-18"></a>                       |  +-- S
+<a id="__codelineno-16-19" name="__codelineno-16-19" href="__codelineno-16-19"></a>                       +-- Present = bit 7
+<a id="__codelineno-16-20" name="__codelineno-16-20" href="__codelineno-16-20"></a>gdt+18h
+</code></pre></div>
+<ul>
+<li>第 5 个字节的第 6、5 个 bit 为 DPL<ul>
+<li>例上面 10h 段的 DPL 为 11b 即 3（F3 -&gt; 1<em>11</em>1 0011）</li>
+</ul>
+</li>
+<li>第 2、3、4、7 个字节为段起始地址 base_addr，小端序<ul>
+<li>例上面 10h 段的段起始地址为 000B8000h</li>
+</ul>
+</li>
+<li>第 0、1 个字节和第 6 个字节的后半个字节为最大偏移地址 limit，小端序<ul>
+<li>例上面 10h 段的最大偏移地址为 0FFFFFh，最小偏移地址为 0，所以段长度为 100000h 即 1M</li>
+</ul>
+</li>
+<li>第 6 个字节的第 7 个 bit 为粒度 Granularity，当该位为 1 时，limit 的单位变成 page（页，一页为 4k=1000h 字节）<ul>
+<li>例如如果 limit 为 FFFFF，G 为 1，则最大偏移地址变为 FFFFFFFF（最后一页的地址为 [FFFFF000, FFFFFFFF]）</li>
+</ul>
+</li>
+<li>第 5 个字节的其它 bit<ul>
+<li>第 7 bit 为 Present，表示该段是否存在</li>
+<li>第 4 bit 为 S，S = 1 表示是数据段或代码段</li>
+<li>第 3 bit 为 0 表示是数据段，1 表示是代码段</li>
+<li>第 1 bit，如果是数据段，则 1 表示可写，代码段时 1 表示可读</li>
+<li>第 0 bit 为 Accessed 表示描述符是否被访问过</li>
+</ul>
+</li>
+</ul>
+<p>段地址 10h 对应的描述符的 DPL 为 11，即权限为 ring3（DPL 为 3（最低）的时候所有程序都是有权访问的）</p>
+<p>假设前面那段代码中赋值给 ax 的段地址为 10h，cs 为 08h（0000 10<em>00</em>），则 cs.cpl = 00，于是 cs.cpl &lt; 10h-&gt;descriptor.DPL，因此当前程序有权把 ds 赋值为 10h，即有权访问该段中的数据</p>
 
   
     <hr>
@@ -3473,7 +3688,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年5月25日 12:13:13</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年5月29日 12:21:50</span>
       
         <br>
         创建日期:
@@ -3517,13 +3732,13 @@ var _hmt = _hmt || [];
       
       
         
-        <a href="../../system/" class="md-footer__link md-footer__link--next" aria-label="下一页: 计算机系统" rel="next">
+        <a href="../riscv/" class="md-footer__link md-footer__link--next" aria-label="下一页: RISC-V ISA" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              计算机系统
+              RISC-V ISA
             </div>
           </div>
           <div class="md-footer__button md-icon">

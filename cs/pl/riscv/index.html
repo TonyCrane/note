@@ -1,0 +1,4068 @@
+
+  <!doctype html>
+  <html lang="zh" class="no-js">
+    <head>
+      
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+          <meta name="description" content="鹤翔万里（TonyCrane）的笔记本">
+        
+        
+        
+          <link rel="canonical" href="https://note.tonycrane.cc/cs/pl/riscv/">
+        
+        <link rel="icon" href="../../../assets/images/favicon.png">
+        <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.4">
+      
+      
+        
+          <title>RISC-V ISA - 鹤翔万里的笔记本</title>
+        
+      
+      
+        <link rel="stylesheet" href="../../../assets/stylesheets/main.bb3983ee.min.css">
+        
+          
+          <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+          
+        
+      
+      
+      
+        
+          
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,400,400i,700%7CJetBrains+Mono&display=fallback">
+          <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+        
+      
+      
+        <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+      
+        <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+      
+        <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+      
+        <link rel="stylesheet" href="../../../css/tasklist.css">
+      
+        <link rel="stylesheet" href="../../../css/custom.css">
+      
+        <link rel="stylesheet" href="../../../css/card.css">
+      
+      
+        <link rel="stylesheet" href="/css/counter.css">
+      
+      <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      
+        
+  
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c273de7f67d992cb6aef08c3ddf09bb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
+
+
+      
+      
+    </head>
+    
+    
+      
+      
+        
+      
+      
+      
+      
+      <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    
+      <script src="../../../js/scheme.js" type="text/javascript"></script>
+      
+      
+        <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      
+      <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+      <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+      <label class="md-overlay" for="__drawer"></label>
+      <div data-md-component="skip">
+        
+          
+          <a href="#risc-v-isa" class="md-skip">
+            跳转至
+          </a>
+        
+      </div>
+      <div data-md-component="announce">
+        
+      </div>
+      
+      
+        
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="鹤翔万里的笔记本" class="md-header__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            鹤翔万里的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RISC-V ISA
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      <div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+          <a
+            href="javascript:toggleScheme();"
+            title="Light mode"
+            class="light-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="Dark mode"
+            class="dark-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="System preference"
+            class="system-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07 19.07 3.5m-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13.51 1.67m-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87.4 1.31M19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35-2.53-2.2m4.33-2.7 1.15-2.77 2.2 2.54-3.35.23m1.15-4.96-1.14-2.78 3.34.24-2.2 2.54M9.63 18.93l2.77 1.15-2.53 2.19-.24-3.34z"/></svg>
+          </a>
+           <a
+            href="javascript:toggleScheme();"
+            title="Unknown scheme"
+            class="unknown-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"/></svg>
+          </a>
+      </div>
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/TonyCrane/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+      
+      <div class="md-container" data-md-component="container">
+        
+        
+          
+            
+              
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link md-tabs__link--active">
+        Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../ctf/" class="md-tabs__link">
+        CTF
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../writeups/" class="md-tabs__link">
+        Writeups
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../misc/" class="md-tabs__link">
+        Miscellaneous
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+            
+          
+        
+        <main class="md-main" data-md-component="main">
+          <div class="md-main__inner md-grid">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+                      
+                        
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="鹤翔万里的笔记本" class="md-nav__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
+
+    </a>
+    鹤翔万里的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/TonyCrane/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">Computer Science</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer Science" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">Programming Language</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Programming Language" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Programming Language
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../c_cpp/" class="md-nav__link">
+        C/C++
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../haskell/" class="md-nav__link">
+        Haskell
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../asm/" class="md-nav__link">
+        x86 Assembly
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          RISC-V ISA
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        RISC-V ISA
+      </a>
+      
+        
+  
+  <nav class="md-nav md-nav--secondary " aria-label="目录">
+    
+    
+    
+      
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基础知识
+  </a>
+  
+    <nav class="md-nav" aria-label="基础知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    指令集
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    编译运行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rv32i" class="md-nav__link">
+    RV32I 基础
+  </a>
+  
+    <nav class="md-nav" aria-label="RV32I 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    寄存器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    指令格式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rv32i_1" class="md-nav__link">
+    RV32I 指令
+  </a>
+  
+    <nav class="md-nav" aria-label="RV32I 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    整型计算指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    控制流变化指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    装载存储指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    汇编伪指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    汇编代码
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system/">Computer System</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer System" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Computer System
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../system/cs1/">Computer System I</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer System I" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer System I
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic1/" class="md-nav__link">
+        Number Representations
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic2/" class="md-nav__link">
+        Digital Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic3/" class="md-nav__link">
+        Combinational Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic4/" class="md-nav__link">
+        Sequential Logic
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic5/" class="md-nav__link">
+        Instruction Set Arch
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../system/cs1/topic6/" class="md-nav__link">
+        Processor
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../web/">Web</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Web" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          Web
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web/svg/" class="md-nav__link">
+        SVG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../web/log4j_vuln/" class="md-nav__link">
+        log4j vuln
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../regex/" class="md-nav__link">
+        RegEx
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../unicode/" class="md-nav__link">
+        Unicode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ctf/">CTF</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="CTF" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CTF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ctf/steg/">Steganography</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Steganography" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          Steganography
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/steg/image/" class="md-nav__link">
+        Image Steganography
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/steg/audio/" class="md-nav__link">
+        Audio Steganography
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ctf/escapes/">Sandbox Escapes</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Sandbox Escapes" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Sandbox Escapes
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/escapes/pysandbox/" class="md-nav__link">
+        Python Sandbox Escape
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/coding/" class="md-nav__link">
+        Coding & Cipher
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/qrcode/" class="md-nav__link">
+        QRCode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ctf/esolang/" class="md-nav__link">
+        Esolang
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../writeups/">Writeups</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Writeups" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/ethernaut/" class="md-nav__link">
+        Ethernaut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/SecurityInnovation/" class="md-nav__link">
+        Security Innovation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/AAA/" class="md-nav__link">
+        🔒 AAA School Bus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          2021
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2021" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          2021
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/sysu_msc_puzzle/" class="md-nav__link">
+        SYSU MSC Puzzle 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/hackergame2021/" class="md-nav__link">
+        USTC Hackergame 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/d0g3/" class="md-nav__link">
+        第四届“安洵杯”
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/bytectf2021_final/" class="md-nav__link">
+        ByteCTF 2021 Final
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/sctf2021/" class="md-nav__link">
+        SCTF 2021
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/vnctf2022/" class="md-nav__link">
+        VNCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/tqlctf2022/" class="md-nav__link">
+        TQLCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/susctf2022/" class="md-nav__link">
+        SUSCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/d3ctf2022/" class="md-nav__link">
+        D3CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/%2Actf2022/" class="md-nav__link">
+        *CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../writeups/mrctf2022/" class="md-nav__link">
+        MRCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../misc/">Miscellaneous</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Miscellaneous" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Miscellaneous
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/mkdocs/" class="md-nav__link">
+        mkdocs
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/hexo/" class="md-nav__link">
+        hexo
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../misc/sphinx/" class="md-nav__link">
+        sphinx
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+                      
+                        
+  
+  <nav class="md-nav md-nav--secondary " aria-label="目录">
+    
+    
+    
+      
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    基础知识
+  </a>
+  
+    <nav class="md-nav" aria-label="基础知识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    指令集
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    编译运行
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rv32i" class="md-nav__link">
+    RV32I 基础
+  </a>
+  
+    <nav class="md-nav" aria-label="RV32I 基础">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    寄存器
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    指令格式
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rv32i_1" class="md-nav__link">
+    RV32I 指令
+  </a>
+  
+    <nav class="md-nav" aria-label="RV32I 指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    整型计算指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    控制流变化指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    装载存储指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    汇编伪指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    汇编代码
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+            
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+<a href="https://github.com/TonyCrane/note/tree/master/docs/cs/pl/riscv.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="risc-v-isa">RISC-V ISA<a class="headerlink" href="#risc-v-isa" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<ul>
+<li><a href="https://github.com/riscv/riscv-isa-manual/releases/download/Ratified-IMAFDQC/riscv-spec-20191213.pdf">RISC-V ISA Unprivileged Spec v.20191213</a></li>
+<li>浙江大学 “计算机系统 Ⅰ “（大一春夏）课程</li>
+</ul>
+</div>
+<h2 id="_1">基础知识<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>RISC-V 是一个 ISA 标准</li>
+<li>RISC-V 是完全开放的，允许任何人使用</li>
+<li>简单、可扩展</li>
+<li>分为用户级指令集规范（User-level ISA spec）和特权级指令集规范（Privilege ISA spec）等</li>
+<li>命名为 RV + 数据宽度 + 扩展</li>
+</ul>
+<h3 id="_2">指令集<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>基础指令集：RV32I、RV64I（32/64 位带有整型操作的指令集）、RV32E（只有 16 个寄存器的 32 位整型指令集）<ul>
+<li>I：带有 ALU 运算、分支跳转、装载存储</li>
+</ul>
+</li>
+<li>扩展：<ul>
+<li>M：增加整型乘法、除法</li>
+<li>A：原子指令</li>
+<li>F：增加单精度浮点数</li>
+<li>D：增加双精度浮点数</li>
+<li>Q：增加 128 位四精度浮点数</li>
+<li>G：= IMAFD</li>
+<li>...</li>
+</ul>
+</li>
+<li>扩展了的指令集则命名为 RV32IM、RV32IMA、RV32G 等等</li>
+</ul>
+<h3 id="_3">编译运行<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<h4 id="_4">编译<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h4>
+<p>编译使用 <a href="https://github.com/riscv-collab/riscv-gnu-toolchain"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></span> riscv-collab/riscv-gnu-toolchain</a></p>
+<ul>
+<li>需要手动克隆源码（极大），再编译，时间很长</li>
+<li>编译时注意 prefix 和选择指令集 --with-arch</li>
+<li>make linux 编译出来的是 riscv<em>xx</em>-unknown-linux-gnu-<em>xxx</em>，使用 glibc 标准库，支持动态链接</li>
+<li>make 或 make newlib 编译出来的是 riscv<em>xx</em>-unknown-elf-<em>xxx</em>，使用 riscv-newlib，只能静态链接</li>
+</ul>
+<p>编译 c 代码使用 riscv<em>xx</em>-unknown-<em>xxx</em>-gcc 就可以了，注意指定 -march 和 -mabi，比如加上 <code>-march=rv32i -mabi=ilp32</code> 后编译出来的就是使用 RV32I 指令集的机器码</p>
+<h4 id="_5">运行<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h4>
+<p>因为 RISC-V 是另一种架构，不能在 x86 机器上直接运行，所以要使用 qemu 来运行。qemu 直接下载就可以，一般都会自带 RISC-V 的模拟器，如果是手动编译需要注意指定编译出 RISC-V</p>
+<h2 id="rv32i">RV32I 基础<a class="headerlink" href="#rv32i" title="Permanent link">&para;</a></h2>
+<h3 id="_6">寄存器<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>一个 PC 寄存器（program counter）</li>
+<li>32 个 32 位寄存器（x0~x31）<ul>
+<li>其中 x0 永远是 0</li>
+</ul>
+</li>
+</ul>
+<p>寄存器的常用用途如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">寄存器</th>
+<th align="center">ABI 名称</th>
+<th align="left">用途描述</th>
+<th align="center">saver</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">x0</td>
+<td align="center">zero</td>
+<td align="left">硬件 0</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">x1</td>
+<td align="center">ra</td>
+<td align="left">返回地址（return address）</td>
+<td align="center">caller</td>
+</tr>
+<tr>
+<td align="center">x2</td>
+<td align="center">sp</td>
+<td align="left">栈指针（stack pointer）</td>
+<td align="center">callee</td>
+</tr>
+<tr>
+<td align="center">x3</td>
+<td align="center">gp</td>
+<td align="left">全局指针（global pointer）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">x4</td>
+<td align="center">tp</td>
+<td align="left">线程指针（thread pointer）</td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">x5</td>
+<td align="center">t0</td>
+<td align="left">临时变量/备用链接寄存器（alternate link reg）</td>
+<td align="center">caller</td>
+</tr>
+<tr>
+<td align="center">x6-7</td>
+<td align="center">t1-2</td>
+<td align="left">临时变量</td>
+<td align="center">caller</td>
+</tr>
+<tr>
+<td align="center">x8</td>
+<td align="center">s0/fp</td>
+<td align="left">需要保存的寄存器/帧指针（frame pointer）</td>
+<td align="center">callee</td>
+</tr>
+<tr>
+<td align="center">x9</td>
+<td align="center">s1</td>
+<td align="left">需要保存的寄存器</td>
+<td align="center">callee</td>
+</tr>
+<tr>
+<td align="center">x10-11</td>
+<td align="center">a0-1</td>
+<td align="left">函数参数/返回值</td>
+<td align="center">caller</td>
+</tr>
+<tr>
+<td align="center">x12-17</td>
+<td align="center">a2-7</td>
+<td align="left">函数参数</td>
+<td align="center">caller</td>
+</tr>
+<tr>
+<td align="center">x18-27</td>
+<td align="center">s2-11</td>
+<td align="left">需要保存的寄存器</td>
+<td align="center">callee</td>
+</tr>
+<tr>
+<td align="center">x28-31</td>
+<td align="center">t3-6</td>
+<td align="left">临时变量</td>
+<td align="center">caller</td>
+</tr>
+</tbody>
+</table>
+<p>其中 sp s0-11 需要在函数调用前后保证一致，其它不用保证</p>
+<h3 id="_7">指令格式<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>RV32I 有 4 种基础的指令格式（R/I/S/U），再根据立即数解码的不同又分出两种（B/J），总共六种指令格式</p>
+<h4 id="r">R 型指令<a class="headerlink" href="#r" title="Permanent link">&para;</a></h4>
+<table class="riscv-table">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node">funct7</td>
+    <td colspan="5" class="riscv-table-node">rs2</td>
+    <td colspan="5" class="riscv-table-node">rs1</td>
+    <td colspan="3" class="riscv-table-node">funct3</td>
+    <td colspan="5" class="riscv-table-node">rd</td>
+    <td colspan="7" class="riscv-table-node">opcode</td>
+</tr>
+</table>
+
+<p>使用寄存器进行数字逻辑运算的指令格式，运算由 opcode funct3 funct7 决定，rd = rs1 op rs2（shift 类例外，它们用 rs2 位置表示移位数的立即数）</p>
+<h4 id="i">I 型指令<a class="headerlink" href="#i" title="Permanent link">&para;</a></h4>
+<table class="riscv-table">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node">rs1</td>
+    <td colspan="3" class="riscv-table-node">funct3</td>
+    <td colspan="5" class="riscv-table-node">rd</td>
+    <td colspan="7" class="riscv-table-node">opcode</td>
+</tr>
+</table>
+
+<p>使用寄存器和立即数进行数字逻辑运算，以及 load 类指令等的指令格式，运算类型等由 opcode funct3 决定，如果是 ALU 运算，则 rd = rs1 op imm</p>
+<p>立即数是 {{20{inst[31]}}, inst[31:20]}，也就是对 imm[11:0] 进行符号位扩展到 32 位</p>
+<h4 id="s">S 型指令<a class="headerlink" href="#s" title="Permanent link">&para;</a></h4>
+<table class="riscv-table">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node">imm[11:5]</td>
+    <td colspan="5" class="riscv-table-node">rs2</td>
+    <td colspan="5" class="riscv-table-node">rs1</td>
+    <td colspan="3" class="riscv-table-node">funct3</td>
+    <td colspan="5" class="riscv-table-node">imm[4:0]</td>
+    <td colspan="7" class="riscv-table-node">opcode</td>
+</tr>
+</table>
+
+<p>store 类指令，store 的大小由 funct3 决定，以变址模式进行寻址，即 rs1 = [rs2+imm]</p>
+<p>立即数是 {{20{inst[31]}}, inst[31:25], inst[11:7]}</p>
+<h4 id="b">B 型指令<a class="headerlink" href="#b" title="Permanent link">&para;</a></h4>
+<table class="riscv-table">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node">imm[12,10:5]</td>
+    <td colspan="5" class="riscv-table-node">rs2</td>
+    <td colspan="5" class="riscv-table-node">rs1</td>
+    <td colspan="3" class="riscv-table-node">funct3</td>
+    <td colspan="5" class="riscv-table-node">imm[4:1,11]</td>
+    <td colspan="7" class="riscv-table-node">opcode</td>
+</tr>
+</table>
+
+<p>由 S 型指令分来，与之区别是立即数读取顺序不同，是所有分支类指令。是否分支由 funct3 rs1 rs2 决定</p>
+<p>立即数是 {{19{inst[31]}}, inst[31], inst[7], inst[30:25], inst[11:8], 1'b0}</p>
+<h4 id="u">U 型指令<a class="headerlink" href="#u" title="Permanent link">&para;</a></h4>
+<table class="riscv-table">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="18"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="20" class="riscv-table-node">imm[31:12]</td>
+    <td colspan="5" class="riscv-table-node">rd</td>
+    <td colspan="7" class="riscv-table-node">opcode</td>
+</tr>
+</table>
+
+<p>LUI 和 AUIPC，立即数都是在高 20 位，而且没有源操作数</p>
+<p>立即数是 {inst[31:12], 12'b0}</p>
+<h4 id="j">J 型指令<a class="headerlink" href="#j" title="Permanent link">&para;</a></h4>
+<table class="riscv-table">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="18"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="20" class="riscv-table-node">imm[20,10:1,11,19:12]</td>
+    <td colspan="5" class="riscv-table-node">rd</td>
+    <td colspan="7" class="riscv-table-node">opcode</td>
+</tr>
+</table>
+
+<p>由 U 型指令分来，区别也是立即数读取不同，仅有 JAL 一个指令</p>
+<p>立即数是 {{11{inst[31]}}, inst[31], inst[19:12], inst[20], inst[30:21], 1'b0}</p>
+<h2 id="rv32i_1">RV32I 指令<a class="headerlink" href="#rv32i_1" title="Permanent link">&para;</a></h2>
+<h3 id="_8">整型计算指令<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">加减法指令<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>add</span>
+    <span>R 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：add rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：rd = rs1 + rs2</li>
+<li><strong>注意</strong>：溢出会被忽略</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sub</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0100000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sub rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：rd = rs1 - rs2</li>
+<li><strong>注意</strong>：溢出会被忽略</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>addi</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：addi rd, rs1, imm</li>
+<li><strong>指令作用</strong>：rd = rs1 + imm</li>
+<li><strong>注意</strong>：溢出会被忽略，imm 在 [-2048, 2047] 范围内</li>
+</ul>
+</div>
+</div>
+<h4 id="_10">比较运算指令<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>slt</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">010</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：slt rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：（set less than）如果 rs1 &lt; rs2 则 rd = 1，否则 rd = 0</li>
+<li><strong>注意</strong>：rs1 rs2 会被视为有符号数进行比较</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sltu</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">011</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sltu rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：（set less than unsigned）如果 rs1 &lt; rs2 则 rd = 1，否则 rd = 0</li>
+<li><strong>注意</strong>：rs1 rs2 会被视为无符号数进行比较</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>slti</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">010</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：slti rd, rs1, imm</li>
+<li><strong>指令作用</strong>：（set less than immediate）如果 rs1 &lt; imm 则 rd = 1，否则 rd = 0</li>
+<li><strong>注意</strong>：imm 在 [-2048, 2047] 范围内，被视为有符号数进行比较</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sltiu</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">011</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sltiu rd, rs1, imm</li>
+<li><strong>指令作用</strong>：（set less than immediate unsigned）如果 rs1 &lt; imm 则 rd = 1，否则 rd = 0</li>
+<li><strong>注意</strong>：imm 在 [-2048, 2047] 范围内，rs1 imm 被视为无符号数进行比较</li>
+</ul>
+</div>
+</div>
+<h4 id="_11">二进制位运算指令<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>and</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">111</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：and rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：rd = rs1 &amp; rs2 按位与</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>or</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">110</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：or rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：rd = rs1 | rs2 按位或</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>xor</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">100</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：xor rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：rd = rs1 ^ rs2 按位异或</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>andi</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">111</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：andi rd, rs1, imm</li>
+<li><strong>指令作用</strong>：rd = rs1 &amp; imm 按位与</li>
+<li><strong>注意</strong>：imm 在 [-2048, 2047] 范围内，会扩展符号位</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>ori</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">110</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：ori rd, rs1, imm</li>
+<li><strong>指令作用</strong>：rd = rs1 | imm 按位或</li>
+<li><strong>注意</strong>：imm 在 [-2048, 2047] 范围内，会扩展符号位</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>xori</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">100</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：xori rd, rs1, imm</li>
+<li><strong>指令作用</strong>：rd = rs1 ^ imm 按位异或</li>
+<li><strong>注意</strong>：imm 在 [-2048, 2047] 范围内，会扩展符号位（xori rd, rs1, -1 相当于 rd = ~rs1）</li>
+</ul>
+</div>
+</div>
+<h4 id="_12">移位运算指令<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sll</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">001</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sll rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：rd = rs1 &lt;&lt; rs2[4:0] 左移（左侧丢掉，右侧补 0）</li>
+<li><strong>注意</strong>：会取 rs2 内数值的低 5 位进行运算</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>srl</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：srl rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：rd = rs1 &gt;&gt; rs2[4:0] 逻辑右移（左侧补 0，右侧丢掉）</li>
+<li><strong>注意</strong>：会取 rs2 内容的低 5 位 </li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sra</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0100000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sra rd, rs1, rs2</li>
+<li><strong>指令作用</strong>：rd = rs1 &gt;&gt;&gt; rs2[4:0] 算数右移（左侧补符号位，右侧丢掉）</li>
+<li><strong>注意</strong>：会取 rs2 内容的低 5 位进行运算</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>slli</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">001</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：slli rd, rs1, shamt</li>
+<li><strong>指令作用</strong>：rd = rs1 &lt;&lt; shamt 左移（左侧丢掉，右侧补 0）</li>
+<li><strong>注意</strong>：shamt（shift amount）会编码到原来 rs2 的位置，它是一个立即数，正好有 5 位</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>srli</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：srli rd, rs1, shamt</li>
+<li><strong>指令作用</strong>：rd = rs1 &gt;&gt; shamt 逻辑右移（左侧补 0，右侧丢掉）</li>
+<li><strong>注意</strong>：shamt（shift amount）会编码到原来 rs2 的位置，它是一个立即数，正好有 5 位</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>srai</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0100000</td>
+    <td colspan="5" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：srai rd, rs1, shamt</li>
+<li><strong>指令作用</strong>：rd = rs1 &gt;&gt;&gt; shamt 算数右移（左侧补符号位，右侧丢掉）</li>
+<li><strong>注意</strong>：shamt（shift amount）会编码到原来 rs2 的位置，它是一个立即数，正好有 5 位</li>
+</ul>
+</div>
+</div>
+<h4 id="_13">数据加载指令<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lui</span>
+    <span>U 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="18"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="20" class="riscv-table-node-little">imm[31:12]</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0110111</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：lui imm</li>
+<li><strong>指令作用</strong>：（load upper immediate）rd = imm &lt;&lt; 12 将 imm 加载到 rd 的高 20 位</li>
+<li><strong>注意</strong>：imm 不能超过 20 位，rd 以十六进制表示就是 imm 后接三个 0</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>auipc</span>
+    <span>U 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="18"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="20" class="riscv-table-node-little">imm[31:12]</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010111</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：auipc rd</li>
+<li><strong>指令作用</strong>：（add upper immediate with pc）rd = pc + imm &lt;&lt; 12 将 imm 加载到高 20 位，然后加上 pc 值</li>
+<li><strong>注意</strong>：常用来构建 pc 相对寻址的地址，imm 不能超过 20 位</li>
+</ul>
+</div>
+</div>
+<h3 id="_14">控制流变化指令<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="jump">jump 类无条件跳转指令<a class="headerlink" href="#jump" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>jal</span>
+    <span>J 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="18"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="20" class="riscv-table-node-little">imm[20,10:1,11,19:12]</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">1101111</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：jal rd, imm</li>
+<li><strong>指令作用</strong>：（jump and link）rd = pc+4, pc = pc+imm 即将当前指令下一条指令的地址存入 rd，然后相对跳转到 imm 处</li>
+<li><strong>注意</strong>：imm 在汇编程序中一般用标号来指定，jal 可以跳到 ±1MiB 范围内的代码</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>jalr</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">1100111</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：jalr rd, imm(rs1)</li>
+<li><strong>指令作用</strong>：rd = pc+4, pc = (imm+rs1) &amp; 0xFFFFFFFE 即最低位会被设为 0</li>
+<li><strong>注意</strong>：可以实现任意位置跳转</li>
+</ul>
+</div>
+</div>
+<h4 id="branch">branch 类条件跳转指令<a class="headerlink" href="#branch" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>beq</span>
+    <span>B 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[12,10:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:1,11]</td>
+    <td colspan="7" class="riscv-table-node-little">1100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：beq rs1, rs2, imm</li>
+<li><strong>指令作用</strong>：（branch if equal）如果 rs1 == rs2，则 pc = pc+imm</li>
+<li><strong>注意</strong>：可以跳转到 ±4KiB 范围内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bne</span>
+    <span>B 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[12,10:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">001</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:1,11]</td>
+    <td colspan="7" class="riscv-table-node-little">1100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：bne rs1, rs2, imm</li>
+<li><strong>指令作用</strong>：（branch if not equal）如果 rs1 != rs2，则 pc = pc+imm</li>
+<li><strong>注意</strong>：可以跳转到 ±4KiB 范围内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>blt</span>
+    <span>B 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[12,10:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">100</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:1,11]</td>
+    <td colspan="7" class="riscv-table-node-little">1100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：blt rs1, rs2, imm</li>
+<li><strong>指令作用</strong>：（branch if less than）如果 rs1 &lt; rs2 则 pc = pc+imm</li>
+<li><strong>注意</strong>：rs1 rs2 视为有符号数进行比较，可以跳转到 ±4KiB 范围内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bge</span>
+    <span>B 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[12,10:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:1,11]</td>
+    <td colspan="7" class="riscv-table-node-little">1100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：bge rs1, rs2, imm</li>
+<li><strong>指令作用</strong>：（branch if greater than or equal）如果 rs1 &gt;= rs2 则 pc = pc+imm</li>
+<li><strong>注意</strong>：rs1 rs2 视为有符号数进行比较，可以跳转到 ±4KiB 范围内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bltu</span>
+    <span>B 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[12,10:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">110</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:1,11]</td>
+    <td colspan="7" class="riscv-table-node-little">1100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：bltu rs1, rs2, imm</li>
+<li><strong>指令作用</strong>：（blt unsigned）如果 rs1 &lt; rs2 则 pc = pc+imm</li>
+<li><strong>注意</strong>：rs1 rs2 视为无符号数进行比较，可以跳转到 ±4KiB 范围内</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bgeu</span>
+    <span>B 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[12,10:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">111</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:1,11]</td>
+    <td colspan="7" class="riscv-table-node-little">1100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：bgeu rs1, rs2, imm</li>
+<li><strong>指令作用</strong>：（bge unsigned）如果 rs1 &gt;= rs2 则 pc = pc+imm</li>
+<li><strong>注意</strong>：rs1 rs2 视为无符号数进行比较，可以跳转到 ±4KiB 范围内</li>
+</ul>
+</div>
+</div>
+<h3 id="_15">装载存储指令<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<h4 id="load">load 类装载指令<a class="headerlink" href="#load" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lb</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0000011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：lb rd, imm(rs1)</li>
+<li><strong>指令作用</strong>：从 rs1 + imm 处内存读取一个字节到 rd 低八位，再进行符号扩展</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lh</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">001</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0000011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：lh rd, imm(rs1)</li>
+<li><strong>指令作用</strong>：从 rs1+imm 处内存读取一个 16 位数到 rd 低 16 位，然后进行符号扩展</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lw</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">010</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0000011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：lw rd, imm(rs1)</li>
+<li><strong>指令作用</strong>：从 rs1 + imm 处内存读取一个 32 位数到 rd 中</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lbu</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">100</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0000011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：lbu rd, imm(rs1)</li>
+<li><strong>指令作用</strong>：从 rs1 + imm 处内存读取一个字节放到 rd 低 8 位，然后进行零扩展（高位全补 0）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lhu</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0000011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：lhu rd, imm(rs1)</li>
+<li><strong>指令作用</strong>：从 rs1 + imm 处内存读取 16 位数存入 rd，并进行零扩展（高 16 位全为 0）</li>
+</ul>
+</div>
+</div>
+<h4 id="store">store 类存储指令<a class="headerlink" href="#store" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sb</span>
+    <span>S 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[11:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:0]</td>
+    <td colspan="7" class="riscv-table-node-little">0100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sb rs2, imm(rs1)</li>
+<li><strong>指令作用</strong>：将 rs2 的低 8 位拷贝到 rs1 + imm 处内存中</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sh</span>
+    <span>S 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[11:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">001</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:0]</td>
+    <td colspan="7" class="riscv-table-node-little">0100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sh rs2, imm(rs1)</li>
+<li><strong>指令作用</strong>：将 rs2 的低 16 位拷贝到 rs1 + imm 处内存中</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sw</span>
+    <span>S 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[11:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">010</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:0]</td>
+    <td colspan="7" class="riscv-table-node-little">0100011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sw rs2, imm(rs1)</li>
+<li><strong>指令作用</strong>：将 rs2（32 位）拷贝到 rs1 + imm 处内存中</li>
+</ul>
+</div>
+</div>
+<h3 id="_16">汇编伪指令<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h3>
+<p>前面的是 RV32I 的所有被编码的指令，下面是可以在 RV32I 汇编程序中写的伪指令，它们将被编译器编译为第二列中的实际指令</p>
+<style>
+    .small-table table {
+        font-size: 0.55rem !important;
+    }
+</style>
+
+<div class="small-table">
+<table>
+<thead>
+<tr>
+<th align="left">伪指令</th>
+<th align="left">实际指令</th>
+<th align="left">意义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">la/lla rd, symbol</td>
+<td align="left">auipc rd, delta[31 : 12] + delta[11]<br/>addi rd, rd, delta[11:0]</td>
+<td align="left">加载绝对地址<br/>delta = symbol - pc</td>
+</tr>
+<tr>
+<td align="left">l{b|h|w} rd, symbol</td>
+<td align="left">auipc rd, delta[31 : 12] + delta[11]<br/>l{b|h|w} rd, delta[11:0](rd)</td>
+<td align="left">加载全局变量</td>
+</tr>
+<tr>
+<td align="left">s{b|h|w} rd, symbol, rt</td>
+<td align="left">auipc rt, delta[31 : 12] + delta[11]<br/>s{b|h|w} rd, delta[11:0](rt)</td>
+<td align="left">保存全局变量</td>
+</tr>
+<tr>
+<td align="left">nop</td>
+<td align="left">addi x0, x0, 0</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">li rd, imm</td>
+<td align="left">...</td>
+<td align="left">将立即数加载到 rd 中</td>
+</tr>
+<tr>
+<td align="left">mov rd, rs</td>
+<td align="left">addi rd, rs, 0</td>
+<td align="left">从 rs 拷贝到 rd</td>
+</tr>
+<tr>
+<td align="left">not rd, rs</td>
+<td align="left">xori rd, rs, -1</td>
+<td align="left">rd = ~rs 按位取反</td>
+</tr>
+<tr>
+<td align="left">neg rd, rs</td>
+<td align="left">sub rd, x0, rs</td>
+<td align="left">rd = -rs</td>
+</tr>
+<tr>
+<td align="left">seqz rd, rs</td>
+<td align="left">sltiu rd, rs, 1</td>
+<td align="left">set rd if rs == 0</td>
+</tr>
+<tr>
+<td align="left">snez rd, rs</td>
+<td align="left">sltu rd, x0, rs</td>
+<td align="left">set rd if rs != 0</td>
+</tr>
+<tr>
+<td align="left">sltz rd, rs</td>
+<td align="left">slt rd, rs, x0</td>
+<td align="left">set rd if rs &lt; 0</td>
+</tr>
+<tr>
+<td align="left">sgtz rd, rs</td>
+<td align="left">slt rd, x0, rs</td>
+<td align="left">set rd if rs &gt; 0</td>
+</tr>
+<tr>
+<td align="left">beqz rs, offset</td>
+<td align="left">beq rs, x0, offset</td>
+<td align="left">branch if rs == 0</td>
+</tr>
+<tr>
+<td align="left">bnez rs, offset</td>
+<td align="left">bne rs, x0, offset</td>
+<td align="left">branch if rs != 0</td>
+</tr>
+<tr>
+<td align="left">blez rs, offset</td>
+<td align="left">bge x0, rs, offset</td>
+<td align="left">branch if rs &lt;= 0</td>
+</tr>
+<tr>
+<td align="left">bgez rs, offset</td>
+<td align="left">bge rs, x0, offset</td>
+<td align="left">branch if rs &gt;= 0</td>
+</tr>
+<tr>
+<td align="left">bltz rs, offset</td>
+<td align="left">blt rs, x0, offset</td>
+<td align="left">branch if rs &lt; 0</td>
+</tr>
+<tr>
+<td align="left">bgtz rs, offset</td>
+<td align="left">blt x0, rs, offset</td>
+<td align="left">branch if rs &gt; 0</td>
+</tr>
+<tr>
+<td align="left">bgt rs, rt, offset</td>
+<td align="left">blt rt, rs, offset</td>
+<td align="left">branch if rs &gt; rt</td>
+</tr>
+<tr>
+<td align="left">ble rs, rt, offset</td>
+<td align="left">bge rt, rs, offset</td>
+<td align="left">branch if rs &lt;= rt</td>
+</tr>
+<tr>
+<td align="left">bgtu rs, rt, offset</td>
+<td align="left">bltu rt, rs, offset</td>
+<td align="left">branch if &gt; unsigned</td>
+</tr>
+<tr>
+<td align="left">bleu rs, rt, offset</td>
+<td align="left">bgeu rt, rs, offset</td>
+<td align="left">branch if &lt;= unsigned</td>
+</tr>
+<tr>
+<td align="left">j offset</td>
+<td align="left">jal x0, offset</td>
+<td align="left">无条件跳转，不存返回地址</td>
+</tr>
+<tr>
+<td align="left">jal offset</td>
+<td align="left">jal x1, offset</td>
+<td align="left">无条件跳转，返回地址存到 x1</td>
+</tr>
+<tr>
+<td align="left">jr rs</td>
+<td align="left">jalr x0, 0(rs)</td>
+<td align="left">无条件跳转到 rs 位置，忽略返回地址</td>
+</tr>
+<tr>
+<td align="left">jalr rs</td>
+<td align="left">jalr x1, 0(rs)</td>
+<td align="left">无条件跳转到 rs 位置，存返回地址</td>
+</tr>
+<tr>
+<td align="left">ret</td>
+<td align="left">jalr x0, 0(x1)</td>
+<td align="left">通过返回地址 x1 返回</td>
+</tr>
+<tr>
+<td align="left">call offset</td>
+<td align="left">auipc x1, offset[31 : 12] + offset[11]<br/>jalr x1, offset[11:0](x1)</td>
+<td align="left">远调用</td>
+</tr>
+<tr>
+<td align="left">tail offset</td>
+<td align="left">auipc x6, offset[31 : 12] + offset[11]<br/>jalr x0, offset[11:0](x6)</td>
+<td align="left">忽略返回地址远调用</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="_17">汇编代码<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="__codelineno-0-1"></a><span class="w">    </span><span class="na">.text</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="__codelineno-0-2"></a><span class="w">    </span><span class="na">.align</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="__codelineno-0-3"></a><span class="w">    </span><span class="na">.globl</span><span class="w"> </span><span class="no">main</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="__codelineno-0-4"></a><span class="nl">main:</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="__codelineno-0-5"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-16</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="__codelineno-0-6"></a><span class="w">    </span><span class="nf">sw</span><span class="w"> </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="__codelineno-0-7"></a><span class="w">    </span><span class="nf">lui</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="nv">%hi</span><span class="p">(</span><span class="no">string1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="__codelineno-0-8"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="nv">%lo</span><span class="p">(</span><span class="no">string1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="__codelineno-0-9"></a><span class="w">    </span><span class="nf">lui</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="nv">%hi</span><span class="p">(</span><span class="no">string2</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="__codelineno-0-10"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="nv">%lo</span><span class="p">(</span><span class="no">string2</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="__codelineno-0-11"></a><span class="w">    </span><span class="nf">call</span><span class="w"> </span><span class="no">printf</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="__codelineno-0-12"></a><span class="w">    </span><span class="nf">lw</span><span class="w"> </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="__codelineno-0-13"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="__codelineno-0-14"></a><span class="w">    </span><span class="nf">li</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="__codelineno-0-15"></a><span class="w">    </span><span class="nf">ret</span><span class="w"></span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="__codelineno-0-17"></a><span class="w">    </span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="__codelineno-0-18"></a><span class="w">    </span><span class="na">.balign</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="__codelineno-0-19"></a><span class="nl">string1:</span><span class="w"></span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="__codelineno-0-20"></a><span class="w">    </span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;Hello, %s!\n&quot;</span><span class="w"></span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="__codelineno-0-21"></a><span class="nl">string2:</span><span class="w"></span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="__codelineno-0-22"></a><span class="w">    </span><span class="na">.string</span><span class="w"> </span><span class="s">&quot;world&quot;</span><span class="w"></span>
+</code></pre></div>
+<ul>
+<li>.text：进入代码段</li>
+<li>.align 2：代码段对齐到 2^2 字节</li>
+<li>.globl main：声明全局标号 main</li>
+<li>.section .rodata：进入 rodata 段</li>
+<li>.balign 4：对齐数据段到 4 字节</li>
+<li>.string ... 定义字符串</li>
+</ul>
+<p>其它指令：</p>
+<ul>
+<li>.data：进入数据段</li>
+<li>.bss：进入 bss 段</li>
+<li>.byte b1, b2, ..., bn：存放一些字节</li>
+<li>.half w1, w2, ..., wn：存放一些半字（16 位）</li>
+<li>.word w1, w2, ..., wn：存放一些字（32 位）</li>
+</ul>
+
+  
+    <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年5月29日 12:21:50</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年5月29日 12:21:50</span>
+      
+    
+  </small>
+</div>
+  
+
+                
+              </article>
+            </div>
+          </div>
+          
+            <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+              回到页面顶部
+            </a>
+          
+        </main>
+        
+          <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../asm/" class="md-footer__link md-footer__link--prev" aria-label="上一页: x86 Assembly" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              x86 Assembly
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../system/" class="md-footer__link md-footer__link--next" aria-label="下一页: 计算机系统" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              计算机系统
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 <a href="https://github.com/TonyCrane"  target="_blank" rel="noopener">TonyCrane</a>
+    </div>
+  
+  
+    Powered by
+    <a href="https://www.mkdocs.org/" target="_blank" rel="noopener">
+      MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material
+    </a>
+    modified by
+    <a href="https://github.com/TonyCrane" target="_blank" rel="noopener">
+      TonyCrane
+    </a>
+  
+</div>
+  
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/TonyCrane/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://blog.tonycrane.cc/" target="_blank" rel="noopener" title="blog.tonycrane.cc" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://tonycrane.cc/" target="_blank" rel="noopener" title="tonycrane.cc" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+        
+      </div>
+      <div class="md-dialog" data-md-component="dialog">
+        <div class="md-dialog__inner md-typeset"></div>
+      </div>
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "translations": {"clipboard.copy": "\u590d\u5236", "clipboard.copied": "\u5df2\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "search": "../../../assets/javascripts/workers/search.361d90f1.min.js"}</script>
+      
+      
+        <script src="../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+        
+          <script src="https://fastly.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+        
+          <script src="../../../js/katex.js"></script>
+        
+      
+    </body>
+  </html>
+  
