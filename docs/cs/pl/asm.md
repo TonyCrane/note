@@ -1617,7 +1617,11 @@ mov al, ds:[ebx]
 
 CPL（current privilege level）即 cs 的低 2 位，表示当前程序的权限，DPL（descriptor privilege level）表示段地址对应描述符的权限。意义即是 ring?，数字越小权限越大
 
+### 段描述符
+
 gdt（global descriptor table）全局描述符表，是一个结构数组，每个元素均为 8 字节。
+
+程序中的段地址实际上叫 selector，selector 对应的描述符为 gdt+(selector&0FFF8h) 处的 8 字节（即丢掉 selector 的低 3 位）
 
 ```text
 gdt+00h
@@ -1652,11 +1656,47 @@ gdt+18h
     - 例如如果 limit 为 FFFFF，G 为 1，则最大偏移地址变为 FFFFFFFF（最后一页的地址为 [FFFFF000, FFFFFFFF]）
 - 第 5 个字节的其它 bit
     - 第 7 bit 为 Present，表示该段是否存在
-    - 第 4 bit 为 S，S = 1 表示是数据段或代码段
+    - 第 4 bit 为 S，S = 1 表示是数据段或代码段，0 则是系统描述符（包括下面的 call gate）
     - 第 3 bit 为 0 表示是数据段，1 表示是代码段
     - 第 1 bit，如果是数据段，则 1 表示可写，代码段时 1 表示可读
     - 第 0 bit 为 Accessed 表示描述符是否被访问过
     
-段地址 10h 对应的描述符的 DPL 为 11，即权限为 ring3（DPL 为 3（最低）的时候所有程序都是有权访问的）
+段地址（其实叫 selector）10h 对应的描述符的 DPL 为 11，即权限为 ring3（DPL 为 3（最低）的时候所有程序都是有权访问的）
 
 假设前面那段代码中赋值给 ax 的段地址为 10h，cs 为 08h（0000 10*00*），则 cs.cpl = 00，于是 cs.cpl < 10h->descriptor.DPL，因此当前程序有权把 ds 赋值为 10h，即有权访问该段中的数据
+
+若段描述符描述的是一个数据段，则访问者的 CPL 必须**小于等于**该段描述符的 DPL。若段描述符描述的是一个代码段，则访问者的 CPL 必须**等于**该段描述符的 DPL 才能 jmp、call 到该段里面的函数
+
+当访问者的 CPL 大于某个代码段描述符的 DPL 时，则只能用 call call_gate_selector:0 这样的方式间接调用该代码段中的函数
+
+### call gate
+call gate 即调用门，可以看作低权限调用高权限函数的跳板。它本身需要用 8 个字节来描述，格式例如：
+
+```text
+            +---+--------------------+---+-- 目标函数偏移地址
+            |   |                    |   |
+            --  --                  --  --
+gdt+20h     78, 56, 08, 00, 02, EC, 34, 12
+                    ==  ==  ^^  ~~
+                    |    |  |   |
+            +-------|----|--|---+---- 属性
+            |       |    |  +---- 参数的个数
+            |       +----+---- 目标函数的段地址（selector）
+            |
+            EC = 1110 1100
+                 |==^ ----
+                 || | |
+                 || | +-- type，0C 即表示是 32 位调用门
+                 || +-- S = 0，是系统描述符
+                 |+-- DPL
+                 +-- Present
+```
+
+当 gdt 里的 S = 0 时，表示当前描述符是一个系统描述符而不是数据段或代码段的描述符。系统描述符有 tss（task state segment）描述符、task gate 描述符、interrupt gate 描述符、trap gate 描述符等，S = 0 且 type = 1100b 时即表示当前描述符是 32 位的调用门
+
+属性中的 DPL 是 call gate 自己的权限而不是目标函数的权限，目标函数的 DPL 要通过第 2、3 字节的 selector 找到对应描述符的 DPL
+
+调用 call gate 时的权限比较：
+
+1. 调用者的 CPL <= call_gate_selector->descripter.DPL
+2. 调用者的 CPL >= call_gate_selector->descriptor.target_selector->descriptor.DPL
