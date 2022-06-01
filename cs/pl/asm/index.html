@@ -38,11 +38,11 @@
         
       
       
-        <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
       
-        <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
       
-        <link rel="stylesheet" href="https://fastly.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
       
         <link rel="stylesheet" href="../../../css/tasklist.css">
       
@@ -754,6 +754,20 @@ var _hmt = _hmt || [];
           <li class="md-nav__item">
   <a href="#_55" class="md-nav__link">
     实模式与保护模式的区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    段描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-gate" class="md-nav__link">
+    call gate
   </a>
   
 </li>
@@ -2022,6 +2036,20 @@ var _hmt = _hmt || [];
           <li class="md-nav__item">
   <a href="#_55" class="md-nav__link">
     实模式与保护模式的区别
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    段描述符
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#call-gate" class="md-nav__link">
+    call gate
   </a>
   
 </li>
@@ -3631,7 +3659,9 @@ var _hmt = _hmt || [];
 </code></pre></div>
 <p>当段寄存器被赋值的时候，CPU 会进行权限检查，把当前 cs 的低 2 位和段地址对应的描述符所包含的 DPL 进行比较如果 “cs.cpl &lt;= 段地址-&gt;描述符.DPL” 则允许访问，否则产生 General Protection Fault</p>
 <p>CPL（current privilege level）即 cs 的低 2 位，表示当前程序的权限，DPL（descriptor privilege level）表示段地址对应描述符的权限。意义即是 ring?，数字越小权限越大</p>
+<h3 id="_56">段描述符<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h3>
 <p>gdt（global descriptor table）全局描述符表，是一个结构数组，每个元素均为 8 字节。</p>
+<p>程序中的段地址实际上叫 selector，selector 对应的描述符为 gdt+(selector&amp;0FFF8h) 处的 8 字节（即丢掉 selector 的低 3 位）</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="__codelineno-16-1"></a>gdt+00h
 <a id="__codelineno-16-2" name="__codelineno-16-2" href="__codelineno-16-2"></a>gdt+08h
 <a id="__codelineno-16-3" name="__codelineno-16-3" href="__codelineno-16-3"></a>                    +---+---+-base_addr--+
@@ -3672,15 +3702,44 @@ var _hmt = _hmt || [];
 </li>
 <li>第 5 个字节的其它 bit<ul>
 <li>第 7 bit 为 Present，表示该段是否存在</li>
-<li>第 4 bit 为 S，S = 1 表示是数据段或代码段</li>
+<li>第 4 bit 为 S，S = 1 表示是数据段或代码段，0 则是系统描述符（包括下面的 call gate）</li>
 <li>第 3 bit 为 0 表示是数据段，1 表示是代码段</li>
 <li>第 1 bit，如果是数据段，则 1 表示可写，代码段时 1 表示可读</li>
 <li>第 0 bit 为 Accessed 表示描述符是否被访问过</li>
 </ul>
 </li>
 </ul>
-<p>段地址 10h 对应的描述符的 DPL 为 11，即权限为 ring3（DPL 为 3（最低）的时候所有程序都是有权访问的）</p>
+<p>段地址（其实叫 selector）10h 对应的描述符的 DPL 为 11，即权限为 ring3（DPL 为 3（最低）的时候所有程序都是有权访问的）</p>
 <p>假设前面那段代码中赋值给 ax 的段地址为 10h，cs 为 08h（0000 10<em>00</em>），则 cs.cpl = 00，于是 cs.cpl &lt; 10h-&gt;descriptor.DPL，因此当前程序有权把 ds 赋值为 10h，即有权访问该段中的数据</p>
+<p>若段描述符描述的是一个数据段，则访问者的 CPL 必须<strong>小于等于</strong>该段描述符的 DPL。若段描述符描述的是一个代码段，则访问者的 CPL 必须<strong>等于</strong>该段描述符的 DPL 才能 jmp、call 到该段里面的函数</p>
+<p>当访问者的 CPL 大于某个代码段描述符的 DPL 时，则只能用 call call_gate_selector:0 这样的方式间接调用该代码段中的函数</p>
+<h3 id="call-gate">call gate<a class="headerlink" href="#call-gate" title="Permanent link">&para;</a></h3>
+<p>call gate 即调用门，可以看作低权限调用高权限函数的跳板。它本身需要用 8 个字节来描述，格式例如：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="__codelineno-17-1"></a>            +---+--------------------+---+-- 目标函数偏移地址
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="__codelineno-17-2"></a>            |   |                    |   |
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="__codelineno-17-3"></a>            --  --                  --  --
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="__codelineno-17-4"></a>gdt+20h     78, 56, 08, 00, 02, EC, 34, 12
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="__codelineno-17-5"></a>                    ==  ==  ^^  ~~
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="__codelineno-17-6"></a>                    |    |  |   |
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="__codelineno-17-7"></a>            +-------|----|--|---+---- 属性
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="__codelineno-17-8"></a>            |       |    |  +---- 参数的个数
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="__codelineno-17-9"></a>            |       +----+---- 目标函数的段地址（selector）
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="__codelineno-17-10"></a>            |
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="__codelineno-17-11"></a>            EC = 1110 1100
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="__codelineno-17-12"></a>                 |==^ ----
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="__codelineno-17-13"></a>                 || | |
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="__codelineno-17-14"></a>                 || | +-- type，0C 即表示是 32 位调用门
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="__codelineno-17-15"></a>                 || +-- S = 0，是系统描述符
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="__codelineno-17-16"></a>                 |+-- DPL
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="__codelineno-17-17"></a>                 +-- Present
+</code></pre></div>
+<p>当 gdt 里的 S = 0 时，表示当前描述符是一个系统描述符而不是数据段或代码段的描述符。系统描述符有 tss（task state segment）描述符、task gate 描述符、interrupt gate 描述符、trap gate 描述符等，S = 0 且 type = 1100b 时即表示当前描述符是 32 位的调用门</p>
+<p>属性中的 DPL 是 call gate 自己的权限而不是目标函数的权限，目标函数的 DPL 要通过第 2、3 字节的 selector 找到对应描述符的 DPL</p>
+<p>调用 call gate 时的权限比较：</p>
+<ol>
+<li>调用者的 CPL &lt;= call_gate_selector-&gt;descripter.DPL</li>
+<li>调用者的 CPL &gt;= call_gate_selector-&gt;descriptor.target_selector-&gt;descriptor.DPL</li>
+</ol>
 
   
     <hr>
@@ -3688,7 +3747,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年5月29日 12:21:50</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年6月1日 19:50:36</span>
       
         <br>
         创建日期:
@@ -3817,7 +3876,7 @@ var _hmt = _hmt || [];
       
         <script src="../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
         
-          <script src="https://fastly.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+          <script src="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
         
           <script src="../../../js/katex.js"></script>
         
