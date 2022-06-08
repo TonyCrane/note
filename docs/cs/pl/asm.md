@@ -8,6 +8,7 @@ counter: True
 
     - 自学，看书《汇编语言（第4版）》王爽
     - 浙江大学白洪欢老师 “汇编语言”（大一春夏）课程
+    - https://faydoc.tripod.com/cpu/index.htm
 
 ## 基础知识
 
@@ -1586,7 +1587,424 @@ C 亮红  D 紫    E 黄    F 亮白
 
 再使用 `#!asm mov ax, 0003h` 后 `#!asm int 10h` 切换回文本模式
 
-## 保护模式程序设计
+## 80x86 增加指令
+
+### 80186
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>insb</span>
+    <span>80186</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：insb / rep insb
+- **指令作用**：(input from port to string) 等价于 in al, dx; mov es:[di], al 并移动 di
+- **注意**：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>insw</span>
+    <span>80186</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：insw / rep insw
+- **指令作用**：(input from port to string) 等价于 in ax, dx; mov es:[di], ax 并移动 di
+- **注意**：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>outsb</span>
+    <span>80186</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：outsb / rep outsb
+- **指令作用**：(output string to port) 等价于 mov al, ds:[si]; out al, dx 并移动 si
+- **注意**：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>outsw</span>
+    <span>80186</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：outsw / rep outsw
+- **指令作用**：(output string to port) 等价于 mov ax, ds:[si]; out ax, dx 并移动 si
+- **注意**：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>pusha</span>
+    <span>80186</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：pusha
+- **指令作用**：push 所有通用用途寄存器，顺序从先到后为 ax cx dx bx sp bp si di
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>popa</span>
+    <span>80186</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：popa
+- **指令作用**：pop 到所有通用用途寄存器，顺序从先到后为 di si bp sp bx dx cx ax
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>立即数语法扩展</span>
+    <span>80186</span>
+</div>
+<div class="card-body" markdown="1">
+
+- push 可以直接接立即数
+- imul shl shr sal sar rol ror rcl rcr 第二个操作数可以是立即数
+
+</div>
+</div>
+
+### 80286
+
+80286 增加了保护模式及相关指令，不写在这里了
+
+### 80386
+
+80386（即 i386）升级到了 32 位架构，寄存器均变为 32 位（以 e 开头），增加了 fs gs 两个附加数据段寄存器。一些指令从 8086 自然扩展支持 32 位，不在此赘述
+
+#### bit 相关指令
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bt</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：bt src, pos
+- **指令作用**：(bit test) 将 src 的第 pos 位拷贝到 cf 中
+- **注意**：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bts</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：bts src, pos
+- **指令作用**：(bit test and set) 将 src 的第 pos 位拷贝到 cf 中后将其设为 1
+- **注意**：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>btr</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：btr src, pos
+- **指令作用**：(bit test and reset) 将 src 的第 pos 位拷贝到 cf 中后将其设为 0
+- **注意**：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>btc</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：btc src, pos
+- **指令作用**：(bit test and complement) 将 src 的第 pos 位拷贝到 cf 中后将其反转
+- **注意**：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bsf</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：bsf dest, src
+- **指令作用**：(bit scan forward) 在 src 中搜索最低位的 1 对应索引存放在 dest 中
+- **注意**：dest 是寄存器，src 是寄存器或内存单元。如果 src 是 0 则 dest 不变，zf 置为 1 否则为 0
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bsr</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：bsr dest, src
+- **指令作用**：(bit scan reverse) 在 src 中搜索最高位的 1 对应索引存放在 dest 中
+- **注意**：dest 是寄存器，src 是寄存器或内存单元。如果 src 是 0 则 dest 不变，zf 置为 1 否则为 0
+
+</div>
+</div>
+
+#### 数据转移指令
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>movsx</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：movsx dest, src
+- **指令作用**：(move with sign-extension) 将 src 符号扩展到 dest
+- **注意**：dest 为寄存器，src 为寄存器或内存单元。可以 8 -> 16、8 -> 32、16 -> 32
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>movzx</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：movsx dest, src
+- **指令作用**：(move with zero-extension) 将 src 零扩展到 dest
+- **注意**：dest 为寄存器，src 为寄存器或内存单元。可以 8 -> 16、8 -> 32、16 -> 32
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>pushad</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：pushad
+- **指令作用**：将 32 位通用用途寄存器压入堆栈，顺序从先到后为 eax ecx edx ebx esp ebp esi edi
+- **注意**：pusha 仍为压入 16 位寄存器
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>popad</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：popad
+- **指令作用**：pop 出 32 位通用用途寄存器，顺序从先到后为 edi esi ebp esp ebx edx ecx eax
+- **注意**：popa 仍为弹出 16 位寄存器
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>pushfd</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：pushfd
+- **指令作用**：将 eflags 压入堆栈
+- **注意**：pushf 仍为 16 位（即 eflags 的低 16 位）
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>popfd</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：popfd
+- **指令作用**：从堆栈弹出到 eflags
+- **注意**：popf 仍为 16 位（即 eflags 的低 16 位）
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lss</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：lss dest, src
+- **指令作用**：将 src 处远指针装入 ss:dest
+- **注意**：dest 是寄存器，src 是 m16:16 或 m16:32
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lfs</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：lfs dest, src
+- **指令作用**：将 src 处远指针装入 fs:dest
+- **注意**：dest 是寄存器，src 是 m16:16 或 m16:32
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lgs</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：lgs dest, src
+- **指令作用**：将 src 处远指针装入 gs:dest
+- **注意**：dest 是寄存器，src 是 m16:16 或 m16:32
+
+</div>
+</div>
+
+#### 转换指令
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>cdq</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：cdq
+- **指令作用**：将 eax 扩充为 edx:eax（直接拼接），即将 eax 符号位扩展到 edx
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>cwde</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：cwde
+- **指令作用**：将 ax 符号扩充为 eax
+- **注意**：cwd 仍为将 ax 扩充到 dx:ax
+
+</div>
+</div>
+
+#### 运算指令
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>imul 语法扩展</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：imul dest, src
+- **指令作用**：（支持传入两个操作数）dest = dest * src，截取结果的低位存入 dest
+- **注意**：dest 为寄存器，src 为寄存器或存储单元。结果对于有符号数乘法和无符号数乘法相同
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>shld</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：shld r1, r2, imm / shld r1, r2, cl
+- **指令作用**：r1 = r1<<cl ∣ r2>>(register_width - cl)
+- **注意**：r1 是寄存器或内存单元，r2 是寄存器，第三个操作数是 cl 或 8 位立即数
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>shrd</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：shrd r1, r2, imm / shrd r1, r2, cl
+- **指令作用**：r1 = r1>>cl ∣ r2<<(register_width - cl)
+- **注意**：r1 是寄存器或内存单元，r2 是寄存器，第三个操作数是 cl 或 8 位立即数
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>set<em>cc</em> 类指令</span>
+    <span>80386</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：set*cc* dest
+- **指令作用**：如果 *cc* 满足，则将字节 dest 设为 1，否则设为 0
+- **注意**：*cc* 同 j*cc*，dest 为 8 位寄存器或字节大小存储单元
+
+</div>
+</div>
+
+#### 字符串类指令
+
+针对 32 位新增 CMPSD LODSD SCASD STOSD MOVSD INSD OUTSD 七个字符串相关指令，意义均和 8086 / 80186 类似，不再赘述
+
+#### 控制转移指令
+
+针对 32 位新增 IRETD 指令（与 IRET 相同，机器码也相同），JECXZ 指令（jump if ecx equal zero）不再赘述
+
+
+## 80386 保护模式原理
 
 ### 实模式与保护模式的区别
 
@@ -1700,3 +2118,53 @@ gdt+20h     78, 56, 08, 00, 02, EC, 34, 12
 
 1. 调用者的 CPL <= call_gate_selector->descripter.DPL
 2. 调用者的 CPL >= call_gate_selector->descriptor.target_selector->descriptor.DPL
+
+
+CPU 从 ROM 启动后进入实模式，而实模式的权限都是 ring0，可以在实模式中执行 retf 来降级到 ring3。构造 jmp far ptr tss_selector:0 可以从 ring0 强行跳回 ring3（需要构造 tss 与对应的描述符）
+
+以 memset(p, 0, n) 为例，ring0 函数如何防止 ring3 传递一个恶意的指针如 ring0 指针 p。ring3 进程假如不调用 memset()，而是自己做 *p = ... 的写入一定会触发 GPF(General Protect Fault) 即在该指令前插入并调用 int 0Dh
+
+假设在 ring3 中调用 memset(p, 0, 1) p = 0x2800000000（假设 0x28 这个 selector 对应段的 DPL 是 0）
+```asm
+push 1
+push 0
+push 28h
+push 0
+call far ptr call_gate_to_memset:0
+```
+当这条 call 发生时，ring3 的堆栈中仅有 call 指令上方 push 的参数，并没有下条指令的段地址和偏移地址。CPU 会从当前进程的 tss（task state segment，通过 ltr 指令赋值）中取出 ss0 及 esp0 作为新的堆栈指针（ss = ss0, esp = esp0），进行堆栈切换。之后进行的操作有：
+
+1. push ring3 的 ss、push ring3 的 esp
+2. 把 ring3 中的参数全部复制到 ring0 堆栈中
+3. push ring3 的 cs、push ring3 的 eip
+4. jmp 目标函数
+
+memset 函数中会取出调用者的 cs，取出 CPL 与参数 p 段地址的 DPL 进行比较
+
+```asm
+memset:
+    push ebp
+    mov ebp, esp
+    mov cx, [ebp+8]     ; 调用者 ring3 的 cs
+    mov ax, [ebp+10h]   ; 28h
+    arpl ax, cx         ; adjust request privilege level
+                        ; 会把 cx 的低 2 位复制给 ax 的低 2 位，即 ax 变为 2Bh
+    mov ds, ax          ; 这里会触发 GPF
+                        ; CPU 进行权限检查，当 cs.cpl <= 28h 段的 DPL 
+                        ; && ax.rpl <= 28h 段的 DPL 时才能赋值成功（ax.rpl 即 ax 的低 2 位）
+```
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>arpl</span>
+    <span>保护模式</span>
+</div>
+<div class="card-body" markdown="1">
+
+- **指令格式**：arpl dest, src
+- **指令作用**：（adjust request privilege level）当 src 的低 2 位大于 dest 的低 2 位时，会把 src 的低 2 位复制给 dest 的低 2 位
+- **注意**：dest 为寄存器或内存，src 为寄存器
+
+</div>
+</div>
+
