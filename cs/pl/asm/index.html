@@ -744,22 +744,56 @@ var _hmt = _hmt || [];
 </li>
         
           <li class="md-nav__item">
-  <a href="#_54" class="md-nav__link">
-    保护模式程序设计
+  <a href="#80x86" class="md-nav__link">
+    80x86 增加指令
   </a>
   
-    <nav class="md-nav" aria-label="保护模式程序设计">
+    <nav class="md-nav" aria-label="80x86 增加指令">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_55" class="md-nav__link">
+  <a href="#80186" class="md-nav__link">
+    80186
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80286" class="md-nav__link">
+    80286
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80386" class="md-nav__link">
+    80386
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80386_1" class="md-nav__link">
+    80386 保护模式原理
+  </a>
+  
+    <nav class="md-nav" aria-label="80386 保护模式原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
     实模式与保护模式的区别
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_56" class="md-nav__link">
+  <a href="#_60" class="md-nav__link">
     段描述符
   </a>
   
@@ -2026,22 +2060,56 @@ var _hmt = _hmt || [];
 </li>
         
           <li class="md-nav__item">
-  <a href="#_54" class="md-nav__link">
-    保护模式程序设计
+  <a href="#80x86" class="md-nav__link">
+    80x86 增加指令
   </a>
   
-    <nav class="md-nav" aria-label="保护模式程序设计">
+    <nav class="md-nav" aria-label="80x86 增加指令">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_55" class="md-nav__link">
+  <a href="#80186" class="md-nav__link">
+    80186
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80286" class="md-nav__link">
+    80286
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80386" class="md-nav__link">
+    80386
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#80386_1" class="md-nav__link">
+    80386 保护模式原理
+  </a>
+  
+    <nav class="md-nav" aria-label="80386 保护模式原理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_59" class="md-nav__link">
     实模式与保护模式的区别
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_56" class="md-nav__link">
+  <a href="#_60" class="md-nav__link">
     段描述符
   </a>
   
@@ -2083,6 +2151,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>自学，看书《汇编语言（第4版）》王爽</li>
 <li>浙江大学白洪欢老师 “汇编语言”（大一春夏）课程</li>
+<li><a href="https://faydoc.tripod.com/cpu/index.htm">https://faydoc.tripod.com/cpu/index.htm</a></li>
 </ul>
 </div>
 <h2 id="_1">基础知识<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -3630,8 +3699,382 @@ var _hmt = _hmt || [];
 </code></pre></div>
 编程时设置 es 为 0A00h，然后向 byte ptr es:[...] 中写入颜色码即可更改某处像素点颜色</p>
 <p>再使用 <code class="highlight"><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="mi">0003</span><span class="no">h</span><span class="w"></span></code> 后 <code class="highlight"><span class="nf">int</span><span class="w"> </span><span class="mi">10</span><span class="no">h</span><span class="w"></span></code> 切换回文本模式</p>
-<h2 id="_54">保护模式程序设计<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h2>
-<h3 id="_55">实模式与保护模式的区别<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h3>
+<h2 id="80x86">80x86 增加指令<a class="headerlink" href="#80x86" title="Permanent link">&para;</a></h2>
+<h3 id="80186">80186<a class="headerlink" href="#80186" title="Permanent link">&para;</a></h3>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>insb</span>
+    <span>80186</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：insb / rep insb</li>
+<li><strong>指令作用</strong>：(input from port to string) 等价于 in al, dx; mov es:[di], al 并移动 di</li>
+<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>insw</span>
+    <span>80186</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：insw / rep insw</li>
+<li><strong>指令作用</strong>：(input from port to string) 等价于 in ax, dx; mov es:[di], ax 并移动 di</li>
+<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>outsb</span>
+    <span>80186</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：outsb / rep outsb</li>
+<li><strong>指令作用</strong>：(output string to port) 等价于 mov al, ds:[si]; out al, dx 并移动 si</li>
+<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>outsw</span>
+    <span>80186</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：outsw / rep outsw</li>
+<li><strong>指令作用</strong>：(output string to port) 等价于 mov ax, ds:[si]; out ax, dx 并移动 si</li>
+<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>pusha</span>
+    <span>80186</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：pusha</li>
+<li><strong>指令作用</strong>：push 所有通用用途寄存器，顺序从先到后为 ax cx dx bx sp bp si di</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>popa</span>
+    <span>80186</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：popa</li>
+<li><strong>指令作用</strong>：pop 到所有通用用途寄存器，顺序从先到后为 di si bp sp bx dx cx ax</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>立即数语法扩展</span>
+    <span>80186</span>
+</div>
+<div class="card-body">
+<ul>
+<li>push 可以直接接立即数</li>
+<li>imul shl shr sal sar rol ror rcl rcr 第二个操作数可以是立即数</li>
+</ul>
+</div>
+</div>
+<h3 id="80286">80286<a class="headerlink" href="#80286" title="Permanent link">&para;</a></h3>
+<p>80286 增加了保护模式及相关指令，不写在这里了</p>
+<h3 id="80386">80386<a class="headerlink" href="#80386" title="Permanent link">&para;</a></h3>
+<p>80386（即 i386）升级到了 32 位架构，寄存器均变为 32 位（以 e 开头），增加了 fs gs 两个附加数据段寄存器。一些指令从 8086 自然扩展支持 32 位，不在此赘述</p>
+<h4 id="bit">bit 相关指令<a class="headerlink" href="#bit" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bt</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：bt src, pos</li>
+<li><strong>指令作用</strong>：(bit test) 将 src 的第 pos 位拷贝到 cf 中</li>
+<li><strong>注意</strong>：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bts</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：bts src, pos</li>
+<li><strong>指令作用</strong>：(bit test and set) 将 src 的第 pos 位拷贝到 cf 中后将其设为 1</li>
+<li><strong>注意</strong>：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>btr</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：btr src, pos</li>
+<li><strong>指令作用</strong>：(bit test and reset) 将 src 的第 pos 位拷贝到 cf 中后将其设为 0</li>
+<li><strong>注意</strong>：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>btc</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：btc src, pos</li>
+<li><strong>指令作用</strong>：(bit test and complement) 将 src 的第 pos 位拷贝到 cf 中后将其反转</li>
+<li><strong>注意</strong>：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bsf</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：bsf dest, src</li>
+<li><strong>指令作用</strong>：(bit scan forward) 在 src 中搜索最低位的 1 对应索引存放在 dest 中</li>
+<li><strong>注意</strong>：dest 是寄存器，src 是寄存器或内存单元。如果 src 是 0 则 dest 不变，zf 置为 1 否则为 0</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>bsr</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：bsr dest, src</li>
+<li><strong>指令作用</strong>：(bit scan reverse) 在 src 中搜索最高位的 1 对应索引存放在 dest 中</li>
+<li><strong>注意</strong>：dest 是寄存器，src 是寄存器或内存单元。如果 src 是 0 则 dest 不变，zf 置为 1 否则为 0</li>
+</ul>
+</div>
+</div>
+<h4 id="_54">数据转移指令<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>movsx</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：movsx dest, src</li>
+<li><strong>指令作用</strong>：(move with sign-extension) 将 src 符号扩展到 dest</li>
+<li><strong>注意</strong>：dest 为寄存器，src 为寄存器或内存单元。可以 8 -&gt; 16、8 -&gt; 32、16 -&gt; 32</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>movzx</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：movsx dest, src</li>
+<li><strong>指令作用</strong>：(move with zero-extension) 将 src 零扩展到 dest</li>
+<li><strong>注意</strong>：dest 为寄存器，src 为寄存器或内存单元。可以 8 -&gt; 16、8 -&gt; 32、16 -&gt; 32</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>pushad</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：pushad</li>
+<li><strong>指令作用</strong>：将 32 位通用用途寄存器压入堆栈，顺序从先到后为 eax ecx edx ebx esp ebp esi edi</li>
+<li><strong>注意</strong>：pusha 仍为压入 16 位寄存器</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>popad</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：popad</li>
+<li><strong>指令作用</strong>：pop 出 32 位通用用途寄存器，顺序从先到后为 edi esi ebp esp ebx edx ecx eax</li>
+<li><strong>注意</strong>：popa 仍为弹出 16 位寄存器</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>pushfd</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：pushfd</li>
+<li><strong>指令作用</strong>：将 eflags 压入堆栈</li>
+<li><strong>注意</strong>：pushf 仍为 16 位（即 eflags 的低 16 位）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>popfd</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：popfd</li>
+<li><strong>指令作用</strong>：从堆栈弹出到 eflags</li>
+<li><strong>注意</strong>：popf 仍为 16 位（即 eflags 的低 16 位）</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lss</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：lss dest, src</li>
+<li><strong>指令作用</strong>：将 src 处远指针装入 ss:dest</li>
+<li><strong>注意</strong>：dest 是寄存器，src 是 m16:16 或 m16:32</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lfs</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：lfs dest, src</li>
+<li><strong>指令作用</strong>：将 src 处远指针装入 fs:dest</li>
+<li><strong>注意</strong>：dest 是寄存器，src 是 m16:16 或 m16:32</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lgs</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：lgs dest, src</li>
+<li><strong>指令作用</strong>：将 src 处远指针装入 gs:dest</li>
+<li><strong>注意</strong>：dest 是寄存器，src 是 m16:16 或 m16:32</li>
+</ul>
+</div>
+</div>
+<h4 id="_55">转换指令<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>cdq</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cdq</li>
+<li><strong>指令作用</strong>：将 eax 扩充为 edx:eax（直接拼接），即将 eax 符号位扩展到 edx</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>cwde</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：cwde</li>
+<li><strong>指令作用</strong>：将 ax 符号扩充为 eax</li>
+<li><strong>注意</strong>：cwd 仍为将 ax 扩充到 dx:ax</li>
+</ul>
+</div>
+</div>
+<h4 id="_56">运算指令<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h4>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>imul 语法扩展</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：imul dest, src</li>
+<li><strong>指令作用</strong>：（支持传入两个操作数）dest = dest * src，截取结果的低位存入 dest</li>
+<li><strong>注意</strong>：dest 为寄存器，src 为寄存器或存储单元。结果对于有符号数乘法和无符号数乘法相同</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>shld</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：shld r1, r2, imm / shld r1, r2, cl</li>
+<li><strong>指令作用</strong>：r1 = r1&lt;<cl ∣ r2>&gt;(register_width - cl)</li>
+<li><strong>注意</strong>：r1 是寄存器或内存单元，r2 是寄存器，第三个操作数是 cl 或 8 位立即数</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>shrd</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：shrd r1, r2, imm / shrd r1, r2, cl</li>
+<li><strong>指令作用</strong>：r1 = r1&gt;&gt;cl ∣ r2&lt;&lt;(register_width - cl)</li>
+<li><strong>注意</strong>：r1 是寄存器或内存单元，r2 是寄存器，第三个操作数是 cl 或 8 位立即数</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>set<em>cc</em> 类指令</span>
+    <span>80386</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：set<em>cc</em> dest</li>
+<li><strong>指令作用</strong>：如果 <em>cc</em> 满足，则将字节 dest 设为 1，否则设为 0</li>
+<li><strong>注意</strong>：<em>cc</em> 同 j<em>cc</em>，dest 为 8 位寄存器或字节大小存储单元</li>
+</ul>
+</div>
+</div>
+<h4 id="_57">字符串类指令<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h4>
+<p>针对 32 位新增 CMPSD LODSD SCASD STOSD MOVSD INSD OUTSD 七个字符串相关指令，意义均和 8086 / 80186 类似，不再赘述</p>
+<h4 id="_58">控制转移指令<a class="headerlink" href="#_58" title="Permanent link">&para;</a></h4>
+<p>针对 32 位新增 IRETD 指令（与 IRET 相同，机器码也相同），JECXZ 指令（jump if ecx equal zero）不再赘述</p>
+<h2 id="80386_1">80386 保护模式原理<a class="headerlink" href="#80386_1" title="Permanent link">&para;</a></h2>
+<h3 id="_59">实模式与保护模式的区别<a class="headerlink" href="#_59" title="Permanent link">&para;</a></h3>
 <ul>
 <li>实模式（real mode）<ul>
 <li>段地址和偏移地址均为 16 位</li>
@@ -3659,7 +4102,7 @@ var _hmt = _hmt || [];
 </code></pre></div>
 <p>当段寄存器被赋值的时候，CPU 会进行权限检查，把当前 cs 的低 2 位和段地址对应的描述符所包含的 DPL 进行比较如果 “cs.cpl &lt;= 段地址-&gt;描述符.DPL” 则允许访问，否则产生 General Protection Fault</p>
 <p>CPL（current privilege level）即 cs 的低 2 位，表示当前程序的权限，DPL（descriptor privilege level）表示段地址对应描述符的权限。意义即是 ring?，数字越小权限越大</p>
-<h3 id="_56">段描述符<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h3>
+<h3 id="_60">段描述符<a class="headerlink" href="#_60" title="Permanent link">&para;</a></h3>
 <p>gdt（global descriptor table）全局描述符表，是一个结构数组，每个元素均为 8 字节。</p>
 <p>程序中的段地址实际上叫 selector，selector 对应的描述符为 gdt+(selector&amp;0FFF8h) 处的 8 字节（即丢掉 selector 的低 3 位）</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="__codelineno-16-1"></a>gdt+00h
@@ -3740,6 +4183,47 @@ var _hmt = _hmt || [];
 <li>调用者的 CPL &lt;= call_gate_selector-&gt;descripter.DPL</li>
 <li>调用者的 CPL &gt;= call_gate_selector-&gt;descriptor.target_selector-&gt;descriptor.DPL</li>
 </ol>
+<p>CPU 从 ROM 启动后进入实模式，而实模式的权限都是 ring0，可以在实模式中执行 retf 来降级到 ring3。构造 jmp far ptr tss_selector:0 可以从 ring0 强行跳回 ring3（需要构造 tss 与对应的描述符）</p>
+<p>以 memset(p, 0, n) 为例，ring0 函数如何防止 ring3 传递一个恶意的指针如 ring0 指针 p。ring3 进程假如不调用 memset()，而是自己做 *p = ... 的写入一定会触发 GPF(General Protect Fault) 即在该指令前插入并调用 int 0Dh</p>
+<p>假设在 ring3 中调用 memset(p, 0, 1) p = 0x2800000000（假设 0x28 这个 selector 对应段的 DPL 是 0）
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="__codelineno-18-1"></a><span class="nf">push</span><span class="w"> </span><span class="mi">1</span><span class="w"></span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="__codelineno-18-2"></a><span class="nf">push</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="__codelineno-18-3"></a><span class="nf">push</span><span class="w"> </span><span class="mi">28</span><span class="no">h</span><span class="w"></span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="__codelineno-18-4"></a><span class="nf">push</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="__codelineno-18-5"></a><span class="nf">call</span><span class="w"> </span><span class="no">far</span><span class="w"> </span><span class="no">ptr</span><span class="w"> </span><span class="no">call_gate_to_memset</span><span class="p">:</span><span class="mi">0</span><span class="w"></span>
+</code></pre></div>
+当这条 call 发生时，ring3 的堆栈中仅有 call 指令上方 push 的参数，并没有下条指令的段地址和偏移地址。CPU 会从当前进程的 tss（task state segment，通过 ltr 指令赋值）中取出 ss0 及 esp0 作为新的堆栈指针（ss = ss0, esp = esp0），进行堆栈切换。之后进行的操作有：</p>
+<ol>
+<li>push ring3 的 ss、push ring3 的 esp</li>
+<li>把 ring3 中的参数全部复制到 ring0 堆栈中</li>
+<li>push ring3 的 cs、push ring3 的 eip</li>
+<li>jmp 目标函数</li>
+</ol>
+<p>memset 函数中会取出调用者的 cs，取出 CPL 与参数 p 段地址的 DPL 进行比较</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="__codelineno-19-1"></a><span class="nl">memset:</span><span class="w"></span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="__codelineno-19-2"></a><span class="w">    </span><span class="nf">push</span><span class="w"> </span><span class="no">ebp</span><span class="w"></span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="__codelineno-19-3"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ebp</span><span class="p">,</span><span class="w"> </span><span class="no">esp</span><span class="w"></span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="__codelineno-19-4"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">cx</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">8</span><span class="p">]</span><span class="w">     </span><span class="c1">; 调用者 ring3 的 cs</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="__codelineno-19-5"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="p">[</span><span class="no">ebp</span><span class="err">+</span><span class="mi">10</span><span class="no">h</span><span class="p">]</span><span class="w">   </span><span class="c1">; 28h</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="__codelineno-19-6"></a><span class="w">    </span><span class="nf">arpl</span><span class="w"> </span><span class="no">ax</span><span class="p">,</span><span class="w"> </span><span class="no">cx</span><span class="w">         </span><span class="c1">; adjust request privilege level</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="__codelineno-19-7"></a><span class="w">                        </span><span class="c1">; 会把 cx 的低 2 位复制给 ax 的低 2 位，即 ax 变为 2Bh</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="__codelineno-19-8"></a><span class="w">    </span><span class="nf">mov</span><span class="w"> </span><span class="no">ds</span><span class="p">,</span><span class="w"> </span><span class="no">ax</span><span class="w">          </span><span class="c1">; 这里会触发 GPF</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="__codelineno-19-9"></a><span class="w">                        </span><span class="c1">; CPU 进行权限检查，当 cs.cpl &lt;= 28h 段的 DPL </span>
+<a id="__codelineno-19-10" name="__codelineno-19-10" href="__codelineno-19-10"></a><span class="w">                        </span><span class="c1">; &amp;&amp; ax.rpl &lt;= 28h 段的 DPL 时才能赋值成功（ax.rpl 即 ax 的低 2 位）</span>
+</code></pre></div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>arpl</span>
+    <span>保护模式</span>
+</div>
+<div class="card-body">
+<ul>
+<li><strong>指令格式</strong>：arpl dest, src</li>
+<li><strong>指令作用</strong>：（adjust request privilege level）当 src 的低 2 位大于 dest 的低 2 位时，会把 src 的低 2 位复制给 dest 的低 2 位</li>
+<li><strong>注意</strong>：dest 为寄存器或内存，src 为寄存器</li>
+</ul>
+</div>
+</div>
 
   
     <hr>
@@ -3747,7 +4231,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年6月1日 19:50:36</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年6月8日 23:12:41</span>
       
         <br>
         创建日期:
