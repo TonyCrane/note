@@ -131,7 +131,7 @@ input#mkdocs-content-password {
   font-size: 0.8em;
 }
 
-.riscv-table {
+.riscv-table, .fl-table {
   width: 100%;
   display: inline-table;
   table-layout: fixed;
@@ -142,7 +142,7 @@ input#mkdocs-content-password {
   padding: 0.2em;
   border: 0.04rem solid var(--md-default-fg-color);
 }
-.riscv-table-node-little {
+.riscv-table-node-little, .fl-table-node {
   text-align: center;
   padding: 0.1em;
   border: 0.04rem solid var(--md-default-fg-color);
@@ -163,12 +163,12 @@ input#mkdocs-content-password {
   text-align: right;
 }
 @media (max-width: 700px) {
-  .riscv-table-node, .riscv-table-node-little {
+  .riscv-table-node, .riscv-table-node-little, .fl-table-node {
     font-size: .6rem;
   }
 }
 @media (max-width: 610px) {
-  .riscv-table-node, .riscv-table-node-little {
+  .riscv-table-node, .riscv-table-node-little, .fl-table-node {
     font-size: .5rem;
   }
 }
@@ -183,4 +183,33 @@ input#mkdocs-content-password {
   .riscv-table-numnodel {
     word-wrap: normal;
   }
+}
+
+[data-md-color-scheme="slate"] .fl-affected {
+  background: linear-gradient(
+    45deg, 
+    rgb(255 255 255 / 30%) 0, rgb(255 255 255 / 30%) 25%, transparent 25%, transparent 50%, 
+    rgb(255 255 255 / 30%) 50%, rgb(255 255 255 / 30%) 75%, transparent 75%, transparent
+  );
+  background-size: 10px 10px;
+}
+[data-md-color-scheme="default"] .fl-affected {
+  background: linear-gradient(
+    45deg, 
+    rgb(0 0 0 / 30%) 0, rgb(0 0 0 / 30%) 25%, transparent 25%, transparent 50%, 
+    rgb(0 0 0 / 30%) 50%, rgb(0 0 0 / 30%) 75%, transparent 75%, transparent
+  );
+  background-size: 10px 10px;
+}
+[data-md-color-scheme="slate"] .fl-special {
+  background: rgb(255 255 255 / 30%);
+}
+[data-md-color-scheme="default"] .fl-special {
+  background: rgb(0 0 0 / 30%);
+}
+[data-md-color-scheme="slate"] .fl-undefined {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g><line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(255,255,255,0.9)" stroke-width="1"/></g><g><line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(255,255,255,0.9)" stroke-width="1"/></g></svg>');
+}
+[data-md-color-scheme="default"] .fl-undefined {
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%"><g><line x1="0" y1="0" x2="100%" y2="100%" stroke="rgba(0, 0, 0, 0.85)" stroke-width="1"/></g><g><line x1="0" y1="100%" x2="100%" y2="0" stroke="rgba(0, 0, 0, 0.85)" stroke-width="1"/></g></svg>');
 }
