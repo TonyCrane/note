@@ -121,6 +121,8 @@ counter: True
 
 ## 8086 汇编指令
 
+如果指令中没有标志位表格，则该指令不影响任何标志位。右斜线表示该标志位由结果决定，全部填充为根据特殊意义设定（注意中会具体说），打叉为 undefined（一般不变）
+
 ### 数据传送指令
 
 #### 通用数据传送指令
@@ -248,6 +250,28 @@ counter: True
 - **指令作用**：将 ah 存入 fl 低 8 位，即 fl = (fl & 0FF00h) | 2 | (ah & 0D5h)
 - **注意**：只保留 ah 的 0 2 4 6 7 位（cf pf af zf sf），且第 1 位恒为 1
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -267,6 +291,28 @@ counter: True
 
 - **指令格式**：popf
 - **指令作用**：从堆栈弹出 16 位到 fl，即 pop fl（不能直接执行
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node fl-affected">DF</td>
+    <td class="fl-table-node fl-affected">IF</td>
+    <td class="fl-table-node fl-affected">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -318,6 +364,28 @@ counter: True
 - **指令作用**：将 src 加到 dest 上，即 dest += src
 - **注意**：src 可以是寄存器/内存，dest 可以是立即数/寄存器/内存，但二者不能都为内存，宽度要一致。可能会产生进位（cf）和溢出（of）
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -329,6 +397,28 @@ counter: True
 - **指令作用**：将 op 加一，即 op += 1
 - **注意**：op 为寄存器或内存。不影响 cf 位
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -339,6 +429,28 @@ counter: True
 - **指令格式**：adc dest, src
 - **指令作用**：带进位加，即 dest = dest + src + cf
 - **注意**：操作数规则与 add 相同，可以用于模拟 32 位加法
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -353,6 +465,28 @@ counter: True
 - **指令作用**：从 dest 减去 src，即 dest -= src
 - **注意**：操作数格式同 add，会产生溢出（of），借位也会使 cf 变 1
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -363,6 +497,28 @@ counter: True
 - **指令格式**：sbb dest, src
 - **指令作用**：带借位减，dest = dest - src - cf
 - **注意**：操作数格式同 add
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -375,6 +531,28 @@ counter: True
 - **指令作用**：将 op 减一，即 op -= 1
 - **注意**：op 为寄存器或内存。不影响 cf 位
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -385,6 +563,28 @@ counter: True
 - **指令格式**：neg op
 - **指令作用**：op = -op
 - **注意**：op 为寄存器或内存。非零数求补后 cf=1，0 求补后 cf=0
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -397,6 +597,28 @@ counter: True
 - **指令作用**：用 op1 减 op2，但丢弃结果只影响标志位
 - **注意**：操作数格式同 sub，用于在 jump 指令前给出符号位作为条件判断依据。
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -408,7 +630,29 @@ counter: True
 
 - **指令格式**：mul src
 - **指令作用**：非符号数乘法，当 src 为 8 位时 ax = al * src，当 src 为 16 位时 dx:ax = ax * src
-- **注意**：src 是寄存器或内存
+- **注意**：src 是寄存器或内存。如果高位（一半）是 0，则将 of cf 置 0，否则置 1
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -419,6 +663,27 @@ counter: True
 
 - **指令格式**：imul src
 - **指令作用**：符号数乘法，乘法方式同 mul，但将两个乘数和积都视为符号数
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -435,6 +700,28 @@ counter: True
     - 当 op 为 16 位时，ax = dx:ax / op, dx = dx:ax % op
 - **注意**：op 是寄存器或内存，可以得到商和余数
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -444,6 +731,27 @@ counter: True
 
 - **指令格式**：idiv
 - **指令作用**：符号数除法，除法操作同 div，但将除数、被除数、商和余数都视为符号数
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -456,7 +764,29 @@ counter: True
 
 - **指令格式**：and dest, src
 - **指令作用**：按位与运算，dest = dest & src, of=0, cf=0
-- **注意**：操作数格式同 and，of 和 cf 都会置 0，但会影响 zf
+- **注意**：操作数格式同 add，of 和 cf 都会置 0，但会影响 zf
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -467,7 +797,28 @@ counter: True
 
 - **指令格式**：or dest, src
 - **指令作用**：按位或运算，dest = dest | src, of=0, cf=0
-- **注意**：操作数格式同 and，of 和 cf 都会置 0，但会影响 zf
+- **注意**：操作数格式同 add，of 和 cf 都会置 0，但会影响 zf
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -478,7 +829,28 @@ counter: True
 
 - **指令格式**：xor dest, src
 - **指令作用**：按位异或运算，dest = dest ^ src, of=0, cf=0
-- **注意**：操作数格式同 and，of 和 cf 都会置 0，但会影响 zf
+- **注意**：操作数格式同 add，of 和 cf 都会置 0，但会影响 zf
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -502,6 +874,27 @@ counter: True
 - **指令作用**：位测试，op1 & op2 丢弃结果仅影响符号位
 - **注意**：主要用到 zf 的变化，为 jz jnz 提供 zf
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 </div>
 </div>
 
@@ -514,6 +907,29 @@ counter: True
 - **指令格式**：shl dest, count
 - **指令作用**：对 dest 逻辑左移 count 位，右侧补 0，左侧最后溢出的一位落入 cf
 - **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
+- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-special">SF</td>
+    <td class="fl-table-node fl-special">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -525,6 +941,29 @@ counter: True
 - **指令格式**：shr dest, count
 - **指令作用**：对 dest 逻辑右移 count 位，左侧补 0，右侧最后溢出的一位落入 cf
 - **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
+- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-special">SF</td>
+    <td class="fl-table-node fl-special">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -536,6 +975,29 @@ counter: True
 - **指令格式**：sal dest, count
 - **指令作用**：对 dest 算数左移 count 位，同逻辑左移
 - **注意**：与 shl 完全相同
+- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-special">SF</td>
+    <td class="fl-table-node fl-special">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -547,6 +1009,29 @@ counter: True
 - **指令格式**：sar dest, count
 - **指令作用**：对 dest 算数右移 count 位，左侧补符号位，右侧最后溢出的一位落入 cf
 - **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
+- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-special">SF</td>
+    <td class="fl-table-node fl-special">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -557,7 +1042,29 @@ counter: True
 
 - **指令格式**：rol dest, count
 - **指令作用**：对 dest 循环左移 count 位，最高位回到最低位同时移到 cf 中
-- **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
+- **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）。如果移位大于 1 时，of undefined，否则 of 为 cf 与结果最高位的异或
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -568,7 +1075,29 @@ counter: True
 
 - **指令格式**：ror dest, count
 - **指令作用**：对 dest 循环右移 count 位，最低位回到最高位同时移到 cf 中
-- **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
+- **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）。如果移位大于 1 时，of undefined，否则 of 为两个最高位的异或
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -579,7 +1108,29 @@ counter: True
 
 - **指令格式**：rcl dest, count
 - **指令作用**：带进位循环左移，即 cf 加在 dest 左侧一起循环左移
-- **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
+- **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）。如果移位大于 1 时，of undefined，否则 of 为 cf 与结果最高位的异或
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -590,7 +1141,28 @@ counter: True
 
 - **指令格式**：rcr dest, count
 - **指令作用**：带进位循环右移，即 cf 加在 dest 右侧一起循环右移
-- **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
+- **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）。如果移位大于 1 时，of undefined，否则 of 为两个最高位的异或
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -612,6 +1184,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
     - if (af == 1 || (al&0Fh) > 9) al += 6, af = 1; else af = 0
     - if (cf == 1 || al > 9Fh) al += 60h, cf = 1; else cf = 0
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -623,6 +1217,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令作用**：在 al 被做减法后将结果 al 调整为 BCD 码
     - if (af == 1 || (al&0Fh) > 9) al -= 6, af = 1; else af = 0
     - if (cf == 1 || al > 9Fh) al -= 60h, cf = 1; else cf = 0
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -639,6 +1255,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令作用**：加法的 ASCII 调整，在 al 被做加法后连带 ah 一起调整 ax 为非压缩 BCD 码
     - if (af == 1 || (al&0Fh) > 9) al = (al+6)&0Fh, ah += 1, af = 1, cf = 1
     - else af = 0, cf = 0
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 ??? example "例"
 
@@ -665,6 +1303,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
     - if (af == 1 || (af&0Fh) > 9) al = (al-6)&0Fh, ah -= 1, af = 1, cf = 1
     - else af = 0, cf = 0
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
+
 ??? example "例"
 
     ```asm
@@ -688,6 +1348,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令作用**：乘法的 ASCII 调整，在 al 被做乘法后对其做调整
     - ah = al / 10, al = al % 10
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">CF</td>
+</tr>
+</table>
+
+
 ??? example "例"
 
     ```asm
@@ -707,6 +1389,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令格式**：aad
 - **指令作用**：除法的 ASCII 调整，在 ax 被做除法**前**对其进行调整，使处罚结果为 BCD 码
     - al = ah * 10 + al, ah = 0
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">CF</td>
+</tr>
+</table>
+
 
 ??? example "例"
 
@@ -801,6 +1505,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令作用**：比较字节 ds:[si] 与 es:[di]，即 byte ptr ds:[si] - byte ptr es:[di] 丢弃结果保留标志位，并移动 si di
 - **注意**：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节，否则移向上一个
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -811,6 +1537,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令格式**：cmpsw / repe cmpsw / repne cmpsw
 - **指令作用**：比较字 ds:[si] 与 es:[di]，即 word ptr ds:[si] - word ptr es:[di] 丢弃结果保留标志位，并移动 si di
 - **注意**：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字，否则移向上一个
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -825,6 +1573,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令作用**：比较字节/字 ds:[si] 与 es:[di]，即左减右丢弃结果保留标志位，并移动 si di
 - **注意**：seg 可以是 cs ds es ss 中任意一个。si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -838,6 +1608,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令作用**：比较 al 与 es:[di]，即计算 al - es:[di] 丢弃结果保留符号位，并移动 di
 - **注意**：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -848,6 +1640,28 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令格式**：scasw / repe scasw / repne scasw
 - **指令作用**：比较 ax 与 es:[di]，即计算 ax - es:[di] 丢弃结果保留符号位，并移动 di
 - **注意**：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -1120,7 +1934,29 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 - **指令作用**：调用 n 号中断，等效的操作有
     - pushf, push cs, push ip
     - tf = 0, if = 0, ip = word ptr 0:[n\*4], cs = word ptr 0:[n\*4+2]
-- **注意**：n 为立即数，称为中断号，在范围 [0, 0FFh] 内
+- **注意**：n 为立即数，称为中断号，在范围 [0, 0FFh] 内，if tf 是否清空由不同处理器决定
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node fl-special">IF</td>
+    <td class="fl-table-node fl-special">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -1130,7 +1966,28 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 <div class="card-body" markdown="1">
 
 - **指令格式**：into
-- **指令作用**：溢出中断，如果 of == 1 则调用 4 号中断（int 4h）
+- **指令作用**：溢出中断，如果 of == 1 则调用 4 号中断（int 4h），if tf 是否清空由不同处理器决定
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node fl-special">IF</td>
+    <td class="fl-table-node fl-special">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -1141,7 +1998,7 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 
 - **指令格式**：iret
 - **指令作用**：中断返回，等效操作有 pop ip, pop cs, popf
-- **注意**：一般用于从 int 或 into 产生的中断中返回
+- **注意**：一般用于从 int 或 into 产生的中断中返回，标志位回到中断前的状态
 
 </div>
 </div>
@@ -1155,6 +2012,27 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 - **指令格式**：clc
 - **指令作用**：清空进位位，即 cf = 0
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 </div>
 </div>
 
@@ -1164,6 +2042,28 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 
 - **指令格式**：stc
 - **指令作用**：设置进位位，即 cf = 1
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -1175,6 +2075,28 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 - **指令格式**：cmc
 - **指令作用**：进位位求反，即 cf = ~cf
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -1184,6 +2106,28 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 
 - **指令格式**：cld
 - **指令作用**：清空方向位，即 df = 0（正方向）
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node fl-special">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -1195,6 +2139,28 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 - **指令格式**：std
 - **指令作用**：设置方向位，即 df = 1（负方向）
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node fl-special">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -1205,6 +2171,28 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 - **指令格式**：cli
 - **指令作用**：禁止中断，即 if = 0
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node special">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -1214,6 +2202,28 @@ call 类似 jmp 的近跳远跳也有近过程调用和远过程调用，其区�
 
 - **指令格式**：sti
 - **指令作用**：允许中断，即 if = 1
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node fl-special">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node">SF</td>
+    <td class="fl-table-node">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -1707,6 +2717,28 @@ C 亮红  D 紫    E 黄    F 亮白
 - **指令作用**：(bit test) 将 src 的第 pos 位拷贝到 cf 中
 - **注意**：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -1720,6 +2752,27 @@ C 亮红  D 紫    E 黄    F 亮白
 - **指令格式**：bts src, pos
 - **指令作用**：(bit test and set) 将 src 的第 pos 位拷贝到 cf 中后将其设为 1
 - **注意**：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -1735,6 +2788,27 @@ C 亮红  D 紫    E 黄    F 亮白
 - **指令作用**：(bit test and reset) 将 src 的第 pos 位拷贝到 cf 中后将其设为 0
 - **注意**：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 </div>
 </div>
 
@@ -1748,6 +2822,27 @@ C 亮红  D 紫    E 黄    F 亮白
 - **指令格式**：btc src, pos
 - **指令作用**：(bit test and complement) 将 src 的第 pos 位拷贝到 cf 中后将其反转
 - **注意**：src 是寄存器或内存单元，pos 是寄存器或立即数（从右向左从零开始数）
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-undefined">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -1763,6 +2858,28 @@ C 亮红  D 紫    E 黄    F 亮白
 - **指令作用**：(bit scan forward) 在 src 中搜索最低位的 1 对应索引存放在 dest 中
 - **注意**：dest 是寄存器，src 是寄存器或内存单元。如果 src 是 0 则 dest 不变，zf 置为 1 否则为 0
 
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-special">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">CF</td>
+</tr>
+</table>
+
+
 </div>
 </div>
 
@@ -1776,6 +2893,28 @@ C 亮红  D 紫    E 黄    F 亮白
 - **指令格式**：bsr dest, src
 - **指令作用**：(bit scan reverse) 在 src 中搜索最高位的 1 对应索引存放在 dest 中
 - **注意**：dest 是寄存器，src 是寄存器或内存单元。如果 src 是 0 则 dest 不变，zf 置为 1 否则为 0
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-undefined">SF</td>
+    <td class="fl-table-node fl-special">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -1862,6 +3001,27 @@ C 亮红  D 紫    E 黄    F 亮白
 - **指令格式**：popfd
 - **指令作用**：从堆栈弹出到 eflags
 - **注意**：popf 仍为 16 位（即 eflags 的低 16 位）
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">OF</td>
+    <td class="fl-table-node fl-affected">DF</td>
+    <td class="fl-table-node fl-affected">IF</td>
+    <td class="fl-table-node fl-affected">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">CF</td>
+</tr>
+</table>
 
 </div>
 </div>
@@ -1962,7 +3122,29 @@ C 亮红  D 紫    E 黄    F 亮白
 
 - **指令格式**：shld r1, r2, imm / shld r1, r2, cl
 - **指令作用**：r1 = r1<<cl ∣ r2>>(register_width - cl)
-- **注意**：r1 是寄存器或内存单元，r2 是寄存器，第三个操作数是 cl 或 8 位立即数
+- **注意**：r1 是寄存器或内存单元，r2 是寄存器，第三个操作数是 cl 或 8 位立即数。cf 为移出的最后一位，如果移位为 1 且符号位发生了改变，则 of 为 1 反之为 0，如果移位大于 1，则 of undefined
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
@@ -1976,7 +3158,29 @@ C 亮红  D 紫    E 黄    F 亮白
 
 - **指令格式**：shrd r1, r2, imm / shrd r1, r2, cl
 - **指令作用**：r1 = r1>>cl ∣ r2<<(register_width - cl)
-- **注意**：r1 是寄存器或内存单元，r2 是寄存器，第三个操作数是 cl 或 8 位立即数
+- **注意**：r1 是寄存器或内存单元，r2 是寄存器，第三个操作数是 cl 或 8 位立即数。cf 为移出的最后一位，如果移位为 1 且符号位发生了改变，则 of 为 1 反之为 0，如果移位大于 1，则 of undefined
+
+<table class="fl-table" style="margin-top: 0.6em">
+<tr>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special fl-undefined">OF</td>
+    <td class="fl-table-node">DF</td>
+    <td class="fl-table-node">IF</td>
+    <td class="fl-table-node">TF</td>
+    <td class="fl-table-node fl-affected">SF</td>
+    <td class="fl-table-node fl-affected">ZF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-undefined">AF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-affected">PF</td>
+    <td class="fl-table-node"></td>
+    <td class="fl-table-node fl-special">CF</td>
+</tr>
+</table>
+
 
 </div>
 </div>
