@@ -82,4 +82,11 @@ window.toggleScheme = () => {
   localStorage.setItem("data-md-color-scheme", scheme)
   body.setAttribute("data-md-prefers-color-scheme", prefer)
   body.setAttribute("data-md-color-scheme", scheme)
+
+  var frame = document.querySelector(".giscus-frame")
+  var theme = scheme === "slate" ? "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus_dark.css" : "light"
+  frame.contentWindow.postMessage(
+    { giscus: { setConfig: { theme } } },
+    "https://giscus.app"
+  )
 }
