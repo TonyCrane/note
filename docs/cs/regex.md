@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # 正则表达式

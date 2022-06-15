@@ -1,3 +1,7 @@
+---
+comment: True
+---
+
 # Security Innovation Smart Contract CTF Writeups
 
 !!! abstract 

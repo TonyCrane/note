@@ -1,3 +1,7 @@
+---
+comment: True
+---
+
 # VNCTF 2022 Writeup
 
 !!! abstract

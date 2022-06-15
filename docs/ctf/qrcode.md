@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # 二维码 QRCode 标准阅读

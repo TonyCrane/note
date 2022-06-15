@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # log4j 漏洞复现

@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # 图片隐写

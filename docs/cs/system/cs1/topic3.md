@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # 组合逻辑电路

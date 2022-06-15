@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # hexo 使用记录

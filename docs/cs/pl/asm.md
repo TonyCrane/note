@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # x86 汇编语言

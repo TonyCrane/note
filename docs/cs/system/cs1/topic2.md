@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # 数字逻辑基础

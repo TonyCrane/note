@@ -1,3 +1,7 @@
+---
+comment: True
+---
+
 # SUSCTF 2022 Writeup
 
 !!! abstract

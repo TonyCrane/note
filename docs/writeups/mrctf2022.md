@@ -1,3 +1,7 @@
+---
+comment: True
+---
+
 # MRCTF 2022 Writeup
 
 !!! abstract

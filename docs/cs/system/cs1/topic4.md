@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # 时序逻辑电路

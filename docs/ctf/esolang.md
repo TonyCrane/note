@@ -1,5 +1,6 @@
 ---
 counter: True
+comment: True
 ---
 
 # Esolang 深奥编程语言 

@@ -1,3 +1,7 @@
+---
+comment: True
+---
+
 # SYSU MSC Puzzle 2021 Writeup
 
 > MSC Puzzle 是由中山大学 MSClub 与中山大学 W4terDr0p 战队联合举办的趣味性解谜游戏
