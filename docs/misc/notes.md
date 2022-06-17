@@ -42,6 +42,15 @@ comment: True
 <div class="card file-block" markdown="1">
 <div class="file-icon"><img src="/assets/images/pdf.svg" style="height: 3em;"></div>
 <div class="file-body">
+<div class="file-title">线性代数 II（H）笔记</div>
+<div class="file-meta">8.8 MB / 8 P</div>
+</div>
+<a class="down-button" target="_blank" href="/assets/files/线性代数 II（H）笔记.pdf" markdown="1">:fontawesome-solid-download: 下载</a>
+</div>
+
+<div class="card file-block" markdown="1">
+<div class="file-icon"><img src="/assets/images/pdf.svg" style="height: 3em;"></div>
+<div class="file-body">
 <div class="file-title">普通物理学 I（H）笔记</div>
 <div class="file-meta">4 MB / 5 P</div>
 </div>
