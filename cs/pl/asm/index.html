@@ -3518,7 +3518,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：movsb / rep movsb</li>
 <li><strong>指令作用</strong>：以字节为单位从 ds:[si] 传送数据到 es:[di]，并移动 si di</li>
-<li><strong>注意</strong>：si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节，否则移向上一个</li>
+<li><strong>注意</strong>：si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -3528,7 +3528,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：movsw / rep movsw</li>
 <li><strong>指令作用</strong>：以字为单位从 ds:[si] 传送数据到 es:[di]，并移动 si di</li>
-<li><strong>注意</strong>：si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字，否则移向上一个</li>
+<li><strong>注意</strong>：si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -3542,7 +3542,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><strong>指令作用</strong>：以字节/字为单位从 ds:[si] 传送数据到 seg:[di]，并移动 si di</li>
-<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个，当 seg 为 ds 时与 movsb/movsw 等价。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个</li>
+<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个，当 seg 为 ds 时与 movsb/movsw 等价。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -3553,7 +3553,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：cmpsb / repe cmpsb / repne cmpsb</li>
 <li><strong>指令作用</strong>：比较字节 ds:[si] 与 es:[di]，即 byte ptr ds:[si] - byte ptr es:[di] 丢弃结果保留标志位，并移动 si di</li>
-<li><strong>注意</strong>：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节，否则移向上一个</li>
+<li><strong>注意</strong>：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节，否则移向上一个</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3583,7 +3583,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：cmpsw / repe cmpsw / repne cmpsw</li>
 <li><strong>指令作用</strong>：比较字 ds:[si] 与 es:[di]，即 word ptr ds:[si] - word ptr es:[di] 丢弃结果保留标志位，并移动 si di</li>
-<li><strong>注意</strong>：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字，否则移向上一个</li>
+<li><strong>注意</strong>：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字，否则移向上一个</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3617,7 +3617,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><strong>指令作用</strong>：比较字节/字 ds:[si] 与 es:[di]，即左减右丢弃结果保留标志位，并移动 si di</li>
-<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个。si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个</li>
+<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个。si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3648,7 +3648,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：scasb / repe scasb / repne scasb</li>
 <li><strong>指令作用</strong>：比较 al 与 es:[di]，即计算 al - es:[di] 丢弃结果保留符号位，并移动 di</li>
-<li><strong>注意</strong>：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
+<li><strong>注意</strong>：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3678,7 +3678,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：scasw / repe scasw / repne scasw</li>
 <li><strong>指令作用</strong>：比较 ax 与 es:[di]，即计算 ax - es:[di] 丢弃结果保留符号位，并移动 di</li>
-<li><strong>注意</strong>：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
+<li><strong>注意</strong>：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3709,7 +3709,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：stosb / rep stosb</li>
 <li><strong>指令作用</strong>：把字节 al 存入 es:[di] 中，并移动 di</li>
-<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
+<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -3719,7 +3719,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：stosw / rep stosw</li>
 <li><strong>指令作用</strong>：把字 ax 存入 es:[di] 中，并移动 di</li>
-<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
+<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -3730,7 +3730,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：lodsb</li>
 <li><strong>指令作用</strong>：从 ds:[si] 读取一个字节存入 al，并移动 si</li>
-<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字节，否则移向上一个</li>
+<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cld std 设置，df=0 则 si 移向下一个字节，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -3740,7 +3740,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：lodsw</li>
 <li><strong>指令作用</strong>：从 ds:[si] 读取一个字存入 ax，并移动 si</li>
-<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字，否则移向上一个</li>
+<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cld std 设置，df=0 则 si 移向下一个字，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -3754,7 +3754,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><strong>指令作用</strong>：从 ds:[si] 读取一个字节/字存入 al/ax，并移动 si</li>
-<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个。si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字节/字，否则移向上一个</li>
+<li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个。si 的移动与 df 有关，预先用 cld std 设置，df=0 则 si 移向下一个字节/字，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -4651,7 +4651,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：insb / rep insb</li>
 <li><strong>指令作用</strong>：(input from port to string) 等价于 in al, dx; mov es:[di], al 并移动 di</li>
-<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
+<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -4664,7 +4664,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：insw / rep insw</li>
 <li><strong>指令作用</strong>：(input from port to string) 等价于 in ax, dx; mov es:[di], ax 并移动 di</li>
-<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
+<li><strong>注意</strong>：di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -4677,7 +4677,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：outsb / rep outsb</li>
 <li><strong>指令作用</strong>：(output string to port) 等价于 mov al, ds:[si]; out al, dx 并移动 si</li>
-<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
+<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字节，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -4690,7 +4690,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：outsw / rep outsw</li>
 <li><strong>指令作用</strong>：(output string to port) 等价于 mov ax, ds:[si]; out ax, dx 并移动 si</li>
-<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
+<li><strong>注意</strong>：si 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字，否则移向上一个</li>
 </ul>
 </div>
 </div>
@@ -5352,7 +5352,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年6月19日 19:11:18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年6月19日 21:42:45</span>
       
         <br>
         创建日期:
