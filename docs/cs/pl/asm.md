@@ -908,7 +908,7 @@ comment: True
 - **指令格式**：shl dest, count
 - **指令作用**：对 dest 逻辑左移 count 位，右侧补 0，左侧最后溢出的一位落入 cf
 - **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
-- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined
+- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则 of 为 0 反之为 1，当 count 不为 1 时 of 为 undefined
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -942,7 +942,7 @@ comment: True
 - **指令格式**：shr dest, count
 - **指令作用**：对 dest 逻辑右移 count 位，左侧补 0，右侧最后溢出的一位落入 cf
 - **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
-- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined
+- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则 of 为 0 反之为 1，当 count 不为 1 时 of 为 undefined
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -976,7 +976,7 @@ comment: True
 - **指令格式**：sal dest, count
 - **指令作用**：对 dest 算数左移 count 位，同逻辑左移
 - **注意**：与 shl 完全相同
-- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined
+- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则 of 为 0 反之为 1，当 count 不为 1 时 of 为 undefined
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -1010,7 +1010,7 @@ comment: True
 - **指令格式**：sar dest, count
 - **指令作用**：对 dest 算数右移 count 位，左侧补符号位，右侧最后溢出的一位落入 cf
 - **注意**：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）
-- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined
+- **标志位**：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则 of 为 0 反之为 1，当 count 不为 1 时 of 为 undefined
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -1388,7 +1388,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 <div class="card-body" markdown="1">
 
 - **指令格式**：aad
-- **指令作用**：除法的 ASCII 调整，在 ax 被做除法**前**对其进行调整，使处罚结果为 BCD 码
+- **指令作用**：除法的 ASCII 调整，在 ax 被做除法**前**对其进行调整，使除法结果为 BCD 码
     - al = ah * 10 + al, ah = 0
 
 <table class="fl-table" style="margin-top: 0.6em">
@@ -1490,7 +1490,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令格式**：
     - (rep) movs byte ptr es:[di], byte ptr seg:[si]
     - (rep) movs word ptr es:[di], word ptr seg:[si]
-- **指令作用**：以字节/字为单位从 ds:[si] 传送数据到 seg:[di]，并移动 si di
+- **指令作用**：以字节/字为单位从 seg:[si] 传送数据到 es:[di]，并移动 si di
 - **注意**：seg 可以是 cs ds es ss 中任意一个，当 seg 为 ds 时与 movsb/movsw 等价。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个
 
 </div>
@@ -1571,7 +1571,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 - **指令格式**：
     - (repe/repne) cmps byte ptr seg:[si], byte ptr es:[di]
     - (repe/repne) cmps word ptr seg:[si], word ptr es:[di]
-- **指令作用**：比较字节/字 ds:[si] 与 es:[di]，即左减右丢弃结果保留标志位，并移动 si di
+- **指令作用**：比较字节/字 seg:[si] 与 es:[di]，即左减右丢弃结果保留标志位，并移动 si di
 - **注意**：seg 可以是 cs ds es ss 中任意一个。si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个
 
 <table class="fl-table" style="margin-top: 0.6em">
@@ -1716,13 +1716,13 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 </div>
 
 <div class="card" markdown="1">
-<div class="card-header">lodsw</div>
+<div class="card-header">lods</div>
 <div class="card-body" markdown="1">
 
 - **指令格式**：
     - lods byte ptr seg:[si]
     - lods word ptr seg:[si]
-- **指令作用**：从 ds:[si] 读取一个字节/字存入 al/ax，并移动 si
+- **指令作用**：从 seg:[si] 读取一个字节/字存入 al/ax，并移动 si
 - **注意**：seg 可以是 cs ds es ss 中任意一个。si 的移动与 df 有关，预先用 cld std 设置，df=0 则 si 移向下一个字节/字，否则移向上一个
 
 </div>
@@ -1793,7 +1793,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
     |jnp/jpo|无奇偶位则跳|pf=0||
     |ja/jnbe|无符号大于则跳|cf=0 and zf=0||
     |jae/jnb|无符号大于等于则跳|cf=0|等价于 jnc|
-    |jb/jae|无符号小于则跳|cf=1|等价于 jnc|
+    |jb/jae|无符号小于则跳|cf=1|等价于 jc|
     |jbe/jna|无符号小于等于则跳|cf=1 or zf=1||
     |jg/jnle|有符号大于则跳|sf=of and zf=0||
     |jge/jnl|有符号大于等于则跳|sf=of||
