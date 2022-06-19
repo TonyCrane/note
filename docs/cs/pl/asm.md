@@ -363,7 +363,7 @@ comment: True
 
 - **指令格式**：add dest, src
 - **指令作用**：将 src 加到 dest 上，即 dest += src
-- **注意**：src 可以是寄存器/内存，dest 可以是立即数/寄存器/内存，但二者不能都为内存，宽度要一致。可能会产生进位（cf）和溢出（of）
+- **注意**：src 可以是立即数/寄存器/内存，dest 可以是寄存器/内存，但二者不能都为内存，宽度要一致。可能会产生进位（cf）和溢出（of）
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
