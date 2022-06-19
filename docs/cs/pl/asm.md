@@ -1467,7 +1467,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：movsb / rep movsb
 - **指令作用**：以字节为单位从 ds:[si] 传送数据到 es:[di]，并移动 si di
-- **注意**：si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节，否则移向上一个
+- **注意**：si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节，否则移向上一个
 
 </div>
 </div>
@@ -1478,7 +1478,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：movsw / rep movsw
 - **指令作用**：以字为单位从 ds:[si] 传送数据到 es:[di]，并移动 si di
-- **注意**：si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字，否则移向上一个
+- **注意**：si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字，否则移向上一个
 
 </div>
 </div>
@@ -1491,7 +1491,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
     - (rep) movs byte ptr es:[di], byte ptr seg:[si]
     - (rep) movs word ptr es:[di], word ptr seg:[si]
 - **指令作用**：以字节/字为单位从 ds:[si] 传送数据到 seg:[di]，并移动 si di
-- **注意**：seg 可以是 cs ds es ss 中任意一个，当 seg 为 ds 时与 movsb/movsw 等价。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个
+- **注意**：seg 可以是 cs ds es ss 中任意一个，当 seg 为 ds 时与 movsb/movsw 等价。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个
 
 </div>
 </div>
@@ -1504,7 +1504,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：cmpsb / repe cmpsb / repne cmpsb
 - **指令作用**：比较字节 ds:[si] 与 es:[di]，即 byte ptr ds:[si] - byte ptr es:[di] 丢弃结果保留标志位，并移动 si di
-- **注意**：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节，否则移向上一个
+- **注意**：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节，否则移向上一个
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -1537,7 +1537,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：cmpsw / repe cmpsw / repne cmpsw
 - **指令作用**：比较字 ds:[si] 与 es:[di]，即 word ptr ds:[si] - word ptr es:[di] 丢弃结果保留标志位，并移动 si di
-- **注意**：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字，否则移向上一个
+- **注意**：si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字，否则移向上一个
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -1572,7 +1572,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
     - (repe/repne) cmps byte ptr seg:[si], byte ptr es:[di]
     - (repe/repne) cmps word ptr seg:[si], word ptr es:[di]
 - **指令作用**：比较字节/字 ds:[si] 与 es:[di]，即左减右丢弃结果保留标志位，并移动 si di
-- **注意**：seg 可以是 cs ds es ss 中任意一个。si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cli std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个
+- **注意**：seg 可以是 cs ds es ss 中任意一个。si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -1607,7 +1607,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：scasb / repe scasb / repne scasb
 - **指令作用**：比较 al 与 es:[di]，即计算 al - es:[di] 丢弃结果保留符号位，并移动 di
-- **注意**：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个
+- **注意**：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字节，否则移向上一个
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -1640,7 +1640,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：scasw / repe scasw / repne scasw
 - **指令作用**：比较 ax 与 es:[di]，即计算 ax - es:[di] 丢弃结果保留符号位，并移动 di
-- **注意**：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个
+- **注意**：di 的移动不会影响标志位。di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字，否则移向上一个
 
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -1675,7 +1675,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：stosb / rep stosb
 - **指令作用**：把字节 al 存入 es:[di] 中，并移动 di
-- **注意**：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个
+- **注意**：di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字节，否则移向上一个
 
 </div>
 </div>
@@ -1686,7 +1686,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：stosw / rep stosw
 - **指令作用**：把字 ax 存入 es:[di] 中，并移动 di
-- **注意**：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个
+- **注意**：di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字，否则移向上一个
 
 </div>
 </div>
@@ -1699,7 +1699,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：lodsb
 - **指令作用**：从 ds:[si] 读取一个字节存入 al，并移动 si
-- **注意**：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字节，否则移向上一个
+- **注意**：si 的移动与 df 有关，预先用 cld std 设置，df=0 则 si 移向下一个字节，否则移向上一个
 
 </div>
 </div>
@@ -1710,7 +1710,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
 
 - **指令格式**：lodsw
 - **指令作用**：从 ds:[si] 读取一个字存入 ax，并移动 si
-- **注意**：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字，否则移向上一个
+- **注意**：si 的移动与 df 有关，预先用 cld std 设置，df=0 则 si 移向下一个字，否则移向上一个
 
 </div>
 </div>
@@ -1723,7 +1723,7 @@ BCD 码是使用二进制编码十进制数，可以分为压缩 BCD 码和非�
     - lods byte ptr seg:[si]
     - lods word ptr seg:[si]
 - **指令作用**：从 ds:[si] 读取一个字节/字存入 al/ax，并移动 si
-- **注意**：seg 可以是 cs ds es ss 中任意一个。si 的移动与 df 有关，预先用 cli std 设置，df=0 则 si 移向下一个字节/字，否则移向上一个
+- **注意**：seg 可以是 cs ds es ss 中任意一个。si 的移动与 df 有关，预先用 cld std 设置，df=0 则 si 移向下一个字节/字，否则移向上一个
 
 </div>
 </div>
@@ -2611,7 +2611,7 @@ C 亮红  D 紫    E 黄    F 亮白
 
 - **指令格式**：insb / rep insb
 - **指令作用**：(input from port to string) 等价于 in al, dx; mov es:[di], al 并移动 di
-- **注意**：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个
+- **注意**：di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字节，否则移向上一个
 
 </div>
 </div>
@@ -2625,7 +2625,7 @@ C 亮红  D 紫    E 黄    F 亮白
 
 - **指令格式**：insw / rep insw
 - **指令作用**：(input from port to string) 等价于 in ax, dx; mov es:[di], ax 并移动 di
-- **注意**：di 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个
+- **注意**：di 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字，否则移向上一个
 
 </div>
 </div>
@@ -2639,7 +2639,7 @@ C 亮红  D 紫    E 黄    F 亮白
 
 - **指令格式**：outsb / rep outsb
 - **指令作用**：(output string to port) 等价于 mov al, ds:[si]; out al, dx 并移动 si
-- **注意**：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字节，否则移向上一个
+- **注意**：si 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字节，否则移向上一个
 
 </div>
 </div>
@@ -2653,7 +2653,7 @@ C 亮红  D 紫    E 黄    F 亮白
 
 - **指令格式**：outsw / rep outsw
 - **指令作用**：(output string to port) 等价于 mov ax, ds:[si]; out ax, dx 并移动 si
-- **注意**：si 的移动与 df 有关，预先用 cli std 设置，df=0 则 di 移向下一个字，否则移向上一个
+- **注意**：si 的移动与 df 有关，预先用 cld std 设置，df=0 则 di 移向下一个字，否则移向上一个
 
 </div>
 </div>
