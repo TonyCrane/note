@@ -3004,7 +3004,7 @@ var _hmt = _hmt || [];
 <li><strong>指令格式</strong>：shl dest, count</li>
 <li><strong>指令作用</strong>：对 dest 逻辑左移 count 位，右侧补 0，左侧最后溢出的一位落入 cf</li>
 <li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
-<li><strong>标志位</strong>：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined</li>
+<li><strong>标志位</strong>：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则 of 为 0 反之为 1，当 count 不为 1 时 of 为 undefined</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3035,7 +3035,7 @@ var _hmt = _hmt || [];
 <li><strong>指令格式</strong>：shr dest, count</li>
 <li><strong>指令作用</strong>：对 dest 逻辑右移 count 位，左侧补 0，右侧最后溢出的一位落入 cf</li>
 <li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
-<li><strong>标志位</strong>：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined</li>
+<li><strong>标志位</strong>：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则 of 为 0 反之为 1，当 count 不为 1 时 of 为 undefined</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3066,7 +3066,7 @@ var _hmt = _hmt || [];
 <li><strong>指令格式</strong>：sal dest, count</li>
 <li><strong>指令作用</strong>：对 dest 算数左移 count 位，同逻辑左移</li>
 <li><strong>注意</strong>：与 shl 完全相同</li>
-<li><strong>标志位</strong>：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined</li>
+<li><strong>标志位</strong>：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则 of 为 0 反之为 1，当 count 不为 1 时 of 为 undefined</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3097,7 +3097,7 @@ var _hmt = _hmt || [];
 <li><strong>指令格式</strong>：sar dest, count</li>
 <li><strong>指令作用</strong>：对 dest 算数右移 count 位，左侧补符号位，右侧最后溢出的一位落入 cf</li>
 <li><strong>注意</strong>：dest 可以是寄存器或内存，count 是 1 或 cl（8086 里不能为其它内容）</li>
-<li><strong>标志位</strong>：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则为 0 反之为 1，当 count 不为 1 时 of 为 undefined</li>
+<li><strong>标志位</strong>：若 count 为 0，则不影响 sf zf af pf，否则根据结果设置（af 为 undefined），cf 为移出的最后一位，当 count 为 1 时，如果结果的最高位和 cf 相同则 of 为 0 反之为 1，当 count 不为 1 时 of 为 undefined</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
 <tr>
@@ -3447,7 +3447,7 @@ var _hmt = _hmt || [];
 <div class="card-body">
 <ul>
 <li><strong>指令格式</strong>：aad</li>
-<li><strong>指令作用</strong>：除法的 ASCII 调整，在 ax 被做除法<strong>前</strong>对其进行调整，使处罚结果为 BCD 码<ul>
+<li><strong>指令作用</strong>：除法的 ASCII 调整，在 ax 被做除法<strong>前</strong>对其进行调整，使除法结果为 BCD 码<ul>
 <li>al = ah * 10 + al, ah = 0</li>
 </ul>
 </li>
@@ -3541,7 +3541,7 @@ var _hmt = _hmt || [];
 <li>(rep) movs word ptr es:[di], word ptr seg:[si]</li>
 </ul>
 </li>
-<li><strong>指令作用</strong>：以字节/字为单位从 ds:[si] 传送数据到 seg:[di]，并移动 si di</li>
+<li><strong>指令作用</strong>：以字节/字为单位从 seg:[si] 传送数据到 es:[di]，并移动 si di</li>
 <li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个，当 seg 为 ds 时与 movsb/movsw 等价。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个</li>
 </ul>
 </div>
@@ -3616,7 +3616,7 @@ var _hmt = _hmt || [];
 <li>(repe/repne) cmps word ptr seg:[si], word ptr es:[di]</li>
 </ul>
 </li>
-<li><strong>指令作用</strong>：比较字节/字 ds:[si] 与 es:[di]，即左减右丢弃结果保留标志位，并移动 si di</li>
+<li><strong>指令作用</strong>：比较字节/字 seg:[si] 与 es:[di]，即左减右丢弃结果保留标志位，并移动 si di</li>
 <li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个。si di 的移动不会影响标志位。si di 的移动与 df 有关，预先用 cld std 设置，df=0 则 si di 移向下一个字节/字，否则移向上一个</li>
 </ul>
 <table class="fl-table" style="margin-top: 0.6em">
@@ -3745,7 +3745,7 @@ var _hmt = _hmt || [];
 </div>
 </div>
 <div class="card">
-<div class="card-header">lodsw</div>
+<div class="card-header">lods</div>
 <div class="card-body">
 <ul>
 <li><strong>指令格式</strong>：<ul>
@@ -3753,7 +3753,7 @@ var _hmt = _hmt || [];
 <li>lods word ptr seg:[si]</li>
 </ul>
 </li>
-<li><strong>指令作用</strong>：从 ds:[si] 读取一个字节/字存入 al/ax，并移动 si</li>
+<li><strong>指令作用</strong>：从 seg:[si] 读取一个字节/字存入 al/ax，并移动 si</li>
 <li><strong>注意</strong>：seg 可以是 cs ds es ss 中任意一个。si 的移动与 df 有关，预先用 cld std 设置，df=0 则 si 移向下一个字节/字，否则移向上一个</li>
 </ul>
 </div>
@@ -3888,7 +3888,7 @@ var _hmt = _hmt || [];
 <td align="center">jb/jae</td>
 <td align="center">无符号小于则跳</td>
 <td align="left">cf=1</td>
-<td align="center">等价于 jnc</td>
+<td align="center">等价于 jc</td>
 </tr>
 <tr>
 <td align="center">jbe/jna</td>
@@ -5352,7 +5352,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年6月19日 21:42:45</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年6月19日 21:48:38</span>
       
         <br>
         创建日期:
