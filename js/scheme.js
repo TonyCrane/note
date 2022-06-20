@@ -4,6 +4,12 @@
     if (localStorage.getItem("data-md-prefers-color-scheme") === "true") {
       document.querySelector("body").setAttribute("data-md-color-scheme", (e.matches) ? "slate" : "default")
     }
+    var frame = document.querySelector(".giscus-frame")
+    var theme = document.querySelector("body").getAttribute("data-md-color-scheme") === "slate" ? "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css" : "light"
+    frame.contentWindow.postMessage(
+      { giscus: { setConfig: { theme } } },
+      "https://giscus.app"
+    )
   }
 
   const setupTheme = body => {
