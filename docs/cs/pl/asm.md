@@ -1,6 +1,7 @@
 ---
 counter: True
 comment: True
+fold_toc: True
 ---
 
 # x86 汇编语言

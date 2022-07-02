@@ -46,9 +46,8 @@
 - [x] 把 yml 弄干净一点
 - [x] 写一下 mkdocs 用法
 - [x] 标题前缀数字
-- [ ] 搭个网盘
-- [ ] pymarkdown 扩展编写
-- [ ] 文件链接
+- [x] 搭个网盘
+- [x] 文件链接
 
 ## 笔记类
 
@@ -62,4 +61,11 @@
     - [ ] lab
 - [ ] CTF blockchain
 - [ ] Python 相关
+    - [x] Lecture 文字版
+    - [ ] NumPy
+    - [ ] PIL
+    - [ ] matplotlib
+- [ ] HPC
+    - [x] SIMD
+- [ ] 学期总结博客
 - [x] log4j 漏洞复现存个档
