@@ -102,6 +102,7 @@ $ nvcc -arch=sm_70 -o out code.cu -run
 正如前面 1.1 提到，CUDA 的线程层次结构从大到小为 Grid -> Thread Block -> Thread
 
 结构示意图：
+
 ![](/assets/images/hpc/hpc101/gpu/img2_light.png#only-light)
 ![](/assets/images/hpc/hpc101/gpu/img2_dark.png#only-dark)
 
@@ -123,6 +124,7 @@ $ nvcc -arch=sm_70 -o out code.cu -run
 i = threadIdx.x + blockIdx.x * blockDim.x
 ```
 即每个线程处理的 i 为：
+
 ![](/assets/images/hpc/hpc101/gpu/img3_light.png#only-light)
 ![](/assets/images/hpc/hpc101/gpu/img3_dark.png#only-dark)
 
@@ -134,8 +136,10 @@ i = threadIdx.x + blockIdx.x * blockDim.x
 对于第一种，只需要在计算得到 i 之后与总数 n 比较，如果 i < n 则执行，否则在这个线程内什么都不做
 
 对于第二种，则需要每个线程执行不止一个循环的工作，也就是使用**网格跨度循环**：
+
 ![](/assets/images/hpc/hpc101/gpu/img4_light.png#only-light)
 ![](/assets/images/hpc/hpc101/gpu/img4_dark.png#only-dark)
+
 而每个线程进行循环的跨度恰好为 Grid 中的总线程数，因为 gridDim.x 表示 Grid 中 Block 数，blockDim.x 表示每个 Block 中 Thread 数，所以这个跨度恰好是 `#!cuda gridDim.x * blockDim.x`
 
 因此 for 循环通过核函数在 GPU 中并行运行的常用写法是：
@@ -276,8 +280,10 @@ size_t numberOfBlocks = 32 * numberOfSMs;
 使用 cudaMallocManaged 分配的内存为统一内存（UM，Unified Memory）
 
 统一内存在 CPU 和 GPU 分别访问时的行为如下：
+
 ![](/assets/images/hpc/hpc101/gpu/img5_light.png#only-light)
 ![](/assets/images/hpc/hpc101/gpu/img5_dark.png#only-dark)
+
 - 刚开始时分配的内存不在 CPU 上也不在 GPU 上
 - 哪一方先访问，会造成一个页错误（page fault），然后将需要的内存迁移到自己身上
 - 另一方访问时也会造成页错误，然后再将需要的内存迁移到自己身上
@@ -344,6 +350,7 @@ CUDA 流行为的几项规则：
 - 默认流有阻断能力，即它会等待其它已在运行的所有流完成当前操作之后才会运行，并且在自身运行完毕之后其他流才可以继续下一操作的运行
 
 也就是：
+
 ![](/assets/images/hpc/hpc101/gpu/img6_light.png#only-light)
 ![](/assets/images/hpc/hpc101/gpu/img6_dark.png#only-dark)
 
@@ -364,8 +371,10 @@ cudaStreamDestroy(stream);
 - 执行配置的第三个参数与共享内存（Shared Memory）有关，默认为 0
 
 #### 使用流实现数据传输和代码的重叠执行
+
 ![](/assets/images/hpc/hpc101/gpu/img7_light.png#only-light)
 ![](/assets/images/hpc/hpc101/gpu/img7_dark.png#only-dark)
+
 在以下示例中，我们并非在等待整个内存拷贝完成之后再开始运行核函数，而是拷贝并处理所需的数据段，并让每个拷贝/处理中的数据段均在各自的非默认流中运行。通过使用此技术，您可以开始处理部分数据，同时为后续段并发执行内存传输。使用此技术计算操作次数的数据段特定值和数组内的偏移位置时必须格外小心，如下所示：
 ```cuda
 int N = 2<<24;
