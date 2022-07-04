@@ -1679,6 +1679,10 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
+          
+        
       
       
         <label class="md-nav__link" for="__nav_5_2">
@@ -1846,6 +1850,34 @@ var _hmt = _hmt || [];
     
   </nav>
       
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../openmp/" class="md-nav__link">
+        OpenMP 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mpi/" class="md-nav__link">
+        MPI 基础
+      </a>
     </li>
   
 
@@ -2208,8 +2240,8 @@ var _hmt = _hmt || [];
 <p>另外，可以使用 -std=c++11 来指定 C/C++ 语言版本</p>
 <h3 id="_3">线程层次结构<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
 <p>正如前面 1.1 提到，CUDA 的线程层次结构从大到小为 Grid -&gt; Thread Block -&gt; Thread</p>
-<p>结构示意图：
-<img alt="" src="/assets/images/hpc/hpc101/gpu/img2_light.png#only-light" />
+<p>结构示意图：</p>
+<p><img alt="" src="/assets/images/hpc/hpc101/gpu/img2_light.png#only-light" />
 <img alt="" src="/assets/images/hpc/hpc101/gpu/img2_dark.png#only-dark" /></p>
 <p>每个线程（Thread）中都运行一份核函数中内容，多个线程组成一个线程块（Thread Block），与核函数启动关联的所有块组成网格（Grid）</p>
 <p>启动核函数时进行的配置就是 &lt;&lt;&lt;<em>线程块数</em>, <em>每个块中线程数</em>&gt;&gt;&gt;，其中每块中线程数一般最大为 1024</p>
@@ -2225,8 +2257,8 @@ var _hmt = _hmt || [];
 <p>例如并行加速 for 循环，为了使每个线程中核函数均处理不同的 i，访问内存 arr[i]，可以通过上面的变量进行计算：
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="__codelineno-3-1"></a><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">blockDim</span><span class="p">.</span><span class="n">x</span><span class="w"></span>
 </code></pre></div>
-即每个线程处理的 i 为：
-<img alt="" src="/assets/images/hpc/hpc101/gpu/img3_light.png#only-light" />
+即每个线程处理的 i 为：</p>
+<p><img alt="" src="/assets/images/hpc/hpc101/gpu/img3_light.png#only-light" />
 <img alt="" src="/assets/images/hpc/hpc101/gpu/img3_dark.png#only-dark" /></p>
 <p>但这是理想情况，有两种特殊情况需要处理：</p>
 <ol>
@@ -2234,10 +2266,10 @@ var _hmt = _hmt || [];
 <li>总线程数少于要处理的数据数，则这样做会存在没有执行的循环</li>
 </ol>
 <p>对于第一种，只需要在计算得到 i 之后与总数 n 比较，如果 i &lt; n 则执行，否则在这个线程内什么都不做</p>
-<p>对于第二种，则需要每个线程执行不止一个循环的工作，也就是使用<strong>网格跨度循环</strong>：
-<img alt="" src="/assets/images/hpc/hpc101/gpu/img4_light.png#only-light" />
-<img alt="" src="/assets/images/hpc/hpc101/gpu/img4_dark.png#only-dark" />
-而每个线程进行循环的跨度恰好为 Grid 中的总线程数，因为 gridDim.x 表示 Grid 中 Block 数，blockDim.x 表示每个 Block 中 Thread 数，所以这个跨度恰好是 <code class="highlight"><span class="nb">gridDim</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">blockDim</span><span class="p">.</span><span class="n">x</span><span class="w"></span></code></p>
+<p>对于第二种，则需要每个线程执行不止一个循环的工作，也就是使用<strong>网格跨度循环</strong>：</p>
+<p><img alt="" src="/assets/images/hpc/hpc101/gpu/img4_light.png#only-light" />
+<img alt="" src="/assets/images/hpc/hpc101/gpu/img4_dark.png#only-dark" /></p>
+<p>而每个线程进行循环的跨度恰好为 Grid 中的总线程数，因为 gridDim.x 表示 Grid 中 Block 数，blockDim.x 表示每个 Block 中 Thread 数，所以这个跨度恰好是 <code class="highlight"><span class="nb">gridDim</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">blockDim</span><span class="p">.</span><span class="n">x</span><span class="w"></span></code></p>
 <p>因此 for 循环通过核函数在 GPU 中并行运行的常用写法是：
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="__codelineno-4-1"></a><span class="kr">__global__</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="n">kernel</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="__codelineno-4-2"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">idx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">threadIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nb">blockIdx</span><span class="p">.</span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nb">blockDim</span><span class="p">.</span><span class="n">x</span><span class="p">;</span><span class="w"></span>
@@ -2346,12 +2378,14 @@ var _hmt = _hmt || [];
 </code></pre></div></p>
 <h3 id="_10">统一内存<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h3>
 <p>使用 cudaMallocManaged 分配的内存为统一内存（UM，Unified Memory）</p>
-<p>统一内存在 CPU 和 GPU 分别访问时的行为如下：
-<img alt="" src="/assets/images/hpc/hpc101/gpu/img5_light.png#only-light" />
-<img alt="" src="/assets/images/hpc/hpc101/gpu/img5_dark.png#only-dark" />
-- 刚开始时分配的内存不在 CPU 上也不在 GPU 上
-- 哪一方先访问，会造成一个页错误（page fault），然后将需要的内存迁移到自己身上
-- 另一方访问时也会造成页错误，然后再将需要的内存迁移到自己身上</p>
+<p>统一内存在 CPU 和 GPU 分别访问时的行为如下：</p>
+<p><img alt="" src="/assets/images/hpc/hpc101/gpu/img5_light.png#only-light" />
+<img alt="" src="/assets/images/hpc/hpc101/gpu/img5_dark.png#only-dark" /></p>
+<ul>
+<li>刚开始时分配的内存不在 CPU 上也不在 GPU 上</li>
+<li>哪一方先访问，会造成一个页错误（page fault），然后将需要的内存迁移到自己身上</li>
+<li>另一方访问时也会造成页错误，然后再将需要的内存迁移到自己身上</li>
+</ul>
 <p>数据从主机到设备的迁移记为 HtoD，从设备到主机的迁移记为 DtoH，通过 nsys 可以看到这些转移操作</p>
 <p>在稀疏访问模式情况下，这样可以按需迁移内存，尤其是在多个 GPU 加速系统中，这样的按需迁移会有显著优势</p>
 <p>有时可以将内存初始化放在 GPU 中进行，这样 UM 会先迁移到 GPU 中，然后驻留在 GPU 里进行后面的计算操作，这样可以减少在主机和设备之间的迁移次数，提高效率</p>
@@ -2403,8 +2437,8 @@ cudaMemPrefetchAsync 需要提供 UM 的指针、大小、以及要预取到的�
 <li>不同非默认流中的操作无法保证彼此之间的执行顺序</li>
 <li>默认流有阻断能力，即它会等待其它已在运行的所有流完成当前操作之后才会运行，并且在自身运行完毕之后其他流才可以继续下一操作的运行</li>
 </ul>
-<p>也就是：
-<img alt="" src="/assets/images/hpc/hpc101/gpu/img6_light.png#only-light" />
+<p>也就是：</p>
+<p><img alt="" src="/assets/images/hpc/hpc101/gpu/img6_light.png#only-light" />
 <img alt="" src="/assets/images/hpc/hpc101/gpu/img6_dark.png#only-dark" /></p>
 <p>核函数在各流中执行的情况也可以通过 nsys 可视化分析看出来</p>
 <h4 id="_13">创建、使用、销毁非默认流<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h4>
@@ -2422,8 +2456,8 @@ cudaMemPrefetchAsync 需要提供 UM 的指针、大小、以及要预取到的�
 </ul>
 <h4 id="_14">使用流实现数据传输和代码的重叠执行<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <p><img alt="" src="/assets/images/hpc/hpc101/gpu/img7_light.png#only-light" />
-<img alt="" src="/assets/images/hpc/hpc101/gpu/img7_dark.png#only-dark" />
-在以下示例中，我们并非在等待整个内存拷贝完成之后再开始运行核函数，而是拷贝并处理所需的数据段，并让每个拷贝/处理中的数据段均在各自的非默认流中运行。通过使用此技术，您可以开始处理部分数据，同时为后续段并发执行内存传输。使用此技术计算操作次数的数据段特定值和数组内的偏移位置时必须格外小心，如下所示：
+<img alt="" src="/assets/images/hpc/hpc101/gpu/img7_dark.png#only-dark" /></p>
+<p>在以下示例中，我们并非在等待整个内存拷贝完成之后再开始运行核函数，而是拷贝并处理所需的数据段，并让每个拷贝/处理中的数据段均在各自的非默认流中运行。通过使用此技术，您可以开始处理部分数据，同时为后续段并发执行内存传输。使用此技术计算操作次数的数据段特定值和数组内的偏移位置时必须格外小心，如下所示：
 <div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="__codelineno-17-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">2</span><span class="o">&lt;&lt;</span><span class="mi">24</span><span class="p">;</span><span class="w"></span>
 <a id="__codelineno-17-2" name="__codelineno-17-2" href="__codelineno-17-2"></a><span class="kt">int</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">N</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
 <a id="__codelineno-17-3" name="__codelineno-17-3" href="__codelineno-17-3"></a>
@@ -2470,7 +2504,7 @@ cudaMemPrefetchAsync 需要提供 UM 的指针、大小、以及要预取到的�
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年7月3日 23:03:58</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年7月5日 00:30:37</span>
       
         <br>
         创建日期:
@@ -2536,13 +2570,13 @@ cudaMemPrefetchAsync 需要提供 UM 的指针、大小、以及要预取到的�
       
       
         
-        <a href="../../../misc/" class="md-footer__link md-footer__link--next" aria-label="下一页: 杂七杂八的东西" rel="next">
+        <a href="../openmp/" class="md-footer__link md-footer__link--next" aria-label="下一页: OpenMP 基础" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              杂七杂八的东西
+              OpenMP 基础
             </div>
           </div>
           <div class="md-footer__button md-icon">
