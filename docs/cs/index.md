@@ -7,6 +7,8 @@
 
 ## Table of Contents
 - [Programming Language 编程语言](pl)
+    - [Python](pl/python/)
+    - [Rust](pl/rust)
     - [C/C++](pl/c_cpp)
     - [Haskell](pl/haskell)
     - [x86 Assembly](pl/asm)

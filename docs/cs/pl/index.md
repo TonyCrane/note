@@ -7,6 +7,10 @@
     而且还有一些语言没写笔记（逃
 
 ## Table of Contents
+- [Python](python)
+    - [Python 语法基础](python/basic)
+- [Rust](rust)
+    - [Rust 基础](rust/basic)
 - [C/C++](c_cpp)
 - [Haskell](haskell)
 - [x86 Assembly](asm)
