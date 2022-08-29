@@ -2177,7 +2177,7 @@ Rust 规定一个结构体中的字段要么都是 immutable 要么都是 mutabl
     - .or_else() .and_then() 第二个表达式是一个返回 Option / Result 的闭包，其他和 or and 用法一样
     - .filter() 可以对 Option 进行过滤
         ```rust
-            let s1 = Some(3);
+        let s1 = Some(3);
         let s2 = Some(6);
         let n = None;
         let fn_is_even = |x: &i8| x % 2 == 0;

@@ -8,6 +8,7 @@
 
 ## Table of Contents
 - [Rust 语法基础](basic)
+- [Rust 杂项随记](misc)
 
 ## Reading List
 - [x] Rust 圣经 [course.rs](https://course.rs/)

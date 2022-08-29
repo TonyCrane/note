@@ -11,6 +11,7 @@
     - [Python 语法基础](python/basic)
 - [Rust](rust)
     - [Rust 基础](rust/basic)
+    - [Rust 杂项](rust/misc)
 - [C/C++](c_cpp)
 - [Haskell](haskell)
 - [x86 Assembly](asm)
