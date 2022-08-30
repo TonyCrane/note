@@ -4916,7 +4916,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 </code></pre></div></p>
 <ul>
 <li>使用 match 来处理 Result 类型<ul>
-<li>例如 IO 错误，可以对于 Err(error) 再匹配 error.kind()，其可能的值在 std:<img alt="🇮🇴" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f1ee-1f1f4.svg" title=":io:" />:ErrorKind 中</li>
+<li>例如 IO 错误，可以对于 Err(error) 再匹配 error.kind()，其可能的值在 std::io::ErrorKind 中</li>
 <li>可以配合 panic，将 error 用 debug 模式（{:?}）进行输出</li>
 </ul>
 </li>
@@ -4949,7 +4949,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <a id="__codelineno-76-3" name="__codelineno-76-3" href="__codelineno-76-3"></a><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">f</span><span class="p">)</span><span class="w"></span>
 <a id="__codelineno-76-4" name="__codelineno-76-4" href="__codelineno-76-4"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div><ul>
-<li>在 ? 处理返回错误的时候，得到的是 std:<img alt="🇮🇴" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f1ee-1f1f4.svg" title=":io:" />:Error 类型，? 可以自动调用 From trait 的 from 方法，将 std:<img alt="🇮🇴" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f1ee-1f1f4.svg" title=":io:" />:Error 转为需要的 Box&lt;dyn std::error::Error></li>
+<li>在 ? 处理返回错误的时候，得到的是 std::io::Error 类型，? 可以自动调用 From trait 的 from 方法，将 std::io::Error 转为需要的 Box&lt;dyn std::error::Error></li>
 </ul>
 </li>
 <li>? 可以进行链式调用：
@@ -4959,7 +4959,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <a id="__codelineno-77-4" name="__codelineno-77-4" href="__codelineno-77-4"></a><span class="w">    </span><span class="nb">Ok</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"></span>
 <a id="__codelineno-77-5" name="__codelineno-77-5" href="__codelineno-77-5"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div><ul>
-<li>对于这个操作，Rust 标准库提供了 std::fs::read_to_string(filename) 函数，而且返回的就是 Result&lt;String, std:<img alt="🇮🇴" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f1ee-1f1f4.svg" title=":io:" />:Error></li>
+<li>对于这个操作，Rust 标准库提供了 std::fs::read_to_string(filename) 函数，而且返回的就是 Result&lt;String, std::io::Error></li>
 </ul>
 </li>
 </ul>
@@ -6255,7 +6255,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 </ul>
 </li>
 <li>归一化错误类型<ul>
-<li>例如将 std::env::VarError 和 std:<img alt="🇮🇴" class="twemoji" src="https://twemoji.maxcdn.com/v/latest/svg/1f1ee-1f1f4.svg" title=":io:" />:Error 归一化为同一种类型</li>
+<li>例如将 std::env::VarError 和 std::io::Error 归一化为同一种类型</li>
 <li>可以使用特征对象</li>
 <li>可以自定义 enum 错误类型，但是代码较复杂</li>
 <li>可以使用第三方包 thiserror 来简化自定义错误类型集合
@@ -6609,7 +6609,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年8月30日 00:36:51</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年8月30日 11:32:57</span>
       
         <br>
         创建日期:
