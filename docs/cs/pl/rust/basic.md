@@ -1044,7 +1044,7 @@ enum Result<T, E> {
 ```
 
 - 使用 match 来处理 Result 类型
-    - 例如 IO 错误，可以对于 Err(error) 再匹配 error.kind()，其可能的值在 std::io::ErrorKind 中
+    - 例如 IO 错误，可以对于 Err(error) 再匹配 error.kind()，其可能的值在 std\:\:io::ErrorKind 中
     - 可以配合 panic，将 error 用 debug 模式（{:?}）进行输出
 - 对于 Result，如果失败就 panic
     - 使用 .unwrap()：如果是 Err 则会 panic，并输出错误内容
@@ -1076,7 +1076,7 @@ enum Result<T, E> {
             Ok(f)
         }
         ```
-        - 在 ? 处理返回错误的时候，得到的是 std::io::Error 类型，? 可以自动调用 From trait 的 from 方法，将 std::io::Error 转为需要的 Box<dyn std::error::Error\>
+        - 在 ? 处理返回错误的时候，得到的是 std\:\:io::Error 类型，? 可以自动调用 From trait 的 from 方法，将 std\:\:io::Error 转为需要的 Box<dyn std::error::Error\>
     - ? 可以进行链式调用：
         ```rust
         fn func() -> Result<String, std::io::Error> {
@@ -1085,7 +1085,7 @@ enum Result<T, E> {
             Ok(s)
         }
         ```
-        - 对于这个操作，Rust 标准库提供了 std::fs::read_to_string(filename) 函数，而且返回的就是 Result<String, std::io::Error\>
+        - 对于这个操作，Rust 标准库提供了 std::fs::read_to_string(filename) 函数，而且返回的就是 Result<String, std\:\:io::Error\>
 - ? 结合 Option
     - 和 Result 同理，? 也适用于 Option 的返回，也就是得到 None 就立即返回 None，否则展开出 Some 中的值
 - main 函数返回值
@@ -2241,7 +2241,7 @@ Rust 规定一个结构体中的字段要么都是 immutable 要么都是 mutabl
         ```
         - 这样实现了之后就可以在 ? 的时候支持自动将 io::Error 转换成 MyError
 - 归一化错误类型
-    - 例如将 std::env::VarError 和 std::io::Error 归一化为同一种类型
+    - 例如将 std::env::VarError 和 std\:\:io::Error 归一化为同一种类型
     - 可以使用特征对象
     - 可以自定义 enum 错误类型，但是代码较复杂
     - 可以使用第三方包 thiserror 来简化自定义错误类型集合
