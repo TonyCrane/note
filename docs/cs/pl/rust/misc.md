@@ -219,13 +219,13 @@ fold_toc: True
         [target.'cfg(windows)'.dependencies]
         inhttp = "0.4.0"
 
-        target.'cfg(unix)'.dependencies]
+        [target.'cfg(unix)'.dependencies]
         penssl = "1.0.1"
 
-        target.'cfg(target_arch = "x86")'.dependencies]
+        [target.'cfg(target_arch = "x86")'.dependencies]
         ative-i686 = { path = "native/i686" }
 
-        target.'cfg(target_arch = "x86_64")'.dependencies]
+        [target.'cfg(target_arch = "x86_64")'.dependencies]
         ative-x86_64 = { path = "native/x86_64" }
         ```
 
