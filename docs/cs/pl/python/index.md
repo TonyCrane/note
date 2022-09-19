@@ -7,6 +7,6 @@
 
 ## Table of Contents
 - [Python 语法基础](basic)
-- [NumPy 科学计算库（**WIP**）](numpy)
-- [PIL 图像处理库（**WIP**）](pil)
+- [NumPy 科学计算库（**TODO**）](numpy)
+- [PIL 图像处理库（**TODO**）](pil)
 - MatPlotLib 作图库（~~甚至文件夹都没建~~）

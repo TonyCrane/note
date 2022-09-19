@@ -53,7 +53,10 @@
 
 ## 工具类
 
-- [ ] 修改 mkdocs 源码，加快预览构建速度
+- [x] 修改 mkdocs 源码，加快预览构建速度
+- [x] 使用 rich 美化 log 输出
+- [ ] 改善 encryption 插件
+- [ ] 修改 mkdocs，serve 时仅重新渲染修改部分
 
 ## 笔记类
 
@@ -62,7 +65,7 @@
     - [x] 补充 fl 影响
 - [x] RISC-V 汇编语言
     - [ ] 补充扩展指令集指令
-- [ ] 检查各 index
+- [x] 检查各 index
 - [ ] 系统一相关
     - [ ] 理论课
     - [ ] lab
@@ -79,19 +82,20 @@
 - [ ] HPC
     - [x] SIMD
     - [ ] ML
-- [ ] 课程笔记
-    - [ ] 人工智能基础
-    - [ ] 数据结构基础
+- [x] 建立课程笔记页面
+    - [x] 人工智能基础
+    - [x] 数据结构基础
 - [ ] 算法笔记
 - [ ] 工具
-    - [ ] index
+    - [x] index
     - [ ] docker
     - [ ] GitHub Action
+    - [x] Git
 - [ ] Writeups
     - [ ] TCTF NFT
     - [ ] 强网杯碟影重重
 - [ ] Rust
 - [ ] 源码剖析
-    - [ ] index
+    - [x] index
     - [ ] mkdocs
 - [x] log4j 漏洞复现存个档

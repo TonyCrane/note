@@ -10,8 +10,8 @@
 
 ## Table of Contents
 - [数字的表示和处理](topic1)
-- [数字逻辑基础](topic2)
-- [组合逻辑电路设计](topic3)
-- [时序逻辑电路设计](topic4)
+- [数字逻辑基础（**TODO**）](topic2)
+- [组合逻辑电路设计（**TODO**）](topic3)
+- [时序逻辑电路设计（**TODO**）](topic4)
 - [指令集体系结构](topic5)
-- [处理器](topic6)
+- [处理器（**TODO**）](topic6)

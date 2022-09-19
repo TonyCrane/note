@@ -15,6 +15,11 @@
     - [RISC-V ISA](pl/riscv)
 - [Computer System 计算机系统](system)
     - [Computer System I 计算机系统 Ⅰ](system/cs1)
+    - [Computer System II 计算机系统 Ⅱ](system/cs2)
+- 算法相关
+    - [数据结构基础](algorithm/ds)
+- 人工智能相关
+    - [人工智能基础](ai/basic)
 - [Web 相关](web)
     - [网络协议](web/protocol)
     - [SVG](web/svg)
@@ -22,7 +27,10 @@
 - 零散知识点
     - [RegEx 正则表达式](regex)
     - [Unicode 统一码](unicode)
-- 工具
-    - [mkdocs](tools/mkdocs)
-    - [hexo](tools/hexo)
-    - [sphinx](tools/sphinx)
+- [源码剖析](analysis)
+    - [mkdocs 源码剖析](analysis/mkdocs)
+- [工具相关](tools)
+    - [mkdocs 使用记录](tools/mkdocs)
+    - [hexo 使用记录](tools/hexo)
+    - [sphinx 使用记录](tools/sphinx)
+    - [Git 命令备忘](tools/git)
