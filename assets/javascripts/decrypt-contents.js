@@ -150,6 +150,7 @@ function decrypt_action(password_input, encrypted_content, decrypted_content) {
         if (typeof MathJax === 'object') { MathJax.typesetPromise(); };
         
         
+        
         return true
     } else {
         // create HTML element for the inform message
