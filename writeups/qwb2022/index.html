@@ -10,21 +10,21 @@
         
         
         
-          <link rel="canonical" href="https://note.tonycrane.cc/cs/analysis/mkdocs/">
+          <link rel="canonical" href="https://note.tonycrane.cc/writeups/qwb2022/">
         
-        <link rel="icon" href="../../../assets/images/favicon.png">
+        <link rel="icon" href="../../assets/images/favicon.png">
         <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.1.4">
       
       
         
-          <title>mkdocs 源码剖析 - 鹤翔万里的笔记本</title>
+          <title>强网杯 2022 Quals - 鹤翔万里的笔记本</title>
         
       
       
-        <link rel="stylesheet" href="../../../assets/stylesheets/main.bb3983ee.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/main.bb3983ee.min.css">
         
           
-          <link rel="stylesheet" href="../../../assets/stylesheets/palette.e6a45f82.min.css">
+          <link rel="stylesheet" href="../../assets/stylesheets/palette.e6a45f82.min.css">
           
         
       
@@ -44,16 +44,14 @@
       
         <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
       
-        <link rel="stylesheet" href="../../../css/tasklist.css">
+        <link rel="stylesheet" href="../../css/tasklist.css">
       
-        <link rel="stylesheet" href="../../../css/custom.css">
+        <link rel="stylesheet" href="../../css/custom.css">
       
-        <link rel="stylesheet" href="../../../css/card.css">
+        <link rel="stylesheet" href="../../css/card.css">
       
       
-        <link rel="stylesheet" href="/css/counter.css">
-      
-      <script>__md_scope=new URL("../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      <script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
       
         
   
@@ -90,7 +88,7 @@ var _hmt = _hmt || [];
       
       <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
     
-      <script src="../../../js/scheme.js" type="text/javascript"></script>
+      <script src="../../js/scheme.js" type="text/javascript"></script>
       
       
         <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -101,7 +99,7 @@ var _hmt = _hmt || [];
       <div data-md-component="skip">
         
           
-          <a href="#mkdocs" class="md-skip">
+          <a href="#2022-quals-writeup" class="md-skip">
             跳转至
           </a>
         
@@ -115,7 +113,7 @@ var _hmt = _hmt || [];
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../.." title="鹤翔万里的笔记本" class="md-header__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+    <a href="../.." title="鹤翔万里的笔记本" class="md-header__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
@@ -134,7 +132,7 @@ var _hmt = _hmt || [];
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              mkdocs 源码剖析
+              强网杯 2022 Quals
             
           </span>
         </div>
@@ -246,8 +244,40 @@ var _hmt = _hmt || [];
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cs/" class="md-tabs__link">
+        Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../ctf/" class="md-tabs__link">
+        CTF
       </a>
     </li>
   
@@ -264,39 +294,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-tabs__item">
-      <a href="../../" class="md-tabs__link md-tabs__link--active">
-        Computer Science
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../ctf/" class="md-tabs__link">
-        CTF
-      </a>
-    </li>
-  
-
-      
-        
-  
-  
-
-
-  
-  
-  
-    <li class="md-tabs__item">
-      <a href="../../../writeups/" class="md-tabs__link">
+      <a href="../" class="md-tabs__link md-tabs__link--active">
         Writeups
       </a>
     </li>
@@ -312,7 +310,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-tabs__item">
-      <a href="../../../others/" class="md-tabs__link">
+      <a href="../../others/" class="md-tabs__link">
         Others
       </a>
     </li>
@@ -340,7 +338,7 @@ var _hmt = _hmt || [];
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="鹤翔万里的笔记本" class="md-nav__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+    <a href="../.." title="鹤翔万里的笔记本" class="md-nav__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
@@ -388,7 +386,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../..">Home</a>
+          <a href="../..">Home</a>
           
         </div>
       
@@ -413,14 +411,12 @@ var _hmt = _hmt || [];
 
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" >
       
       
       
@@ -452,7 +448,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../">Computer Science</a>
+          <a href="../../cs/">Computer Science</a>
           
             <label for="__nav_2">
               <span class="md-nav__icon md-icon"></span>
@@ -504,7 +500,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../pl/">编程语言</a>
+          <a href="../../cs/pl/">编程语言</a>
           
             <label for="__nav_2_2">
               <span class="md-nav__icon md-icon"></span>
@@ -550,7 +546,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../pl/python/">Python</a>
+          <a href="../../cs/pl/python/">Python</a>
           
             <label for="__nav_2_2_2">
               <span class="md-nav__icon md-icon"></span>
@@ -573,7 +569,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/python/basic/" class="md-nav__link">
+      <a href="../../cs/pl/python/basic/" class="md-nav__link">
         Python 基础语法
       </a>
     </li>
@@ -587,7 +583,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/python/numpy/" class="md-nav__link">
+      <a href="../../cs/pl/python/numpy/" class="md-nav__link">
         NumPy
       </a>
     </li>
@@ -601,7 +597,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/python/pil/" class="md-nav__link">
+      <a href="../../cs/pl/python/pil/" class="md-nav__link">
         PIL
       </a>
     </li>
@@ -643,7 +639,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../pl/rust/">Rust</a>
+          <a href="../../cs/pl/rust/">Rust</a>
           
             <label for="__nav_2_2_3">
               <span class="md-nav__icon md-icon"></span>
@@ -666,7 +662,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/rust/basic/" class="md-nav__link">
+      <a href="../../cs/pl/rust/basic/" class="md-nav__link">
         Rust 基础语法
       </a>
     </li>
@@ -680,7 +676,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/rust/misc/" class="md-nav__link">
+      <a href="../../cs/pl/rust/misc/" class="md-nav__link">
         Rust 杂项随记
       </a>
     </li>
@@ -701,7 +697,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/c_cpp/" class="md-nav__link">
+      <a href="../../cs/pl/c_cpp/" class="md-nav__link">
         C/C++
       </a>
     </li>
@@ -715,7 +711,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/haskell/" class="md-nav__link">
+      <a href="../../cs/pl/haskell/" class="md-nav__link">
         Haskell
       </a>
     </li>
@@ -729,7 +725,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/asm/" class="md-nav__link">
+      <a href="../../cs/pl/asm/" class="md-nav__link">
         x86 汇编语言
       </a>
     </li>
@@ -743,7 +739,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../pl/riscv/" class="md-nav__link">
+      <a href="../../cs/pl/riscv/" class="md-nav__link">
         RISC-V ISA
       </a>
     </li>
@@ -785,7 +781,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../system/">计算机系统</a>
+          <a href="../../cs/system/">计算机系统</a>
           
             <label for="__nav_2_3">
               <span class="md-nav__icon md-icon"></span>
@@ -837,7 +833,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../system/cs1/">计算机系统 I</a>
+          <a href="../../cs/system/cs1/">计算机系统 I</a>
           
             <label for="__nav_2_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -860,7 +856,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../system/cs1/topic1/" class="md-nav__link">
+      <a href="../../cs/system/cs1/topic1/" class="md-nav__link">
         数据的表示
       </a>
     </li>
@@ -874,7 +870,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../system/cs1/topic2/" class="md-nav__link">
+      <a href="../../cs/system/cs1/topic2/" class="md-nav__link">
         数字逻辑电路基础
       </a>
     </li>
@@ -888,7 +884,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../system/cs1/topic3/" class="md-nav__link">
+      <a href="../../cs/system/cs1/topic3/" class="md-nav__link">
         组合逻辑电路设计
       </a>
     </li>
@@ -902,7 +898,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../system/cs1/topic4/" class="md-nav__link">
+      <a href="../../cs/system/cs1/topic4/" class="md-nav__link">
         时序逻辑电路设计
       </a>
     </li>
@@ -916,7 +912,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../system/cs1/topic5/" class="md-nav__link">
+      <a href="../../cs/system/cs1/topic5/" class="md-nav__link">
         指令集体系结构
       </a>
     </li>
@@ -930,7 +926,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../system/cs1/topic6/" class="md-nav__link">
+      <a href="../../cs/system/cs1/topic6/" class="md-nav__link">
         处理器
       </a>
     </li>
@@ -970,7 +966,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../system/cs2/">计算机系统 II</a>
+          <a href="../../cs/system/cs2/">计算机系统 II</a>
           
             <label for="__nav_2_3_3">
               <span class="md-nav__icon md-icon"></span>
@@ -993,7 +989,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../system/cs2/topic1/" class="md-nav__link">
+      <a href="../../cs/system/cs2/topic1/" class="md-nav__link">
         流水线 CPU
       </a>
     </li>
@@ -1044,7 +1040,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../web/">网络相关</a>
+          <a href="../../cs/web/">网络相关</a>
           
             <label for="__nav_2_4">
               <span class="md-nav__icon md-icon"></span>
@@ -1086,7 +1082,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../web/protocol/">网络协议</a>
+          <a href="../../cs/web/protocol/">网络协议</a>
           
             <label for="__nav_2_4_2">
               <span class="md-nav__icon md-icon"></span>
@@ -1109,7 +1105,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../web/protocol/vmess/" class="md-nav__link">
+      <a href="../../cs/web/protocol/vmess/" class="md-nav__link">
         VMess
       </a>
     </li>
@@ -1130,7 +1126,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../web/svg/" class="md-nav__link">
+      <a href="../../cs/web/svg/" class="md-nav__link">
         SVG
       </a>
     </li>
@@ -1144,7 +1140,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../web/log4j_vuln/" class="md-nav__link">
+      <a href="../../cs/web/log4j_vuln/" class="md-nav__link">
         log4j 漏洞复现
       </a>
     </li>
@@ -1216,7 +1212,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../algorithm/ds/">数据结构基础</a>
+          <a href="../../cs/algorithm/ds/">数据结构基础</a>
           
             <label for="__nav_2_5_1">
               <span class="md-nav__icon md-icon"></span>
@@ -1239,7 +1235,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/ds/topic1/" class="md-nav__link">
+      <a href="../../cs/algorithm/ds/topic1/" class="md-nav__link">
         算法分析基础
       </a>
     </li>
@@ -1253,7 +1249,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../algorithm/ds/topic2/" class="md-nav__link">
+      <a href="../../cs/algorithm/ds/topic2/" class="md-nav__link">
         列表、栈、队列
       </a>
     </li>
@@ -1330,7 +1326,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../ai/basic/">人工智能基础</a>
+          <a href="../../cs/ai/basic/">人工智能基础</a>
           
             <label for="__nav_2_6_1">
               <span class="md-nav__icon md-icon"></span>
@@ -1353,7 +1349,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../ai/basic/topic1/" class="md-nav__link">
+      <a href="../../cs/ai/basic/topic1/" class="md-nav__link">
         逻辑与推理
       </a>
     </li>
@@ -1400,7 +1396,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../hpc/">高性能计算</a>
+          <a href="../../hpc/">高性能计算</a>
           
             <label for="__nav_2_7">
               <span class="md-nav__icon md-icon"></span>
@@ -1461,7 +1457,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../hpc/hpc101/vectorized/" class="md-nav__link">
+      <a href="../../hpc/hpc101/vectorized/" class="md-nav__link">
         向量化计算
       </a>
     </li>
@@ -1475,7 +1471,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../hpc/hpc101/gpu/" class="md-nav__link">
+      <a href="../../hpc/hpc101/gpu/" class="md-nav__link">
         GPU 编程
       </a>
     </li>
@@ -1489,7 +1485,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../hpc/hpc101/openmp/" class="md-nav__link">
+      <a href="../../hpc/hpc101/openmp/" class="md-nav__link">
         OpenMP 基础
       </a>
     </li>
@@ -1503,7 +1499,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../hpc/hpc101/mpi/" class="md-nav__link">
+      <a href="../../hpc/hpc101/mpi/" class="md-nav__link">
         MPI 基础
       </a>
     </li>
@@ -1517,7 +1513,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../hpc/hpc101/ml/" class="md-nav__link">
+      <a href="../../hpc/hpc101/ml/" class="md-nav__link">
         机器学习基础
       </a>
     </li>
@@ -1577,7 +1573,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../regex/" class="md-nav__link">
+      <a href="../../cs/regex/" class="md-nav__link">
         正则表达式
       </a>
     </li>
@@ -1591,7 +1587,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../unicode/" class="md-nav__link">
+      <a href="../../cs/unicode/" class="md-nav__link">
         Unicode
       </a>
     </li>
@@ -1610,14 +1606,12 @@ var _hmt = _hmt || [];
               
   
   
-    
-  
   
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" checked>
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
       
       
       
@@ -1633,7 +1627,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../">源码剖析</a>
+          <a href="../../cs/analysis/">源码剖析</a>
           
             <label for="__nav_2_9">
               <span class="md-nav__icon md-icon"></span>
@@ -1654,167 +1648,11 @@ var _hmt = _hmt || [];
               
   
   
-    
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          mkdocs 源码剖析
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../cs/analysis/mkdocs/" class="md-nav__link">
         mkdocs 源码剖析
       </a>
-      
-        
-  
-  <nav class="md-nav md-nav--secondary " aria-label="目录">
-    
-    
-    
-      
-    
-    
-      <label class="md-nav__title" for="__toc">
-        <span class="md-nav__icon md-icon"></span>
-        目录
-      </label>
-      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-        
-          <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    包配置、入口点
-  </a>
-  
-    <nav class="md-nav" aria-label="包配置、入口点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    包配置
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    入口点
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    包结构分析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    一些工具性代码
-  </a>
-  
-    <nav class="md-nav" aria-label="一些工具性代码">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exceptionspy" class="md-nav__link">
-    exceptions.py
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utils" class="md-nav__link">
-    utils
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    build 流程
-  </a>
-  
-    <nav class="md-nav" aria-label="build 流程">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    加载配置
-  </a>
-  
-    <nav class="md-nav" aria-label="加载配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_open_config_file" class="md-nav__link">
-    _open_config_file
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#config" class="md-nav__link">
-    创建 Config、载入配置
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#config_1" class="md-nav__link">
-    验证 Config
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plugin" class="md-nav__link">
-    触发 Plugin 事件
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build_1" class="md-nav__link">
-    调用 build 函数构建文档
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-      </ul>
-    
-  </nav>
-      
     </li>
   
 
@@ -1858,7 +1696,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../tools/">工具相关</a>
+          <a href="../../cs/tools/">工具相关</a>
           
             <label for="__nav_2_10">
               <span class="md-nav__icon md-icon"></span>
@@ -1881,7 +1719,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../tools/toolbox/" class="md-nav__link">
+      <a href="../../cs/tools/toolbox/" class="md-nav__link">
         工具收集
       </a>
     </li>
@@ -1927,7 +1765,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../tools/git/" class="md-nav__link">
+      <a href="../../cs/tools/git/" class="md-nav__link">
         Git 命令备忘
       </a>
     </li>
@@ -1941,7 +1779,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../tools/docker/" class="md-nav__link">
+      <a href="../../cs/tools/docker/" class="md-nav__link">
         Docker 命令备忘
       </a>
     </li>
@@ -1992,7 +1830,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../tools/action/" class="md-nav__link">
+      <a href="../../cs/tools/action/" class="md-nav__link">
         GitHub Action
       </a>
     </li>
@@ -2047,7 +1885,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../tools/mkdocs/" class="md-nav__link">
+      <a href="../../cs/tools/mkdocs/" class="md-nav__link">
         mkdocs 使用记录
       </a>
     </li>
@@ -2061,7 +1899,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../tools/hexo/" class="md-nav__link">
+      <a href="../../cs/tools/hexo/" class="md-nav__link">
         hexo 使用记录
       </a>
     </li>
@@ -2075,7 +1913,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../tools/sphinx/" class="md-nav__link">
+      <a href="../../cs/tools/sphinx/" class="md-nav__link">
         sphinx 使用记录
       </a>
     </li>
@@ -2140,7 +1978,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../ctf/">CTF</a>
+          <a href="../../ctf/">CTF</a>
           
             <label for="__nav_3">
               <span class="md-nav__icon md-icon"></span>
@@ -2184,7 +2022,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../ctf/steg/">隐写术</a>
+          <a href="../../ctf/steg/">隐写术</a>
           
             <label for="__nav_3_2">
               <span class="md-nav__icon md-icon"></span>
@@ -2207,7 +2045,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../ctf/steg/image/" class="md-nav__link">
+      <a href="../../ctf/steg/image/" class="md-nav__link">
         图片隐写
       </a>
     </li>
@@ -2221,7 +2059,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../ctf/steg/audio/" class="md-nav__link">
+      <a href="../../ctf/steg/audio/" class="md-nav__link">
         音频隐写
       </a>
     </li>
@@ -2261,7 +2099,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../ctf/escapes/">沙箱逃逸</a>
+          <a href="../../ctf/escapes/">沙箱逃逸</a>
           
             <label for="__nav_3_3">
               <span class="md-nav__icon md-icon"></span>
@@ -2284,7 +2122,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../ctf/escapes/pysandbox/" class="md-nav__link">
+      <a href="../../ctf/escapes/pysandbox/" class="md-nav__link">
         Python 沙箱逃逸
       </a>
     </li>
@@ -2305,7 +2143,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../ctf/coding/" class="md-nav__link">
+      <a href="../../ctf/coding/" class="md-nav__link">
         编码与密码
       </a>
     </li>
@@ -2319,7 +2157,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../ctf/qrcode/" class="md-nav__link">
+      <a href="../../ctf/qrcode/" class="md-nav__link">
         QRCode
       </a>
     </li>
@@ -2333,7 +2171,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../ctf/esolang/" class="md-nav__link">
+      <a href="../../ctf/esolang/" class="md-nav__link">
         Esolang
       </a>
     </li>
@@ -2364,7 +2202,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../ctf/eth/">Ethereum</a>
+          <a href="../../ctf/eth/">Ethereum</a>
           
         </div>
       
@@ -2396,12 +2234,14 @@ var _hmt = _hmt || [];
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" checked>
       
       
       
@@ -2421,7 +2261,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../writeups/">Writeups</a>
+          <a href="../">Writeups</a>
           
             <label for="__nav_4">
               <span class="md-nav__icon md-icon"></span>
@@ -2478,7 +2318,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/ethernaut/" class="md-nav__link">
+      <a href="../ethernaut/" class="md-nav__link">
         Ethernaut
       </a>
     </li>
@@ -2492,7 +2332,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/SecurityInnovation/" class="md-nav__link">
+      <a href="../SecurityInnovation/" class="md-nav__link">
         Security Innovation
       </a>
     </li>
@@ -2506,7 +2346,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/AAA/" class="md-nav__link">
+      <a href="../AAA/" class="md-nav__link">
         🔒 AAA School Bus
       </a>
     </li>
@@ -2565,7 +2405,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/sysu_msc_puzzle/" class="md-nav__link">
+      <a href="../sysu_msc_puzzle/" class="md-nav__link">
         SYSU MSC Puzzle 2021
       </a>
     </li>
@@ -2579,7 +2419,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/hackergame2021/" class="md-nav__link">
+      <a href="../hackergame2021/" class="md-nav__link">
         USTC Hackergame 2021
       </a>
     </li>
@@ -2593,7 +2433,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/d0g3/" class="md-nav__link">
+      <a href="../d0g3/" class="md-nav__link">
         第四届“安洵杯”
       </a>
     </li>
@@ -2607,7 +2447,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/bytectf2021_final/" class="md-nav__link">
+      <a href="../bytectf2021_final/" class="md-nav__link">
         ByteCTF 2021 Final
       </a>
     </li>
@@ -2621,7 +2461,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/sctf2021/" class="md-nav__link">
+      <a href="../sctf2021/" class="md-nav__link">
         SCTF 2021
       </a>
     </li>
@@ -2640,12 +2480,14 @@ var _hmt = _hmt || [];
               
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
-        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" checked>
       
       
       
@@ -2686,7 +2528,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/vnctf2022/" class="md-nav__link">
+      <a href="../vnctf2022/" class="md-nav__link">
         VNCTF 2022
       </a>
     </li>
@@ -2700,7 +2542,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/tqlctf2022/" class="md-nav__link">
+      <a href="../tqlctf2022/" class="md-nav__link">
         TQLCTF 2022
       </a>
     </li>
@@ -2714,7 +2556,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/susctf2022/" class="md-nav__link">
+      <a href="../susctf2022/" class="md-nav__link">
         SUSCTF 2022
       </a>
     </li>
@@ -2728,7 +2570,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/d3ctf2022/" class="md-nav__link">
+      <a href="../d3ctf2022/" class="md-nav__link">
         D3CTF 2022
       </a>
     </li>
@@ -2742,7 +2584,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/%2Actf2022/" class="md-nav__link">
+      <a href="../%2Actf2022/" class="md-nav__link">
         *CTF 2022
       </a>
     </li>
@@ -2756,7 +2598,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/mrctf2022/" class="md-nav__link">
+      <a href="../mrctf2022/" class="md-nav__link">
         MRCTF 2022
       </a>
     </li>
@@ -2768,11 +2610,52 @@ var _hmt = _hmt || [];
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../writeups/qwb2022/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          强网杯 2022 Quals
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         强网杯 2022 Quals
       </a>
+      
+        
+  
+  <nav class="md-nav md-nav--secondary " aria-label="目录">
+    
+    
+    
+      
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    碟影重重
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+      
     </li>
   
 
@@ -2784,7 +2667,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../writeups/tctf2022/" class="md-nav__link">
+      <a href="../tctf2022/" class="md-nav__link">
         TCTF/0CTF 2022
       </a>
     </li>
@@ -2832,7 +2715,7 @@ var _hmt = _hmt || [];
         
         
         <div class="md-nav__link md-nav__link--index ">
-          <a href="../../../others/">Others</a>
+          <a href="../../others/">Others</a>
           
             <label for="__nav_5">
               <span class="md-nav__icon md-icon"></span>
@@ -2855,7 +2738,7 @@ var _hmt = _hmt || [];
   
   
     <li class="md-nav__item">
-      <a href="../../../others/notes/" class="md-nav__link">
+      <a href="../../others/notes/" class="md-nav__link">
         课程笔记
       </a>
     </li>
@@ -2898,123 +2781,8 @@ var _hmt = _hmt || [];
         
           <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
-    包配置、入口点
+    碟影重重
   </a>
-  
-    <nav class="md-nav" aria-label="包配置、入口点">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    包配置
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    入口点
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    包结构分析
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    一些工具性代码
-  </a>
-  
-    <nav class="md-nav" aria-label="一些工具性代码">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#exceptionspy" class="md-nav__link">
-    exceptions.py
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#utils" class="md-nav__link">
-    utils
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build" class="md-nav__link">
-    build 流程
-  </a>
-  
-    <nav class="md-nav" aria-label="build 流程">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    加载配置
-  </a>
-  
-    <nav class="md-nav" aria-label="加载配置">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_open_config_file" class="md-nav__link">
-    _open_config_file
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#config" class="md-nav__link">
-    创建 Config、载入配置
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#config_1" class="md-nav__link">
-    验证 Config
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#plugin" class="md-nav__link">
-    触发 Plugin 事件
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#build_1" class="md-nav__link">
-    调用 build 函数构建文档
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
         
@@ -3033,315 +2801,57 @@ var _hmt = _hmt || [];
               <article class="md-content__inner md-typeset">
                 
                   
-<a href="https://github.com/TonyCrane/note/tree/master/docs/cs/analysis/mkdocs.md" title="编辑此页" class="md-content__button md-icon">
+<a href="https://github.com/TonyCrane/note/tree/master/docs/writeups/qwb2022.md" title="编辑此页" class="md-content__button md-icon">
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
 </a>
 
 
-<h1 id="mkdocs">mkdocs 源码剖析<a class="headerlink" href="#mkdocs" title="Permanent link">&para;</a></h1>
+<h1 id="2022-quals-writeup">强网杯 2022 Quals Writeup<a class="headerlink" href="#2022-quals-writeup" title="Permanent link">&para;</a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<p>源项目地址：<a href="https://github.com/mkdocs/mkdocs"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></span> mkdocs/mkdocs</a></p>
-<p>剖析时 sha 值：<a href="https://github.com/mkdocs/mkdocs/tree/730da08158b05374c4230f9785dd7f5068801fe3"><code>730da08158</code></a></p>
+<p>misc 很少，只做了碟影重重一道题，纯纯的傻逼题。一层一层毫无意义地硬套娃，做了好长好长时间，最后差几分钟没做出来，真的破防</p>
+<p>(╯°□°）╯︵ ┻━┻</p>
 </div>
-<h2 id="_1">包配置、入口点<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
-<h3 id="_2">包配置<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
-<p>一些基础配置不必说，主要是 entry_points 配置：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="n">setup</span><span class="p">(</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>    <span class="o">...</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>    <span class="n">entry_points</span><span class="o">=</span><span class="p">{</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>        <span class="s1">&#39;console_scripts&#39;</span><span class="p">:</span> <span class="p">[</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>            <span class="s1">&#39;mkdocs = mkdocs.__main__:cli&#39;</span><span class="p">,</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>        <span class="p">],</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>        <span class="s1">&#39;mkdocs.themes&#39;</span><span class="p">:</span> <span class="p">[</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>            <span class="s1">&#39;mkdocs = mkdocs.themes.mkdocs&#39;</span><span class="p">,</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>            <span class="s1">&#39;readthedocs = mkdocs.themes.readthedocs&#39;</span><span class="p">,</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>        <span class="p">],</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>        <span class="s1">&#39;mkdocs.plugins&#39;</span><span class="p">:</span> <span class="p">[</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>            <span class="s1">&#39;search = mkdocs.contrib.search:SearchPlugin&#39;</span><span class="p">,</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>        <span class="p">],</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>    <span class="p">},</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    <span class="o">...</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="p">)</span>
+<hr />
+<h2 id="_1">碟影重重<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square" /></p>
+<p>首先题目给了一个加密压缩包和一个流量包</p>
+<p>压缩包结尾附加信息 Password is md5(api address)</p>
+<p>流量包看不出什么名堂，直到给了第一个 hint：vmess 流量。于是就去翻看 vmess 的文档，结果文档写的不仅💩一样还全**是错的。被迫看 v2ray 的源码，但 v2ray 的源码还是 go 写的，这难看的语言真的要给我看吐了。翻找到了 rust 写的 leaf 项目，里面有 vmess 相关的东西，看的很舒适。最后看源码看出来的 vmess 协议内容在 <a href="/cs/web/protocol/vmess/">vmess 协议</a> 页面</p>
+<p>根据协议详细信息解码请求流量，得到：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nf">GET</span> <span class="nn">/out</span> <span class="kr">HTTP</span><span class="o">/</span><span class="m">1.1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="na">Host</span><span class="o">:</span> <span class="l">127.0.0.1:5000</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="na">User-Agent</span><span class="o">:</span> <span class="l">curl/7.75.0</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="na">Accept</span><span class="o">:</span> <span class="l">*/*</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="na">Connection</span><span class="o">:</span> <span class="l">close</span>
+</code></pre></div></p>
+<p>解码响应流量得到一个很长的 html，里面实际作用是用 base64 解码得到一个 doc 文档并下载。通过解码或者打开 html 都可以得到这个 doc 文档。不过其中包含了病毒宏，可能会被防火墙清理（mac 不会）</p>
+<p>将扩展名改为 .zip 并解压可以得到宏（或者进入 Word 打开宏编辑器）分析了好久那一堆混淆的宏，没什么进展，大概就是执行了一个 dll，找到后逆也没逆到什么</p>
+<p>考虑到防火墙会自动清理，以及宏的写法和 doc，这应该是一个老病毒，于是结合 dll 的 sha256 值搜索了一下，果然得到了分析：<a href="https://any.run/report/0d7aa23a72d22dcf47f8723c58d101b3b113cbc79dd407a6fac0e65d67076ea1/2211f4a0-81e4-432d-87a8-c7c285a5a919">https://any.run/report/0d7aa23a72d22dcf47f8723c58d101b3b113cbc79dd407a6fac0e65d67076ea1/2211f4a0-81e4-432d-87a8-c7c285a5a919</a></p>
+<p>里面就有这个 api address：api.ipify.org，md5 后得到密码 08229f4052dde89671134f1784bed2d6</p>
+<p>解压后得到一个二进制文件，里面可以看到 "GobThis is a Gob File!Time2022-07-19 14:49:56PNG File"，是 go 的序列化文件，使用 <a href="https://github.com/drosseau/degob"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></span> drosseau/degob</a> 反序列化，得到 png 的逐字节值</p>
+<p>不过这些值写入二进制文件后并不能打开图片，又卡住了，有了第三个 hint：为了保证数据的机密性，他把数据随机打乱了。很无语，就纯纯的傻逼题，虽然说有时间种子的暗示，但并不强烈，纯纯傻逼</p>
+<p>用 go 写一个随机打乱的程序，按照打乱的逻辑反过来，就可以恢复 png 图片。不过写令我反感的 go 代码有够烦的</p>
+<p>图片打开之后是 flag not here 文字。又是很无语，到这了还**套娃</p>
+<p>丢到 stegsolve 里，看不出什么东西，red green plane 有奇怪的锯齿状。后来发现 alpha 通道都是有值的，可能会通过 alpha 通道传信息（不过这时比赛已经快结束了）</p>
+<p>用 PIL 提取 alpha 通道的值，果然有很多不同值，不过大部分还是 0xff 和 0x00，所以考虑去掉 0xff 和 0x00 看一看，将图片展开成一维，然后剔除 ff 和 00 得到字节形式的一堆 flag：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="n">img</span> <span class="o">=</span> <span class="n">Image</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s2">&quot;flag.png&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="n">arr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="n">width</span><span class="p">,</span> <span class="n">height</span> <span class="o">=</span> <span class="n">img</span><span class="o">.</span><span class="n">size</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">bytes</span><span class="p">(</span><span class="n">arr</span><span class="p">[:,:,</span><span class="mi">3</span><span class="p">]</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="n">width</span><span class="o">*</span><span class="n">height</span><span class="p">))</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\xff</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="sa">b</span><span class="s2">&quot;</span><span class="se">\x00</span><span class="s2">&quot;</span><span class="p">,</span> <span class="sa">b</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># b&#39;flag{898161df-fabf-4757-82b6-ffe407c69475}flag{898161df-f...</span>
 </code></pre></div>
-可见创建了三个 entry_points：</p>
-<ul>
-<li>CLI 命令 mkdocs，入口点 mkdocs.__main__:cli</li>
-<li>mkdocs.themes，用于接入外部包定义的主题</li>
-<li>mkdocs.plugins，用于接入外部包定义的插件</li>
-</ul>
-<h3 id="_3">入口点<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
-<p>命令行的入口点为 mkdocs.__main__:cli。下分析 __main__.py：</p>
-<ul>
-<li>log 相关：<ul>
-<li>一个自定义的 ColorFormatter（<del>我不是很喜欢这个样式，可以改掉</del>）</li>
-<li>一个 State 用于维护不同命令的 log level（后有 <code class="highlight"><span class="n">click</span><span class="o">.</span><span class="n">make_pass_decorator</span><span class="p">(</span><span class="n">State</span><span class="p">,</span> <span class="n">ensure</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span></code>）</li>
-</ul>
-</li>
-<li>cli 相关：<ul>
-<li>利用 click 库
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nd">@click</span><span class="o">.</span><span class="n">group</span><span class="p">(</span><span class="n">context_settings</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;help_option_names&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;-h&#39;</span><span class="p">,</span> <span class="s1">&#39;--help&#39;</span><span class="p">]})</span> <span class="c1"># 设置 help 命令</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nd">@click</span><span class="o">.</span><span class="n">version_option</span><span class="p">(</span> <span class="c1"># 设置 version 命令和显示信息</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>    <span class="n">__version__</span><span class="p">,</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>    <span class="s1">&#39;-V&#39;</span><span class="p">,</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>    <span class="s1">&#39;--version&#39;</span><span class="p">,</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>    <span class="n">message</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;%(prog)s, version %(version)s from </span><span class="si">{</span> <span class="n">PKG_DIR</span> <span class="si">}</span><span class="s1"> (Python </span><span class="si">{</span> <span class="n">PYTHON_VERSION</span> <span class="si">}</span><span class="s1">)&#39;</span><span class="p">,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="p">)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nd">@common_options</span> <span class="c1"># 通用设置</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="k">def</span> <span class="nf">cli</span><span class="p">():</span> <span class="c1"># 命令行主命令 mkdocs</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>    <span class="sd">&quot;&quot;&quot;</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="sd">    MkDocs - Project documentation with Markdown.</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="sd">    &quot;&quot;&quot;</span>
-</code></pre></div></li>
-<li>一些子命令，选项添加与上面类似，不赘述<ul>
-<li>serve 子命令：调用 mkdocs.commands.serve.serve 函数</li>
-<li>build 子命令：处理 config（在 mkdocs.config 模块中详细定义）、启动插件、调用 mkdocs.commands.build.build 函数，未失败则运行后关闭插件</li>
-<li>gh-deploy 子命令：在 build 后调用 mkdocs.commands.gh_deploy.gh_deploy</li>
-<li>new 子命令：调用 mkdocs.commands.new.new 函数</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="_4">包结构分析<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
-<p>除去 tests 和其它冗余代码后，大致分析的整个包结构：
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdocs
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>├── __init__.py         # 定义了版本号
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>├── __main__.py         # CLI 入口点
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>├── commands            # CLI 定义
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>│   ├── __init__.py     
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>│   ├── babel.py        # 处理语言文件（不是 CLI 命令）
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>│   ├── build.py        # 构建文档（mkdocs build）
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>│   ├── gh_deploy.py    # 部署到 Pages（mkdocs gh-deploy）
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>│   ├── new.py          # 创建新项目（mkdocs new）
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>│   ├── serve.py        # 开启本地预览服务（mkdocs serve）
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>│   └── setup.py                # 目测没用？
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>├── config
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>│   ├── __init__.py         # 只导出 base 和 config_options
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>│   ├── base.py             # 基础配置
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>│   ├── config_options.py   # 各种参数以及验证方式
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>│   └── defaults.py         # 默认配置
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>├── contrib
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>│   ├── __init__.py
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>│   └── search
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>│       ├── __init__.py
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>│       ├── lunr-language
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>│       │   └── ...
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>│       ├── prebuild-index.js
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>│       ├── search_index.py
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>│       └── templates
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>│           └── search
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>│               ├── lunr.js
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>│               ├── main.js
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>│               └── worker.js
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>├── exceptions.py       # 一些定义的异常
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>├── livereload
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>│   └── __init__.py     # 本地预览自动刷新服务
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>├── localization.py     # 本地化相关代码
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a>├── plugins.py          # 插件管理
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>├── structure           # 页面结构
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>│   ├── __init__.py
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a>│   ├── files.py
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>│   ├── nav.py
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>│   ├── pages.py
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>│   └── toc.py
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>├── templates
-<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>│   └── sitemap.xml
-<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>├── theme.py            # 主题类
-<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>├── themes
-<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>│   └── ...
-<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>└── utils
-<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a>    ├── __init__.py
-<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>    ├── babel_stub.py
-<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a>    ├── filters.py
-<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a>    └── meta.py
-</code></pre></div></p>
-<h2 id="_5">一些工具性代码<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<p>和运行主逻辑无大关系的一些代码：</p>
-<h3 id="exceptionspy">exceptions.py<a class="headerlink" href="#exceptionspy" title="Permanent link">&para;</a></h3>
-<p>定义了五个异常类：</p>
-<ul>
-<li>基类 MkDocsException，不会直接使用。继承自 ClickException，使 click 能够处理并显示</li>
-<li>Abort，终止执行，可以带有信息</li>
-<li>ConfigurationError，由于配置文件原因导致的错误</li>
-<li>BuildError，构建过程中出现的错误，mkdocs 源码中并未直接抛出此类错误，但有子类 PluginError，应该是给第三方插件使用的</li>
-<li>PluginError，在插件中可以抛出的异常，继承自 BuildError</li>
-</ul>
-<h3 id="utils">utils<a class="headerlink" href="#utils" title="Permanent link">&para;</a></h3>
-<h2 id="build">build 流程<a class="headerlink" href="#build" title="Permanent link">&para;</a></h2>
-<p>从 mkdocs build 这一命令的执行流程来逐步自顶向下分析</p>
-<p>首先从 __main__.py 进入，调用到 build_command 函数：
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">__main__.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-3-237">237</a></span>
-<span class="normal"><a href="#__codelineno-3-238">238</a></span>
-<span class="normal"><a href="#__codelineno-3-239">239</a></span>
-<span class="normal"><a href="#__codelineno-3-240">240</a></span>
-<span class="normal"><a href="#__codelineno-3-241">241</a></span>
-<span class="normal"><a href="#__codelineno-3-242">242</a></span>
-<span class="normal"><a href="#__codelineno-3-243">243</a></span>
-<span class="normal"><a href="#__codelineno-3-244">244</a></span>
-<span class="normal"><a href="#__codelineno-3-245">245</a></span>
-<span class="normal"><a href="#__codelineno-3-246">246</a></span>
-<span class="normal"><a href="#__codelineno-3-247">247</a></span>
-<span class="normal"><a href="#__codelineno-3-248">248</a></span>
-<span class="normal"><a href="#__codelineno-3-249">249</a></span>
-<span class="normal"><a href="#__codelineno-3-250">250</a></span>
-<span class="normal"><a href="#__codelineno-3-251">251</a></span>
-<span class="normal"><a href="#__codelineno-3-252">252</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-237" name="__codelineno-3-237"></a><span class="nd">@cli</span><span class="o">.</span><span class="n">command</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;build&quot;</span><span class="p">)</span>
-<a id="__codelineno-3-238" name="__codelineno-3-238"></a><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;-c&#39;</span><span class="p">,</span> <span class="s1">&#39;--clean/--dirty&#39;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">clean_help</span><span class="p">)</span>
-<a id="__codelineno-3-239" name="__codelineno-3-239"></a><span class="nd">@common_config_options</span>
-<a id="__codelineno-3-240" name="__codelineno-3-240"></a><span class="nd">@click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;-d&#39;</span><span class="p">,</span> <span class="s1">&#39;--site-dir&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Path</span><span class="p">(),</span> <span class="n">help</span><span class="o">=</span><span class="n">site_dir_help</span><span class="p">)</span>
-<a id="__codelineno-3-241" name="__codelineno-3-241"></a><span class="nd">@common_options</span>
-<a id="__codelineno-3-242" name="__codelineno-3-242"></a><span class="k">def</span> <span class="nf">build_command</span><span class="p">(</span><span class="n">clean</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<a id="__codelineno-3-243" name="__codelineno-3-243"></a>    <span class="sd">&quot;&quot;&quot;Build the MkDocs documentation&quot;&quot;&quot;</span>
-<a id="__codelineno-3-244" name="__codelineno-3-244"></a>    <span class="kn">from</span> <span class="nn">mkdocs.commands</span> <span class="kn">import</span> <span class="n">build</span>
-<a id="__codelineno-3-245" name="__codelineno-3-245"></a>
-<a id="__codelineno-3-246" name="__codelineno-3-246"></a>    <span class="n">_enable_warnings</span><span class="p">()</span>
-<a id="__codelineno-3-247" name="__codelineno-3-247"></a>    <span class="n">cfg</span> <span class="o">=</span> <span class="n">config</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<a id="__codelineno-3-248" name="__codelineno-3-248"></a>    <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;plugins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">run_event</span><span class="p">(</span><span class="s1">&#39;startup&#39;</span><span class="p">,</span> <span class="n">command</span><span class="o">=</span><span class="s1">&#39;build&#39;</span><span class="p">,</span> <span class="n">dirty</span><span class="o">=</span><span class="ow">not</span> <span class="n">clean</span><span class="p">)</span>
-<a id="__codelineno-3-249" name="__codelineno-3-249"></a>    <span class="k">try</span><span class="p">:</span>
-<a id="__codelineno-3-250" name="__codelineno-3-250"></a>        <span class="n">build</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="n">cfg</span><span class="p">,</span> <span class="n">dirty</span><span class="o">=</span><span class="ow">not</span> <span class="n">clean</span><span class="p">)</span>
-<a id="__codelineno-3-251" name="__codelineno-3-251"></a>    <span class="k">finally</span><span class="p">:</span>
-<a id="__codelineno-3-252" name="__codelineno-3-252"></a>        <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;plugins&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">run_event</span><span class="p">(</span><span class="s1">&#39;shutdown&#39;</span><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-其中 common_options 和 common_config_options 装饰器定义为：
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">__main__.py</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-182">182</a></span>
-<span class="normal"><a href="#__codelineno-4-183">183</a></span>
-<span class="normal"><a href="#__codelineno-4-184">184</a></span>
-<span class="normal"><a href="#__codelineno-4-185">185</a></span>
-<span class="normal"><a href="#__codelineno-4-186">186</a></span>
-<span class="normal"><a href="#__codelineno-4-187">187</a></span>
-<span class="normal"><a href="#__codelineno-4-188">188</a></span>
-<span class="normal"><a href="#__codelineno-4-189">189</a></span>
-<span class="normal"><a href="#__codelineno-4-190">190</a></span>
-<span class="normal"><a href="#__codelineno-4-191">191</a></span>
-<span class="normal"><a href="#__codelineno-4-192">192</a></span>
-<span class="normal"><a href="#__codelineno-4-193">193</a></span>
-<span class="normal"><a href="#__codelineno-4-194">194</a></span>
-<span class="normal"><a href="#__codelineno-4-195">195</a></span>
-<span class="normal"><a href="#__codelineno-4-196">196</a></span>
-<span class="normal"><a href="#__codelineno-4-197">197</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-182" name="__codelineno-4-182"></a><span class="n">common_options</span> <span class="o">=</span> <span class="n">add_options</span><span class="p">(</span><span class="n">quiet_option</span><span class="p">,</span> <span class="n">verbose_option</span><span class="p">)</span>
-<a id="__codelineno-4-183" name="__codelineno-4-183"></a><span class="n">common_config_options</span> <span class="o">=</span> <span class="n">add_options</span><span class="p">(</span>
-<a id="__codelineno-4-184" name="__codelineno-4-184"></a>    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;-f&#39;</span><span class="p">,</span> <span class="s1">&#39;--config-file&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">File</span><span class="p">(</span><span class="s1">&#39;rb&#39;</span><span class="p">),</span> <span class="n">help</span><span class="o">=</span><span class="n">config_help</span><span class="p">),</span>
-<a id="__codelineno-4-185" name="__codelineno-4-185"></a>    <span class="c1"># Don&#39;t override config value if user did not specify --strict flag</span>
-<a id="__codelineno-4-186" name="__codelineno-4-186"></a>    <span class="c1"># Conveniently, load_config drops None values</span>
-<a id="__codelineno-4-187" name="__codelineno-4-187"></a>    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--strict&#39;</span><span class="p">,</span> <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">help</span><span class="o">=</span><span class="n">strict_help</span><span class="p">),</span>
-<a id="__codelineno-4-188" name="__codelineno-4-188"></a>    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span><span class="s1">&#39;-t&#39;</span><span class="p">,</span> <span class="s1">&#39;--theme&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="n">click</span><span class="o">.</span><span class="n">Choice</span><span class="p">(</span><span class="n">theme_choices</span><span class="p">),</span> <span class="n">help</span><span class="o">=</span><span class="n">theme_help</span><span class="p">),</span>
-<a id="__codelineno-4-189" name="__codelineno-4-189"></a>    <span class="c1"># As with --strict, set the default to None so that this doesn&#39;t incorrectly</span>
-<a id="__codelineno-4-190" name="__codelineno-4-190"></a>    <span class="c1"># override the config file</span>
-<a id="__codelineno-4-191" name="__codelineno-4-191"></a>    <span class="n">click</span><span class="o">.</span><span class="n">option</span><span class="p">(</span>
-<a id="__codelineno-4-192" name="__codelineno-4-192"></a>        <span class="s1">&#39;--use-directory-urls/--no-directory-urls&#39;</span><span class="p">,</span>
-<a id="__codelineno-4-193" name="__codelineno-4-193"></a>        <span class="n">is_flag</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<a id="__codelineno-4-194" name="__codelineno-4-194"></a>        <span class="n">default</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
-<a id="__codelineno-4-195" name="__codelineno-4-195"></a>        <span class="n">help</span><span class="o">=</span><span class="n">use_directory_urls_help</span><span class="p">,</span>
-<a id="__codelineno-4-196" name="__codelineno-4-196"></a>    <span class="p">),</span>
-<a id="__codelineno-4-197" name="__codelineno-4-197"></a><span class="p">)</span>
-</code></pre></div></td></tr></table></div>
-也就是增加了 -q -v -f -s -t --use-directory-urls/--no-directory-urls 这些命令行参数（也会传到 kwargs 中）</p>
-<p>_enable_warnings() 可以不用管。之后的流程就是：</p>
+最终 flag: <strong>flag{898161df-fabf-4757-82b6-ffe407c69475}</strong></p>
+<p>细数一下这题有几层：</p>
 <ol>
-<li>调用 config.load_config 加载配置</li>
-<li>从配置中找到插件，并触发其 startup 事件</li>
-<li>尝试调用 build.build 函数构建文档<ul>
-<li>若不成功则直接挂掉程序</li>
-<li>若成功则触发插件的 shutdown 事件，运行结束</li>
-</ul>
-</li>
+<li>解码 vmess 流量</li>
+<li>找到 doc 中的宏</li>
+<li>通过分析宏找到病毒调用的 api 地址</li>
+<li>解码 gob 文件</li>
+<li>通过时间随机种子恢复乱序的 png 文件</li>
+<li>png alpha 通道隐写</li>
 </ol>
-<h3 id="_6">加载配置<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
-<p>config/base.py 中 261 行开始的函数 load_config（删除了注释和一些空行）：
-<div class="highlight"><span class="filename">config/base.py</span><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">def</span> <span class="nf">load_config</span><span class="p">(</span><span class="n">config_file</span><span class="p">:</span> <span class="n">Optional</span><span class="p">[</span><span class="n">Union</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">IO</span><span class="p">]]</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Config</span><span class="p">:</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>    <span class="n">options</span> <span class="o">=</span> <span class="n">kwargs</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">options</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>        <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>            <span class="n">options</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>    <span class="k">with</span> <span class="n">_open_config_file</span><span class="p">(</span><span class="n">config_file</span><span class="p">)</span> <span class="k">as</span> <span class="n">fd</span><span class="p">:</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>        <span class="n">options</span><span class="p">[</span><span class="s1">&#39;config_file_path&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">fd</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>        <span class="kn">from</span> <span class="nn">mkdocs.config</span> <span class="kn">import</span> <span class="n">defaults</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>        <span class="n">cfg</span> <span class="o">=</span> <span class="n">Config</span><span class="p">(</span><span class="n">schema</span><span class="o">=</span><span class="n">defaults</span><span class="o">.</span><span class="n">get_schema</span><span class="p">(),</span> <span class="n">config_file_path</span><span class="o">=</span><span class="n">options</span><span class="p">[</span><span class="s1">&#39;config_file_path&#39;</span><span class="p">])</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>        <span class="n">cfg</span><span class="o">.</span><span class="n">load_file</span><span class="p">(</span><span class="n">fd</span><span class="p">)</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>    <span class="n">cfg</span><span class="o">.</span><span class="n">load_dict</span><span class="p">(</span><span class="n">options</span><span class="p">)</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    <span class="n">errors</span><span class="p">,</span> <span class="n">warnings</span> <span class="o">=</span> <span class="n">cfg</span><span class="o">.</span><span class="n">validate</span><span class="p">()</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>    <span class="k">for</span> <span class="n">config_name</span><span class="p">,</span> <span class="n">warning</span> <span class="ow">in</span> <span class="n">warnings</span><span class="p">:</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>        <span class="n">log</span><span class="o">.</span><span class="n">warning</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Config value: &#39;</span><span class="si">{</span><span class="n">config_name</span><span class="si">}</span><span class="s2">&#39;. Warning: </span><span class="si">{</span><span class="n">warning</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    <span class="k">for</span> <span class="n">config_name</span><span class="p">,</span> <span class="n">error</span> <span class="ow">in</span> <span class="n">errors</span><span class="p">:</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>        <span class="n">log</span><span class="o">.</span><span class="n">error</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Config value: &#39;</span><span class="si">{</span><span class="n">config_name</span><span class="si">}</span><span class="s2">&#39;. Error: </span><span class="si">{</span><span class="n">error</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">cfg</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>        <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Config value: &#39;</span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2">&#39; = </span><span class="si">{</span><span class="n">value</span><span class="si">!r}</span><span class="s2">&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">Abort</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Aborted with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span><span class="si">}</span><span class="s2"> Configuration Errors!&quot;</span><span class="p">)</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>    <span class="k">elif</span> <span class="n">cfg</span><span class="p">[</span><span class="s1">&#39;strict&#39;</span><span class="p">]</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">warnings</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>        <span class="k">raise</span> <span class="n">exceptions</span><span class="o">.</span><span class="n">Abort</span><span class="p">(</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a>            <span class="sa">f</span><span class="s2">&quot;Aborted with </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">warnings</span><span class="p">)</span><span class="si">}</span><span class="s2"> Configuration Warnings in &#39;strict&#39; mode!&quot;</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>        <span class="p">)</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>    <span class="k">return</span> <span class="n">cfg</span>
-</code></pre></div></p>
-<p>这个函数中的流程：</p>
-<ol>
-<li>将 kwargs 拷贝到 options 中（也就是通过命令行传入的参数）并删掉值为 None 的配置</li>
-<li>通过 _open_config_file 这个上下文管理器来打开配置文件，然后：<ol>
-<li>获取实际使用的配置文件路径名，并存到 options 中</li>
-<li>根据 defaults 创建一个 Config 名叫 cfg，其配置文件路径为上面获得到的文件名</li>
-<li>将配置文件中的配置载入 cfg</li>
-</ol>
-</li>
-<li>将命令行参数 options 载入 cfg（此时有覆盖，即命令行配置优先级高于配置文件）</li>
-<li>检查 cfg 配置中是否有非法信息<ul>
-<li>以 debug level 输出所有配置项</li>
-<li>如果有非法配置的话输出全部 warnings 和 errors</li>
-<li>如果有 error，则直接 abort</li>
-<li>如果有 warning，且开启了 strict 模式，也直接 abort</li>
-</ul>
-</li>
-<li>返回得到的 cfg 配置实例</li>
-</ol>
-<p>其中的一些细节：</p>
-<h4 id="_open_config_file">_open_config_file<a class="headerlink" href="#_open_config_file" title="Permanent link">&para;</a></h4>
-<p>是用 contextmanager 装饰器包装得到的上下文管理器，其接收一个参数 config_file，是从命令行 --config-file 参数获得的配置文件路径，如果运行时没有这一参数则 config_file 为 None。其内部流程：</p>
-<ol>
-<li>如果 config_file 为 None（即未指定），则默认尝试读取当前文件夹下的配置文件 mkdocs.yml 或 .yaml</li>
-<li>如果 config_file 为字符串，则尝试读取该字符串指定的文件</li>
-<li>如果 config_file 是文件对象<ul>
-<li>如果文件是开启的，则直接将文件指针移到开头</li>
-<li>如果文件时关闭的，则获取名称，打开文件</li>
-</ul>
-</li>
-<li>读取完成后，关掉文件</li>
-</ol>
-<h4 id="config">创建 Config、载入配置<a class="headerlink" href="#config" title="Permanent link">&para;</a></h4>
-<p>Config 是一个基于 UserDict 的类，即可以直接通过 [] 来读取其中 .data 属性（字典）中的值，其在初始化时发生了下面几件事：</p>
-<ol>
-<li>从参数设置 _schema，即从 defaults 中读取到的默认参数部分。以及 _schema_keys</li>
-<li>设置 config_file_path（会自动解码 bytes 类型）</li>
-<li>创建 .data 字典属性，以及一个空的 user_configs 列表，里面存放载入的字典原数据</li>
-<li>调用 set_defaults 方法设置默认值<ul>
-<li>即从 schema 中读取设置</li>
-</ul>
-</li>
-</ol>
-<p>在调用 load_file 方法时实际上会读取 yaml 文件内容，解析成字典然后调用 load_dict 方法。调用 load_dict 方法时先将传入的内容直接添加到 user_configs 列表中，然后用其 update data 属性</p>
-<h4 id="config_1">验证 Config<a class="headerlink" href="#config_1" title="Permanent link">&para;</a></h4>
-<p>调用 Config.validate 验证有以下几步：</p>
-<ol>
-<li>调用 _pre_validate() 方法<ul>
-<li>其会遍历 _schema 每一个键值对，调用 config_option 上的 pre_validation 方法，具体由实际子类进行实现</li>
-</ul>
-</li>
-<li>调用 _validate() 方法<ul>
-<li>也会遍历 _schema 每一个键值对，但此时会将键在 config 中对应的值传入 config_option 的 validate 方法（由子类的 run_validation 方法实现，返回一个修正后的值，重新赋值回来</li>
-<li>除此之外还会检查不在 _schema_keys 中的键，并抛出警告</li>
-</ul>
-</li>
-<li>如果前面都没有出现 error，则调用 _post_validate 方法<ul>
-<li>同 pre，只不过对 config_option 调用的方法从 pre 换成了 post</li>
-</ul>
-</li>
-</ol>
-<p>具体的各个参数的定义和验证方法都在 config/config_options.py 中，很详细易懂</p>
-<h3 id="plugin">触发 Plugin 事件<a class="headerlink" href="#plugin" title="Permanent link">&para;</a></h3>
-<p>在前面 ConfigOptions 中有一个 Plugins 子类，来存放插件相关对象，其初始化时会调用 plugins.get_plugins() 函数来全局检查安装的包的 entry_points 是否含有 mkdocs.plugins，来得到一个 Dict[str, EntryPoint] 类型的 installed_plugins 属性（即通过包名映射到插件入口点，即插件类）</p>
-<p>这个 Plugins 类在上面所说的 run_validation 过程中会将插件名传入 load_plugin 方法（里面会检查是否安装等一系列问题），并返回得到插件类，统一收集到 plugins.PluginCollection 类中。</p>
-<p>在为 PluginCollection setitem 的时候会将插件的所有 on_ 开头的方法都注册为 event（如 on_startup 方法会注册一个名为 startup 的 event），在调用 run_event("startup") 的时候会调用所有有 on_startup 方法的插件的这一方法，从而执行插件自定义的初始化代码（同时可以根据传入的 command，如 "build"、"gh-deploy"、"serve" 来特判执行不同动作）</p>
-<h3 id="build_1">调用 build 函数构建文档<a class="headerlink" href="#build_1" title="Permanent link">&para;</a></h3>
+<p>很多步骤没有充足的提示，而且很多是纯纯没必要的硬套。没有难题可以不出，不要用这种题恶心选手……</p>
 
   
     <hr>
@@ -3349,11 +2859,11 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年9月19日 23:26:32</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年9月21日 01:16:49</span>
       
         <br>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年1月6日 00:26:43</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年9月21日 01:16:49</span>
       
     
   </small>
@@ -3399,7 +2909,7 @@ var _hmt = _hmt || [];
     <nav class="md-footer__inner md-grid" aria-label="页脚">
       
         
-        <a href="../" class="md-footer__link md-footer__link--prev" aria-label="上一页: 源码剖析" rel="prev">
+        <a href="../mrctf2022/" class="md-footer__link md-footer__link--prev" aria-label="上一页: MRCTF 2022" rel="prev">
           <div class="md-footer__button md-icon">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
           </div>
@@ -3408,20 +2918,20 @@ var _hmt = _hmt || [];
               <span class="md-footer__direction">
                 上一页
               </span>
-              源码剖析
+              MRCTF 2022
             </div>
           </div>
         </a>
       
       
         
-        <a href="../../tools/" class="md-footer__link md-footer__link--next" aria-label="下一页: 工具相关" rel="next">
+        <a href="../tctf2022/" class="md-footer__link md-footer__link--next" aria-label="下一页: TCTF/0CTF 2022" rel="next">
           <div class="md-footer__title">
             <div class="md-ellipsis">
               <span class="md-footer__direction">
                 下一页
               </span>
-              工具相关
+              TCTF/0CTF 2022
             </div>
           </div>
           <div class="md-footer__button md-icon">
@@ -3495,14 +3005,14 @@ var _hmt = _hmt || [];
       <div class="md-dialog" data-md-component="dialog">
         <div class="md-dialog__inner md-typeset"></div>
       </div>
-      <script id="__config" type="application/json">{"base": "../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+      <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
       
       
-        <script src="../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+        <script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
         
           <script src="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
         
-          <script src="../../../js/katex.js"></script>
+          <script src="../../js/katex.js"></script>
         
       
     </body>
