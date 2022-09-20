@@ -91,9 +91,9 @@
     - [ ] docker
     - [ ] GitHub Action
     - [x] Git
-- [ ] Writeups
-    - [ ] TCTF NFT
-    - [ ] 强网杯碟影重重
+- [x] Writeups
+    - [x] TCTF NFT
+    - [x] 强网杯碟影重重
 - [ ] Rust
 - [ ] 源码剖析
     - [x] index
