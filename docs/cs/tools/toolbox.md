@@ -23,6 +23,7 @@ comment: True
 
 ## 图片类
 ### 作图
+- 在线手写风格作图白板 [Excalidraw](https://excalidraw.com/)
 - 在线矢量图作图软件（draw.io）[app.diagrams.net](https://app.diagrams.net/)
 - 在线图论作图网站 [Graph Editor](https://csacademy.com/app/graph_editor/)
 
