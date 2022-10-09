@@ -3193,7 +3193,7 @@ var _hmt = _hmt || [];
 <li>买下 2：1 4 3（此时自己的订单在 3 前）</li>
 </ul>
 </details>
-<p>不过上面这个方法是有问题的，修改 ownerOf 在其中删除订单的话会导致这个方法并不是 view 方法，需要使用 call 而不是 staticcall 调用。但是通过 IERC721 得到的借口是 view 的，会使用 staticcall 调用，从而导致 revert</p>
+<p>不过上面这个方法是有问题的，修改 ownerOf 在其中删除订单的话会导致这个方法并不是 view 方法，需要使用 call 而不是 staticcall 调用。但是通过 IERC721 得到的接口是 view 的，会使用 staticcall 调用，从而导致 revert</p>
 <p>解决这个问题的关键在于题目指定了 solidity 编译器版本为 0.8.15。这个版本的编译器存在一个 bug。来自 <a href="https://blog.soliditylang.org/2022/08/08/solidity-0.8.16-release-announcement/">solidity 0.8.16 release post</a>：</p>
 <blockquote>
 <p>Important Bugfixes:</p>
@@ -3348,7 +3348,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年9月21日 01:16:49</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年10月9日 19:07:24</span>
       
         <br>
         创建日期:
