@@ -29,3 +29,6 @@
 - [D^3CTF 2022](d3ctf2022)
 - [*CTF 2022](*ctf2022)
 - [MRCTF 2022](mrctf2022)
+- [强网杯 2022 Quals](qwb2022)
+- [TCTF/0CTF 2022](tctf2022)
+- [USTC Hackergame 2022](hackergame2022)

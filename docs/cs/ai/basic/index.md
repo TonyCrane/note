@@ -7,3 +7,4 @@
 
 ## Table of Contents
 - [逻辑与推理](topic1)
+- [搜索求解](topic2)
