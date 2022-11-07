@@ -13,6 +13,8 @@
     - [音频隐写](steg/audio)
 - [Sandbox Escape 沙箱逃逸](escapes)
     - [Python 沙箱逃逸](escapes/pysandbox)
+- [Forensic 取证](forensics)
+    - [内存取证](forensics/mem)
 - [Coding & Cipher 编码和密码](coding)
 - [QRCode 二维码规范](qrcode)
 - [Esolang 深奥编程语言](esolang)

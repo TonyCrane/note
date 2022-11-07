@@ -5,7 +5,9 @@
 
 ## 命令行工具
 - [Git 命令备忘](git)
-- [Docker 命令备忘（**TODO**）](docker.md)
+- [Shell 命令备忘](shell)
+- [Docker 相关备忘](docker)
+- [gdb 相关备忘](gdb)
 
 ## CI 工具
 - [GitHub Action 使用方法（**TODO**）](action)
