@@ -34,3 +34,4 @@
 - [TCTF/0CTF 2022](tctf2022)
 - [USTC Hackergame 2022](hackergame2022)
 - [N1CTF 2022](n1ctf2022)
+- [SECCON CTF 2022 Quals](seccon2022)
