@@ -14,7 +14,7 @@ home: true
     大概是随时更新，随时咕咕咕
 
     ??? question "about(site.author)"
-        18 岁，事浙江大学大二新生，事哔哩哔哩 up 主 [@鹤翔万里](https://space.bilibili.com/171431343)，事 AAA 战队 misc 手 @TonyCrane 
+        18 岁，事浙江大学信息安全专业大二学生，事哔哩哔哩 up 主 [@鹤翔万里](https://space.bilibili.com/171431343)，事 AAA 战队 misc 手 @TonyCrane 
 
         - 主页：https://tonycrane.cc/
         - 博客：https://blog.tonycrane.cc/

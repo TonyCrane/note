@@ -5,7 +5,7 @@ comment: True
 
 # 工具收集
 
-!!! abstrac
+!!! abstract
     逛 GitHub 等的时候看到的好玩的/有用的工具收集
 
     随时更新，欢迎在下方评论区补充 (￣▽￣)
