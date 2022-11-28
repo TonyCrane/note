@@ -30,8 +30,10 @@ comment: True
     - F：增加单精度浮点数
     - D：增加双精度浮点数
     - Q：增加 128 位四精度浮点数
-    - G：= IMAFD
+    - Zicsr：增加 CSR（控制和状态寄存器）
+    - Zifencei：增加 FENCE.I 指令
     - ...
+    - G：= IMAFDZicsr_Zifencei
 - 扩展了的指令集则命名为 RV32IM、RV32IMA、RV32G 等等
 
 ### 编译运行

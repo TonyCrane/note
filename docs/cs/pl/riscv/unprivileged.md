@@ -940,7 +940,7 @@ LUI 和 AUIPC，立即数都是在高 20 位，而且没有源操作数
 <div class="card" markdown="1">
 <div class="card-header" style="display: flex;justify-content: space-between;">
     <span>slli</span>
-    <span>r 型</span>
+    <span>i 型（改）</span>
 </div>
 <div class="card-body" markdown="1" style="padding-top: 0;">
 
@@ -985,7 +985,7 @@ LUI 和 AUIPC，立即数都是在高 20 位，而且没有源操作数
 <div class="card" markdown="1">
 <div class="card-header" style="display: flex;justify-content: space-between;">
     <span>srli</span>
-    <span>r 型</span>
+    <span>i 型（改）</span>
 </div>
 <div class="card-body" markdown="1" style="padding-top: 0;">
 
@@ -1030,7 +1030,7 @@ LUI 和 AUIPC，立即数都是在高 20 位，而且没有源操作数
 <div class="card" markdown="1">
 <div class="card-header" style="display: flex;justify-content: space-between;">
     <span>srai</span>
-    <span>r 型</span>
+    <span>i 型（改）</span>
 </div>
 <div class="card-body" markdown="1" style="padding-top: 0;">
 
@@ -1567,7 +1567,7 @@ LUI 和 AUIPC，立即数都是在高 20 位，而且没有源操作数
 </table>
 
 - **指令格式**：lh rd, imm(rs1)
-- **指令作用**：从 rs1+imm 处内存读取一个 16 位数到 rd 低 16 位，然后进行符号扩展
+- **指令作用**：从 rs1 + imm 处内存读取一个 16 位数到 rd 低 16 位，然后进行符号扩展
 
 </div>
 </div>
@@ -1826,6 +1826,88 @@ LUI 和 AUIPC，立即数都是在高 20 位，而且没有源操作数
 </div>
 </div>
 
+### 环境调用和断点指令
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>ecall</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">000000000000</td>
+    <td colspan="5" class="riscv-table-node-little">00000</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">00000</td>
+    <td colspan="7" class="riscv-table-node-little">1110011</td>
+</tr>
+</table>
+
+- **指令格式**：ecall
+- **指令作用**：请求环境调用（类似 syscall），EEI 会定义相关参数规范（一般通过寄存器传参）
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>ebreak</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">000000000001</td>
+    <td colspan="5" class="riscv-table-node-little">00000</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">00000</td>
+    <td colspan="7" class="riscv-table-node-little">1110011</td>
+</tr>
+</table>
+
+- **指令格式**：ebreak
+- **指令作用**：将控制流转到调试环境
+
+</div>
+</div>
+
+
 ### 汇编伪指令
 前面的是 RV32I 的所有被编码的指令，下面是可以在 RV32I 汇编程序中写的伪指令，它们将被编译器编译为第二列中的实际指令
 
@@ -1870,6 +1952,678 @@ LUI 和 AUIPC，立即数都是在高 20 位，而且没有源操作数
 |tail offset|auipc x6, offset[31 : 12] + offset[11]<br/>jalr x0, offset\[11:0](x6)|忽略返回地址远调用|
 
 </div>
+
+## RV64I 附加指令
+RV64I 的寄存器长度和地址空间长度都是 64 位，指令长度仍是 32 位。除此之外比 RV32I 多了一些针对 64/32 位的指令
+
+### 整型计算指令
+#### 32 位整型计算
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>addiw</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0011011</td>
+</tr>
+</table>
+
+- **指令格式**：addiw rd, rs1, imm
+- **指令作用**：将 rs1 的低 32 位与 imm 相加，结果存到 rd 的低 32 位，并符号扩展到 64 位
+- **注意**：addiw rd, rs1, 0 相当于将 rs1 低 32 位符号扩展到 64 位，汇编伪代码可写为 sext.w rd, rs1
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>slliw</span>
+    <span>i 型（改）</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">001</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0011011</td>
+</tr>
+</table>
+
+- **指令格式**：slliw rd, rs1, shamt
+- **指令作用**：将 rs1 的低 32 位左移 shamt 位，结果存到 rd 的低 32 位，并符号扩展到 64 位
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>srliw</span>
+    <span>i 型（改）</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0011011</td>
+</tr>
+</table>
+
+- **指令格式**：srliw rd, rs1, shamt
+- **指令作用**：将 rs1 的低 32 位逻辑右移 shamt 位，结果存到 rd 的低 32 位，并符号扩展到 64 位
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sraiw</span>
+    <span>i 型（改）</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0100000</td>
+    <td colspan="5" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0011011</td>
+</tr>
+</table>
+
+- **指令格式**：sraiw rd, rs1, shamt
+- **指令作用**：将 rs1 的低 32 位算数右移 shamt 位，结果存到 rd 的低 32 位，并符号扩展到 64 位
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>addw</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0111011</td>
+</tr>
+</table>
+
+- **指令格式**：addw rd, rs1, rs2
+- **指令作用**：低 32 位加法，得到 32 位结果（忽略溢出），并符号扩展到 64 位
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>subw</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0100000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">000</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0111011</td>
+</tr>
+</table>
+
+- **指令格式**：subw rd, rs1, rs2
+- **指令作用**：低 32 位减法，得到 32 位结果（忽略溢出），并符号扩展到 64 位
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sllw</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">001</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0111011</td>
+</tr>
+</table>
+
+- **指令格式**：sllw rd, rs1, rs2
+- **指令作用**：低 32 位左移，结果由 32 位符号扩展到 64 位
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>srlw</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0000000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0111011</td>
+</tr>
+</table>
+
+- **指令格式**：srlw rd, rs1, rs2
+- **指令作用**：低 32 位逻辑右移，结果由 32 位符号扩展到 64 位
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sraw</span>
+    <span>r 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">0100000</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0111011</td>
+</tr>
+</table>
+
+- **指令格式**：sraw rd, rs1, rs2
+- **指令作用**：低 32 位算术右移，结果由 32 位符号扩展到 64 位
+
+</div>
+</div>
+
+#### 其它指令修改
+slli、srli、srai 三条指令修改了格式：
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>slli</span>
+    <span>i 型（改）</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="4"></td>
+    <td class="riscv-table-numnoder">26</td>
+    <td class="riscv-table-numnodel">25</td>
+    <td class="riscv-table-numnode" colspan="4"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="6" class="riscv-table-node-little">000000</td>
+    <td colspan="6" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">001</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+
+- **指令格式**：slli rd, rs1, shamt
+- **指令作用**：左移运算，shamt 有 6 位
+- **注意**：格式上比 RV32I 的 slli 多了一位 shamt
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>srli</span>
+    <span>i 型（改）</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="4"></td>
+    <td class="riscv-table-numnoder">26</td>
+    <td class="riscv-table-numnodel">25</td>
+    <td class="riscv-table-numnode" colspan="4"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="6" class="riscv-table-node-little">000000</td>
+    <td colspan="6" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+
+- **指令格式**：srli rd, rs1, shamt
+- **指令作用**：逻辑右移运算，shamt 有 6 位
+- **注意**：格式上比 RV32I 的 srli 多了一位 shamt
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>srai</span>
+    <span>i 型（改）</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="4"></td>
+    <td class="riscv-table-numnoder">26</td>
+    <td class="riscv-table-numnodel">25</td>
+    <td class="riscv-table-numnode" colspan="4"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="6" class="riscv-table-node-little">010000</td>
+    <td colspan="6" class="riscv-table-node-little">shamt</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0010011</td>
+</tr>
+</table>
+
+- **指令格式**：srai rd, rs1, shamt
+- **指令作用**：算数右移运算，shamt 有 6 位
+- **注意**：格式上比 RV32I 的 srai 多了一位 shamt
+
+</div>
+</div>
+
+其它格式没有修改但功能有调整的指令：
+
+- **SLL/SRL/SRA**：移位位数取决于 rs2 的低 6 位（RV32I 是取决于 rs2 的低 5 位）
+- **LUI**：将 20 位立即数放入 rd 的 31~12 位，低 12 位置 0，然后符号扩展到 64 位
+- **AUIPC**：将 20 位立即数同 LUI 一样处理，然后加上 pc 值放入 rd
+
+### 装载存储指令
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>ld</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">011</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0000011</td>
+</tr>
+</table>
+
+- **指令格式**：ld rd, imm(rs1)
+- **指令作用**：从 rs1 + imm 处内存读取一个 64 位数到 rd 中
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>lwu</span>
+    <span>I 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="10"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="5" class="riscv-table-node-little">rd</td>
+    <td colspan="7" class="riscv-table-node-little">0000011</td>
+</tr>
+</table>
+
+- **指令格式**：lwu rd, imm(rs1)
+- **指令作用**：从 rs1 + imm 处内存读取一个 32 位数到 rd 中，然后零扩展到 64 位
+
+</div>
+</div>
+
+<div class="card" markdown="1">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+    <span>sd</span>
+    <span>S 型</span>
+</div>
+<div class="card-body" markdown="1" style="padding-top: 0;">
+
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+    <td class="riscv-table-numnodel">31</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">25</td>
+    <td class="riscv-table-numnodel">24</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">20</td>
+    <td class="riscv-table-numnodel">19</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">15</td>
+    <td class="riscv-table-numnodel">14</td>
+    <td class="riscv-table-numnode" colspan="1"></td>
+    <td class="riscv-table-numnoder">12</td>
+    <td class="riscv-table-numnodel">11</td>
+    <td class="riscv-table-numnode" colspan="3"></td>
+    <td class="riscv-table-numnoder">7</td>
+    <td class="riscv-table-numnodel">6</td>
+    <td class="riscv-table-numnode" colspan="5"></td>
+    <td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+    <td colspan="7" class="riscv-table-node-little">imm[11:5]</td>
+    <td colspan="5" class="riscv-table-node-little">rs2</td>
+    <td colspan="5" class="riscv-table-node-little">rs1</td>
+    <td colspan="3" class="riscv-table-node-little">011</td>
+    <td colspan="5" class="riscv-table-node-little">imm[4:0]</td>
+    <td colspan="7" class="riscv-table-node-little">0100011</td>
+</tr>
+</table>
+
+- **指令格式**：sd rs2, imm(rs1)
+- **指令作用**：将 rs2（64 位）拷贝到 rs1 + imm 处内存中
+
+</div>
+</div>
+
+## Zicsr 扩展
+
+见[特权级部分 > 控制和状态寄存器（CSRs）> CSR 指令（Zicsr 扩展）](../privileged/#csr-zicsr)
 
 ## 汇编代码
 ```asm

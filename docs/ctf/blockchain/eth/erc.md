@@ -3,7 +3,7 @@ comment: True
 counter: True
 ---
 
-# ERC
+# ERC 标准
 
 !!! abstract
     分析、记录一些常用的 ERC 标准

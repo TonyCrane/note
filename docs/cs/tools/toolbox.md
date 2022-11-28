@@ -54,10 +54,15 @@ comment: True
 
 ## 设计类
 ### 配色
+- 配色方案网站 [Color Hunt](https://colorhunt.co/)
+- 配色方案网站（带 Figma 插件） [Coolors](https://coolors.co/)
 - 颜色查找及转换工具 [HexColor16](https://hexcolor16.com/)
 - 日式传统颜色列表 [Nippon Colors](https://nipponcolors.com/)
 - 日系颜色名称列表（~~色图网站~~） [Color Site](https://colorsite.librian.net/)
 - Flat UI 配色方案 [Flat UI Colors](https://flatuicolors.com/)
+
+### 图标
+- 各系列图标合集 [icones](https://icones.netlify.app/)
 
 ## 数学类
 - 数列查找 [OEIS](http://oeis.org/)

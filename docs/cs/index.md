@@ -6,7 +6,7 @@
     有的是自学的笔记，有的是课程笔记
 
 ## Table of Contents
-- [Programming Language 编程语言](pl)
+- [Programming Language 编程语言 & ISA](pl)
     - [Python](pl/python/)
     - [Rust](pl/rust)
     - [C/C++](pl/c_cpp)
