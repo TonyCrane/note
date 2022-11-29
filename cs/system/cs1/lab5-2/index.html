@@ -1,0 +1,4405 @@
+
+  <!doctype html>
+  <html lang="zh" class="no-js">
+    <head>
+      
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        
+          <meta name="description" content="鹤翔万里（TonyCrane）的笔记本">
+        
+        
+        
+          <link rel="canonical" href="https://note.tonycrane.cc/cs/system/cs1/lab5-2/">
+        
+        <link rel="icon" href="../../../../assets/images/favicon.png">
+        <meta name="generator" content="mkdocs-1.3.1, mkdocs-material-8.1.4">
+      
+      
+        
+          <title>系统 I lab5-2 - 鹤翔万里的笔记本</title>
+        
+      
+      
+        <link rel="stylesheet" href="../../../../assets/stylesheets/main.bb3983ee.min.css">
+        
+          
+          <link rel="stylesheet" href="../../../../assets/stylesheets/palette.e6a45f82.min.css">
+          
+        
+      
+      
+      
+        
+          
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=JetBrains+Mono:300,400,400i,700%7CJetBrains+Mono&display=fallback">
+          <style>:root{--md-text-font:"JetBrains Mono";--md-code-font:"JetBrains Mono"}</style>
+        
+      
+      
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css">
+      
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css">
+      
+        <link rel="stylesheet" href="https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css">
+      
+        <link rel="stylesheet" href="../../../../css/tasklist.css">
+      
+        <link rel="stylesheet" href="../../../../css/custom.css">
+      
+        <link rel="stylesheet" href="../../../../css/card.css">
+      
+        <link rel="stylesheet" href="../../../../css/flink.css">
+      
+      
+        <link rel="stylesheet" href="/css/counter.css">
+      
+      <script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+      
+        
+  
+
+
+  <script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c273de7f67d992cb6aef08c3ddf09bb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+  
+
+
+  <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
+
+
+      
+      
+    </head>
+    
+    
+      
+      
+        
+      
+      
+      
+      
+      <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+    
+      <script src="../../../../js/scheme.js" type="text/javascript"></script>
+      
+      
+        <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+      
+      <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+      <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+      <label class="md-overlay" for="__drawer"></label>
+      <div data-md-component="skip">
+        
+          
+          <a href="#cpu" class="md-skip">
+            跳转至
+          </a>
+        
+      </div>
+      <div data-md-component="announce">
+        
+      </div>
+      
+      
+        
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../../.." title="鹤翔万里的笔记本" class="md-header__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            鹤翔万里的笔记本
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              系统 I lab5-2
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="md-header__options">
+      <div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+          <a
+            href="javascript:toggleScheme();"
+            title="Light mode"
+            class="light-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="Dark mode"
+            class="dark-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+          </a>
+          <a
+            href="javascript:toggleScheme();"
+            title="System preference"
+            class="system-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07 19.07 3.5m-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13.51 1.67m-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87.4 1.31M19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35-2.53-2.2m4.33-2.7 1.15-2.77 2.2 2.54-3.35.23m1.15-4.96-1.14-2.78 3.34.24-2.2 2.54M9.63 18.93l2.77 1.15-2.53 2.19-.24-3.34z"/></svg>
+          </a>
+           <a
+            href="javascript:toggleScheme();"
+            title="Unknown scheme"
+            class="unknown-mode"
+          >
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"/></svg>
+          </a>
+      </div>
+    </div>
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="清空当前内容" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/TonyCrane/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+      
+      <div class="md-container" data-md-component="container">
+        
+        
+          
+            
+              
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../.." class="md-tabs__link">
+        Home
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link md-tabs__link--active">
+        Computer Science
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../ctf/" class="md-tabs__link">
+        CTF
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../writeups/" class="md-tabs__link">
+        Writeups
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../others/" class="md-tabs__link">
+        Others
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../../links/" class="md-tabs__link">
+        Links
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+            
+          
+        
+        <main class="md-main" data-md-component="main">
+          <div class="md-main__inner md-grid">
+            
+              
+                <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+                      
+                        
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="鹤翔万里的笔记本" class="md-nav__button md-logo" aria-label="鹤翔万里的笔记本" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"/></svg>
+
+    </a>
+    鹤翔万里的笔记本
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/TonyCrane/note/" title="前往仓库" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" type="checkbox" id="__nav_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../..">Home</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Home" data-md-level="1">
+        <label class="md-nav__title" for="__nav_1">
+          <span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" type="checkbox" id="__nav_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../">Computer Science</a>
+          
+            <label for="__nav_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Computer Science" data-md-level="1">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" type="checkbox" id="__nav_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../pl/">编程语言 & ISA</a>
+          
+            <label for="__nav_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="编程语言 & ISA" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          编程语言 & ISA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" type="checkbox" id="__nav_2_2_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../pl/python/">Python</a>
+          
+            <label for="__nav_2_2_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Python" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_2">
+          <span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/python/basic/" class="md-nav__link">
+        Python 基础语法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/python/numpy/" class="md-nav__link">
+        NumPy
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/python/pil/" class="md-nav__link">
+        PIL
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" type="checkbox" id="__nav_2_2_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../pl/rust/">Rust</a>
+          
+            <label for="__nav_2_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Rust" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          Rust
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/rust/basic/" class="md-nav__link">
+        Rust 基础语法
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/rust/misc/" class="md-nav__link">
+        Rust 杂项随记
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/c_cpp/" class="md-nav__link">
+        C/C++
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/haskell/" class="md-nav__link">
+        Haskell
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/asm/" class="md-nav__link">
+        x86 汇编语言
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_7" type="checkbox" id="__nav_2_2_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../pl/riscv/">RISC-V ISA</a>
+          
+            <label for="__nav_2_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="RISC-V ISA" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          RISC-V ISA
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/riscv/unprivileged/" class="md-nav__link">
+        RISC-V 非特权级 ISA
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../pl/riscv/privileged/" class="md-nav__link">
+        RISC-V 特权级 ISA
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" type="checkbox" id="__nav_2_3" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../">计算机系统</a>
+          
+            <label for="__nav_2_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="计算机系统" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_3">
+          <span class="md-nav__icon md-icon"></span>
+          计算机系统
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" type="checkbox" id="__nav_2_3_2" checked>
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../">计算机系统 I</a>
+          
+            <label for="__nav_2_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="计算机系统 I" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          计算机系统 I
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic1/" class="md-nav__link">
+        数据的表示
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic2/" class="md-nav__link">
+        数字逻辑电路基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic3/" class="md-nav__link">
+        组合逻辑电路设计
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic4/" class="md-nav__link">
+        时序逻辑电路设计
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic5/" class="md-nav__link">
+        指令集体系结构
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../topic6/" class="md-nav__link">
+        处理器
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_8" type="checkbox" id="__nav_2_3_2_8" checked>
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_2_8">
+          系统 I 实验部分
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="系统 I 实验部分" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          系统 I 实验部分
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1-1/" class="md-nav__link">
+        系统 I lab1-1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab1-2/" class="md-nav__link">
+        系统 I lab1-2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2-1/" class="md-nav__link">
+        系统 I lab2-1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab2-2/" class="md-nav__link">
+        系统 I lab2-2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab3/" class="md-nav__link">
+        系统 I lab3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4-1/" class="md-nav__link">
+        系统 I lab4-1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab4-2/" class="md-nav__link">
+        系统 I lab4-2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab5-1/" class="md-nav__link">
+        系统 I lab5-1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          系统 I lab5-2
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        系统 I lab5-2
+      </a>
+      
+        
+  
+  <nav class="md-nav md-nav--secondary " aria-label="目录">
+    
+    
+    
+      
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    实验内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    控制单元模块设计
+  </a>
+  
+    <nav class="md-nav" aria-label="控制单元模块设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    明确目标
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    指令分析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    控制单元模块代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    其它文件中的修改
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    仿真测试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    上板验证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus" class="md-nav__link">
+    Bonus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu_1" class="md-nav__link">
+    附：单周期 CPU 设计图
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+      
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" type="checkbox" id="__nav_2_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../cs2/">计算机系统 II</a>
+          
+            <label for="__nav_2_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="计算机系统 II" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          计算机系统 II
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs2/topic1/" class="md-nav__link">
+        流水线 CPU
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_3" type="checkbox" id="__nav_2_3_3_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_3_3_3">
+          系统 II 实验部分
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="系统 II 实验部分" data-md-level="4">
+        <label class="md-nav__title" for="__nav_2_3_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          系统 II 实验部分
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs2/lab1/" class="md-nav__link">
+        系统 II lab1
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs2/lab2/" class="md-nav__link">
+        系统 II lab2
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs2/lab3/" class="md-nav__link">
+        系统 II lab3
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cs2/lab4/" class="md-nav__link">
+        系统 II lab4
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" type="checkbox" id="__nav_2_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../web/">网络相关</a>
+          
+            <label for="__nav_2_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="网络相关" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_4">
+          <span class="md-nav__icon md-icon"></span>
+          网络相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" type="checkbox" id="__nav_2_4_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../web/protocol/">网络协议</a>
+          
+            <label for="__nav_2_4_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="网络协议" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          网络协议
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/protocol/vmess/" class="md-nav__link">
+        VMess
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/svg/" class="md-nav__link">
+        SVG
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../web/log4j_vuln/" class="md-nav__link">
+        log4j 漏洞复现
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" type="checkbox" id="__nav_2_5" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_5">
+          算法相关
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="算法相关" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_5">
+          <span class="md-nav__icon md-icon"></span>
+          算法相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5_1" type="checkbox" id="__nav_2_5_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../algorithm/ds/">数据结构基础</a>
+          
+            <label for="__nav_2_5_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="数据结构基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_5_1">
+          <span class="md-nav__icon md-icon"></span>
+          数据结构基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithm/ds/topic1/" class="md-nav__link">
+        算法分析基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../algorithm/ds/topic2/" class="md-nav__link">
+        列表、栈、队列
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" type="checkbox" id="__nav_2_6" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_6">
+          人工智能相关
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="人工智能相关" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_6">
+          <span class="md-nav__icon md-icon"></span>
+          人工智能相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" type="checkbox" id="__nav_2_6_1" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../ai/basic/">人工智能基础</a>
+          
+            <label for="__nav_2_6_1">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="人工智能基础" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_6_1">
+          <span class="md-nav__icon md-icon"></span>
+          人工智能基础
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai/basic/topic1/" class="md-nav__link">
+        逻辑与推理
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../ai/basic/topic2/" class="md-nav__link">
+        搜索求解
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" type="checkbox" id="__nav_2_7" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../hpc/">高性能计算</a>
+          
+            <label for="__nav_2_7">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="高性能计算" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_7">
+          <span class="md-nav__icon md-icon"></span>
+          高性能计算
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_2" type="checkbox" id="__nav_2_7_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_7_2">
+          HPC 101 超算小学期
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="HPC 101 超算小学期" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_7_2">
+          <span class="md-nav__icon md-icon"></span>
+          HPC 101 超算小学期
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../hpc/hpc101/vectorized/" class="md-nav__link">
+        向量化计算
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../hpc/hpc101/gpu/" class="md-nav__link">
+        GPU 编程
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../hpc/hpc101/openmp/" class="md-nav__link">
+        OpenMP 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../hpc/hpc101/mpi/" class="md-nav__link">
+        MPI 基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../hpc/hpc101/ml/" class="md-nav__link">
+        机器学习基础
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" type="checkbox" id="__nav_2_8" >
+      
+      
+      
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_8">
+          零散知识点
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="零散知识点" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_8">
+          <span class="md-nav__icon md-icon"></span>
+          零散知识点
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../regex/" class="md-nav__link">
+        正则表达式
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../unicode/" class="md-nav__link">
+        Unicode
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" type="checkbox" id="__nav_2_9" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../analysis/">源码剖析</a>
+          
+            <label for="__nav_2_9">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="源码剖析" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_9">
+          <span class="md-nav__icon md-icon"></span>
+          源码剖析
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../analysis/mkdocs/" class="md-nav__link">
+        mkdocs 源码剖析
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" type="checkbox" id="__nav_2_10" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../tools/">工具相关</a>
+          
+            <label for="__nav_2_10">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="工具相关" data-md-level="2">
+        <label class="md-nav__title" for="__nav_2_10">
+          <span class="md-nav__icon md-icon"></span>
+          工具相关
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/toolbox/" class="md-nav__link">
+        工具收集
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_3" type="checkbox" id="__nav_2_10_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_3">
+          命令行工具
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="命令行工具" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_10_3">
+          <span class="md-nav__icon md-icon"></span>
+          命令行工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/git/" class="md-nav__link">
+        Git 命令备忘
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/shell/" class="md-nav__link">
+        Shell 命令备忘
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/docker/" class="md-nav__link">
+        Docker 相关备忘
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/gdb/" class="md-nav__link">
+        gdb 相关备忘
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_4" type="checkbox" id="__nav_2_10_4" >
+      
+      
+      
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_4">
+          CI 工具
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="CI 工具" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_10_4">
+          <span class="md-nav__icon md-icon"></span>
+          CI 工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/action/" class="md-nav__link">
+        GitHub Action
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_5" type="checkbox" id="__nav_2_10_5" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_2_10_5">
+          站点生成工具
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="站点生成工具" data-md-level="3">
+        <label class="md-nav__title" for="__nav_2_10_5">
+          <span class="md-nav__icon md-icon"></span>
+          站点生成工具
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/mkdocs/" class="md-nav__link">
+        mkdocs 使用记录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/hexo/" class="md-nav__link">
+        hexo 使用记录
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools/sphinx/" class="md-nav__link">
+        sphinx 使用记录
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" type="checkbox" id="__nav_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ctf/">CTF</a>
+          
+            <label for="__nav_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="CTF" data-md-level="1">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          CTF
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" type="checkbox" id="__nav_3_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ctf/steg/">隐写术</a>
+          
+            <label for="__nav_3_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="隐写术" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_2">
+          <span class="md-nav__icon md-icon"></span>
+          隐写术
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/steg/image/" class="md-nav__link">
+        图片隐写
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/steg/audio/" class="md-nav__link">
+        音频隐写
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ctf/escapes/">沙箱逃逸</a>
+          
+            <label for="__nav_3_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="沙箱逃逸" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          沙箱逃逸
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/escapes/pysandbox/" class="md-nav__link">
+        Python 沙箱逃逸
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" type="checkbox" id="__nav_3_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ctf/forensics/">取证</a>
+          
+            <label for="__nav_3_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="取证" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_4">
+          <span class="md-nav__icon md-icon"></span>
+          取证
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/forensics/mem/" class="md-nav__link">
+        内存取证
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/coding/" class="md-nav__link">
+        编码与密码
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/qrcode/" class="md-nav__link">
+        QRCode
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/esolang/" class="md-nav__link">
+        Esolang
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8" type="checkbox" id="__nav_3_8" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ctf/blockchain/">Blockchain</a>
+          
+            <label for="__nav_3_8">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Blockchain" data-md-level="2">
+        <label class="md-nav__title" for="__nav_3_8">
+          <span class="md-nav__icon md-icon"></span>
+          Blockchain
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8_2" type="checkbox" id="__nav_3_8_2" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ctf/blockchain/eth/">Ethereum</a>
+          
+            <label for="__nav_3_8_2">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Ethereum" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_8_2">
+          <span class="md-nav__icon md-icon"></span>
+          Ethereum
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/blockchain/eth/basic/" class="md-nav__link">
+        以太坊基础
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/blockchain/eth/evm/" class="md-nav__link">
+        以太坊虚拟机
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/blockchain/eth/vuln/" class="md-nav__link">
+        常见合约漏洞攻击手段
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../ctf/blockchain/eth/erc/" class="md-nav__link">
+        ERC 标准
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_8_3" type="checkbox" id="__nav_3_8_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../ctf/blockchain/solana/">Solana</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Solana" data-md-level="3">
+        <label class="md-nav__title" for="__nav_3_8_3">
+          <span class="md-nav__icon md-icon"></span>
+          Solana
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" type="checkbox" id="__nav_4" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../writeups/">Writeups</a>
+          
+            <label for="__nav_4">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Writeups" data-md-level="1">
+        <label class="md-nav__title" for="__nav_4">
+          <span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" type="checkbox" id="__nav_4_2" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_2">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Training" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_2">
+          <span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/ethernaut/" class="md-nav__link">
+        Ethernaut
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/SecurityInnovation/" class="md-nav__link">
+        Security Innovation
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/sadservers/" class="md-nav__link">
+        SadServers
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/AAA/" class="md-nav__link">
+        🔒 AAA School Bus
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" type="checkbox" id="__nav_4_3" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_3">
+          2021
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2021" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_3">
+          <span class="md-nav__icon md-icon"></span>
+          2021
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/sysu_msc_puzzle/" class="md-nav__link">
+        SYSU MSC Puzzle 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/hackergame2021/" class="md-nav__link">
+        USTC Hackergame 2021
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/d0g3/" class="md-nav__link">
+        第四届“安洵杯”
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/bytectf2021_final/" class="md-nav__link">
+        ByteCTF 2021 Final
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/sctf2021/" class="md-nav__link">
+        SCTF 2021
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" type="checkbox" id="__nav_4_4" >
+      
+      
+      
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+          
+        
+      
+      
+        <label class="md-nav__link" for="__nav_4_4">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="2022" data-md-level="2">
+        <label class="md-nav__title" for="__nav_4_4">
+          <span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/vnctf2022/" class="md-nav__link">
+        VNCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/tqlctf2022/" class="md-nav__link">
+        TQLCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/susctf2022/" class="md-nav__link">
+        SUSCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/d3ctf2022/" class="md-nav__link">
+        D3CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/%2Actf2022/" class="md-nav__link">
+        *CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/mrctf2022/" class="md-nav__link">
+        MRCTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/qwb2022/" class="md-nav__link">
+        强网杯 2022 Quals
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/tctf2022/" class="md-nav__link">
+        TCTF/0CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/hackergame2022/" class="md-nav__link">
+        USTC Hackergame 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/n1ctf2022/" class="md-nav__link">
+        N1CTF 2022
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../writeups/seccon2022/" class="md-nav__link">
+        SECCON 2022 Quals
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../others/">Others</a>
+          
+            <label for="__nav_5">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Others" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Others
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../others/notes/" class="md-nav__link">
+        课程笔记
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" type="checkbox" id="__nav_5_3" >
+      
+      
+      
+        
+          
+            
+          
+        
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../others/troubleshooting/">TroubleShooting</a>
+          
+            <label for="__nav_5_3">
+              <span class="md-nav__icon md-icon"></span>
+            </label>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="TroubleShooting" data-md-level="2">
+        <label class="md-nav__title" for="__nav_5_3">
+          <span class="md-nav__icon md-icon"></span>
+          TroubleShooting
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../others/troubleshooting/mac/" class="md-nav__link">
+        macOS TroubleShooting
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" type="checkbox" id="__nav_6" >
+      
+      
+      
+        
+          
+            
+          
+        
+      
+      
+        
+        
+        <div class="md-nav__link md-nav__link--index ">
+          <a href="../../../../links/">Links</a>
+          
+        </div>
+      
+      <nav class="md-nav" aria-label="Links" data-md-level="1">
+        <label class="md-nav__title" for="__nav_6">
+          <span class="md-nav__icon md-icon"></span>
+          Links
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                      
+                    </div>
+                  </div>
+                </div>
+              
+              
+                <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                  <div class="md-sidebar__scrollwrap">
+                    <div class="md-sidebar__inner">
+                      
+                        
+  
+  <nav class="md-nav md-nav--secondary " aria-label="目录">
+    
+    
+    
+      
+    
+    
+      <label class="md-nav__title" for="__toc">
+        <span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+      <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    实验内容
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    控制单元模块设计
+  </a>
+  
+    <nav class="md-nav" aria-label="控制单元模块设计">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    明确目标
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    指令分析
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    控制单元模块代码
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    其它文件中的修改
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    仿真测试
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    上板验证
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bonus" class="md-nav__link">
+    Bonus
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu_1" class="md-nav__link">
+    附：单周期 CPU 设计图
+  </a>
+  
+</li>
+        
+      </ul>
+    
+  </nav>
+                      
+                    </div>
+                  </div>
+                </div>
+                <script src="/js/toc.js" defer></script>
+                <link rel="stylesheet" href="/css/fold_toc.css">
+              
+            
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+<a href="https://github.com/TonyCrane/note/tree/master/docs/cs/system/cs1/lab5-2.md" title="编辑此页" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="cpu">单周期 CPU 设计<a class="headerlink" href="#cpu" title="Permanent link">&para;</a></h1>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>计算机系统 Ⅰ lab5-2 实验报告（2022.05.27 ~ 2022.06.21）</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>仅供学习参考，请勿抄袭</p>
+</div>
+</div>
+<h2 id="_1">实验内容<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>完成控制单元模块设计</li>
+<li>结合数据通路，搭起单周期 CPU</li>
+<li>使用 lab5-1 的仿真代码文件进行仿真测试</li>
+<li>使用 lab5-1 的测试环境进行上板验证</li>
+<li><strong>bonus：指令扩展</strong><ul>
+<li>实现 andi ori and or sll</li>
+<li>实现 xori slli srli srl</li>
+<li>实现 auipc sltu jalr</li>
+</ul>
+</li>
+</ul>
+<h2 id="_2">控制单元模块设计<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p><strong>直接以 bonus 为目标进行设计，完成这 22 个指令</strong>：lw sw bne beq jal lui addi add slt slti andi ori and or sll xori slli srli srl auipc sltu jalr</p>
+<h3 id="_3">明确目标<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>目标即编写 lab5-1 中给出的 Control.v 中的 Control 模块的编写，其功能就是接收指令并译码，解析出一系列数据通路中会用到的值。其输入输出部分：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">module</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">op_code</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">funct3</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">funct7_5</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">pc_src</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">reg_write</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">alu_src_b</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">alu_op</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">mem_to_reg</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">mem_write</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">branch</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">b_type</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">auipc</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+输入为 RISC-V 32 位指令的三个部分，op_code 为低 7 位的操作码，funct3 为 inst[14:12] 的功能部分，funct7_5 为 funct7 的第五位也就是 inst[30]</p>
+<p>输出为译码得到的一些结果：</p>
+<ul>
+<li>pc_src：pc 来源，00 来自 pc+4、01 来自 JALR、10 来自 JAL</li>
+<li>reg_write：是否写入寄存器组</li>
+<li>alu_src_b：ALUsrc，0 表示 ALU 的第二个操作数来自寄存器，1 表示来自立即数</li>
+<li>alu_op：ALU 进行的操作符，在 AluOp.vh 中定义</li>
+<li>mem_to_reg：写回寄存器的数据来源，00 写回数据来自 ALU、01 来自立即数、10 来自 pc+4、11 来自 data memory</li>
+<li>mem_write：是否写入 data memory，0 表示读，1 表示写</li>
+<li>branch：指令是否是 branch 分支操作，1 表示是，0 不是</li>
+<li>b_type：分支操作类型，0 表示 bne、1 表示 beq</li>
+</ul>
+<p>此外，我增加了一个 auipc 的输出来显示当前指令是否为 auipc，使 Datapath 中做特殊处理。</p>
+<p>剩余部分几乎与 lab5-1 一致，只需要替换 Control.v 文件并做一些相应的适配性更改即可。</p>
+<h3 id="_4">指令分析<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>将所需要实现的 22 个指令根据 opcodes 分类：(下表中 ps 代表 pc_src，rw 代表 reg_write，as 代表 alu_src_b，op 代表 alu_op，mtr 代表 mem_to_reg，mw 代表 mem_write，b 代表 branch，bt 代表 b_type，空格表示不需要考虑，- 表示在下面写)</p>
+<style>
+.md-typeset table:not([class]) th {
+    min-width: 0;
+}
+</style>
+
+<div style="text-align: center">
+<table>
+<thead>
+<tr>
+<th align="center">opcode</th>
+<th align="center">指令</th>
+<th align="center">ps</th>
+<th align="center">rw</th>
+<th align="center">as</th>
+<th align="center">op</th>
+<th align="center">mtr</th>
+<th align="center">mw</th>
+<th align="center">b</th>
+<th align="center">bt</th>
+<th align="center">auipc</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">0000011</td>
+<td align="center">lw</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">ADD</td>
+<td align="center">11</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0100011</td>
+<td align="center">sw</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">ADD</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0010011</td>
+<td align="center">addi slti xori ori<br/>andi slli srli</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">-</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1100011</td>
+<td align="center">bne beq</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">XOR</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">-</td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">1101111</td>
+<td align="center">jal</td>
+<td align="center">10</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0110111</td>
+<td align="center">lui</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0110011</td>
+<td align="center">add slt and or<br/>sll srl sltu</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">0</td>
+<td align="center">-</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+<tr>
+<td align="center">0010111</td>
+<td align="center">auipc</td>
+<td align="center">0</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">ADD</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">1</td>
+</tr>
+<tr>
+<td align="center">1100111</td>
+<td align="center">jalr</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">1</td>
+<td align="center">ADD</td>
+<td align="center">10</td>
+<td align="center">0</td>
+<td align="center">0</td>
+<td align="center"></td>
+<td align="center">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>对于 0010011 的一系列 I 型指令，需要通过判断 funct3 来确定 alu_op。对于 0110011 的一系列 R 型指令，可以直接使用 {funct7_5, funct3} 作为 alu_op。对于 bne 和 beq，其 b_type 就是 ~funct3[0]。</p>
+<h3 id="_5">控制单元模块代码<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>通过前面的分析，可以直接写出控制单元的代码：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="no">`timescale</span><span class="w"> </span><span class="mh">1</span><span class="n">ns</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mh">1</span><span class="n">ps</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">module</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">op_code</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">funct3</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span><span class="k">input</span><span class="w">               </span><span class="n">funct7_5</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">pc_src</span><span class="p">,</span><span class="w">     </span><span class="c1">// 00 pc+4 01 JALR 10 JAL</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">reg_write</span><span class="p">,</span><span class="w">  </span><span class="c1">// 1 写入寄存器</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">alu_src_b</span><span class="p">,</span><span class="w">  </span><span class="c1">// 0 来自寄存器 1 来自立即数</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">  </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">alu_op</span><span class="p">,</span><span class="w">     </span><span class="c1">// ALUop</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">mem_to_reg</span><span class="p">,</span><span class="w"> </span><span class="c1">// 00 写回数据来自 ALU 01 来自立即数 10 来自 pc+4 11 来自 data memory</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">mem_write</span><span class="p">,</span><span class="w">  </span><span class="c1">// 0 读 memory，1 写</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">branch</span><span class="p">,</span><span class="w">     </span><span class="c1">// 1 是 branch 0 不是</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">b_type</span><span class="p">,</span><span class="w">     </span><span class="c1">// 1 是 beq 0 是 bne</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">auipc</span><span class="w">       </span><span class="c1">// 1 是 auipc 指令</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="no">`include</span><span class="w"> </span><span class="s">&quot;AluOp.vh&quot;</span><span class="w"></span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="n">pc_src</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">        </span><span class="n">reg_write</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">        </span><span class="n">alu_src_b</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">        </span><span class="n">alu_op</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">funct7_5</span><span class="p">,</span><span class="w"> </span><span class="n">funct3</span><span class="p">};</span><span class="w"></span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">        </span><span class="n">mem_to_reg</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">        </span><span class="n">mem_write</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">        </span><span class="n">branch</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">        </span><span class="n">b_type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">        </span><span class="n">auipc</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">op_code</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b0000011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// lw</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">                </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b11</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b0100011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// sw</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">                </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w">   </span><span class="n">mem_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b0010011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// addi slti xori ori andi slli srli </span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">funct3</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">&#39;b000</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">&#39;b010</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SLT</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">&#39;b100</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XOR</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">&#39;b110</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OR</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">&#39;b111</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AND</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">&#39;b001</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SLL</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">&#39;b101</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">funct7_5</span><span class="p">)</span><span class="w">   </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SRA</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">                        </span><span class="k">else</span><span class="w">            </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SRL</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="w">                    </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="w">                </span><span class="k">endcase</span><span class="w"></span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b1100011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// bne beq</span>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="w">                </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XOR</span><span class="p">;</span><span class="w">   </span><span class="n">branch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">b_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">funct3</span><span class="p">[</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b1101111</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// jal</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="w">                </span><span class="n">pc_src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b10</span><span class="p">;</span><span class="w"> </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b10</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b0110111</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// lui</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b01</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b0110011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// add slt and or sll srl sltu</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b0010111</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// auipc</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">                </span><span class="n">auipc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="w">            </span><span class="mh">7</span><span class="mb">&#39;b1100111</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// jalr</span>
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="w">                </span><span class="n">pc_src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b01</span><span class="p">;</span><span class="w"> </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">&#39;b10</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="w">                </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="w">        </span><span class="k">endcase</span><span class="w"></span>
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="w">    </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a>
+<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="k">endmodule</span><span class="w"></span>
+</code></pre></div></p>
+<h3 id="_6">其它文件中的修改<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>ImmGen 模块在上一次 lab 中就实现了对于这 22 个指令的识别，不需要更改。SCPU 模块中只需要添加一个 wire auipc 然后连接 Control 和 Datapath 的 auipc 接口即可。Core 模块及更高层的无需更改。</p>
+<p>因为 sll slli srl srli 这些移位的指令移的位数都是取低 5 位，所以需要改一下 ALU 的代码，使其进行 SLL 和 SRL（包括 SRA）时取 b[4:0] 进行运算，即：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nl">SLL:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nl">SRL:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nl">SRA:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="p">...</span><span class="w"></span>
+</code></pre></div></p>
+<p>Datapath 需要进行一些更改：</p>
+<ul>
+<li>对于 ALU 的第一个参数也进行一下选择，如果 auipc 为 0 则原样选择 read_data_1，为 1 则选择 pc 作为第一个参数</li>
+<li>PC 的选择器输入对 jal 和 jalr 进行区分，jalr 对应的地址（即四路选择器的第二路）为 ALU 的结果，jal 和 branch 对应的地址（三四路）仍为 pc+imm</li>
+</ul>
+<p>更改后的 Datapath 模块：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="no">`timescale</span><span class="w"> </span><span class="mh">1</span><span class="n">ns</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mh">1</span><span class="n">ps</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">module</span><span class="w"> </span><span class="n">Datapath</span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">rst</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">pc_src</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">reg_write</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">alu_src_b</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">branch</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">b_type</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">auipc</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">alu_op</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">mem_to_reg</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">inst_in</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">data_in</span><span class="p">,</span><span class="w">  </span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">addr_out</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">data_out</span><span class="p">,</span><span class="w"> </span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc_out</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">debug_reg_addr</span><span class="p">,</span><span class="w"></span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">debug_reg</span><span class="w"></span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="kt">reg</span><span class="w">     </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc_next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">write_data</span><span class="p">,</span><span class="w"> </span><span class="n">read_data_1</span><span class="p">,</span><span class="w"> </span><span class="n">read_data_2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">alu_data_1</span><span class="p">,</span><span class="w"> </span><span class="n">alu_data_2</span><span class="p">,</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">    </span><span class="kt">wire</span><span class="w">            </span><span class="n">alu_zero</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">imm</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">jal_addr</span><span class="p">,</span><span class="w"> </span><span class="n">jalr_addr</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">pc_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">addr_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">data_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_data_2</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">posedge</span><span class="w"> </span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">            </span><span class="n">pc</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32</span><span class="mb">&#39;b0</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">        </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">            </span><span class="n">pc</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pc_next</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">        </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">    </span><span class="k">end</span><span class="w"></span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="w">    </span><span class="n">Regs</span><span class="w"> </span><span class="n">regs</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">        </span><span class="p">.</span><span class="n">clk</span><span class="p">(</span><span class="n">clk</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">        </span><span class="p">.</span><span class="n">rst</span><span class="p">(</span><span class="n">rst</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">        </span><span class="p">.</span><span class="n">we</span><span class="p">(</span><span class="n">reg_write</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">        </span><span class="p">.</span><span class="n">read_addr_1</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">19</span><span class="o">:</span><span class="mh">15</span><span class="p">]),</span><span class="w"></span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="w">        </span><span class="p">.</span><span class="n">read_addr_2</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">24</span><span class="o">:</span><span class="mh">20</span><span class="p">]),</span><span class="w"></span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="w">        </span><span class="p">.</span><span class="n">write_addr</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">7</span><span class="p">]),</span><span class="w"></span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="w">        </span><span class="p">.</span><span class="n">write_data</span><span class="p">(</span><span class="n">write_data</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="w">        </span><span class="p">.</span><span class="n">read_data_1</span><span class="p">(</span><span class="n">read_data_1</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="w">        </span><span class="p">.</span><span class="n">read_data_2</span><span class="p">(</span><span class="n">read_data_2</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="w">        </span><span class="p">.</span><span class="n">debug_reg_addr</span><span class="p">(</span><span class="n">debug_reg_addr</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="w">        </span><span class="p">.</span><span class="n">debug_reg</span><span class="p">(</span><span class="n">debug_reg</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="w">    </span><span class="n">ImmGen</span><span class="w"> </span><span class="n">immgen</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="w">        </span><span class="p">.</span><span class="n">inst</span><span class="p">(</span><span class="n">inst_in</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a><span class="w">        </span><span class="p">.</span><span class="n">imm</span><span class="p">(</span><span class="n">imm</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="w">    </span><span class="n">Mux2x32</span><span class="w"> </span><span class="n">mux2x32_1</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">read_data_1</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">pc</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">auipc</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">alu_data_1</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a>
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a><span class="w">    </span><span class="n">Mux2x32</span><span class="w"> </span><span class="n">mux2x32_2</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">read_data_2</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">imm</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">alu_src_b</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">alu_data_2</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a><span class="w">    </span><span class="n">ALU</span><span class="w"> </span><span class="n">alu</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="w">        </span><span class="p">.</span><span class="n">a</span><span class="p">(</span><span class="n">alu_data_1</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="w">        </span><span class="p">.</span><span class="n">b</span><span class="p">(</span><span class="n">alu_data_2</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a><span class="w">        </span><span class="p">.</span><span class="n">alu_op</span><span class="p">(</span><span class="n">alu_op</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a><span class="w">        </span><span class="p">.</span><span class="n">res</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a><span class="w">        </span><span class="p">.</span><span class="n">zero</span><span class="p">(</span><span class="n">alu_zero</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a>
+<a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a><span class="w">    </span><span class="n">Mux4x32</span><span class="w"> </span><span class="n">mux4x32</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">imm</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a><span class="w">        </span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a><span class="w">        </span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">data_in</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">mem_to_reg</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">write_data</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a>
+<a id="__codelineno-3-93" name="__codelineno-3-93" href="#__codelineno-3-93"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">jal_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">imm</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">jalr_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-95" name="__codelineno-3-95" href="#__codelineno-3-95"></a>
+<a id="__codelineno-3-96" name="__codelineno-3-96" href="#__codelineno-3-96"></a><span class="w">    </span><span class="n">MuxPC</span><span class="w"> </span><span class="n">mux_pc</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
+<a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">jalr_addr</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a><span class="w">        </span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">jal_addr</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-100" name="__codelineno-3-100" href="#__codelineno-3-100"></a><span class="w">        </span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">jal_addr</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-101" name="__codelineno-3-101" href="#__codelineno-3-101"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">pc_src</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-102" name="__codelineno-3-102" href="#__codelineno-3-102"></a><span class="w">        </span><span class="p">.</span><span class="n">branch</span><span class="p">(</span><span class="n">branch</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-103" name="__codelineno-3-103" href="#__codelineno-3-103"></a><span class="w">        </span><span class="p">.</span><span class="n">b_type</span><span class="p">(</span><span class="n">b_type</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-104" name="__codelineno-3-104" href="#__codelineno-3-104"></a><span class="w">        </span><span class="p">.</span><span class="n">alu_res</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span><span class="w"></span>
+<a id="__codelineno-3-105" name="__codelineno-3-105" href="#__codelineno-3-105"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">pc_next</span><span class="p">)</span><span class="w"></span>
+<a id="__codelineno-3-106" name="__codelineno-3-106" href="#__codelineno-3-106"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-107" name="__codelineno-3-107" href="#__codelineno-3-107"></a><span class="k">endmodule</span><span class="w"></span>
+</code></pre></div></p>
+<p>这样修改后整个单周期 CPU 就完整正确连接了</p>
+<h2 id="_7">仿真测试<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
+<p>与 lab5-1 同理，载入 lab10_all.coe 文件，选择 Core_tb.sv 为目标进行仿真测试，再通过调整得到全部中间变量（寄存器组值、ALU 输入输出、Mux 输入输出等）得到仿真波形：
+<img alt="" src="/assets/images/cs/system/cs1/lab5-2/sim_wave.png" /></p>
+<p>以及 pc 和寄存器的波形数据：
+<img alt="" src="/assets/images/cs/system/cs1/lab5-2/sim_pc_regs.png" /></p>
+<p>通过仔细分析每一条汇编指令与所有值的变化、寄存器的变化可以看出 CPU 按照给出的指令正确运行了。行为均与 lab5-1 一致。</p>
+<h2 id="_8">上板验证<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>在 vivado 中 disable 掉 Control_sim.v 文件（即使用 Control.v 和 Control.edf）然后通过 Top.‌sv 中顶层模块生成比特流，写入 FPGA 开发版即可进行上板验证。</p>
+<p>通过单步运行，观察 pc、inst、寄存器值可以确定上板也没有任何问题。行为均与 lab5-1 一致。</p>
+<h2 id="bonus">Bonus<a class="headerlink" href="#bonus" title="Permanent link">&para;</a></h2>
+<p>Bonus 范围的指令在前面设计控制单元的时候就已经考虑了，所以只需要测试这些指令即可。简单写了一个包含这些指令的 RISC-V 汇编文件：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="na">.globl</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nl">_start:</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x1</span><span class="p">,</span><span class="w">     </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">123</span><span class="w">     </span><span class="c1"># x1 = 123    </span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="nf">andi</span><span class="w">    </span><span class="no">x2</span><span class="p">,</span><span class="w">     </span><span class="no">x1</span><span class="p">,</span><span class="w">     </span><span class="mi">456</span><span class="w">     </span><span class="c1"># x2 = 72</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="nf">ori</span><span class="w">     </span><span class="no">x3</span><span class="p">,</span><span class="w">     </span><span class="no">x2</span><span class="p">,</span><span class="w">     </span><span class="mi">789</span><span class="w">     </span><span class="c1"># x3 = 861</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="nf">and</span><span class="w">     </span><span class="no">x4</span><span class="p">,</span><span class="w">     </span><span class="no">x3</span><span class="p">,</span><span class="w">     </span><span class="no">x1</span><span class="w">      </span><span class="c1"># x4 = 89</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x5</span><span class="p">,</span><span class="w">     </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">234</span><span class="w">     </span><span class="c1"># x5 = 234</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="nf">or</span><span class="w">      </span><span class="no">x5</span><span class="p">,</span><span class="w">     </span><span class="no">x4</span><span class="p">,</span><span class="w">     </span><span class="no">x5</span><span class="w">      </span><span class="c1"># x5 = 251 (0xfb)</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="nf">sll</span><span class="w">     </span><span class="no">x6</span><span class="p">,</span><span class="w">     </span><span class="no">x5</span><span class="p">,</span><span class="w">     </span><span class="no">x2</span><span class="w">      </span><span class="c1"># x6 = 64256 (0xFB00) </span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nf">xori</span><span class="w">    </span><span class="no">x7</span><span class="p">,</span><span class="w">     </span><span class="no">x6</span><span class="p">,</span><span class="w">     </span><span class="mi">123</span><span class="w">     </span><span class="c1"># x7 = 64379 (0xFB7B)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nf">slli</span><span class="w">    </span><span class="no">x8</span><span class="p">,</span><span class="w">     </span><span class="no">x7</span><span class="p">,</span><span class="w">     </span><span class="mi">4</span><span class="w">       </span><span class="c1"># x8 = 1030064 (0xFB7B0)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nf">srli</span><span class="w">    </span><span class="no">x9</span><span class="p">,</span><span class="w">     </span><span class="no">x8</span><span class="p">,</span><span class="w">     </span><span class="mi">8</span><span class="w">       </span><span class="c1"># x9 = 4023 (0xFB7)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nf">srl</span><span class="w">     </span><span class="no">x10</span><span class="p">,</span><span class="w">    </span><span class="no">x8</span><span class="p">,</span><span class="w">     </span><span class="no">x2</span><span class="w">      </span><span class="c1"># x10 = 4023 (0xFB7)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nf">auipc</span><span class="w">   </span><span class="no">x11</span><span class="p">,</span><span class="w">    </span><span class="mi">0xFFF</span><span class="w">           </span><span class="c1"># x11 = 0xFFF02C</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x12</span><span class="p">,</span><span class="w">    </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">-1</span><span class="w">      </span><span class="c1"># x12 = -1</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="nf">sltu</span><span class="w">    </span><span class="no">x12</span><span class="p">,</span><span class="w">    </span><span class="no">x11</span><span class="p">,</span><span class="w">    </span><span class="no">x12</span><span class="w">     </span><span class="c1"># x12 = 1</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="nf">jalr</span><span class="w">    </span><span class="no">x13</span><span class="p">,</span><span class="w">    </span><span class="mi">63</span><span class="p">(</span><span class="no">x12</span><span class="p">)</span><span class="w">         </span><span class="c1"># x13 = 60</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x14</span><span class="p">,</span><span class="w">    </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">1</span><span class="w">       </span><span class="c1"># won&#39;t exec</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="nl">Label:</span><span class="w"></span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x15</span><span class="p">,</span><span class="w">    </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">1</span><span class="w"></span>
+</code></pre></div>
+使用 riscv32-unknown-linux-gnu-c++ -nostdlib -nostdinc -static -g bonus.s -o bonus.elf -march=rv32i -mabi=ilp32 来编译出指令集在 RV32I 范围内的 ELF 文件，再 objdump：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>00010074 &lt;_start&gt;:
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>   10074:   07b00093    li  ra,123
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>   10078:   1c80f113    andi    sp,ra,456
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>   1007c:   31516193    ori gp,sp,789
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>   10080:   0011f233    and tp,gp,ra
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>   10084:   0ea00293    li  t0,234
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>   10088:   005262b3    or  t0,tp,t0
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>   1008c:   00229333    sll t1,t0,sp
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>   10090:   07b34393    xori    t2,t1,123
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>   10094:   00439413    slli    s0,t2,0x4
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>   10098:   00845493    srli    s1,s0,0x8
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>   1009c:   00245533    srl a0,s0,sp
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>   100a0:   00fff597    auipc   a1,0xfff
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>   100a4:   fff00613    li  a2,-1
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>   100a8:   00c5b633    sltu    a2,a1,a2
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>   100ac:   03f606e7    jalr    a3,63(a2)
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>   100b0:   00100713    li  a4,1
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a>000100b4 &lt;Label&gt;:
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>   100b4:   00100793    li  a5,1
+</code></pre></div>
+得到机器码，即 coe 文件内容：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>memory_initialization_radix = 16;
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>memory_initialization_vector = 
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>07b00093, 1c80f113, 31516193, 0011f233, 0ea00293, 005262b3, 00229333, 07b34393, 00439413, 00845493, 00245533, 00fff597, fff00613, 00c5b633, 03f606e7, 00100713, 00100793;
+</code></pre></div>
+载入 ROM 内，进行仿真，得到波形以及寄存器内容变化：
+<img alt="" src="/assets/images/cs/system/cs1/lab5-2/bonus_wave.png" />
+<img alt="" src="/assets/images/cs/system/cs1/lab5-2/bonus_reg.png" /></p>
+<p>通过分析 pc、中间值等以及和汇编代码实际效果（注释里写了）对比，可以发现这些 bonus 指令都正常执行了。上板测试也没有问题。</p>
+<h2 id="cpu_1">附：单周期 CPU 设计图<a class="headerlink" href="#cpu_1" title="Permanent link">&para;</a></h2>
+<p>实际使用的单周期 CPU 设计图如下：
+<img alt="" src="/assets/images/cs/system/cs1/lab5-2/graph.jpg" /></p>
+
+  
+    <hr>
+<div class="md-source-file">
+  <small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月29日 15:52:39</span>
+      
+        <br>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月29日 15:52:39</span>
+      
+    
+  </small>
+</div>
+  
+
+                  
+                    <script src="https://giscus.app/client.js"
+                            data-repo="TonyCrane/note"
+                            data-repo-id="R_kgDOGnfbUQ"
+                            data-category="General"
+                            data-category-id="DIC_kwDOGnfbUc4CPrf4"
+                            data-mapping="pathname"
+                            data-reactions-enabled="1"
+                            data-emit-metadata="0"
+                            data-input-position="bottom"
+                            data-theme="light"
+                            data-lang="zh-CN"
+                            crossorigin="anonymous"
+                            async>
+                    </script>
+                    <script>
+                      if (document.querySelector("body").getAttribute("data-md-color-scheme") === "slate") {
+                        var giscus = document.querySelector("script[src*=giscus]")
+                        giscus.setAttribute("data-theme", "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css") 
+                      }
+                    </script>
+                  
+                
+              </article>
+            </div>
+          </div>
+          
+            <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+              回到页面顶部
+            </a>
+          
+        </main>
+        
+          <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="页脚">
+      
+        
+        <a href="../lab5-1/" class="md-footer__link md-footer__link--prev" aria-label="上一页: 系统 I lab5-1" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                上一页
+              </span>
+              系统 I lab5-1
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../../cs2/" class="md-footer__link md-footer__link--next" aria-label="下一页: 计算机系统 Ⅱ" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                下一页
+              </span>
+              计算机系统 Ⅱ
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2022 <a href="https://github.com/TonyCrane"  target="_blank" rel="noopener">TonyCrane</a>
+    </div>
+  
+  
+    Powered by
+    <a href="https://www.mkdocs.org/" target="_blank" rel="noopener">
+      MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material
+    </a>
+    modified by
+    <a href="https://github.com/TonyCrane" target="_blank" rel="noopener">
+      TonyCrane
+    </a>
+  
+</div>
+  
+      
+        <div class="md-social">
+  
+    
+    
+      
+      
+    
+    <a href="https://github.com/TonyCrane/" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://blog.tonycrane.cc/" target="_blank" rel="noopener" title="blog.tonycrane.cc" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"/></svg>
+    </a>
+  
+    
+    
+      
+      
+    
+    <a href="https://tonycrane.cc/" target="_blank" rel="noopener" title="tonycrane.cc" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+        
+      </div>
+      <div class="md-dialog" data-md-component="dialog">
+        <div class="md-dialog__inner md-typeset"></div>
+      </div>
+      <script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+      
+      
+        <script src="../../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+        
+          <script src="https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+        
+          <script src="../../../../js/katex.js"></script>
+        
+      
+    </body>
+  </html>
+  
