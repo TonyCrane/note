@@ -4040,7 +4040,7 @@ var _hmt = _hmt || [];
 <h3 id="_11">合约的创建<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h3>
 <p>前面说到了合约要通过交易来进行创建，这个交易的 to 字段应该为空，且 data 字段为编译后的合约字节码。</p>
 <p>在执行交易时，这个 data 字段的内容会被放在 EVM 上执行，它可以是任意可执行的字节码，遇到 return 指令直接返回，也可以返回结果（且有回显）。</p>
-<p>一般的合约字节码会分为两个部分，即 creationCode 和 runtimeCode。它们是拼接在一起的一个整体。在 EVM 运行字节码时，先执行 creationCode 部分，其作用是将后面的 runtimeCode 部署到链上代码区中以及执行构建函数，然后直接返回，完成交易。之后在链上存储的就只是 runtimeCode 部分，也是调用时会执行的实际部分。</p>
+<p>一般的合约字节码会分为两个部分，即 creationCode 和 runtimeCode。它们是拼接在一起的一个整体。在 EVM 运行字节码时，先执行 creationCode 部分，其作用是运行构建函数、设置合约初始状态，然后返回 runtimeCode，这个将会被部署到链上代码区。之后在链上存储的就只是 runtimeCode 部分，也是调用时会执行的实际部分。</p>
 <p>如果合约的构建函数是 payable 的，那么可以在创建交易的时候通过 value 字段来附带以太币，这些以太币会被转移到合约账户中。如果不是 payable 但创建时向其转账了，那么这条交易会 revert。</p>
 <h3 id="_12">合约的调用<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h3>
 <p>合约的调用也是通过交易来进行的，这个交易的 to 字段应该为合约账户地址，data 字段为编码后的函数名和参数，称为 calldata。</p>
@@ -4229,7 +4229,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月28日 23:33:01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月29日 23:45:37</span>
       
         <br>
         创建日期:

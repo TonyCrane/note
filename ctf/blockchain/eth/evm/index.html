@@ -2822,6 +2822,95 @@ var _hmt = _hmt || [];
     EVM 字节码
   </a>
   
+    <nav class="md-nav" aria-label="EVM 字节码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    运算指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    特殊指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    存储指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    跳转指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    日志指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    创建合约地址指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    调用、返回、自毁指令
+  </a>
+  
+    <nav class="md-nav" aria-label="调用、返回、自毁指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    远程调用指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    返回指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    自毁指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evm_2" class="md-nav__link">
+    EVM 逆向
+  </a>
+  
 </li>
         
       </ul>
@@ -3615,6 +3704,95 @@ var _hmt = _hmt || [];
     EVM 字节码
   </a>
   
+    <nav class="md-nav" aria-label="EVM 字节码">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    运算指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    特殊指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    存储指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    跳转指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    日志指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    创建合约地址指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    调用、返回、自毁指令
+  </a>
+  
+    <nav class="md-nav" aria-label="调用、返回、自毁指令">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    远程调用指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    返回指令
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    自毁指令
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evm_2" class="md-nav__link">
+    EVM 逆向
+  </a>
+  
 </li>
         
       </ul>
@@ -3650,9 +3828,863 @@ var _hmt = _hmt || [];
 </ul>
 </div>
 <h2 id="evm">EVM 简介<a class="headerlink" href="#evm" title="Permanent link">&para;</a></h2>
-<p>TODO</p>
+<p>EVM 是一个栈结构的虚拟机，没有寄存器，栈的深度最大 1024，每个元素都是 256 位（32 字节）的。同时在执行期间会维护一个瞬时内存（memory），其执行后不会持久存在。</p>
+<p>EVM 有一套指令集，每条指令都有一个 8 位的 opcode，指令的参数可以是立即数、栈元素等。</p>
 <h2 id="evm_1">EVM 字节码<a class="headerlink" href="#evm_1" title="Permanent link">&para;</a></h2>
-<p>TODO</p>
+<p>完整的 EVM 字节码及解释可见：<a href="https://ethervm.io/">ethervm.io</a>，这里进行一下分类：</p>
+<h3 id="_2">运算指令<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<p>没有特殊说明都是在模 2^256 的意义下进行运算。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>下面表格中的栈输入、栈输出均是左侧为栈顶</p>
+</div>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">01</td>
+<td align="left">ADD</td>
+<td align="left">a, b</td>
+<td align="left">a + b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">02</td>
+<td align="left">MUL</td>
+<td align="left">a, b</td>
+<td align="left">a * b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">03</td>
+<td align="left">SUB</td>
+<td align="left">a, b</td>
+<td align="left">a - b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">04</td>
+<td align="left">DIV</td>
+<td align="left">a, b</td>
+<td align="left">a // b</td>
+<td align="left">uint256 除法</td>
+</tr>
+<tr>
+<td align="left">05</td>
+<td align="left">SDIV</td>
+<td align="left">a, b</td>
+<td align="left">a // b</td>
+<td align="left">int256 除法</td>
+</tr>
+<tr>
+<td align="left">06</td>
+<td align="left">MOD</td>
+<td align="left">a, b</td>
+<td align="left">a % b</td>
+<td align="left">uint256 取模</td>
+</tr>
+<tr>
+<td align="left">07</td>
+<td align="left">SMOD</td>
+<td align="left">a, b</td>
+<td align="left">a % b</td>
+<td align="left">int256 取模</td>
+</tr>
+<tr>
+<td align="left">08</td>
+<td align="left">ADDMOD</td>
+<td align="left">a, b, c</td>
+<td align="left">(a + b) % c</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">09</td>
+<td align="left">MULMOD</td>
+<td align="left">a, b, c</td>
+<td align="left">(a * b) % c</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">0a</td>
+<td align="left">EXP</td>
+<td align="left">a, b</td>
+<td align="left">a ** b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">0b</td>
+<td align="left">SIGNEXTEND</td>
+<td align="left">b, x</td>
+<td align="left">signextend(x, b)</td>
+<td align="left">将 x 从 (b+1)*8 位符号扩展到 256 位</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">10</td>
+<td align="left">LT</td>
+<td align="left">a, b</td>
+<td align="left">a &lt; b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">11</td>
+<td align="left">GT</td>
+<td align="left">a, b</td>
+<td align="left">a &gt; b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">12</td>
+<td align="left">SLT</td>
+<td align="left">a, b</td>
+<td align="left">a &lt; b</td>
+<td align="left">int256 比较</td>
+</tr>
+<tr>
+<td align="left">13</td>
+<td align="left">SGT</td>
+<td align="left">a, b</td>
+<td align="left">a &gt; b</td>
+<td align="left">int256 比较</td>
+</tr>
+<tr>
+<td align="left">14</td>
+<td align="left">EQ</td>
+<td align="left">a, b</td>
+<td align="left">a == b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">15</td>
+<td align="left">ISZERO</td>
+<td align="left">a</td>
+<td align="left">a == 0</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">16</td>
+<td align="left">AND</td>
+<td align="left">a, b</td>
+<td align="left">a &amp; b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">17</td>
+<td align="left">OR</td>
+<td align="left">a, b</td>
+<td align="left">a | b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">18</td>
+<td align="left">XOR</td>
+<td align="left">a, b</td>
+<td align="left">a ^ b</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">19</td>
+<td align="left">NOT</td>
+<td align="left">a</td>
+<td align="left">~a</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">1a</td>
+<td align="left">BYTE</td>
+<td align="left">i, x</td>
+<td align="left">x[i]</td>
+<td align="left">取 x 的第 i 个字节（从高位算）</td>
+</tr>
+<tr>
+<td align="left">1b</td>
+<td align="left">SHL</td>
+<td align="left">a, b</td>
+<td align="left">b &lt;&lt; a</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">1c</td>
+<td align="left">SHR</td>
+<td align="left">a, b</td>
+<td align="left">b &gt;&gt; a</td>
+<td align="left">逻辑右移</td>
+</tr>
+<tr>
+<td align="left">1d</td>
+<td align="left">SAR</td>
+<td align="left">a, b</td>
+<td align="left">b &gt;&gt; a</td>
+<td align="left">算数右移</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">20</td>
+<td align="left">SHA3</td>
+<td align="left">offset, length</td>
+<td align="left">keccak256(mem[offset:offset+length])</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_3">特殊指令<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>一些以太坊特有的指令，比如取一些交易信息、区块信息等</p>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">30</td>
+<td align="left">ADDRESS</td>
+<td align="left"></td>
+<td align="left">address</td>
+<td align="left">当前合约地址</td>
+</tr>
+<tr>
+<td align="left">31</td>
+<td align="left">BALANCE</td>
+<td align="left">addr</td>
+<td align="left">addr.balance</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">32</td>
+<td align="left">ORIGIN</td>
+<td align="left"></td>
+<td align="left">tx.origin</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">33</td>
+<td align="left">CALLER</td>
+<td align="left"></td>
+<td align="left">msg.sender</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">34</td>
+<td align="left">CALLVALUE</td>
+<td align="left"></td>
+<td align="left">msg.value</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">35</td>
+<td align="left">CALLDATALOAD</td>
+<td align="left">i</td>
+<td align="left">msg.data[i:i+32]</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">36</td>
+<td align="left">CALLDATASIZE</td>
+<td align="left"></td>
+<td align="left">len(msg.data)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">38</td>
+<td align="left">CODESIZE</td>
+<td align="left"></td>
+<td align="left">len(this.code)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3a</td>
+<td align="left">GASPRICE</td>
+<td align="left"></td>
+<td align="left">tx.gasprice</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3b</td>
+<td align="left">EXTCODESIZE</td>
+<td align="left">addr</td>
+<td align="left">len(addr.code)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">3d</td>
+<td align="left">RETURNDATASIZE</td>
+<td align="left"></td>
+<td align="left">len(returndata)</td>
+<td align="left">上一次调用的返回数据长度</td>
+</tr>
+<tr>
+<td align="left">3f</td>
+<td align="left">EXTCODEHASH</td>
+<td align="left">addr</td>
+<td align="left">keccak256(addr.code)</td>
+<td align="left">地址不存在则返回 0</td>
+</tr>
+<tr>
+<td align="left">40</td>
+<td align="left">BLOCKHASH</td>
+<td align="left">number</td>
+<td align="left">block.blockHash(blockNumber)</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">41</td>
+<td align="left">COINBASE</td>
+<td align="left"></td>
+<td align="left">block.coinbase</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">42</td>
+<td align="left">TIMESTAMP</td>
+<td align="left"></td>
+<td align="left">block.timestamp</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">43</td>
+<td align="left">NUMBER</td>
+<td align="left"></td>
+<td align="left">block.number</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">44</td>
+<td align="left">DIFFICULTY</td>
+<td align="left"></td>
+<td align="left">block.difficulty</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">45</td>
+<td align="left">GASLIMIT</td>
+<td align="left"></td>
+<td align="left">block.gaslimit</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">46</td>
+<td align="left">CHAINID</td>
+<td align="left"></td>
+<td align="left">chainid</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">47</td>
+<td align="left">SELFBALANCE</td>
+<td align="left"></td>
+<td align="left">this.balance</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">48</td>
+<td align="left">BASEFEE</td>
+<td align="left"></td>
+<td align="left">block.basefee</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">37</td>
+<td align="left">CALLDATACOPY</td>
+<td align="left">memOffset, dataOffset, length</td>
+<td align="left">mem[memOffset:memOffset+length] = msg.data[dataOffset:dataOffset+length]</td>
+</tr>
+<tr>
+<td align="left">39</td>
+<td align="left">CODECOPY</td>
+<td align="left">memOffset, codeOffset, length</td>
+<td align="left">mem[memOffset:memOffset+length] = this.code[codeOffset:codeOffset+length]</td>
+</tr>
+<tr>
+<td align="left">3c</td>
+<td align="left">EXTCODECOPY</td>
+<td align="left">addr, memOffset, codeOffset, length</td>
+<td align="left">mem[memOffset:memOffset+length] = addr.code[codeOffset:codeOffset+length]</td>
+</tr>
+<tr>
+<td align="left">3e</td>
+<td align="left">RETURNDATACOPY</td>
+<td align="left">memOffset, dataOffset, length</td>
+<td align="left">mem[memOffset:memOffset+length] = returndata[dataOffset:dataOffset+length]</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">58</td>
+<td align="left">PC</td>
+<td align="left"></td>
+<td align="left">pc</td>
+<td align="left">当前指令的位置</td>
+</tr>
+<tr>
+<td align="left">59</td>
+<td align="left">MSIZE</td>
+<td align="left"></td>
+<td align="left">mem.length</td>
+<td align="left">内存大小</td>
+</tr>
+<tr>
+<td align="left">5a</td>
+<td align="left">GAS</td>
+<td align="left"></td>
+<td align="left">gas</td>
+<td align="left">剩余 gas</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_4">存储指令<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>EVM 执行时有三个存储位置：</p>
+<ul>
+<li>栈（stack）：通过 PUSH、POP 系列在当前执行的栈上进行读写</li>
+<li>内存（memory）：通过 MLOAD、MSTORE 系列在当前执行的内存上进行读写</li>
+<li>链上存储（storage）：通过 SLOAD、SSTORE 系列在当前合约的存储区进行读写（是持久化的）</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">50</td>
+<td align="left">POP</td>
+<td align="left">a</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">51</td>
+<td align="left">MLOAD</td>
+<td align="left">offset</td>
+<td align="left">mem[offset:offset+32]</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">52</td>
+<td align="left">MSTORE</td>
+<td align="left">offset, value</td>
+<td align="left"></td>
+<td align="left">mem[offset:offset+32] = value</td>
+</tr>
+<tr>
+<td align="left">53</td>
+<td align="left">MSTORE8</td>
+<td align="left">offset, value</td>
+<td align="left"></td>
+<td align="left">mem[offset] = value</td>
+</tr>
+<tr>
+<td align="left">54</td>
+<td align="left">SLOAD</td>
+<td align="left">key</td>
+<td align="left">storage[key]</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">55</td>
+<td align="left">SSTORE</td>
+<td align="left">key, value</td>
+<td align="left"></td>
+<td align="left">storage[key] = value</td>
+</tr>
+</tbody>
+</table>
+<p>并且提供了很多 PUSH 指令，分别处理不同大小的输入立即数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">60</td>
+<td align="left">PUSH1</td>
+<td align="left"></td>
+<td align="left">uint8</td>
+<td align="left">压入一个 1 字节的值</td>
+</tr>
+<tr>
+<td align="left">61</td>
+<td align="left">PUSH2</td>
+<td align="left"></td>
+<td align="left">uint16</td>
+<td align="left">压入一个 2 字节的值</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr>
+<td align="left">7f</td>
+<td align="left">PUSH32</td>
+<td align="left"></td>
+<td align="left">uint256</td>
+<td align="left">压入一个 32 字节的值</td>
+</tr>
+</tbody>
+</table>
+<p>以及一些栈上的数据操作，即 DUP 和 SWAP，分别表示复制栈上某处数据到栈顶以及交换栈上两个数据：</p>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">80</td>
+<td align="left">DUP1</td>
+<td align="left">a</td>
+<td align="left">a, a</td>
+<td align="left">将栈顶数据复制一份到栈顶</td>
+</tr>
+<tr>
+<td align="left">81</td>
+<td align="left">DUP2</td>
+<td align="left">_, a</td>
+<td align="left">a, _, a</td>
+<td align="left">复制栈上第 2 个数据到栈顶</td>
+</tr>
+<tr>
+<td align="left">82</td>
+<td align="left">DUP3</td>
+<td align="left">_, _, a</td>
+<td align="left">a, _, _, a</td>
+<td align="left">复制栈上第 3 个数据到栈顶</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr>
+<td align="left">8f</td>
+<td align="left">DUP16</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">复制栈上第 16 个数据到栈顶</td>
+</tr>
+<tr>
+<td align="left">90</td>
+<td align="left">SWAP1</td>
+<td align="left">a, b</td>
+<td align="left">b, a</td>
+<td align="left">交换栈顶两个数据</td>
+</tr>
+<tr>
+<td align="left">91</td>
+<td align="left">SWAP2</td>
+<td align="left">a, _, b</td>
+<td align="left">b, _, a</td>
+<td align="left">交换栈上第 2 个数据和栈顶数据</td>
+</tr>
+<tr>
+<td align="left">92</td>
+<td align="left">SWAP3</td>
+<td align="left">a, _, _, b</td>
+<td align="left">b, _, _, a</td>
+<td align="left">交换栈上第 3 个数据和栈顶数据</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr>
+<td align="left">9f</td>
+<td align="left">SWAP16</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">交换栈上第 16 个数据和栈顶数据</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_5">跳转指令<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h3>
+<p>EVM 的跳转比较特别，它不能随意跳转到任何位置，只能跳转到一个 JUMPDEST 指令的位置。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">56</td>
+<td align="left">JUMP</td>
+<td align="left">dest</td>
+<td align="left"></td>
+<td align="left">跳转到 dest 位置</td>
+</tr>
+<tr>
+<td align="left">57</td>
+<td align="left">JUMPI</td>
+<td align="left">dest, cond</td>
+<td align="left"></td>
+<td align="left">如果 cond 非 0 则跳转到 dest 位置</td>
+</tr>
+<tr>
+<td align="left">5b</td>
+<td align="left">JUMPDEST</td>
+<td align="left"></td>
+<td align="left"></td>
+<td align="left">标记一个跳转目标</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_6">日志指令<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>在链上记录日志，也就是 event。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">a0</td>
+<td align="left">LOG0</td>
+<td align="left">offset, length</td>
+<td align="left">LOG0(mem[offset:offset+length])</td>
+</tr>
+<tr>
+<td align="left">a1</td>
+<td align="left">LOG1</td>
+<td align="left">offset, length, topic0</td>
+<td align="left">LOG1(mem[offset:offset+length], topic0)</td>
+</tr>
+<tr>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+<td align="left">...</td>
+</tr>
+<tr>
+<td align="left">a4</td>
+<td align="left">LOG4</td>
+<td align="left">offset, length, topic0~3</td>
+<td align="left">LOG4(mem[offset:offset+length], topic0~3)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="_7">创建合约地址指令<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>创建合约地址有两种指令，CREATE 和 CREATE2，后者是君士坦丁堡硬分叉后引入的。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">f0</td>
+<td align="left">CREATE</td>
+<td align="left">value, offset, length</td>
+<td align="left">address</td>
+<td align="left"></td>
+</tr>
+<tr>
+<td align="left">f5</td>
+<td align="left">CREATE2</td>
+<td align="left">value, offset, length, salt</td>
+<td align="left">address</td>
+<td align="left"></td>
+</tr>
+</tbody>
+</table>
+<h3 id="_8">调用、返回、自毁指令<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h3>
+<h4 id="_9">远程调用指令<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h4>
+<p>EVM 中远程调用有四种：</p>
+<ul>
+<li>call：远程调用，如果有状态修改，修改的是被调用合约的状态</li>
+<li>callcode：远程调用，如果有状态修改，修改的是调用合约的状态（不建议使用，由 delegatecall 取代）</li>
+<li>delegatecall：远程调用，如果有状态修改，修改的是调用合约的状态</li>
+<li>staticcall：远程调用，不能存在状态修改</li>
+</ul>
+<p>其中 callcode 和 delegatecall 的区别是，对于一个调用：Alice 通过交易调用了合约 A，合约 A 中通过某一远程调用调用了合约 B，那么：</p>
+<ul>
+<li>callcode：合约 A 中的 msg.sender 是 Alice，合约 B 中的 msg.sender 是 A</li>
+<li>delegatecall：合约 A 和 B 中的 msg.sender 都是 Alice</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">栈输出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">f1</td>
+<td align="left">CALL</td>
+<td align="left">gas, to, value, argsOffset, argsLength, retOffset, retLength</td>
+<td align="left">success</td>
+</tr>
+<tr>
+<td align="left">f2</td>
+<td align="left">CALLCODE</td>
+<td align="left">gas, to, value, argsOffset, argsLength, retOffset, retLength</td>
+<td align="left">success</td>
+</tr>
+<tr>
+<td align="left">f4</td>
+<td align="left">DELEGATECALL</td>
+<td align="left">gas, to, argsOffset, argsLength, retOffset, retLength</td>
+<td align="left">success</td>
+</tr>
+<tr>
+<td align="left">fa</td>
+<td align="left">STATICCALL</td>
+<td align="left">gas, to, argsOffset, argsLength, retOffset, retLength</td>
+<td align="left">success</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_10">返回指令<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>返回指令也可以算为两种，一种是 RETURN 正常返回，另一种是 REVERT 异常回滚（同时 REVERT 会回滚所有的状态修改）。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">f3</td>
+<td align="left">RETURN</td>
+<td align="left">offset, length</td>
+<td align="left">return mem[offset:offset+length]</td>
+</tr>
+<tr>
+<td align="left">fd</td>
+<td align="left">REVERT</td>
+<td align="left">offset, length</td>
+<td align="left">revert mem[offset:offset+length]</td>
+</tr>
+</tbody>
+</table>
+<h4 id="_11">自毁指令<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>自毁即 solidity 代码中的 selfdestruct，销毁当前合约，并将所有余额转移到指定地址。</p>
+<table>
+<thead>
+<tr>
+<th align="left">字节码</th>
+<th align="left">名称</th>
+<th align="left">栈输入</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">ff</td>
+<td align="left">SELFDESTRUCT</td>
+<td align="left">address</td>
+<td align="left">selfdestruct(address)</td>
+</tr>
+</tbody>
+</table>
+<h2 id="evm_2">EVM 逆向<a class="headerlink" href="#evm_2" title="Permanent link">&para;</a></h2>
+<p>有时题目不会给出合约源码，这时就需要对字节码进行逆向。一些常用的网站：</p>
+<ul>
+<li><a href="https://ethervm.io/decompile">ethervm.io/decompile</a></li>
+<li><a href="https://library.dedaub.com/decompile">dedaube Contract Library</a></li>
+<li><a href="https://etherscan.io/contractsVerified">etherscan</a></li>
+<li>Binary Ninja 的插件 <a href="https://github.com/crytic/ethersplay"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"/></svg></span> crytic/ethersplay</a></li>
+<li>etherscan 上也是有逆向功能的</li>
+</ul>
 
   
     <hr>
@@ -3660,7 +4692,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月28日 23:33:01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月29日 23:45:37</span>
       
         <br>
         创建日期:
