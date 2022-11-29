@@ -106,7 +106,7 @@ gasPrice 是一单位 gas 对应的以太币价值（wei 为单位），gasLimit
 
 在执行交易时，这个 data 字段的内容会被放在 EVM 上执行，它可以是任意可执行的字节码，遇到 return 指令直接返回，也可以返回结果（且有回显）。
 
-一般的合约字节码会分为两个部分，即 creationCode 和 runtimeCode。它们是拼接在一起的一个整体。在 EVM 运行字节码时，先执行 creationCode 部分，其作用是将后面的 runtimeCode 部署到链上代码区中以及执行构建函数，然后直接返回，完成交易。之后在链上存储的就只是 runtimeCode 部分，也是调用时会执行的实际部分。
+一般的合约字节码会分为两个部分，即 creationCode 和 runtimeCode。它们是拼接在一起的一个整体。在 EVM 运行字节码时，先执行 creationCode 部分，其作用是运行构建函数、设置合约初始状态，然后返回 runtimeCode，这个将会被部署到链上代码区。之后在链上存储的就只是 runtimeCode 部分，也是调用时会执行的实际部分。
 
 如果合约的构建函数是 payable 的，那么可以在创建交易的时候通过 value 字段来附带以太币，这些以太币会被转移到合约账户中。如果不是 payable 但创建时向其转账了，那么这条交易会 revert。
 

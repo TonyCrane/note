@@ -8,6 +8,6 @@
 ## Table of Contents
 - [Ethereum 以太坊](eth)
     - [以太坊基础](eth/basic)
-    - [以太坊虚拟机（**TODO**）](eth/evm)
-    - [常见合约漏洞攻击手段（**TODO**）](eth/vuln)
+    - [以太坊虚拟机](eth/evm)
+    - [常见合约漏洞攻击手段（**WIP**）](eth/vuln)
     - [ERC 标准（**WIP**）](eth/erc)
