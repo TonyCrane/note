@@ -69,3 +69,4 @@ comment: True
 
 ## 其它
 - Emoji 查询 [EmojiAll](https://www.emojiall.com/zh-hans)
+- ffmpeg 指令生成 [ffmpeg-commander](https://alfg.dev/ffmpeg-commander/)
