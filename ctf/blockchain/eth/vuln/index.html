@@ -2759,6 +2759,8 @@ var _hmt = _hmt || [];
         
           
         
+          
+        
       
       
         
@@ -2880,24 +2882,51 @@ var _hmt = _hmt || [];
     伪随机数
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="伪随机数">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    薅羊毛攻击
+    使用区块变量作为随机数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blockhash" class="md-nav__link">
+    使用 blockhash 作为随机数
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
+    回滚攻击
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    薅羊毛攻击
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
     读取私有变量
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     远程调用
   </a>
   
@@ -2920,6 +2949,20 @@ var _hmt = _hmt || [];
     <li class="md-nav__item">
       <a href="../erc/" class="md-nav__link">
         ERC 标准
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eip/" class="md-nav__link">
+        其余重要 EIPs
       </a>
     </li>
   
@@ -3656,24 +3699,51 @@ var _hmt = _hmt || [];
     伪随机数
   </a>
   
-</li>
+    <nav class="md-nav" aria-label="伪随机数">
+      <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
-    薅羊毛攻击
+    使用区块变量作为随机数
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blockhash" class="md-nav__link">
+    使用 blockhash 作为随机数
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#_7" class="md-nav__link">
+    回滚攻击
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    薅羊毛攻击
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
     读取私有变量
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     远程调用
   </a>
   
@@ -3704,14 +3774,157 @@ var _hmt = _hmt || [];
 <p class="admonition-title">Abstract</p>
 <p>一些经典、常见的智能合约漏洞和攻击手段</p>
 </div>
-<p>TODO</p>
 <h2 id="_2">整型溢出<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>uint 是 Solidity 中很常用的类型，但它是无符号整型，而且 solidity 0.8 之前没有溢出的检查，所以很容易造成溢出。</p>
+<p>例如：<a href="https://note.tonycrane.cc/writeups/ethernaut/#token">Ethernaut &gt; Token</a>，题目中的 balances 记录是 mapping(address =&gt; uint)，而且在 transfer 函数中没有没有检查溢出：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Token</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">uint</span><span class="p">)</span><span class="w"> </span>balances<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="kt">uint</span><span class="w"> </span><span class="k">public </span><span class="nv">totalSupply</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">_initialSupply</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">        </span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>totalSupply<span class="w"> </span><span class="o">=</span><span class="w"> </span>_initialSupply<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">transfer</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_to</span><span class="p">,</span><span class="w"> </span><span class="kt">uint</span><span class="w"> </span><span class="nv">_value</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">-</span><span class="w"> </span>_value<span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="m m-Decimal">0</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span>_value<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">        </span>balances<span class="p">[</span>_to<span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span>_value<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">balanceOf</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_owner</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>view<span class="w"> </span><span class="kt">returns</span><span class="w"> </span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">balance</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="kt">return</span><span class="w"> </span>balances<span class="p">[</span>_owner<span class="p">];</span><span class="w"></span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+这就导致了可以直接通过 transfer 比余额更多的 value，让记录的 balance 变成正的极大值。</p>
+<p>这个问题的一个解决方法是判断溢出，可以使用 OpenZeppelin 的 <a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/utils/math/SafeMath.sol">SafeMath</a> 库：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="kt">import</span><span class="w"> </span><span class="s2">&quot;@openzeppelin/contracts/utils/math/SafeMath.sol&quot;</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Token</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>using<span class="w"> </span>SafeMath<span class="w"> </span><span class="kt">for</span><span class="w"> </span><span class="kt">uint256</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+其提供了一些方法用来进行带溢出检查的运算。</p>
 <h3 id="_3">变长数组长度下溢任意写<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h3>
+<p>整型溢出带来的一个更严重的问题是如果允许用户操作变长数组长度，则有可能导致数组长度下溢，从而可以读写全部的 storage。</p>
+<p>例如：<a href="https://note.tonycrane.cc/writeups/ethernaut/#alien-codex">Ethernaut &gt; Alien Codex</a>，题目中提供了一个方法来减小数组长度，同时存在写入数组的函数：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">contract</span><span class="w"> </span><span class="ni">AlienCodex</span><span class="w"> </span><span class="kt">is</span><span class="w"> </span>Ownable<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="kt">bool</span><span class="w"> </span><span class="k">public </span><span class="nv">contact</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">    </span><span class="kt">bytes32</span><span class="p">[]</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span>codex<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="kt">modifier</span><span class="w"> </span>contacted<span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">        </span>assert<span class="p">(</span>contact<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">        </span>_<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">make_contact</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">        </span>contact<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">record</span><span class="p">(</span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">_content</span><span class="p">)</span><span class="w"> </span>contacted<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">        </span>codex<span class="p">.</span>push<span class="p">(</span>_content<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">retract</span><span class="p">()</span><span class="w"> </span>contacted<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">        </span>codex<span class="p">.</span>length<span class="o">--</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">revise</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">i</span><span class="p">,</span><span class="w"> </span><span class="kt">bytes32</span><span class="w"> </span><span class="nv">_content</span><span class="p">)</span><span class="w"> </span>contacted<span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span>codex<span class="p">[</span>i<span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>_content<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+数组的长度是存在当前 slot 中的，是一个 uint256，所以可以从 0 减小到到 2**256-1，而且数组的真正存储位置是 keccak256(slot) 开头的，这样就可以通过计算来找到并读写任意 slot（计算 slot 也会用到溢出）。</p>
 <h2 id="_4">重入攻击<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>重入攻击（Re-entrancy）是一个很经典的区块链智能合约攻击方式。</p>
+<p>例如如下合约：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Bank</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span><span class="kt">mapping</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">uint256</span><span class="p">)</span><span class="w"> </span>balances<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">withdraw</span><span class="p">(</span><span class="kt">uint256</span><span class="w"> </span><span class="nv">amount</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span>amount<span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">        </span><span class="k">msg.sender</span><span class="p">.</span>call<span class="p">.</span>value<span class="p">(</span>amount<span class="p">)(</span><span class="s2">&quot;&quot;</span><span class="p">);</span><span class="w"></span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">        </span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span>amount<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+这个合约最大的问题在于它先转了钱，然后才更新的 balances。虽然转账不成功的话 revert 会回滚所有状态，但是它在转账的时候就会触发到接收合约的 fallback 函数。那么如果在 fallback 函数中继续调用 withdraw 函数，那么这次检查 require 的时候的 balances 仍是之前的值，也就是可以成功通过检查，继续下一条也就是转账，而在最后返回的时候才会一次次地减少 balances（也会下溢）。这时已经不用在意，因为钱已经一轮一轮地被转走了。</p>
+<p>所以如果合约中有类似的操作的话，一定要先记账再转钱。或者可以使用 OpenZeppelin 的 <a href="https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/security/ReentrancyGuard.sol">ReentrancyGuard</a>，里面提供了一个 modifier nonReentrant 可以防止重入。</p>
+<p>例题是：<a href="https://note.tonycrane.cc/writeups/ethernaut/#re-entrancy">Ethernaut &gt; Re-entrancy</a>。</p>
 <h2 id="_5">伪随机数<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
-<h2 id="_6">薅羊毛攻击<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h2>
-<h2 id="_7">读取私有变量<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h2>
-<h2 id="_8">远程调用<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>由于区块链的特性，需要所有以太坊节点验证交易计算出相同结果达成共识，所以智能合约中并不能实现真随机数，而伪随机也有很多种可能来破解。</p>
+<h3 id="_6">使用区块变量作为随机数<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>比如在验证的时候用到了当前区块的信息，如 coinbase、timestamp、number 等。而在我们进行交易时，是处在同一个区块的，所以可以同时计算出相同的随机数值。</p>
+<p>例题：<a href="https://note.tonycrane.cc/writeups/ethernaut/#coin-flip">Ethernaut &gt; Coin Flip</a>、<a href="https://note.tonycrane.cc/writeups/SecurityInnovation/#lottery">Security Innovation &gt; Lottery</a>、<a href="https://note.tonycrane.cc/writeups/SecurityInnovation/#heads-or-tails">Security Innovation &gt; Heads or Tails</a>。</p>
+<h3 id="blockhash">使用 blockhash 作为随机数<a class="headerlink" href="#blockhash" title="Permanent link">&para;</a></h3>
+<p>前面的几道例题中也有使用 blockhash 的情况，不过都是计算的当前区块的 hash。而这里要说的是另一种情况，也就是记录了某一时刻的 block number，然后在之后使用 blockhash 计算 hash。</p>
+<p>这种情况的问题是，blockhash 函数只会计算最近 256 个块的 hash，更早的区块计算 blockhash 得到的都是 0。</p>
+<p>例题：<a href="https://note.tonycrane.cc/writeups/SecurityInnovation/#raffle">Security Innovation &gt; Raffle</a>。</p>
+<h3 id="_7">回滚攻击<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>比如预测和支付在同一次交易里，也就是说，我给出一个预测，对方就会通过交易的金额来给我反馈正确与否。这样的话合约转来的金额肯定是不一样的，那么在接收的时候就可以在 fallback 函数中判断一下接收到的金额，如果不是正确的金额，就可以直接 revert 来回滚整条交易，然后继续猜测。</p>
+<h2 id="_8">薅羊毛攻击<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h2>
+<p>比如一个 Token 合约，实现了空投函数，也就是发放一定数量的初始 token 给用户，但是限制了每个用户只能领取一次：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Token</span><span class="w"> </span><span class="kt">is</span><span class="w"> </span>BasicToken<span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="kt">mapping</span><span class="w"> </span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="o">=&gt;</span><span class="w"> </span><span class="kt">bool</span><span class="p">)</span><span class="w"> </span>airdroped<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">airdrop</span><span class="p">()</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">        </span><span class="kt">require</span><span class="p">(</span><span class="o">!</span>airdroped<span class="p">[</span><span class="k">msg.sender</span><span class="p">]);</span><span class="w"></span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">        </span>airdroped<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kt">true</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">        </span>balances<span class="p">[</span><span class="k">msg.sender</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="m m-Decimal">100</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+那么即使它限制了一个用户领一次，但是我们可以不断地创建新的合约来领取空投，因为每一个新合约都是一个新合约，然后再从合约中转出来汇总，拿到巨量 token。这就是所谓的薅羊毛攻击。</p>
+<p>例题：<a href="https://note.tonycrane.cc/writeups/AAA/#hard-gambler">🔒 AAA &gt; hard gambler</a></p>
+<h2 id="_9">读取私有变量<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h2>
+<p>这个漏洞就不必细说了，solidity 中的 private 变量只是没有公开查询的接口，实际上是可以直接读取对应 storage 的 slot 值来获取的。相关原理：<a href="https://note.tonycrane.cc/ctf/blockchain/eth/basic/#_14">以太坊基础 &gt; 存储</a>。</p>
+<p>例题：<a href="https://note.tonycrane.cc/writeups/ethernaut/#vault">Ethernaut &gt; Vault</a>、<a href="https://note.tonycrane.cc/writeups/ethernaut/#privacy">Ethernaut &gt; Privacy</a>、<a href="https://note.tonycrane.cc/writeups/SecurityInnovation/#lock-box">Security Innovation &gt; Lock Box</a>。</p>
+<h2 id="_10">远程调用<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h2>
+<p>一个比较经典、不容易发现的漏洞，就是合约中大胆地使用了 delegatecall 来进行跨合约函数调用。以太坊提供的四种远程调用方法的区别在<a href="https://note.tonycrane.cc/ctf/blockchain/eth/evm/#_9">以太坊虚拟机 &gt; ETH 字节码 &gt; 远程调用指令</a>中介绍过：</p>
+<ul>
+<li>call：执行环境为被调用者的环境，且 msg 会修改为调用者</li>
+<li>callcode：执行环境为调用者自己的环境，且 msg 会修改为调用者（一般不用）</li>
+<li>delegatecall：执行环境为被调用者的环境，且 msg 不会修改（也就相当于将其它合约的字节码拿到自己身上来执行）</li>
+<li>staticcall：不允许修改状态（这里不需要关心）</li>
+</ul>
+<p>所以一个很显然的事情就是如果使用了 delegatecall 来调用外部给的合约地址中的函数，那么就完全有权限去修改这个合约中的状态。</p>
+<p>例题：<a href="https://note.tonycrane.cc/writeups/ethernaut/#preservation">Ethernaut &gt; Preservation</a>：
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">contract</span><span class="w"> </span><span class="ni">Preservation</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">timeZone1Library</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">timeZone2Library</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">    </span><span class="kt">address</span><span class="w"> </span><span class="k">public </span><span class="nv">owner</span><span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="kt">uint</span><span class="w"> </span><span class="nv">storedTime</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span>bytes4<span class="w"> </span><span class="kt">constant</span><span class="w"> </span>setTimeSignature<span class="w"> </span><span class="o">=</span><span class="w"> </span>bytes4<span class="p">(</span><span class="nb">keccak256</span><span class="p">(</span><span class="s2">&quot;setTime(uint256)&quot;</span><span class="p">));</span><span class="w"></span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="kt">constructor</span><span class="p">(</span><span class="kt">address</span><span class="w"> </span><span class="nv">_timeZone1LibraryAddress</span><span class="p">,</span><span class="w"> </span><span class="kt">address</span><span class="w"> </span><span class="nv">_timeZone2LibraryAddress</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">        </span>timeZone1Library<span class="w"> </span><span class="o">=</span><span class="w"> </span>_timeZone1LibraryAddress<span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">        </span>timeZone2Library<span class="w"> </span><span class="o">=</span><span class="w"> </span>_timeZone2LibraryAddress<span class="p">;</span><span class="w"> </span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">        </span>owner<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">msg.sender</span><span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">setFirstTime</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">_timeStamp</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">        </span>timeZone1Library<span class="p">.</span>delegatecall<span class="p">(</span>abi<span class="p">.</span>encodePacked<span class="p">(</span>setTimeSignature<span class="p">,</span><span class="w"> </span>_timeStamp<span class="p">));</span><span class="w"></span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">setSecondTime</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">_timeStamp</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">        </span>timeZone2Library<span class="p">.</span>delegatecall<span class="p">(</span>abi<span class="p">.</span>encodePacked<span class="p">(</span>setTimeSignature<span class="p">,</span><span class="w"> </span>_timeStamp<span class="p">));</span><span class="w"></span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="k">contract</span><span class="w"> </span><span class="ni">LibraryContract</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span><span class="kt">uint</span><span class="w"> </span><span class="nv">storedTime</span><span class="p">;</span><span class="w">  </span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="kt">function</span><span class="w"> </span><span class="nv">setTime</span><span class="p">(</span><span class="kt">uint</span><span class="w"> </span><span class="nv">_time</span><span class="p">)</span><span class="w"> </span><span class="kt">public</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">        </span>storedTime<span class="w"> </span><span class="o">=</span><span class="w"> </span>_time<span class="p">;</span><span class="w"></span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+虽然题目在 constructor 中就已经设定了 timeZoneLibrary，但是它是通过 delegatecall 调用的，而且其给出的 LibraryContract 中 slot 0 是 storedTime，setTime 函数会直接修改这个 slot。那么在调用 setFirstTime 时 delegatecall 修改掉了 slot 0，也就修改掉了 timeZone1Library。接着再 setFirstTime 就可以 delegatecall 我们自己输入的合约地址来修改 slot 2 也就是 owner 了。</p>
+<p><a href="https://note.tonycrane.cc/writeups/ethernaut/#puzzle-wallet">Ethernaut &gt; Puzzle Wallet</a> 同理，也是一道没有注意 delegatecall 导致 slot 混乱的例题。</p>
 
   
     <hr>
@@ -3719,7 +3932,7 @@ var _hmt = _hmt || [];
   <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月30日 21:42:50</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年12月1日 21:44:15</span>
       
         <br>
         创建日期:
