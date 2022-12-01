@@ -2,6 +2,7 @@
 hide:
     - date
 home: true
+statistics: true
 ---
 
 # o(〃'▽'〃)o Hi!
@@ -19,6 +20,11 @@ home: true
         - 主页：https://tonycrane.cc/
         - 博客：https://blog.tonycrane.cc/
         - GitHub：https://github.com/TonyCrane/
+    
+    ??? info "site.statistics"
+        页面总数：{{pages}}  
+        总字数：{{words}}  
+        代码块行数：{{codes}}
 
 ```python title="script.py"
 if visitor.name == 'TonyCrane':

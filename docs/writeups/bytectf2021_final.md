@@ -130,13 +130,13 @@ result.show()
 
 拿到题目发现给题的方式不是发附件而是直接插入图片，所以考虑是不是和链接有关系：
 
-```
+```text
 https://p3.toutiaoimg.com/img/tos-cn-i-qvj2lq49k0/7a19b5d53d014130ab3c00f73a8d4645~tplv-yykgsuqxec-imagexlite-0bb543cf5d800a1a226c9d1fe716be95.png
 ```
 
 发现了 `~tplv-` ，所以上图应该是使用 velmageX 用处理模板处理过的，所以就直接删掉处理，得到原始图片的地址：
 
-```
+```text
 https://p3.toutiaoimg.com/img/tos-cn-i-qvj2lq49k0/7a19b5d53d014130ab3c00f73a8d4645~tplv-yykgsuqxec-image.png
 或
 https://p3.toutiaoimg.com/img/tos-cn-i-qvj2lq49k0/7a19b5d53d014130ab3c00f73a8d4645~noop.png

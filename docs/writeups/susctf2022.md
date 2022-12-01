@@ -29,7 +29,7 @@ flag: **SUSCTF{RED_ALERT_WINNER!!!}**
 
 Tanner 图，LDPC 码，发现文件尾有所求内容：
 
-```
+```text
 THE FLAG IS the sha256 of the sum ofthe proper codewords(binary plus)which satisfy the condition.(note: with no zeros front)
 ```
 
@@ -117,7 +117,7 @@ flag: **SUSCTF{c17019990bf57492cddf24f3cc3be588507b2d567934a101d4de2fa6d606b5c1}
 先匹配响度，然后给一段音频反相，之后两段音频进行多轨混音，这样相同部分会抵消掉
 
 可以很清楚地听到中间有一段滴滴声，是摩尔斯电码，抄写翻译：
-```
+```text
 ... ..- ... -.-. - ..-. -- .- ... - . .-. --- ..-. .- ..- -.. .. ---
 ```
 

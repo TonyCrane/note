@@ -343,7 +343,7 @@ Label:
     addi    x15,    x0,     1
 ```
 使用 riscv32-unknown-linux-gnu-c++ -nostdlib -nostdinc -static -g bonus.s -o bonus.elf -march=rv32i -mabi=ilp32 来编译出指令集在 RV32I 范围内的 ELF 文件，再 objdump：
-```
+```text
 00010074 <_start>:
    10074:	07b00093  	li	ra,123
    10078:	1c80f113  	andi	sp,ra,456
