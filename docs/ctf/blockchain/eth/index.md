@@ -6,5 +6,6 @@
 ## Table of Contents
 - [以太坊基础](basic)
 - [以太坊虚拟机](evm)
-- [常见合约漏洞攻击手段（**WIP**）](vuln)
+- [常见合约漏洞攻击手段](vuln)
 - [ERC 标准（**WIP**）](erc)
+- [其余重要 EIPs](eip)
