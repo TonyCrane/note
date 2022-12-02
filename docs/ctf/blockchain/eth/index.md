@@ -6,6 +6,8 @@
 ## Table of Contents
 - [以太坊基础](basic)
 - [以太坊虚拟机](evm)
+- [Solidity 语言（**TODO**）](solidity)
+- [Yul 语言](yul)
 - [常见合约漏洞攻击手段](vuln)
-- [ERC 标准（**WIP**）](erc)
+- [ERC 标准](erc)
 - [其余重要 EIPs](eip)
