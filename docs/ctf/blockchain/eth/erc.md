@@ -343,7 +343,7 @@ ERC-173 提供了所有权相关的标准，接口很简单：
 ### 实现
 OpenZeppelin 实现了一个 [Ownable.sol](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol)，其包含了这些接口，以及一些额外的功能：
 
-- **onlyOwner**：修饰器，限制当前函数只有所有者能调用
+- **onlyOwner**：修改器，限制当前函数只有所有者能调用
     ```solidity
     modifier onlyOwner() {
         require(owner() == _msgSender(), "Ownable: caller is not the owner");

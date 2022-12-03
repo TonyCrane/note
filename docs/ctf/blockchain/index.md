@@ -9,7 +9,7 @@
 - [Ethereum 以太坊](eth)
     - [以太坊基础](eth/basic)
     - [以太坊虚拟机](eth/evm)
-    - [Solidity 语言（**TODO**）](solidity)
+    - [Solidity 语言](solidity)
     - [Yul 语言](yul)
     - [常见合约漏洞攻击手段](eth/vuln)
     - [ERC 标准](eth/erc)
