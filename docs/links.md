@@ -82,7 +82,7 @@ comment: True
 <div class="flink-list-item">
     <a href="https://shao.fun/" title="烧风的博客" target="_blank">
         <div class="flink-item-icon">
-            <img src="https://shao.fun/images/logo.png" alt="烧风">
+            <img src="https://shao.fun/images/logo.svg" alt="烧风">
         </div>
         <div class="flink-item-name">烧风的博客</div>
         <div class="flink-item-desc">一个很强的 up 主@烧风</div>
