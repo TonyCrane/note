@@ -12,8 +12,13 @@
 
 - 理论部分
     - [流水线 CPU](topic1)
+    - [操作系统简介](topic2)
+    - [操作系统结构及系统调用](topic3)
+    - [进程与线程](topic4)
+    - [CPU 调度](topic5)
 - 实验部分
     - [lab1: 流水线 CPU 设计](lab1)
     - [lab2: 流水线冒险处理](lab2)
     - [lab3: GDB+QEMU 调试 64 位 RISC-V LINUX](lab3)
     - [lab4: RV64 内核引导](lab4)
+    - [lab5: RV64 时钟中断处理](lab5)
