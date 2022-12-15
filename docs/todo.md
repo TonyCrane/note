@@ -56,7 +56,6 @@
 - [x] 修改 mkdocs 源码，加快预览构建速度
 - [x] 使用 rich 美化 log 输出
 - [ ] 改善 encryption 插件
-- [ ] 修改 mkdocs，serve 时仅重新渲染修改部分
 
 ## 笔记类
 
@@ -64,16 +63,16 @@
     - [x] 补充 186～386 指令
     - [x] 补充 fl 影响
 - [x] RISC-V 汇编语言
-    - [ ] 补充扩展指令集指令
+    - [x] 补充扩展指令集指令
 - [x] 检查各 index
 - [ ] 系统一相关
     - [ ] 理论课
-    - [ ] lab
+    - [x] lab
 - [x] 系统二相关
     - [x] 补一下前两节课的笔记
-- [ ] CTF ETH
-    - [ ] 基础知识
-    - [ ] 常见漏洞
+- [x] CTF ETH
+    - [x] 基础知识
+    - [x] 常见漏洞
 - [ ] Python 相关
     - [x] Lecture 文字版
     - [ ] NumPy
@@ -87,7 +86,7 @@
     - [x] 数据结构基础
 - [ ] 工具
     - [x] index
-    - [ ] docker
+    - [x] docker
     - [ ] GitHub Action
     - [x] Git
 - [x] Writeups

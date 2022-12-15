@@ -5,3 +5,5 @@
 
 ## Table of Contents
 - [ZJU 课程手写笔记汇总](notes)
+- [TroubleShooting](troubleshooting/)
+    - [macOS TroubleShooting](troubleshooting/mac/)

@@ -60,6 +60,16 @@ comment: True
 </div>
 
 <div class="flink-list-item">
+    <a href="https://tiandians.github.io/TechStack/" title="Bowling's TechStack" target="_blank">
+        <div class="flink-item-icon">
+            <img src="https://cdn.tonycrane.cc/note/friends/bowling.jpeg" alt="Bowling">
+        </div>
+        <div class="flink-item-name">Bowling's TechStack</div>
+        <div class="flink-item-desc">强得恐怖的学弟</div>
+    </a>
+</div>
+
+<div class="flink-list-item">
     <a href="https://matheart.github.io/matheart-note/" title="Matheart's Note" target="_blank">
         <div class="flink-item-icon">
             <img src="https://cdn.tonycrane.cc/note/friends/mh.jpeg" alt="Matheart">
@@ -82,7 +92,7 @@ comment: True
 <div class="flink-list-item">
     <a href="https://shao.fun/" title="烧风的博客" target="_blank">
         <div class="flink-item-icon">
-            <img src="https://shao.fun/images/logo.png" alt="烧风">
+            <img src="https://shao.fun/images/logo.svg" alt="烧风">
         </div>
         <div class="flink-item-name">烧风的博客</div>
         <div class="flink-item-desc">一个很强的 up 主@烧风</div>
