@@ -14,7 +14,7 @@ comment: True
         <div class="flink-item-icon">
             <img src="https://cdn.tonycrane.cc/note/friends/isshiki.png" alt="Isshiki修">
         </div>
-        <div class="flink-item-name">Isshiki修's Notebook</div>
+        <div class="flink-item-name heti-skip">Isshiki修's Notebook</div>
         <div class="flink-item-desc">修佬 tql！</div>
     </a>
 </div>
