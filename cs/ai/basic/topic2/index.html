@@ -1523,27 +1523,27 @@ var _hmt = _hmt || [];
 <ul>
 <li>利用一些能够辅助算法做出决策的额外信息的搜索算法称为启发式搜索（heuristic search），或有信息搜索（informed search）</li>
 <li>提供的这些辅助信息称为启发信息</li>
-<li>启发信息通常形式化为一个关于结点的函数<span class="arithmatex"><span><span class="heti-spacing"> </span>\(h(n)\)</span></span>，其用于估计结点<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(n\)<span class="heti-spacing"> </span></span></span>距离达到目标还需付出多少代价，这个函数称为启发函数（heuristic function）<ul>
+<li>启发信息通常形式化为一个关于结点的函数 <span class="arithmatex">\(h(n)\)</span>，其用于估计结点 <span class="arithmatex">\(n\)</span> 距离达到目标还需付出多少代价，这个函数称为启发函数（heuristic function）<ul>
 <li>启发函数通常是非负的</li>
 <li>常见用法是用来更改前面的<span class="heti-skip"><span class="heti-spacing"> </span>pick_from<span class="heti-spacing"> </span></span>函数来规定挑选结点的顺序</li>
 </ul>
 </li>
-<li>对于任意结点<span class="arithmatex"><span><span class="heti-spacing"> </span>\(n\)</span></span>，决定了搜索算法扩展结点<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(n\)<span class="heti-spacing"> </span></span></span>的优先度的函数<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(f(n)\)<span class="heti-spacing"> </span></span></span>称为评价函数（evaluation function）<ul>
+<li>对于任意结点 <span class="arithmatex">\(n\)</span>，决定了搜索算法扩展结点 <span class="arithmatex">\(n\)</span> 的优先度的函数 <span class="arithmatex">\(f(n)\)</span> 称为评价函数（evaluation function）<ul>
 <li>评价函数值越小，被挑选的优先级越高</li>
-<li>深度优先搜索中<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(f(n)\)<span class="heti-spacing"> </span></span></span>可被定义为该结点深度的倒数</li>
-<li>广度优先搜索中<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(f(n)\)<span class="heti-spacing"> </span></span></span>可被定义为该结点深度</li>
+<li>深度优先搜索中 <span class="arithmatex">\(f(n)\)</span> 可被定义为该结点深度的倒数</li>
+<li>广度优先搜索中 <span class="arithmatex">\(f(n)\)</span> 可被定义为该结点深度</li>
 </ul>
 </li>
 </ul>
 <h3 id="_4">贪婪最佳优先搜索<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>即<span><span class="heti-spacing"> </span>greedy best-first search</span>，GBFS</li>
-<li>优先扩展距离目标近的结点，即令<span class="arithmatex"><span><span class="heti-spacing"> </span>\(f(n) = h(n)\)</span></span></li>
+<li>优先扩展距离目标近的结点，即令 <span class="arithmatex">\(f(n) = h(n)\)</span></li>
 <li>不排除环路的贪婪最佳优先搜索算法是不完备的</li>
 <li>排除环路的贪婪最佳优先搜索是完备的，但不一定最优</li>
-<li>最坏情况下的时间复杂度和空间复杂度均为<span class="arithmatex"><span><span class="heti-spacing"> </span>\(O(b^m)\)</span></span><ul>
-<li><span class="arithmatex"><span>\(b\)<span class="heti-spacing"> </span></span></span>为分支因子（每个结点最大的分支数目）</li>
-<li><span class="arithmatex"><span>\(m\)<span class="heti-spacing"> </span></span></span>为最大深度，也就是搜索树中路径的最大可能长度</li>
+<li>最坏情况下的时间复杂度和空间复杂度均为 <span class="arithmatex">\(O(b^m)\)</span><ul>
+<li><span class="arithmatex">\(b\)</span> 为分支因子（每个结点最大的分支数目）</li>
+<li><span class="arithmatex">\(m\)</span> 为最大深度，也就是搜索树中路径的最大可能长度</li>
 </ul>
 </li>
 </ul>
@@ -1551,11 +1551,11 @@ var _hmt = _hmt || [];
 <ul>
 <li>贪婪最佳优先搜索算法的问题是没有考虑从初始结点到扩展结点所需的代价</li>
 <li><span>A*<span class="heti-spacing"> </span></span>算法把从初始结点到当前结点的路径代价在评价函数中进行了考虑</li>
-<li>令<span class="arithmatex"><span><span class="heti-spacing"> </span>\(f(n) = g(n) + h(n)\)</span></span>，其中<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(g(n)\)<span class="heti-spacing"> </span></span></span>为从初始结点到结点<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(n\)<span class="heti-spacing"> </span></span></span>的路径代价</li>
+<li>令 <span class="arithmatex">\(f(n) = g(n) + h(n)\)</span>，其中 <span class="arithmatex">\(g(n)\)</span> 为从初始结点到结点 <span class="arithmatex">\(n\)</span> 的路径代价</li>
 <li>每次从边缘集合中扩展的结点并非总是当前结点的相邻后继结点</li>
 <li>良好的启发函数需要满足的性质<ul>
-<li>可容性（admissible）：对于任意结点<span class="arithmatex"><span><span class="heti-spacing"> </span>\(n\)</span></span>，<span class="arithmatex"><span>\(h(n)\)<span class="heti-spacing"> </span></span></span>的值不会超过从结点<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(n\)<span class="heti-spacing"> </span></span></span>到目标结点的最佳路径代价</li>
-<li>一致性（consistency）：对于任意结点<span class="arithmatex"><span><span class="heti-spacing"> </span>\(n\)</span></span>，如果从结点<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(n\)<span class="heti-spacing"> </span></span></span>到目标结点的最佳路径经过结点<span class="arithmatex"><span><span class="heti-spacing"> </span>\(n'\)</span></span>，则<span class="arithmatex"><span><span class="heti-spacing"> </span>\(h(n) \leq c(n, n') + h(n')\)</span></span>，其中<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(c(n, n')\)<span class="heti-spacing"> </span></span></span>为从结点<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(n\)<span class="heti-spacing"> </span></span></span>到结点<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(n'\)<span class="heti-spacing"> </span></span></span>的路径代价</li>
+<li>可容性（admissible）：对于任意结点 <span class="arithmatex">\(n\)</span>，<span class="arithmatex">\(h(n)\)</span> 的值不会超过从结点 <span class="arithmatex">\(n\)</span> 到目标结点的最佳路径代价</li>
+<li>一致性（consistency）：对于任意结点 <span class="arithmatex">\(n\)</span>，如果从结点 <span class="arithmatex">\(n\)</span> 到目标结点的最佳路径经过结点 <span class="arithmatex">\(n'\)</span>，则 <span class="arithmatex">\(h(n) \leq c(n, n') + h(n')\)</span>，其中 <span class="arithmatex">\(c(n, n')\)</span> 为从结点 <span class="arithmatex">\(n\)</span> 到结点 <span class="arithmatex">\(n'\)</span> 的路径代价</li>
 <li>满足一致性一定满足可容性</li>
 </ul>
 </li>
@@ -1572,11 +1572,11 @@ var _hmt = _hmt || [];
 <li>智能体不唯一，解决信息确定、全局可观察、轮流行动、输赢收益零和的博弈问题，求解这样问题的算法称为对抗搜索（adversarial search）或博弈搜索（game search）</li>
 <li>智能体会选择最大化自身利益、最小化对手利益的策略</li>
 <li>形式化描述：<ul>
-<li>状态：状态<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(s\)<span class="heti-spacing"> </span></span></span>包括当前游戏局面和当前行动的智能体，初始状态<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(s_0\)<span class="heti-spacing"> </span></span></span>为游戏开始时的状态。<span class="arithmatex"><span>\(\mathrm{player}(s)\)<span class="heti-spacing"> </span></span></span>表示状态<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(s\)<span class="heti-spacing"> </span></span></span>下行动的智能体</li>
-<li>动作：动作是指<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(\mathrm{player}(s)\)<span class="heti-spacing"> </span></span></span>在当前局面下可以采取的操作<span class="arithmatex"><span><span class="heti-spacing"> </span>\(a\)</span></span>，记动作集合为<span class="arithmatex"><span><span class="heti-spacing"> </span>\(\mathrm{actions}(s)\)</span></span></li>
-<li>状态转移：状态转移函数<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(s' = \mathrm{result}(s, a)\)<span class="heti-spacing"> </span></span></span>表示在状态<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(s\)<span class="heti-spacing"> </span></span></span>下采取动作<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(a\)<span class="heti-spacing"> </span></span></span>后的下一个状态</li>
-<li>终局状态测试：终局状态测试函数<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(\mathrm{terminal\_test}(s)\)<span class="heti-spacing"> </span></span></span>用于测试游戏是否在状态<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(s\)<span class="heti-spacing"> </span></span></span>下结束</li>
-<li>终局得分：终局得分函数<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(\mathrm{utility}(s, p)\)<span class="heti-spacing"> </span></span></span>表示在状态<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(s\)<span class="heti-spacing"> </span></span></span>下玩家<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(p\)<span class="heti-spacing"> </span></span></span>的得分<ul>
+<li>状态：状态 <span class="arithmatex">\(s\)</span> 包括当前游戏局面和当前行动的智能体，初始状态 <span class="arithmatex">\(s_0\)</span> 为游戏开始时的状态。<span class="arithmatex">\(\mathrm{player}(s)\)</span> 表示状态 <span class="arithmatex">\(s\)</span> 下行动的智能体</li>
+<li>动作：动作是指 <span class="arithmatex">\(\mathrm{player}(s)\)</span> 在当前局面下可以采取的操作 <span class="arithmatex">\(a\)</span>，记动作集合为 <span class="arithmatex">\(\mathrm{actions}(s)\)</span></li>
+<li>状态转移：状态转移函数 <span class="arithmatex">\(s' = \mathrm{result}(s, a)\)</span> 表示在状态 <span class="arithmatex">\(s\)</span> 下采取动作 <span class="arithmatex">\(a\)</span> 后的下一个状态</li>
+<li>终局状态测试：终局状态测试函数 <span class="arithmatex">\(\mathrm{terminal\_test}(s)\)</span> 用于测试游戏是否在状态 <span class="arithmatex">\(s\)</span> 下结束</li>
+<li>终局得分：终局得分函数 <span class="arithmatex">\(\mathrm{utility}(s, p)\)</span> 表示在状态 <span class="arithmatex">\(s\)</span> 下玩家 <span class="arithmatex">\(p\)</span> 的得分<ul>
 <li>对于二人零和博弈，只需要记录其中一人的终局得分即可</li>
 </ul>
 </li>
@@ -1604,7 +1604,7 @@ var _hmt = _hmt || [];
 \end{cases}
 \]</div>
 <ul>
-<li>最大最小搜索的时间复杂度为<span class="arithmatex"><span><span class="heti-spacing"> </span>\(O(b^m)\)</span></span>，空间复杂度为<span class="arithmatex"><span><span class="heti-spacing"> </span>\(O(bm)\)</span></span></li>
+<li>最大最小搜索的时间复杂度为 <span class="arithmatex">\(O(b^m)\)</span>，空间复杂度为 <span class="arithmatex">\(O(bm)\)</span></li>
 </ul>
 <h3 id="alpha-beta"><span>Alpha-Beta<span class="heti-spacing"> </span></span>剪枝<a class="headerlink" href="#alpha-beta" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
@@ -1618,8 +1618,8 @@ var _hmt = _hmt || [];
 \end{align*}
 \]</div>
 <ul>
-<li>上式中<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(\min(2, x, y)\)<span class="heti-spacing"> </span></span></span>肯定小于<span><span class="heti-spacing"> </span>2</span>，而外面一层求最大值又有<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>比它大</li>
-<li>所以就没有必要去搜索<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(x, y\)<span class="heti-spacing"> </span></span></span>对应的子树得到具体的<span class="arithmatex"><span class="heti-skip"><span class="heti-spacing"> </span>\(x, y\)<span class="heti-spacing"> </span></span></span>值，可以将这两个动作剪枝掉</li>
+<li>上式中 <span class="arithmatex">\(\min(2, x, y)\)</span> 肯定小于<span><span class="heti-spacing"> </span>2</span>，而外面一层求最大值又有<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>比它大</li>
+<li>所以就没有必要去搜索 <span class="arithmatex">\(x, y\)</span> 对应的子树得到具体的 <span class="arithmatex">\(x, y\)</span> 值，可以将这两个动作剪枝掉</li>
 </ul>
 </li>
 </ul>
