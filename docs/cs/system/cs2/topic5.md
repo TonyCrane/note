@@ -6,7 +6,7 @@ comment: True
 # CPU 调度
 
 !!! abstract
-    计算机系统 Ⅱ 第 13 周课程内容
+    计算机系统 Ⅱ 第 13 至 14 周课程内容
 
 ## 基础概念
 - 此处不区分进程与线程的概念
@@ -147,3 +147,43 @@ Multi-level Feedback Queue Scheduling：多级反馈队列调度算法
 - aging 也可以通过这种方式来实现
 - 目的是来给交互性、I/O intensive 的进程更高的调度优先级
 - 是最通用的调度算法
+
+## 多处理器调度
+- 两种多处理器调度方式
+    - asymmetric multiprocessing
+        - 只有一个处理器用来决策调度，处理 I/O，以及其他的活动
+        - 其它处理器作为执行单元
+    - symmetric multiprocessing（SMP）
+        - 每个处理器都在做自己的调度
+        - 所有线程可能都在同一个 ready queue 中（所有 core 共享），也有可能不同 core 有自己的 ready queue
+        - 常见的操作系统用的都是这种方式
+- 硬件线程 chip multitreading（CMT）技术
+    - 在一个 CPU core 中运行两个硬件线程
+    - 两个硬件线程共享 CPU 的执行单元，但是有自己的上下文
+    - 依靠 memory stall 来实现
+        - 访问 memory 是较慢的
+        - 在一个硬件线程访问 memory 的时候可以调度另一个硬件线程执行
+    - 每个处理器的逻辑 CPU 数 = 处理器中核心数 * 每个核心中硬件线程个数
+    - 两级调度
+        - 操作系统决策哪个软件线程在逻辑 CPU 上运行
+        - CPU 决定如何在物理 core 上运行硬件线程
+            - 例如避免将两个计算密集型的线程放在同一个 core 上（这样 memory stall 的概率会减小）
+- Load Balancing 负载均衡
+    - SMP 情境下让所有 CPU 的负载更加平均
+    - 两种方法
+        - push migration：周期性检查所有处理器上的负载情况，发现空闲的则将任务 push 过去
+        - pull migration：空闲的处理器主动从繁忙的处理器上拉来任务
+- Processor Affinity 处理器亲核性
+    - 当一个线程在一个 CPU 上运行一段时间之后，cache 内容会被当前线程填充
+    - 如果为了负载均衡而将这个线程 migrate 到其它处理器上，会因为 cache miss 导致效率下降
+    - 两种机制
+        - soft affinity：操作系统尽可能保持线程在同一个处理器上运行，但不保证（例如负载实在不均衡）
+        - hard affinity：强制规定一个线程只能在哪些处理器上运行
+- NUMA 架构系统
+    - NUMA 下每个 CPU 有自己对应的 memory，可以快速访问，也可以访问其它 CPU 的 memory 不过速度较慢
+    - NUMA-aware 的操作系统会在调度的时候尽可能的避免跨 CPU 的 memory 访问
+- 实时操作系统调度
+    - soft real-time systems 软实时：将关键的实时任务提高优先级，但并不保证如何调度
+        - 例如 Linux 就是软实时操作系统
+        - Linux 无法达到硬实时：因为硬实时一定要能精确控制非预期事件的产生（例如中断）
+    - hard real-time systems 硬实时：规定任务必须在它的 ddl 之前完成执行，如果超时了，系统 watchdog 部件会察觉到系统有异常，会将系统 reboot 来恢复保证实时性

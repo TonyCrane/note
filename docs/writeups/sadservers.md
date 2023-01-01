@@ -779,3 +779,148 @@ root          92  0.0  0.7   8840  3416 pts/0    R<+  12:18   0:00 ps -aux
     > A way of checking is by looking at the environment of the PID=1 process and see if there's a container variable, for ex: cat /proc/1/environ|tr "\0" "\n"|grep container , in our case would be container=podman but I changed its value.
     > 
     > An indicator is to look at the running processes and see that there are no kernel threads like [kthreadd].
+
+## "Oaxaca"
+
+> **Scenario:** "Oaxaca": Close an Open File
+> 
+> **Level:** Medium
+> 
+> **Description:** The file /home/admin/somefile is open for writing by some process. Close this file without killing the process.
+> 
+> **OS:** Debian 11
+
+lsof /home/admin/somefile 可以看到有进程打开了这个文件：
+```text
+COMMAND PID  USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+bash    798 admin   77w   REG  259,1        0 272875 /home/admin/somefile
+```
+ps -aux 找一通发现这个 PID 就是当前的 shell。
+
+somefile 旁边还有一个 openfile.sh，内容为：
+```shell
+#!/bin/bash
+exec 66> /home/admin/somefile
+```
+可以推测是以这种方式打开的文件。通过前面 lsof 的结果知道这个文件的 fd 为 77，或者可以通过 proc 来验证一下：
+```text
+$ ls -l /proc/self/fd
+total 0
+lrwx------ 1 admin admin 64 Dec 24 04:47 0 -> /dev/pts/0
+lrwx------ 1 admin admin 64 Dec 24 04:47 1 -> /dev/pts/0
+lrwx------ 1 admin admin 64 Dec 24 04:47 2 -> /dev/pts/0
+lr-x------ 1 admin admin 64 Dec 24 04:47 3 -> /proc/819/fd
+l-wx------ 1 admin admin 64 Dec 24 04:47 77 -> /home/admin/somefile
+```
+然后同样使用 exec 关掉 77 fd 就好了：
+```shell
+$ exec 77>&-
+```
+
+## "Melbourne"
+
+> **Scenario:** "Melbourne": WSGI with Gunicorn
+> 
+> **Level:** Medium
+> 
+> **Description:** There is a Python WSGI web application file at /home/admin/wsgi.py , the purpose of which is to serve the string "Hello, world!". This file is served by a Gunicorn server which is fronted by an nginx server (both servers managed by systemd). So the flow of an HTTP request is: Web Client (curl) -> Nginx -> Gunicorn -> wsgi.py . The objective is to be able to curl the localhost (on default port :80) and get back "Hello, world!", using the current setup.
+> 
+> **OS:** Debian 11
+
+首先 curl -v http://localhost 看一下，发现 Connection refused：
+```text
+admin@ip-172-31-32-71:~$ curl -v http://localhost
+*   Trying 127.0.0.1:80...
+* connect to 127.0.0.1 port 80 failed: Connection refused
+* Failed to connect to localhost port 80: Connection refused
+* Closing connection 0
+curl: (7) Failed to connect to localhost port 80: Connection refused
+```
+查询一下 nginx 状态，发现是没有开启，所以 sudo 重启：
+```text
+admin@ip-172-31-32-71:~$ systemctl status nginx
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; disabled; vendor preset:>
+     Active: inactive (dead)
+       Docs: man:nginx(8)
+admin@ip-172-31-32-71:~$ sudo systemctl start nginx
+admin@ip-172-31-32-71:~$ systemctl status nginx.service
+● nginx.service - A high performance web server and a reverse proxy server
+     Loaded: loaded (/lib/systemd/system/nginx.service; disabled; vendor preset: enabled)
+     Active: active (running) since Sat 2022-12-24 05:09:46 UTC; 3s ago
+       Docs: man:nginx(8)
+    Process: 850 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+    Process: 851 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+   Main PID: 852 (nginx)
+      Tasks: 3 (limit: 524)
+     Memory: 3.1M
+        CPU: 36ms
+     CGroup: /system.slice/nginx.service
+             ├─852 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+             ├─853 nginx: worker process
+             └─854 nginx: worker process
+```
+可以正常重启，但这时 curl 会出现 502。看一下 /etc/nginx/sites-enabled/default 里的配置：
+```nginx
+server {
+    listen 80;
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.socket;
+    }
+}
+```
+发现只有 proxy_pass 那句可能出问题。systemctl 查询一下 gunicorn 状态：
+```text
+admin@ip-172-31-32-71:~$ systemctl status gunicorn
+● gunicorn.service - gunicorn daemon
+     Loaded: loaded (/etc/systemd/system/gunicorn.service; enabled; vendor preset: enabled)
+     Active: active (running) since Sat 2022-12-24 05:01:16 UTC; 10min ago
+TriggeredBy: ● gunicorn.socket
+   Main PID: 550 (gunicorn)
+      Tasks: 2 (limit: 524)
+     Memory: 17.1M
+        CPU: 348ms
+     CGroup: /system.slice/gunicorn.service
+             ├─550 /usr/bin/python3 /usr/local/bin/gunicorn --bind unix:/run/gunicorn.sock wsgi
+             └─612 /usr/bin/python3 /usr/local/bin/gunicorn --bind unix:/run/gunicorn.sock wsgi
+
+Dec 24 05:01:16 ip-172-31-32-71 systemd[1]: Started gunicorn daemon.
+Dec 24 05:01:17 ip-172-31-32-71 gunicorn[550]: [2022-12-24 05:01:17 +0000] [550] [INFO] Starting gunicorn 20.1.0
+Dec 24 05:01:17 ip-172-31-32-71 gunicorn[550]: [2022-12-24 05:01:17 +0000] [550] [INFO] Listening at: unix:/run/gunicorn.sock (550)
+Dec 24 05:01:17 ip-172-31-32-71 gunicorn[550]: [2022-12-24 05:01:17 +0000] [550] [INFO] Using worker: sync
+Dec 24 05:01:17 ip-172-31-32-71 gunicorn[612]: [2022-12-24 05:01:17 +0000] [612] [INFO] Booting worker with pid: 612
+```
+可以看出实际上是绑定在 /run/gunicorn.sock 上了，/run/gunicorn.socket 并不存在。所以修改 nginx 的配置然后 restart。这时 curl 不会报错，但没有内容，-v 输出：
+```text
+admin@ip-172-31-32-71:~$ curl -v http://localhost
+*   Trying 127.0.0.1:80...
+* Connected to localhost (127.0.0.1) port 80 (#0)
+> GET / HTTP/1.1
+> Host: localhost
+> User-Agent: curl/7.74.0
+> Accept: */*
+> 
+* Mark bundle as not supporting multiuse
+< HTTP/1.1 200 OK
+< Server: nginx/1.18.0
+< Date: Sat, 24 Dec 2022 05:13:05 GMT
+< Content-Type: text/html
+< Content-Length: 0
+< Connection: keep-alive
+< 
+* Connection #0 to host localhost left intact
+```
+可以看到是 200，但这里 Response 里有 Content-Length: 0，所以什么都没得到。发现这个是写在 wsgi.py 里的：
+```text
+admin@ip-172-31-32-71:~$ cat wsgi.py 
+def application(environ, start_response):
+    start_response('200 OK', [('Content-Type', 'text/html'), ('Content-Length', '0'), ])
+    return [b'Hello, world!']
+```
+所以把 ('Content-Length', '0') 去掉，然后 sudo systemctl restart gunicorn 重启，这次再 curl 就正常了：
+```text
+admin@ip-172-31-32-71:~$ curl -s http://localhost
+Hello, world!
+```

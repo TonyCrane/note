@@ -17,7 +17,28 @@ counter: True
     - 直接通过访达右键打开软件，第二次就可以强制打开，后续都可以正常打开
     - 强制签名 `codesign --sign - --force --deep /Applications/<app>.app`
 - 已损坏
-    - 对于包含破解的软件等，可能会出现已损坏的情况，这时可以通过清除软件隔离属性来解决 `codesign --sign - --force --deep /Applications/<app>.app`
+    - 对于包含破解的软件等，可能会出现已损坏的情况，这时可以通过清除软件隔离属性来解决 `sudo xattr -r -d com.apple.quarantine /Applications/<app>.app`
+
+### gcc-12 找不到 _stdio.h
+macOS 中的 gcc 命令实际上是 clang 的 alias，使用 gcc 的话要通过 gcc-12 命令。在 macOS 或 XCode 更新后使用 gcc-12 编译可能会出现以下报错：
+```text
+/usr/local/Cellar/gcc/12.2.0/lib/gcc/current/gcc/x86_64-apple-darwin21/12/include-fixed/stdio.h:78:10: fatal error: _stdio.h: No such file or directory
+   78 | #include <_stdio.h>
+      |          ^~~~~~~~~~
+compilation terminated.
+```
+这时需要重新安装一下 XCode 命令行工具包：`#!shell xcode-select --install`。
+
+!!! note
+    这个 Command Line Developer Tools 在安装的时候预计时间估计是不准的，刚开始的时候预计 200+ 小时完成是正常的。
+
+## 有关网络
+### 终端主机名显示为 192
+参考：https://www.jianshu.com/p/8febc2993687
+
+当路由器的 DNS 使用默认的 192.168.1.1 或 192.168.0.1 的时候计算机名会变成 192，当路由器的 DNS 使用自定义的的时候计算机名才会变成设置的名字。
+
+可以在当前连接 wifi 设置的 DNS 一项将新增一个 8.8.8.8 即可解决。
 
 ## 有关磁盘
 ### 移动硬盘异常退出无法再次挂载
