@@ -213,7 +213,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../changelog/">
-        最近更新
+        更新记录
       </a>
 </li>
 <li class="md-nav__item">
@@ -516,14 +516,19 @@ var _hmt = _hmt || [];
         CPU 调度
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/topic6/">
+        进程同步
+      </a>
+</li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_7" id="__nav_2_3_3_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3_3_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3_8">
           系统 II 实验部分
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="系统 II 实验部分" class="md-nav" data-md-level="4">
-<label class="md-nav__title" for="__nav_2_3_3_7">
+<label class="md-nav__title" for="__nav_2_3_3_8">
 <span class="md-nav__icon md-icon"></span>
           系统 II 实验部分
         </label>
@@ -1263,6 +1268,16 @@ var _hmt = _hmt || [];
     "Venice"
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#oaxaca">
+    "Oaxaca"
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#melbourne">
+    "Melbourne"
+  </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1503,6 +1518,16 @@ var _hmt = _hmt || [];
 <li class="md-nav__item">
 <a class="md-nav__link" href="#venice">
     "Venice"
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#oaxaca">
+    "Oaxaca"
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#melbourne">
+    "Melbourne"
   </a>
 </li>
 </ul>
@@ -2160,12 +2185,137 @@ You can get the image: docker.io/fduran/venice.</p>
 <p>An indicator is to look at the running processes and see that there are no kernel threads like [kthreadd].</p>
 </blockquote>
 </details>
+<h2 id="oaxaca">"Oaxaca"<a class="headerlink" href="#oaxaca" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><strong>Scenario:</strong> "Oaxaca": Close an Open File</p>
+<p><strong>Level:</strong> Medium</p>
+<p><strong>Description:</strong> The file /home/admin/somefile is open for writing by some process. Close this file without killing the process.</p>
+<p><strong>OS:</strong> Debian 11</p>
+</blockquote>
+<p><span>lsof /home/admin/somefile<span class="heti-spacing"> </span></span>可以看到有进程打开了这个文件：
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-52-1" id="__codelineno-52-1" name="__codelineno-52-1"></a>COMMAND PID  USER   FD   TYPE DEVICE SIZE/OFF   NODE NAME
+<a href="#__codelineno-52-2" id="__codelineno-52-2" name="__codelineno-52-2"></a>bash    798 admin   77w   REG  259,1        0 272875 /home/admin/somefile
+</code></pre></div>
+ps -aux 找一通发现这个 PID 就是当前的 shell。
+<p><span>somefile<span class="heti-spacing"> </span></span>旁边还有一个<span><span class="heti-spacing"> </span>openfile.sh</span>，内容为：
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-53-1" id="__codelineno-53-1" name="__codelineno-53-1"></a><span class="ch">#!/bin/bash</span>
+<a href="#__codelineno-53-2" id="__codelineno-53-2" name="__codelineno-53-2"></a><span class="nb">exec</span> <span class="m">66</span>&gt; /home/admin/somefile
+</code></pre></div>
+可以推测是以这种方式打开的文件。通过前面 lsof 的结果知道这个文件的 fd 为 77，或者可以通过 proc 来验证一下：
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-54-1" id="__codelineno-54-1" name="__codelineno-54-1"></a>$ ls -l /proc/self/fd
+<a href="#__codelineno-54-2" id="__codelineno-54-2" name="__codelineno-54-2"></a>total 0
+<a href="#__codelineno-54-3" id="__codelineno-54-3" name="__codelineno-54-3"></a>lrwx------ 1 admin admin 64 Dec 24 04:47 0 -&gt; /dev/pts/0
+<a href="#__codelineno-54-4" id="__codelineno-54-4" name="__codelineno-54-4"></a>lrwx------ 1 admin admin 64 Dec 24 04:47 1 -&gt; /dev/pts/0
+<a href="#__codelineno-54-5" id="__codelineno-54-5" name="__codelineno-54-5"></a>lrwx------ 1 admin admin 64 Dec 24 04:47 2 -&gt; /dev/pts/0
+<a href="#__codelineno-54-6" id="__codelineno-54-6" name="__codelineno-54-6"></a>lr-x------ 1 admin admin 64 Dec 24 04:47 3 -&gt; /proc/819/fd
+<a href="#__codelineno-54-7" id="__codelineno-54-7" name="__codelineno-54-7"></a>l-wx------ 1 admin admin 64 Dec 24 04:47 77 -&gt; /home/admin/somefile
+</code></pre></div>
+然后同样使用 exec 关掉 77 fd 就好了：
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-55-1" id="__codelineno-55-1" name="__codelineno-55-1"></a>$ <span class="nb">exec</span> <span class="m">77</span>&gt;<span class="p">&amp;</span>-
+</code></pre></div>
+<h2 id="melbourne">"Melbourne"<a class="headerlink" href="#melbourne" title="Permanent link">¶</a></h2>
+<blockquote>
+<p><strong>Scenario:</strong> "Melbourne": WSGI with Gunicorn</p>
+<p><strong>Level:</strong> Medium</p>
+<p><strong>Description:</strong> There is a Python WSGI web application file at /home/admin/wsgi.py , the purpose of which is to serve the string "Hello, world!". This file is served by a Gunicorn server which is fronted by an nginx server (both servers managed by systemd). So the flow of an HTTP request is: Web Client (curl) -&gt; Nginx -&gt; Gunicorn -&gt; wsgi.py . The objective is to be able to curl the localhost (on default port :80) and get back "Hello, world!", using the current setup.</p>
+<p><strong>OS:</strong> Debian 11</p>
+</blockquote>
+<p>首先<span class="heti-skip"><span class="heti-spacing"> </span>curl -v<span class="heti-spacing"> </span></span><a href="http://localhost"><span class="heti-skip"><span class="heti-spacing"> </span>http://localhost<span class="heti-spacing"> </span></span></a>看一下，发现<span><span class="heti-spacing"> </span>Connection refused</span>：
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-56-1" id="__codelineno-56-1" name="__codelineno-56-1"></a>admin@ip-172-31-32-71:~$ curl -v http://localhost
+<a href="#__codelineno-56-2" id="__codelineno-56-2" name="__codelineno-56-2"></a>*   Trying 127.0.0.1:80...
+<a href="#__codelineno-56-3" id="__codelineno-56-3" name="__codelineno-56-3"></a>* connect to 127.0.0.1 port 80 failed: Connection refused
+<a href="#__codelineno-56-4" id="__codelineno-56-4" name="__codelineno-56-4"></a>* Failed to connect to localhost port 80: Connection refused
+<a href="#__codelineno-56-5" id="__codelineno-56-5" name="__codelineno-56-5"></a>* Closing connection 0
+<a href="#__codelineno-56-6" id="__codelineno-56-6" name="__codelineno-56-6"></a>curl: (7) Failed to connect to localhost port 80: Connection refused
+</code></pre></div>
+查询一下 nginx 状态，发现是没有开启，所以 sudo 重启：
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-57-1" id="__codelineno-57-1" name="__codelineno-57-1"></a>admin@ip-172-31-32-71:~$ systemctl status nginx
+<a href="#__codelineno-57-2" id="__codelineno-57-2" name="__codelineno-57-2"></a>● nginx.service - A high performance web server and a reverse proxy server
+<a href="#__codelineno-57-3" id="__codelineno-57-3" name="__codelineno-57-3"></a>     Loaded: loaded (/lib/systemd/system/nginx.service; disabled; vendor preset:&gt;
+<a href="#__codelineno-57-4" id="__codelineno-57-4" name="__codelineno-57-4"></a>     Active: inactive (dead)
+<a href="#__codelineno-57-5" id="__codelineno-57-5" name="__codelineno-57-5"></a>       Docs: man:nginx(8)
+<a href="#__codelineno-57-6" id="__codelineno-57-6" name="__codelineno-57-6"></a>admin@ip-172-31-32-71:~$ sudo systemctl start nginx
+<a href="#__codelineno-57-7" id="__codelineno-57-7" name="__codelineno-57-7"></a>admin@ip-172-31-32-71:~$ systemctl status nginx.service
+<a href="#__codelineno-57-8" id="__codelineno-57-8" name="__codelineno-57-8"></a>● nginx.service - A high performance web server and a reverse proxy server
+<a href="#__codelineno-57-9" id="__codelineno-57-9" name="__codelineno-57-9"></a>     Loaded: loaded (/lib/systemd/system/nginx.service; disabled; vendor preset: enabled)
+<a href="#__codelineno-57-10" id="__codelineno-57-10" name="__codelineno-57-10"></a>     Active: active (running) since Sat 2022-12-24 05:09:46 UTC; 3s ago
+<a href="#__codelineno-57-11" id="__codelineno-57-11" name="__codelineno-57-11"></a>       Docs: man:nginx(8)
+<a href="#__codelineno-57-12" id="__codelineno-57-12" name="__codelineno-57-12"></a>    Process: 850 ExecStartPre=/usr/sbin/nginx -t -q -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+<a href="#__codelineno-57-13" id="__codelineno-57-13" name="__codelineno-57-13"></a>    Process: 851 ExecStart=/usr/sbin/nginx -g daemon on; master_process on; (code=exited, status=0/SUCCESS)
+<a href="#__codelineno-57-14" id="__codelineno-57-14" name="__codelineno-57-14"></a>   Main PID: 852 (nginx)
+<a href="#__codelineno-57-15" id="__codelineno-57-15" name="__codelineno-57-15"></a>      Tasks: 3 (limit: 524)
+<a href="#__codelineno-57-16" id="__codelineno-57-16" name="__codelineno-57-16"></a>     Memory: 3.1M
+<a href="#__codelineno-57-17" id="__codelineno-57-17" name="__codelineno-57-17"></a>        CPU: 36ms
+<a href="#__codelineno-57-18" id="__codelineno-57-18" name="__codelineno-57-18"></a>     CGroup: /system.slice/nginx.service
+<a href="#__codelineno-57-19" id="__codelineno-57-19" name="__codelineno-57-19"></a>             ├─852 nginx: master process /usr/sbin/nginx -g daemon on; master_process on;
+<a href="#__codelineno-57-20" id="__codelineno-57-20" name="__codelineno-57-20"></a>             ├─853 nginx: worker process
+<a href="#__codelineno-57-21" id="__codelineno-57-21" name="__codelineno-57-21"></a>             └─854 nginx: worker process
+</code></pre></div>
+可以正常重启，但这时 curl 会出现 502。看一下 /etc/nginx/sites-enabled/default 里的配置：
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-58-1" id="__codelineno-58-1" name="__codelineno-58-1"></a><span class="k">server</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-58-2" id="__codelineno-58-2" name="__codelineno-58-2"></a><span class="w">    </span><span class="kn">listen</span><span class="w"> </span><span class="mi">80</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-58-3" id="__codelineno-58-3" name="__codelineno-58-3"></a>
+<a href="#__codelineno-58-4" id="__codelineno-58-4" name="__codelineno-58-4"></a><span class="w">    </span><span class="kn">location</span><span class="w"> </span><span class="s">/</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-58-5" id="__codelineno-58-5" name="__codelineno-58-5"></a><span class="w">        </span><span class="kn">include</span><span class="w"> </span><span class="s">proxy_params</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-58-6" id="__codelineno-58-6" name="__codelineno-58-6"></a><span class="w">        </span><span class="kn">proxy_pass</span><span class="w"> </span><span class="s">http://unix:/run/gunicorn.socket</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-58-7" id="__codelineno-58-7" name="__codelineno-58-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-58-8" id="__codelineno-58-8" name="__codelineno-58-8"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+发现只有 proxy_pass 那句可能出问题。systemctl 查询一下 gunicorn 状态：
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-59-1" id="__codelineno-59-1" name="__codelineno-59-1"></a>admin@ip-172-31-32-71:~$ systemctl status gunicorn
+<a href="#__codelineno-59-2" id="__codelineno-59-2" name="__codelineno-59-2"></a>● gunicorn.service - gunicorn daemon
+<a href="#__codelineno-59-3" id="__codelineno-59-3" name="__codelineno-59-3"></a>     Loaded: loaded (/etc/systemd/system/gunicorn.service; enabled; vendor preset: enabled)
+<a href="#__codelineno-59-4" id="__codelineno-59-4" name="__codelineno-59-4"></a>     Active: active (running) since Sat 2022-12-24 05:01:16 UTC; 10min ago
+<a href="#__codelineno-59-5" id="__codelineno-59-5" name="__codelineno-59-5"></a>TriggeredBy: ● gunicorn.socket
+<a href="#__codelineno-59-6" id="__codelineno-59-6" name="__codelineno-59-6"></a>   Main PID: 550 (gunicorn)
+<a href="#__codelineno-59-7" id="__codelineno-59-7" name="__codelineno-59-7"></a>      Tasks: 2 (limit: 524)
+<a href="#__codelineno-59-8" id="__codelineno-59-8" name="__codelineno-59-8"></a>     Memory: 17.1M
+<a href="#__codelineno-59-9" id="__codelineno-59-9" name="__codelineno-59-9"></a>        CPU: 348ms
+<a href="#__codelineno-59-10" id="__codelineno-59-10" name="__codelineno-59-10"></a>     CGroup: /system.slice/gunicorn.service
+<a href="#__codelineno-59-11" id="__codelineno-59-11" name="__codelineno-59-11"></a>             ├─550 /usr/bin/python3 /usr/local/bin/gunicorn --bind unix:/run/gunicorn.sock wsgi
+<a href="#__codelineno-59-12" id="__codelineno-59-12" name="__codelineno-59-12"></a>             └─612 /usr/bin/python3 /usr/local/bin/gunicorn --bind unix:/run/gunicorn.sock wsgi
+<a href="#__codelineno-59-13" id="__codelineno-59-13" name="__codelineno-59-13"></a>
+<a href="#__codelineno-59-14" id="__codelineno-59-14" name="__codelineno-59-14"></a>Dec 24 05:01:16 ip-172-31-32-71 systemd[1]: Started gunicorn daemon.
+<a href="#__codelineno-59-15" id="__codelineno-59-15" name="__codelineno-59-15"></a>Dec 24 05:01:17 ip-172-31-32-71 gunicorn[550]: [2022-12-24 05:01:17 +0000] [550] [INFO] Starting gunicorn 20.1.0
+<a href="#__codelineno-59-16" id="__codelineno-59-16" name="__codelineno-59-16"></a>Dec 24 05:01:17 ip-172-31-32-71 gunicorn[550]: [2022-12-24 05:01:17 +0000] [550] [INFO] Listening at: unix:/run/gunicorn.sock (550)
+<a href="#__codelineno-59-17" id="__codelineno-59-17" name="__codelineno-59-17"></a>Dec 24 05:01:17 ip-172-31-32-71 gunicorn[550]: [2022-12-24 05:01:17 +0000] [550] [INFO] Using worker: sync
+<a href="#__codelineno-59-18" id="__codelineno-59-18" name="__codelineno-59-18"></a>Dec 24 05:01:17 ip-172-31-32-71 gunicorn[612]: [2022-12-24 05:01:17 +0000] [612] [INFO] Booting worker with pid: 612
+</code></pre></div>
+可以看出实际上是绑定在 /run/gunicorn.sock 上了，/run/gunicorn.socket 并不存在。所以修改 nginx 的配置然后 restart。这时 curl 不会报错，但没有内容，-v 输出：
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-60-1" id="__codelineno-60-1" name="__codelineno-60-1"></a>admin@ip-172-31-32-71:~$ curl -v http://localhost
+<a href="#__codelineno-60-2" id="__codelineno-60-2" name="__codelineno-60-2"></a>*   Trying 127.0.0.1:80...
+<a href="#__codelineno-60-3" id="__codelineno-60-3" name="__codelineno-60-3"></a>* Connected to localhost (127.0.0.1) port 80 (#0)
+<a href="#__codelineno-60-4" id="__codelineno-60-4" name="__codelineno-60-4"></a>&gt; GET / HTTP/1.1
+<a href="#__codelineno-60-5" id="__codelineno-60-5" name="__codelineno-60-5"></a>&gt; Host: localhost
+<a href="#__codelineno-60-6" id="__codelineno-60-6" name="__codelineno-60-6"></a>&gt; User-Agent: curl/7.74.0
+<a href="#__codelineno-60-7" id="__codelineno-60-7" name="__codelineno-60-7"></a>&gt; Accept: */*
+<a href="#__codelineno-60-8" id="__codelineno-60-8" name="__codelineno-60-8"></a>&gt; 
+<a href="#__codelineno-60-9" id="__codelineno-60-9" name="__codelineno-60-9"></a>* Mark bundle as not supporting multiuse
+<a href="#__codelineno-60-10" id="__codelineno-60-10" name="__codelineno-60-10"></a>&lt; HTTP/1.1 200 OK
+<a href="#__codelineno-60-11" id="__codelineno-60-11" name="__codelineno-60-11"></a>&lt; Server: nginx/1.18.0
+<a href="#__codelineno-60-12" id="__codelineno-60-12" name="__codelineno-60-12"></a>&lt; Date: Sat, 24 Dec 2022 05:13:05 GMT
+<a href="#__codelineno-60-13" id="__codelineno-60-13" name="__codelineno-60-13"></a>&lt; Content-Type: text/html
+<a href="#__codelineno-60-14" id="__codelineno-60-14" name="__codelineno-60-14"></a>&lt; Content-Length: 0
+<a href="#__codelineno-60-15" id="__codelineno-60-15" name="__codelineno-60-15"></a>&lt; Connection: keep-alive
+<a href="#__codelineno-60-16" id="__codelineno-60-16" name="__codelineno-60-16"></a>&lt; 
+<a href="#__codelineno-60-17" id="__codelineno-60-17" name="__codelineno-60-17"></a>* Connection #0 to host localhost left intact
+</code></pre></div>
+可以看到是 200，但这里 Response 里有 Content-Length: 0，所以什么都没得到。发现这个是写在 wsgi.py 里的：
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-61-1" id="__codelineno-61-1" name="__codelineno-61-1"></a>admin@ip-172-31-32-71:~$ cat wsgi.py 
+<a href="#__codelineno-61-2" id="__codelineno-61-2" name="__codelineno-61-2"></a>def application(environ, start_response):
+<a href="#__codelineno-61-3" id="__codelineno-61-3" name="__codelineno-61-3"></a>    start_response('200 OK', [('Content-Type', 'text/html'), ('Content-Length', '0'), ])
+<a href="#__codelineno-61-4" id="__codelineno-61-4" name="__codelineno-61-4"></a>    return [b'Hello, world!']
+</code></pre></div>
+所以把 ('Content-Length', '0') 去掉，然后 sudo systemctl restart gunicorn 重启，这次再 curl 就正常了：
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-62-1" id="__codelineno-62-1" name="__codelineno-62-1"></a>admin@ip-172-31-32-71:~$ curl -s http://localhost
+<a href="#__codelineno-62-2" id="__codelineno-62-2" name="__codelineno-62-2"></a>Hello, world!
+</code></pre></div>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月3日 21:05:30</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年1月1日 23:47:07</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月3日 21:05:30</span>
@@ -2220,7 +2370,7 @@ You can get the image: docker.io/fduran/venice.</p>
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
 <div class="md-copyright__highlight">
-      Copyright © 2022 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
+      Copyright © 2022-2023 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
 </div>
   
   

@@ -213,7 +213,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../changelog/">
-        最近更新
+        更新记录
       </a>
 </li>
 <li class="md-nav__item">
@@ -645,14 +645,19 @@ var _hmt = _hmt || [];
         CPU 调度
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/topic6/">
+        进程同步
+      </a>
+</li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_7" id="__nav_2_3_3_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3_3_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3_8">
           系统 II 实验部分
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="系统 II 实验部分" class="md-nav" data-md-level="4">
-<label class="md-nav__title" for="__nav_2_3_3_7">
+<label class="md-nav__title" for="__nav_2_3_3_8">
 <span class="md-nav__icon md-icon"></span>
           系统 II 实验部分
         </label>
@@ -1756,7 +1761,7 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 <h4 id="signed">Signed<a class="headerlink" href="#signed" title="Permanent link">¶</a></h4>
 <p>补码表示的有符号整型除以二的幂次，进行数值右移，但是直接右移进行的是向下取整<br/>
 而对于有符号整型除法一般要向 0 取整，所以对于负数要向上取整</p>
-<p>向上取整要先加上一个<span class="heti-skip"><span class="heti-spacing"> </span>bias<span class="heti-spacing"> </span></span>然后再右移，bias = 2<sup>k</sup> - 1，即<span class="heti-skip"><span class="heti-spacing"> </span>x / 2<span class="heti-spacing"> </span></span><sup>k</sup>向上取整要进行<span><span class="heti-spacing"> </span>(x + (1 &lt;&lt; k) - 1) &gt;&gt; k</span></p>
+<p>向上取整要先加上一个<span class="heti-skip"><span class="heti-spacing"> </span>bias<span class="heti-spacing"> </span></span>然后再右移，bias = 2<sup>k</sup> - 1，即<span class="heti-skip"><span class="heti-spacing"> </span>x / 2<span class="heti-spacing"> </span></span><sup><span class="heti-skip"><span class="heti-spacing"> </span>k<span class="heti-spacing"> </span></span></sup>向上取整要进行<span><span class="heti-spacing"> </span>(x + (1 &lt;&lt; k) - 1) &gt;&gt; k</span></p>
 <p>所以向<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>取整：</p>
 <div style="text-align: center">(x &lt; 0 ? (x + (1 &lt;&lt; k) - 1) : x) &gt;&gt; k</div>
 <h2 id="_14">浮点数表示法<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
@@ -1840,9 +1845,9 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 默认是 round-to-even</p>
 <p>如果有一个二进制小数：X...XX.Y...Yabcd...，要舍入到<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>的位置</p>
 <ul>
-<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>小于<span><span class="heti-spacing"> </span>100</span><sub>2</sub>，则直接舍去<span><span class="heti-spacing"> </span>bcd</span></li>
-<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>大于<span><span class="heti-spacing"> </span>100</span><sub>2</sub>，则向<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>进一位</li>
-<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>等于<span><span class="heti-spacing"> </span>100</span><sub>2</sub><ul>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>小于<span><span class="heti-spacing"> </span>100</span><sub><span><span class="heti-spacing"> </span>2</span></sub>，则直接舍去<span><span class="heti-spacing"> </span>bcd</span></li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>大于<span><span class="heti-spacing"> </span>100</span><sub><span><span class="heti-spacing"> </span>2</span></sub>，则向<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>进一位</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>等于<span><span class="heti-spacing"> </span>100</span><sub><span><span class="heti-spacing"> </span>2</span></sub><ul>
 <li>如果<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>（偶），则舍去<span><span class="heti-spacing"> </span>bcd</span></li>
 <li>如果<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1</span>（奇），则向<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>进一位</li>
 </ul>
@@ -1911,7 +1916,7 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
 <div class="md-copyright__highlight">
-      Copyright © 2022 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
+      Copyright © 2022-2023 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
 </div>
   
   

@@ -213,7 +213,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../changelog/">
-        最近更新
+        更新记录
       </a>
 </li>
 <li class="md-nav__item">
@@ -608,17 +608,27 @@ var _hmt = _hmt || [];
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+    多处理器调度
+  </a>
+</li>
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../topic6/">
+        进程同步
+      </a>
+</li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_7" id="__nav_2_3_3_7" type="checkbox"/>
-<label class="md-nav__link" for="__nav_2_3_3_7">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3_8">
           系统 II 实验部分
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="系统 II 实验部分" class="md-nav" data-md-level="4">
-<label class="md-nav__title" for="__nav_2_3_3_7">
+<label class="md-nav__title" for="__nav_2_3_3_8">
 <span class="md-nav__icon md-icon"></span>
           系统 II 实验部分
         </label>
@@ -1549,6 +1559,11 @@ var _hmt = _hmt || [];
 </ul>
 </nav>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_11">
+    多处理器调度
+  </a>
+</li>
 </ul>
 </nav>
 </div>
@@ -1564,7 +1579,7 @@ var _hmt = _hmt || [];
 <h1 id="cpu"><span>CPU<span class="heti-spacing"> </span></span>调度<a class="headerlink" href="#cpu" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<p>计算机系统 Ⅱ 第<span class="heti-skip"><span class="heti-spacing"> </span>13<span class="heti-spacing"> </span></span>周课程内容</p>
+<p>计算机系统 Ⅱ 第<span class="heti-skip"><span class="heti-spacing"> </span>13<span class="heti-spacing"> </span></span>至<span class="heti-skip"><span class="heti-spacing"> </span>14<span class="heti-spacing"> </span></span>周课程内容</p>
 </div>
 <h2 id="_1">基础概念<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
@@ -1758,12 +1773,81 @@ var _hmt = _hmt || [];
 <li>目的是来给交互性、<span>I/O intensive<span class="heti-spacing"> </span></span>的进程更高的调度优先级</li>
 <li>是最通用的调度算法</li>
 </ul>
+<h2 id="_11">多处理器调度<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>两种多处理器调度方式<ul>
+<li>asymmetric multiprocessing<ul>
+<li>只有一个处理器用来决策调度，处理<span><span class="heti-spacing"> </span>I/O</span>，以及其他的活动</li>
+<li>其它处理器作为执行单元</li>
+</ul>
+</li>
+<li>symmetric multiprocessing（SMP）<ul>
+<li>每个处理器都在做自己的调度</li>
+<li>所有线程可能都在同一个<span class="heti-skip"><span class="heti-spacing"> </span>ready queue<span class="heti-spacing"> </span></span>中（所有<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>共享），也有可能不同<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>有自己的<span><span class="heti-spacing"> </span>ready queue</span></li>
+<li>常见的操作系统用的都是这种方式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>硬件线程<span><span class="heti-spacing"> </span>chip multitreading</span>（CMT）技术<ul>
+<li>在一个<span class="heti-skip"><span class="heti-spacing"> </span>CPU core<span class="heti-spacing"> </span></span>中运行两个硬件线程</li>
+<li>两个硬件线程共享<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的执行单元，但是有自己的上下文</li>
+<li>依靠<span class="heti-skip"><span class="heti-spacing"> </span>memory stall<span class="heti-spacing"> </span></span>来实现<ul>
+<li>访问<span class="heti-skip"><span class="heti-spacing"> </span>memory<span class="heti-spacing"> </span></span>是较慢的</li>
+<li>在一个硬件线程访问<span class="heti-skip"><span class="heti-spacing"> </span>memory<span class="heti-spacing"> </span></span>的时候可以调度另一个硬件线程执行</li>
+</ul>
+</li>
+<li>每个处理器的逻辑<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>数<span class="heti-skip"><span class="heti-spacing"> </span>=<span class="heti-spacing"> </span></span>处理器中核心数<span class="heti-skip"><span class="heti-spacing"> </span>*<span class="heti-spacing"> </span></span>每个核心中硬件线程个数</li>
+<li>两级调度<ul>
+<li>操作系统决策哪个软件线程在逻辑<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>上运行</li>
+<li><span>CPU<span class="heti-spacing"> </span></span>决定如何在物理<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>上运行硬件线程<ul>
+<li>例如避免将两个计算密集型的线程放在同一个<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>上（这样<span class="heti-skip"><span class="heti-spacing"> </span>memory stall<span class="heti-spacing"> </span></span>的概率会减小）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span>Load Balancing<span class="heti-spacing"> </span></span>负载均衡<ul>
+<li><span>SMP<span class="heti-spacing"> </span></span>情境下让所有<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的负载更加平均</li>
+<li>两种方法<ul>
+<li>push migration：周期性检查所有处理器上的负载情况，发现空闲的则将任务<span class="heti-skip"><span class="heti-spacing"> </span>push<span class="heti-spacing"> </span></span>过去</li>
+<li>pull migration：空闲的处理器主动从繁忙的处理器上拉来任务</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span>Processor Affinity<span class="heti-spacing"> </span></span>处理器亲核性<ul>
+<li>当一个线程在一个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>上运行一段时间之后，<span>cache<span class="heti-spacing"> </span></span>内容会被当前线程填充</li>
+<li>如果为了负载均衡而将这个线程<span class="heti-skip"><span class="heti-spacing"> </span>migrate<span class="heti-spacing"> </span></span>到其它处理器上，会因为<span class="heti-skip"><span class="heti-spacing"> </span>cache miss<span class="heti-spacing"> </span></span>导致效率下降</li>
+<li>两种机制<ul>
+<li>soft affinity：操作系统尽可能保持线程在同一个处理器上运行，但不保证（例如负载实在不均衡）</li>
+<li>hard affinity：强制规定一个线程只能在哪些处理器上运行</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span>NUMA<span class="heti-spacing"> </span></span>架构系统<ul>
+<li><span>NUMA<span class="heti-spacing"> </span></span>下每个<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>有自己对应的<span><span class="heti-spacing"> </span>memory</span>，可以快速访问，也可以访问其它<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>memory<span class="heti-spacing"> </span></span>不过速度较慢</li>
+<li><span>NUMA-aware<span class="heti-spacing"> </span></span>的操作系统会在调度的时候尽可能的避免跨<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>memory<span class="heti-spacing"> </span></span>访问</li>
+</ul>
+</li>
+<li>实时操作系统调度<ul>
+<li><span>soft real-time systems<span class="heti-spacing"> </span></span>软实时：将关键的实时任务提高优先级，但并不保证如何调度<ul>
+<li>例如<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>就是软实时操作系统</li>
+<li><span>Linux<span class="heti-spacing"> </span></span>无法达到硬实时：因为硬实时一定要能精确控制非预期事件的产生（例如中断）</li>
+</ul>
+</li>
+<li><span>hard real-time systems<span class="heti-spacing"> </span></span>硬实时：规定任务必须在它的<span class="heti-skip"><span class="heti-spacing"> </span>ddl<span class="heti-spacing"> </span></span>之前完成执行，如果超时了，系统<span class="heti-skip"><span class="heti-spacing"> </span>watchdog<span class="heti-spacing"> </span></span>部件会察觉到系统有异常，会将系统<span class="heti-skip"><span class="heti-spacing"> </span>reboot<span class="heti-spacing"> </span></span>来恢复保证实时性</li>
+</ul>
+</li>
+</ul>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年12月10日 22:48:28</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年1月1日 23:47:07</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年12月10日 22:48:28</span>
@@ -1800,13 +1884,13 @@ var _hmt = _hmt || [];
             </div>
 </div>
 </a>
-<a aria-label="下一页: 系统 II lab1" class="md-footer__link md-footer__link--next" href="../lab1/" rel="next">
+<a aria-label="下一页: 进程同步" class="md-footer__link md-footer__link--next" href="../topic6/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 下一页
               </span>
-              系统 II lab1
+              进程同步
             </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -1818,7 +1902,7 @@ var _hmt = _hmt || [];
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
 <div class="md-copyright__highlight">
-      Copyright © 2022 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
+      Copyright © 2022-2023 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
 </div>
   
   
