@@ -60,12 +60,32 @@ comment: True
 </div>
 
 <div class="flink-list-item">
-    <a href="https://tiandians.github.io/TechStack/" title="Bowling's TechStack" target="_blank">
+    <a href="https://note.bowling233.top/" title="Bowling's TechStack" target="_blank">
         <div class="flink-item-icon">
             <img src="https://cdn.tonycrane.cc/note/friends/bowling.jpeg" alt="Bowling">
         </div>
         <div class="flink-item-name">Bowling's TechStack</div>
         <div class="flink-item-desc">强得恐怖的学弟</div>
+    </a>
+</div>
+
+<div class="flink-list-item">
+    <a href="https://yhwu-is.github.io/Notes/" title="yhwu_is's Notes" target="_blank">
+        <div class="flink-item-icon">
+            <img src="https://cdn.tonycrane.cc/note/friends/wyy.jpg" alt="yhwu_is's Notes">
+        </div>
+        <div class="flink-item-name">yhwu_is's Notes</div>
+        <div class="flink-item-desc">wyy! 我滴超人</div>
+    </a>
+</div>
+
+<div class="flink-list-item">
+    <a href="https://note.hobbitqia.cc" title="HobbitQia 的笔记本" target="_blank">
+        <div class="flink-item-icon">
+            <img src="https://cdn.tonycrane.cc/note/friends/q.ico" alt="HobbitQia 的笔记本">
+        </div>
+        <div class="flink-item-name">HobbitQia 的笔记本</div>
+        <div class="flink-item-desc">你是❓ 您❗️</div>
     </a>
 </div>
 
@@ -85,7 +105,7 @@ comment: True
             <img src="https://cdn.gztime.cc/avatar/GZTime_2021.png" alt="GZTime's Blog">
         </div>
         <div class="flink-item-name">GZTime's Blog</div>
-        <div class="flink-item-desc">这个懒蛋还没搞 note，丢个 blog 吧</div>
+        <div class="flink-item-desc">这个懒蛋还没搞 note</div>
     </a>
 </div>
 
