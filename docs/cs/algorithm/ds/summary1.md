@@ -217,7 +217,7 @@ counter: True
 - 记录则对于每个根，另 S[root] = -size，size 表示这个树的大小（初始为 -1）
 - 通过按大小合并的带有 $N$ 个节点的树最高为 $\lfloor \log_2N\rfloor+1$
 
-### 路经压缩
+### 路径压缩
 在查找的同时将路径上的所有节点的父节点都设置为根节点，这样可以减少树的高度
 
 ```c 
@@ -324,6 +324,16 @@ void topsort(Graph G) {
         free(Q);
     }
     ```
+- AOE（Activity On Edge）网络
+    - 规划活动进行的顺序
+    - 有向无环图
+    - 每个节点存在一个最早完成时间（earliest completion time）EC[v] 和最晚完成时间（latest completion time）LC[v]
+    - 每条边存在一个持续时间（lasting time）也就是边权 C，还有一个松弛时间（slack time）
+    - 计算
+        - $EC[w]=\max_{<v,w>\in E}\{EC[v]+C_{v,w}\}$
+        - $LC[v]=\max_{<v,w>\in E}\{LC[w]-C_{v,w}\}$
+        - 边 $<v,w>$ 的松弛时间为 $LC[w]-EC[v]-C_{v,w}$
+    - 关键路径（critical path）为全是 0 松弛时间的边构成的路径
 
 ### 网络流
 - 最大流：给定一个有向图，求从源点到汇点的最大流量
