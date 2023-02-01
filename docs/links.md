@@ -1,5 +1,6 @@
 ---
 comment: True
+glightbox: False
 ---
 
 # 友链
