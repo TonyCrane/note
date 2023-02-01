@@ -50,12 +50,32 @@ comment: True
 </div>
 
 <div class="flink-list-item">
-    <a href="https://notes.zerokei.top/" title="克瑞奇的笔记本" target="_blank">
+    <a href="https://yhwu-is.github.io/Notes/" title="yhwu_is's Notes" target="_blank">
         <div class="flink-item-icon">
-            <img src="https://cdn.tonycrane.cc/note/friends/zerokei.png" alt="克瑞奇">
+            <img src="https://cdn.tonycrane.cc/note/friends/wyy.jpg" alt="yhwu_is's Notes">
         </div>
-        <div class="flink-item-name">克瑞奇的笔记本</div>
-        <div class="flink-item-desc">也是一个好强的学长/拜谢</div>
+        <div class="flink-item-name">yhwu_is's Notes</div>
+        <div class="flink-item-desc">wyy! 我滴超人</div>
+    </a>
+</div>
+
+<div class="flink-list-item">
+    <a href="https://frightenedfoxcn.github.io/notes/" title="FFox's Notes" target="_blank">
+        <div class="flink-item-icon">
+            <img src="https://cdn.tonycrane.cc/note/friends/ffox.jpg" alt="FFox's Notes">
+        </div>
+        <div class="flink-item-name">FFox's Notes</div>
+        <div class="flink-item-desc">kami❗️</div>
+    </a>
+</div>
+
+<div class="flink-list-item">
+    <a href="https://note.hobbitqia.cc" title="HobbitQia 的笔记本" target="_blank">
+        <div class="flink-item-icon">
+            <img src="https://cdn.tonycrane.cc/note/friends/q.ico" alt="HobbitQia 的笔记本">
+        </div>
+        <div class="flink-item-name">HobbitQia 的笔记本</div>
+        <div class="flink-item-desc">你是❓ 您❗️</div>
     </a>
 </div>
 
@@ -70,22 +90,12 @@ comment: True
 </div>
 
 <div class="flink-list-item">
-    <a href="https://yhwu-is.github.io/Notes/" title="yhwu_is's Notes" target="_blank">
+    <a href="https://notes.zerokei.top/" title="克瑞奇的笔记本" target="_blank">
         <div class="flink-item-icon">
-            <img src="https://cdn.tonycrane.cc/note/friends/wyy.jpg" alt="yhwu_is's Notes">
+            <img src="https://cdn.tonycrane.cc/note/friends/zerokei.png" alt="克瑞奇">
         </div>
-        <div class="flink-item-name">yhwu_is's Notes</div>
-        <div class="flink-item-desc">wyy! 我滴超人</div>
-    </a>
-</div>
-
-<div class="flink-list-item">
-    <a href="https://note.hobbitqia.cc" title="HobbitQia 的笔记本" target="_blank">
-        <div class="flink-item-icon">
-            <img src="https://cdn.tonycrane.cc/note/friends/q.ico" alt="HobbitQia 的笔记本">
-        </div>
-        <div class="flink-item-name">HobbitQia 的笔记本</div>
-        <div class="flink-item-desc">你是❓ 您❗️</div>
+        <div class="flink-item-name">克瑞奇的笔记本</div>
+        <div class="flink-item-desc">也是一个好强的学长/拜谢</div>
     </a>
 </div>
 
@@ -102,7 +112,7 @@ comment: True
 <div class="flink-list-item">
     <a href="https://blog.gztime.cc/" title="GZTime's Blog" target="_blank">
         <div class="flink-item-icon">
-            <img src="https://cdn.gztime.cc/avatar/GZTime_2021.png" alt="GZTime's Blog">
+            <img src="https://cdn.tonycrane.cc/note/friends/GZTime_2021.png" alt="GZTime's Blog">
         </div>
         <div class="flink-item-name">GZTime's Blog</div>
         <div class="flink-item-desc">这个懒蛋还没搞 note</div>

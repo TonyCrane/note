@@ -1,11 +1,10 @@
 # 计算机系统
 
 !!! abstract
-    浙江大学 “计算机系统” 系列专业课程笔记及相关知识
+    计算机系统相关学习笔记。包括：
 
-    参考：
-
-    - *Computer System: A Programmer's Perspective (3rd.)*
+    - 浙江大学 “计算机系统” 系列专业课程笔记及相关知识
+    - 南京大学计算机系统基础实验（ICS PA）纪实
 
 ## Table of Contents
 ### 理论部分
@@ -41,3 +40,4 @@
     - [lab3: GDB+QEMU 调试 64 位 RISC-V LINUX](lab3)
     - [lab4: RV64 内核引导](lab4)
     - [lab5: RV64 时钟中断处理](lab5)
+- [南京大学 ICS PA 实验纪实](pa/)

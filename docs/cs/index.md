@@ -16,6 +16,7 @@
 - [Computer System 计算机系统](system)
     - [Computer System I 计算机系统 Ⅰ](system/cs1)
     - [Computer System II 计算机系统 Ⅱ](system/cs2)
+    - [南京大学 ICS PA 实验纪实](system/pa/)
 - 算法相关
     - [数据结构基础](algorithm/ds)
 - 人工智能相关
