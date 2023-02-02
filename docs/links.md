@@ -1,6 +1,7 @@
 ---
 comment: True
 glightbox: False
+nostatistics: True
 ---
 
 # 友链

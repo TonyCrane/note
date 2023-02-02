@@ -1,6 +1,7 @@
 ---
 comment: True
 changelog: True
+nostatistics: True
 ---
 
 # 更新记录
