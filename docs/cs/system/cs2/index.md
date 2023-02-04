@@ -23,3 +23,5 @@
     - [lab3: GDB+QEMU 调试 64 位 RISC-V LINUX](lab3)
     - [lab4: RV64 内核引导](lab4)
     - [lab5: RV64 时钟中断处理](lab5)
+    - [lab6: RV64 内核线程调度](lab6)
+    - [lab7: 综合实验（特权级 CPU）](lab7)
