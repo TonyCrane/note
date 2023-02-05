@@ -9,4 +9,4 @@
 
 - [TonyCrane/mkdocs-changelog-plugin](https://github.com/TonyCrane/mkdocs-changelog-plugin)
 - [TonyCrane/mkdocs-heti-plugin](https://github.com/TonyCrane/mkdocs-heti-plugin)
-- [TonyCrane/mkdocs-toolchain:mkdocs-statistics-plugin](https://github.com/TonyCrane/mkdocs-toolchain/tree/master/mkdocs-statistics-plugin)（不成熟，尚未单独发布）
+- [TonyCrane/mkdocs-statistics-plugin](https://github.com/TonyCrane/mkdocs-statistics-plugin)
