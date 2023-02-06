@@ -106,6 +106,11 @@
       .md-header, .md-tabs, .md-footer, .md-footer-meta {
         background-color: transparent;
       }
+      @media screen and (min-width: 1220px) {
+        sidebar_nav {
+          height: 0 !important;
+        }
+      }
     </style>
     {% block header %}
       {% include "partials/header.html" %}
@@ -123,7 +128,18 @@
           flex-direction: column;
           justify-content: space-between
       ">
-        <div class="md-main__inner md-grid home-blank" style="flex-grow: 1;"></div>
+        <div class="md-main__inner md-grid home-blank" style="flex-grow: 1;">
+          <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+            <div class="md-sidebar__scrollwrap sidebar_nav">
+              <div class="md-sidebar__inner">
+                {% if page and page.meta and page.meta.hide and "navigation" in page.meta.hide %}
+                {% else %}
+                  {% include "partials/nav.html" %}
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        </div>
         <div class="md-typeset" style="display: block; background-color: transparent; font-size: 175%;">
           <div class="md-grid">
             <div style="margin-left: 0.8rem;">
