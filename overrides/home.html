@@ -72,6 +72,10 @@
       {% include "partials/integrations/analytics.html" %}
     {% endblock %}
     {% block extrahead %}{% endblock %}
+    <link rel="stylesheet" href="css/cards/base.css" />
+    <link rel="stylesheet" href="css/cards/cards.css" />
+    <script type="module" crossorigin src="/assets/cards/index.93159c38.js"></script>
+    <link rel="stylesheet" href="/assets/cards/index.c9fa2768.css">
   </head>
   {% set direction = config.theme.direction or lang.t('direction') %}
   {% if config.theme.palette %}
@@ -111,6 +115,19 @@
           height: 0 !important;
         }
       }
+      #app {
+        position: absolute;
+        right: calc(35% - 320px / 2);
+        top: calc(50% - 445.68px / 2);
+      }
+      @media (max-width: 960px) {
+        #app {
+          display: none;
+        }
+      }
+      [data-md-color-scheme="default"] #app {
+        display: none;
+      }
     </style>
     {% block header %}
       {% include "partials/header.html" %}
@@ -140,6 +157,8 @@
             </div>
           </div>
         </div>
+        <!-- modified from https://github.com/simeydotme/pokemon-cards-css -->
+        <div id="app"></div>
         <div class="md-typeset" style="display: block; background-color: transparent; font-size: 175%;">
           <div class="md-grid">
             <div style="margin-left: 0.8rem;">

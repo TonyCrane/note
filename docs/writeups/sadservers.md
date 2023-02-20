@@ -924,3 +924,355 @@ def application(environ, start_response):
 admin@ip-172-31-32-71:~$ curl -s http://localhost
 Hello, world!
 ```
+
+## "Lisbon"
+
+> **Scenario:** "Lisbon": etcd SSL cert troubles
+> 
+> **Level:** Medium
+> 
+> **Description:** There's an etcd server running on https://localhost:2379 , get the value for the key "foo", ie `etcdctl get foo` or `curl https://localhost:2379/v2/keys/foo`
+> 
+> **OS:** Debian 11
+
+首先跑一下 `etcdctl get goo` 试试看，得到报错：
+```text
+admin@ip-10-0-0-138:/$ etcdctl get foo
+Error:  client: etcd cluster is unavailable or misconfigured; error #0: x509: certificate has expired or is not yet valid: current time 2024-02-20T02:49:48Z is after 2023-01-30T00:02:48Z
+
+error #0: x509: certificate has expired or is not yet valid: current time 2024-02-20T02:49:48Z is after 2023-01-30T00:02:48Z
+```
+
+可见是证书过期了，而且当前时间是在 24 年，直接 `sudo date -s 20230101` 修改日期到证书过期前就可以。
+
+接着再运行可以得到：
+```text
+admin@ip-10-0-0-138:/$ etcdctl get foo
+Error:  client: response is invalid json. The endpoint is probably not valid etcd cluster endpoint.
+admin@ip-10-0-0-138:/$ curl https://localhost:2379/v2/keys/foo
+<html>
+<head><title>404 Not Found</title></head>
+<body>
+<center><h1>404 Not Found</h1></center>
+<hr><center>nginx/1.18.0</center>
+</body>
+</html>
+```
+
+这个 curl 的 404 结果是 nginx 的就比较怪，所以 curl 了一下根页面：
+```
+admin@ip-10-0-0-138:/$ curl https://localhost:2379/
+Testing SSL
+admin@ip-10-0-0-138:/$ curl https://localhost:443/
+Testing SSL
+admin@ip-10-0-0-138:/$ cat /var/www/html/index.html 
+Testing SSL
+```
+
+可以猜测 2379 端口被重定向到 nginx 的 443 端口上了，看了下 `/etc/nginx/sites-enabled/default` 并没有 2379 端口相关设置，netstat 也只可以看到占用情况，2379 确实在用。接下来看看 iptables：
+```text
+admin@ip-10-0-0-138:/$ sudo iptables -t nat -L
+Chain PREROUTING (policy ACCEPT)
+target     prot opt source               destination         
+DOCKER     all  --  anywhere             anywhere             ADDRTYPE match dst-type LOCAL
+
+Chain INPUT (policy ACCEPT)
+target     prot opt source               destination         
+
+Chain OUTPUT (policy ACCEPT)
+target     prot opt source               destination         
+REDIRECT   tcp  --  anywhere             anywhere             tcp dpt:2379 redir ports 443
+DOCKER     all  --  anywhere            !ip-127-0-0-0.us-east-2.compute.internal/8  ADDRTYPE match dst-type LOCAL
+
+Chain POSTROUTING (policy ACCEPT)
+target     prot opt source               destination         
+MASQUERADE  all  --  ip-172-17-0-0.us-east-2.compute.internal/16  anywhere            
+
+Chain DOCKER (2 references)
+target     prot opt source               destination         
+RETURN     all  --  anywhere             anywhere
+```
+可以发现 `tcp dpt:2379 redir ports 443`，所以最简单的方法直接 -F flush 掉这些 rules 就好：
+```text
+admin@ip-10-0-0-138:/$ sudo iptables -t nat -F       
+admin@ip-10-0-0-138:/$ etcdctl get foo
+bar
+admin@ip-10-0-0-138:/$ curl https://localhost:2379/v2/keys/foo
+{"action":"get","node":{"key":"/foo","value":"bar","modifiedIndex":4,"createdIndex":4}}
+```
+
+## "Pokhara"
+
+> **Scenario:** "Pokhara": SSH and other sshenanigans
+> 
+> **Level:** Hard
+> 
+> **Description:** A user `client` was added to the server, as well as their SSH public key. The objective is to be able to SSH locally (there's only one server) as this user client using their ssh keys. This is, if as root you change to this user `sudo su; su client`, you should be able to login with ssh: `ssh localhost`.
+> 
+> **OS:** Debian 11
+
+首先测试一下，发现连切换到 client 用户都不可以：
+```text
+admin@ip-172-31-33-16:/$ sudo su
+root@ip-172-31-33-16:/# su client
+Your account has expired; please contact your system administrator.
+```
+
+用户过期了，那就延一下：
+```text
+admin@ip-172-31-33-16:/$ sudo chage -l client
+Last password change                                    : Feb 05, 2023
+Password expires                                        : never
+Password inactive                                       : never
+Account expires                                         : Jan 01, 1970
+Minimum number of days between password change          : 0
+Maximum number of days between password change          : 99999
+Number of days of warning before password expires       : 7
+admin@ip-172-31-33-16:/$ sudo usermod -e 2024-01-01 client
+admin@ip-172-31-33-16:/$ sudo chage -l client
+Last password change                                    : Feb 05, 2023
+Password expires                                        : never
+Password inactive                                       : never
+Account expires                                         : Jan 01, 2024
+Minimum number of days between password change          : 0
+Maximum number of days between password change          : 99999
+Number of days of warning before password expires       : 7
+```
+
+再次登陆，出现报错：
+```text
+root@ip-172-31-33-16:/# su client
+su: failed to execute /usr/sbin/nologin: Resource temporarily unavailable
+```
+它试图执行 `/usr/sbin/nologin`，但是正常来讲应该是一个 shell，所以改一下先，但仍然会出现报错：
+```text
+root@ip-172-31-33-16:/# lslogins client
+...                 
+Shell:                              /usr/sbin/nologin                   
+...
+root@ip-172-31-33-16:/# usermod --shell /bin/bash client
+root@ip-172-31-33-16:/# lslogins client
+...
+Shell:                              /bin/bash                           
+...
+root@ip-172-31-33-16:/# su client
+su: failed to execute /bin/bash: Resource temporarily unavailable
+```
+
+搜索了解到可能是登陆数量被限制了，在 `/etc/security/limits.conf` 中发现：
+```text
+client          hard    nproc           0
+```
+注释掉这一行，可以登陆 client 用户了，但是 ssh 还有问题：
+```text
+root@ip-172-31-33-16:/# su client
+client@ip-172-31-33-16:/$ ssh localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:nfWAp8P5xQ+rJbfolHi8/jTpKNa+DlN1MXv1Wwus+4M.
+Please contact your system administrator.
+Add correct host key in /home/client/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /home/client/.ssh/known_hosts:1
+  remove with:
+  ssh-keygen -f "/home/client/.ssh/known_hosts" -R "localhost"
+ECDSA host key for localhost has changed and you have requested strict checking.
+Host key verification failed.
+```
+根据指导，在 client 用户下执行 ssh-keygen：
+```text
+client@ip-172-31-33-16:/$ ssh-keygen -f "/home/client/.ssh/known_hosts" -R "localhost"
+# Host localhost found: line 1
+/home/client/.ssh/known_hosts updated.
+Original contents retained as /home/client/.ssh/known_hosts.old
+client@ip-172-31-33-16:/$ ssh localhost
+The authenticity of host 'localhost (127.0.0.1)' can't be established.
+ECDSA key fingerprint is SHA256:nfWAp8P5xQ+rJbfolHi8/jTpKNa+DlN1MXv1Wwus+4M.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'localhost' (ECDSA) to the list of known hosts.
+client@localhost: Permission denied (publickey).
+```
+
+又 Permission denied，所以去查一下 ssh 的配置文件：
+```text
+root@ip-172-31-33-16:/# cat /etc/ssh/sshd_config.d/sad.conf
+DenyUsers client
+```
+删掉这一行，`systemctl restart ssh` 重启服务，再次尝试，得到：
+```text
+client@ip-172-31-33-16:/$ ssh localhost
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for '/home/client/.ssh/id_rsa' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "/home/client/.ssh/id_rsa": bad permissions
+client@localhost: Permission denied (publickey).
+client@ip-172-31-33-16:/$ ls -l /home/client/.ssh/id_rsa
+-rw-r--r-- 1 client client 2610 Feb  5 22:33 /home/client/.ssh/id_rsa
+```
+它告诉我们 id_rsa 的权限太大了，因此给 group 和 others 的 r 权限都去掉：
+```text
+client@ip-172-31-33-16:/$ chmod g-r /home/client/.ssh/id_rsa
+client@ip-172-31-33-16:/$ chmod o-r /home/client/.ssh/id_rsa
+```
+即可正常 ssh 登陆：
+```text
+client@ip-172-31-33-16:/$ ssh localhost
+Linux ip-172-31-33-16 5.10.0-14-cloud-amd64 #1 SMP Debian 5.10.113-1 (2022-04-29) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Sun Feb  5 23:00:41 2023 from 127.0.0.1
+```
+
+## "Roseau"
+
+> **Scenario:** "Roseau": Hack a Web Server
+> 
+> **Level:** Hard
+> 
+> **Description:** There is a secret stored in a file that the local Apache web server can provide. Find this secret and have it as a /home/admin/secret.txt file.
+> 
+> Note that in this server the admin user is not a sudoer.
+> 
+> Also note that the password crackers Hashcat and Hydra are installed from packages and John the Ripper binaries have been built from source in /home/admin/john/run.
+> 
+> **OS:** Debian 11
+
+Sadservers 上第一道 Hack 类题目的题，不过看起来目的也很明确，区别基本就是没有 root 权限，需要绕过、破解等。
+
+既然有一个 Apache 服务，那就先 curl 一下 localhost：
+```text
+admin@ip-172-31-34-168:~$ curl localhost
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+<html><head>
+<title>401 Unauthorized</title>
+</head><body>
+<h1>Unauthorized</h1>
+<p>This server could not verify that you
+are authorized to access the document
+requested.  Either you supplied the wrong
+credentials (e.g., bad password), or your
+browser doesn't understand how to supply
+the credentials required.</p>
+<hr>
+<address>Apache/2.4.54 (Debian) Server at localhost Port 80</address>
+</body></html>
+```
+需要认证，而 Apache 的配置文件是可以直接看到的：
+```text
+admin@ip-172-31-34-168:/$ cat /etc/apache2/sites-enabled/000-default.conf
+<VirtualHost *:80>
+        ServerAdmin webmaster@localhost
+        DocumentRoot /var/www/html
+        ErrorLog ${APACHE_LOG_DIR}/error.log
+        CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+
+        <Directory "/var/www/html">
+                AuthType Basic
+                AuthName "Protected Content"
+                AuthUserFile /etc/apache2/.htpasswd
+                Require valid-user
+        </Directory>
+</VirtualHost>
+```
+所以整个目录都被保护了，使用 `/etc/apache2/.htpasswd` 中的账号密码才能访问。而这个文件我们也是可以直接访问的：
+```text
+admin@ip-172-31-34-168:/$ cat /etc/apache2/.htpasswd
+carlos:$apr1$b1kyfnHB$yRHwzbuKSMyW62QTnGYCb0
+```
+题目里说了提供了 John the Ripper，搜一下可以知道这是个破解密码的工具，直接把 .htpasswd 文件丢进去：
+```text
+admin@ip-172-31-34-168:/$ cd ~/john/run/
+admin@ip-172-31-34-168:~/john/run$ ./john /etc/apache2/.htpasswd
+Warning: detected hash type "md5crypt", but the string is also recognized as "md5crypt-long"
+Use the "--format=md5crypt-long" option to force loading these as that type instead
+Using default input encoding: UTF-8
+Loaded 1 password hash (md5crypt, crypt(3) $1$ (and variants) [MD5 256/256 AVX2 8x3])
+Will run 2 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, 'h' for help, almost any other key for status
+Warning: Only 34 candidates buffered for the current salt, minimum 48 needed for performance.
+Almost done: Processing the remaining buffered candidate passwords, if any.
+0g 0:00:00:00 DONE 1/3 (2023-02-20 03:59) 0g/s 9527p/s 9527c/s 9527C/s Carlos1921..Carlos1900
+Proceeding with wordlist:./password.lst
+Enabling duplicate candidate password suppressor
+chalet           (carlos)     
+1g 0:00:00:01 DONE 2/3 (2023-02-20 03:59) 0.6097g/s 40560p/s 40560c/s 40560C/s 050381..song
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+```
+得到用户 carlos 的密码 chalet，然后通过 -u 选项来 curl：
+```text
+admin@ip-172-31-34-168:~/john/run$ curl -u carlos:chalet localhost
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+ <head>
+  <title>Index of /</title>
+ </head>
+ <body>
+<h1>Index of /</h1>
+ ...
+</body></html>
+```
+可以成功认证，然后列一下 `/var/www/html` 的内容，发现有一个 webfile，curl 下来：
+```text
+admin@ip-172-31-34-168:~/john/run$ ls /var/www/html/
+webfile
+admin@ip-172-31-34-168:~/john/run$ curl -u carlos:chalet localhost/webfile
+Warning: Binary output can mess up your terminal. Use "--output -" to tell 
+Warning: curl to output it to your terminal anyway, or consider "--output 
+Warning: <FILE>" to save to a file.
+admin@ip-172-31-34-168:~/john/run$ curl -u carlos:chalet localhost/webfile --output ~/secret
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100   215  100   215    0     0   104k      0 --:--:-- --:--:-- --:--:--  104k
+```
+file 一下发现 secret 是个 zip，但 unzip 需要密码：
+```text
+admin@ip-172-31-34-168:~$ file secret
+secret: Zip archive data, at least v1.0 to extract
+admin@ip-172-31-34-168:~$ unzip secret
+Archive:  secret
+[secret] secret.txt password:
+```
+同样可以使用 John the Ripper 来破解：
+```text
+admin@ip-172-31-34-168:~$ john/run/zip2john secret > secret.passwd
+ver 1.0 efh 5455 efh 7875 secret/secret.txt PKZIP Encr: 2b chk, TS_chk, cmplen=29, decmplen=17, crc=AAC6E9AF ts=14E0 cs=14e0 type=0
+admin@ip-172-31-34-168:~$ john/run/john secret.passwd 
+Using default input encoding: UTF-8
+Loaded 1 password hash (PKZIP [32/64])
+Will run 2 OpenMP threads
+Proceeding with single, rules:Single
+Press 'q' or Ctrl-C to abort, 'h' for help, almost any other key for status
+Almost done: Processing the remaining buffered candidate passwords, if any.
+0g 0:00:00:00 DONE 1/3 (2023-02-20 04:03) 0g/s 470700p/s 470700c/s 470700C/s Txtsecret/secret.txt1900..Tsecret1900
+Proceeding with wordlist:john/run/password.lst
+Enabling duplicate candidate password suppressor
+andes            (secret/secret.txt)     
+1g 0:00:00:00 DONE 2/3 (2023-02-20 04:03) 2.777g/s 1529Kp/s 1529Kc/s 1529KC/s poussinet..nisa1234
+Use the "--show" option to display all of the cracked passwords reliably
+Session completed. 
+admin@ip-172-31-34-168:~$ unzip secret
+Archive:  secret
+[secret] secret.txt password: andes
+ extracting: secret.txt              
+admin@ip-172-31-34-168:~$ ls
+agent  john  secret  secret.passwd  secret.txt
+admin@ip-172-31-34-168:~$ cat secret.txt
+Roseau, Dominica
+admin@ip-172-31-34-168:~$ sha1sum /home/admin/secret.txt |awk '{print $1}'
+cc2c322fbcac56923048d083b465901aac0fe8f8
+```
