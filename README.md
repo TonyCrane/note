@@ -1,5 +1,10 @@
 # TonyCrane's Notebook<br/>鹤翔万里的笔记本
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/assets/github/github-dark.png">
+  <img alt="Banner" src="docs/assets/github/github-light.png">
+</picture>
+
 用 mkdocs 搭的一个比较粗糙的在线公开笔记本  
 归档一些计算机、CTF 的知识笔记还有一些比赛的 writeup 以及一些杂乱的内容
 
