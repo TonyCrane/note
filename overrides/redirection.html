@@ -1,0 +1,26 @@
+{% extends "main.html" %}
+{% block content %}
+  <h1>Redirection!</h1>
+  <div>
+    <p>链接 //old// 已经更新到了 //new// 位置。</p>
+    <p><span id="countdown"></span> 秒后即将重定向，<a href="javascript:redirect()">点击此处</a>立即重定向。</p>
+  </div>
+
+  <script>
+    var countdown = //wait_time//;
+    var countdownElement = document.getElementById('countdown');
+    countdownElement.innerHTML = countdown;
+    var interval = setInterval(function() {
+      countdown--;
+      countdownElement.innerHTML = countdown;
+      if (countdown <= 0) {
+        clearInterval(interval);
+        window.location = '//new//';
+      }
+    }, 1000);
+    function redirect() {
+      window.location = '//new//';
+    }
+  </script>
+  
+{% endblock %}

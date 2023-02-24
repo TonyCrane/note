@@ -66,6 +66,24 @@ comment: True
 <a class="down-button" target="_blank" href="/assets/files/普通物理学实验 I 笔记.pdf" markdown="1">:fontawesome-solid-download: 下载</a>
 </div>
 
+<div class="card file-block" markdown="1">
+<div class="file-icon"><img src="/assets/images/pdf.svg" style="height: 3em;"></div>
+<div class="file-body">
+<div class="file-title">普通物理学 II（H）笔记</div>
+<div class="file-meta">7.4 MB / 9 P / 2023-02-18</div>
+</div>
+<a class="down-button" target="_blank" href="/assets/files/普通物理学 II（H）笔记.pdf" markdown="1">:fontawesome-solid-download: 下载</a>
+</div>
+
+<div class="card file-block" markdown="1">
+<div class="file-icon"><img src="/assets/images/pdf.svg" style="height: 3em;"></div>
+<div class="file-body">
+<div class="file-title">概率论（H）笔记</div>
+<div class="file-meta">4.8 MB / 6 P / 2023-01-05</div>
+</div>
+<a class="down-button" target="_blank" href="/assets/files/概率论（H）笔记.pdf" markdown="1">:fontawesome-solid-download: 下载</a>
+</div>
+
 
 ## 专业基础课程
 <div class="card file-block" markdown="1">
