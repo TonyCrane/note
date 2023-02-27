@@ -7,10 +7,11 @@
 
 ## Table of Contents
 - [Programming Language 编程语言 & ISA](pl)
+    - [C/C++](pl/c_cpp/c/)
     - [Python](pl/python/)
     - [Rust](pl/rust)
-    - [C/C++](pl/c_cpp)
     - [Haskell](pl/haskell)
+    - [Chisel](pl/chisel/)
     - [x86 Assembly](pl/asm)
     - [RISC-V ISA](pl/riscv)
 - [Computer System 计算机系统](system)

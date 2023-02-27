@@ -7,13 +7,16 @@
     而且还有一些语言没写笔记（逃
 
 ## Table of Contents
+- C/C++
+    - [C 语言杂项](c_cpp/c/)
+    - [C++ 面向对象](c_cpp/oop/)
 - [Python](python)
     - [Python 语法基础](python/basic)
 - [Rust](rust)
     - [Rust 基础](rust/basic)
     - [Rust 杂项](rust/misc)
-- [C/C++](c_cpp)
 - [Haskell](haskell)
+- [Chisel](chisel/)
 - [x86 Assembly](asm)
 - [RISC-V ISA](riscv)
     - [RISC-V 非特权级 ISA](riscv/unprivileged)

@@ -3,7 +3,7 @@ counter: True
 comment: True
 ---
 
-# C/C++
+# C 语言杂项
 
 !!! abstract 
     记录一些第一次见过的用法、有用的文章/工具，以及容易忘的知识点。后面是整理的一些易错题。
@@ -16,7 +16,7 @@ comment: True
 
 ### 考试易错题
 
-- [zjj大佬整理的程算易错题](https://curl.blog.luogu.org/pta-c-yu-yan-li-lun-ti-zheng-li-20209-20211-post)
+- [zjj 大佬整理的程算易错题](https://zhoutimemachine.github.io/2022/07/07/2021/C-review/)
 
 ### 运算符优先级
 
