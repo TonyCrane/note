@@ -2891,7 +2891,7 @@ var _hmt = _hmt || [];
 <p><span>rust<span class="heti-spacing"> </span></span>中可以重复声明同一名称的变量，这会再次分配内存，并完全遮蔽掉前面的同名变量</p>
 <h2 id="_7">基本类型<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="_8">整型<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p><span>i<span class="heti-spacing"> </span></span><em>长度</em>（有符号）、<span>u<span class="heti-spacing"> </span></span><em>长度</em>（无符号）</p>
+<p>i<em>长度</em>（有符号）、u<em>长度</em>（无符号）</p>
 <ul>
 <li>i8、i16、i32、i64、i128、u8、u16、u32、u64、u128</li>
 <li>isize、<span>usize<span class="heti-spacing"> </span></span>长度由<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>决定，<span>32<span class="heti-spacing"> </span></span>位<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>则是<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位，<span>64<span class="heti-spacing"> </span></span>位<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>则是<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位</li>
@@ -2903,10 +2903,10 @@ var _hmt = _hmt || [];
 </ul>
 <p><span>debug<span class="heti-spacing"> </span></span>模式编译时产生溢出会<span><span class="heti-spacing"> </span>panic</span>，而在<span class="heti-skip"><span class="heti-spacing"> </span>release<span class="heti-spacing"> </span></span>模式下则不会<span><span class="heti-spacing"> </span>panic</span>，按照补码循环溢出。但不能依赖这种行为，想要这样的效果应该标准库的一些方法：</p>
 <ul>
-<li><span>wrapping_<span class="heti-spacing"> </span></span><em><span>*<span class="heti-spacing"> </span></span></em>方法，按照补码循环溢出，例如 <code class="highlight"><span class="n">a</span><span class="p">.</span><span class="n">wrapping_add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span></code></li>
-<li><span>checked_<span class="heti-spacing"> </span></span><em><span>*<span class="heti-spacing"> </span></span></em>方法，如果产生溢出了，则会返回<span><span class="heti-spacing"> </span>None</span></li>
-<li><span>overflowing_<span class="heti-spacing"> </span></span><em><span>*<span class="heti-spacing"> </span></span></em>方法，返回结果以及指示是否溢出的布尔值</li>
-<li><span>saturating_<span class="heti-spacing"> </span></span><em><span>*<span class="heti-spacing"> </span></span></em>方法，如果会溢出则保持在最大<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>最小值上</li>
+<li>wrapping_<em>*</em> 方法，按照补码循环溢出，例如 <code class="highlight"><span class="n">a</span><span class="p">.</span><span class="n">wrapping_add</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="w"></span></code></li>
+<li>checked_<em>*</em> 方法，如果产生溢出了，则会返回<span><span class="heti-spacing"> </span>None</span></li>
+<li>overflowing_<em>*</em> 方法，返回结果以及指示是否溢出的布尔值</li>
+<li>saturating_<em>*</em> 方法，如果会溢出则保持在最大<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>最小值上</li>
 </ul>
 <h4 id="_9">布尔类型<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>类型名为<span><span class="heti-spacing"> </span>bool</span>，值为<span class="heti-skip"><span class="heti-spacing"> </span>true<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>false</span>，占用<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>字节内存</p>
@@ -3253,7 +3253,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <h3 id="_33">数组<a class="headerlink" href="#_33" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li><span>rust<span class="heti-spacing"> </span></span>中数组长度固定，必须有相同类型，存储线性排列在栈上，速度快</li>
-<li>一个数组的类型是<span class="heti-skip"><span class="heti-spacing"> </span>[<span class="heti-spacing"> </span></span><em>元素类型</em><span class="heti-skip"><span class="heti-spacing"> </span>;<span class="heti-spacing"> </span></span><em>元素个数</em><span><span class="heti-spacing"> </span>]</span>，例如 <code class="highlight"><span class="p">[</span><span class="kt">i32</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w"></span></code> 表示包含<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>i32<span class="heti-spacing"> </span></span>的数组</li>
+<li>一个数组的类型是<span><span class="heti-spacing"> </span>[</span><em>元素类型</em>; <em>元素个数</em>]，例如 <code class="highlight"><span class="p">[</span><span class="kt">i32</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w"></span></code> 表示包含<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>i32<span class="heti-spacing"> </span></span>的数组</li>
 <li>使用同一个重复元素初始化数组，例 <code class="highlight"><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">3</span><span class="p">;</span><span class="w"> </span><span class="mi">5</span><span class="p">]</span><span class="w"></span></code> 即<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>为包含<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>的数组</li>
 <li>索引使用<span><span class="heti-spacing"> </span>[]</span>，与其它语言相同</li>
 <li>越界访问会触发<span><span class="heti-spacing"> </span>panic</span></li>
@@ -3740,7 +3740,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <h2 id="_45">类型转换<a class="headerlink" href="#_45" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
 <li>一般情况下（方法调用除外）<span>Rust<span class="heti-spacing"> </span></span>不会进行隐式的类型转换</li>
-<li>使用<span class="heti-skip"><span class="heti-spacing"> </span>as<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>type<span class="heti-spacing"> </span></span></em>进行显式的转换</li>
+<li>使用<span><span class="heti-spacing"> </span>as</span> <em>type</em> 进行显式的转换</li>
 <li>超过最大值会溢出，如<span class="heti-skip"><span class="heti-spacing"> </span>300_i32 as i8<span class="heti-spacing"> </span></span>会得到<span><span class="heti-spacing"> </span>44</span>，而不会<span><span class="heti-spacing"> </span>panic</span></li>
 <li>内存地址转换为指针
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-67-1" id="__codelineno-67-1" name="__codelineno-67-1"></a><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">values</span>: <span class="p">[</span><span class="kt">i32</span><span class="p">;</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">];</span><span class="w"></span>
@@ -3844,7 +3844,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 </li>
 <li>对于<span><span class="heti-spacing"> </span>Result</span>，如果失败就<span><span class="heti-spacing"> </span>panic</span><ul>
 <li>使用<span><span class="heti-spacing"> </span>.unwrap()</span>：如果是<span class="heti-skip"><span class="heti-spacing"> </span>Err<span class="heti-spacing"> </span></span>则会<span><span class="heti-spacing"> </span>panic</span>，并输出错误内容</li>
-<li>使用<span><span class="heti-spacing"> </span>.expect("...")</span>：同样<span><span class="heti-spacing"> </span>panic</span>，但会显示为<span class="heti-skip"><span class="heti-spacing"> </span>panicked at '...:<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>Err<span class="heti-spacing"> </span></span>内容</em><span><span class="heti-spacing"> </span>'</span></li>
+<li>使用<span><span class="heti-spacing"> </span>.expect("...")</span>：同样<span><span class="heti-spacing"> </span>panic</span>，但会显示为<span><span class="heti-spacing"> </span>panicked at '...:</span> <em><span>Err<span class="heti-spacing"> </span></span>内容</em>'</li>
 </ul>
 </li>
 <li><code>?</code> 传播错误<ul>
@@ -3929,7 +3929,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <li><span>src/main.rs<span class="heti-spacing"> </span></span>是二进制<span class="heti-skip"><span class="heti-spacing"> </span>crate<span class="heti-spacing"> </span></span>的根文件，其包名和所属<span class="heti-skip"><span class="heti-spacing"> </span>package<span class="heti-spacing"> </span></span>相同，入口点在<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>函数</li>
 </ul>
 </li>
-<li><span>cargo new &lt;<span class="heti-spacing"> </span></span><em><span>name<span class="heti-spacing"> </span></span></em><span>&gt; --lib<span class="heti-spacing"> </span></span>创建库<span><span class="heti-spacing"> </span>package</span><ul>
+<li>cargo new &lt;<em>name</em><span>&gt; --lib<span class="heti-spacing"> </span></span>创建库<span><span class="heti-spacing"> </span>package</span><ul>
 <li>库<span class="heti-skip"><span class="heti-spacing"> </span>package<span class="heti-spacing"> </span></span>只能作为第三方库被引用，不能使用<span class="heti-skip"><span class="heti-spacing"> </span>cargo run<span class="heti-spacing"> </span></span>运行</li>
 <li><span>src/lib.rs<span class="heti-spacing"> </span></span>是库类型同名<span class="heti-skip"><span class="heti-spacing"> </span>crate<span class="heti-spacing"> </span></span>的根文件</li>
 </ul>
@@ -3997,7 +3997,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <a href="#__codelineno-83-8" id="__codelineno-83-8" name="__codelineno-83-8"></a>          └── func_c
 </code></pre></div>
 <ul>
-<li>仅使用<span class="heti-skip"><span class="heti-spacing"> </span>mod<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>name<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>;<span class="heti-spacing"> </span></span>将创建一个模块，并从同目录下同名的<em><span class="heti-skip"><span class="heti-spacing"> </span>name<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>.rs<span class="heti-spacing"> </span></span>中加载模块内容</li>
+<li>仅使用<span><span class="heti-spacing"> </span>mod</span> <em>name</em><span>;<span class="heti-spacing"> </span></span>将创建一个模块，并从同目录下同名的 <em>name</em><span>.rs<span class="heti-spacing"> </span></span>中加载模块内容</li>
 </ul>
 <h4 id="_49">代码可见性<a class="headerlink" href="#_49" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <ul>

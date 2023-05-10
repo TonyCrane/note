@@ -1710,7 +1710,7 @@ var _hmt = _hmt || [];
 <p>简单情况下没有必要手写，通过<span class="heti-skip"><span class="heti-spacing"> </span>-O3 -mavx2<span class="heti-spacing"> </span></span>编译器就可以优化地很好。但如果代码结构复杂，循环难以界定边界，甚至还有分支，这种情况下就需要手写<span><span class="heti-spacing"> </span>SIMD</span></p>
 <h3 id="sseavx-intrinsics">SSE/AVX Intrinsics<a class="headerlink" href="#sseavx-intrinsics" title="Permanent link">¶</a></h3>
 <h4 id="_3">头文件<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>提供这些<span class="heti-skip"><span class="heti-spacing"> </span>intrinsics<span class="heti-spacing"> </span></span>的头文件可以直接通过<em><span class="heti-skip"><span class="heti-spacing"> </span>?<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>mmintrin.h<span class="heti-spacing"> </span></span>来导入，不同指令集的头文件不同：</p>
+<p>提供这些<span class="heti-skip"><span class="heti-spacing"> </span>intrinsics<span class="heti-spacing"> </span></span>的头文件可以直接通过 <em>?</em><span>mmintrin.h<span class="heti-spacing"> </span></span>来导入，不同指令集的头文件不同：</p>
 <ul>
 <li><code>xmmintrin.h</code>：SSE，支持同时对<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位单精度浮点数的操作</li>
 <li><code>emmintrin.h</code>：SSE 2，支持同时对<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位双精度浮点数的操作</li>
@@ -1722,14 +1722,14 @@ var _hmt = _hmt || [];
 </ul>
 <p>而且后面的头文件包含前面所有的内容</p>
 <h4 id="_4">数据类型<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>额外数据类型以<span class="heti-skip"><span class="heti-spacing"> </span>__m<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>xxx<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>[<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>T<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>]<span class="heti-spacing"> </span></span>的形式命名：</p>
+<p>额外数据类型以<span><span class="heti-spacing"> </span>__m</span><em>xxx</em>[<em>T</em><span>]<span class="heti-spacing"> </span></span>的形式命名：</p>
 <ul>
 <li><em>xxx</em>：存储数据的总位数，比如<span><span class="heti-spacing"> </span>128</span>、256</li>
 <li>[<em>T</em>]：存储的每个单元的类型，单精度浮点数省略，整型为<span><span class="heti-spacing"> </span>i</span>，双精度浮点数为<span><span class="heti-spacing"> </span>d</span></li>
 </ul>
 <p>例如存储了<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>个双精度浮点数的<span class="heti-skip"><span class="heti-spacing"> </span>256<span class="heti-spacing"> </span></span>位数据的类型为<span><span class="heti-spacing"> </span>__m256d</span></p>
 <h4 id="_5">函数<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p><span>Intrinsics<span class="heti-spacing"> </span></span>提供的函数一般以<span class="heti-skip"><span class="heti-spacing"> </span>_mm[<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>xxx<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>]_<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>name<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>_<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>PT<span class="heti-spacing"> </span></span></em>的形式命名：</p>
+<p><span>Intrinsics<span class="heti-spacing"> </span></span>提供的函数一般以<span><span class="heti-spacing"> </span>_mm[</span><em>xxx</em>]_<em>name</em>_<em>PT</em> 的形式命名：</p>
 <ul>
 <li>[<em>xxx</em>]：操作数的位数，若为<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>则省略</li>
 <li><em>name</em>：函数名称，和用处相关</li>
@@ -1744,7 +1744,7 @@ var _hmt = _hmt || [];
 </li>
 <li><em>T</em>：操作数的数据类型<ul>
 <li>浮点型：单精度为<span><span class="heti-spacing"> </span>s</span>、双精度为<span><span class="heti-spacing"> </span>d</span></li>
-<li>整型：有符号<span><span class="heti-spacing"> </span>i</span><em><span><span class="heti-spacing"> </span>size</span></em>、无符号<span><span class="heti-spacing"> </span>u</span><em><span><span class="heti-spacing"> </span>size</span></em>，<em><span>size<span class="heti-spacing"> </span></span></em>表示每个单元中整型的宽度</li>
+<li>整型：有符号<span><span class="heti-spacing"> </span>i</span><em>size</em>、无符号<span><span class="heti-spacing"> </span>u</span><em>size</em>，<em>size</em> 表示每个单元中整型的宽度</li>
 </ul>
 </li>
 </ul>

@@ -4062,11 +4062,11 @@ var _hmt = _hmt || [];
 </div>
 <h4 id="_29">条件跳转指令<a class="headerlink" href="#_29" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <div class="card">
-<div class="card-header"><span>j<span class="heti-spacing"> </span></span><em><span>cc<span class="heti-spacing"> </span></span></em>类指令</div>
+<div class="card-header">j<em>cc</em> 类指令</div>
 <div class="card-body">
 <ul>
 <li><strong>指令格式</strong>：j<em>cc</em> dest</li>
-<li><strong>指令作用</strong>：如果与标志位有关的条件<em><span class="heti-skip"><span class="heti-spacing"> </span>cc<span class="heti-spacing"> </span></span></em>成立，则令<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>等于<span><span class="heti-spacing"> </span>dest</span>，即跳转到<span><span class="heti-spacing"> </span>dest</span></li>
+<li><strong>指令作用</strong>：如果与标志位有关的条件 <em>cc</em> 成立，则令<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>等于<span><span class="heti-spacing"> </span>dest</span>，即跳转到<span><span class="heti-spacing"> </span>dest</span></li>
 <li><strong>注意</strong>：这些跳转都是短跳，需要目标地址与下条指令偏移地址距离在<span class="heti-skip"><span class="heti-spacing"> </span>[-128, 127]<span class="heti-spacing"> </span></span>内</li>
 </ul>
 <details class="abstract">
@@ -5454,8 +5454,8 @@ var _hmt = _hmt || [];
 <div class="card-body">
 <ul>
 <li><strong>指令格式</strong>：set<em>cc</em> dest</li>
-<li><strong>指令作用</strong>：如果<em><span class="heti-skip"><span class="heti-spacing"> </span>cc<span class="heti-spacing"> </span></span></em>满足，则将字节<span class="heti-skip"><span class="heti-spacing"> </span>dest<span class="heti-spacing"> </span></span>设为<span><span class="heti-spacing"> </span>1</span>，否则设为<span><span class="heti-spacing"> </span>0</span></li>
-<li><strong>注意</strong>：<em><span>cc<span class="heti-spacing"> </span></span></em>同<span><span class="heti-spacing"> </span>j</span><em><span><span class="heti-spacing"> </span>cc</span></em>，<span>dest<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>位寄存器或字节大小存储单元</li>
+<li><strong>指令作用</strong>：如果 <em>cc</em> 满足，则将字节<span class="heti-skip"><span class="heti-spacing"> </span>dest<span class="heti-spacing"> </span></span>设为<span><span class="heti-spacing"> </span>1</span>，否则设为<span><span class="heti-spacing"> </span>0</span></li>
+<li><strong>注意</strong>：<em>cc</em> 同<span><span class="heti-spacing"> </span>j</span><em>cc</em>，<span>dest<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>位寄存器或字节大小存储单元</li>
 </ul>
 </div>
 </div>
@@ -5543,7 +5543,7 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p>段地址（其实叫<span><span class="heti-spacing"> </span>selector</span>）<span>10h<span class="heti-spacing"> </span></span>对应的描述符的<span class="heti-skip"><span class="heti-spacing"> </span>DPL<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>11</span>，即权限为<span><span class="heti-spacing"> </span>ring3</span>（<span>DPL<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>3</span>（最低）的时候所有程序都是有权访问的）</p>
-<p>假设前面那段代码中赋值给<span class="heti-skip"><span class="heti-spacing"> </span>ax<span class="heti-spacing"> </span></span>的段地址为<span><span class="heti-spacing"> </span>10h</span>，<span>cs<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>08h</span>（0000 10<em>00</em>），则<span><span class="heti-spacing"> </span>cs.cpl = 00</span>，于是<span><span class="heti-spacing"> </span>cs.cpl &lt; 10h-&gt;descriptor.DPL</span>，因此当前程序有权把<span class="heti-skip"><span class="heti-spacing"> </span>ds<span class="heti-spacing"> </span></span>赋值为<span><span class="heti-spacing"> </span>10h</span>，即有权访问该段中的数据</p>
+<p>假设前面那段代码中赋值给<span class="heti-skip"><span class="heti-spacing"> </span>ax<span class="heti-spacing"> </span></span>的段地址为<span><span class="heti-spacing"> </span>10h</span>，<span>cs<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>08h</span>（0000 10<em>0<heti-adjacent class="heti-adjacent-half"></heti-adjacent>0</em>），则<span><span class="heti-spacing"> </span>cs.cpl = 00</span>，于是<span><span class="heti-spacing"> </span>cs.cpl &lt; 10h-&gt;descriptor.DPL</span>，因此当前程序有权把<span class="heti-skip"><span class="heti-spacing"> </span>ds<span class="heti-spacing"> </span></span>赋值为<span><span class="heti-spacing"> </span>10h</span>，即有权访问该段中的数据</p>
 <p>若段描述符描述的是一个数据段，则访问者的<span class="heti-skip"><span class="heti-spacing"> </span>CPL<span class="heti-spacing"> </span></span>必须<strong>小于等于</strong>该段描述符的<span><span class="heti-spacing"> </span>DPL</span>。若段描述符描述的是一个代码段，则访问者的<span class="heti-skip"><span class="heti-spacing"> </span>CPL<span class="heti-spacing"> </span></span>必须<strong>等于</strong>该段描述符的<span class="heti-skip"><span class="heti-spacing"> </span>DPL<span class="heti-spacing"> </span></span>才能<span><span class="heti-spacing"> </span>jmp</span>、<span>call<span class="heti-spacing"> </span></span>到该段里面的函数</p>
 <p>当访问者的<span class="heti-skip"><span class="heti-spacing"> </span>CPL<span class="heti-spacing"> </span></span>大于某个代码段描述符的<span class="heti-skip"><span class="heti-spacing"> </span>DPL<span class="heti-spacing"> </span></span>时，则只能用<span class="heti-skip"><span class="heti-spacing"> </span>call call_gate_selector:0<span class="heti-spacing"> </span></span>这样的方式间接调用该代码段中的函数</p>
 <h3 id="call-gate">call gate<a class="headerlink" href="#call-gate" title="Permanent link">¶</a></h3>

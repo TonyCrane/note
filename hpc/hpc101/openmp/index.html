@@ -1863,7 +1863,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>运行时输出的顺序是不一定的</li>
 <li><span>#pragma<span class="heti-spacing"> </span></span>语句后面不能紧跟着大括号，一定要换一行</li>
-<li>可以通过在<span class="heti-skip"><span class="heti-spacing"> </span>parallel<span class="heti-spacing"> </span></span>后面加<span class="heti-skip"><span class="heti-spacing"> </span>num_threads(<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>xx<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>)<span class="heti-spacing"> </span></span>来指定特定线程数</li>
+<li>可以通过在<span class="heti-skip"><span class="heti-spacing"> </span>parallel<span class="heti-spacing"> </span></span>后面加<span><span class="heti-spacing"> </span>num_threads(</span><em>xx</em><span>)<span class="heti-spacing"> </span></span>来指定特定线程数</li>
 </ul>
 <h4 id="for"><span>for<span class="heti-spacing"> </span></span>循环并行<a class="headerlink" href="#for" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p><span>parallel<span class="heti-spacing"> </span></span>块内可以使用 <code class="highlight"><span class="cp">#pragma omp for</span></code> 来对<span class="heti-skip"><span class="heti-spacing"> </span>for<span class="heti-spacing"> </span></span>循环进行并行，相当于将循环拆成不同部分分配给多个线程
@@ -1878,7 +1878,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <ul>
-<li><span>for<span class="heti-spacing"> </span></span>循环中不能包含<span><span class="heti-spacing"> </span>break</span>（会报错），且必须包含<span><span class="heti-spacing"> </span>"int i =</span><em><span><span class="heti-spacing"> </span>xxx</span></em><span><span class="heti-spacing"> </span>"</span></li>
+<li><span>for<span class="heti-spacing"> </span></span>循环中不能包含<span><span class="heti-spacing"> </span>break</span>（会报错），且必须包含<span><span class="heti-spacing"> </span>"int i =</span> <em>xxx</em>"</li>
 <li><span>parallel<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>for<span class="heti-spacing"> </span></span>可以合起来写作一行 <code class="highlight"><span class="cp">#pragma omp parallel for</span></code></li>
 </ul>
 <h4 id="_5">条件并行<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
