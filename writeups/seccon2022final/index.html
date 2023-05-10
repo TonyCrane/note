@@ -1,0 +1,1728 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
+<link href="https://note.tonycrane.cc/writeups/seccon2022final/" rel="canonical"/>
+<link href="../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<title>SECCON 2022 Final - 鹤翔万里的笔记本</title>
+<link href="../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
+<link href="../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
+<link href="../../css/heti.css" rel="stylesheet"/>
+<link href="../../css/timeline.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css" rel="stylesheet"/>
+<link href="../../css/tasklist.css" rel="stylesheet"/>
+<link href="../../css/custom.css" rel="stylesheet"/>
+<link href="../../css/card.css" rel="stylesheet"/>
+<link href="../../css/flink.css" rel="stylesheet"/>
+<link href="../../css/changelog_extra.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c273de7f67d992cb6aef08c3ddf09bb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
+<link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<script src="../../js/scheme.js" type="text/javascript"></script>
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#seccon-ctf-2022-final-writeup">
+            跳转至
+          </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="鹤翔万里的笔记本" class="md-header__button md-logo" data-md-component="logo" href="../.." title="鹤翔万里的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            鹤翔万里的笔记本
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              SECCON 2022 Final
+            
+          </span>
+</div>
+</div>
+</div>
+<div class="md-header__options">
+<div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+<a class="light-mode" href="javascript:toggleScheme();" title="Light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"></path></svg>
+</a>
+<a class="dark-mode" href="javascript:toggleScheme();" title="Dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"></path></svg>
+</a>
+<a class="system-mode" href="javascript:toggleScheme();" title="System preference">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07 19.07 3.5m-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13.51 1.67m-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87.4 1.31M19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35-2.53-2.2m4.33-2.7 1.15-2.77 2.2 2.54-3.35.23m1.15-4.96-1.14-2.78 3.34.24-2.2 2.54M9.63 18.93l2.77 1.15-2.53 2.19-.24-3.34z"></path></svg>
+</a>
+<a class="unknown-mode" href="javascript:toggleScheme();" title="Unknown scheme">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"></path></svg>
+</a>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TonyCrane/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../cs/">
+        Computer Science
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../sec/">
+        Security
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../web/">
+        Web
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../ctf/">
+        CTF
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../">
+        Writeups
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../others/">
+        Others
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="鹤翔万里的笔记本" class="md-nav__button md-logo" data-md-component="logo" href="../.." title="鹤翔万里的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
+</a>
+    鹤翔万里的笔记本
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TonyCrane/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../..">Home</a>
+<label for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../changelog/">
+        更新记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../links/">
+        友链
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/">Computer Science</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Computer Science" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/pl/">编程语言 &amp; ISA</a>
+<label for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="编程语言 &amp; ISA" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          编程语言 &amp; ISA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" id="__nav_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2">
+          C/C++
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="C/C++" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+          C/C++
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/c_cpp/c/">
+        C 语言杂项
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/c_cpp/oop/">
+        C++ 面向对象
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/pl/python/">Python</a>
+<label for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Python" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/python/basic/">
+        Python 基础语法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/python/numpy/">
+        NumPy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/python/pil/">
+        PIL
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" id="__nav_2_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/pl/rust/">Rust</a>
+<label for="__nav_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Rust" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Rust
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/rust/basic/">
+        Rust 基础语法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/rust/misc/">
+        Rust 杂项随记
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/haskell/">
+        Haskell
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/chisel/">
+        Chisel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/asm/">
+        x86 汇编语言
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_8" id="__nav_2_2_8" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/pl/riscv/">RISC-V ISA</a>
+<label for="__nav_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="RISC-V ISA" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+          RISC-V ISA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/riscv/unprivileged/">
+        RISC-V 非特权级 ISA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/riscv/privileged/">
+        RISC-V 特权级 ISA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/pl/riscv/paging/">
+        RISC-V 页表相关
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/system/">计算机系统</a>
+<label for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/system/cs1/">计算机系统 I</a>
+<label for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 I" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 I
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/topic1/">
+        数据的表示
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/topic2/">
+        数字逻辑电路基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/topic3/">
+        组合逻辑电路设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/topic4/">
+        时序逻辑电路设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/topic5/">
+        指令集体系结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/topic6/">
+        处理器
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_8" id="__nav_2_3_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_2_8">
+          系统 I 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 I 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_2_8">
+<span class="md-nav__icon md-icon"></span>
+          系统 I 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab1-1/">
+        系统 I lab1-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab1-2/">
+        系统 I lab1-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab2-1/">
+        系统 I lab2-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab2-2/">
+        系统 I lab2-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab3/">
+        系统 I lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab4-1/">
+        系统 I lab4-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab4-2/">
+        系统 I lab4-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab5-1/">
+        系统 I lab5-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs1/lab5-2/">
+        系统 I lab5-2
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/system/cs2/">计算机系统 II</a>
+<label for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 II" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 II
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/topic1/">
+        流水线 CPU
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/topic2/">
+        操作系统简介
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/topic3/">
+        操作系统结构及系统调用
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/topic4/">
+        进程与线程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/topic5/">
+        CPU 调度
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/topic6/">
+        进程同步
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3_8">
+          系统 II 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 II 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_3_8">
+<span class="md-nav__icon md-icon"></span>
+          系统 II 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/lab1/">
+        系统 II lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/lab2/">
+        系统 II lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/lab3/">
+        系统 II lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/lab4/">
+        系统 II lab4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/lab5/">
+        系统 II lab5
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/lab6/">
+        系统 II lab6
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs2/lab7/">
+        系统 II lab7
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" id="__nav_2_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/system/cs3/">计算机系统 III</a>
+<label for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 III" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 III
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/cs3/topic1/">
+        系统量化研究方法
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/system/pa/">
+        ICS PA 实验纪实
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+          算法相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="算法相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          算法相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/algorithm/ds/">数据结构基础</a>
+<label for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="数据结构基础" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+          数据结构基础
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/algorithm/ds/topic1/">
+        算法分析基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/algorithm/ds/summary1/">
+        基础数据结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/algorithm/ds/summary2/">
+        排序与哈希
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_2" id="__nav_2_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/algorithm/ads/">高级数据结构与算法分析</a>
+</div>
+<nav aria-label="高级数据结构与算法分析" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_2">
+<span class="md-nav__icon md-icon"></span>
+          高级数据结构与算法分析
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+          人工智能相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="人工智能相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          人工智能相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/ai/basic/">
+        人工智能基础
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../hpc/">高性能计算</a>
+<label for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="高性能计算" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          高性能计算
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_2" id="__nav_2_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6_2">
+          HPC 101 超算小学期
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="HPC 101 超算小学期" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_2">
+<span class="md-nav__icon md-icon"></span>
+          HPC 101 超算小学期
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hpc/hpc101/vectorized/">
+        向量化计算
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hpc/hpc101/gpu/">
+        GPU 编程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hpc/hpc101/openmp/">
+        OpenMP 基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hpc/hpc101/mpi/">
+        MPI 基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../hpc/hpc101/ml/">
+        机器学习基础
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+          零散知识点
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="零散知识点" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          零散知识点
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/regex/">
+        正则表达式
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/unicode/">
+        Unicode
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/analysis/">源码剖析</a>
+<label for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="源码剖析" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          源码剖析
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/analysis/mkdocs/">
+        mkdocs 源码剖析
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs/tools/">工具相关</a>
+<label for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="工具相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          工具相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/toolbox/">
+        工具收集
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_3" id="__nav_2_9_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_3">
+          命令行工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="命令行工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_3">
+<span class="md-nav__icon md-icon"></span>
+          命令行工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/git/">
+        Git 命令备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/shell/">
+        Shell 命令备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/docker/">
+        Docker 相关备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/gdb/">
+        gdb 相关备忘
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_4" id="__nav_2_9_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_4">
+          CI 工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="CI 工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_4">
+<span class="md-nav__icon md-icon"></span>
+          CI 工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/action/">
+        GitHub Action
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_5" id="__nav_2_9_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_5">
+          站点生成工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="站点生成工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_5">
+<span class="md-nav__icon md-icon"></span>
+          站点生成工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/mkdocs/">
+        mkdocs 使用记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/hexo/">
+        hexo 使用记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs/tools/sphinx/">
+        sphinx 使用记录
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../sec/">Security</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Security" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../sec/crypto/">密码学</a>
+</div>
+<nav aria-label="密码学" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          密码学
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_3">
+          漏洞复现
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="漏洞复现" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          漏洞复现
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../sec/vulns/log4j/">
+        log4j 漏洞复现
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../web/">Web</a>
+<label for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Web" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Web
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../web/protocol/">网络协议</a>
+<label for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="网络协议" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          网络协议
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../web/protocol/vmess/">
+        VMess
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          排版写作规范
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="排版写作规范" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          排版写作规范
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../web/typesetting/clreq/">
+        中文排版需求
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../web/typesetting/tech/">
+        中文技术文档风格指南
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../web/svg/">
+        SVG
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../ctf/">CTF</a>
+<label for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="CTF" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          CTF
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2">
+          misc
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="misc" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+          misc
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_1" id="__nav_5_2_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../ctf/misc/steg/">隐写术</a>
+<label for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="隐写术" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+          隐写术
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/misc/steg/image/">
+        图片隐写
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/misc/steg/audio/">
+        音频隐写
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" id="__nav_5_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../ctf/misc/escapes/">沙箱逃逸</a>
+<label for="__nav_5_2_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="沙箱逃逸" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_2">
+<span class="md-nav__icon md-icon"></span>
+          沙箱逃逸
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/misc/escapes/pysandbox/">
+        Python 沙箱逃逸
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_3" id="__nav_5_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../ctf/misc/forensics/">取证</a>
+<label for="__nav_5_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="取证" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_3">
+<span class="md-nav__icon md-icon"></span>
+          取证
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/misc/forensics/mem/">
+        内存取证
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/misc/coding/">
+        编码与密码
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/misc/qrcode/">
+        QRCode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/misc/esolang/">
+        Esolang
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_7" id="__nav_5_2_7" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../ctf/blockchain/">Blockchain</a>
+<label for="__nav_5_2_7">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Blockchain" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_7">
+<span class="md-nav__icon md-icon"></span>
+          Blockchain
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_7_2" id="__nav_5_2_7_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../ctf/blockchain/eth/">Ethereum</a>
+<label for="__nav_5_2_7_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Ethereum" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_2_7_2">
+<span class="md-nav__icon md-icon"></span>
+          Ethereum
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/blockchain/eth/basic/">
+        以太坊基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/blockchain/eth/evm/">
+        以太坊虚拟机
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/blockchain/eth/solidity/">
+        Solidity 语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/blockchain/eth/yul/">
+        Yul 语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/blockchain/eth/vuln/">
+        常见合约漏洞攻击手段
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/blockchain/eth/erc/">
+        ERC 标准
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ctf/blockchain/eth/eip/">
+        其余重要 EIPs
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_7_3" id="__nav_5_2_7_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../ctf/blockchain/solana/">Solana</a>
+</div>
+<nav aria-label="Solana" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_2_7_3">
+<span class="md-nav__icon md-icon"></span>
+          Solana
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../">Writeups</a>
+<label for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Writeups" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Training" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../ethernaut/">
+        Ethernaut
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../SecurityInnovation/">
+        Security Innovation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sadservers/">
+        SadServers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../AAA/">
+        🔒 AAA School Bus
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3">
+          2021
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2021" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+          2021
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sysu_msc_puzzle/">
+        SYSU MSC Puzzle 2021
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hackergame2021/">
+        USTC Hackergame 2021
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../d0g3/">
+        第四届“安洵杯”
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../bytectf2021_final/">
+        ByteCTF 2021 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../sctf2021/">
+        SCTF 2021
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2022" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../vnctf2022/">
+        VNCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tqlctf2022/">
+        TQLCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../susctf2022/">
+        SUSCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../d3ctf2022/">
+        D3CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../%2Actf2022/">
+        *CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../mrctf2022/">
+        MRCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../qwb2022/">
+        强网杯 2022 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../tctf2022/">
+        TCTF/0CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../hackergame2022/">
+        USTC Hackergame 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../n1ctf2022/">
+        N1CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../seccon2022/">
+        SECCON 2022 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../rctf2022/">
+        RCTF 2022
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+          2023
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2023" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          2023
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          SECCON 2022 Final
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        SECCON 2022 Final
+      </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sniffer">
+    Sniffer
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../xctf2022final/">
+        XCTF 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../midnight2023/">
+        MidnightSun 2023 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../aliyunctf2023/">
+        AliyunCTF 2023
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../others/">Others</a>
+<label for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Others" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Others
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../others/notes/">
+        课程笔记
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" id="__nav_7_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../others/troubleshooting/">TroubleShooting</a>
+<label for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="TroubleShooting" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+          TroubleShooting
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../others/troubleshooting/mac/">
+        macOS TroubleShooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sniffer">
+    Sniffer
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<script defer="" src="/js/toc.js"></script>
+<link href="/css/fold_toc.css" rel="stylesheet"/>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/TonyCrane/note/tree/master/docs/writeups/seccon2022final.md" title="编辑此页">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="seccon-ctf-2022-final-writeup">SECCON CTF 2022 Final Writeup<a class="headerlink" href="#seccon-ctf-2022-final-writeup" title="Permanent link">¶</a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>479<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>53<span class="heti-spacing"> </span></span>行代码 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>分钟</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>参加的第一次线下赛，在日本，玩的很开心，题也都很有意思。</p>
+<p>不过<span class="heti-skip"><span class="heti-spacing"> </span>misc<span class="heti-spacing"> </span></span>只有一道物理题，<span>web<span class="heti-spacing"> </span></span>比较坐牢我也不会，<span>KoH<span class="heti-spacing"> </span></span>还挺刺激挺有意思的。</p>
+</div>
+<hr/>
+<h2 id="sniffer">Sniffer<a class="headerlink" href="#sniffer" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="https://img.shields.io/badge/-MISC-informational?style=flat-square"><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square"/></a></p>
+<p>一道物理设备的题，不难，但实操还是很有意思的，解题限时<span class="heti-skip"><span class="heti-spacing"> </span>50<span class="heti-spacing"> </span></span>分钟，解题前两小时才会下发题目。</p>
+<p>目的大概是有两个设备<span class="heti-skip"><span class="heti-spacing"> </span>PC1<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>PC2</span>，一个在跑<span><span class="heti-spacing"> </span>alice.py</span>（下发），另一个在跑<span><span class="heti-spacing"> </span>bob.py</span>（未知），中间通过网线连接。要求是仅能接触网线的中间部分，要得到<span class="heti-skip"><span class="heti-spacing"> </span>Alice<span class="heti-spacing"> </span></span>通过<span class="heti-skip"><span class="heti-spacing"> </span>socket<span class="heti-spacing"> </span></span>连接发送出去的两个<span><span class="heti-spacing"> </span>flag</span>，第一个是明文，第二个会经过公钥交换加密。现场会提供交换机、网线、水晶头、剪线设备。</p>
+<p>第一想法是拉过来监听流量，但因为是<span class="heti-skip"><span class="heti-spacing"> </span>socket<span class="heti-spacing"> </span></span>还要保持与<span class="heti-skip"><span class="heti-spacing"> </span>Bob<span class="heti-spacing"> </span></span>的连接，有点麻烦。而且第二个<span class="heti-skip"><span class="heti-spacing"> </span>flag<span class="heti-spacing"> </span></span>还要利用中间人攻击，也是麻烦。</p>
+<p>换个思路，<span>Alice<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Bob<span class="heti-spacing"> </span></span>通过<span class="heti-skip"><span class="heti-spacing"> </span>socket<span class="heti-spacing"> </span></span>直接连接，访问是基于<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>确定的，所以只要能伪造<span><span class="heti-spacing"> </span>ip</span>，让<span class="heti-skip"><span class="heti-spacing"> </span>Alice<span class="heti-spacing"> </span></span>以为我们就是<span><span class="heti-spacing"> </span>Bob</span>，就可以正常通信完美拿到<span><span class="heti-spacing"> </span>flag</span>。</p>
+<p>交换机型号<span><span class="heti-spacing"> </span>NETGEAR ProSafe Plus GS105Ev2</span>，可以查到相关使用手册。</p>
+<p>到现场后首先要完成的就是剪线<span class="heti-skip"><span class="heti-spacing"> </span>+<span class="heti-spacing"> </span></span>接水晶头，题目里说了使用的是<span class="heti-skip"><span class="heti-spacing"> </span>T568A<span class="heti-spacing"> </span></span>接线方式，给<span class="heti-skip"><span class="heti-spacing"> </span>Alice<span class="heti-spacing"> </span></span>那一侧颜色排好接好水晶头插在交换机上（还不能测试，接水晶头效果也没办法验证），另外再接一根线到自己电脑上。按照手册指导打开路由，配置好静态<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>即可，这时本机的<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>就可以设置为<span class="heti-skip"><span class="heti-spacing"> </span>Bob<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>192.168.1.103</span>，<span>ping<span class="heti-spacing"> </span></span>一下<span class="heti-skip"><span class="heti-spacing"> </span>Alice 102<span class="heti-spacing"> </span></span>也能<span class="heti-skip"><span class="heti-spacing"> </span>ping<span class="heti-spacing"> </span></span>通。然后跑一下预先写好的<span class="heti-skip"><span class="heti-spacing"> </span>exp<span class="heti-spacing"> </span></span>就能直接拿到两个<span class="heti-skip"><span class="heti-spacing"> </span>flag<span class="heti-spacing"> </span></span>了：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kn">import</span> <span class="nn">base64</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="kn">from</span> <span class="nn">cryptography.hazmat.backends</span> <span class="kn">import</span> <span class="n">default_backend</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">cryptography.hazmat.primitives.asymmetric</span> <span class="kn">import</span> <span class="n">dh</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">cryptography.hazmat.primitives</span> <span class="kn">import</span> <span class="n">serialization</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kn">from</span> <span class="nn">cryptography.hazmat.primitives</span> <span class="kn">import</span> <span class="n">hashes</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="kn">from</span> <span class="nn">cryptography.fernet</span> <span class="kn">import</span> <span class="n">Fernet</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="kn">import</span> <span class="nn">os</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="kn">import</span> <span class="nn">socket</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="kn">import</span> <span class="nn">struct</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="kn">import</span> <span class="nn">time</span>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="k">def</span> <span class="nf">send_bytes</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">data</span><span class="p">):</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a>    <span class="k">assert</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mh">0x10000</span>
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a>    <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">struct</span><span class="o">.</span><span class="n">pack</span><span class="p">(</span><span class="s1">'&lt;H'</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)))</span>
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a>    <span class="n">sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="k">def</span> <span class="nf">recv_bytes</span><span class="p">(</span><span class="n">sock</span><span class="p">):</span>
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a>    <span class="n">size</span> <span class="o">=</span> <span class="n">struct</span><span class="o">.</span><span class="n">unpack</span><span class="p">(</span><span class="s1">'&lt;H'</span><span class="p">,</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">2</span><span class="p">))[</span><span class="mi">0</span><span class="p">]</span>
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a>    <span class="k">return</span> <span class="n">sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="n">size</span><span class="p">)</span>
+<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a>
+<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="n">p</span> <span class="o">=</span> <span class="mh">0xFFFFFFFFFFFFFFFFC90FDAA22168C234C4C6628B80DC1CD129024E088A67CC74020BBEA63B139B22514A08798E3404DDEF9519B3CD3A431B302B0A6DF25F14374FE1356D6D51C245E485B576625E7EC6F44C42E9A637ED6B0BFF5CB6F406B7EDEE386BFB5A899FA5AE9F24117C4B1FE649286651ECE45B3DC2007CB8A163BF0598DA48361C55D39A69163FA8FD24CF5F83655D23DCA3AD961C62F356208552BB9ED529077096966D670C354E4ABC9804F1746C08CA18217C32905E462E36CE3BE39E772C180E86039B2783A2EC07A28FB5C55DF06F4C52C9DE2BCBF6955817183995497CEA956AE515D2261898FA051015728E5A8AACAA68FFFFFFFFFFFFFFFF</span>
+<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="n">g</span> <span class="o">=</span> <span class="mi">2</span>
+<a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>
+<a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="n">parameters</span> <span class="o">=</span> <span class="n">dh</span><span class="o">.</span><span class="n">DHParameterNumbers</span><span class="p">(</span><span class="n">p</span><span class="p">,</span> <span class="n">g</span><span class="p">)</span><span class="o">.</span><span class="n">parameters</span><span class="p">(</span><span class="n">default_backend</span><span class="p">())</span>
+<a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="n">priv</span> <span class="o">=</span> <span class="n">parameters</span><span class="o">.</span><span class="n">generate_private_key</span><span class="p">()</span>
+<a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="n">pub2</span> <span class="o">=</span> <span class="n">priv</span><span class="o">.</span><span class="n">public_key</span><span class="p">()</span>
+<a href="#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="n">pub_bytes</span> <span class="o">=</span> <span class="n">pub2</span><span class="o">.</span><span class="n">public_bytes</span><span class="p">(</span>
+<a href="#__codelineno-0-28" id="__codelineno-0-28" name="__codelineno-0-28"></a>    <span class="n">encoding</span><span class="o">=</span><span class="n">serialization</span><span class="o">.</span><span class="n">Encoding</span><span class="o">.</span><span class="n">PEM</span><span class="p">,</span>
+<a href="#__codelineno-0-29" id="__codelineno-0-29" name="__codelineno-0-29"></a>    <span class="nb">format</span><span class="o">=</span><span class="n">serialization</span><span class="o">.</span><span class="n">PublicFormat</span><span class="o">.</span><span class="n">SubjectPublicKeyInfo</span>
+<a href="#__codelineno-0-30" id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="p">)</span>
+<a href="#__codelineno-0-31" id="__codelineno-0-31" name="__codelineno-0-31"></a>
+<a href="#__codelineno-0-32" id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="n">address</span> <span class="o">=</span> <span class="p">(</span><span class="s1">'0.0.0.0'</span><span class="p">,</span> <span class="mi">12345</span><span class="p">)</span>
+<a href="#__codelineno-0-33" id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="n">server</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_STREAM</span><span class="p">)</span>
+<a href="#__codelineno-0-34" id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="n">server</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEADDR</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a href="#__codelineno-0-35" id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="n">server</span><span class="o">.</span><span class="n">setsockopt</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">SOL_SOCKET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SO_REUSEPORT</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<a href="#__codelineno-0-36" id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="n">server</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">address</span><span class="p">)</span>
+<a href="#__codelineno-0-37" id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="n">server</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<a href="#__codelineno-0-38" id="__codelineno-0-38" name="__codelineno-0-38"></a>
+<a href="#__codelineno-0-39" id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="nb">print</span><span class="p">(</span><span class="s2">"[+] Listening on </span><span class="si">{}</span><span class="s2">:</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="o">*</span><span class="n">address</span><span class="p">))</span>
+<a href="#__codelineno-0-40" id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<a href="#__codelineno-0-41" id="__codelineno-0-41" name="__codelineno-0-41"></a>    <span class="n">client</span><span class="p">,</span> <span class="n">addr</span> <span class="o">=</span> <span class="n">server</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+<a href="#__codelineno-0-42" id="__codelineno-0-42" name="__codelineno-0-42"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'[+] FLAG1:'</span><span class="p">,</span> <span class="n">recv_bytes</span><span class="p">(</span><span class="n">client</span><span class="p">))</span>
+<a href="#__codelineno-0-43" id="__codelineno-0-43" name="__codelineno-0-43"></a>    <span class="n">pub</span> <span class="o">=</span> <span class="n">recv_bytes</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+<a href="#__codelineno-0-44" id="__codelineno-0-44" name="__codelineno-0-44"></a>    <span class="n">send_bytes</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">pub_bytes</span><span class="p">)</span>
+<a href="#__codelineno-0-45" id="__codelineno-0-45" name="__codelineno-0-45"></a>    <span class="n">buf2</span> <span class="o">=</span> <span class="n">recv_bytes</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+<a href="#__codelineno-0-46" id="__codelineno-0-46" name="__codelineno-0-46"></a>    <span class="n">pub1</span> <span class="o">=</span> <span class="n">serialization</span><span class="o">.</span><span class="n">load_pem_public_key</span><span class="p">(</span><span class="n">pub</span><span class="p">)</span>
+<a href="#__codelineno-0-47" id="__codelineno-0-47" name="__codelineno-0-47"></a>    <span class="n">shared</span> <span class="o">=</span> <span class="n">priv</span><span class="o">.</span><span class="n">exchange</span><span class="p">(</span><span class="n">pub1</span><span class="p">)</span>
+<a href="#__codelineno-0-48" id="__codelineno-0-48" name="__codelineno-0-48"></a>    <span class="n">digest</span> <span class="o">=</span> <span class="n">hashes</span><span class="o">.</span><span class="n">Hash</span><span class="p">(</span><span class="n">hashes</span><span class="o">.</span><span class="n">SHA256</span><span class="p">())</span>
+<a href="#__codelineno-0-49" id="__codelineno-0-49" name="__codelineno-0-49"></a>    <span class="n">digest</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">shared</span><span class="p">)</span>
+<a href="#__codelineno-0-50" id="__codelineno-0-50" name="__codelineno-0-50"></a>    <span class="n">key</span> <span class="o">=</span> <span class="n">base64</span><span class="o">.</span><span class="n">urlsafe_b64encode</span><span class="p">(</span><span class="n">digest</span><span class="o">.</span><span class="n">finalize</span><span class="p">()[:</span><span class="mi">32</span><span class="p">])</span>
+<a href="#__codelineno-0-51" id="__codelineno-0-51" name="__codelineno-0-51"></a>    <span class="n">f</span> <span class="o">=</span> <span class="n">Fernet</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+<a href="#__codelineno-0-52" id="__codelineno-0-52" name="__codelineno-0-52"></a>    <span class="nb">print</span><span class="p">(</span><span class="s1">'[+] FLAG2:'</span><span class="p">,</span> <span class="n">f</span><span class="o">.</span><span class="n">decrypt</span><span class="p">(</span><span class="n">buf2</span><span class="p">))</span>
+<a href="#__codelineno-0-53" id="__codelineno-0-53" name="__codelineno-0-53"></a>    <span class="n">client</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</code></pre></div>
+<p>flag1: <strong>SECCON{c4bl3_ch0k1ch0k1}</strong>、flag2: <strong>SECCON{DH_1s_n0t_s4f3_4g41n5t_p4ck3t_m4n1pul4t10n}</strong></p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年5月10日 23:50:08</span>
+<br/>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年5月10日 23:50:08</span>
+</small>
+</div>
+<script async="" crossorigin="anonymous" data-category="General" data-category-id="DIC_kwDOGnfbUc4CPrf4" data-emit-metadata="0" data-input-position="bottom" data-lang="zh-CN" data-mapping="pathname" data-reactions-enabled="1" data-repo="TonyCrane/note" data-repo-id="R_kgDOGnfbUQ" data-theme="light" src="https://giscus.app/client.js">
+</script>
+<script>
+                      if (document.querySelector("body").getAttribute("data-md-color-scheme") === "slate") {
+                        var giscus = document.querySelector("script[src*=giscus]")
+                        giscus.setAttribute("data-theme", "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css") 
+                      }
+                    </script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+              回到页面顶部
+            </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: RCTF 2022" class="md-footer__link md-footer__link--prev" href="../rctf2022/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                上一页
+              </span>
+              RCTF 2022
+            </div>
+</div>
+</a>
+<a aria-label="下一页: XCTF 2022 Final" class="md-footer__link md-footer__link--next" href="../xctf2022final/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                下一页
+              </span>
+              XCTF 2022 Final
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2022-2023 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
+</div>
+  
+  
+    Powered by
+    <a href="https://www.mkdocs.org/" rel="noopener" target="_blank">
+      MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material
+    </a>
+    modified by
+    <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">
+      TonyCrane
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/TonyCrane/" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://blog.tonycrane.cc/" rel="noopener" target="_blank" title="blog.tonycrane.cc">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg>
+</a>
+<a class="md-social__link" href="https://tonycrane.cc/" rel="noopener" target="_blank" title="tonycrane.cc">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../js/katex.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>

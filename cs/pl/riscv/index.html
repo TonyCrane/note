@@ -383,6 +383,11 @@ var _hmt = _hmt || [];
         RISC-V 特权级 ISA
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="paging/">
+        RISC-V 页表相关
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -611,6 +616,9 @@ var _hmt = _hmt || [];
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" id="__nav_2_3_4" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
 <a href="../../system/cs3/">计算机系统 III</a>
+<label for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
 </div>
 <nav aria-label="计算机系统 III" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_2_3_4">
@@ -618,6 +626,11 @@ var _hmt = _hmt || [];
           计算机系统 III
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../system/cs3/topic1/">
+        系统量化研究方法
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1401,6 +1414,46 @@ var _hmt = _hmt || [];
         SECCON 2022 Quals
       </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../writeups/rctf2022/">
+        RCTF 2022
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+          2023
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2023" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          2023
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../writeups/seccon2022final/">
+        SECCON 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../writeups/xctf2022final/">
+        XCTF 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../writeups/midnight2023/">
+        MidnightSun 2023 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../writeups/aliyunctf2023/">
+        AliyunCTF 2023
+      </a>
+</li>
 </ul>
 </nav>
 </li>
@@ -1476,11 +1529,14 @@ var _hmt = _hmt || [];
     指令集
   </a>
 </li>
+</ul>
+</nav>
+</li>
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_3">
-    编译运行
+    编译运行调试
   </a>
-<nav aria-label="编译运行" class="md-nav">
+<nav aria-label="编译运行调试" class="md-nav">
 <ul class="md-nav__list">
 <li class="md-nav__item">
 <a class="md-nav__link" href="#_4">
@@ -1492,8 +1548,29 @@ var _hmt = _hmt || [];
     运行
   </a>
 </li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+    调试
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+    简化的逐指令翻译
+  </a>
+</li>
 </ul>
 </nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_8">
+    其他杂项问题
+  </a>
+<nav aria-label="其他杂项问题" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_9">
+    链接期重定位问题
+  </a>
 </li>
 </ul>
 </nav>
@@ -1512,7 +1589,7 @@ var _hmt = _hmt || [];
 </a>
 <h1 id="risc-v-isa">RISC-V ISA<a class="headerlink" href="#risc-v-isa" title="Permanent link">¶</a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>442<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>1<span class="heti-spacing"> </span></span>行代码 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>分钟</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>1140<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>17<span class="heti-spacing"> </span></span>行代码 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>分钟</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
@@ -1521,7 +1598,8 @@ var _hmt = _hmt || [];
 <p>子页面</p>
 <ul>
 <li><a href="unprivileged"><span>RISC-V<span class="heti-spacing"> </span></span>非特权级<span><span class="heti-spacing"> </span>ISA</span></a></li>
-<li><a href="privileged"><span>RISC-V<span class="heti-spacing"> </span></span>特权级<span><span class="heti-spacing"> </span>ISA</span></a></li>
+<li><a href="privileged"><span>RISC-V<span class="heti-spacing"> </span></span>特权级<span><span class="heti-spacing"> </span>ISA</span>（基础<span class="heti-skip"><span class="heti-spacing"> </span>&amp;<span class="heti-spacing"> </span></span>中断）</a></li>
+<li><a href="paging/"><span>RISC-V<span class="heti-spacing"> </span></span>特权级<span><span class="heti-spacing"> </span>ISA</span>（页表相关）</a></li>
 </ul>
 <h2 id="_1">基础知识<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
@@ -1551,27 +1629,64 @@ var _hmt = _hmt || [];
 </li>
 <li>扩展了的指令集则命名为<span><span class="heti-spacing"> </span>RV32IM</span>、RV32IMA、<span>RV32G<span class="heti-spacing"> </span></span>等等</li>
 </ul>
-<h3 id="_3">编译运行<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<h4 id="_4">编译<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>编译使用 <a href="https://github.com/riscv-collab/riscv-gnu-toolchain"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> riscv-collab/riscv-gnu-toolchain</a></p>
+<h2 id="_3">编译运行调试<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_4">编译<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>编译使用 <a href="https://github.com/riscv-collab/riscv-gnu-toolchain"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> riscv-collab/riscv-gnu-toolchain</a>。</p>
 <ul>
 <li>需要手动克隆源码（极大），再编译，时间很长</li>
 <li>编译时注意<span class="heti-skip"><span class="heti-spacing"> </span>prefix<span class="heti-spacing"> </span></span>和选择指令集<span><span class="heti-spacing"> </span>--with-arch</span></li>
-<li><span>make linux<span class="heti-spacing"> </span></span>编译出来的是<span><span class="heti-spacing"> </span>riscv</span><em><span><span class="heti-spacing"> </span>xx</span></em><span><span class="heti-spacing"> </span>-unknown-linux-gnu-</span><em><span><span class="heti-spacing"> </span>xxx</span></em>，使用<span class="heti-skip"><span class="heti-spacing"> </span>glibc<span class="heti-spacing"> </span></span>标准库，支持动态链接</li>
+<li><span>make linux<span class="heti-spacing"> </span></span>编译出来的是<span><span class="heti-spacing"> </span>riscv</span><em><span><span class="heti-spacing"> </span>xx</span></em><span><span class="heti-spacing"> </span>-linux-gnu-</span><em><span><span class="heti-spacing"> </span>xxx</span></em>，使用<span class="heti-skip"><span class="heti-spacing"> </span>glibc<span class="heti-spacing"> </span></span>标准库，支持动态链接</li>
 <li><span>make<span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span>make newlib<span class="heti-spacing"> </span></span>编译出来的是<span><span class="heti-spacing"> </span>riscv</span><em><span><span class="heti-spacing"> </span>xx</span></em><span><span class="heti-spacing"> </span>-unknown-elf-</span><em><span><span class="heti-spacing"> </span>xxx</span></em>，使用<span><span class="heti-spacing"> </span>riscv-newlib</span>，只能静态链接</li>
 </ul>
-<p>编译<span class="heti-skip"><span class="heti-spacing"> </span>c<span class="heti-spacing"> </span></span>代码使用<span class="heti-skip"><span class="heti-spacing"> </span>riscv<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>xx<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>-unknown-<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>xxx<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>-gcc<span class="heti-spacing"> </span></span>就可以了，注意指定<span class="heti-skip"><span class="heti-spacing"> </span>-march<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>-mabi</span>，比如加上 <code>-march=rv32i -mabi=ilp32</code> 后编译出来的就是使用<span class="heti-skip"><span class="heti-spacing"> </span>RV32I<span class="heti-spacing"> </span></span>指令集的机器码</p>
 <p><span>Ubuntu 20.04+<span class="heti-spacing"> </span></span>可以直接通过<span class="heti-skip"><span class="heti-spacing"> </span>apt<span class="heti-spacing"> </span></span>安装：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>$ sudo apt install qemu-system-misc gcc-riscv64-linux-gnu gdb-multiarch
 </code></pre></div>
-<h4 id="_5">运行<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>因为<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>是另一种架构，不能在<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>机器上直接运行，所以要使用<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>来运行。<span>qemu<span class="heti-spacing"> </span></span>直接下载就可以，一般都会自带<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>的模拟器，如果是手动编译需要注意指定编译出<span><span class="heti-spacing"> </span>RISC-V</span></p>
+<p>编译<span class="heti-skip"><span class="heti-spacing"> </span>c<span class="heti-spacing"> </span></span>代码使用<span class="heti-skip"><span class="heti-spacing"> </span>riscv<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>xx<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>-unknown-<span class="heti-spacing"> </span></span><em><span class="heti-skip"><span class="heti-spacing"> </span>xxx<span class="heti-spacing"> </span></span></em><span class="heti-skip"><span class="heti-spacing"> </span>-gcc<span class="heti-spacing"> </span></span>就可以了，注意指定<span class="heti-skip"><span class="heti-spacing"> </span>-march<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>-mabi</span>，比如加上 <code>-march=rv32i -mabi=ilp32</code> 后编译出来的就是使用<span class="heti-skip"><span class="heti-spacing"> </span>RV32I<span class="heti-spacing"> </span></span>指令集的机器码。</p>
+<p>比如编译一个纯<span class="heti-skip"><span class="heti-spacing"> </span>riscv<span class="heti-spacing"> </span></span>的汇编代码就可以这样：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$ cat code.s
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>.section .text
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>.globl _start
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>_start:
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>    ...
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a>    ...
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a>$ riscv64-unknown-elf-gcc -nostdlib -nostdinc -static -g -Ttext 0x80000000 -o code.elf code.s
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a>$ riscv64-unknown-elf-gcc -nostdlib -nostdinc -static -g -Ttext 0x80000000 -o code.elf code.s -march<span class="o">=</span>rv32i -mabi<span class="o">=</span>ilp32
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a>$ riscv64-linux-gnu-gcc -nostdlib -nostdinc -static -g -Ttext 0x80000000 -o code.elf code.s
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a>$ riscv64-linux-gnu-gcc -nostdlib -nostdinc -static -g -Ttext 0x80000000 -o code.elf code.s -march<span class="o">=</span>rv32i -mabi<span class="o">=</span>ilp32
+</code></pre></div>
+<h3 id="_5">运行<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>因为<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>是另一种架构，不能在<span class="heti-skip"><span class="heti-spacing"> </span>x86<span class="heti-spacing"> </span></span>机器上直接运行，所以要使用<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>来运行。<span>qemu<span class="heti-spacing"> </span></span>直接下载就可以，一般都会自带<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>的模拟器，如果是手动编译需要注意指定编译出<span><span class="heti-spacing"> </span>RISC-V</span>。</p>
+<p><span>qemu<span class="heti-spacing"> </span></span>有用户态和系统态两种模拟器，分别是<span class="heti-skip"><span class="heti-spacing"> </span>qemu-riscv64<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>qemu-system-riscv64</span>，前者用于模拟用户态的单个程序，后者用于模拟整个<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>特权级系统。比如：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>$ qemu-riscv64 code.elf
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>$ qemu-riscv64 -singlestep -g <span class="m">1234</span> code.elf <span class="c1"># 供 gdb 单步调试（也可以直接用系统态 qemu）</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>$ qemu-system-riscv64 -nographic -machine virt -bios default -kernel code.elf <span class="c1"># 运行内核</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>$ qemu-system-riscv64 -nographic -machine virt -bios default -kernel code.elf -S -s <span class="c1"># 调试内核，开启 localhost:1234 端口供 gdb 连接</span>
+</code></pre></div>
+<h3 id="_6">调试<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>工具链会包含支持<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>gdb</span>，也可以自行编译出支持<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>gdb</span>。或者也可以使用<span class="heti-skip"><span class="heti-spacing"> </span>gdb-multiarch<span class="heti-spacing"> </span></span>来进行调试。</p>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>架构来说，<span>pwn<span class="heti-spacing"> </span></span>常用的<span class="heti-skip"><span class="heti-spacing"> </span>gdb<span class="heti-spacing"> </span></span>插件比如<span class="heti-skip"><span class="heti-spacing"> </span>pwndbg<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>peda<span class="heti-spacing"> </span></span>都不支持，这里推荐一个<a href="https://github.com/cyrus-and/gdb-dashboard"><span class="heti-skip"><span class="heti-spacing"> </span>gdb-dashboard<span class="heti-spacing"> </span></span></a>插件，即使是<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>也可以正常显示寄存器、反汇编等信息，安装：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>$ pip install pygments
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>$ wget -P ~ https://git.io/.gdbinit
+</code></pre></div>
+<h3 id="_7">简化的逐指令翻译<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>按照前面的方法对<span class="heti-skip"><span class="heti-spacing"> </span>asm<span class="heti-spacing"> </span></span>进行编译得到指令机器码有时候还是太麻烦，而且只有机器码的情况下想要<span class="heti-skip"><span class="heti-spacing"> </span>objdump<span class="heti-spacing"> </span></span>也有些麻烦。所以我干脆给<span class="heti-skip"><span class="heti-spacing"> </span>CyberChef<span class="heti-spacing"> </span></span>加了<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>的编解码器，调用了<a href="https://gitlab.com/luplab/rvcodecjs/"><span><span class="heti-spacing"> </span>rvcodec.js</span></a>，位置在<a href="https://lab.tonycrane.cc/CyberChef"><span><span class="heti-spacing"> </span>lab.tonycrane.cc/CyberChef</span></a>，可以直接使用。</p>
+<p>关于<span class="heti-skip"><span class="heti-spacing"> </span>CyberChef<span class="heti-spacing"> </span></span>的用法不在这里赘述，大概就是从左侧拖拽模块到中间菜谱（recipe）部分即可，多个模块的话从上到下依次执行。</p>
+<p>要注意的是我实现的<span class="heti-skip"><span class="heti-spacing"> </span>Decoder<span class="heti-spacing"> </span></span>接收的类型为<span class="heti-skip"><span class="heti-spacing"> </span>raw<span class="heti-spacing"> </span></span>的二进制数据，所以如果是<span class="heti-skip"><span class="heti-spacing"> </span>hex<span class="heti-spacing"> </span></span>值格式的字节码的话要在前面加一个<span class="heti-skip"><span class="heti-spacing"> </span>From Hex<span class="heti-spacing"> </span></span>模块。</p>
+<h2 id="_8">其他杂项问题<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_9">链接期重定位问题<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>在做系统三虚拟内存<span class="heti-skip"><span class="heti-spacing"> </span>lab<span class="heti-spacing"> </span></span>的时候发现的问题，简单来说就是不同版本的<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>工具链对于<span class="heti-skip"><span class="heti-spacing"> </span>relocation<span class="heti-spacing"> </span></span>的处理可能不一致，导致不同环境下需要不同代码才能运行。</p>
+<p>问题的背景是内核启动时先在物理地址内运行，然后设置好页表后写入<span class="heti-skip"><span class="heti-spacing"> </span>satp<span class="heti-spacing"> </span></span>寄存器中，这时也就启用了虚拟内存。所以情况就是一份编译好的代码的寻址相关（比如内核启动时设置<span><span class="heti-spacing"> </span>sp</span>，读取本地变量地址等）在运行时可能需要是物理地址，也可能需要是虚拟地址。</p>
+<ul>
+<li>对于较老的工具链，寻址基本都是以<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>为基准进行偏移，不会出现问题，因为对应的<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>就是正确的地址</li>
+<li>较新的工具链编译出来的会使用<span class="heti-skip"><span class="heti-spacing"> </span>GOT<span class="heti-spacing"> </span></span>表来进行寻址，而根据链接脚本，<span>GOT<span class="heti-spacing"> </span></span>表内的项肯定都是虚拟地址，这样在启用虚拟地址之前直接寻址就会出现问题</li>
+</ul>
+<p>因为其实设置<span class="heti-skip"><span class="heti-spacing"> </span>satp<span class="heti-spacing"> </span></span>前的过程大部分都是<span class="heti-skip"><span class="heti-spacing"> </span>head.S<span class="heti-spacing"> </span></span>中汇编手写的，所以针对第二种情况，发现有寻址到虚拟地址的话直接手动减一下<span class="heti-skip"><span class="heti-spacing"> </span>offset<span class="heti-spacing"> </span></span>就可以了。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月28日 23:33:01</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年5月10日 23:50:08</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年11月25日 00:49:20</span>
