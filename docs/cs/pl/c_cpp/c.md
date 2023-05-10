@@ -11,6 +11,8 @@ comment: True
     - 浙江大学 “程序设计与算法基础”（大一秋冬）课程复习笔记
     - 浙江大学 ”程序设计基础“ ”C 语言程序设计“（大一秋冬）辅学易错题集
 
+    图灵班课程学习指南：[程序设计与算法基础](https://zju-turing.github.io/TuringCourses/major_basic/programming/)
+
 
 ## 程序设计与算法基础
 

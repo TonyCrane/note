@@ -14,6 +14,8 @@ comment: True
     前两部分是上课边听边记的，会详细一点（？）而且没那么偏向概念，后面基本上就全是挑概念抄了  
     几个实验没有任何含金量和记录的必要，设计的很烂而且几乎学不到东西
 
+    图灵班课程学习指南：[人工智能基础](https://zju-turing.github.io/TuringCourses/major_basic/ai_basic/)
+
 ## 逻辑与推理
 ### 命题逻辑
 - 命题逻辑（proposition logic）是应用一套形式化规则对以符号表示的描述性陈述（称为命题）进行推理的系统

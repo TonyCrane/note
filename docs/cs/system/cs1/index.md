@@ -6,7 +6,8 @@
     > 关于 计算机系统 Ⅰ：<br/>
     > &nbsp;&nbsp;课程号：21121830<br/>
     > &nbsp;&nbsp;信息安全专业必修课<br/>
-    > &nbsp;&nbsp;包含*常规意义*上的 计算机逻辑设计基础 和 计算机组成与设计 两门课的部分内容
+    > &nbsp;&nbsp;包含*常规意义*上的 计算机逻辑设计基础 和 计算机组成与设计 两门课的部分内容<br/>
+    > &nbsp;&nbsp;图灵班课程学习指南：[计算机系统 Ⅰ](https://zju-turing.github.io/TuringCourses/major_basic/computer_system1/)
 
 ## Table of Contents
 - 理论部分
@@ -26,3 +27,5 @@
     - [lab4-2: overflow 理解](lab4-2)
     - [lab5-1: 单周期 CPU 数据通路设计](lab5-1)
     - [lab5-2: 单周期 CPU 设计](lab5-2)
+
+PS：这里的 TODO 大概率不会再写了，除非当助教（x

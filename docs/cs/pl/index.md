@@ -20,4 +20,5 @@
 - [x86 Assembly](asm)
 - [RISC-V ISA](riscv)
     - [RISC-V 非特权级 ISA](riscv/unprivileged)
-    - [RISC-V 特权级 ISA](riscv/privileged)
+    - [RISC-V 特权级 ISA（基础&中断）](riscv/privileged)
+    - [RISC-V 特权级 ISA（页表相关）](riscv/paging/)

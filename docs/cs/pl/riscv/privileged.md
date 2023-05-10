@@ -3,10 +3,12 @@ counter: True
 comment: True
 ---
 
-# RISC-V 特权级 ISA
+# RISC-V 特权级 ISA（基础&中断）
 
 !!! abstract
-    RISC-V 指令集的特权级部分。
+    RISC-V 指令集的特权级部分。这里只包含部分特权级的基础介绍，以及中断相关的理解。
+
+    特权级还有一部分比较重要的页表相关的内容，就不继续插到这页里面了，单独放在了 [RISC-V 特权级 ISA（页表相关）](paging/)一页。
 
     参考：
 
