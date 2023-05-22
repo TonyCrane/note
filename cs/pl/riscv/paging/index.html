@@ -385,9 +385,70 @@ var _hmt = _hmt || [];
 </li>
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          RISC-V 页表相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
 <a class="md-nav__link md-nav__link--active" href="./">
         RISC-V 页表相关
       </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#csr">
+    相关 CSR 寄存器
+  </a>
+<nav aria-label="相关 CSR 寄存器" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sstatus">
+    sstatus
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#satp">
+    satp
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    相关特权指令
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sv32">
+    Sv32 分页模式
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sv39">
+    Sv39 分页模式
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sv48">
+    Sv48 分页模式
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sv57">
+    Sv57 分页模式
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    操作系统中开启分页
+  </a>
+</li>
+</ul>
+</nav>
 </li>
 </ul>
 </nav>
@@ -1514,6 +1575,61 @@ var _hmt = _hmt || [];
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#csr">
+    相关 CSR 寄存器
+  </a>
+<nav aria-label="相关 CSR 寄存器" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sstatus">
+    sstatus
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#satp">
+    satp
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    相关特权指令
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sv32">
+    Sv32 分页模式
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sv39">
+    Sv39 分页模式
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sv48">
+    Sv48 分页模式
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sv57">
+    Sv57 分页模式
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    操作系统中开启分页
+  </a>
+</li>
+</ul>
 </nav>
 </div>
 </div>
@@ -1527,7 +1643,7 @@ var _hmt = _hmt || [];
 </a>
 <h1 id="risc-v-isa"><span>RISC-V<span class="heti-spacing"> </span></span>特权级<span><span class="heti-spacing"> </span>ISA</span>（页表相关）<a class="headerlink" href="#risc-v-isa" title="Permanent link">¶</a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>75<span class="heti-spacing"> </span></span>个字 </p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>2488<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>分钟</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
@@ -1538,12 +1654,676 @@ var _hmt = _hmt || [];
 <li>浙江大学 “计算机系统 Ⅲ “（大二春夏）课程</li>
 </ul>
 </div>
+<p>操作系统实现虚拟地址需要硬件的支持，需要操作系统向<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>通知设置页表，在访问时<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>再进行地址的翻译。而这些页表的设置操作都是在<span class="heti-skip"><span class="heti-spacing"> </span>Supervisor<span class="heti-spacing"> </span></span>模式下进行设置的，因为<span class="heti-skip"><span class="heti-spacing"> </span>User<span class="heti-spacing"> </span></span>模式不应该关心这些，<span>Machine<span class="heti-spacing"> </span></span>模式直接访问物理地址也不关心。所以关于分页的<span class="heti-skip"><span class="heti-spacing"> </span>ISA<span class="heti-spacing"> </span></span>都在<span class="heti-skip"><span class="heti-spacing"> </span>Supervisor<span class="heti-spacing"> </span></span>里。</p>
+<h2 id="csr">相关<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>寄存器<a class="headerlink" href="#csr" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="sstatus">sstatus<a class="headerlink" href="#sstatus" title="Permanent link">¶</a></h3>
+<style>
+.csr-bit {
+    background-color: #3f6ec6b0;
+    border-radius: 3px;
+    font-size: .4rem;
+    padding: 4px;
+}
+.csr-behav {
+    background-color: #e6695bb0;
+    border-radius: 3px;
+    font-size: .4rem;
+    padding: 4px;
+}
+</style>
+<ul>
+<li><span class="csr-bit">18</span> SUM：是否允许<span class="heti-skip"><span class="heti-spacing"> </span>Supervisor<span class="heti-spacing"> </span></span>模式访问用户态内存（permit Supervisor User Memory access）</li>
+<li><span class="csr-bit">19</span> MXR：是否允许读取可执行页面的内存（Make eXecutable Readable）</li>
+</ul>
+<h3 id="satp">satp<a class="headerlink" href="#satp" title="Permanent link">¶</a></h3>
+<p><span>satp<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>Supervisor Address Translation and Protection</span>，即用于设置页表的寄存器。</p>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;text-transform: none;">
+<span>satp</span>
+<span>32 位 Supervisor</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">31</td>
+<td class="riscv-table-numnodel">30</td>
+<td class="riscv-table-numnode" colspan="7"></td>
+<td class="riscv-table-numnoder">22</td>
+<td class="riscv-table-numnodel">21</td>
+<td class="riscv-table-numnode" colspan="20"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little" colspan="1">M</td>
+<td class="riscv-table-node-little" colspan="9">ASID</td>
+<td class="riscv-table-node-little" colspan="22">PPN</td>
+</tr>
+</table>
+<ul>
+<li>PPN：根页表物理页号（Physical Page Number）</li>
+<li>ASID：地址空间<span><span class="heti-spacing"> </span>ID</span>（Address Space ID）</li>
+<li>M（MODE）：分页模式<ul>
+<li>0：<span>Bare<span class="heti-spacing"> </span></span>不进行地址翻译或者保护</li>
+<li>1：<span>Sv32<span class="heti-spacing"> </span></span>采用<span class="heti-skip"><span class="heti-spacing"> </span>Sv32<span class="heti-spacing"> </span></span>模式虚拟地址翻译</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;text-transform: none;">
+<span>satp</span>
+<span>64 位 Supervisor</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel" style="word-wrap: normal">63</td>
+<td class="riscv-table-numnode" colspan="2"></td>
+<td class="riscv-table-numnoder" style="font-size: 0">60</td>
+<td class="riscv-table-numnodel" style="word-wrap: normal">59</td>
+<td class="riscv-table-numnode" colspan="14"></td>
+<td class="riscv-table-numnoder" style="font-size: 0">44</td>
+<td class="riscv-table-numnodel" style="word-wrap: normal">43</td>
+<td class="riscv-table-numnode" colspan="42"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little" colspan="4">M</td>
+<td class="riscv-table-node-little" colspan="16">ASID</td>
+<td class="riscv-table-node-little" colspan="44">PPN</td>
+</tr>
+</table>
+<ul>
+<li>PPN：根页表物理页号（Physical Page Number）</li>
+<li>ASID：地址空间<span><span class="heti-spacing"> </span>ID</span>（Address Space ID）</li>
+<li>M（MODE）：分页模式<ul>
+<li>0：<span>Bare<span class="heti-spacing"> </span></span>不进行地址翻译或者保护</li>
+</ul>
+</li>
+</ul>
+<div style="display: flex; justify-content: flex-start; margin-left: 1.9em;">
+<div>
+<ul>
+<li>8：Sv39 </li>
+<li>9：Sv48 </li>
+</ul>
+</div>
+<div markdown="1">
+<ul>
+<li>10：Sv57 </li>
+<li>11：Sv64（保留）</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h2 id="_1">相关特权指令<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<div class="card">
+<div class="card-header" style="display: flex;justify-content: space-between;">
+<span>sfence.vma</span>
+<span>R 型</span>
+</div>
+<div class="card-body" style="padding-top: 0;">
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">31</td>
+<td class="riscv-table-numnode" colspan="5"></td>
+<td class="riscv-table-numnoder">25</td>
+<td class="riscv-table-numnodel">24</td>
+<td class="riscv-table-numnode" colspan="3"></td>
+<td class="riscv-table-numnoder">20</td>
+<td class="riscv-table-numnodel">19</td>
+<td class="riscv-table-numnode" colspan="3"></td>
+<td class="riscv-table-numnoder">15</td>
+<td class="riscv-table-numnodel">14</td>
+<td class="riscv-table-numnode" colspan="1"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="3"></td>
+<td class="riscv-table-numnoder">7</td>
+<td class="riscv-table-numnodel">6</td>
+<td class="riscv-table-numnode" colspan="5"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little" colspan="7">0001001</td>
+<td class="riscv-table-node-little" colspan="5">rs2</td>
+<td class="riscv-table-node-little" colspan="5">rs1</td>
+<td class="riscv-table-node-little" colspan="3">000</td>
+<td class="riscv-table-node-little" colspan="5">00000</td>
+<td class="riscv-table-node-little" colspan="7">1110011</td>
+</tr>
+</table>
+<ul>
+<li><strong>指令格式</strong>：sfence.vma rs1, rs2</li>
+<li><strong>指令作用</strong>：刷新<span><span class="heti-spacing"> </span>TLB</span>（Translation Lookaside Buffer）中的虚拟地址到物理地址的映射缓存<ul>
+<li><span>rs1 rs2<span class="heti-spacing"> </span></span>均为<span class="heti-skip"><span class="heti-spacing"> </span>x0<span class="heti-spacing"> </span></span>时，刷新所有<span><span class="heti-spacing"> </span>TLB</span></li>
+<li><span>rs1<span class="heti-spacing"> </span></span>指定要刷新的虚拟地址，不为<span class="heti-skip"><span class="heti-spacing"> </span>x0<span class="heti-spacing"> </span></span>则只刷新所在的叶页表项</li>
+<li><span>rs2<span class="heti-spacing"> </span></span>指定<span><span class="heti-spacing"> </span>ASID</span>，不为<span class="heti-skip"><span class="heti-spacing"> </span>x0<span class="heti-spacing"> </span></span>则只刷新指定<span class="heti-skip"><span class="heti-spacing"> </span>ASID<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>TLB</span></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<h2 id="sv32"><span>Sv32<span class="heti-spacing"> </span></span>分页模式<a class="headerlink" href="#sv32" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p><span>Sv32<span class="heti-spacing"> </span></span>模式规定的虚拟地址有<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位，物理地址有<span class="heti-skip"><span class="heti-spacing"> </span>34<span class="heti-spacing"> </span></span>位，结构分别为：</p>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnode" colspan="2"></td>
+<td class="riscv-table-numnodel">31</td>
+<td class="riscv-table-numnode" colspan="8"></td>
+<td class="riscv-table-numnoder">22</td>
+<td class="riscv-table-numnodel">21</td>
+<td class="riscv-table-numnode" colspan="8"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="10"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+<td class="riscv-table-node-little" colspan="10">VPN[1]</td>
+<td class="riscv-table-node-little" colspan="10">VPN[0]</td>
+<td class="riscv-table-node-little" colspan="12">page offset</td>
+</tr>
+</table>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">33</td>
+<td class="riscv-table-numnode" colspan="10"></td>
+<td class="riscv-table-numnoder">22</td>
+<td class="riscv-table-numnodel">21</td>
+<td class="riscv-table-numnode" colspan="8"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="10"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little" colspan="12">PPN[1]</td>
+<td class="riscv-table-node-little" colspan="10">PPN[0]</td>
+<td class="riscv-table-node-little" colspan="12">page offset</td>
+</tr>
+</table>
+<p>其中<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>即<span class="heti-skip"><span class="heti-spacing"> </span>Virtual Page Number<span class="heti-spacing"> </span></span>虚拟页号，<span>PPN<span class="heti-spacing"> </span></span>即<span class="heti-skip"><span class="heti-spacing"> </span>Physical Page Number<span class="heti-spacing"> </span></span>物理页号。转换的目标就是把<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>位虚拟页号转为<span class="heti-skip"><span class="heti-spacing"> </span>22<span class="heti-spacing"> </span></span>位物理页号，<span>offset<span class="heti-spacing"> </span></span>不变。</p>
+<p><span>Sv32<span class="heti-spacing"> </span></span>使用二级页表，每一个页表包含<span class="heti-skip"><span class="heti-spacing"> </span>2^10=1024<span class="heti-spacing"> </span></span>个页表项，每个页表项占<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>个字节，所以一个页表正好<span class="heti-skip"><span class="heti-spacing"> </span>4KiB<span class="heti-spacing"> </span></span>占一页内存且必须页对齐。每一个页表项的内容如下：</p>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">31</td>
+<td class="riscv-table-numnode" colspan="10"></td>
+<td class="riscv-table-numnoder">20</td>
+<td class="riscv-table-numnodel">19</td>
+<td class="riscv-table-numnode" colspan="8"></td>
+<td class="riscv-table-numnoder">10</td>
+<td class="riscv-table-numnodel">9</td>
+<td class="riscv-table-numnoder">8</td>
+<td class="riscv-table-numnoder">7</td>
+<td class="riscv-table-numnoder">6</td>
+<td class="riscv-table-numnoder">5</td>
+<td class="riscv-table-numnoder">4</td>
+<td class="riscv-table-numnoder">3</td>
+<td class="riscv-table-numnoder">2</td>
+<td class="riscv-table-numnoder">1</td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little" colspan="12">PPN[1]</td>
+<td class="riscv-table-node-little" colspan="10">PPN[0]</td>
+<td class="riscv-table-node-little" colspan="2">RSW</td>
+<td class="riscv-table-node-little">D</td>
+<td class="riscv-table-node-little">A</td>
+<td class="riscv-table-node-little">G</td>
+<td class="riscv-table-node-little">U</td>
+<td class="riscv-table-node-little">X</td>
+<td class="riscv-table-node-little">W</td>
+<td class="riscv-table-node-little">R</td>
+<td class="riscv-table-node-little">V</td>
+</tr>
+</table>
+<p>其中<span class="heti-skip"><span class="heti-spacing"> </span>PPN[1] PPN[0]<span class="heti-spacing"> </span></span>为下一级页表的物理页号<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>物理地址的高<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>位。剩下的为<span><span class="heti-spacing"> </span>flag</span>：</p>
+<ul>
+<li>RSW：保留位，必须为<span><span class="heti-spacing"> </span>0</span></li>
+<li>A（Accessed）、D（Dirty）：叶页表项是否被访问过、是否被写过（没细看，反正都是<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>就行）</li>
+<li>G（Global）：全局位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则不会被<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>清除（也没细看）</li>
+<li>U（User）：用户位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则允许用户态访问</li>
+<li>X（eXecute）、W（Write）、R（Read）：可执行、可写、可读位<ul>
+<li><span>RWX<span class="heti-spacing"> </span></span>全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>时表示当前页表项指向下一级页表</li>
+<li><span>W<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1</span>，<span>R<span class="heti-spacing"> </span></span>一定也为<span><span class="heti-spacing"> </span>1</span>（<span>W<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1</span>、<span>R<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>是保留状态）</li>
+</ul>
+</li>
+<li>V（Valid）：有效位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则表示该页表项有效，否则在访问时会触发异常</li>
+</ul>
+<p>地址翻译的流程图为：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv32_light.png#only-light"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv32_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv32_dark.png#only-dark"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv32_dark.png#only-dark"/></a></p>
+<p>上图是使用二级页表的翻译过程。除此之外还有一种特殊的情况，即也可以使用一级页表（superpage），当第一级页表的<span class="heti-skip"><span class="heti-spacing"> </span>RWX<span class="heti-spacing"> </span></span>不全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>时，表示当前页表项是叶页表项，此时会判断<span class="heti-skip"><span class="heti-spacing"> </span>PPN[0]<span class="heti-spacing"> </span></span>的值，如果不全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>则抛出异常。然后在翻译时<span class="heti-skip"><span class="heti-spacing"> </span>PPN[1]<span class="heti-spacing"> </span></span>保留，<span>VPN[0]<span class="heti-spacing"> </span></span>并入<span><span class="heti-spacing"> </span>page offset</span>：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv32__light.png#only-light"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv32__light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv32__dark.png#only-dark"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv32__dark.png#only-dark"/></a></p>
+<details class="example" open="open">
+<summary>文档中对于地址翻译的详细描述</summary>
+<p>记待翻译的虚拟地址为<span><span class="heti-spacing"> </span>va</span>，结果的物理地址为<span><span class="heti-spacing"> </span>pa</span></p>
+<ol>
+<li>令<span><span class="heti-spacing"> </span>a = satp.PPN &lt;&lt; 12</span>，i = 1</li>
+<li>令<span><span class="heti-spacing"> </span>pte = *(a + (va.VPN[i] &lt;&lt; 2))</span><ul>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>的访问过程中违反了<span class="heti-skip"><span class="heti-spacing"> </span>PMA<span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span>PMP<span class="heti-spacing"> </span></span>的检查，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Access Fault<span class="heti-spacing"> </span></span>异常</li>
+</ul>
+</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>pte.V = 0<span class="heti-spacing"> </span></span>或者（<span>pte.R = 0<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>pte.W = 1</span>）或者其他保留位没有置<span><span class="heti-spacing"> </span>0</span>，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>是合法的。如果<span class="heti-skip"><span class="heti-spacing"> </span>pte.R = 1<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>pte.X = 1</span>（即不全为<span><span class="heti-spacing"> </span>0</span>）则跳到第<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>步</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>指向下一级页表。令<span><span class="heti-spacing"> </span>i = i - 1</span>，a = pte.PPN &lt;&lt; 12，跳到第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>步<ul>
+<li>如果<span><span class="heti-spacing"> </span>i &lt; 0</span>，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+</ul>
+</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>是一个叶页表项。根据<span><span class="heti-spacing"> </span>pte.R/W/X/U</span>、当前特权级、<span>SUM MXR<span class="heti-spacing"> </span></span>位判断当前访问权限是否合法，不合法则抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>i &gt; 0<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>pte.PPN[i-1:0] != 0</span>，说明当前是<span class="heti-skip"><span class="heti-spacing"> </span>superpage<span class="heti-spacing"> </span></span>且没对齐，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>与<span class="heti-skip"><span class="heti-spacing"> </span>pte.A pte.D<span class="heti-spacing"> </span></span>有关的一些没细看</li>
+<li>翻译成功，接下来填写转换后的物理地址<ul>
+<li>pa.pgoff = va.pgoff</li>
+<li>如果<span><span class="heti-spacing"> </span>i &gt; 0</span>，说明当前是<span><span class="heti-spacing"> </span>superpage translation</span>，令<span><span class="heti-spacing"> </span>pa.PPN[i-1:0] = va.VPN[i-1:0]</span><ul>
+<li>即扩充<span class="heti-skip"><span class="heti-spacing"> </span>offset<span class="heti-spacing"> </span></span>的范围</li>
+</ul>
+</li>
+<li>pa.PPN[1:i] = pte.PPN[1:i]</li>
+</ul>
+</li>
+</ol>
+</details>
+<h2 id="sv39"><span>Sv39<span class="heti-spacing"> </span></span>分页模式<a class="headerlink" href="#sv39" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p><span>Sv39<span class="heti-spacing"> </span></span>模式规定虚拟地址为<span class="heti-skip"><span class="heti-spacing"> </span>39<span class="heti-spacing"> </span></span>位，物理地址为<span class="heti-skip"><span class="heti-spacing"> </span>56<span class="heti-spacing"> </span></span>位。且虚拟地址的高<span class="heti-skip"><span class="heti-spacing"> </span>[63:39]<span class="heti-spacing"> </span></span>位必须和<span class="heti-skip"><span class="heti-spacing"> </span>38<span class="heti-spacing"> </span></span>位保持一致，否则会触发<span><span class="heti-spacing"> </span>Page Fault</span>。虚拟地址有<span class="heti-skip"><span class="heti-spacing"> </span>27<span class="heti-spacing"> </span></span>位<span><span class="heti-spacing"> </span>VPN</span>，通过三级页表转换为<span class="heti-skip"><span class="heti-spacing"> </span>44<span class="heti-spacing"> </span></span>位<span><span class="heti-spacing"> </span>PPN</span>，剩下的<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位为<span class="heti-skip"><span class="heti-spacing"> </span>offset<span class="heti-spacing"> </span></span>不变。虚拟地址和物理地址的结构如下：</p>
+<div class="admonition note">
+<p class="admonition-title">下面<span class="heti-skip"><span class="heti-spacing"> </span>index<span class="heti-spacing"> </span></span>后面有<span class="heti-skip"><span class="heti-spacing"> </span>...<span class="heti-spacing"> </span></span>的表示这部分没有按照实际长度比例来</p>
+</div>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnode" colspan="2"></td>
+<td class="riscv-table-numnodel">38</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">30</td>
+<td class="riscv-table-numnodel">29</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">21</td>
+<td class="riscv-table-numnodel">20</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+<td class="riscv-table-node-little" colspan="6">VPN[2]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[1]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[0]</td>
+<td class="riscv-table-node-little" colspan="8">page offset</td>
+</tr>
+</table>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">55...</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">30</td>
+<td class="riscv-table-numnodel">29</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">21</td>
+<td class="riscv-table-numnodel">20</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little" colspan="8">PPN[2]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[1]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[0]</td>
+<td class="riscv-table-node-little" colspan="8">page offset</td>
+</tr>
+</table>
+<p><span>Sv39<span class="heti-spacing"> </span></span>每个页表有<span class="heti-skip"><span class="heti-spacing"> </span>2^9=512<span class="heti-spacing"> </span></span>个页表项，每个页表项有<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>字节，因此每个页表同样为<span class="heti-skip"><span class="heti-spacing"> </span>4KiB<span class="heti-spacing"> </span></span>大小，且必须对齐。其中每个页表项的结构如下：</p>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">63</td>
+<td class="riscv-table-numnodel">62</td>
+<td class="riscv-table-numnoder">61</td>
+<td class="riscv-table-numnodel">60...</td>
+<td class="riscv-table-numnode" colspan="1"></td>
+<td class="riscv-table-numnoder">54</td>
+<td class="riscv-table-numnodel">53...</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">28</td>
+<td class="riscv-table-numnodel">27...</td>
+<td class="riscv-table-numnode" colspan="5"></td>
+<td class="riscv-table-numnoder">19</td>
+<td class="riscv-table-numnodel">18...</td>
+<td class="riscv-table-numnode" colspan="5"></td>
+<td class="riscv-table-numnoder">10</td>
+<td class="riscv-table-numnodel">9</td>
+<td class="riscv-table-numnoder">8</td>
+<td class="riscv-table-numnoder">7</td>
+<td class="riscv-table-numnoder">6</td>
+<td class="riscv-table-numnoder">5</td>
+<td class="riscv-table-numnoder">4</td>
+<td class="riscv-table-numnoder">3</td>
+<td class="riscv-table-numnoder">2</td>
+<td class="riscv-table-numnoder">1</td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little">N</td>
+<td class="riscv-table-node-little" colspan="2">PBMT</td>
+<td class="riscv-table-node-little" colspan="3"></td>
+<td class="riscv-table-node-little" colspan="8">PPN[2]</td>
+<td class="riscv-table-node-little" colspan="7">PPN[1]</td>
+<td class="riscv-table-node-little" colspan="7">PPN[0]</td>
+<td class="riscv-table-node-little" colspan="2">RSW</td>
+<td class="riscv-table-node-little">D</td>
+<td class="riscv-table-node-little">A</td>
+<td class="riscv-table-node-little">G</td>
+<td class="riscv-table-node-little">U</td>
+<td class="riscv-table-node-little">X</td>
+<td class="riscv-table-node-little">W</td>
+<td class="riscv-table-node-little">R</td>
+<td class="riscv-table-node-little">V</td>
+</tr>
+</table>
+<p>其中：</p>
+<ul>
+<li>高位三部分保留，如果有不为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的则抛出<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常<ul>
+<li><span>N<span class="heti-spacing"> </span></span>保留给<span class="heti-skip"><span class="heti-spacing"> </span>Svnapot<span class="heti-spacing"> </span></span>扩展，没实现的话必须为<span><span class="heti-spacing"> </span>0</span></li>
+<li><span>PBMT<span class="heti-spacing"> </span></span>保留给<span class="heti-skip"><span class="heti-spacing"> </span>Svpbmt<span class="heti-spacing"> </span></span>扩展，没实现的话必须为<span><span class="heti-spacing"> </span>0</span></li>
+<li><span>[60:54]<span class="heti-spacing"> </span></span>位保留给后续标准使用，目前必须为<span><span class="heti-spacing"> </span>0</span></li>
+</ul>
+</li>
+<li><span>PPN[2] PPN[1] PPN[0]<span class="heti-spacing"> </span></span>为物理页号</li>
+<li>后面的标识位和<span class="heti-skip"><span class="heti-spacing"> </span>Sv32<span class="heti-spacing"> </span></span>一样</li>
+</ul>
+<p>地址翻译过程和<span class="heti-skip"><span class="heti-spacing"> </span>Sv32<span class="heti-spacing"> </span></span>类似，只是多了一级页表。而且<span class="heti-skip"><span class="heti-spacing"> </span>Sv39<span class="heti-spacing"> </span></span>的每一级页表项也都可以是叶页表项，同样页表项后续的<span class="heti-skip"><span class="heti-spacing"> </span>PPN<span class="heti-spacing"> </span></span>必须是<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>否则视为未对齐抛出<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常。因此<span class="heti-skip"><span class="heti-spacing"> </span>Sv39<span class="heti-spacing"> </span></span>支持<span class="heti-skip"><span class="heti-spacing"> </span>4KiB<span class="heti-spacing"> </span></span>粒度的分页<span><span class="heti-spacing"> </span>pages</span>、<span>2MiB<span class="heti-spacing"> </span></span>粒度的分页<span class="heti-skip"><span class="heti-spacing"> </span>megapages<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>1GiB<span class="heti-spacing"> </span></span>粒度的分页<span><span class="heti-spacing"> </span>gigapages</span>。其中使用三级页表的地址翻译过程如下：</p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv39_light.png#only-light"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv39_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv39_dark.png#only-dark"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv39_dark.png#only-dark"/></a></p>
+<p>只使用二级页表和一级页表的<span class="heti-skip"><span class="heti-spacing"> </span>megapages<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>gigapages<span class="heti-spacing"> </span></span>也不难理解，其实就相当于<span class="heti-skip"><span class="heti-spacing"> </span>page offset<span class="heti-spacing"> </span></span>向上扩充覆盖到了<span class="heti-skip"><span class="heti-spacing"> </span>VPN[0]<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>VPN[1]</span>，这里就不画了。</p>
+<details class="example">
+<summary>文档中对于地址翻译的详细描述</summary>
+<p>记待翻译的虚拟地址为<span><span class="heti-spacing"> </span>va</span>，结果的物理地址为<span><span class="heti-spacing"> </span>pa</span></p>
+<ol>
+<li>令<span><span class="heti-spacing"> </span>a = satp.PPN &lt;&lt; 12</span>，i = 2</li>
+<li>令<span><span class="heti-spacing"> </span>pte = *(a + (va.VPN[i] &lt;&lt; 3))</span><ul>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>的访问过程中违反了<span class="heti-skip"><span class="heti-spacing"> </span>PMA<span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span>PMP<span class="heti-spacing"> </span></span>的检查，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Access Fault<span class="heti-spacing"> </span></span>异常</li>
+</ul>
+</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>pte.V = 0<span class="heti-spacing"> </span></span>或者（<span>pte.R = 0<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>pte.W = 1</span>）或者其他保留位没有置<span><span class="heti-spacing"> </span>0</span>，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>是合法的。如果<span class="heti-skip"><span class="heti-spacing"> </span>pte.R = 1<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>pte.X = 1</span>（即不全为<span><span class="heti-spacing"> </span>0</span>）则跳到第<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>步</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>指向下一级页表。令<span><span class="heti-spacing"> </span>i = i - 1</span>，a = pte.PPN &lt;&lt; 12，跳到第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>步<ul>
+<li>如果<span><span class="heti-spacing"> </span>i &lt; 0</span>，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+</ul>
+</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>是一个叶页表项。根据<span><span class="heti-spacing"> </span>pte.R/W/X/U</span>、当前特权级、<span>SUM MXR<span class="heti-spacing"> </span></span>位判断当前访问权限是否合法，不合法则抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>i &gt; 0<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>pte.PPN[i-1:0] != 0</span>，说明当前是<span class="heti-skip"><span class="heti-spacing"> </span>superpage<span class="heti-spacing"> </span></span>且没对齐，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>与<span class="heti-skip"><span class="heti-spacing"> </span>pte.A pte.D<span class="heti-spacing"> </span></span>有关的一些没细看</li>
+<li>翻译成功，接下来填写转换后的物理地址<ul>
+<li>pa.pgoff = va.pgoff</li>
+<li>如果<span><span class="heti-spacing"> </span>i &gt; 0</span>，说明当前是<span><span class="heti-spacing"> </span>superpage translation</span>，令<span><span class="heti-spacing"> </span>pa.PPN[i-1:0] = va.VPN[i-1:0]</span><ul>
+<li>即扩充<span class="heti-skip"><span class="heti-spacing"> </span>offset<span class="heti-spacing"> </span></span>的范围</li>
+</ul>
+</li>
+<li>pa.PPN[2:i] = pte.PPN[2:i]</li>
+</ul>
+</li>
+</ol>
+</details>
+<h2 id="sv48"><span>Sv48<span class="heti-spacing"> </span></span>分页模式<a class="headerlink" href="#sv48" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p><span>Sv39<span class="heti-spacing"> </span></span>提供的<span class="heti-skip"><span class="heti-spacing"> </span>39<span class="heti-spacing"> </span></span>位虚拟地址可能会不够用，所以扩展得到了<span class="heti-skip"><span class="heti-spacing"> </span>Sv48<span class="heti-spacing"> </span></span>模式，在<span class="heti-skip"><span class="heti-spacing"> </span>Sv39<span class="heti-spacing"> </span></span>基础上加了一级页表，为虚拟地址高位多加了<span class="heti-skip"><span class="heti-spacing"> </span>9<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>VPN[3]</span>，将物理地址<span class="heti-skip"><span class="heti-spacing"> </span>26<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>PPN[2]<span class="heti-spacing"> </span></span>分为了<span class="heti-skip"><span class="heti-spacing"> </span>17<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>PPN[3]<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>9<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>PPN[2]</span>：</p>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnode" colspan="2"></td>
+<td class="riscv-table-numnodel">47</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">39</td>
+<td class="riscv-table-numnodel">38</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">30</td>
+<td class="riscv-table-numnodel">29</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">21</td>
+<td class="riscv-table-numnodel">20</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td colspan="2"></td>
+<td class="riscv-table-node-little" colspan="6">VPN[3]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[2]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[1]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[0]</td>
+<td class="riscv-table-node-little" colspan="8">page offset</td>
+</tr>
+</table>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">55...</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">39</td>
+<td class="riscv-table-numnodel">38</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">30</td>
+<td class="riscv-table-numnodel">29</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">21</td>
+<td class="riscv-table-numnodel">20</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little" colspan="8">PPN[3]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[2]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[1]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[0]</td>
+<td class="riscv-table-node-little" colspan="8">page offset</td>
+</tr>
+</table>
+<p>使用四级页表，每个页表内页表项数量和长度都没有变化，页表项内容也只是从<span class="heti-skip"><span class="heti-spacing"> </span>PPN[2]<span class="heti-spacing"> </span></span>拆分出了<span><span class="heti-spacing"> </span>PPN[3]</span>：</p>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">63</td>
+<td class="riscv-table-numnodel">62</td>
+<td class="riscv-table-numnoder">61</td>
+<td class="riscv-table-numnodel">60...</td>
+<td class="riscv-table-numnode" colspan="1"></td>
+<td class="riscv-table-numnoder">54</td>
+<td class="riscv-table-numnodel">53...</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">37</td>
+<td class="riscv-table-numnodel">36...</td>
+<td class="riscv-table-numnode" colspan="5"></td>
+<td class="riscv-table-numnoder">28</td>
+<td class="riscv-table-numnodel">27...</td>
+<td class="riscv-table-numnode" colspan="5"></td>
+<td class="riscv-table-numnoder">19</td>
+<td class="riscv-table-numnodel">18...</td>
+<td class="riscv-table-numnode" colspan="5"></td>
+<td class="riscv-table-numnoder">10</td>
+<td class="riscv-table-numnodel">9</td>
+<td class="riscv-table-numnoder">8</td>
+<td class="riscv-table-numnoder">7</td>
+<td class="riscv-table-numnoder">6</td>
+<td class="riscv-table-numnoder">5</td>
+<td class="riscv-table-numnoder">4</td>
+<td class="riscv-table-numnoder">3</td>
+<td class="riscv-table-numnoder">2</td>
+<td class="riscv-table-numnoder">1</td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little"></td>
+<td class="riscv-table-node-little" colspan="2"></td>
+<td class="riscv-table-node-little" colspan="3"></td>
+<td class="riscv-table-node-little" colspan="8">PPN[3]</td>
+<td class="riscv-table-node-little" colspan="7">PPN[2]</td>
+<td class="riscv-table-node-little" colspan="7">PPN[1]</td>
+<td class="riscv-table-node-little" colspan="7">PPN[0]</td>
+<td class="riscv-table-node-little" colspan="2">RSW</td>
+<td class="riscv-table-node-little">D</td>
+<td class="riscv-table-node-little">A</td>
+<td class="riscv-table-node-little">G</td>
+<td class="riscv-table-node-little">U</td>
+<td class="riscv-table-node-little">X</td>
+<td class="riscv-table-node-little">W</td>
+<td class="riscv-table-node-little">R</td>
+<td class="riscv-table-node-little">V</td>
+</tr>
+</table>
+<p>地址的翻译过程也类似，只是可能会多一级查询，这里不再赘述。</p>
+<p>同样每一级页表项都可以作为叶页表项，因此<span class="heti-skip"><span class="heti-spacing"> </span>Sv48<span class="heti-spacing"> </span></span>的分页支持四种粒度<span><span class="heti-spacing"> </span>4KiB pages</span>、2MiB megapages、<span>1GiB gigapages<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>512GiB terapages</span>。</p>
+<details class="example">
+<summary>文档中对于地址翻译的详细描述</summary>
+<p>记待翻译的虚拟地址为<span><span class="heti-spacing"> </span>va</span>，结果的物理地址为<span><span class="heti-spacing"> </span>pa</span></p>
+<ol>
+<li>令<span><span class="heti-spacing"> </span>a = satp.PPN &lt;&lt; 12</span>，i = 3</li>
+<li>令<span><span class="heti-spacing"> </span>pte = *(a + (va.VPN[i] &lt;&lt; 3))</span><ul>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>的访问过程中违反了<span class="heti-skip"><span class="heti-spacing"> </span>PMA<span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span>PMP<span class="heti-spacing"> </span></span>的检查，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Access Fault<span class="heti-spacing"> </span></span>异常</li>
+</ul>
+</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>pte.V = 0<span class="heti-spacing"> </span></span>或者（<span>pte.R = 0<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>pte.W = 1</span>）或者其他保留位没有置<span><span class="heti-spacing"> </span>0</span>，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>是合法的。如果<span class="heti-skip"><span class="heti-spacing"> </span>pte.R = 1<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>pte.X = 1</span>（即不全为<span><span class="heti-spacing"> </span>0</span>）则跳到第<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>步</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>指向下一级页表。令<span><span class="heti-spacing"> </span>i = i - 1</span>，a = pte.PPN &lt;&lt; 12，跳到第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>步<ul>
+<li>如果<span><span class="heti-spacing"> </span>i &lt; 0</span>，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+</ul>
+</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>是一个叶页表项。根据<span><span class="heti-spacing"> </span>pte.R/W/X/U</span>、当前特权级、<span>SUM MXR<span class="heti-spacing"> </span></span>位判断当前访问权限是否合法，不合法则抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>i &gt; 0<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>pte.PPN[i-1:0] != 0</span>，说明当前是<span class="heti-skip"><span class="heti-spacing"> </span>superpage<span class="heti-spacing"> </span></span>且没对齐，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>与<span class="heti-skip"><span class="heti-spacing"> </span>pte.A pte.D<span class="heti-spacing"> </span></span>有关的一些没细看</li>
+<li>翻译成功，接下来填写转换后的物理地址<ul>
+<li>pa.pgoff = va.pgoff</li>
+<li>如果<span><span class="heti-spacing"> </span>i &gt; 0</span>，说明当前是<span><span class="heti-spacing"> </span>superpage translation</span>，令<span><span class="heti-spacing"> </span>pa.PPN[i-1:0] = va.VPN[i-1:0]</span><ul>
+<li>即扩充<span class="heti-skip"><span class="heti-spacing"> </span>offset<span class="heti-spacing"> </span></span>的范围</li>
+</ul>
+</li>
+<li>pa.PPN[3:i] = pte.PPN[3:i]</li>
+</ul>
+</li>
+</ol>
+</details>
+<h2 id="sv57"><span>Sv57<span class="heti-spacing"> </span></span>分页模式<a class="headerlink" href="#sv57" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>Sv48<span class="heti-spacing"> </span></span>基础上又加了一级页表，为虚拟地址高位多加了<span class="heti-skip"><span class="heti-spacing"> </span>9<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>VPN[4]</span>，将物理地址<span class="heti-skip"><span class="heti-spacing"> </span>17<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>PPN[3]<span class="heti-spacing"> </span></span>分为了<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>位的<span class="heti-skip"><span class="heti-spacing"> </span>PPN[4]<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>9<span class="heti-spacing"> </span></span>位的<span><span class="heti-spacing"> </span>PPN[3]</span>：</p>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel">56</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">48</td>
+<td class="riscv-table-numnodel">47</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">39</td>
+<td class="riscv-table-numnodel">38</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">30</td>
+<td class="riscv-table-numnodel">29</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">21</td>
+<td class="riscv-table-numnodel">20</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td class="riscv-table-node-little" colspan="6">VPN[4]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[3]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[2]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[1]</td>
+<td class="riscv-table-node-little" colspan="6">VPN[0]</td>
+<td class="riscv-table-node-little" colspan="8">page offset</td>
+</tr>
+</table>
+<table class="riscv-table" style="margin-bottom: 0.6em">
+<tr>
+<td class="riscv-table-numnodel"></td>
+<td class="riscv-table-numnodel">55</td>
+<td class="riscv-table-numnode" colspan="3"></td>
+<td class="riscv-table-numnoder">48</td>
+<td class="riscv-table-numnodel">47</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">39</td>
+<td class="riscv-table-numnodel">38</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">30</td>
+<td class="riscv-table-numnodel">29</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">21</td>
+<td class="riscv-table-numnodel">20</td>
+<td class="riscv-table-numnode" colspan="4"></td>
+<td class="riscv-table-numnoder">12</td>
+<td class="riscv-table-numnodel">11</td>
+<td class="riscv-table-numnode" colspan="6"></td>
+<td class="riscv-table-numnoder">0</td>
+</tr>
+<tr>
+<td></td>
+<td class="riscv-table-node-little" colspan="5">PPN[4]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[3]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[2]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[1]</td>
+<td class="riscv-table-node-little" colspan="6">PPN[0]</td>
+<td class="riscv-table-node-little" colspan="8">page offset</td>
+</tr>
+</table>
+<p>使用五级页表，每个页表内页表项数量和长度都没有变，内容差别和物理地址同样，从<span class="heti-skip"><span class="heti-spacing"> </span>PPN[3]<span class="heti-spacing"> </span></span>中拆出了<span><span class="heti-spacing"> </span>PPN[4]</span>，具体就不展示了。</p>
+<p>翻译过程类似，同样每一级页表项都可以作为叶页表项，因此<span class="heti-skip"><span class="heti-spacing"> </span>Sv57<span class="heti-spacing"> </span></span>的分页支持五种粒度<span><span class="heti-spacing"> </span>4KiB pages</span>、2MiB megapages、1GiB gigapages、<span>512GiB terapages<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>256TiB petapages</span>。</p>
+<details class="example">
+<summary>文档中对于地址翻译的详细描述</summary>
+<p>记待翻译的虚拟地址为<span><span class="heti-spacing"> </span>va</span>，结果的物理地址为<span><span class="heti-spacing"> </span>pa</span></p>
+<ol>
+<li>令<span><span class="heti-spacing"> </span>a = satp.PPN &lt;&lt; 12</span>，i = 4</li>
+<li>令<span><span class="heti-spacing"> </span>pte = *(a + (va.VPN[i] &lt;&lt; 3))</span><ul>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>的访问过程中违反了<span class="heti-skip"><span class="heti-spacing"> </span>PMA<span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span>PMP<span class="heti-spacing"> </span></span>的检查，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Access Fault<span class="heti-spacing"> </span></span>异常</li>
+</ul>
+</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>pte.V = 0<span class="heti-spacing"> </span></span>或者（<span>pte.R = 0<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>pte.W = 1</span>）或者其他保留位没有置<span><span class="heti-spacing"> </span>0</span>，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>是合法的。如果<span class="heti-skip"><span class="heti-spacing"> </span>pte.R = 1<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>pte.X = 1</span>（即不全为<span><span class="heti-spacing"> </span>0</span>）则跳到第<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>步</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>指向下一级页表。令<span><span class="heti-spacing"> </span>i = i - 1</span>，a = pte.PPN &lt;&lt; 12，跳到第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>步<ul>
+<li>如果<span><span class="heti-spacing"> </span>i &lt; 0</span>，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+</ul>
+</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span>pte<span class="heti-spacing"> </span></span>是一个叶页表项。根据<span><span class="heti-spacing"> </span>pte.R/W/X/U</span>、当前特权级、<span>SUM MXR<span class="heti-spacing"> </span></span>位判断当前访问权限是否合法，不合法则抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>i &gt; 0<span class="heti-spacing"> </span></span>且<span><span class="heti-spacing"> </span>pte.PPN[i-1:0] != 0</span>，说明当前是<span class="heti-skip"><span class="heti-spacing"> </span>superpage<span class="heti-spacing"> </span></span>且没对齐，抛出对应访问类型的<span class="heti-skip"><span class="heti-spacing"> </span>Page Fault<span class="heti-spacing"> </span></span>异常</li>
+<li>与<span class="heti-skip"><span class="heti-spacing"> </span>pte.A pte.D<span class="heti-spacing"> </span></span>有关的一些没细看</li>
+<li>翻译成功，接下来填写转换后的物理地址<ul>
+<li>pa.pgoff = va.pgoff</li>
+<li>如果<span><span class="heti-spacing"> </span>i &gt; 0</span>，说明当前是<span><span class="heti-spacing"> </span>superpage translation</span>，令<span><span class="heti-spacing"> </span>pa.PPN[i-1:0] = va.VPN[i-1:0]</span><ul>
+<li>即扩充<span class="heti-skip"><span class="heti-spacing"> </span>offset<span class="heti-spacing"> </span></span>的范围</li>
+</ul>
+</li>
+<li>pa.PPN[4:i] = pte.PPN[4:i]</li>
+</ul>
+</li>
+</ol>
+</details>
+<h2 id="_2">操作系统中开启分页<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>在操作系统中开启分页机制，需要做以下事情：</p>
+<ul>
+<li>分配物理地址页，每页中写好需要映射部分的页表项<ul>
+<li>注意<span class="heti-skip"><span class="heti-spacing"> </span>PTE<span class="heti-spacing"> </span></span>标识位的权限，以及<span class="heti-skip"><span class="heti-spacing"> </span>PTE.V<span class="heti-spacing"> </span></span>位</li>
+</ul>
+</li>
+<li>将页表的物理地址末尾截断得到根页表物理页号</li>
+<li>同分页模式一起写入<span class="heti-skip"><span class="heti-spacing"> </span>satp<span class="heti-spacing"> </span></span>寄存器<ul>
+<li>写入的同时就已经启用分页了，所以要注意<span class="heti-skip"><span class="heti-spacing"> </span>pc+4<span class="heti-spacing"> </span></span>是否仍然可以访问</li>
+</ul>
+</li>
+<li>执行<span class="heti-skip"><span class="heti-spacing"> </span>sfence.vma x0, x0<span class="heti-spacing"> </span></span>指令，刷新<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>缓存</li>
+</ul>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年5月10日 23:50:08</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年5月22日 20:34:59</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年5月10日 23:50:08</span>
