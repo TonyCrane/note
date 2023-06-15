@@ -42,3 +42,4 @@
 - [XCTF 2022 Final](xctf2022final/)
 - [Midnight Sun CTF 2023 Quals](midnight2023/)
 - [AliyunCTF 2023](aliyunctf2023/)
+- [CISCN 2023 Quals](ciscn2023/)

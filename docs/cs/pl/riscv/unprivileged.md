@@ -2565,7 +2565,7 @@ slli、srli、srai 三条指令修改了格式：
 <tr>
     <td colspan="12" class="riscv-table-node-little">imm[11:0]</td>
     <td colspan="5" class="riscv-table-node-little">rs1</td>
-    <td colspan="3" class="riscv-table-node-little">101</td>
+    <td colspan="3" class="riscv-table-node-little">110</td>
     <td colspan="5" class="riscv-table-node-little">rd</td>
     <td colspan="7" class="riscv-table-node-little">0000011</td>
 </tr>
