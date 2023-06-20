@@ -309,3 +309,174 @@ class Derived : (public/private/protected) Base {
     }
     cout << "a" << tab << "b";
     ```
+
+## 其他部分
+### 模板
+- 定义函数模板
+    ```cpp
+    template <class T>
+    void swap(T&x, T&y) { ... }
+    ```
+    - 调用时可以显式指定参数 T：`swap<int>(a, b);`
+    - 可以 `#!cpp template <class T, class U>` 指定多个类型
+- 函数模板相当于声明，编译期会根据实际使用的类型生成模板函数
+    - 类型精确匹配，不可以有隐式转换
+    - 函数模板需要放在头文件中
+- 同类型函数模板和普通函数可以同时存在
+    - 优先匹配普通函数
+    - 普通函数可以进行参数隐式转换，函数模板只能精确匹配
+- 类模板类似
+    - 需要注意成员函数在外部定义时要加上 `#!cpp template <class T>`
+        ```cpp
+        template <class T>
+        class A {
+        public:
+            void func(T x) { ... }
+        };
+        template <class T>
+        void A<T>::func(T x) { ... }
+        ```
+- 模板参数可以是常量表达式
+    ```cpp
+    template <class T, int bounds = 100>
+    class FixedVector {
+        T elements[bounds];
+    }
+    ```
+    - 需要显式指定参数（否则使用默认）
+- 关于继承
+    - 类模板可以继承自普通类
+        ```cpp
+        template <class T>
+        class A: public B { ... }
+        ```
+    - 类模板可以继承自类模板
+        ```cpp
+        template <class T>
+        class A: public B<T> { ... }
+        ```
+    - 普通类可以继承自模版类（不是类模板）
+        ```cpp
+        class A: public B<int> {...}
+        ```
+    
+### 异常
+- 通过 throw 抛出异常，可以 throw 任何东西
+- 一般 throw 异常类（即带有异常信息的一个普通的类）实例
+- try-catch
+    ```cpp
+    try { ... }
+    catch (SomeError& e) { ... }
+    catch (AnotherError) { ... } // 忽略错误具体内容
+    catch (...) { ... } // 其他全部异常用 ... 表示
+    ```
+    - catch 块中可以 `#!cpp throw;` 来将当前处理的异常重新抛出去，实现异常的传递
+- new 的异常
+    - new 在分配失败的时候不会像 malloc 一样返回 0
+    - 分配失败会抛出 bad_alloc 异常
+- 标准库异常
+    - bad_alloc bad_cast bad_typeid bad_exception
+    - runtime_error: overflow_error range_error
+    - logic_error: domain_error length_error out_of_range invalid_argument
+- 函数的异常声明
+    - 声明当前函数可能会抛出哪些异常
+        ```cpp
+        void func(int a) : throw (SomeError, AnotherError) { ... }
+        ```
+        - `#!cpp throw ()` 不抛出任何异常，C++11 写为 noexcept
+    - 编译期不会检查
+    - 运行时抛出了非预期的异常时会抛出 unexpected 异常
+        - unexpected 异常会调用 std::unexpected() 函数
+        - 可以通过 std::set_unexpected(handler) 来将一个函数设置为 unexpected 处理函数
+- 构造函数中的异常
+    - 构造函数中可以抛出异常，使对象非完全构造，析构时不会调用析构函数，throw 前清理分配的资源
+    - 可能会出现内存泄漏，注意 delete
+    - 推荐二阶段构造
+        - 构造函数中只进行一些简单的复制和初始化（不分配任何资源）
+        - 可能会抛出异常的工作在另外单独的函数 init 中初始化
+- 析构函数异常
+    - 析构函数不推荐抛出异常
+    - 必须在析构函数内消化所有异常，否则会调用 terminate 函数终止程序
+- 异常与继承
+    - 异常派生类能被基类捕获，要先捕获派生类再捕获基类
+        ```cpp
+        class A { ... };
+        class B: public A { ... };
+        try { ... }
+        catch (B& e) { ... } // 注意使用引用
+        catch (A& e) { ... }
+        ```
+- 未捕获的异常
+    - 未捕获的异常会调用 std::terminate 函数终止程序
+    - 可以通过 std::set_terminate(handler) 来将一个函数设置为 terminate 处理函数
+
+### 流
+- 分类
+    - 通用：istream ostream <iostream\>
+    - 文件：ifstream ofstream <fstream\>
+    - 字符串：istringstream ostringstream <sstream\>
+        - C 字符串：istrstream ostrstream <strstream\>
+- 读：extractor >>
+- 写：inserter <<
+- 改变流状态：manipulators
+- 预定义流：cin cout cerr clog
+- 自定义 extractor inserter
+    ```cpp
+    istream& operator >> (istream& in, T& obj) {
+        ...
+        return in;
+    }
+    ostream& operator << (ostream& out, const T& obj) {
+        ...
+        return out;
+    }
+    ```
+- istream 其他运算符
+    - `#!cpp while ((ch = cin.get()) != EOF)`
+    - `#!cpp istream& get(char& ch)`
+    - `#!cpp istream& get(char *buf, int limit, char delim = '\n')`
+    - `#!cpp istream& getline(char *buf, int limit, char delim = '\n')`
+    - `#!cpp istream& ignore(int limit = 1, int delim = EOF)`
+    - `#!cpp int gcount()` 返回最后一次读取的字符数
+    - `#!cpp istream& putback(char ch)` 将字符放回流中
+    - `#!cpp istream& peek()` 返回下一个字符但不从流中取出
+- ostream 其他运算符
+    - `#!cpp ostream& put(char ch)`
+    - `#!cpp ostream& write(const char *buf, int size)`
+    - `#!cpp ostream& flush()` 刷新缓冲区
+- manipulators
+    - dec hex oct，设置进制，I/O
+    - setw(n) setfill(c)，设置宽度和填充字符，I/O
+    - endl flush，换行和刷新缓冲区，O
+    - setbase(n) setprecision(n)，设置进制和精度，O
+    - ws，跳过空白字符，I
+    - setiosflags(...) resetiosflags(...)，设置和重置 I/O 格式标志，I/O
+        - ios::left ios::right，左右对齐
+        - ios::showpos ios::showpoint ios::showbase，显示正负号、小数点、进制前缀
+        - ios::uppercase ios::lowercase，大写小写
+        - ios::scientific ios::fixed，科学计数法、定点表示法
+        - ios::internal，数值在填充字符之间
+        - ios::skipws，跳过空白字符
+        - ios::unitbuf，每次输出后刷新缓冲区
+        - 用二进制或叠加 flag
+        - 也可以调用成员函数 setf 和 unsetf 来设置
+- 流状态
+    - 文件尾 eof，格式错误 fail，数据丢失 bad，其余 good
+    - clear() 清除流状态到 good
+    - good() eof() fail() bad()，判断流状态
+- 文件流
+    - 打开模式 flag
+        - ios::app 附加，ios::ate 定位到文件尾，ios::trunc 清空文件
+        - ios::in 读，ios::out 写，ios::binary 二进制
+        - ios::nocreate 不存在时不创建，ios::noreplace 存在时不覆盖
+    - 用法
+        ```cpp
+        ofstream fout("file.txt", ios::out | ios::app);
+        fout << "Hello" << endl;
+        fout.close();
+        ifstream fin("file.txt");
+        ifstream input;
+        input.open("file.txt", ios::in);
+        ```
+- stream buffer
+    - rdbuf() 返回流的 streambuf 对象
