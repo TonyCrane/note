@@ -33,6 +33,22 @@ counter: True
         }
         ```
 
+        ???+ example
+            求 13 在模 35 下的逆元（求解 13x + 35y = 1）
+            ```text
+            35 / 13 = 2 ... 9
+            13 / 9 = 1 ... 4
+            9 / 4 = 2 ... 1
+            
+            1 = 9 - 2 * 4
+              = (35 - 13 * 2) - 2 * (13 - 9 * 1)
+              = (35 - 13 * 2) - 2 * (13 - (35 - 13 * 2) * 1)
+              = 3 * 35 - 8 * 13
+            ```
+            
+            所以 x = -8, y = 3，得 13 在模 35 下的逆元为 -8，即 27。
+
+
 ## 古典密码
 ### 单表加密
 - 加法密码
@@ -184,7 +200,7 @@ counter: True
     - 每一轮进行：
         - $L_i = R_{i-1}$
         - $R_i = L_{i-1} \oplus f(R_{i-1}, K_i)$
-    - 16 轮后得到 $L_{16}$ 和 $R_{16}$，逆初始置换后得到密文
+    - 16 轮后得到 $L_{16}$ 和 $R_{16}$，调换一下拼接 $R_{16}L_{16}$ 再逆初始置换后得到密文
 - f 函数
     - DES 算法核心，两个输入 32 位 R 和 48 位 K，输出 32 位
     - E 扩展置换（plaintext_32bit_expanded_to_48bit_table）
@@ -282,29 +298,26 @@ counter: True
         - 加密时 $a(x) = 3x^3 + x^2 + x + 2$ [0x03, 0x01, 0x01, 0x02]
         - 解密时 $a(x) = 11x^3 + 13x^2 + 9x + 14$ [0x0B, 0x0D, 0x09, 0x0E]
         - 模 $x^4 + 1$ 就相当于把超过 4 次的项都减去 $x^4$
-    - 例如一列从上到下为 [4, 3, 2, 1]，则运算为
-
-        $$
+    - 例如一列从上到下为 [4, 3, 2, 1]，则运算为  
+        <div class="arithmatex">\\[
         \begin{bmatrix}
-        2 & 3 & 1 & 1 \\
-        1 & 2 & 3 & 1 \\
-        1 & 1 & 2 & 3 \\
+        2 & 3 & 1 & 1 \\\\
+        1 & 2 & 3 & 1 \\\\
+        1 & 1 & 2 & 3 \\\\
         3 & 1 & 1 & 2
         \end{bmatrix}\times
         \begin{bmatrix}
-        4 \\ 3 \\ 2 \\ 1
+        4 \\\\ 3 \\\\ 2 \\\\ 1
         \end{bmatrix} =
         \begin{bmatrix}
-        8\oplus 1\oplus 2\oplus 5\\
-        \cdots \\ \cdots \\ \cdots
+        8\oplus 1\oplus 2\oplus 5\\\\
+        \cdots \\\\ \cdots \\\\ \cdots
         \end{bmatrix} =
         \begin{bmatrix}
-        14 \\ 5 \\ 0 \\ 15
+        14 \\\\ 5 \\\\ 0 \\\\ 15
         \end{bmatrix}
-        $$
-        
+        \\]</div>
         - 这里乘法是 8 位 mod 0x11B 的有限域乘法，加法是异或
-    
     - 计算之后再放回原来的列
 - 密钥生成过程
     - 取上轮密钥的最后一列，循环上移一位，进行 ByteSub，与上轮密钥第一列异或，再将第一位和 $2^{i-1}\bmod \mathtt{0x11B}$ 异或得到新一轮密钥的第一列
@@ -343,7 +356,14 @@ counter: True
 - 欧拉函数
     - $\phi(n)$ 表示小于 $n$ 且与 $n$ 互质的数的个数
     - 若 $n_1, n_2$ 互素，则 $\phi(n_1n_2) = \phi(n_1)\phi(n_2)$
-    - $\phi(n) = n\prod_{p|n}(1-\frac{1}{p})$
+    - $\phi(n) = n\prod_{p|n}(1-\frac{1}{p})$（其中 $p$ 为质数/质因子）
+    ???+ example
+        $$
+        \begin{aligned}
+        \phi(100) = 100\times(1-\frac{1}{2})(1-\frac{1}{5}) = 100\times\frac{1}{2}\times\frac{4}{5} = 40\\
+        \phi(100) = \phi(2^2\times 5^2) = 2^{2-1}(2-1)\times 5^{2-1}(5-1) = 40
+        \end{aligned}
+        $$
 - 欧拉定理
     - 若 $a$ 与 $n$ 互质，则 $a^{\phi(n)} \equiv 1 \pmod{n}$
 - 费马小定理
@@ -436,6 +456,12 @@ counter: True
             - $y_3 = \lambda(x_1-x_3)-y_1$
             - $\lambda = \begin{cases}(y_2-y_1)(x_2-x_1)^{-1} & \text{if }P\neq Q \\(3x_1^2+a)(2y_1)^{-1} & \text{if }P=Q\end{cases}$
         - 实数域上椭圆曲线加法就是两点连线与曲线的交点关于 x 轴的对称点
+        ???+ example
+            曲线 $a=1, p=11$，有点 $\alpha=(2, 7)$，求 $2\alpha$  
+            $\lambda = (3x_1^2+a)(2y_1)^{-1} = (3\times 4+1)(2\times 7)^{-1} = 2\times 3^{-1} = 2\times 4 = 8\pmod{11}$  
+            $x_3 = \lambda^2-x_1-x_2 = 8^2-2-2 = 60 = 5\pmod{11}$  
+            $y_3 = \lambda(x_1-x_3)-y_1 = 8\times(2-5)-7 = -31 = 2\pmod{11}$  
+            $2\alpha = (x_3, y_3) = (5, 2)$
     - 阶
         - 曲线的阶：$|E|$（曲线上点的个数）
         - 点的阶：$nP=\mathcal{O}$ 的最小正整数 $n$
