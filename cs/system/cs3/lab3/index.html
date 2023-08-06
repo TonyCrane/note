@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
+<link href="https://note.tonycrane.cc/cs/system/cs3/lab3/" rel="canonical"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<title>系统 III lab3 - 鹤翔万里的笔记本</title>
+<link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/timeline.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css" rel="stylesheet"/>
+<link href="../../../../css/tasklist.css" rel="stylesheet"/>
+<link href="../../../../css/custom.css" rel="stylesheet"/>
+<link href="../../../../css/card.css" rel="stylesheet"/>
+<link href="../../../../css/flink.css" rel="stylesheet"/>
+<link href="../../../../css/changelog_extra.css" rel="stylesheet"/>
+<link href="/css/counter.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c273de7f67d992cb6aef08c3ddf09bb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            
+                .gscrollbar-fixer { padding-right: 15px; }
+                .gdesc-inner { font-size: 0.75rem; }
+                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<script src="../../../../js/scheme.js" type="text/javascript"></script>
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#rv64">
+            跳转至
+          </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="鹤翔万里的笔记本" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="鹤翔万里的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            鹤翔万里的笔记本
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              系统 III lab3
+            
+          </span>
+</div>
+</div>
+</div>
+<div class="md-header__options">
+<div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+<a class="light-mode" href="javascript:toggleScheme();" title="Light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"></path></svg>
+</a>
+<a class="dark-mode" href="javascript:toggleScheme();" title="Dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"></path></svg>
+</a>
+<a class="system-mode" href="javascript:toggleScheme();" title="System preference">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07 19.07 3.5m-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13.51 1.67m-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87.4 1.31M19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35-2.53-2.2m4.33-2.7 1.15-2.77 2.2 2.54-3.35.23m1.15-4.96-1.14-2.78 3.34.24-2.2 2.54M9.63 18.93l2.77 1.15-2.53 2.19-.24-3.34z"></path></svg>
+</a>
+<a class="unknown-mode" href="javascript:toggleScheme();" title="Unknown scheme">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"></path></svg>
+</a>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TonyCrane/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../../">
+        Computer Science
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../sec/">
+        Security
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../web/">
+        Web
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../ctf/">
+        CTF
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../writeups/">
+        Writeups
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../others/">
+        Others
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="鹤翔万里的笔记本" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="鹤翔万里的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
+</a>
+    鹤翔万里的笔记本
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TonyCrane/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../..">Home</a>
+<label for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../changelog/">
+        更新记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../links/">
+        友链
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../">Computer Science</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Computer Science" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/">编程语言 &amp; ISA</a>
+<label for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="编程语言 &amp; ISA" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          编程语言 &amp; ISA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" id="__nav_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2">
+          C/C++
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="C/C++" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+          C/C++
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/c_cpp/c/">
+        C 语言杂项
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/c_cpp/oop/">
+        C++ 面向对象
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/python/">Python</a>
+<label for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Python" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/python/basic/">
+        Python 基础语法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/python/numpy/">
+        NumPy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/python/pil/">
+        PIL
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" id="__nav_2_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/rust/">Rust</a>
+<label for="__nav_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Rust" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Rust
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/rust/basic/">
+        Rust 基础语法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/rust/misc/">
+        Rust 杂项随记
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/haskell/">
+        Haskell
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/chisel/">
+        Chisel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/asm/">
+        x86 汇编语言
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_8" id="__nav_2_2_8" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/riscv/">RISC-V ISA</a>
+<label for="__nav_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="RISC-V ISA" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+          RISC-V ISA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/riscv/unprivileged/">
+        RISC-V 非特权级 ISA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/riscv/privileged/">
+        RISC-V 特权级 ISA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/riscv/paging/">
+        RISC-V 页表相关
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../">计算机系统</a>
+<label for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs1/">计算机系统 I</a>
+<label for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 I" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 I
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/topic1/">
+        数据的表示
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/topic2/">
+        数字逻辑电路基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/topic3/">
+        组合逻辑电路设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/topic4/">
+        时序逻辑电路设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/topic5/">
+        指令集体系结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/topic6/">
+        处理器
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_8" id="__nav_2_3_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_2_8">
+          系统 I 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 I 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_2_8">
+<span class="md-nav__icon md-icon"></span>
+          系统 I 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab1-1/">
+        系统 I lab1-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab1-2/">
+        系统 I lab1-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab2-1/">
+        系统 I lab2-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab2-2/">
+        系统 I lab2-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab3/">
+        系统 I lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab4-1/">
+        系统 I lab4-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab4-2/">
+        系统 I lab4-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab5-1/">
+        系统 I lab5-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs1/lab5-2/">
+        系统 I lab5-2
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../cs2/">计算机系统 II</a>
+<label for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 II" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 II
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/topic1/">
+        流水线 CPU
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/topic2/">
+        操作系统简介
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/topic3/">
+        操作系统结构及系统调用
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/topic4/">
+        进程与线程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/topic5/">
+        CPU 调度
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/topic6/">
+        进程同步
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3_8">
+          系统 II 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 II 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_3_8">
+<span class="md-nav__icon md-icon"></span>
+          系统 II 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/lab1/">
+        系统 II lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/lab2/">
+        系统 II lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/lab3/">
+        系统 II lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/lab4/">
+        系统 II lab4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/lab5/">
+        系统 II lab5
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/lab6/">
+        系统 II lab6
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../cs2/lab7/">
+        系统 II lab7
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" id="__nav_2_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../">计算机系统 III</a>
+<label for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 III" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 III
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../topic1/">
+        系统量化研究方法
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4_3" id="__nav_2_3_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_4_3">
+          系统 III 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 III 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_4_3">
+<span class="md-nav__icon md-icon"></span>
+          系统 III 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab1/">
+        系统 III lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab2/">
+        系统 III lab2
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          系统 III lab3
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        系统 III lab3
+      </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    实验内容
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    虚拟内存映射的实现
+  </a>
+<nav aria-label="虚拟内存映射的实现" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    建立临时页表
+  </a>
+<nav aria-label="建立临时页表" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup_vm">
+    实现 setup_vm
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+    启用临时页表
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    建立正式页表
+  </a>
+<nav aria-label="建立正式页表" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup_vm_final">
+    实现 setup_vm_final
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create_mapping">
+    实现 create_mapping
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup_vm_final_1">
+    调用 setup_vm_final
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+    实验测试结果
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+    思考题
+  </a>
+<nav aria-label="思考题" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#text-rodata">
+    验证 .text, .rodata 段的属性是否成功设置
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#opensbi">
+    线性映射时能否不对 OpenSBI 所在的区域进行映射
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sfencevma">
+    为什么需要在修改页表后执行 sfence.vma 指令
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab4/">
+        系统 III lab4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../lab5/">
+        系统 III lab5
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../pa/">
+        ICS PA 实验纪实
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+          算法相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="算法相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          算法相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../algorithm/ds/">数据结构基础</a>
+<label for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="数据结构基础" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+          数据结构基础
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/topic1/">
+        算法分析基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/summary1/">
+        基础数据结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/summary2/">
+        排序与哈希
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+          人工智能相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="人工智能相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          人工智能相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ai/basic/">
+        人工智能基础
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+          高性能计算
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="高性能计算" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          高性能计算
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../hpc/hpc101/">HPC 101 超算小学期</a>
+<label for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="HPC 101 超算小学期" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+          HPC 101 超算小学期
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/vectorized/">
+        向量化计算
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/gpu/">
+        GPU 编程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/openmp/">
+        OpenMP 基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/mpi/">
+        MPI 基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/ml/">
+        机器学习基础
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+          零散知识点
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="零散知识点" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          零散知识点
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../regex/">
+        正则表达式
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../unicode/">
+        Unicode
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../analysis/">源码剖析</a>
+<label for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="源码剖析" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          源码剖析
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/mkdocs/">
+        mkdocs 源码剖析
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../tools/">工具相关</a>
+<label for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="工具相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          工具相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/toolbox/">
+        工具收集
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_3" id="__nav_2_9_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_3">
+          命令行工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="命令行工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_3">
+<span class="md-nav__icon md-icon"></span>
+          命令行工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git/">
+        Git 命令备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/shell/">
+        Shell 命令备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/docker/">
+        Docker 相关备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gdb/">
+        gdb 相关备忘
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_4" id="__nav_2_9_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_4">
+          CI 工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="CI 工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_4">
+<span class="md-nav__icon md-icon"></span>
+          CI 工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/action/">
+        GitHub Action
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9_5" id="__nav_2_9_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_9_5">
+          站点生成工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="站点生成工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_9_5">
+<span class="md-nav__icon md-icon"></span>
+          站点生成工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/mkdocs/">
+        mkdocs 使用记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/hexo/">
+        hexo 使用记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/sphinx/">
+        sphinx 使用记录
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/">Security</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Security" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/crypto/">密码学</a>
+</div>
+<nav aria-label="密码学" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          密码学
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/softsec/">软件安全</a>
+<label for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="软件安全" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          软件安全
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab1/">
+        软件安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab2/">
+        软件安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab3/">
+        软件安全 lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab4/">
+        软件安全 lab4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/final/">
+        软件安全 final lab
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          漏洞复现
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="漏洞复现" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          漏洞复现
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/vulns/log4j/">
+        log4j 漏洞复现
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../web/">Web</a>
+<label for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Web" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Web
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../web/protocol/">网络协议</a>
+<label for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="网络协议" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          网络协议
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/protocol/vmess/">
+        VMess
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          排版写作规范
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="排版写作规范" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          排版写作规范
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/typesetting/clreq/">
+        中文排版需求
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/typesetting/tech/">
+        中文技术文档风格指南
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/svg/">
+        SVG
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/">CTF</a>
+<label for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="CTF" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          CTF
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2">
+          misc
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="misc" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+          misc
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_1" id="__nav_5_2_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/steg/">隐写术</a>
+<label for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="隐写术" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+          隐写术
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/steg/image/">
+        图片隐写
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/steg/audio/">
+        音频隐写
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" id="__nav_5_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/escapes/">沙箱逃逸</a>
+<label for="__nav_5_2_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="沙箱逃逸" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_2">
+<span class="md-nav__icon md-icon"></span>
+          沙箱逃逸
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/escapes/pysandbox/">
+        Python 沙箱逃逸
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_3" id="__nav_5_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/forensics/">取证</a>
+<label for="__nav_5_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="取证" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_3">
+<span class="md-nav__icon md-icon"></span>
+          取证
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/forensics/mem/">
+        内存取证
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_4" id="__nav_5_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2_4">
+          编码/密码类
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="编码/密码类" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_4">
+<span class="md-nav__icon md-icon"></span>
+          编码/密码类
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/coding/">
+        编码及古典密码
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/qrcode/">
+        QRCode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/esolang/">
+        Esolang
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5" id="__nav_5_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/">Blockchain</a>
+<label for="__nav_5_2_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Blockchain" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Blockchain
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5_2" id="__nav_5_2_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/eth/">Ethereum</a>
+<label for="__nav_5_2_5_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Ethereum" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_2_5_2">
+<span class="md-nav__icon md-icon"></span>
+          Ethereum
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/basic/">
+        以太坊基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/evm/">
+        以太坊虚拟机
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/solidity/">
+        Solidity 语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/yul/">
+        Yul 语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/vuln/">
+        常见合约漏洞攻击手段
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/erc/">
+        ERC 标准
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/eip/">
+        其余重要 EIPs
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5_3" id="__nav_5_2_5_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/solana/">Solana</a>
+</div>
+<nav aria-label="Solana" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_2_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Solana
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3">
+          pwn
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="pwn" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+          pwn
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" id="__nav_5_3_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/pwn/stack/">栈漏洞利用</a>
+</div>
+<nav aria-label="栈漏洞利用" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_1">
+<span class="md-nav__icon md-icon"></span>
+          栈漏洞利用
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" id="__nav_5_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/pwn/heap/">堆漏洞利用</a>
+</div>
+<nav aria-label="堆漏洞利用" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_2">
+<span class="md-nav__icon md-icon"></span>
+          堆漏洞利用
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../writeups/">Writeups</a>
+<label for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Writeups" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Training" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/ethernaut/">
+        Ethernaut
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/SecurityInnovation/">
+        Security Innovation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sadservers/">
+        SadServers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/AAA/">
+        🔒 AAA School Bus
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3">
+          2021
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2021" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+          2021
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sysu_msc_puzzle/">
+        SYSU MSC Puzzle 2021
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/hackergame2021/">
+        USTC Hackergame 2021
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/d0g3/">
+        第四届“安洵杯”
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/bytectf2021_final/">
+        ByteCTF 2021 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sctf2021/">
+        SCTF 2021
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2022" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/vnctf2022/">
+        VNCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/tqlctf2022/">
+        TQLCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/susctf2022/">
+        SUSCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/d3ctf2022/">
+        D3CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/%2Actf2022/">
+        *CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/mrctf2022/">
+        MRCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/qwb2022/">
+        强网杯 2022 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/tctf2022/">
+        TCTF/0CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/hackergame2022/">
+        USTC Hackergame 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/n1ctf2022/">
+        N1CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/seccon2022/">
+        SECCON 2022 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/rctf2022/">
+        RCTF 2022
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+          2023
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2023" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          2023
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/seccon2022final/">
+        SECCON 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/xctf2022final/">
+        XCTF 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/midnight2023/">
+        MidnightSun 2023 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/aliyunctf2023/">
+        AliyunCTF 2023
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/ciscn2023/">
+        CISCN 2023 Quals
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/">Others</a>
+<label for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Others" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Others
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/notes/">
+        课程笔记
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" id="__nav_7_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/troubleshooting/">TroubleShooting</a>
+<label for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="TroubleShooting" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+          TroubleShooting
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/troubleshooting/mac/">
+        macOS TroubleShooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    实验内容
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    虚拟内存映射的实现
+  </a>
+<nav aria-label="虚拟内存映射的实现" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    建立临时页表
+  </a>
+<nav aria-label="建立临时页表" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup_vm">
+    实现 setup_vm
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+    启用临时页表
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    建立正式页表
+  </a>
+<nav aria-label="建立正式页表" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup_vm_final">
+    实现 setup_vm_final
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#create_mapping">
+    实现 create_mapping
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#setup_vm_final_1">
+    调用 setup_vm_final
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_6">
+    实验测试结果
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_7">
+    思考题
+  </a>
+<nav aria-label="思考题" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#text-rodata">
+    验证 .text, .rodata 段的属性是否成功设置
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#opensbi">
+    线性映射时能否不对 OpenSBI 所在的区域进行映射
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#sfencevma">
+    为什么需要在修改页表后执行 sfence.vma 指令
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<script defer="" src="/js/toc.js"></script>
+<link href="/css/fold_toc.css" rel="stylesheet"/>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/TonyCrane/note/tree/master/docs/cs/system/cs3/lab3.md" title="编辑此页">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="rv64"><span>RV64<span class="heti-spacing"> </span></span>虚拟内存管理<a class="headerlink" href="#rv64" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>1371<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>162<span class="heti-spacing"> </span></span>行代码 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>7<span class="heti-spacing"> </span></span>分钟</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>计算机系统 Ⅲ <span>lab3<span class="heti-spacing"> </span></span>实验报告（2023.04.27 ~ 2023.05.11）</p>
+<div class="admonition warning">
+<p class="admonition-title">仅供学习参考，请勿抄袭</p>
+</div>
+</div>
+<h2 id="_1">实验内容<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li>基于系统二<span class="heti-skip"><span class="heti-spacing"> </span>lab6<span class="heti-spacing"> </span></span>代码实现<span class="heti-skip"><span class="heti-spacing"> </span>Sv39<span class="heti-spacing"> </span></span>虚拟内存管理</li>
+<li>具体要实现<span class="heti-skip"><span class="heti-spacing"> </span>vm.c<span class="heti-spacing"> </span></span>中要求的功能，更新完善<span class="heti-skip"><span class="heti-spacing"> </span>head.S mm.c<span class="heti-spacing"> </span></span>等</li>
+<li>思考题<ol>
+<li>验证<span class="heti-skip"><span class="heti-spacing"> </span>.text, .rodata<span class="heti-spacing"> </span></span>段的属性是否成功设置，给出截图。</li>
+<li>思考线性映射时能否不对<span class="heti-skip"><span class="heti-spacing"> </span>opensbi<span class="heti-spacing"> </span></span>所在的区域进行映射，给出你的理由。</li>
+<li>为什么需要在修改页表后执行<span class="heti-skip"><span class="heti-spacing"> </span>sfence.vma<span class="heti-spacing"> </span></span>指令？</li>
+</ol>
+</li>
+</ul>
+<h2 id="_2">虚拟内存映射的实现<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_3">建立临时页表<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这一步内要实现<span class="heti-skip"><span class="heti-spacing"> </span>setup_vm<span class="heti-spacing"> </span></span>函数，在其中建立临时页表，将<span class="heti-skip"><span class="heti-spacing"> </span>0x80000000<span class="heti-spacing"> </span></span>开始的<span class="heti-skip"><span class="heti-spacing"> </span>1GB<span class="heti-spacing"> </span></span>空间映射到虚拟内存高地址处。然后修改<span><span class="heti-spacing"> </span>head.S</span>，在最开头就调用<span class="heti-skip"><span class="heti-spacing"> </span>setup_vm<span class="heti-spacing"> </span></span>创建页表，然后更新<span class="heti-skip"><span class="heti-spacing"> </span>ra sp<span class="heti-spacing"> </span></span>寄存器的值到虚拟内存空间，再设置<span class="heti-skip"><span class="heti-spacing"> </span>satp<span class="heti-spacing"> </span></span>寄存器使页表生效并用<span class="heti-skip"><span class="heti-spacing"> </span>sfence.vma<span class="heti-spacing"> </span></span>刷新。</p>
+<h4 id="setup_vm">实现<span><span class="heti-spacing"> </span>setup_vm</span><a class="headerlink" href="#setup_vm" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>首先在<span class="heti-skip"><span class="heti-spacing"> </span>defs.h<span class="heti-spacing"> </span></span>里面添加一些宏定义方便后续使用：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="c1">// 来自实验手册</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="cp">#define OPENSBI_SIZE (0x200000)</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="cp">#define VM_START (0xffffffe000000000)</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="cp">#define VM_END   (0xffffffff00000000)</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="cp">#define VM_SIZE  (VM_END - VM_START)</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="cp">#define PA2VA_OFFSET (VM_START - PHY_START)</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="c1">// 取出虚拟地址中的三个虚拟页号</span>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="cp">#define VPN0(va) (((uint64)(va) &gt;&gt; 12) &amp; 0x1ff)</span>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="cp">#define VPN1(va) (((uint64)(va) &gt;&gt; 21) &amp; 0x1ff)</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="cp">#define VPN2(va) (((uint64)(va) &gt;&gt; 30) &amp; 0x1ff)</span>
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="c1">// 页表项中末尾的权限位</span>
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="cp">#define PTE_V 0x001</span>
+<a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="cp">#define PTE_R 0x002</span>
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="cp">#define PTE_W 0x004</span>
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="cp">#define PTE_X 0x008</span>
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="cp">#define PTE_U 0x010</span>
+<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="cp">#define PTE_G 0x020</span>
+<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="cp">#define PTE_A 0x040</span>
+<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="cp">#define PTE_D 0x080</span>
+<a href="#__codelineno-0-23" id="__codelineno-0-23" name="__codelineno-0-23"></a>
+<a href="#__codelineno-0-24" id="__codelineno-0-24" name="__codelineno-0-24"></a><span class="c1">// 来自 NJU PA 实验，输出更醒目的调试信息</span>
+<a href="#__codelineno-0-25" id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="cp">#define Log(format, ...) \</span>
+<a href="#__codelineno-0-26" id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="cp">    printk("\33[1;35m[%s,%d,%s] " format "\33[0m\n", \</span>
+<a href="#__codelineno-0-27" id="__codelineno-0-27" name="__codelineno-0-27"></a><span class="cp">        __FILE__, __LINE__, __func__, ## __VA_ARGS__)</span>
+</code></pre></div>
+<p><span>setup_vm<span class="heti-spacing"> </span></span>函数需要先清空<span><span class="heti-spacing"> </span>early_pgtbl</span>，然后建立一个页表项即可。</p>
+<p>由于这里只进行<span class="heti-skip"><span class="heti-spacing"> </span>1GB<span class="heti-spacing"> </span></span>的线性映射，所以取中间<span class="heti-skip"><span class="heti-spacing"> </span>9 bit<span class="heti-spacing"> </span></span>作为<span class="heti-skip"><span class="heti-spacing"> </span>index<span class="heti-spacing"> </span></span>即可，后<span class="heti-skip"><span class="heti-spacing"> </span>30 bit<span class="heti-spacing"> </span></span>都是页内偏移。这样中间的<span class="heti-skip"><span class="heti-spacing"> </span>9 bit<span class="heti-spacing"> </span></span>正好对应了三级页表中的<span class="heti-skip"><span class="heti-spacing"> </span>VPN2<span class="heti-spacing"> </span></span>位置，可以使用前面的宏来提取。页表项的内容也是只设置<span class="heti-skip"><span class="heti-spacing"> </span>PPN2<span class="heti-spacing"> </span></span>对应的位置就可以（也就是<span class="heti-skip"><span class="heti-spacing"> </span>28<span class="heti-spacing"> </span></span>位及以上），最后的权限位设置为<span><span class="heti-spacing"> </span>V | R | W | X</span>：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup_vm</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">early_pgtbl</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">PGSIZE</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="n">uint64</span><span class="w"> </span><span class="n">pa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PHY_START</span><span class="p">,</span><span class="w"> </span><span class="n">va</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VM_START</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VPN2</span><span class="p">(</span><span class="n">va</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">early_pgtbl</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(((</span><span class="n">pa</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x3ffffff</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">28</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_V</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_R</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_W</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_X</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<h4 id="_4">启用临时页表<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>根据指导，修改<span class="heti-skip"><span class="heti-spacing"> </span>head.S<span class="heti-spacing"> </span></span>中<span class="heti-skip"><span class="heti-spacing"> </span>_start<span class="heti-spacing"> </span></span>开头为：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>_start:
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>    la sp, boot_stack_top
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>    call setup_vm
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>    call relocate
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a>    call mm_init
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>    ...
+</code></pre></div>
+<p>然后在<span class="heti-skip"><span class="heti-spacing"> </span>relocate<span class="heti-spacing"> </span></span>中实现对于<span class="heti-skip"><span class="heti-spacing"> </span>ra sp<span class="heti-spacing"> </span></span>的更新、<span>satp<span class="heti-spacing"> </span></span>的设置以及<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>的刷新：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">relocate</span><span class="o">:</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="n">li</span> <span class="n">t0</span><span class="p">,</span> <span class="mh">0xffffffdf80000000</span> <span class="c1"># PA2VA_OFFSET</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>    <span class="n">add</span> <span class="n">ra</span><span class="p">,</span> <span class="n">ra</span><span class="p">,</span> <span class="n">t0</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>    <span class="n">add</span> <span class="n">sp</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="n">t0</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>    <span class="c1"># set satp with early_pgtbl‘s physical address</span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>    <span class="n">la</span> <span class="n">t0</span><span class="p">,</span> <span class="n">early_pgtbl</span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>    <span class="n">li</span> <span class="n">t1</span><span class="p">,</span> <span class="m">8</span>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>    <span class="n">slli</span> <span class="n">t1</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="m">60</span>     <span class="c1"># mode 部分设置为 8</span>
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>    <span class="n">srli</span> <span class="n">t0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="m">12</span>     <span class="c1"># PPN 部分设置为页表物理地址右移 12 位</span>
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>    <span class="n">or</span> <span class="n">t0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="n">t1</span>
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>    <span class="n">csrw</span> <span class="n">satp</span><span class="p">,</span> <span class="n">t0</span>
+<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a>
+<a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>    <span class="c1"># flush tlb</span>
+<a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a>    <span class="n">sfence.vma</span> <span class="n">zero</span><span class="p">,</span> <span class="n">zero</span>
+<a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a>
+<a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a>    <span class="n">ret</span>
+</code></pre></div>
+<p>这之后<span class="heti-skip"><span class="heti-spacing"> </span>make run<span class="heti-spacing"> </span></span>也可以正常运行。</p>
+<h3 id="_5">建立正式页表<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>这一部分要建立正式的三级页表，以<span class="heti-skip"><span class="heti-spacing"> </span>page<span class="heti-spacing"> </span></span>为单位创建映射并设置权限。并且创建页表的时候会申请内存，在<span class="heti-skip"><span class="heti-spacing"> </span>mm_init<span class="heti-spacing"> </span></span>函数中要进行一下修改，将可用地址修改为虚拟内存地址：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">mm_init</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">    </span><span class="n">kfreerange</span><span class="p">(</span><span class="n">_ekernel</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="kt">char</span><span class="w"> </span><span class="o">*</span><span class="p">)(</span><span class="n">PHY_END</span><span class="o">+</span><span class="n">PA2VA_OFFSET</span><span class="p">));</span><span class="w"></span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="n">Log</span><span class="p">(</span><span class="s">"...mm_init done!"</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p><span>setup_vm_final<span class="heti-spacing"> </span></span>函数中针对<span class="heti-skip"><span class="heti-spacing"> </span>.text<span class="heti-spacing"> </span></span>段、<span>.rodate<span class="heti-spacing"> </span></span>段和剩余部分分别进行映射，设置不同的权限。每次映射调用了<span class="heti-skip"><span class="heti-spacing"> </span>create_mapping<span class="heti-spacing"> </span></span>函数，第一个参数就是根页表地址，然后是映射开始的虚拟地址、物理地址以及大小，最后一个参数是权限。所以可以先来实现<span class="heti-skip"><span class="heti-spacing"> </span>setup_vm_final<span class="heti-spacing"> </span></span>再来实现内部的<span><span class="heti-spacing"> </span>create_mapping</span>。</p>
+<h4 id="setup_vm_final">实现<span><span class="heti-spacing"> </span>setup_vm_final</span><a class="headerlink" href="#setup_vm_final" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>同样清空这部分页空间，然后逐个段设置映射。这里修改了一下指导中的代码：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">_stext</span><span class="p">[];</span><span class="w"></span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">_srodata</span><span class="p">[];</span><span class="w"></span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">_sdata</span><span class="p">[];</span><span class="w"></span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="k">extern</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">_sbss</span><span class="p">[];</span><span class="w"></span>
+</code></pre></div>
+<p>然后直接使用这些符号就可以表示段起始地址了。</p>
+<ul>
+<li>设置<span class="heti-skip"><span class="heti-spacing"> </span>text<span class="heti-spacing"> </span></span>段（可读可执行）
+    <div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="n">uint64</span><span class="w"> </span><span class="n">va</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VM_START</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">OPENSBI_SIZE</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="n">uint64</span><span class="w"> </span><span class="n">pa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PHY_START</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">OPENSBI_SIZE</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="n">create_mapping</span><span class="p">(</span><span class="n">swapper_pg_dir</span><span class="p">,</span><span class="w"> </span><span class="n">va</span><span class="p">,</span><span class="w"> </span><span class="n">pa</span><span class="p">,</span><span class="w"> </span><span class="n">_srodata</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_stext</span><span class="p">,</span><span class="w"> </span><span class="n">PTE_X</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_R</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_V</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></li>
+<li>设置<span class="heti-skip"><span class="heti-spacing"> </span>rodata<span class="heti-spacing"> </span></span>段（可读）
+    <div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">va</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">_srodata</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_stext</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">pa</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">_srodata</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_stext</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="n">create_mapping</span><span class="p">(</span><span class="n">swapper_pg_dir</span><span class="p">,</span><span class="w"> </span><span class="n">va</span><span class="p">,</span><span class="w"> </span><span class="n">pa</span><span class="p">,</span><span class="w"> </span><span class="n">_sdata</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_srodata</span><span class="p">,</span><span class="w"> </span><span class="n">PTE_R</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_V</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></li>
+<li>设置剩余部分（可读可写）
+    <div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="n">va</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">_sdata</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_srodata</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="n">pa</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">_sdata</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_srodata</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="n">create_mapping</span><span class="p">(</span><span class="n">swapper_pg_dir</span><span class="p">,</span><span class="w"> </span><span class="n">va</span><span class="p">,</span><span class="w"> </span><span class="n">pa</span><span class="p">,</span><span class="w"> </span><span class="n">PHY_SIZE</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="p">(</span><span class="n">_sdata</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">_stext</span><span class="p">),</span><span class="w"> </span><span class="n">PTE_W</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_R</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_V</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></li>
+<li>计算<span class="heti-skip"><span class="heti-spacing"> </span>satp<span class="heti-spacing"> </span></span>寄存器的值并写入
+    <div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="c1">// 这里要计算对应的物理地址，然后右移</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="n">uint64</span><span class="w"> </span><span class="n">_satp</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(((</span><span class="n">uint64</span><span class="p">)(</span><span class="n">swapper_pg_dir</span><span class="p">)</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">PA2VA_OFFSET</span><span class="p">)</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">(</span><span class="mf">8L</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">60</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="n">csr_write</span><span class="p">(</span><span class="n">satp</span><span class="p">,</span><span class="w"> </span><span class="n">_satp</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="n">Log</span><span class="p">(</span><span class="s">"set satp to %lx"</span><span class="p">,</span><span class="w"> </span><span class="n">_satp</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></li>
+<li>刷新<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>并返回
+    <div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="k">asm</span><span class="w"> </span><span class="k">volatile</span><span class="p">(</span><span class="s">"sfence.vma zero, zero"</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="k">return</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></li>
+</ul>
+<h4 id="create_mapping">实现<span><span class="heti-spacing"> </span>create_mapping</span><a class="headerlink" href="#create_mapping" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>要逐页添加映射，所以基本框架为：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">create_mapping</span><span class="p">(</span><span class="n">uint64</span><span class="w"> </span><span class="o">*</span><span class="n">pgtbl</span><span class="p">,</span><span class="w"> </span><span class="n">uint64</span><span class="w"> </span><span class="n">va</span><span class="p">,</span><span class="w"> </span><span class="n">uint64</span><span class="w"> </span><span class="n">pa</span><span class="p">,</span><span class="w"> </span><span class="n">uint64</span><span class="w"> </span><span class="n">sz</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">perm</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="n">Log</span><span class="p">(</span><span class="s">"root: %lx, [%lx, %lx) -&gt; [%lx, %lx), perm: %x"</span><span class="p">,</span><span class="w"> </span><span class="n">pgtbl</span><span class="p">,</span><span class="w"> </span><span class="n">pa</span><span class="p">,</span><span class="w"> </span><span class="n">pa</span><span class="o">+</span><span class="n">sz</span><span class="p">,</span><span class="w"> </span><span class="n">va</span><span class="p">,</span><span class="w"> </span><span class="n">va</span><span class="o">+</span><span class="n">sz</span><span class="p">,</span><span class="w"> </span><span class="n">perm</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="n">uint64</span><span class="w"> </span><span class="n">va_end</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">va</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">sz</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">    </span><span class="n">uint64</span><span class="w"> </span><span class="o">*</span><span class="n">now_tbl</span><span class="p">,</span><span class="w"> </span><span class="n">now_vpn</span><span class="p">,</span><span class="w"> </span><span class="n">now_pte</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="p">(</span><span class="n">va</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">va_end</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">        </span><span class="p">...</span><span class="w"></span>
+<a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">        </span><span class="n">va</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">PGSIZE</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">        </span><span class="n">pa</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">PGSIZE</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-11-10" id="__codelineno-11-10" name="__codelineno-11-10"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>其中省略号的部分要实现三级页表的查询，如果不存在（<span>PTE_V<span class="heti-spacing"> </span></span>位不为<span><span class="heti-spacing"> </span>1</span>）则分配新的一页来存放。</p>
+<ul>
+<li>第一级<ul>
+<li>从根页表取出第一级<span><span class="heti-spacing"> </span>PTE</span>，以及虚拟地址对应的<span><span class="heti-spacing"> </span>VPN2</span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="n">now_tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pgtbl</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="n">now_vpn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VPN2</span><span class="p">(</span><span class="n">va</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">now_pte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">now_tbl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">now_vpn</span><span class="p">);</span><span class="w"></span>
+</code></pre></div></li>
+<li>检查<span class="heti-skip"><span class="heti-spacing"> </span>PTE_V<span class="heti-spacing"> </span></span>位是否为<span><span class="heti-spacing"> </span>1</span>，如果不是则分配新的页<ul>
+<li>新页对应页表项为<span class="heti-skip"><span class="heti-spacing"> </span>(<span class="heti-spacing"> </span></span>物理地址<span class="heti-skip"><span class="heti-spacing"> </span>&gt;&gt;12)&lt;&lt;10<span class="heti-spacing"> </span></span>再加上<span><span class="heti-spacing"> </span>PTE_V</span></li>
+<li>计算后写入根页表对应位置的<span><span class="heti-spacing"> </span>PTE</span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">now_pte</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">PTE_V</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-13-2" id="__codelineno-13-2" name="__codelineno-13-2"></a><span class="w">    </span><span class="n">uint64</span><span class="w"> </span><span class="n">new_page_phy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">uint64</span><span class="p">)</span><span class="n">kalloc</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">PA2VA_OFFSET</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-13-3" id="__codelineno-13-3" name="__codelineno-13-3"></a><span class="w">    </span><span class="n">now_pte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">uint64</span><span class="p">)</span><span class="n">new_page_phy</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_V</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-13-4" id="__codelineno-13-4" name="__codelineno-13-4"></a><span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">now_tbl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">now_vpn</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now_pte</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-13-5" id="__codelineno-13-5" name="__codelineno-13-5"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>第二级<ul>
+<li>类似第一级，页表地址要从第一级得到的<span class="heti-skip"><span class="heti-spacing"> </span>PTE<span class="heti-spacing"> </span></span>中提取，<span>VPN<span class="heti-spacing"> </span></span>使用<span><span class="heti-spacing"> </span>VPN1</span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="n">now_tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">uint64</span><span class="o">*</span><span class="p">)(((</span><span class="n">now_pte</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">PA2VA_OFFSET</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="n">now_vpn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VPN1</span><span class="p">(</span><span class="n">va</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a><span class="n">now_pte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">*</span><span class="p">(</span><span class="n">now_tbl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">now_vpn</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-14-4" id="__codelineno-14-4" name="__codelineno-14-4"></a><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">now_pte</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">PTE_V</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-14-5" id="__codelineno-14-5" name="__codelineno-14-5"></a><span class="w">    </span><span class="n">uint64</span><span class="w"> </span><span class="n">new_page_phy</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">uint64</span><span class="p">)</span><span class="n">kalloc</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">PA2VA_OFFSET</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-14-6" id="__codelineno-14-6" name="__codelineno-14-6"></a><span class="w">    </span><span class="n">now_pte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">uint64</span><span class="p">)</span><span class="n">new_page_phy</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">10</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_V</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-14-7" id="__codelineno-14-7" name="__codelineno-14-7"></a><span class="w">    </span><span class="o">*</span><span class="p">(</span><span class="n">now_tbl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">now_vpn</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now_pte</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-14-8" id="__codelineno-14-8" name="__codelineno-14-8"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div></li>
+</ul>
+</li>
+<li>第三级<ul>
+<li>最后一级，页表地址从第二级得到的<span class="heti-skip"><span class="heti-spacing"> </span>PTE<span class="heti-spacing"> </span></span>中提取，<span>VPN<span class="heti-spacing"> </span></span>使用<span><span class="heti-spacing"> </span>VPN0</span></li>
+<li>不再需要检查<span><span class="heti-spacing"> </span>PTE</span></li>
+<li>需要设置权限
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a><span class="n">now_tbl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">uint64</span><span class="o">*</span><span class="p">)(((</span><span class="n">now_pte</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">PA2VA_OFFSET</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a><span class="n">now_vpn</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VPN0</span><span class="p">(</span><span class="n">va</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-15-3" id="__codelineno-15-3" name="__codelineno-15-3"></a><span class="n">now_pte</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">pa</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">12</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">10</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">perm</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_V</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-15-4" id="__codelineno-15-4" name="__codelineno-15-4"></a><span class="o">*</span><span class="p">(</span><span class="n">now_tbl</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">now_vpn</span><span class="p">)</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">now_pte</span><span class="p">;</span><span class="w"></span>
+</code></pre></div></li>
+</ul>
+</li>
+</ul>
+<h4 id="setup_vm_final_1">调用<span><span class="heti-spacing"> </span>setup_vm_final</span><a class="headerlink" href="#setup_vm_final_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>mm_init<span class="heti-spacing"> </span></span>后调用<span class="heti-skip"><span class="heti-spacing"> </span>setup_vm_final<span class="heti-spacing"> </span></span>即可：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a>_start:
+<a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a>    la sp, boot_stack_top
+<a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a>
+<a href="#__codelineno-16-4" id="__codelineno-16-4" name="__codelineno-16-4"></a>    call setup_vm
+<a href="#__codelineno-16-5" id="__codelineno-16-5" name="__codelineno-16-5"></a>    call relocate
+<a href="#__codelineno-16-6" id="__codelineno-16-6" name="__codelineno-16-6"></a>
+<a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a>    call mm_init
+<a href="#__codelineno-16-8" id="__codelineno-16-8" name="__codelineno-16-8"></a>    call setup_vm_final
+<a href="#__codelineno-16-9" id="__codelineno-16-9" name="__codelineno-16-9"></a>    call task_init
+</code></pre></div>
+<h2 id="_6">实验测试结果<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>修改一下<span class="heti-skip"><span class="heti-spacing"> </span>proc.c<span class="heti-spacing"> </span></span>中输出部分的代码，输出<span class="heti-skip"><span class="heti-spacing"> </span>current<span class="heti-spacing"> </span></span>地址就可以了。运行结果（<span>1+3<span class="heti-spacing"> </span></span>线程）</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs3/lab3/image1.png"><img src="/assets/images/cs/system/cs3/lab3/image1.png" style="margin: 0 auto;" width="80%"/></a>
+</div>
+<p><span>1+31<span class="heti-spacing"> </span></span>线程：</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs3/lab3/image2.png"><img src="/assets/images/cs/system/cs3/lab3/image2.png" style="margin: 0 auto;" width="80%"/></a>
+</div>
+<p>可见已经正常启用虚拟内存。</p>
+<h2 id="_7">思考题<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="text-rodata">验证<span class="heti-skip"><span class="heti-spacing"> </span>.text, .rodata<span class="heti-spacing"> </span></span>段的属性是否成功设置<a class="headerlink" href="#text-rodata" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>程序可以执行说明<span class="heti-skip"><span class="heti-spacing"> </span>.text<span class="heti-spacing"> </span></span>段有执行权限，接下来验证<span class="heti-skip"><span class="heti-spacing"> </span>.rodata<span class="heti-spacing"> </span></span>段是否有执行权限。方法是在<span class="heti-skip"><span class="heti-spacing"> </span>head.S<span class="heti-spacing"> </span></span>中跳转到<span class="heti-skip"><span class="heti-spacing"> </span>start_kernel<span class="heti-spacing"> </span></span>的地方跳转到<span class="heti-skip"><span class="heti-spacing"> </span>_srodata<span class="heti-spacing"> </span></span>符号的位置进行尝试。如果没有执行权限则会触发异常转到<span class="heti-skip"><span class="heti-spacing"> </span>trap_handler<span class="heti-spacing"> </span></span>中。</p>
+<p><span>trap_handler<span class="heti-spacing"> </span></span>中只特殊处理了时钟中断，对于其他情况我们输出<span class="heti-skip"><span class="heti-spacing"> </span>scause<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>sepc</span>：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-17-1" id="__codelineno-17-1" name="__codelineno-17-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">trap_handler</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">scause</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">sepc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-17-2" id="__codelineno-17-2" name="__codelineno-17-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">scause</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">scause</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x7FFFFFFFFFFFFFFF</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-17-3" id="__codelineno-17-3" name="__codelineno-17-3"></a><span class="w">        </span><span class="c1">// printk("[S] Supervisor Mode Timer Interrupt\n");</span>
+<a href="#__codelineno-17-4" id="__codelineno-17-4" name="__codelineno-17-4"></a><span class="w">        </span><span class="n">clock_set_next_event</span><span class="p">();</span><span class="w"></span>
+<a href="#__codelineno-17-5" id="__codelineno-17-5" name="__codelineno-17-5"></a><span class="w">        </span><span class="n">do_timer</span><span class="p">();</span><span class="w"></span>
+<a href="#__codelineno-17-6" id="__codelineno-17-6" name="__codelineno-17-6"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-17-7" id="__codelineno-17-7" name="__codelineno-17-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-17-8" id="__codelineno-17-8" name="__codelineno-17-8"></a><span class="w">    </span><span class="n">Log</span><span class="p">(</span><span class="s">"scause = %lx, sepc = %llx"</span><span class="p">,</span><span class="w"> </span><span class="n">scause</span><span class="p">,</span><span class="w"> </span><span class="n">sepc</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-17-9" id="__codelineno-17-9" name="__codelineno-17-9"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>但是这样会导致<span class="heti-skip"><span class="heti-spacing"> </span>sret<span class="heti-spacing"> </span></span>时一直跳转到同一位置，所以要手动给<span class="heti-skip"><span class="heti-spacing"> </span>sepc<span class="heti-spacing"> </span></span>加<span><span class="heti-spacing"> </span>4</span>。目前框架的写法最简单的就是在<span class="heti-skip"><span class="heti-spacing"> </span>entry.S<span class="heti-spacing"> </span></span>中特判，如果不是时钟中断则给<span class="heti-skip"><span class="heti-spacing"> </span>sepc<span class="heti-spacing"> </span></span>加四再写回：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a>    <span class="n">call</span> <span class="n">trap_handler</span>
+<a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a>
+<a href="#__codelineno-18-3" id="__codelineno-18-3" name="__codelineno-18-3"></a>    <span class="c1"># -----------</span>
+<a href="#__codelineno-18-4" id="__codelineno-18-4" name="__codelineno-18-4"></a>
+<a href="#__codelineno-18-5" id="__codelineno-18-5" name="__codelineno-18-5"></a>        <span class="c1"># 3. restore sepc and 32 registers (x2(sp) should be restore last) from stack</span>
+<a href="#__codelineno-18-6" id="__codelineno-18-6" name="__codelineno-18-6"></a>
+<a href="#__codelineno-18-7" id="__codelineno-18-7" name="__codelineno-18-7"></a>    <span class="n">ld</span> <span class="n">t0</span><span class="p">,</span> <span class="mi">0</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>
+<a href="#__codelineno-18-8" id="__codelineno-18-8" name="__codelineno-18-8"></a>
+<a href="#__codelineno-18-9" id="__codelineno-18-9" name="__codelineno-18-9"></a>    <span class="c1"># temporarily add 4 to sepc manually</span>
+<a href="#__codelineno-18-10" id="__codelineno-18-10" name="__codelineno-18-10"></a>    <span class="n">li</span> <span class="n">t1</span><span class="p">,</span> <span class="mh">0x8000000000000005</span>
+<a href="#__codelineno-18-11" id="__codelineno-18-11" name="__codelineno-18-11"></a>    <span class="n">csrr</span> <span class="n">a0</span><span class="p">,</span> <span class="n">scause</span>
+<a href="#__codelineno-18-12" id="__codelineno-18-12" name="__codelineno-18-12"></a>    <span class="n">beq</span> <span class="n">a0</span><span class="p">,</span> <span class="n">t1</span><span class="p">,</span> <span class="n">_csrwrite</span>
+<a href="#__codelineno-18-13" id="__codelineno-18-13" name="__codelineno-18-13"></a>    <span class="n">addi</span> <span class="n">t0</span><span class="p">,</span> <span class="n">t0</span><span class="p">,</span> <span class="mi">4</span>
+<a href="#__codelineno-18-14" id="__codelineno-18-14" name="__codelineno-18-14"></a><span class="n">_csrwrite</span><span class="p">:</span>
+<a href="#__codelineno-18-15" id="__codelineno-18-15" name="__codelineno-18-15"></a>
+<a href="#__codelineno-18-16" id="__codelineno-18-16" name="__codelineno-18-16"></a>    <span class="n">csrw</span> <span class="n">sepc</span><span class="p">,</span> <span class="n">t0</span>
+<a href="#__codelineno-18-17" id="__codelineno-18-17" name="__codelineno-18-17"></a>    <span class="n">addi</span> <span class="n">sp</span><span class="p">,</span> <span class="n">sp</span><span class="p">,</span> <span class="mi">8</span>
+<a href="#__codelineno-18-18" id="__codelineno-18-18" name="__codelineno-18-18"></a>
+<a href="#__codelineno-18-19" id="__codelineno-18-19" name="__codelineno-18-19"></a>    <span class="n">ld</span> <span class="n">t6</span><span class="p">,</span> <span class="mi">0</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>  
+<a href="#__codelineno-18-20" id="__codelineno-18-20" name="__codelineno-18-20"></a>    <span class="n">ld</span> <span class="n">t5</span><span class="p">,</span> <span class="mi">8</span><span class="p">(</span><span class="n">sp</span><span class="p">)</span>  
+</code></pre></div>
+<p>运行（即直接<span><span class="heti-spacing"> </span>j _srodata</span>）：</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs3/lab3/image3.png"><img src="/assets/images/cs/system/cs3/lab3/image3.png" style="margin: 0 auto;" width="100%"/></a>
+</div>
+<p>可以发现触发了异常，输出的<span class="heti-skip"><span class="heti-spacing"> </span>scause<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>0xc<span class="heti-spacing"> </span></span>即<span><span class="heti-spacing"> </span>Instruction Page Fault</span>，说明<span class="heti-skip"><span class="heti-spacing"> </span>.rodata<span class="heti-spacing"> </span></span>段不可执行（也就是不能从那里读取指令）。</p>
+<p>接下来验证<span class="heti-skip"><span class="heti-spacing"> </span>.text<span class="heti-spacing"> </span></span>段和<span class="heti-skip"><span class="heti-spacing"> </span>.rodata<span class="heti-spacing"> </span></span>段是否可读可写，做法就是在<span class="heti-skip"><span class="heti-spacing"> </span>start_kernel<span class="heti-spacing"> </span></span>函数中直接访问<span class="heti-skip"><span class="heti-spacing"> </span>_stext<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>_srodata<span class="heti-spacing"> </span></span>起始的字节：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-19-1" id="__codelineno-19-1" name="__codelineno-19-1"></a><span class="n">printk</span><span class="p">(</span><span class="s">"_stext = %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">_stext</span><span class="p">);</span><span class="w">       </span><span class="c1">// 读</span>
+<a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="n">printk</span><span class="p">(</span><span class="s">"_srodata = %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">_srodata</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="o">*</span><span class="n">_stext</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w">                            </span><span class="c1">// 写</span>
+<a href="#__codelineno-19-4" id="__codelineno-19-4" name="__codelineno-19-4"></a><span class="o">*</span><span class="n">_srodata</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-19-5" id="__codelineno-19-5" name="__codelineno-19-5"></a><span class="n">printk</span><span class="p">(</span><span class="s">"_stext = %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">_stext</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-19-6" id="__codelineno-19-6" name="__codelineno-19-6"></a><span class="n">printk</span><span class="p">(</span><span class="s">"_srodata = %x</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">_srodata</span><span class="p">);</span><span class="w"></span>
+</code></pre></div>
+<p>运行结果：</p>
+<div style="text-align: center; margin-top: 15px;">
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs3/lab3/image4.png"><img src="/assets/images/cs/system/cs3/lab3/image4.png" style="margin: 0 auto;" width="100%"/></a>
+</div>
+<p>可以发现读取全部正常，写入的两条触发了异常，<span>scause<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>0xf<span class="heti-spacing"> </span></span>即<span><span class="heti-spacing"> </span>Store/AMO Page Fault</span>，说明<span class="heti-skip"><span class="heti-spacing"> </span>.text<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>.rodata<span class="heti-spacing"> </span></span>段都不可写。完全符合预期，权限均正常设置。</p>
+<h3 id="opensbi">线性映射时能否不对<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>所在的区域进行映射<a class="headerlink" href="#opensbi" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>可以，因为<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>部分的代码都是在<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>态下执行的，可以直接访问物理地址，不需要进行映射。</p>
+<p>验证的话可以在<span class="heti-skip"><span class="heti-spacing"> </span>setup_vm<span class="heti-spacing"> </span></span>中将<span class="heti-skip"><span class="heti-spacing"> </span>va<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>pa<span class="heti-spacing"> </span></span>都加上<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>的长度偏移：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">setup_vm</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="w">    </span><span class="n">memset</span><span class="p">(</span><span class="n">early_pgtbl</span><span class="p">,</span><span class="w"> </span><span class="mh">0x0</span><span class="p">,</span><span class="w"> </span><span class="n">PGSIZE</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-20-3" id="__codelineno-20-3" name="__codelineno-20-3"></a><span class="w">    </span><span class="n">uint64</span><span class="w"> </span><span class="n">pa</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">PHY_START</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">OPENSBI_SIZE</span><span class="p">,</span><span class="w"> </span><span class="n">va</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VM_START</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">OPENSBI_SIZE</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-20-4" id="__codelineno-20-4" name="__codelineno-20-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">VPN2</span><span class="p">(</span><span class="n">va</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-20-5" id="__codelineno-20-5" name="__codelineno-20-5"></a><span class="w">    </span><span class="n">early_pgtbl</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(((</span><span class="n">pa</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">30</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x3ffffff</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="mi">28</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_V</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_R</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_W</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PTE_X</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-20-6" id="__codelineno-20-6" name="__codelineno-20-6"></a><span class="p">}</span><span class="w"></span>
+</code></pre></div>
+<p>可以无差别地正常运行，说明可以不对<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>所在区域进行映射。</p>
+<h3 id="sfencevma">为什么需要在修改页表后执行<span class="heti-skip"><span class="heti-spacing"> </span>sfence.vma<span class="heti-spacing"> </span></span>指令<a class="headerlink" href="#sfencevma" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>因为为了提高虚拟地址与物理地址转换的效率，<span>RISC-V<span class="heti-spacing"> </span></span>采用了<span><span class="heti-spacing"> </span>TLB</span>（Translation Lookaside Buffer）缓存页表项。但是在修改了<span class="heti-skip"><span class="heti-spacing"> </span>satp<span class="heti-spacing"> </span></span>更换了页表之后，<span>TLB<span class="heti-spacing"> </span></span>中缓存的部分就不再有效了，需要执行<span class="heti-skip"><span class="heti-spacing"> </span>sfence.vma<span class="heti-spacing"> </span></span>指令来清空<span><span class="heti-spacing"> </span>TLB</span>，保证后续地址转换正常执行。</p>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年8月6日 22:04:08</span>
+<br/>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年8月6日 22:04:08</span>
+</small>
+</div>
+<script async="" crossorigin="anonymous" data-category="General" data-category-id="DIC_kwDOGnfbUc4CPrf4" data-emit-metadata="0" data-input-position="bottom" data-lang="zh-CN" data-mapping="pathname" data-reactions-enabled="1" data-repo="TonyCrane/note" data-repo-id="R_kgDOGnfbUQ" data-theme="light" src="https://giscus.app/client.js">
+</script>
+<script>
+                      if (document.querySelector("body").getAttribute("data-md-color-scheme") === "slate") {
+                        var giscus = document.querySelector("script[src*=giscus]")
+                        giscus.setAttribute("data-theme", "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css") 
+                      }
+                    </script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+              回到页面顶部
+            </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 系统 III lab2" class="md-footer__link md-footer__link--prev" href="../lab2/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                上一页
+              </span>
+              系统 III lab2
+            </div>
+</div>
+</a>
+<a aria-label="下一页: 系统 III lab4" class="md-footer__link md-footer__link--next" href="../lab4/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                下一页
+              </span>
+              系统 III lab4
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2022-2023 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
+</div>
+  
+  
+    Powered by
+    <a href="https://www.mkdocs.org/" rel="noopener" target="_blank">
+      MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material
+    </a>
+    modified by
+    <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">
+      TonyCrane
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/TonyCrane/" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://blog.tonycrane.cc/" rel="noopener" target="_blank" title="blog.tonycrane.cc">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg>
+</a>
+<a class="md-social__link" href="https://tonycrane.cc/" rel="noopener" target="_blank" title="tonycrane.cc">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../../../js/katex.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
