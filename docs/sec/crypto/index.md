@@ -71,12 +71,36 @@ counter: True
     - $x_i = (y_i - key_i)\bmod 26$
 
 #### Enigma
-有些复杂，后面再写吧
 
-- 下一个齿轮跳转的条件
-    - 一号到五号分别转到 RFWKA 时下一个齿轮会跳转
-    - double stepping，二号齿轮的特殊情况
-        - II 在 E 位置，I 无论在什么位置，II 都会发生跳转
+整体逻辑就不写了，大概就是五个选三个转子，右侧是输入输出，左侧是反射板，每个转子有 RingSetting 和 MessageKey 属性
+
+- RingSetting：初始位置，不变的
+- MessageKey：从设定的 key 开始，可以转动（加 1）
+
+对于每个字符：
+
+- 经过插线板查表 P1 = plugboard[P - 'A']
+    - P 是明文，P1 什么的命名有些混乱见谅
+    - `- 'A'` 什么的后面也不再写了，反正理解了就好
+- 转动最右侧转子：MessageKey[2] = (MessageKey[2] + 1) % 26
+- 检查左侧的转子是否会发生转动：
+    - 如果当前转子转到了对应位置，则下一个转子转动
+        - 五个转子从 1 号到 5 号的位置分别为 RFWKA（拍洗头佬马屁）
+    - 可能会发生 double stepping
+        - 如果中间的转子转到了对应位置的前一个，则它也会发生转动（同时带动左侧的也转）
+        - 机械结构决定的 double stepping，只会发生在 2 号转子
+- 从右到左查询转子，每个的操作：
+    - 计算 delta = MessageKey[i] - RingSetting[i]
+    - 查表 P2 = rotor[i][P1 + delta]
+    - 得到 P2 - delta
+- 经过反射板查表（类似插线板）
+- 从左到右查询转子，每个的操作：
+    - 计算 delta = MessageKey[i] - RingSetting[i]
+    - 查找 index 使得 rotor[i][index] = P3 + delta
+    - 得到 index - delta
+- 经过插线板查表 C = plugboard[P3 - 'A']
+    - C 即对应的密文
+    - 同状态下 C 作为明文即可得到解密结果 P
 
 ## 哈希算法
 
