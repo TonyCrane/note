@@ -17,3 +17,7 @@
 - [TonyCrane/mkdocs-changelog-plugin](https://github.com/TonyCrane/mkdocs-changelog-plugin)
 - [TonyCrane/mkdocs-heti-plugin](https://github.com/TonyCrane/mkdocs-heti-plugin)
 - [TonyCrane/mkdocs-statistics-plugin](https://github.com/TonyCrane/mkdocs-statistics-plugin)
+
+## Acknowledgement
+
+- [simeydotme/pokemon-cards-css](https://github.com/simeydotme/pokemon-cards-css/)：首页展示卡片，修改内容同协议开源到 [TonyCrane/note-homepage-cards](https://github.com/TonyCrane/note-homepage-cards/)
