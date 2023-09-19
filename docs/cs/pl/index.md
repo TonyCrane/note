@@ -22,3 +22,4 @@
     - [RISC-V 非特权级 ISA](riscv/unprivileged)
     - [RISC-V 特权级 ISA（基础&中断）](riscv/privileged)
     - [RISC-V 特权级 ISA（页表相关）](riscv/paging/)
+- [编程语言原理](ppl/)

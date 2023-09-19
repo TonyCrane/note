@@ -14,6 +14,7 @@
     - [Chisel](pl/chisel/)
     - [x86 Assembly](pl/asm)
     - [RISC-V ISA](pl/riscv) <span class="toc-tag toc-tag-classnotes"></span>
+    - [编程语言原理](pl/ppl/) <span class="toc-tag toc-tag-classnotes"></span>
 - [Computer System 计算机系统](system)
     - [Computer System I 计算机系统 Ⅰ](system/cs1) <span class="toc-tag toc-tag-classnotes"></span> <span class="toc-tag toc-tag-reports"></span>
     - [Computer System II 计算机系统 Ⅱ](system/cs2) <span class="toc-tag toc-tag-classnotes"></span> <span class="toc-tag toc-tag-reports"></span>
