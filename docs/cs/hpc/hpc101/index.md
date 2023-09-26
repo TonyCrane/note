@@ -7,8 +7,8 @@
 
 ## Table of Contents
 
-- [向量化计算](hpc101/vectorized)
-- [GPU 编程](hpc101/gpu)
-- [OpenMP 基础](hpc101/openmp)
-- [MPI 基础](hpc101/mp1)
-- [机器学习基础](hpc101/ml)
+- [向量化计算](vectorized.md)
+- [GPU 编程](gpu.md)
+- [OpenMP 基础](openmp.md)
+- [MPI 基础](mpi.md)
+- [机器学习基础](ml.md)
