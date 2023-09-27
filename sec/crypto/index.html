@@ -1851,17 +1851,17 @@ var _hmt = _hmt || [];
 </div>
 <h2 id="_2">数学基础<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
-<li><span class="arithmatex">\(a, b\)</span> 为整数，且至少有一个不为<span><span class="heti-spacing"> </span>0</span>，则一定存在整数 <span class="arithmatex">\(x, y\)</span> 使得 <span class="arithmatex">\(ax + by = \gcd(a, b)\)</span></li>
-<li>若 <span class="arithmatex">\(a+b \equiv 0 \pmod n\)</span>，则 <span class="arithmatex">\(a, b\)</span> 互为模 <span class="arithmatex">\(n\)</span> 的<strong>加法逆元</strong><ul>
+<li><span><span class="arithmatex">\(a, b\)</span><span class="heti-spacing"> </span></span>为整数，且至少有一个不为<span><span class="heti-spacing"> </span>0</span>，则一定存在整数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x, y\)</span><span class="heti-spacing"> </span></span>使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(ax + by = \gcd(a, b)\)</span></span></li>
+<li>若<span><span class="heti-spacing"> </span><span class="arithmatex">\(a+b \equiv 0 \pmod n\)</span></span>，则<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a, b\)</span><span class="heti-spacing"> </span></span>互为模<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>的<strong>加法逆元</strong><ul>
 <li>加法逆元一定存在</li>
 </ul>
 </li>
-<li>若 <span class="arithmatex">\(ab \equiv 1 \pmod n\)</span>，则 <span class="arithmatex">\(a, b\)</span> 互为模 <span class="arithmatex">\(n\)</span> 的<strong>乘法逆元</strong>，<span class="arithmatex">\(a\)</span> 的乘法逆元记为 <span class="arithmatex">\(a^{-1}\)</span><ul>
+<li>若<span><span class="heti-spacing"> </span><span class="arithmatex">\(ab \equiv 1 \pmod n\)</span></span>，则<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a, b\)</span><span class="heti-spacing"> </span></span>互为模<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>的<strong>乘法逆元</strong>，<span><span class="arithmatex">\(a\)</span><span class="heti-spacing"> </span></span>的乘法逆元记为<span><span class="heti-spacing"> </span><span class="arithmatex">\(a^{-1}\)</span></span><ul>
 <li>乘法逆元不一定存在</li>
-<li><span class="arithmatex">\(a\)</span> 的逆元存在，则 <span class="arithmatex">\(\gcd(a, n) = 1\)</span></li>
-<li>求乘法逆元，根据 <span class="arithmatex">\(ax+ny = \gcd(a, n) = 1\)</span> 以及 <span class="arithmatex">\(aa^{-1}\equiv 1\pmod n\)</span>，即求解 <span class="arithmatex">\(x\)</span></li>
+<li><span><span class="arithmatex">\(a\)</span><span class="heti-spacing"> </span></span>的逆元存在，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(\gcd(a, n) = 1\)</span></span></li>
+<li>求乘法逆元，根据<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(ax+ny = \gcd(a, n) = 1\)</span><span class="heti-spacing"> </span></span>以及<span><span class="heti-spacing"> </span><span class="arithmatex">\(aa^{-1}\equiv 1\pmod n\)</span></span>，即求解<span><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span></span></li>
 <li>
-<p>扩展欧几里得算法，求解 <span class="arithmatex">\(ax+by = \gcd(a, b)\)</span> 中的 <span class="arithmatex">\(x, y\)</span>
+<p>扩展欧几里得算法，求解<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(ax+by = \gcd(a, b)\)</span><span class="heti-spacing"> </span></span>中的<span><span class="heti-spacing"> </span><span class="arithmatex">\(x, y\)</span></span>
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">exgcd</span><span class="p">(</span><span class="n">LL</span><span class="w"> </span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">LL</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">LL</span><span class="o">&amp;</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">LL</span><span class="o">&amp;</span><span class="w"> </span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="n">LL</span><span class="o">&amp;</span><span class="w"> </span><span class="n">y</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">b</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">d</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">a</span><span class="p">;</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
 <a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="n">exgcd</span><span class="p">(</span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">%</span><span class="w"> </span><span class="n">b</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="n">y</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"> </span><span class="n">y</span><span class="w"> </span><span class="o">-=</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="p">(</span><span class="n">a</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="n">b</span><span class="p">);</span><span class="w"> </span><span class="p">}</span><span class="w"></span>
@@ -1890,12 +1890,12 @@ var _hmt = _hmt || [];
 <ul>
 <li>加法密码<ul>
 <li><span class="arithmatex">\(y = (x + key)\bmod 26\)</span></li>
-<li><span class="arithmatex">\(x = (y - key)\bmod 26\)</span> 利用加法逆元</li>
+<li><span><span class="arithmatex">\(x = (y - key)\bmod 26\)</span><span class="heti-spacing"> </span></span>利用加法逆元</li>
 </ul>
 </li>
 <li>乘法密码<ul>
 <li><span class="arithmatex">\(y = (x \times key)\bmod 26\)</span></li>
-<li><span class="arithmatex">\(x = (y \times key^{-1})\bmod 26\)</span> 利用乘法逆元</li>
+<li><span><span class="arithmatex">\(x = (y \times key^{-1})\bmod 26\)</span><span class="heti-spacing"> </span></span>利用乘法逆元</li>
 </ul>
 </li>
 <li>仿射密码<ul>
@@ -1909,7 +1909,7 @@ var _hmt = _hmt || [];
 <p>相同的明文对应的密文会有变化。</p>
 <ul>
 <li><span>Vigenere<span class="heti-spacing"> </span></span>密码<ul>
-<li>密钥循环使用，第 <span class="arithmatex">\(i\)</span> 位为 <span class="arithmatex">\(key_i\)</span></li>
+<li>密钥循环使用，第<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(i\)</span><span class="heti-spacing"> </span></span>位为<span><span class="heti-spacing"> </span><span class="arithmatex">\(key_i\)</span></span></li>
 <li><span class="arithmatex">\(y_i = (x_i + key_i)\bmod 26\)</span></li>
 <li><span class="arithmatex">\(x_i = (y_i - key_i)\bmod 26\)</span></li>
 </ul>
@@ -2088,7 +2088,7 @@ var _hmt = _hmt || [];
 <li>初始置换：<ul>
 <li>64 bit -&gt; 64 bit</li>
 <li>如：ip[0] = 58，初始第<span class="heti-skip"><span class="heti-spacing"> </span>58<span class="heti-spacing"> </span></span>位为置换后第<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>位</li>
-<li>置换后记左侧<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位为 <span class="arithmatex">\(L_0\)</span>，右侧<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位为 <span class="arithmatex">\(R_0\)</span></li>
+<li>置换后记左侧<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位为<span><span class="heti-spacing"> </span><span class="arithmatex">\(L_0\)</span></span>，右侧<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位为<span><span class="heti-spacing"> </span><span class="arithmatex">\(R_0\)</span></span></li>
 </ul>
 </li>
 <li>子密钥生成：<ul>
@@ -2096,30 +2096,30 @@ var _hmt = _hmt || [];
 <li><span>PC-1<span class="heti-spacing"> </span></span>表置换（key_perm_table）<ul>
 <li>64 bit -&gt; 56 bit（去掉校验位并打乱）</li>
 <li>置换过程同<span><span class="heti-spacing"> </span>ip</span></li>
-<li>置换后记左<span class="heti-skip"><span class="heti-spacing"> </span>28<span class="heti-spacing"> </span></span>位为 <span class="arithmatex">\(C_0\)</span>，右<span class="heti-skip"><span class="heti-spacing"> </span>28<span class="heti-spacing"> </span></span>位为 <span class="arithmatex">\(D_0\)</span></li>
+<li>置换后记左<span class="heti-skip"><span class="heti-spacing"> </span>28<span class="heti-spacing"> </span></span>位为<span><span class="heti-spacing"> </span><span class="arithmatex">\(C_0\)</span></span>，右<span class="heti-skip"><span class="heti-spacing"> </span>28<span class="heti-spacing"> </span></span>位为<span><span class="heti-spacing"> </span><span class="arithmatex">\(D_0\)</span></span></li>
 </ul>
 </li>
 <li>循环左移<ul>
 <li>有一张表记录每一轮循环左移的位数（<span>1<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>2</span>）</li>
-<li><span class="arithmatex">\(C_{i-1}\)</span> 循环左移<span class="heti-skip"><span class="heti-spacing"> </span>1/2<span class="heti-spacing"> </span></span>位得到 <span class="arithmatex">\(C_i\)</span>，<span class="arithmatex">\(D\)</span> 同理</li>
-<li>得到 <span class="arithmatex">\(C_1, \cdots, C_{16}\)</span> 和 <span class="arithmatex">\(D_1, \cdots, D_{16}\)</span></li>
+<li><span><span class="arithmatex">\(C_{i-1}\)</span><span class="heti-spacing"> </span></span>循环左移<span class="heti-skip"><span class="heti-spacing"> </span>1/2<span class="heti-spacing"> </span></span>位得到<span><span class="heti-spacing"> </span><span class="arithmatex">\(C_i\)</span></span>，<span><span class="arithmatex">\(D\)</span><span class="heti-spacing"> </span></span>同理</li>
+<li>得到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(C_1, \cdots, C_{16}\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(D_1, \cdots, D_{16}\)</span></span></li>
 </ul>
 </li>
 <li><span>PC-2<span class="heti-spacing"> </span></span>表置换（key_56bit_to_48bit_table）<ul>
-<li>56 bit -&gt; 48 bit（每组 <span class="arithmatex">\(CD\)</span> 中选<span class="heti-skip"><span class="heti-spacing"> </span>48<span class="heti-spacing"> </span></span>位并打乱）</li>
-<li><span class="arithmatex">\(C_n\)</span> 和 <span class="arithmatex">\(D_n\)</span> 从左到右拼到一起置换后得到第 <span class="arithmatex">\(n\)</span> 轮子密钥 <span class="arithmatex">\(K_n\)</span></li>
+<li>56 bit -&gt; 48 bit（每组<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(CD\)</span><span class="heti-spacing"> </span></span>中选<span class="heti-skip"><span class="heti-spacing"> </span>48<span class="heti-spacing"> </span></span>位并打乱）</li>
+<li><span><span class="arithmatex">\(C_n\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(D_n\)</span><span class="heti-spacing"> </span></span>从左到右拼到一起置换后得到第<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>轮子密钥<span><span class="heti-spacing"> </span><span class="arithmatex">\(K_n\)</span></span></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>轮函数<ul>
-<li>初始置换后得到了 <span class="arithmatex">\(L_0\)</span> 和 <span class="arithmatex">\(R_0\)</span></li>
+<li>初始置换后得到了<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L_0\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(R_0\)</span></span></li>
 <li>每一轮进行：<ul>
 <li><span class="arithmatex">\(L_i = R_{i-1}\)</span></li>
 <li><span class="arithmatex">\(R_i = L_{i-1} \oplus f(R_{i-1}, K_i)\)</span></li>
 </ul>
 </li>
-<li><span>16<span class="heti-spacing"> </span></span>轮后得到 <span class="arithmatex">\(L_{16}\)</span> 和 <span class="arithmatex">\(R_{16}\)</span>，调换一下拼接 <span class="arithmatex">\(R_{16}L_{16}\)</span> 再逆初始置换后得到密文</li>
+<li><span>16<span class="heti-spacing"> </span></span>轮后得到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L_{16}\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(R_{16}\)</span></span>，调换一下拼接<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(R_{16}L_{16}\)</span><span class="heti-spacing"> </span></span>再逆初始置换后得到密文</li>
 </ul>
 </li>
 <li><span>f<span class="heti-spacing"> </span></span>函数<ul>
@@ -2166,9 +2166,9 @@ var _hmt = _hmt || [];
 <li>双重<span><span class="heti-spacing"> </span>DES</span><ul>
 <li><span class="arithmatex">\(C = \mathrm{enc}(\mathrm{enc}(P, K_1), K_2)\)</span>，预期是使密钥变为<span class="heti-skip"><span class="heti-spacing"> </span>112<span class="heti-spacing"> </span></span>位，增大枚举难度</li>
 <li>meet in the middle attack <ul>
-<li>枚举 <span class="arithmatex">\(K_1\)</span>，计算 <span class="arithmatex">\(\mathrm{enc}(P, K_1)\)</span>，得到一系列 <span class="arithmatex">\(P'\)</span></li>
-<li>枚举 <span class="arithmatex">\(K_2\)</span>，计算 <span class="arithmatex">\(\mathrm{dec}(C, K_2)\)</span>，得到一系列 <span class="arithmatex">\(C'\)</span></li>
-<li>枚举 <span class="arithmatex">\(K_2\)</span> 过程中检查 <span class="arithmatex">\(C'\)</span> 是否出现在前面一系列 <span class="arithmatex">\(P'\)</span> 中即可</li>
+<li>枚举<span><span class="heti-spacing"> </span><span class="arithmatex">\(K_1\)</span></span>，计算<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathrm{enc}(P, K_1)\)</span></span>，得到一系列<span><span class="heti-spacing"> </span><span class="arithmatex">\(P'\)</span></span></li>
+<li>枚举<span><span class="heti-spacing"> </span><span class="arithmatex">\(K_2\)</span></span>，计算<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathrm{dec}(C, K_2)\)</span></span>，得到一系列<span><span class="heti-spacing"> </span><span class="arithmatex">\(C'\)</span></span></li>
+<li>枚举<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(K_2\)</span><span class="heti-spacing"> </span></span>过程中检查<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(C'\)</span><span class="heti-spacing"> </span></span>是否出现在前面一系列<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P'\)</span><span class="heti-spacing"> </span></span>中即可</li>
 <li>难度最大才<span class="heti-skip"><span class="heti-spacing"> </span>2^57<span class="heti-spacing"> </span></span>次枚举，只增强了一倍</li>
 </ul>
 </li>
@@ -2184,13 +2184,13 @@ var _hmt = _hmt || [];
 <h2 id="aes">AES<a class="headerlink" href="#aes" title="Permanent link">¶</a></h2>
 <h3 id="_9">有限域<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
-<li><span>AES<span class="heti-spacing"> </span></span>使用 <span class="arithmatex">\(GF(2^8)\)</span> 伽罗瓦域，不可约多项式为 <span class="arithmatex">\(x^8 + x^4 + x^3 + x + 1\)</span><ul>
+<li><span>AES<span class="heti-spacing"> </span></span>使用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(GF(2^8)\)</span><span class="heti-spacing"> </span></span>伽罗瓦域，不可约多项式为<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^8 + x^4 + x^3 + x + 1\)</span></span><ul>
 <li>二进制为<span><span class="heti-spacing"> </span>100011011</span>，十六进制为<span><span class="heti-spacing"> </span>0x11B</span></li>
 </ul>
 </li>
-<li><span class="arithmatex">\(GF(2^8)\)</span> 上每个多项式都可以表示为一个<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>位二进制数</li>
+<li><span><span class="arithmatex">\(GF(2^8)\)</span><span class="heti-spacing"> </span></span>上每个多项式都可以表示为一个<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>位二进制数</li>
 <li>加法：二进制异或</li>
-<li>乘法：多项式乘法（注意加是异或），模 <span class="arithmatex">\(x^8 + x^4 + x^3 + x + 1\)</span><ul>
+<li>乘法：多项式乘法（注意加是异或），模<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^8 + x^4 + x^3 + x + 1\)</span></span><ul>
 <li>手工计算，长除法算模</li>
 <li>农夫算法
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 结果</span>
@@ -2207,7 +2207,7 @@ var _hmt = _hmt || [];
 <h3 id="aes_1"><span>AES<span class="heti-spacing"> </span></span>算法<a class="headerlink" href="#aes_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>每次<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>位（<span>16<span class="heti-spacing"> </span></span>字节）分组，密钥长度<span class="heti-skip"><span class="heti-spacing"> </span>128/192/256<span class="heti-spacing"> </span></span>位（<span>16/24/32<span class="heti-spacing"> </span></span>字节）</li>
-<li>每一块明文转为<span class="heti-skip"><span class="heti-spacing"> </span>4*4<span class="heti-spacing"> </span></span>的矩阵<heti-adjacent class="heti-adjacent-half">，</heti-adjacent><span class="arithmatex">\(\mathbf{S}_{i\bmod 4, i/4} = \mathbf{byte}_i\)</span>（从上到下从左到右）</li>
+<li>每一块明文转为<span class="heti-skip"><span class="heti-spacing"> </span>4*4<span class="heti-spacing"> </span></span>的矩阵，<span class="arithmatex">\(\mathbf{S}_{i\bmod 4, i/4} = \mathbf{byte}_i\)</span>（从上到下从左到右）</li>
 <li>进行多轮加密（<span>128<span class="heti-spacing"> </span></span>位密钥进行<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>轮），每轮都有一个密钥，也是<span class="heti-skip"><span class="heti-spacing"> </span>4*4<span class="heti-spacing"> </span></span>矩阵</li>
 <li>加密过程（<span>p<span class="heti-spacing"> </span></span>为明文矩阵，<span>k<span class="heti-spacing"> </span></span>为密钥矩阵）：
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x03</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">};</span><span class="w"></span>
@@ -2238,10 +2238,10 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><span>MixColumn<span class="heti-spacing"> </span></span>列混淆<ul>
-<li>取出矩阵的每一列，作为一个多项式（低位在上），与 <span class="arithmatex">\(a(x)\)</span> 相乘，再模 <span class="arithmatex">\(x^4 + 1\)</span><ul>
-<li>加密时<span class="arithmatex">\(a(x) = 3x^3 + x^2 + x + 2\)</span><span><span class="heti-spacing"> </span>[0x03, 0x01, 0x01, 0x02]</span></li>
-<li>解密时<span class="arithmatex">\(a(x) = 11x^3 + 13x^2 + 9x + 14\)</span><span><span class="heti-spacing"> </span>[0x0B, 0x0D, 0x09, 0x0E]</span></li>
-<li>模 <span class="arithmatex">\(x^4 + 1\)</span> 就相当于把超过<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>次的项都减去 <span class="arithmatex">\(x^4\)</span></li>
+<li>取出矩阵的每一列，作为一个多项式（低位在上），与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a(x)\)</span><span class="heti-spacing"> </span></span>相乘，再模<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^4 + 1\)</span></span><ul>
+<li>加密时<span><span class="heti-spacing"> </span><span class="arithmatex">\(a(x) = 3x^3 + x^2 + x + 2\)</span> [0x03, 0x01, 0x01, 0x02]</span></li>
+<li>解密时<span><span class="heti-spacing"> </span><span class="arithmatex">\(a(x) = 11x^3 + 13x^2 + 9x + 14\)</span> [0x0B, 0x0D, 0x09, 0x0E]</span></li>
+<li>模<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x^4 + 1\)</span><span class="heti-spacing"> </span></span>就相当于把超过<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>次的项都减去<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^4\)</span></span></li>
 </ul>
 </li>
 <li>例如一列从上到下为<span><span class="heti-spacing"> </span>[4, 3, 2, 1]</span>，则运算为<br/>
@@ -2270,7 +2270,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li>密钥生成过程<ul>
-<li>取上轮密钥的最后一列，循环上移一位，进行<span><span class="heti-spacing"> </span>ByteSub</span>，与上轮密钥第一列异或，再将第一位和 <span class="arithmatex">\(2^{i-1}\bmod \mathtt{0x11B}\)</span> 异或得到新一轮密钥的第一列<ul>
+<li>取上轮密钥的最后一列，循环上移一位，进行<span><span class="heti-spacing"> </span>ByteSub</span>，与上轮密钥第一列异或，再将第一位和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(2^{i-1}\bmod \mathtt{0x11B}\)</span><span class="heti-spacing"> </span></span>异或得到新一轮密钥的第一列<ul>
 <li>第一位异或的分别是<span><span class="heti-spacing"> </span>01 02 04 08 10 20 40 80 1b 36</span></li>
 </ul>
 </li>
@@ -2311,9 +2311,9 @@ var _hmt = _hmt || [];
 <h3 id="_10">数学基础<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>欧拉函数<ul>
-<li><span class="arithmatex">\(\phi(n)\)</span> 表示小于 <span class="arithmatex">\(n\)</span> 且与 <span class="arithmatex">\(n\)</span> 互质的数的个数</li>
-<li>若 <span class="arithmatex">\(n_1, n_2\)</span> 互素，则 <span class="arithmatex">\(\phi(n_1n_2) = \phi(n_1)\phi(n_2)\)</span></li>
-<li><span class="arithmatex">\(\phi(n) = n\prod_{p|n}(1-\frac{1}{p})\)</span>（其中 <span class="arithmatex">\(p\)</span> 为质数<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>质因子）</li>
+<li><span><span class="arithmatex">\(\phi(n)\)</span><span class="heti-spacing"> </span></span>表示小于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>且与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>互质的数的个数</li>
+<li>若<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n_1, n_2\)</span><span class="heti-spacing"> </span></span>互素，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(\phi(n_1n_2) = \phi(n_1)\phi(n_2)\)</span></span></li>
+<li><span class="arithmatex">\(\phi(n) = n\prod_{p|n}(1-\frac{1}{p})\)</span>（其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>为质数<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>质因子）</li>
 </ul>
 <details class="example" open="open">
 <summary>Example</summary>
@@ -2326,17 +2326,17 @@ var _hmt = _hmt || [];
 </details>
 </li>
 <li>欧拉定理<ul>
-<li>若 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(n\)</span> 互质，则 <span class="arithmatex">\(a^{\phi(n)} \equiv 1 \pmod{n}\)</span></li>
+<li>若<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a\)</span><span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>互质，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(a^{\phi(n)} \equiv 1 \pmod{n}\)</span></span></li>
 </ul>
 </li>
 <li>费马小定理<ul>
-<li>若 <span class="arithmatex">\(p\)</span> 为素数，且 <span class="arithmatex">\(a\)</span> 与 <span class="arithmatex">\(p\)</span> 互质，则 <span class="arithmatex">\(a^{p-1} \equiv 1 \pmod{p}\)</span></li>
-<li>因为 <span class="arithmatex">\(\phi(p) = p - 1\)</span></li>
+<li>若<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>为素数，且<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a\)</span><span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>互质，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(a^{p-1} \equiv 1 \pmod{p}\)</span></span></li>
+<li>因为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\phi(p) = p - 1\)</span></span></li>
 </ul>
 </li>
 <li>中国剩余定理<ul>
-<li>设 <span class="arithmatex">\(m_1, m_2, \cdots, m_r\)</span> 两两互素，则同余方程组 <span class="arithmatex">\(x \equiv a_i \pmod{m_i}\)</span> 模 <span class="arithmatex">\(M=m_1m_2\cdots m_r\)</span> 有唯一解 <span class="arithmatex">\(x = \sum_{i=1}^ra_iM_iy_i\bmod M\)</span><ul>
-<li>其中<span class="arithmatex">\(M_i=M/m_i\)</span><span><span class="heti-spacing"> </span>,</span> <span class="arithmatex">\(y_i=M_i^{-1}\bmod m_i\)</span></li>
+<li>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m_1, m_2, \cdots, m_r\)</span><span class="heti-spacing"> </span></span>两两互素，则同余方程组<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x \equiv a_i \pmod{m_i}\)</span><span class="heti-spacing"> </span></span>模<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(M=m_1m_2\cdots m_r\)</span><span class="heti-spacing"> </span></span>有唯一解<span><span class="heti-spacing"> </span><span class="arithmatex">\(x = \sum_{i=1}^ra_iM_iy_i\bmod M\)</span></span><ul>
+<li>其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(M_i=M/m_i\)</span>, <span class="arithmatex">\(y_i=M_i^{-1}\bmod m_i\)</span></span></li>
 </ul>
 </li>
 </ul>
@@ -2346,31 +2346,31 @@ var _hmt = _hmt || [];
 <ul>
 <li>非对称密码体制，有公钥和私钥</li>
 <li><span>RSA<span class="heti-spacing"> </span></span>算法过程<ul>
-<li>选取两个不相等的大素数 <span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(q\)</span>，计算 <span class="arithmatex">\(n = pq\)</span>，<span class="arithmatex">\(\phi(n) = (p-1)(q-1)\)</span><ul>
-<li><span class="arithmatex">\(n\)</span> 公开，<span class="arithmatex">\(p\)</span> 和 <span class="arithmatex">\(q\)</span> 保密</li>
+<li>选取两个不相等的大素数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span><span class="arithmatex">\(q\)</span></span>，计算<span><span class="heti-spacing"> </span><span class="arithmatex">\(n = pq\)</span></span>，<span class="arithmatex">\(\phi(n) = (p-1)(q-1)\)</span><ul>
+<li><span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>公开，<span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q\)</span><span class="heti-spacing"> </span></span>保密</li>
 </ul>
 </li>
-<li>随机选取加密密钥 <span class="arithmatex">\(e\)</span>，使得 <span class="arithmatex">\(1 &lt; e &lt; \phi(n)\)</span>，且 <span class="arithmatex">\(e\)</span> 与 <span class="arithmatex">\(\phi(n)\)</span> 互质</li>
-<li>找到 <span class="arithmatex">\(d\)</span> 使得 <span class="arithmatex">\(ed \equiv 1 \pmod{\phi(n)}\)</span></li>
-<li>公钥为 <span class="arithmatex">\((n, e)\)</span>，私钥为 <span class="arithmatex">\((n, d)\)</span></li>
+<li>随机选取加密密钥<span><span class="heti-spacing"> </span><span class="arithmatex">\(e\)</span></span>，使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(1 &lt; e &lt; \phi(n)\)</span></span>，且<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(e\)</span><span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi(n)\)</span><span class="heti-spacing"> </span></span>互质</li>
+<li>找到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(d\)</span><span class="heti-spacing"> </span></span>使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(ed \equiv 1 \pmod{\phi(n)}\)</span></span></li>
+<li>公钥为<span><span class="heti-spacing"> </span><span class="arithmatex">\((n, e)\)</span></span>，私钥为<span><span class="heti-spacing"> </span><span class="arithmatex">\((n, d)\)</span></span></li>
 <li>加密：<span class="arithmatex">\(c = m^e \bmod n\)</span></li>
 <li>解密：<span class="arithmatex">\(m = c^d \bmod n\)</span></li>
 </ul>
 </li>
 <li>证明略，带入前面的数学基础一通化就好了</li>
 <li>安全性<ul>
-<li>能分解 <span class="arithmatex">\(n\)</span> 的因子<span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span>得到 <span class="arithmatex">\(p\)</span> 和<span class="arithmatex">\(q\)</span><span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span>破解<span class="heti-skip"><span class="heti-spacing"> </span>RSA<span class="heti-spacing"> </span></span>不比因子分解更困难</li>
-<li>不分解因子直接求<span class="arithmatex">\(\phi(n)\)</span><span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span>有 <span class="arithmatex">\(\phi(n), n\)</span> 可以直接求得<span class="arithmatex">\(p, q\)</span><span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span>不比因子分解更容易<ul>
+<li>能分解<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>的因子<span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span>得到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(q\)</span> -&gt;<span class="heti-spacing"> </span></span>破解<span class="heti-skip"><span class="heti-spacing"> </span>RSA<span class="heti-spacing"> </span></span>不比因子分解更困难</li>
+<li>不分解因子直接求<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi(n)\)</span> -&gt;<span class="heti-spacing"> </span></span>有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi(n), n\)</span><span class="heti-spacing"> </span></span>可以直接求得<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p, q\)</span> -&gt;<span class="heti-spacing"> </span></span>不比因子分解更容易<ul>
 <li><span class="arithmatex">\(p+q=n-\phi(n)+1\)</span></li>
 <li><span class="arithmatex">\(p-q=\sqrt{(p+q)^2-4n}\)</span></li>
 </ul>
 </li>
-<li>不分解因子不求 <span class="arithmatex">\(\phi(n)\)</span> 直接求解<span class="arithmatex">\(d\)</span><span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span><span class="arithmatex">\(ed-1\)</span>是 <span class="arithmatex">\(\phi(n)\)</span> 倍数<span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span>同样可求<span class="arithmatex">\(p, q\)</span><span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span>不比因子分解更容易</li>
-<li>目前 <span class="arithmatex">\(n\)</span> 长度为<span class="heti-skip"><span class="heti-spacing"> </span>1024 bit<span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span>2048 bit<span class="heti-spacing"> </span></span>是合理的</li>
-<li>避免选取容易分解的 <span class="arithmatex">\(n\)</span><ul>
-<li><span class="arithmatex">\(p, q\)</span> 长度相差不多</li>
-<li><span class="arithmatex">\(p-1, q-1\)</span> 有大素因子</li>
-<li><span class="arithmatex">\(\gcd(p-1, q-1)\)</span> 应该很小</li>
+<li>不分解因子不求<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi(n)\)</span><span class="heti-spacing"> </span></span>直接求解<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(d\)</span> -&gt; <span class="arithmatex">\(ed-1\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\phi(n)\)</span><span class="heti-spacing"> </span></span>倍数<span class="heti-skip"><span class="heti-spacing"> </span>-&gt;<span class="heti-spacing"> </span></span>同样可求<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p, q\)</span> -&gt;<span class="heti-spacing"> </span></span>不比因子分解更容易</li>
+<li>目前<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>长度为<span class="heti-skip"><span class="heti-spacing"> </span>1024 bit<span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span>2048 bit<span class="heti-spacing"> </span></span>是合理的</li>
+<li>避免选取容易分解的<span><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span></span><ul>
+<li><span><span class="arithmatex">\(p, q\)</span><span class="heti-spacing"> </span></span>长度相差不多</li>
+<li><span><span class="arithmatex">\(p-1, q-1\)</span><span class="heti-spacing"> </span></span>有大素因子</li>
+<li><span><span class="arithmatex">\(\gcd(p-1, q-1)\)</span><span class="heti-spacing"> </span></span>应该很小</li>
 </ul>
 </li>
 </ul>
@@ -2399,7 +2399,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-16-7" id="__codelineno-16-7" name="__codelineno-16-7"></a><span class="n">RSA_free</span><span class="p">(</span><span class="n">rsa</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></li>
 <li><span>N<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>位时明文长度也必须是<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>位，且明文值要小于<span><span class="heti-spacing"> </span>N</span>，密文长度也是<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>位<ul>
-<li>如果明文位数很小，<span class="arithmatex">\(m^e&lt;N\)</span>，则解密时不需要用到 <span class="arithmatex">\(d\)</span>，直接对 <span class="arithmatex">\(m\)</span> 开 <span class="arithmatex">\(e\)</span> 次方即可</li>
+<li>如果明文位数很小，<span class="arithmatex">\(m^e&lt;N\)</span>，则解密时不需要用到<span><span class="heti-spacing"> </span><span class="arithmatex">\(d\)</span></span>，直接对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m\)</span><span class="heti-spacing"> </span></span>开<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(e\)</span><span class="heti-spacing"> </span></span>次方即可</li>
 </ul>
 </li>
 <li>比如明文<span class="heti-skip"><span class="heti-spacing"> </span>char m[] = {'A', 'B', 'C', 'D', 0, 0, ...}<span class="heti-spacing"> </span></span>当作大数<span class="heti-skip"><span class="heti-spacing"> </span>0x414243440000...<span class="heti-spacing"> </span></span>处理</li>
@@ -2431,14 +2431,14 @@ var _hmt = _hmt || [];
 <h3 id="_11">数学基础<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>有限域上椭圆曲线<ul>
-<li>设 <span class="arithmatex">\(p&gt;3\)</span> 为素数，有限域 <span class="arithmatex">\(Z_p\)</span> 上椭圆曲线 <span class="arithmatex">\(y^2=x^3+ax+b\)</span> 是由无穷远点 <span class="arithmatex">\(\mathcal{O}\)</span> 和满足 <span class="arithmatex">\(y^2\equiv x^3+ax+b\pmod{p}\)</span> 的点 <span class="arithmatex">\((x, y)\in Z_p\times Z_p\)</span> 组成的集合 <span class="arithmatex">\(E\)</span><ul>
-<li>其中 <span class="arithmatex">\(a, b\in Z_p\)</span>，<span class="arithmatex">\(4a^3+27b^2\not\equiv 0\pmod{p}\)</span></li>
+<li>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p&gt;3\)</span><span class="heti-spacing"> </span></span>为素数，有限域<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(Z_p\)</span><span class="heti-spacing"> </span></span>上椭圆曲线<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(y^2=x^3+ax+b\)</span><span class="heti-spacing"> </span></span>是由无穷远点<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{O}\)</span><span class="heti-spacing"> </span></span>和满足<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(y^2\equiv x^3+ax+b\pmod{p}\)</span><span class="heti-spacing"> </span></span>的点<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((x, y)\in Z_p\times Z_p\)</span><span class="heti-spacing"> </span></span>组成的集合<span><span class="heti-spacing"> </span><span class="arithmatex">\(E\)</span></span><ul>
+<li>其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(a, b\in Z_p\)</span></span>，<span class="arithmatex">\(4a^3+27b^2\not\equiv 0\pmod{p}\)</span></li>
 </ul>
 </li>
 <li>定义加法：<span class="arithmatex">\(P=(x_1, y_1)\in E, Q=(x_2, y_2)\in E\)</span><ul>
-<li>如果 <span class="arithmatex">\(x_1=x_2, y_1=y_2=0\)</span>，则 <span class="arithmatex">\(P+Q=\mathcal{O}\)</span></li>
-<li>如果 <span class="arithmatex">\(x_1=x_2, y_1=-y_2\neq 0\)</span>，则 <span class="arithmatex">\(P+Q=\mathcal{O}\)</span></li>
-<li>否则 <span class="arithmatex">\(P+Q=(x_3, y_3)\)</span><ul>
+<li>如果<span><span class="heti-spacing"> </span><span class="arithmatex">\(x_1=x_2, y_1=y_2=0\)</span></span>，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(P+Q=\mathcal{O}\)</span></span></li>
+<li>如果<span><span class="heti-spacing"> </span><span class="arithmatex">\(x_1=x_2, y_1=-y_2\neq 0\)</span></span>，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(P+Q=\mathcal{O}\)</span></span></li>
+<li>否则<span><span class="heti-spacing"> </span><span class="arithmatex">\(P+Q=(x_3, y_3)\)</span></span><ul>
 <li><span class="arithmatex">\(x_3 = \lambda^2-x_1-x_2\)</span></li>
 <li><span class="arithmatex">\(y_3 = \lambda(x_1-x_3)-y_1\)</span></li>
 <li><span class="arithmatex">\(\lambda = \begin{cases}(y_2-y_1)(x_2-x_1)^{-1} &amp; \text{if }P\neq Q \\(3x_1^2+a)(2y_1)^{-1} &amp; \text{if }P=Q\end{cases}\)</span></li>
@@ -2448,7 +2448,7 @@ var _hmt = _hmt || [];
 </ul>
 <details class="example" open="open">
 <summary>Example</summary>
-<p>曲线 <span class="arithmatex">\(a=1, p=11\)</span>，有点 <span class="arithmatex">\(\alpha=(2, 7)\)</span>，求 <span class="arithmatex">\(2\alpha\)</span><br/>
+<p>曲线<span><span class="heti-spacing"> </span><span class="arithmatex">\(a=1, p=11\)</span></span>，有点<span><span class="heti-spacing"> </span><span class="arithmatex">\(\alpha=(2, 7)\)</span></span>，求<span><span class="heti-spacing"> </span><span class="arithmatex">\(2\alpha\)</span></span><br/>
 <span class="arithmatex">\(\lambda = (3x_1^2+a)(2y_1)^{-1} = (3\times 4+1)(2\times 7)^{-1} = 2\times 3^{-1} = 2\times 4 = 8\pmod{11}\)</span><br/>
 <span class="arithmatex">\(x_3 = \lambda^2-x_1-x_2 = 8^2-2-2 = 60 = 5\pmod{11}\)</span><br/>
 <span class="arithmatex">\(y_3 = \lambda(x_1-x_3)-y_1 = 8\times(2-5)-7 = -31 = 2\pmod{11}\)</span><br/>
@@ -2456,52 +2456,52 @@ var _hmt = _hmt || [];
 </details>
 </li>
 <li>阶<ul>
-<li>曲线的阶<heti-adjacent class="heti-adjacent-half">：</heti-adjacent><span class="arithmatex">\(|E|\)</span>（曲线上点的个数）</li>
-<li>点的阶：<span class="arithmatex">\(nP=\mathcal{O}\)</span> 的最小正整数 <span class="arithmatex">\(n\)</span></li>
+<li>曲线的阶：<span class="arithmatex">\(|E|\)</span>（曲线上点的个数）</li>
+<li>点的阶：<span><span class="arithmatex">\(nP=\mathcal{O}\)</span><span class="heti-spacing"> </span></span>的最小正整数<span><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span></span></li>
 </ul>
 </li>
 <li>生成元<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>基点<ul>
-<li>如果点 <span class="arithmatex">\(P\)</span> 的阶 <span class="arithmatex">\(n=|E|\)</span>，称 <span class="arithmatex">\(P\)</span> 为 <span class="arithmatex">\(E\)</span> 的一个生成元</li>
-<li>如果 <span class="arithmatex">\(P\)</span> 是 <span class="arithmatex">\(E\)</span> 的生成元，则 <span class="arithmatex">\(E=\{P, 2P, 3P, ..., (n-1)P, \mathcal{O}\}\)</span></li>
+<li>如果点<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>的阶<span><span class="heti-spacing"> </span><span class="arithmatex">\(n=|E|\)</span></span>，称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(E\)</span><span class="heti-spacing"> </span></span>的一个生成元</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(E\)</span><span class="heti-spacing"> </span></span>的生成元，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(E=\{P, 2P, 3P, ..., (n-1)P, \mathcal{O}\}\)</span></span></li>
 </ul>
 </li>
-<li>一条椭圆曲线由 <span class="arithmatex">\(a, b, p\)</span>，基点 <span class="arithmatex">\(G\)</span>，<span class="arithmatex">\(G\)</span> 的阶，余因子决定<ul>
-<li>余因子为曲线的阶<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span><span class="arithmatex">\(G\)</span>的阶，通常为<span><span class="heti-spacing"> </span>1</span></li>
+<li>一条椭圆曲线由<span><span class="heti-spacing"> </span><span class="arithmatex">\(a, b, p\)</span></span>，基点<span><span class="heti-spacing"> </span><span class="arithmatex">\(G\)</span></span>，<span><span class="arithmatex">\(G\)</span><span class="heti-spacing"> </span></span>的阶，余因子决定<ul>
+<li>余因子为曲线的阶<span class="heti-skip"><span class="heti-spacing"> </span>/ <span class="arithmatex">\(G\)</span><span class="heti-spacing"> </span></span>的阶，通常为<span><span class="heti-spacing"> </span>1</span></li>
 </ul>
 </li>
 <li>离散对数问题<ul>
-<li><span class="arithmatex">\(P\)</span> 是 <span class="arithmatex">\(E\)</span> 的生成元，<span class="arithmatex">\(Q\)</span> 是 <span class="arithmatex">\(E\)</span> 上的任意点，求 <span class="arithmatex">\(n\)</span> 使得 <span class="arithmatex">\(nP=Q\)</span></li>
+<li><span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(E\)</span><span class="heti-spacing"> </span></span>的生成元，<span><span class="arithmatex">\(Q\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(E\)</span><span class="heti-spacing"> </span></span>上的任意点，求<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(nP=Q\)</span></span></li>
 <li>离散对数问题是难解的，是<span class="heti-skip"><span class="heti-spacing"> </span>ECC<span class="heti-spacing"> </span></span>的基础</li>
 </ul>
 </li>
 </ul>
 </li>
 <li>欧拉准则<ul>
-<li>设 <span class="arithmatex">\(p&gt;2\)</span> 是一个素数，<span class="arithmatex">\(x\)</span> 是一个整数与 <span class="arithmatex">\(p\)</span> 互素</li>
-<li>如果 <span class="arithmatex">\(y^2\equiv x\pmod p\)</span> 有解，则称 <span class="arithmatex">\(x\)</span> 是 <span class="arithmatex">\(p\)</span> 的平方剩余，否则称为平方非剩余</li>
-<li><span class="arithmatex">\(x\)</span> 是模 <span class="arithmatex">\(p\)</span> 的平方剩余当且仅当 <span class="arithmatex">\(x^{(p-1)/2}\equiv 1\pmod p\)</span><ul>
-<li><span class="arithmatex">\(x\)</span> 两个平方根为 <span class="arithmatex">\(\pm x^{(p+1)/4}\bmod p\)</span></li>
+<li>设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p&gt;2\)</span><span class="heti-spacing"> </span></span>是一个素数，<span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>是一个整数与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>互素</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(y^2\equiv x\pmod p\)</span><span class="heti-spacing"> </span></span>有解，则称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>的平方剩余，否则称为平方非剩余</li>
+<li><span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>是模<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>的平方剩余当且仅当<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^{(p-1)/2}\equiv 1\pmod p\)</span></span><ul>
+<li><span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>两个平方根为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\pm x^{(p+1)/4}\bmod p\)</span></span></li>
 </ul>
 </li>
-<li><span class="arithmatex">\(x\)</span> 是模 <span class="arithmatex">\(p\)</span> 的平方非剩余当且仅当 <span class="arithmatex">\(x^{(p-1)/2}\equiv -1\pmod p\)</span></li>
+<li><span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>是模<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>的平方非剩余当且仅当<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^{(p-1)/2}\equiv -1\pmod p\)</span></span></li>
 </ul>
 </li>
 </ul>
 <h3 id="ecc_1"><span>ECC<span class="heti-spacing"> </span></span>算法<a class="headerlink" href="#ecc_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li><span>Menezes-Vanstone<span class="heti-spacing"> </span></span>公钥密码体制<ul>
-<li><span class="arithmatex">\(p&gt;3\)</span> 大素数，<span class="arithmatex">\(Z_p\)</span> 上椭圆曲线 <span class="arithmatex">\(E\)</span>，基点 <span class="arithmatex">\(G\)</span>，<span class="arithmatex">\(G\)</span> 的阶 <span class="arithmatex">\(n\)</span></li>
-<li>私钥 <span class="arithmatex">\(d\)</span> 是一个小于 <span class="arithmatex">\(n\)</span> 的随机数</li>
-<li>公钥点 <span class="arithmatex">\(R=dG\)</span></li>
-<li>加密：对 <span class="arithmatex">\(m\)</span> 进行加密，得到密文两部分 <span class="arithmatex">\((r, s)\)</span><ul>
-<li>选取随机数 <span class="arithmatex">\(k&lt;n\)</span></li>
+<li><span><span class="arithmatex">\(p&gt;3\)</span><span class="heti-spacing"> </span></span>大素数，<span><span class="arithmatex">\(Z_p\)</span><span class="heti-spacing"> </span></span>上椭圆曲线<span><span class="heti-spacing"> </span><span class="arithmatex">\(E\)</span></span>，基点<span><span class="heti-spacing"> </span><span class="arithmatex">\(G\)</span></span>，<span><span class="arithmatex">\(G\)</span><span class="heti-spacing"> </span></span>的阶<span><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span></span></li>
+<li>私钥<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(d\)</span><span class="heti-spacing"> </span></span>是一个小于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>的随机数</li>
+<li>公钥点<span><span class="heti-spacing"> </span><span class="arithmatex">\(R=dG\)</span></span></li>
+<li>加密：对<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m\)</span><span class="heti-spacing"> </span></span>进行加密，得到密文两部分<span><span class="heti-spacing"> </span><span class="arithmatex">\((r, s)\)</span></span><ul>
+<li>选取随机数<span><span class="heti-spacing"> </span><span class="arithmatex">\(k&lt;n\)</span></span></li>
 <li><span class="arithmatex">\(r=(kG)_x\)</span></li>
 <li><span class="arithmatex">\(s=m\times(kR)_x\bmod n\)</span></li>
 </ul>
 </li>
 <li>解密：<ul>
 <li><span class="arithmatex">\(\dfrac{s}{(d(kG))_x}=\dfrac{m\times(kR)_x}{(kdG)_x}=\dfrac{m\times(kdG)_x}{(kdG)_x}=\dfrac{m\times(kR)_x}{(kR)_x}=m\)</span></li>
-<li>需要通过 <span class="arithmatex">\(r\)</span> 找到点 <span class="arithmatex">\(kG\)</span>，然后利用私钥解密</li>
+<li>需要通过<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(r\)</span><span class="heti-spacing"> </span></span>找到点<span><span class="heti-spacing"> </span><span class="arithmatex">\(kG\)</span></span>，然后利用私钥解密</li>
 </ul>
 </li>
 </ul>
@@ -2513,7 +2513,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li>验证<ul>
-<li><span class="arithmatex">\((s^{-1}\times m\times G + s^{-1}\times r\times R)\)</span> 横坐标是否等于 <span class="arithmatex">\(r\)</span></li>
+<li><span><span class="arithmatex">\((s^{-1}\times m\times G + s^{-1}\times r\times R)\)</span><span class="heti-spacing"> </span></span>横坐标是否等于<span><span class="heti-spacing"> </span><span class="arithmatex">\(r\)</span></span></li>
 </ul>
 </li>
 </ul>
@@ -2525,13 +2525,13 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li>验证<ul>
-<li><span class="arithmatex">\(r-(sG+rR)_x\)</span> 是否等于 <span class="arithmatex">\(m\)</span></li>
+<li><span><span class="arithmatex">\(r-(sG+rR)_x\)</span><span class="heti-spacing"> </span></span>是否等于<span><span class="heti-spacing"> </span><span class="arithmatex">\(m\)</span></span></li>
 </ul>
 </li>
 </ul>
 </li>
 <li>openssl<ul>
-<li>曲线参数 <span class="arithmatex">\(a, b, p, n, G\)</span> 和私钥 <span class="arithmatex">\(d\)</span> 都用<span class="heti-skip"><span class="heti-spacing"> </span>BN<span class="heti-spacing"> </span></span>给出</li>
+<li>曲线参数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a, b, p, n, G\)</span><span class="heti-spacing"> </span></span>和私钥<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(d\)</span><span class="heti-spacing"> </span></span>都用<span class="heti-skip"><span class="heti-spacing"> </span>BN<span class="heti-spacing"> </span></span>给出</li>
 <li>设置曲线
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-18-1" id="__codelineno-18-1" name="__codelineno-18-1"></a><span class="n">EC_GROUP</span><span class="w"> </span><span class="o">*</span><span class="n">group</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EC_GROUP_new</span><span class="p">(</span><span class="n">EC_GFp_mont_method</span><span class="p">());</span><span class="w"></span>
 <a href="#__codelineno-18-2" id="__codelineno-18-2" name="__codelineno-18-2"></a><span class="n">BN_CTX</span><span class="w"> </span><span class="o">*</span><span class="n">ctx</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">BN_CTX_new</span><span class="p">();</span><span class="w"></span>
@@ -2542,7 +2542,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-19-2" id="__codelineno-19-2" name="__codelineno-19-2"></a><span class="n">EC_POINT_set_affine_coordinates_GFp</span><span class="p">(</span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">Gx</span><span class="p">,</span><span class="w"> </span><span class="n">Gy</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p">);</span><span class="w"></span>
 <a href="#__codelineno-19-3" id="__codelineno-19-3" name="__codelineno-19-3"></a><span class="n">EC_GROUP_set_generator</span><span class="p">(</span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">G</span><span class="p">,</span><span class="w"> </span><span class="n">n</span><span class="p">,</span><span class="w"> </span><span class="n">BN_value_one</span><span class="p">());</span><span class="w"></span>
 </code></pre></div></li>
-<li>计算公钥 <span class="arithmatex">\(R=dG\)</span>（点乘）
+<li>计算公钥<span><span class="heti-spacing"> </span><span class="arithmatex">\(R=dG\)</span></span>（点乘）
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-20-1" id="__codelineno-20-1" name="__codelineno-20-1"></a><span class="n">EC_POINT</span><span class="w"> </span><span class="o">*</span><span class="n">R</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">EC_POINT_new</span><span class="p">(</span><span class="n">group</span><span class="p">);</span><span class="w"></span>
 <a href="#__codelineno-20-2" id="__codelineno-20-2" name="__codelineno-20-2"></a><span class="n">EC_POINT_mul</span><span class="p">(</span><span class="n">group</span><span class="p">,</span><span class="w"> </span><span class="n">R</span><span class="p">,</span><span class="w"> </span><span class="n">d</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">ctx</span><span class="p">);</span><span class="w"></span>
 </code></pre></div></li>

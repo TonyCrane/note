@@ -2059,8 +2059,8 @@ var _hmt = _hmt || [];
 <h3 id="_4">梯度下降<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li><span class="arithmatex">\(L(\mathbf{w}, b) = \sum_il^{(i)}(\mathbf{w}, b)\)</span></li>
-<li>用 <span class="arithmatex">\((\mathbf{w}, b)-\eta\nabla L(\mathbf{w}, b)\)</span> 代替 <span class="arithmatex">\((\mathbf{w}, b)\)</span></li>
-<li>学习率 <span class="arithmatex">\(\eta\)</span>，超参数（用来控制学习），下降的快慢<ul>
+<li>用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\((\mathbf{w}, b)-\eta\nabla L(\mathbf{w}, b)\)</span><span class="heti-spacing"> </span></span>代替<span><span class="heti-spacing"> </span><span class="arithmatex">\((\mathbf{w}, b)\)</span></span></li>
+<li>学习率<span><span class="heti-spacing"> </span><span class="arithmatex">\(\eta\)</span></span>，超参数（用来控制学习），下降的快慢<ul>
 <li>学习率过大会在最优附近横跳</li>
 <li>学习率过小则太慢</li>
 <li>根据进度更改学习率<ul>
@@ -2076,9 +2076,9 @@ var _hmt = _hmt || [];
 <ul>
 <li>随机采用一部分样本来计算损失函数</li>
 <li><span class="arithmatex">\(L(\mathbf{w}, b) = \sum_{i\in B}l^{(i)}(\mathbf{w}, b)\)</span></li>
-<li><span>Batch size<span class="heti-spacing"> </span></span><span class="arithmatex">\(s=|B|\)</span>也是一个超参数<ul>
-<li><span class="arithmatex">\(s\)</span> 小，工作量小，拟合效果不好</li>
-<li><span class="arithmatex">\(s\)</span> 大，内存消耗高</li>
+<li><span>Batch size <span class="arithmatex">\(s=|B|\)</span><span class="heti-spacing"> </span></span>也是一个超参数<ul>
+<li><span><span class="arithmatex">\(s\)</span><span class="heti-spacing"> </span></span>小，工作量小，拟合效果不好</li>
+<li><span><span class="arithmatex">\(s\)</span><span class="heti-spacing"> </span></span>大，内存消耗高</li>
 </ul>
 </li>
 </ul>
@@ -2109,9 +2109,9 @@ var _hmt = _hmt || [];
 <p>没有激活函数的情况：</p>
 <ul>
 <li><span class="arithmatex">\(\mathbf{h} = \mathbf{W_1x}+\mathbf{b_1}\)</span></li>
-<li><span class="arithmatex">\(\mathbf{o} = \mathbf{W_2h}+\mathbf{b_2} = \mathbf{W_1W_2x}+\mathbf{b_1}+\mathbf{b_2}\)</span> 仍为线性的</li>
+<li><span><span class="arithmatex">\(\mathbf{o} = \mathbf{W_2h}+\mathbf{b_2} = \mathbf{W_1W_2x}+\mathbf{b_1}+\mathbf{b_2}\)</span><span class="heti-spacing"> </span></span>仍为线性的</li>
 </ul>
-<p>而激活函数使得 <span class="arithmatex">\(\mathbf{h} = \sigma(\mathbf{W_1x}+\mathbf{b_1})\)</span>，让<span class="heti-skip"><span class="heti-spacing"> </span>MLP<span class="heti-spacing"> </span></span>变为非线性的</p>
+<p>而激活函数使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathbf{h} = \sigma(\mathbf{W_1x}+\mathbf{b_1})\)</span></span>，让<span class="heti-skip"><span class="heti-spacing"> </span>MLP<span class="heti-spacing"> </span></span>变为非线性的</p>
 <p>一些激活函数：</p>
 <ul>
 <li><strong>sigmoid</strong>：<span class="arithmatex">\(\text{sigmoid}(x) = \dfrac{1}{1+e^{-x}}\)</span>，导数：<span class="arithmatex">\(\text{sigmoid}(x)(1-\text{sigmoid}(x))\)</span></li>
@@ -2150,19 +2150,19 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><span class="arithmatex">\(W\leftarrow W-\dfrac{\eta}{\sqrt{s}+\epsilon}\nabla L(W)\)</span><ul>
-<li><span class="arithmatex">\(\epsilon\)</span>：为了维持数值稳定性，一般为 <span class="arithmatex">\(10^{-6}\)</span> 或 <span class="arithmatex">\(10^{-7}\)</span> 之类小常数</li>
+<li><span class="arithmatex">\(\epsilon\)</span>：为了维持数值稳定性，一般为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(10^{-6}\)</span><span class="heti-spacing"> </span></span>或<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(10^{-7}\)</span><span class="heti-spacing"> </span></span>之类小常数</li>
 </ul>
 </li>
 </ul>
 <h4 id="adam">Adam<a class="headerlink" href="#adam" title="Permanent link">¶</a></h4>
 <p>对梯度的一阶矩估计（First Moment Estimation，即梯度的均值）和二阶矩估计（Second Moment Estimation，即梯度的未中心化的方差）进行综合考虑，计算出更新步长，效果更好</p>
 <ul>
-<li>迭代次数记为 <span class="arithmatex">\(i=1, \dots, n\)</span></li>
+<li>迭代次数记为<span><span class="heti-spacing"> </span><span class="arithmatex">\(i=1, \dots, n\)</span></span></li>
 <li><span class="arithmatex">\(v\leftarrow \beta_1v+(1-\beta_1)\nabla L(W)\)</span></li>
 <li><span class="arithmatex">\(s\leftarrow \beta_2s+(1-\beta_2)(\nabla L(W))^2\)</span></li>
 <li>Bias correction：<span class="arithmatex">\(v'=\dfrac{v}{1-\beta_1^i}, s'=\dfrac{s}{1-\beta_2^i}\)</span></li>
 <li><span class="arithmatex">\(W\leftarrow W-\eta\dfrac{v'}{\sqrt{s'}+\epsilon}\)</span></li>
-<li>一般情况下通常设 <span class="arithmatex">\(\beta_1=0.9, \beta_2=0.999, \eta=10^{-3}\)</span> 或 <span class="arithmatex">\(5\times 10^{-4}\)</span></li>
+<li>一般情况下通常设<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\beta_1=0.9, \beta_2=0.999, \eta=10^{-3}\)</span><span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span><span class="arithmatex">\(5\times 10^{-4}\)</span></span></li>
 </ul>
 <h2 id="_10">卷积神经网络<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>卷积神经网络（Convolutional Neural Network，CNN）是一类强大的、为处理图像数据而设计的神经网络</p>
@@ -2191,7 +2191,7 @@ var _hmt = _hmt || [];
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/ml/stride.png"><img alt="" src="/assets/images/hpc/hpc101/ml/stride.png"/></a></p>
 <p>多通道卷积（会降维）</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/ml/multichannel.png"><img alt="" src="/assets/images/hpc/hpc101/ml/multichannel.png"/></a></p>
-<p>多输出通道卷积（如图为 <span class="arithmatex">\(1\times 1\)</span> 卷积）</p>
+<p>多输出通道卷积（如图为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(1\times 1\)</span><span class="heti-spacing"> </span></span>卷积）</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/ml/multioutput.png"><img alt="" src="/assets/images/hpc/hpc101/ml/multioutput.png"/></a></p>
 <h3 id="_12">汇聚（池化）<a class="headerlink" href="#_12" title="Permanent link">¶</a></h3>
 <p>池化即<span><span class="heti-spacing"> </span>pooling</span>，与卷积层类似，只是不进行乘法操作，也不需要核，只是通过窗口划分区域，然后做加法<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>取最大值<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>取平均。例如最大汇聚层：</p>
@@ -2222,7 +2222,7 @@ var _hmt = _hmt || [];
 <p>使用了<span class="heti-skip"><span class="heti-spacing"> </span>Inception<span class="heti-spacing"> </span></span>块：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/ml/googlenet.png"><img alt="" src="/assets/images/hpc/hpc101/ml/googlenet.png"/></a></p>
 <h4 id="resnet">ResNet<a class="headerlink" href="#resnet" title="Permanent link">¶</a></h4>
-<p>即残差网络，使用了残差块，学习 <span class="arithmatex">\(f(x)-x\)</span> 来确保 <span class="arithmatex">\(\mathcal{F}_i\subset\mathcal{F}_{i+1}\)</span>，逐次收敛到<span class="heti-skip"><span class="heti-spacing"> </span>"<span class="heti-spacing"> </span></span>真实<span class="heti-skip"><span class="heti-spacing"> </span>"<span class="heti-spacing"> </span></span>函数 <span class="arithmatex">\(f^*\)</span></p>
+<p>即残差网络，使用了残差块，学习<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(x)-x\)</span><span class="heti-spacing"> </span></span>来确保<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathcal{F}_i\subset\mathcal{F}_{i+1}\)</span></span>，逐次收敛到<span class="heti-skip"><span class="heti-spacing"> </span>"<span class="heti-spacing"> </span></span>真实<span class="heti-skip"><span class="heti-spacing"> </span>"<span class="heti-spacing"> </span></span>函数<span><span class="heti-spacing"> </span><span class="arithmatex">\(f^*\)</span></span></p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/ml/resnet.png"><img alt="" src="/assets/images/hpc/hpc101/ml/resnet.png"/></a></p>
 <h3 id="_14">迁移学习<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>迁移学习（Transfer Learning）是指在原有数据集训练好参数后，更换数据集时只需要重新训练全连接部分</p>

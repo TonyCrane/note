@@ -1990,7 +1990,7 @@ var _hmt = _hmt || [];
 B2U_w(\overrightarrow{x}) = \sum_{i=0}^{w-1}x_i2^i
 \]</div>
 <p>可以知道<span class="heti-skip"><span class="heti-spacing"> </span>B2U<span class="heti-spacing"> </span></span>是一个双射</p>
-<p>同时也容易知道无符号整型可表示的最大值为 <span class="arithmatex">\(UMax_{w}=\displaystyle\sum_{i=0}^{w-1}2^i=2^w-1\)</span></p>
+<p>同时也容易知道无符号整型可表示的最大值为<span><span class="heti-spacing"> </span><span class="arithmatex">\(UMax_{w}=\displaystyle\sum_{i=0}^{w-1}2^i=2^w-1\)</span></span></p>
 <h3 id="_4">有符号整型补码表示<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>最常用的表示有符号整型的方法是补码（Two's-Complement）<br/>
 对于比特序列 <span class="arithmatex">\(\overrightarrow{x}=[x_{w-1}, x_{w-2}, \dots, x_0]\)</span>，将其视为补码转换为有符号整数：</p>
@@ -2000,8 +2000,8 @@ B2T_w(\overrightarrow{x}) = -x_{w-1}2^{w-1} + \sum_{i=0}^{w-2}x_i2^i
 <p>它的最高位（MSB）是符号位，如果是<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则表示是负数，<span>0<span class="heti-spacing"> </span></span>则是正数</p>
 <p>并且对于正数，它对应的比特序列就是其二进制<br/>
 而对于负数，则使用补码，即 <span class="arithmatex">\(-x = \sim x + 1 (x &gt; 0)\)</span></p>
-<p>从另一个角度来看，它实际上就是改变了<span class="heti-skip"><span class="heti-spacing"> </span>MSB<span class="heti-spacing"> </span></span>的权重，从 <span class="arithmatex">\(2^{w-1}\)</span> 改为了 <span class="arithmatex">\(-2^{w-1}\)</span></p>
-<p>同时也可以计算出补码可以表示的范围 <span class="arithmatex">\(TMin_w=-2^{w-1}\)</span>，<span class="arithmatex">\(TMax_w=2^{w-1}-1\)</span></p>
+<p>从另一个角度来看，它实际上就是改变了<span class="heti-skip"><span class="heti-spacing"> </span>MSB<span class="heti-spacing"> </span></span>的权重，从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(2^{w-1}\)</span><span class="heti-spacing"> </span></span>改为了<span><span class="heti-spacing"> </span><span class="arithmatex">\(-2^{w-1}\)</span></span></p>
+<p>同时也可以计算出补码可以表示的范围<span><span class="heti-spacing"> </span><span class="arithmatex">\(TMin_w=-2^{w-1}\)</span></span>，<span class="arithmatex">\(TMax_w=2^{w-1}-1\)</span></p>
 <h3 id="_5">有符号整型反码表示<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>反码（Ones' complement）也是表示有符号整型的一种方法，但是并不常用<br/>
 对于比特序列 <span class="arithmatex">\(\overrightarrow{x}=[x_{w-1}, x_{w-2}, \dots, x_0]\)</span>，将其视为反码转换为有符号整数：</p>
@@ -2010,7 +2010,7 @@ B2O_w(\overrightarrow{x}) = -x_{w-1}(2^{w-1}-1) + \sum_{i=0}^{w-2}x_i2^i
 \]</div>
 <p>相较于补码，它们在正数上是一样的<br/>
 但是对于负数，反码表示下是 <span class="arithmatex">\(-x = \sim x (x &gt; 0)\)</span></p>
-<p>在另一个角度，它的<span class="heti-skip"><span class="heti-spacing"> </span>MSB<span class="heti-spacing"> </span></span>的权重是 <span class="arithmatex">\(2^{w-1}-1\)</span></p>
+<p>在另一个角度，它的<span class="heti-skip"><span class="heti-spacing"> </span>MSB<span class="heti-spacing"> </span></span>的权重是<span><span class="heti-spacing"> </span><span class="arithmatex">\(2^{w-1}-1\)</span></span></p>
 <p>它的缺点是<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>有两种表示，即<span class="heti-skip"><span class="heti-spacing"> </span>+0 [00...0]<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>-0 [11...1]</span></p>
 <h3 id="_6">无符号与有符号转换<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>C<span class="heti-spacing"> </span></span>语言中强制转换有符号和无符号整型并不改变比特序列，而是改变读取的方式<br/>
@@ -2019,7 +2019,7 @@ B2O_w(\overrightarrow{x}) = -x_{w-1}(2^{w-1}-1) + \sum_{i=0}^{w-2}x_i2^i
 <div class="arithmatex">\[
 T2U_w(x) = B2U_w(T2B_w(x))
 \]</div>
-<p>并且可以发现原码和补码只差了<span class="heti-skip"><span class="heti-spacing"> </span>MSB<span class="heti-spacing"> </span></span>的权重从正到负，所以 <span class="arithmatex">\(T2U_w(x) = x + x_{w-1}2^w\)</span>，也就是：</p>
+<p>并且可以发现原码和补码只差了<span class="heti-skip"><span class="heti-spacing"> </span>MSB<span class="heti-spacing"> </span></span>的权重从正到负，所以<span><span class="heti-spacing"> </span><span class="arithmatex">\(T2U_w(x) = x + x_{w-1}2^w\)</span></span>，也就是：</p>
 <div class="arithmatex">\[
 T2U_w(x) = \begin{cases}x+2^w, &amp;x&lt;0\\x, &amp;x\geq 0\end{cases}
 \]</div>
@@ -2033,7 +2033,7 @@ U2T_w(x) = \begin{cases}x, &amp;x\leq TMax_w=2^{w-1}-1\\x-2^w, &amp;x &gt; TMax_
 \]</div>
 <h2 id="_7">整数运算<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="_8">无符号整型加法<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>对于两个无符号整型 <span class="arithmatex">\(x, y\in[0, 2^w)\)</span>，它们做加法后的结果在 <span class="arithmatex">\(w+1\)</span> 位下才能完全表示出来<br/>
+<p>对于两个无符号整型<span><span class="heti-spacing"> </span><span class="arithmatex">\(x, y\in[0, 2^w)\)</span></span>，它们做加法后的结果在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(w+1\)</span><span class="heti-spacing"> </span></span>位下才能完全表示出来<br/>
 但是结果一定还要表示在 <span class="arithmatex">\(w\)</span> 位下表示，这时就要对溢出部分截断，即直接去掉最高位</p>
 <div class="arithmatex">\[
 x+_w^\mathrm{u}y = (x+y)\bmod{2^w}
@@ -2055,8 +2055,8 @@ x + y - 2^w, &amp;2^w\leq x + y &lt; 2^{w + 1}\quad \text{Overflow}
 <h3 id="_10">补码表示中加法<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>使用补码表示有符号整型进行加法时，会遇到两种特殊情况：</p>
 <ul>
-<li>加法后的结果太大，超过 <span class="arithmatex">\(2^{w-1} - 1\)</span>，正溢出（Positive overflow）</li>
-<li>加法后的结果太小，小于 <span class="arithmatex">\(-2^{w-1}\)</span>，负溢出（Negative overflow）</li>
+<li>加法后的结果太大，超过<span><span class="heti-spacing"> </span><span class="arithmatex">\(2^{w-1} - 1\)</span></span>，正溢出（Positive overflow）</li>
+<li>加法后的结果太小，小于<span><span class="heti-spacing"> </span><span class="arithmatex">\(-2^{w-1}\)</span></span>，负溢出（Negative overflow）</li>
 </ul>
 <p>所以也需要对结果进行截断处理：</p>
 <div class="arithmatex">\[
@@ -2074,7 +2074,7 @@ x+_w^\mathrm{t}y=U2T_w(T2U_w(x)+_w^\mathrm{u}T2U_w(y))
 <p>同样，也是只考虑取负即可</p>
 <p>但是和原码不同，它本身就带正负，所以取负则可以直接进行（即取反加一）<br/>
 但有一个特殊，也就是最小的 <span class="arithmatex">\(-2^{w-1}\)</span>，负的它 <span class="arithmatex">\(2^{w-1}\)</span> 并不在补码的范围中</p>
-<p>而 <span class="arithmatex">\(TMin_w+_w^\mathrm{t}TMin_w=-2^{w-1}-2^{w-1}=-2^w\)</span>，截断后恰好为<span><span class="heti-spacing"> </span>0</span><br/>
+<p>而<span><span class="heti-spacing"> </span><span class="arithmatex">\(TMin_w+_w^\mathrm{t}TMin_w=-2^{w-1}-2^{w-1}=-2^w\)</span></span>，截断后恰好为<span><span class="heti-spacing"> </span>0</span><br/>
 所以 <span class="arithmatex">\(-TMin_w = TMin_w\)</span>，即：</p>
 <div class="arithmatex">\[
 -_w^\mathrm{t}x = \begin{cases}
@@ -2083,7 +2083,7 @@ x+_w^\mathrm{t}y=U2T_w(T2U_w(x)+_w^\mathrm{u}T2U_w(y))
 \end{cases}
 \]</div>
 <h3 id="_12">乘法<a class="headerlink" href="#_12" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>整型的乘法均是直接将原码<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>补码的二进制相乘，然后直接截断至 <span class="arithmatex">\(w\)</span> 位</p>
+<p>整型的乘法均是直接将原码<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>补码的二进制相乘，然后直接截断至<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(w\)</span><span class="heti-spacing"> </span></span>位</p>
 <div class="arithmatex">\[
 x*_w^\mathrm{t}y = U2T_w(x*_w^\mathrm{u}y) = U2T_w(x*y\bmod 2^w)
 \]</div>
@@ -2105,10 +2105,10 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 <div style="text-align: center">(x &lt; 0 ? (x + (1 &lt;&lt; k) - 1) : x) &gt;&gt; k</div>
 <h2 id="_14">浮点数表示法<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>前面的整型都是一种定点数（fixed point），即小数点的位置是固定的（固定在末尾），它的缺点是范围固定</p>
-<p>而浮点数（floating point）的小数点位置则不是固定的，它使用 <span class="arithmatex">\(x*2^y\)</span> 的形式来表示一个数<br/>
+<p>而浮点数（floating point）的小数点位置则不是固定的，它使用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x*2^y\)</span><span class="heti-spacing"> </span></span>的形式来表示一个数<br/>
 也因此可以表示很大或者很小的数</p>
 <p>常用的浮点数表示方法是由<span class="heti-skip"><span class="heti-spacing"> </span>IEEE 754<span class="heti-spacing"> </span></span>标准指定的</p>
-<p><span>IEEE<span class="heti-spacing"> </span></span>浮点数表示法都通过 <span class="arithmatex">\(V=(-1)^s\times M\times 2^E\)</span> 的形式来表示，其中：</p>
+<p><span>IEEE<span class="heti-spacing"> </span></span>浮点数表示法都通过<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(V=(-1)^s\times M\times 2^E\)</span><span class="heti-spacing"> </span></span>的形式来表示，其中：</p>
 <ul>
 <li><span class="arithmatex">\(s\)</span>：符号（sign），<span>1<span class="heti-spacing"> </span></span>则表示是负数，<span>0<span class="heti-spacing"> </span></span>则表示是正数</li>
 <li><span class="arithmatex">\(M\)</span>：尾数（mantissa）或称有效数字（significand）</li>
@@ -2116,9 +2116,9 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 </ul>
 <p>它们的存储方式是：</p>
 <ul>
-<li>最高位比特表示 <span class="arithmatex">\(s\)</span></li>
-<li>后接 <span class="arithmatex">\(k\)</span> 比特 <span class="arithmatex">\([e_{k-1}\cdots e_1e_0]\)</span> 指数部分（也称为阶码）编码了 <span class="arithmatex">\(E\)</span></li>
-<li>最后是 <span class="arithmatex">\(n\)</span> 个比特 <span class="arithmatex">\([f_{n-1}\cdots f_1f_0]\)</span> 分数部分，编码了 <span class="arithmatex">\(M\)</span></li>
+<li>最高位比特表示<span><span class="heti-spacing"> </span><span class="arithmatex">\(s\)</span></span></li>
+<li>后接<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>比特<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([e_{k-1}\cdots e_1e_0]\)</span><span class="heti-spacing"> </span></span>指数部分（也称为阶码）编码了<span><span class="heti-spacing"> </span><span class="arithmatex">\(E\)</span></span></li>
+<li>最后是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>个比特<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([f_{n-1}\cdots f_1f_0]\)</span><span class="heti-spacing"> </span></span>分数部分，编码了<span><span class="heti-spacing"> </span><span class="arithmatex">\(M\)</span></span></li>
 </ul>
 <p>并且有两种最常见的格式，即：</p>
 <ul>
@@ -2130,10 +2130,10 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 <p>这种形式下的阶码不全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>也不全为<span><span class="heti-spacing"> </span>1</span>，是最常见的形式<br/>
 这种形式下的 <span class="arithmatex">\(s\)</span> 直接表示正负，而 <span class="arithmatex">\(E\)</span>、<span class="arithmatex">\(M\)</span> 的规则：</p>
 <ul>
-<li><span class="arithmatex">\(E\)</span> 通过<strong>移码</strong>（biased）表示成<strong>阶码</strong> <span class="arithmatex">\([e_{k-1}\cdots e_1e_0]\)</span>，移位 <span class="arithmatex">\(Bias = 2^{k-1}-1\)</span><heti-adjacent class="heti-adjacent-half">，</heti-adjacent><span class="arithmatex">\(E = e - Bias\)</span>（其中 <span class="arithmatex">\(e\)</span> 为将阶码转为无符号整型的值），这可以使阶码部分范围从 <span class="arithmatex">\([1, 2^k-2]\)</span> 变为 <span class="arithmatex">\([-2^{k-1}+2, 2^{k-1}-1]\)</span></li>
-<li><span class="arithmatex">\(M = 1+f\)</span>，其中 <span class="arithmatex">\(f = 0.f_{n-1}\cdots f_1f_0\in[0, 1)\)</span>，因此 <span class="arithmatex">\(M=1.f_{n-1}\cdots f_1f_0\in[1, 2)\)</span></li>
+<li><span><span class="arithmatex">\(E\)</span><span class="heti-spacing"> </span></span>通过<strong>移码</strong>（biased）表示成<strong>阶码</strong><span><span class="heti-spacing"> </span><span class="arithmatex">\([e_{k-1}\cdots e_1e_0]\)</span></span>，移位<span><span class="heti-spacing"> </span><span class="arithmatex">\(Bias = 2^{k-1}-1\)</span></span>，<span class="arithmatex">\(E = e - Bias\)</span>（其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(e\)</span><span class="heti-spacing"> </span></span>为将阶码转为无符号整型的值），这可以使阶码部分范围从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([1, 2^k-2]\)</span><span class="heti-spacing"> </span></span>变为<span><span class="heti-spacing"> </span><span class="arithmatex">\([-2^{k-1}+2, 2^{k-1}-1]\)</span></span></li>
+<li><span class="arithmatex">\(M = 1+f\)</span>，其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(f = 0.f_{n-1}\cdots f_1f_0\in[0, 1)\)</span></span>，因此<span><span class="heti-spacing"> </span><span class="arithmatex">\(M=1.f_{n-1}\cdots f_1f_0\in[1, 2)\)</span></span></li>
 </ul>
-<p>计算后再通过 <span class="arithmatex">\(V = (-1)^s\times M\times 2^E\)</span> 即可计算出所表示的值</p>
+<p>计算后再通过<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(V = (-1)^s\times M\times 2^E\)</span><span class="heti-spacing"> </span></span>即可计算出所表示的值</p>
 <p>规约形式可以表示的所有数的间距是不一致的，且越接近<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>越密集</p>
 <p>在规约形式下可以表示的数的范围：</p>
 <ul>
@@ -2155,9 +2155,9 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 <li><span class="arithmatex">\(E = 1 - Bias = -2^{k-1} + 2\)</span></li>
 <li><span class="arithmatex">\(M = f = 0.f_{n-1}\cdots f_1f_0\)</span></li>
 </ul>
-<p>而在浮点数表示法下，<span>0<span class="heti-spacing"> </span></span>有两种，即 <span class="arithmatex">\(s=0\)</span> 且后面全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>+0.0</span>，以及 <span class="arithmatex">\(s=1\)</span> 且后面全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>-0.0</span><br/>
+<p>而在浮点数表示法下，<span>0<span class="heti-spacing"> </span></span>有两种，即<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s=0\)</span><span class="heti-spacing"> </span></span>且后面全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>+0.0</span>，以及<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s=1\)</span><span class="heti-spacing"> </span></span>且后面全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>-0.0</span><br/>
 它们有时视为相等，但也有时会视为不相等</p>
-<p>非规约形式表示的所有数的间距是一致的，它们的间距也就是用非规约形式可表示的最小正数 <span class="arithmatex">\(2^{-n}\times 2^{-2^{k-1}+2}\)</span></p>
+<p>非规约形式表示的所有数的间距是一致的，它们的间距也就是用非规约形式可表示的最小正数<span><span class="heti-spacing"> </span><span class="arithmatex">\(2^{-n}\times 2^{-2^{k-1}+2}\)</span></span></p>
 <p>非规约形式可表示的数的范围：</p>
 <ul>
 <li>单精度<ul>
@@ -2172,11 +2172,11 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 </li>
 </ul>
 <h3 id="_17">特殊值<a class="headerlink" href="#_17" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>浮点数也可以用来表示一些特殊值，即 <span class="arithmatex">\(+\infty\)</span>、<span class="arithmatex">\(-\infty\)</span> 以及<span><span class="heti-spacing"> </span>NaN</span>（not a number）<br/>
+<p>浮点数也可以用来表示一些特殊值，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(+\infty\)</span></span>、<span><span class="arithmatex">\(-\infty\)</span><span class="heti-spacing"> </span></span>以及<span><span class="heti-spacing"> </span>NaN</span>（not a number）<br/>
 在这种情况下阶码全为 1，具体三种情况：</p>
 <ul>
-<li>分数部分全为<span><span class="heti-spacing"> </span>0</span>，且 <span class="arithmatex">\(s=0\)</span>，表示 <span class="arithmatex">\(+\infty\)</span></li>
-<li>分数部分全为<span><span class="heti-spacing"> </span>0</span>，且 <span class="arithmatex">\(s=1\)</span>，表示 <span class="arithmatex">\(-\infty\)</span></li>
+<li>分数部分全为<span><span class="heti-spacing"> </span>0</span>，且<span><span class="heti-spacing"> </span><span class="arithmatex">\(s=0\)</span></span>，表示<span><span class="heti-spacing"> </span><span class="arithmatex">\(+\infty\)</span></span></li>
+<li>分数部分全为<span><span class="heti-spacing"> </span>0</span>，且<span><span class="heti-spacing"> </span><span class="arithmatex">\(s=1\)</span></span>，表示<span><span class="heti-spacing"> </span><span class="arithmatex">\(-\infty\)</span></span></li>
 <li>分数部分不全为<span><span class="heti-spacing"> </span>0</span>，表示<span><span class="heti-spacing"> </span>NaN</span></li>
 </ul>
 <h3 id="_18">舍入<a class="headerlink" href="#_18" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>

@@ -1963,24 +1963,24 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <ul>
-<li>进行 <span class="arithmatex">\(n-1\)</span> 趟（pass）排序</li>
-<li>第 <span class="arithmatex">\(P\)</span> 趟时保证从位置<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>到 <span class="arithmatex">\(P-1\)</span> 上的元素以及排好序，然后将第 <span class="arithmatex">\(P\)</span> 个元素插入到前面的有序序列的正确位置处</li>
-<li>最坏（<span>A<span class="heti-spacing"> </span></span>是逆序的）复杂度 <span class="arithmatex">\(O(N^2)\)</span></li>
-<li>最好（<span>A<span class="heti-spacing"> </span></span>是有序的）复杂度 <span class="arithmatex">\(O(N)\)</span></li>
+<li>进行<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n-1\)</span><span class="heti-spacing"> </span></span>趟（pass）排序</li>
+<li>第<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>趟时保证从位置<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P-1\)</span><span class="heti-spacing"> </span></span>上的元素以及排好序，然后将第<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>个元素插入到前面的有序序列的正确位置处</li>
+<li>最坏（<span>A<span class="heti-spacing"> </span></span>是逆序的）复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N^2)\)</span></span></li>
+<li>最好（<span>A<span class="heti-spacing"> </span></span>是有序的）复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N)\)</span></span></li>
 </ul>
 <h3 id="_4">希尔排序<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
-<li>希尔排序（shell sort）使用一个增量序列 <span class="arithmatex">\(h_1&lt;h_2&lt;\cdots&lt;h_t\)</span>，其中 <span class="arithmatex">\(h_i\)</span> 为整数，且 <span class="arithmatex">\(h_i=1\)</span></li>
-<li>定义<span class="arithmatex">\(h_k\)</span><span class="heti-skip"><span class="heti-spacing"> </span>-sort<span class="heti-spacing"> </span></span>为将原数组隔 <span class="arithmatex">\(h_k-1\)</span> 个元素分为一组，每组内进行排序</li>
-<li><span class="arithmatex">\(k = t, t-1, \cdots, 1\)</span> 依次进行<span class="arithmatex">\(h_k\)</span><span><span class="heti-spacing"> </span>-sort</span>，最终得到一个有序序列<ul>
-<li><span class="arithmatex">\(h_k\)</span><span>-sorted<span class="heti-spacing"> </span></span>的序列在<span class="arithmatex">\(h_{k-1}\)</span><span class="heti-skip"><span class="heti-spacing"> </span>-sorted<span class="heti-spacing"> </span></span>后仍保持<span class="arithmatex">\(h_k\)</span><span class="heti-skip"><span class="heti-spacing"> </span>-sorted<span class="heti-spacing"> </span></span>的性质</li>
+<li>希尔排序（shell sort）使用一个增量序列<span><span class="heti-spacing"> </span><span class="arithmatex">\(h_1&lt;h_2&lt;\cdots&lt;h_t\)</span></span>，其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h_i\)</span><span class="heti-spacing"> </span></span>为整数，且<span><span class="heti-spacing"> </span><span class="arithmatex">\(h_i=1\)</span></span></li>
+<li>定义<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h_k\)</span>-sort<span class="heti-spacing"> </span></span>为将原数组隔<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h_k-1\)</span><span class="heti-spacing"> </span></span>个元素分为一组，每组内进行排序</li>
+<li><span><span class="arithmatex">\(k = t, t-1, \cdots, 1\)</span><span class="heti-spacing"> </span></span>依次进行<span><span class="heti-spacing"> </span><span class="arithmatex">\(h_k\)</span>-sort</span>，最终得到一个有序序列<ul>
+<li><span><span class="arithmatex">\(h_k\)</span>-sorted<span class="heti-spacing"> </span></span>的序列在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h_{k-1}\)</span>-sorted<span class="heti-spacing"> </span></span>后仍保持<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(h_k\)</span>-sorted<span class="heti-spacing"> </span></span>的性质</li>
 </ul>
 </li>
 <li>希尔排序的复杂度和增量序列的选取有关</li>
 <li>
 <p>希尔增量序列：<span class="arithmatex">\(h_t=\lfloor N/2\rfloor, h_k = \lfloor h_{k+1}/2\rfloor\)</span></p>
 <ul>
-<li>最坏复杂度 <span class="arithmatex">\(O(N^2)\)</span>（即只在<span class="heti-skip"><span class="heti-spacing"> </span>1-sort<span class="heti-spacing"> </span></span>时进行了排序）</li>
+<li>最坏复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N^2)\)</span></span>（即只在<span class="heti-skip"><span class="heti-spacing"> </span>1-sort<span class="heti-spacing"> </span></span>时进行了排序）</li>
 </ul>
 <details class="success">
 <summary>代码</summary>
@@ -2005,16 +2005,16 @@ var _hmt = _hmt || [];
 <li>
 <p><span>Hibbard<span class="heti-spacing"> </span></span>增量序列：<span class="arithmatex">\(h_k = 2^k-1\)</span></p>
 <ul>
-<li>最坏复杂度 <span class="arithmatex">\(O(N^{3/2})\)</span></li>
-<li>平均复杂度 <span class="arithmatex">\(O(N^{5/4})\)</span></li>
+<li>最坏复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N^{3/2})\)</span></span></li>
+<li>平均复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N^{5/4})\)</span></span></li>
 </ul>
 </li>
 </ul>
 <h3 id="_5">堆排序<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>使用堆结构来进行排序</li>
-<li>算法一：将数组中的元素依次插入到堆中（可以是 <span class="arithmatex">\(O(N)\)</span> 线性建堆），然后依次从堆中取出最小元素<ul>
-<li>复杂度 <span class="arithmatex">\(O(N\log N)\)</span></li>
+<li>算法一：将数组中的元素依次插入到堆中（可以是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(O(N)\)</span><span class="heti-spacing"> </span></span>线性建堆），然后依次从堆中取出最小元素<ul>
+<li>复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N\log N)\)</span></span></li>
 <li>但是空间消耗翻倍了</li>
 </ul>
 </li>
@@ -2031,13 +2031,13 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
 <a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div></li>
-<li>平均比较次数为 <span class="arithmatex">\(2N\log N - O(N\log\log N)\)</span></li>
+<li>平均比较次数为<span><span class="heti-spacing"> </span><span class="arithmatex">\(2N\log N - O(N\log\log N)\)</span></span></li>
 </ul>
 </li>
 </ul>
 <h3 id="_6">归并排序<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
-<li>关键的操作是合并两个有序列表变成一个有序列表，可以在 <span class="arithmatex">\(O(n)\)</span> 时间内完成</li>
+<li>关键的操作是合并两个有序列表变成一个有序列表，可以在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(O(n)\)</span><span class="heti-spacing"> </span></span>时间内完成</li>
 <li>归并操作则可以递归进行，分而治之，依次合并</li>
 <li>复杂度：</li>
 </ul>
@@ -2094,7 +2094,7 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 <li>已知的实际运行最快的排序算法</li>
 <li>选择一个基准元素（枢轴<span><span class="heti-spacing"> </span>pivot</span>），将数组分成两个子数组，左边的元素都小于等于基准元素，右边的元素都大于等于基准元素，然后对两个子数组进行快排、合并</li>
 <li>选取<span><span class="heti-spacing"> </span>pivot</span><ul>
-<li>错误方法：pivot = arr[0]（对于排好序的数组仍会消耗 <span class="arithmatex">\(O(N^2)\)</span> 的时间）</li>
+<li>错误方法：pivot = arr[0]（对于排好序的数组仍会消耗<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(O(N^2)\)</span><span class="heti-spacing"> </span></span>的时间）</li>
 <li>安全方法：pivot = random element in arr<ul>
 <li>但随机数生成也有开销</li>
 </ul>
@@ -2104,20 +2104,20 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 </li>
 <li><del>划分策略</del>（看不懂<span class="heti-skip"><span class="heti-spacing"> </span>PPT<span class="heti-spacing"> </span></span>在干什么）</li>
 <li>小数组<ul>
-<li>对于小的 <span class="arithmatex">\(N\)</span>（<span class="arithmatex">\(N\leq 20\)</span>），快速排序慢于插入排序</li>
-<li>可以在递归到 <span class="arithmatex">\(N\)</span> 较小的情况下改为插入排序</li>
+<li>对于小的<span><span class="heti-spacing"> </span><span class="arithmatex">\(N\)</span></span>（<span class="arithmatex">\(N\leq 20\)</span>），快速排序慢于插入排序</li>
+<li>可以在递归到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N\)</span><span class="heti-spacing"> </span></span>较小的情况下改为插入排序</li>
 </ul>
 </li>
-<li>最坏复杂度 <span class="arithmatex">\(O(N^2)\)</span></li>
-<li>最优复杂度 <span class="arithmatex">\(O(N\log N)\)</span></li>
-<li>平均复杂度 <span class="arithmatex">\(O(N\log N)\)</span></li>
+<li>最坏复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N^2)\)</span></span></li>
+<li>最优复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N\log N)\)</span></span></li>
+<li>平均复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N\log N)\)</span></span></li>
 </ul>
 <h3 id="_8">桶排序<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
-<li>如果输入数据都小于 <span class="arithmatex">\(M\)</span>，则可以用一个大小为 <span class="arithmatex">\(M\)</span> 的数组来记录某个值出现了多少次，这个数组称为桶（bucket）</li>
+<li>如果输入数据都小于<span><span class="heti-spacing"> </span><span class="arithmatex">\(M\)</span></span>，则可以用一个大小为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(M\)</span><span class="heti-spacing"> </span></span>的数组来记录某个值出现了多少次，这个数组称为桶（bucket）</li>
 <li>桶初始化为<span><span class="heti-spacing"> </span>0</span>，遍历输入数据，将每个数据对应的桶加<span><span class="heti-spacing"> </span>1</span></li>
 <li>最后遍历桶中的所有元素，对于<span><span class="heti-spacing"> </span>bucket[x] = y</span>，将<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>输出<span class="heti-skip"><span class="heti-spacing"> </span>y<span class="heti-spacing"> </span></span>次</li>
-<li>时间复杂度 <span class="arithmatex">\(O(N+M)\)</span></li>
+<li>时间复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N+M)\)</span></span></li>
 </ul>
 <h3 id="_9">基数排序<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
@@ -2138,7 +2138,7 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 <li>完成排序</li>
 </ul>
 </li>
-<li>时间复杂度 <span class="arithmatex">\(O(P(N+B))\)</span>，其中 <span class="arithmatex">\(P\)</span> 为轮数，<span class="arithmatex">\(N\)</span> 为元素个数，<span class="arithmatex">\(B\)</span> 为桶个数</li>
+<li>时间复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(P(N+B))\)</span></span>，其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(P\)</span><span class="heti-spacing"> </span></span>为轮数，<span><span class="arithmatex">\(N\)</span><span class="heti-spacing"> </span></span>为元素个数，<span><span class="arithmatex">\(B\)</span><span class="heti-spacing"> </span></span>为桶个数</li>
 </ul>
 <h3 id="_10">稳定性<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
@@ -2163,15 +2163,15 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 </ul>
 </li>
 <li>通常用一个数组来实现，也可以有多个槽（slot），即多个关键字对应同一个位置时，将不同关键字存在同一个位置的不同槽中</li>
-<li>对于标识符 <span class="arithmatex">\(x\)</span>，定义一个哈希函数 <span class="arithmatex">\(f(x)\)</span> 表示 <span class="arithmatex">\(x\)</span> 在哈希表<span class="heti-skip"><span class="heti-spacing"> </span>ht[]<span class="heti-spacing"> </span></span>中的位置（索引）</li>
-<li>设哈希表<span class="heti-skip"><span class="heti-spacing"> </span>ht<span class="heti-spacing"> </span></span>的大小为 <span class="arithmatex">\(b\)</span>（即 <span class="arithmatex">\(f(x)\)</span> 值域为 <span class="arithmatex">\([0, b-1]\)</span>），最多有 <span class="arithmatex">\(s\)</span> 个槽，则定义以下值：<ul>
-<li><span class="arithmatex">\(T\)</span> 表示 <span class="arithmatex">\(x\)</span> 可能的不同值个数</li>
-<li><span class="arithmatex">\(n\)</span> 表示<span class="heti-skip"><span class="heti-spacing"> </span>ht<span class="heti-spacing"> </span></span>中所有不同标识符的个数</li>
-<li>标识符密度定义为 <span class="arithmatex">\(n/T\)</span></li>
-<li>装载密度定义为 <span class="arithmatex">\(\lambda = n/(sb)\)</span></li>
+<li>对于标识符<span><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span></span>，定义一个哈希函数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(x)\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>在哈希表<span class="heti-skip"><span class="heti-spacing"> </span>ht[]<span class="heti-spacing"> </span></span>中的位置（索引）</li>
+<li>设哈希表<span class="heti-skip"><span class="heti-spacing"> </span>ht<span class="heti-spacing"> </span></span>的大小为<span><span class="heti-spacing"> </span><span class="arithmatex">\(b\)</span></span>（即<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(x)\)</span><span class="heti-spacing"> </span></span>值域为<span><span class="heti-spacing"> </span><span class="arithmatex">\([0, b-1]\)</span></span>），最多有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s\)</span><span class="heti-spacing"> </span></span>个槽，则定义以下值：<ul>
+<li><span><span class="arithmatex">\(T\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>可能的不同值个数</li>
+<li><span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span>ht<span class="heti-spacing"> </span></span>中所有不同标识符的个数</li>
+<li>标识符密度定义为<span><span class="heti-spacing"> </span><span class="arithmatex">\(n/T\)</span></span></li>
+<li>装载密度定义为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\lambda = n/(sb)\)</span></span></li>
 </ul>
 </li>
-<li>当存在 <span class="arithmatex">\(i_1 \neq i_2\)</span> 但 <span class="arithmatex">\(f(i_1) = f(i_2)\)</span> 的情况，则称为发生了碰撞（collision）</li>
+<li>当存在<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(i_1 \neq i_2\)</span><span class="heti-spacing"> </span></span>但<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(i_1) = f(i_2)\)</span><span class="heti-spacing"> </span></span>的情况，则称为发生了碰撞（collision）</li>
 <li>当将一个新的标识符映射到一个满的桶时，则称为发生了溢出（overflow）<ul>
 <li>当<span class="heti-skip"><span class="heti-spacing"> </span>s = 1<span class="heti-spacing"> </span></span>时，碰撞和溢出将同时发生</li>
 </ul>
@@ -2180,8 +2180,8 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 <h3 id="_13">哈希函数<a class="headerlink" href="#_13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>哈希函数应该易于计算，并且减少碰撞的可能性</li>
-<li>哈希函数应该是<span class="heti-skip"><span class="heti-spacing"> </span>unbiased<span class="heti-spacing"> </span></span>的，即 <span class="arithmatex">\(P(f(x) = i) = 1/b\)</span>，这种函数称为均匀哈希函数（uniform hash function）</li>
-<li>对于整数的哈希，例如 <span class="arithmatex">\(f(x) = x \bmod \mathrm{tableSize}\)</span>，其中<span class="heti-skip"><span class="heti-spacing"> </span>tableSize<span class="heti-spacing"> </span></span>最好选择一个质数，这样对于随机输入，关键字的分布更均匀</li>
+<li>哈希函数应该是<span class="heti-skip"><span class="heti-spacing"> </span>unbiased<span class="heti-spacing"> </span></span>的，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(P(f(x) = i) = 1/b\)</span></span>，这种函数称为均匀哈希函数（uniform hash function）</li>
+<li>对于整数的哈希，例如<span><span class="heti-spacing"> </span><span class="arithmatex">\(f(x) = x \bmod \mathrm{tableSize}\)</span></span>，其中<span class="heti-skip"><span class="heti-spacing"> </span>tableSize<span class="heti-spacing"> </span></span>最好选择一个质数，这样对于随机输入，关键字的分布更均匀</li>
 </ul>
 <h3 id="_14">分离链接<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
@@ -2251,11 +2251,11 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 <ul>
 <li>开放地址（open addressing）是另一种解决冲突的方法</li>
 <li>当有冲突发生时，尝试选择其它单元，直到找到空的为止</li>
-<li>即有多个哈希函数 <span class="arithmatex">\(h_0(x), h_1(x), \cdots\)</span>，其中 <span class="arithmatex">\(h_i(x) = (\mathrm{hash}(x)+f(i))\bmod \mathrm{tableSize}\)</span><ul>
-<li>其中 <span class="arithmatex">\(f(i)\)</span> 为增量函数，有多种选取的方式</li>
+<li>即有多个哈希函数<span><span class="heti-spacing"> </span><span class="arithmatex">\(h_0(x), h_1(x), \cdots\)</span></span>，其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(h_i(x) = (\mathrm{hash}(x)+f(i))\bmod \mathrm{tableSize}\)</span></span><ul>
+<li>其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(i)\)</span><span class="heti-spacing"> </span></span>为增量函数，有多种选取的方式</li>
 </ul>
 </li>
-<li>一般来说 <span class="arithmatex">\(\lambda &lt; 0.5\)</span></li>
+<li>一般来说<span><span class="heti-spacing"> </span><span class="arithmatex">\(\lambda &lt; 0.5\)</span></span></li>
 </ul>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">insert</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">key</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="n">index</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">hash</span><span class="p">(</span><span class="n">key</span><span class="p">);</span><span class="w"></span>
@@ -2271,17 +2271,17 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 </code></pre></div>
 <h4 id="_16">线性探测<a class="headerlink" href="#_16" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <ul>
-<li>即增量函数的选择为 <span class="arithmatex">\(f(i) = i\)</span></li>
+<li>即增量函数的选择为<span><span class="heti-spacing"> </span><span class="arithmatex">\(f(i) = i\)</span></span></li>
 <li>即冲突了就往后一个一个找，直到找到空的为止</li>
 <li>会导致聚集（clustering），即一旦发生了冲突，那么后面的元素都会聚集在一起，搜索次数会变得非常大<ul>
-<li>使用线性探测的探测次数对于插入和不成功查找来说约为 <span class="arithmatex">\(\dfrac{1}{2}\left(1+\dfrac{1}{(1-\lambda)^2}\right)\)</span></li>
-<li>对于成功的查找来说则需要 <span class="arithmatex">\(\dfrac{1}{2}\left(1+\dfrac{1}{1-\lambda}\right)\)</span> 次</li>
+<li>使用线性探测的探测次数对于插入和不成功查找来说约为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\dfrac{1}{2}\left(1+\dfrac{1}{(1-\lambda)^2}\right)\)</span></span></li>
+<li>对于成功的查找来说则需要<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\dfrac{1}{2}\left(1+\dfrac{1}{1-\lambda}\right)\)</span><span class="heti-spacing"> </span></span>次</li>
 </ul>
 </li>
 </ul>
 <h4 id="_17">二次探测<a class="headerlink" href="#_17" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <ul>
-<li>即 <span class="arithmatex">\(f(i) = i^2\)</span></li>
+<li>即<span><span class="heti-spacing"> </span><span class="arithmatex">\(f(i) = i^2\)</span></span></li>
 <li>如果使用二次探测，且表大小为质数时，那么当表至少有一半是空的时，总能插入一个新的元素</li>
 <li>查找<ul>
 <li><span class="arithmatex">\(f(i) = f(i-1) + i^2 - (i-1)^2 = f(i-1) + 2i - 1\)</span>
@@ -2310,8 +2310,8 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 </ul>
 <h4 id="_18">双重哈希<a class="headerlink" href="#_18" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <ul>
-<li>即 <span class="arithmatex">\(f(i) = i * \mathrm{hash}_2(x)\)</span></li>
-<li>一般选择 <span class="arithmatex">\(\mathrm{hash}_2(x) = R - (x\bmod R)\)</span>，其中 <span class="arithmatex">\(R\)</span> 为小于表大小的质数</li>
+<li>即<span><span class="heti-spacing"> </span><span class="arithmatex">\(f(i) = i * \mathrm{hash}_2(x)\)</span></span></li>
+<li>一般选择<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathrm{hash}_2(x) = R - (x\bmod R)\)</span></span>，其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(R\)</span><span class="heti-spacing"> </span></span>为小于表大小的质数</li>
 <li>如果双重哈希正确实现了，那么预期的探测次数和随机的碰撞解决策略几乎相同（？听不懂）</li>
 <li>二次探测不需要使用第二个哈希函数，所以相比之下二次探测更简单快速</li>
 </ul>
@@ -2324,7 +2324,7 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 <li>利用新的哈希函数将元素映射到新的哈希值，并插入</li>
 </ul>
 </li>
-<li>如果有原来的哈希表有 <span class="arithmatex">\(N\)</span> 个元素，则再哈希的时间复杂度为 <span class="arithmatex">\(O(N)\)</span></li>
+<li>如果有原来的哈希表有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N\)</span><span class="heti-spacing"> </span></span>个元素，则再哈希的时间复杂度为<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N)\)</span></span></li>
 <li>什么时候进行再哈希<ul>
 <li>表填满一半了</li>
 <li>插入失败</li>

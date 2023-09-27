@@ -2486,8 +2486,8 @@ var _hmt = _hmt || [];
 <p>纠错字（error correction codewords）可以纠正两种错误，一种是比如无法扫描或无法解码的已知位置的错误字（erasures），一种是未知位置的错误字（errors），一个<span class="heti-skip"><span class="heti-spacing"> </span>erasures<span class="heti-spacing"> </span></span>可以由一个纠错字纠错，而一个<span class="heti-skip"><span class="heti-spacing"> </span>errors<span class="heti-spacing"> </span></span>需要两个纠错字来纠错</p>
 <p>可以纠错的<span class="heti-skip"><span class="heti-spacing"> </span>erasures<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>errors<span class="heti-spacing"> </span></span>的数量满足：</p>
 <div class="arithmatex">\[e+2t\leq d-p\]</div>
-<p>其中 <span class="arithmatex">\(e\)</span> 是<span class="heti-skip"><span class="heti-spacing"> </span>erasures<span class="heti-spacing"> </span></span>的数量，<span class="arithmatex">\(t\)</span> 是<span class="heti-skip"><span class="heti-spacing"> </span>errors<span class="heti-spacing"> </span></span>的数量，<span class="arithmatex">\(d\)</span> 是纠错字的数量，<span class="arithmatex">\(p\)</span> 是被错误解析的保护字数量</p>
-<p>其中 <span class="arithmatex">\(p\)</span> 由版本决定：</p>
+<p>其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(e\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>erasures<span class="heti-spacing"> </span></span>的数量，<span><span class="arithmatex">\(t\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>errors<span class="heti-spacing"> </span></span>的数量，<span><span class="arithmatex">\(d\)</span><span class="heti-spacing"> </span></span>是纠错字的数量，<span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>是被错误解析的保护字数量</p>
+<p>其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(p\)</span><span class="heti-spacing"> </span></span>由版本决定：</p>
 <ul>
 <li><span class="arithmatex">\(p=3\)</span>：版本<span><span class="heti-spacing"> </span>1-L</span></li>
 <li><span class="arithmatex">\(p=2\)</span>：版本<span><span class="heti-spacing"> </span>1-M</span>、2-L</li>
@@ -2500,18 +2500,18 @@ var _hmt = _hmt || [];
 <p>具体不同版本的分块块数和每块中数量安排以及纠错容量都在文档中<span><span class="heti-spacing"> </span>P38-44</span>（<span>pdf<span class="heti-spacing"> </span></span>中<span><span class="heti-spacing"> </span>P46-52</span>）的大表格<span class="heti-skip"><span class="heti-spacing"> </span>Table 9<span class="heti-spacing"> </span></span>中</p>
 <h3 id="752">生成纠错码（7.5.2）<a class="headerlink" href="#752" title="Permanent link">¶</a></h3>
 <h4 id="_3">伽罗瓦域<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>生成纠错码之前要先将所有数据字转换成一个多项式，使其限制于伽罗瓦域 <span class="arithmatex">\(GF(2^3)\bmod 100011101\)</span> 中，而且后续的四则运算也都是该伽罗瓦域中的运算</p>
+<p>生成纠错码之前要先将所有数据字转换成一个多项式，使其限制于伽罗瓦域<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(GF(2^3)\bmod 100011101\)</span><span class="heti-spacing"> </span></span>中，而且后续的四则运算也都是该伽罗瓦域中的运算</p>
 <p>具体伽罗瓦域的生成原理可以看：<a href="https://www.codenong.com/cs105738710/">https://www.codenong.com/cs105738710/</a></p>
-<p>简单来说就是多项式的加减法都是异或，乘除法要每一个比特模<span><span class="heti-spacing"> </span>2</span>，每一个字节模<span><span class="heti-spacing"> </span>100011101</span>（即该伽罗瓦域中的本原多项式 <span class="arithmatex">\(x^8+x^4+x^3+x^2+1\)</span>）</p>
+<p>简单来说就是多项式的加减法都是异或，乘除法要每一个比特模<span><span class="heti-spacing"> </span>2</span>，每一个字节模<span><span class="heti-spacing"> </span>100011101</span>（即该伽罗瓦域中的本原多项式<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^8+x^4+x^3+x^2+1\)</span></span>）</p>
 <p>具体多项式<span class="heti-skip"><span class="heti-spacing"> </span>mod<span class="heti-spacing"> </span></span>运算的方法可以看：<a href="https://blog.csdn.net/yaongtime/article/details/17200401">https://blog.csdn.net/yaongtime/article/details/17200401</a></p>
 <p>简单来说就是多项式的长除法取模，而且注意这里的加减都是伽罗瓦域中的加减，即异或</p>
 <h4 id="annex-a">生成多项式（Annex A）<a class="headerlink" href="#annex-a" title="Permanent link">¶</a></h4>
 <p>纠错码生成多项式的一般表达形式是：</p>
 <div class="arithmatex">\[g(x)=(x-\alpha^0)(x-\alpha^1)\cdots(x-\alpha^{n-1})\]</div>
-<p>其中 <span class="arithmatex">\(n\)</span> 为纠错码字的个数，其中 <span class="arithmatex">\(\alpha=2\)</span>， <span class="arithmatex">\(\alpha^k\)</span> 的是在伽罗瓦域下的运算，即：</p>
+<p>其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>为纠错码字的个数，其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(\alpha=2\)</span></span>， <span><span class="arithmatex">\(\alpha^k\)</span><span class="heti-spacing"> </span></span>的是在伽罗瓦域下的运算，即：</p>
 <p><span class="arithmatex">\(\alpha^0 = 1;\ \alpha^1=2;\ \alpha^2=4;\ \cdots;\ \alpha^7=128\)</span></p>
 <p><span class="arithmatex">\(\alpha^8=256\bmod 285=256\oplus 285=29;\ \alpha^9=29\times2=58;\ \cdots\)</span></p>
-<p>具体计算 <span class="arithmatex">\(\alpha^k\)</span> 的代码：
+<p>具体计算<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\alpha^k\)</span><span class="heti-spacing"> </span></span>的代码：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">def</span> <span class="nf">alpha</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>    <span class="n">res</span> <span class="o">=</span> <span class="mi">1</span>
 <a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>    <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">):</span>
@@ -2520,7 +2520,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>            <span class="n">res</span> <span class="o">^=</span> <span class="mi">285</span>
 <a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>    <span class="k">return</span> <span class="n">res</span>
 </code></pre></div>
-<p>文档附录<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>中已经展开了所有可能 <span class="arithmatex">\(n\)</span> 值下的<span class="heti-skip"><span class="heti-spacing"> </span>36<span class="heti-spacing"> </span></span>个生成多项式</p>
+<p>文档附录<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>中已经展开了所有可能<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>值下的<span class="heti-skip"><span class="heti-spacing"> </span>36<span class="heti-spacing"> </span></span>个生成多项式</p>
 <h4 id="_4">生成纠错码<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>文档里给了一个感觉比较晦涩难懂的图来展示生成纠错码的过程：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/ctf/qrcode/ecgen.png"><img alt="" src="/assets/images/ctf/qrcode/ecgen.png"/></a></p>
@@ -2530,12 +2530,12 @@ var _hmt = _hmt || [];
 <p>根据前面所说，比特流应该是： <code>0001 0000001000 0001111011 0111001000 1001110 0000</code></p>
 <p>补成<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>的倍数长度： <code>00010000 00100000 01111011 01110010 00100111 00000000</code></p>
 <p>添加<span><span class="heti-spacing"> </span>padding bits</span>（补到<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>个字节）： <code>00010000 00100000 01111011 01110010 00100111 00000000 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100 00010001 11101100</code></p>
-<p>写成多项式形式，次数是<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>次，整体乘 <span class="arithmatex">\(x^7\)</span>：</p>
+<p>写成多项式形式，次数是<span class="heti-skip"><span class="heti-spacing"> </span>19<span class="heti-spacing"> </span></span>次，整体乘<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^7\)</span></span>：</p>
 <div class="arithmatex">\[16x^{25}+32x^{24}+123x^{23}+114x^{22}+39x^{21}+236x^{19}+\\\\17x^{18}+236x^{17}+17x^{16}+236x^{15}+17x^{14}+236x^{13}+\\\\17x^{12}+236x^{11}+17x^{10}+236x^{9}+17x^{8}+236x^{7}\]</div>
-<p>再查附录<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>得到次数为<span class="heti-skip"><span class="heti-spacing"> </span>7<span class="heti-spacing"> </span></span>的生成多项式，并整体乘 <span class="arithmatex">\(x^{18}\)</span>：</p>
+<p>再查附录<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>得到次数为<span class="heti-skip"><span class="heti-spacing"> </span>7<span class="heti-spacing"> </span></span>的生成多项式，并整体乘<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^{18}\)</span></span>：</p>
 <div class="arithmatex">\[x^{25}+\alpha^{87}x^{24}+\alpha^{229}x^{23}+\alpha^{146}x^{22}+\alpha^{149}x^{21}+\\\\\alpha^{238}x^{20}+\alpha^{102}x^{19}+\alpha^{21}x^{18}\]</div>
 <p>然后把第一个多项式除第二个多项式取余数</p>
-<p>可以这样计算，把第二个多项式整体乘<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>即 <span class="arithmatex">\(\alpha^4\)</span>：</p>
+<p>可以这样计算，把第二个多项式整体乘<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>即<span><span class="heti-spacing"> </span><span class="arithmatex">\(\alpha^4\)</span></span>：</p>
 <div class="arithmatex">\[\alpha^4x^{25}+\alpha^{91}x^{24}+\alpha^{233}x^{23}+\alpha^{150}x^{22}+\alpha^{153}x^{21}+\\\\\alpha^{242}x^{20}+\alpha^{106}x^{19}+\alpha^{25}x^{18}\]</div>
 <p>计算出系数的值：</p>
 <div class="arithmatex">\[16x^{25}+163x^{24}+243x^{23}+85x^{22}+146x^{21}+\\\\176x^{20}+52x^{19}+3x^{18}\]</div>
@@ -2564,7 +2564,7 @@ var _hmt = _hmt || [];
 <p>而且这样也要保证最短的数据块在最前面（已经由<span class="heti-skip"><span class="heti-spacing"> </span>Table 9<span class="heti-spacing"> </span></span>定义）</p>
 <p>比如<span class="heti-skip"><span class="heti-spacing"> </span>5-H<span class="heti-spacing"> </span></span>版本的序列，需要分为<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>块，前两块是<span class="heti-skip"><span class="heti-spacing"> </span>11<span class="heti-spacing"> </span></span>个数据字、<span>22<span class="heti-spacing"> </span></span>个纠错字，后两块是<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>个数据字、<span>22<span class="heti-spacing"> </span></span>个纠错字：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/ctf/qrcode/a.png"><img alt="" src="/assets/images/ctf/qrcode/a.png"/></a></p>
-<p>最后的序列就是 <span class="arithmatex">\(D_1,D_{12},D_{23},D_{35},\cdots,D_{45},D_{34},D_{46},E_1,E_{23},\cdots,E_{88}\)</span></p>
+<p>最后的序列就是<span><span class="heti-spacing"> </span><span class="arithmatex">\(D_1,D_{12},D_{23},D_{35},\cdots,D_{45},D_{34},D_{46},E_1,E_{23},\cdots,E_{88}\)</span></span></p>
 <h3 id="77">填充数据（7.7）<a class="headerlink" href="#77" title="Permanent link">¶</a></h3>
 <p>把前面合成的完整消息序列填到二维码中，首先要先填充功能图案，然后预留出格式信息、版本信息的位置</p>
 <p>填充时以两列为单位，即每次交替填充两列。从最右下角开始是最高位的比特，然后从右向左从下向上交替填充，到了上界时左转向下继续填充，遇到对齐图案直接穿过，遇到对齐图案边界则变为一行</p>
@@ -2601,15 +2601,15 @@ var _hmt = _hmt || [];
 <p>后<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>位是上面说到的掩码编号</p>
 <p>然后后接<span class="heti-skip"><span class="heti-spacing"> </span>10 bits<span class="heti-spacing"> </span></span>纠错码，最后整体异或 <code>101010000010010</code> 防止产生全零数据序列</p>
 <h4 id="annex-c">生成纠错码（Annex C）<a class="headerlink" href="#annex-c" title="Permanent link">¶</a></h4>
-<p>先得到前<span class="heti-skip"><span class="heti-spacing"> </span>5 bits<span class="heti-spacing"> </span></span>的数据，然后化为多项式，整体乘 <span class="arithmatex">\(x^{10}\)</span>，再除以生成多项式 <span class="arithmatex">\(G(x)=x^{10}+x^8+x^5+x^4+x^2+x+1\)</span> 得到余数转换为后<span class="heti-skip"><span class="heti-spacing"> </span>10 bits<span class="heti-spacing"> </span></span>的纠错码</p>
+<p>先得到前<span class="heti-skip"><span class="heti-spacing"> </span>5 bits<span class="heti-spacing"> </span></span>的数据，然后化为多项式，整体乘<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^{10}\)</span></span>，再除以生成多项式<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(G(x)=x^{10}+x^8+x^5+x^4+x^2+x+1\)</span><span class="heti-spacing"> </span></span>得到余数转换为后<span class="heti-skip"><span class="heti-spacing"> </span>10 bits<span class="heti-spacing"> </span></span>的纠错码</p>
 <details class="example">
 <summary><strong>例子</strong></summary>
 <ul>
 <li>纠错等级<span><span class="heti-spacing"> </span>M</span>，掩码编号<span><span class="heti-spacing"> </span>101</span></li>
 <li><span>5 bits<span class="heti-spacing"> </span></span>数据： <code>00101</code></li>
 <li>写为多项式： <span class="arithmatex">\(x^2+1\)</span></li>
-<li>整体乘 <span class="arithmatex">\(x^{10}\)</span>： <span class="arithmatex">\(x^{12}+x^{10}\)</span></li>
-<li>除以 <span class="arithmatex">\(G(x)\)</span>： 商 <span class="arithmatex">\(x^2\)</span>，余数 <span class="arithmatex">\(x^7+x^6+x^4+x^3+x^2\)</span></li>
+<li>整体乘<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^{10}\)</span></span>： <span class="arithmatex">\(x^{12}+x^{10}\)</span></li>
+<li>除以<span><span class="heti-spacing"> </span><span class="arithmatex">\(G(x)\)</span></span>： 商<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^2\)</span></span>，余数<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^7+x^6+x^4+x^3+x^2\)</span></span></li>
 <li>余数转为<span class="heti-skip"><span class="heti-spacing"> </span>10 bits<span class="heti-spacing"> </span></span>纠错码： <code>0011011100</code></li>
 <li>加上原数据： <code>001010011011100</code></li>
 <li>异或 <code>101010000010010</code>： <code>100000011001110</code></li>
@@ -2626,7 +2626,7 @@ var _hmt = _hmt || [];
 <p>版本信息只储存了该二维码的版本号（7～40），一共<span><span class="heti-spacing"> </span>18 bits</span>，前<span class="heti-skip"><span class="heti-spacing"> </span>6 bits<span class="heti-spacing"> </span></span>为版本号的二进制（从 <code>000111</code> 到 <code>101000</code>），后<span class="heti-skip"><span class="heti-spacing"> </span>12 bits<span class="heti-spacing"> </span></span>为由<span class="heti-skip"><span class="heti-spacing"> </span>(18, 6) Golay code<span class="heti-spacing"> </span></span>生成的纠错码</p>
 <p>不同于格式信息，因为版本号不会出现全零，所以不需要进行掩码操作</p>
 <h4 id="annex-d">生成纠错码（Annex D）<a class="headerlink" href="#annex-d" title="Permanent link">¶</a></h4>
-<p>和格式信息的纠错码类似，先把前<span class="heti-skip"><span class="heti-spacing"> </span>6 bits<span class="heti-spacing"> </span></span>转为多项式，然后整体乘 <span class="arithmatex">\(x^{12}\)</span>，得到的结果除以生成多项式 <span class="arithmatex">\(G(x)=x^{12}+x^{11}+x^{10}+x^9+x^8+x^5+x^2+1\)</span> ，把余数转为<span class="heti-skip"><span class="heti-spacing"> </span>12 bits<span class="heti-spacing"> </span></span>二进制就是纠错码了</p>
+<p>和格式信息的纠错码类似，先把前<span class="heti-skip"><span class="heti-spacing"> </span>6 bits<span class="heti-spacing"> </span></span>转为多项式，然后整体乘<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^{12}\)</span></span>，得到的结果除以生成多项式<span><span class="heti-spacing"> </span><span class="arithmatex">\(G(x)=x^{12}+x^{11}+x^{10}+x^9+x^8+x^5+x^2+1\)</span></span> ，把余数转为<span class="heti-skip"><span class="heti-spacing"> </span>12 bits<span class="heti-spacing"> </span></span>二进制就是纠错码了</p>
 <p>因为只有<span class="heti-skip"><span class="heti-spacing"> </span>34<span class="heti-spacing"> </span></span>个版本有版本信息，所以也就只有<span class="heti-skip"><span class="heti-spacing"> </span>34<span class="heti-spacing"> </span></span>种有效的版本信息序列，附录<span class="heti-skip"><span class="heti-spacing"> </span>D<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>Table D.1<span class="heti-spacing"> </span></span>中给出了完整的<span class="heti-skip"><span class="heti-spacing"> </span>34<span class="heti-spacing"> </span></span>个版本信息序列</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/ctf/qrcode/TableD1.png"><img alt="Table D.1 全部有效版本信息序列" src="/assets/images/ctf/qrcode/TableD1.png"/></a></p>
 <p>和格式信息一样，纠错时对照表格选择相差比特数最小的即可。并且版本信息也只能纠正小于等于<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个错误</p>
@@ -2653,22 +2653,22 @@ var _hmt = _hmt || [];
 <h3 id="annex-b">纠错（Annex B）<a class="headerlink" href="#annex-b" title="Permanent link">¶</a></h3>
 <p><span>Annex B<span class="heti-spacing"> </span></span>讲的纠错过程很简略，而且符号说明不全，很难看懂</p>
 <p>去学了学<span class="heti-skip"><span class="heti-spacing"> </span>PGZ<span class="heti-spacing"> </span></span>解码：<a href="https://en.wikipedia.org/wiki/Reed%E2%80%93Solomon_error_correction#Peterson%E2%80%93Gorenstein%E2%80%93Zierler_decoder">Reed–Solomon_error_correction#Peterson–Gorenstein–Zierler_decoder</a></p>
-<p>设当前版本下每块中有 <span class="arithmatex">\(n\)</span> 个字，<span class="arithmatex">\(k\)</span> 个数据字，<span class="arithmatex">\(n-k\)</span> 个纠错字，纠错容量为 <span class="arithmatex">\(\nu\)</span></p>
-<p>首先定义原来的完整数据（即数据字和纠错字）从高位到低位为 <span class="arithmatex">\(c_{n-1},c_{n-2},\cdots,c_0\)</span> ，对应多项式为：</p>
+<p>设当前版本下每块中有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>个字，<span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>个数据字，<span><span class="arithmatex">\(n-k\)</span><span class="heti-spacing"> </span></span>个纠错字，纠错容量为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\nu\)</span></span></p>
+<p>首先定义原来的完整数据（即数据字和纠错字）从高位到低位为<span><span class="heti-spacing"> </span><span class="arithmatex">\(c_{n-1},c_{n-2},\cdots,c_0\)</span></span> ，对应多项式为：</p>
 <div class="arithmatex">\[s(x)=\sum_{i=0}^{n-1}c_ix^i=c_{n-1}x^{n-1}+c_{n-2}x^{n-2}+\cdots+c_0\]</div>
-<p>而且根据纠错码生成原理，<span class="arithmatex">\(s(x)\)</span> 可以被生成多项式 <span class="arithmatex">\(g(x)\)</span> 整除，其中</p>
+<p>而且根据纠错码生成原理，<span><span class="arithmatex">\(s(x)\)</span><span class="heti-spacing"> </span></span>可以被生成多项式<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(g(x)\)</span><span class="heti-spacing"> </span></span>整除，其中</p>
 <div class="arithmatex">\[g(x)=\prod_{i=0}^{n-k-1}(x-\alpha^i)\]</div>
-<p>所以 <span class="arithmatex">\(s(x)\)</span> 也有根 <span class="arithmatex">\(s(\alpha^i)=0, i=0,1,\dots n-k-1\)</span></p>
-<p>再设接收到的消息多项式（可能有错）为 <span class="arithmatex">\(r(x)\)</span> ，误差多项式为 <span class="arithmatex">\(e(x)\)</span> ，满足：</p>
+<p>所以<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s(x)\)</span><span class="heti-spacing"> </span></span>也有根<span><span class="heti-spacing"> </span><span class="arithmatex">\(s(\alpha^i)=0, i=0,1,\dots n-k-1\)</span></span></p>
+<p>再设接收到的消息多项式（可能有错）为<span><span class="heti-spacing"> </span><span class="arithmatex">\(r(x)\)</span></span> ，误差多项式为<span><span class="heti-spacing"> </span><span class="arithmatex">\(e(x)\)</span></span> ，满足：</p>
 <div class="arithmatex">\[r(x)=s(x)+e(x),\quad e(x)=\sum_{i=0}^{n-1}e_ix^i\]</div>
-<p>先设一共有 <span class="arithmatex">\(\nu\)</span> 个错误，且每个错误的位置为 <span class="arithmatex">\(i_k,k=0,1,\dots \nu-1\)</span>，所以有：</p>
+<p>先设一共有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\nu\)</span><span class="heti-spacing"> </span></span>个错误，且每个错误的位置为<span><span class="heti-spacing"> </span><span class="arithmatex">\(i_k,k=0,1,\dots \nu-1\)</span></span>，所以有：</p>
 <div class="arithmatex">\[e(x)=\sum_{k=0}^{\nu-1}e_{i_k}x^{i_k}\]</div>
-<p>最终的目标就是找到错误个数 <span class="arithmatex">\(\nu\)</span>，错误位置 <span class="arithmatex">\(i_k\)</span>，以及错误大小 <span class="arithmatex">\(e_{i_k}\)</span></p>
+<p>最终的目标就是找到错误个数<span><span class="heti-spacing"> </span><span class="arithmatex">\(\nu\)</span></span>，错误位置<span><span class="heti-spacing"> </span><span class="arithmatex">\(i_k\)</span></span>，以及错误大小<span><span class="heti-spacing"> </span><span class="arithmatex">\(e_{i_k}\)</span></span></p>
 <h4 id="_7">计算典型值<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>首先定义典型值（syndromes）为把 <span class="arithmatex">\(\alpha^j\)</span> 传入 <span class="arithmatex">\(r(x)\)</span> 得到的值 <span class="arithmatex">\(S_j\)</span>，有：</p>
+<p>首先定义典型值（syndromes）为把<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\alpha^j\)</span><span class="heti-spacing"> </span></span>传入<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(r(x)\)</span><span class="heti-spacing"> </span></span>得到的值<span><span class="heti-spacing"> </span><span class="arithmatex">\(S_j\)</span></span>，有：</p>
 <div class="arithmatex">\[S_j=r(\alpha^j)=s(\alpha^j)+e(\alpha^j)=e(\alpha^j)=\sum_{k=0}^{\nu-1}e_{i_k}(\alpha^j)^{i_k},j=0,1,\dots,n-k-1\]</div>
 <p>此时如果得到的典型值都为<span><span class="heti-spacing"> </span>0</span>，那说明没有错误</p>
-<p>为了方便，再令 <span class="arithmatex">\(X_k=\alpha^{i_k},Y_k=e_{i_k}\)</span>，这样 <span class="arithmatex">\(X_k\)</span> 也能用来定位错误，同时也有：</p>
+<p>为了方便，再令<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_k=\alpha^{i_k},Y_k=e_{i_k}\)</span></span>，这样<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_k\)</span><span class="heti-spacing"> </span></span>也能用来定位错误，同时也有：</p>
 <div class="arithmatex">\[S_j=\sum_{k=0}^{\nu-1}Y_kX_k^j\]</div>
 <p>写成矩阵形式就是：</p>
 <div class="arithmatex">\[\begin{bmatrix}
@@ -2683,11 +2683,11 @@ Y_0\\\\Y_1\\\\\vdots\\\\Y_{\nu-1}
 \begin{bmatrix}
 S_0\\\\S_1\\\\\vdots\\\\S_{n-k-1}
 \end{bmatrix}\]</div>
-<p>所以只要求得位置 <span class="arithmatex">\(X_k\)</span> 就能得到错误大小，但是此时并不是线性的</p>
+<p>所以只要求得位置<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(X_k\)</span><span class="heti-spacing"> </span></span>就能得到错误大小，但是此时并不是线性的</p>
 <h4 id="_8">错误定位多项式<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>定义一个错误定位多项式（error locator polynomial）<span class="arithmatex">\(\Lambda(x)\)</span>：</p>
 <div class="arithmatex">\[\Lambda(x)=\prod_{k=0}^{\nu-1}(1-xX_k)=1+\Lambda_1x+\Lambda_2x^2+\cdots+\Lambda_\nu x^\nu\]</div>
-<p>可以看出 <span class="arithmatex">\(\Lambda(X_k^{-1})=0\)</span>，所以对于 <span class="arithmatex">\(0\leq j\leq\nu-1\)</span> 有：</p>
+<p>可以看出<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Lambda(X_k^{-1})=0\)</span></span>，所以对于<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(0\leq j\leq\nu-1\)</span><span class="heti-spacing"> </span></span>有：</p>
 <div class="arithmatex">\[
 Y_kX_k^{j+\nu}\Lambda(X_k^{-1}) =0
 \]</div>
@@ -2700,13 +2700,13 @@ Y_{k}X_{k}^{j+\nu }+\Lambda _{1}Y_{k}X_{k}^{j+\nu }X_{k}^{-1}+\Lambda _{2}Y_{k}X
 <div class="arithmatex">\[
 Y_{k}X_{k}^{j+\nu }+\Lambda _{1}Y_{k}X_{k}^{j+\nu -1}+\Lambda _{2}Y_{k}X_{k}^{j+\nu -2}+\cdots +\Lambda _{\nu }Y_{k}X_{k}^{j}=0
 \]</div>
-<p>所以把 <span class="arithmatex">\(k\)</span> 从 <span class="arithmatex">\(0\)</span> 到 <span class="arithmatex">\(\nu-1\)</span> 累加起来也为<span><span class="heti-spacing"> </span>0</span>：</p>
+<p>所以把<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(k\)</span><span class="heti-spacing"> </span></span>从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(0\)</span><span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\nu-1\)</span><span class="heti-spacing"> </span></span>累加起来也为<span><span class="heti-spacing"> </span>0</span>：</p>
 <div class="arithmatex">\[\sum_{k=0}^{\nu-1}\left(Y_{k}X_{k}^{j+\nu }+\Lambda _{1}Y_{k}X_{k}^{j+\nu -1}+\Lambda _{2}Y_{k}X_{k}^{j+\nu -2}+\cdots +\Lambda _{\nu }Y_{k}X_{k}^{j}\right)=0\]</div>
-<p>然后转换为每项累加并提取出 <span class="arithmatex">\(\Lambda_i\)</span>：</p>
+<p>然后转换为每项累加并提取出<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Lambda_i\)</span></span>：</p>
 <div class="arithmatex">\[\left(\sum _{k=1}^{\nu }Y_{k}X_{k}^{j+\nu }\right)+\Lambda _{1}\left(\sum _{k=1}^{\nu }Y_{k}X_{k}^{j+\nu -1}\right)+\cdots +\Lambda _{\nu }\left(\sum _{k=1}^{\nu }Y_{k}X_{k}^{j}\right)=0\]</div>
 <p>根据典型值的定义有：</p>
 <div class="arithmatex">\[S_{j+\nu}+\Lambda_1S_{j+\nu-1}+\cdots+\Lambda_\nu S_k=0\]</div>
-<p>把 <span class="arithmatex">\(S_{j+\nu}\)</span> 移到右边，并展开所有 <span class="arithmatex">\(j\)</span> 可以得到矩阵形式：</p>
+<p>把<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S_{j+\nu}\)</span><span class="heti-spacing"> </span></span>移到右边，并展开所有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(j\)</span><span class="heti-spacing"> </span></span>可以得到矩阵形式：</p>
 <div class="arithmatex">\[\begin{bmatrix}
 S_{0}&amp;S_{1}&amp;\cdots &amp;S_{\nu-1}\\\\S_{1}&amp;S_{2}&amp;\cdots &amp;S_{\nu}\\\\\vdots &amp;\vdots &amp;&amp;\vdots \\\\S_{\nu-1}&amp;S_{\nu}&amp;\cdots &amp;S_{2\nu -2}
 \end{bmatrix}
@@ -2716,12 +2716,12 @@ S_{0}&amp;S_{1}&amp;\cdots &amp;S_{\nu-1}\\\\S_{1}&amp;S_{2}&amp;\cdots &amp;S_{
 \begin{bmatrix}
 -S_{\nu}\\\\-S_{\nu +1}\\\\\vdots \\\\-S_{2\nu-1 }
 \end{bmatrix}\]</div>
-<p>此时是一个线性方程组，而且 <span class="arithmatex">\(S_i\)</span> 全部已知，可以解得 <span class="arithmatex">\(\Lambda_i\)</span></p>
+<p>此时是一个线性方程组，而且<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(S_i\)</span><span class="heti-spacing"> </span></span>全部已知，可以解得<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Lambda_i\)</span></span></p>
 <h4 id="_9">得到错误位置和大小<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>此时多项式 <span class="arithmatex">\(\Lambda(x)\)</span>  已经完全已知，所以可以求得其根（用<span class="heti-skip"><span class="heti-spacing"> </span>Chien search<span class="heti-spacing"> </span></span>算法在伽罗瓦域上求根）</p>
-<p>再算其倒数即可得到 <span class="arithmatex">\(X_k\)</span> ，然后可以寻找到错误位置 <span class="arithmatex">\(i_k\)</span></p>
-<p>这时也就可以带入第一个方程组求得错误大小 <span class="arithmatex">\(Y_k\)</span>（或者利用<span><span class="heti-spacing"> </span>Forney algorithm</span>）</p>
-<p>得到了 <span class="arithmatex">\(e(x)\)</span> 后就可以根据 <span class="arithmatex">\(r(x)\)</span> 算出原始信息 <span class="arithmatex">\(s(x)\)</span> 了</p>
+<p>此时多项式<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Lambda(x)\)</span><span class="heti-spacing"> </span></span>已经完全已知，所以可以求得其根（用<span class="heti-skip"><span class="heti-spacing"> </span>Chien search<span class="heti-spacing"> </span></span>算法在伽罗瓦域上求根）</p>
+<p>再算其倒数即可得到<span><span class="heti-spacing"> </span><span class="arithmatex">\(X_k\)</span></span> ，然后可以寻找到错误位置<span><span class="heti-spacing"> </span><span class="arithmatex">\(i_k\)</span></span></p>
+<p>这时也就可以带入第一个方程组求得错误大小<span><span class="heti-spacing"> </span><span class="arithmatex">\(Y_k\)</span></span>（或者利用<span><span class="heti-spacing"> </span>Forney algorithm</span>）</p>
+<p>得到了<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(e(x)\)</span><span class="heti-spacing"> </span></span>后就可以根据<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(r(x)\)</span><span class="heti-spacing"> </span></span>算出原始信息<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s(x)\)</span><span class="heti-spacing"> </span></span>了</p>
 <hr/>
 <div class="md-source-file">
 <small>

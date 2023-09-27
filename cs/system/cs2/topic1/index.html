@@ -1971,15 +1971,15 @@ var _hmt = _hmt || [];
 </ul>
 <h3 id="_2">计算指标<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <h4 id="_3">吞吐量<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>吞吐量（TP，Throughput）<heti-adjacent class="heti-adjacent-half">：</heti-adjacent><span class="arithmatex">\(TP = \dfrac{n}{T}\)</span>（<span class="arithmatex">\(n\)</span> 表示指令条数，<span class="arithmatex">\(T\)</span> 表示运行总时长）</p>
+<p>吞吐量（TP，Throughput）：<span class="arithmatex">\(TP = \dfrac{n}{T}\)</span>（<span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>表示指令条数，<span><span class="arithmatex">\(T\)</span><span class="heti-spacing"> </span></span>表示运行总时长）</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img1_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img1_light.png#only-light"/></a>
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img1_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic1/img1_dark.png#only-dark"/></a></p>
 <p>上图中同一数字为同一条指令，纵坐标为不同阶段的操作</p>
 <ul>
-<li>记每条指令的阶段数为 <span class="arithmatex">\(m\)</span>（阶数）、每个阶段的运行时间为 <span class="arithmatex">\(\Delta t_0\)</span>，则 <span class="arithmatex">\(T = (m+n-1)\Delta t_0\)</span>，<span class="arithmatex">\(TP = \dfrac{n}{m+n-1}\cdot\dfrac{1}{\Delta t_0}\)</span></li>
-<li>最大吞吐量：当 <span class="arithmatex">\(n\gg m\)</span> 时，<span class="arithmatex">\(TP\)</span> 达到最大，即 <span class="arithmatex">\(TP_{\rm max}=\dfrac{1}{\Delta t_0}\)</span></li>
+<li>记每条指令的阶段数为<span><span class="heti-spacing"> </span><span class="arithmatex">\(m\)</span></span>（阶数）、每个阶段的运行时间为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\Delta t_0\)</span></span>，则<span><span class="heti-spacing"> </span><span class="arithmatex">\(T = (m+n-1)\Delta t_0\)</span></span>，<span class="arithmatex">\(TP = \dfrac{n}{m+n-1}\cdot\dfrac{1}{\Delta t_0}\)</span></li>
+<li>最大吞吐量：当<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\gg m\)</span><span class="heti-spacing"> </span></span>时，<span><span class="arithmatex">\(TP\)</span><span class="heti-spacing"> </span></span>达到最大，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(TP_{\rm max}=\dfrac{1}{\Delta t_0}\)</span></span></li>
 <li>实际情况下各阶段的运行时间不同，最长的称为瓶颈阶段（bottleneck segment）<ul>
-<li>这种情况下 <span class="arithmatex">\(TP\)</span> 的计算方式不变，<span class="arithmatex">\(TP_{\rm max}=\dfrac{1}{\max(\Delta t_1, \Delta t_2, \cdots, \Delta t_m)}\)</span></li>
+<li>这种情况下<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(TP\)</span><span class="heti-spacing"> </span></span>的计算方式不变，<span class="arithmatex">\(TP_{\rm max}=\dfrac{1}{\max(\Delta t_1, \Delta t_2, \cdots, \Delta t_m)}\)</span></li>
 </ul>
 </li>
 <li>解决流水线瓶颈的方法：<ul>
@@ -1991,13 +1991,13 @@ var _hmt = _hmt || [];
 <h4 id="_4">加速比<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>加速比（Sp，Speedup）：<span class="arithmatex">\(Sp = \dfrac{\text{Execution Time}_\text{non-pipelined}}{\text{Execution Time}_\text{pipelined}}\)</span></p>
 <ul>
-<li>同上图，可以计算得到 <span class="arithmatex">\(Sp = \dfrac{n\cdot m\cdot\Delta t_0}{(m+n-1)\Delta t_0} = \dfrac{nm}{m+n-1}\)</span></li>
-<li>当 <span class="arithmatex">\(n\gg m\)</span> 时，<span class="arithmatex">\(Sp=m\)</span></li>
+<li>同上图，可以计算得到<span><span class="heti-spacing"> </span><span class="arithmatex">\(Sp = \dfrac{n\cdot m\cdot\Delta t_0}{(m+n-1)\Delta t_0} = \dfrac{nm}{m+n-1}\)</span></span></li>
+<li>当<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\gg m\)</span><span class="heti-spacing"> </span></span>时，<span class="arithmatex">\(Sp=m\)</span></li>
 </ul>
 <h4 id="_5">效率<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>效率（<span class="arithmatex">\(\eta\)</span>）：<span class="arithmatex">\(\eta = \dfrac{Sp}{m}\)</span></p>
 <ul>
-<li>当 <span class="arithmatex">\(n\gg m\)</span> 时，<span class="arithmatex">\(\eta=1\)</span></li>
+<li>当<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\gg m\)</span><span class="heti-spacing"> </span></span>时，<span class="arithmatex">\(\eta=1\)</span></li>
 </ul>
 <h2 id="_6">流水线冒险<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>有三种类型的流水线冒险：</p>
@@ -2257,10 +2257,10 @@ var _hmt = _hmt || [];
 <p>两个概念：</p>
 <ul>
 <li>禁止集合（prohibit sets），指预约表中每一行任意两个<span class="heti-skip"><span class="heti-spacing"> </span>X<span class="heti-spacing"> </span></span>之间的距离构成的集合。意义为：两个任务之间的间隔不能是这个集合中的任意一个值</li>
-<li>冲突向量（conflict vector），表示为 <span class="arithmatex">\((C_m, C_{m-1}, \cdots, C_2, C_1)\)</span>，其中 <span class="arithmatex">\(m\)</span> 为禁止集合中的最大值，如果 <span class="arithmatex">\(i\)</span> 在禁止集合中，则 <span class="arithmatex">\(C_i=1\)</span> 否则 <span class="arithmatex">\(C_i=0\)</span></li>
+<li>冲突向量（conflict vector），表示为<span><span class="heti-spacing"> </span><span class="arithmatex">\((C_m, C_{m-1}, \cdots, C_2, C_1)\)</span></span>，其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(m\)</span><span class="heti-spacing"> </span></span>为禁止集合中的最大值，如果<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(i\)</span><span class="heti-spacing"> </span></span>在禁止集合中，则<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(C_i=1\)</span><span class="heti-spacing"> </span></span>否则<span><span class="heti-spacing"> </span><span class="arithmatex">\(C_i=0\)</span></span></li>
 </ul>
-<p>对于上面的预约表，禁止集合为 <span class="arithmatex">\(F=\{3, 4, 6\}\)</span>，初始冲突向量为 <span class="arithmatex">\(C=\mathtt{101100}\)</span>。</p>
-<p>因此参考于初始冲突向量，下一个任务只可能在后第<span><span class="heti-spacing"> </span>1</span>、2、5、<span>7<span class="heti-spacing"> </span></span>个周期进入（右数<span><span class="heti-spacing"> </span>1</span>、2、<span>5<span class="heti-spacing"> </span></span>位为<span><span class="heti-spacing"> </span>0</span>，<span>7<span class="heti-spacing"> </span></span>为总长度加一，相当于硬等一个任务的时常）。以后第一个周期进入为例。第二个任务的初始冲突向量也为 <span class="arithmatex">\(C=\mathtt{101100}\)</span>，此时第一个任务经过了一个周期，冲突向量右移一位变为 <span class="arithmatex">\(C=\mathtt{10110}\)</span>。接着再考虑加入第三个任务，这个任务不能和<span><span class="heti-spacing"> </span>1</span>、<span>2<span class="heti-spacing"> </span></span>两个冲突，所以此时整体的冲突向量应该是前两个任务此时的冲突向量按位求或，即 <span class="arithmatex">\(\mathtt{101100} | \mathtt{10110} = \mathtt{111110}\)</span>。所以第三个任务只能在后一个周期进入。</p>
+<p>对于上面的预约表，禁止集合为<span><span class="heti-spacing"> </span><span class="arithmatex">\(F=\{3, 4, 6\}\)</span></span>，初始冲突向量为<span><span class="heti-spacing"> </span><span class="arithmatex">\(C=\mathtt{101100}\)</span></span>。</p>
+<p>因此参考于初始冲突向量，下一个任务只可能在后第<span><span class="heti-spacing"> </span>1</span>、2、5、<span>7<span class="heti-spacing"> </span></span>个周期进入（右数<span><span class="heti-spacing"> </span>1</span>、2、<span>5<span class="heti-spacing"> </span></span>位为<span><span class="heti-spacing"> </span>0</span>，<span>7<span class="heti-spacing"> </span></span>为总长度加一，相当于硬等一个任务的时常）。以后第一个周期进入为例。第二个任务的初始冲突向量也为<span><span class="heti-spacing"> </span><span class="arithmatex">\(C=\mathtt{101100}\)</span></span>，此时第一个任务经过了一个周期，冲突向量右移一位变为<span><span class="heti-spacing"> </span><span class="arithmatex">\(C=\mathtt{10110}\)</span></span>。接着再考虑加入第三个任务，这个任务不能和<span><span class="heti-spacing"> </span>1</span>、<span>2<span class="heti-spacing"> </span></span>两个冲突，所以此时整体的冲突向量应该是前两个任务此时的冲突向量按位求或，即<span><span class="heti-spacing"> </span><span class="arithmatex">\(\mathtt{101100} | \mathtt{10110} = \mathtt{111110}\)</span></span>。所以第三个任务只能在后一个周期进入。</p>
 <p>这样依此类推，最终不再计算下去的条件为：冲突向量变为了全<span><span class="heti-spacing"> </span>1</span>，只能等待一个任务的时长回到初始状态；或者得到的冲突向量和之前的某个相同（达成了循环）。最终可以画出一个状态图。</p>
 <p>对于上面的例子，它的状态图如下（方块内为冲突向量，箭头上为等待几个周期进入，即启动距离）：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic1/img7_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic1/img7_light.png#only-light"/></a>
