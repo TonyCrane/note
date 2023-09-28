@@ -26,6 +26,8 @@
     - [人工智能基础](ai/basic) <span class="toc-tag toc-tag-classnotes"></span>
 - 高性能计算相关
     - [HPC 101 超算小学期](hpc/hpc101/) <span class="toc-tag toc-tag-classnotes"></span>
+- 理论计算机相关
+    - [计算理论](tcs/toc/) <span class="toc-tag toc-tag-classnotes"></span>
 - 零散知识点
     - [RegEx 正则表达式](regex)
     - [Unicode 统一码](unicode)
