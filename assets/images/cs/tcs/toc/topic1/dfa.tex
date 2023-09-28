@@ -1,0 +1,21 @@
+\documentclass[dvisvgm]{standalone}
+\usepackage{tikz}
+
+\usetikzlibrary {arrows.meta,automata,positioning}
+\begin{document}
+\begin{tikzpicture}[->,>={Stealth[round]},shorten >=1pt,%
+    auto,node distance=2cm,on grid,semithick,
+    inner sep=2pt,bend angle=45,initial text=]
+    \node[initial,state]    (q_0)                   {$q_0$};
+    \node[state]            (q_1) [right=of q_0]    {$q_1$};
+    \node[state,accepting]  (q_2) [right=of q_1]    {$q_2$};
+    
+    \path [every node/.style={font=\footnotesize}]
+        (q_0) edge [loop above]         node {0} (q_0)
+              edge                      node {1} (q_1)
+        (q_1) edge [loop above]         node {1} (q_1)
+              edge                      node {0} (q_2)
+        (q_2) edge [in=30,out=60,loop]  node {0} (q_2)
+              edge [bend left]          node {1} (q_1);
+\end{tikzpicture}
+\end{document}
