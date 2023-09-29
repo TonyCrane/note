@@ -65,9 +65,18 @@ path:not([fill]) {
 
 ### DFA
 
-<div style="text-align: center; zoom: 1.5;">
---8<-- "docs/assets/images/cs/tcs/toc/topic1/dfa.svg"
-</div>
+\automata
+    \node[initial,state]    (q_0)                   {$q_0$};
+    \node[state]            (q_1) [right=of q_0]    {$q_1$};
+    \node[state,accepting]  (q_2) [right=of q_1]    {$q_2$};
+    
+    \path
+        (q_0) edge [loop above]         node {0} (q_0)
+              edge                      node {1} (q_1)
+        (q_1) edge [loop above]         node {1} (q_1)
+              edge                      node {0} (q_2)
+        (q_2) edge [in=30,out=60,loop]  node {0} (q_2)
+              edge [bend left]          node {1} (q_1);
 
 - 如上图就是一个 DFA，$q_0$ 是初始状态，双圈 $q_1$ 是接受状态，箭头上的字母是转移条件
 - 一个 NFA 定义为一个五元组 $M = (K, \Sigma, \delta, s, F)$
@@ -95,9 +104,16 @@ path:not([fill]) {
 
 ### NFA
 
-<div style="text-align: center; zoom: 1.5;">
---8<-- "docs/assets/images/cs/tcs/toc/topic1/nfa.svg"
-</div>
+\automata
+    \node[initial,state]    (q_0)                   {$q_0$};
+    \node[state]            (q_1) [right=of q_0]    {$q_1$};
+    \node[state,accepting]  (q_2) [right=of q_1]    {$q_2$};
+    
+    \path 
+        (q_0) edge [loop above]         node {a}   (q_0)
+              edge                      node {a,b} (q_1)
+        (q_1) edge [bend left]          node {b}   (q_0)
+              edge                      node {a,e} (q_2);
 
 - 如上图是一个 NFA，和 DFA 有以下两个区别：
     - 一个状态同一条件可以有多个转移方案
@@ -109,9 +125,15 @@ path:not([fill]) {
     - 一种**理解**方式：NFA 可以猜测该往哪里转移，且总能猜对
 
 ??? example "Ex. 构造 NFA 接受 $L=\{w\in\{a, b\}^*: \text{the second symbol from the end is }b\}$"
-    <div style="text-align: center; zoom: 1.5;">
-    --8<-- "docs/assets/images/cs/tcs/toc/topic1/ex.svg:1"
-    </div>
+    \automata
+        \node[initial,state]    (q_0)                   {$q_0$};
+        \node[state]            (q_1) [right=of q_0]    {$q_1$};
+        \node[state,accepting]  (q_2) [right=of q_1]    {$q_2$};
+        
+        \path
+            (q_0) edge [loop above]         node {a,b} (q_0)
+                  edge                      node {b}   (q_1)
+            (q_1) edge                      node {a,b} (q_2);
 
 ### NFA 与 DFA
 
@@ -135,9 +157,24 @@ $$
 $$
 
 ???+ example "一个 NFA 转 DFA 的具体例子"
-    <div style="text-align: center; zoom: 1.5;">
-    --8<-- "docs/assets/images/cs/tcs/toc/topic1/nfa2dfa.svg:1"
-    </div>
+    \automata
+        \node[initial,state]    (q_0)                   {$q_0$};
+        \node[state,accepting]  (q_1) [right=of q_0]    {$q_1$};
+        \node[initial,state]    (p_0) [right=of q_1]    {$\{q_0\}$};
+        \node[state,accepting]  (p_1) [right=of p_0]    {$\{q_0,q_1\}$};
+        \node[state,accepting]  (p_2) [below=of p_0]    {$\{q_1\}$};
+        \node[state]            (p_3) [right=of p_2]    {$\emptyset$};
+        
+        \path
+            (q_0) edge [loop above]         node {a,b} (q_0)
+                  edge                      node {b}   (q_1)
+            (q_1) edge [bend left]          node {e}   (q_0)
+            (p_0) edge [loop above]         node {a}   (p_0)
+                  edge                      node {b}   (p_1)
+            (p_1) edge [bend left]          node {a}   (p_0)
+                  edge [in=30,out=60,loop]  node {b}   (p_1)
+            (p_2) edge                      node {a,b} (p_3)
+            (p_3) edge [in=30,out=60,loop]  node {a,b} (p_3);
 
     右侧 DFA 的下边部分是冗余的，可以删掉。
 
@@ -154,7 +191,7 @@ $$
 - claim：如果 NFA $M$ accepts $w$，则转为的 DFA $M'$ accepts $w$，反之也成立
     - Corollary：a language is regular $\iff$ it is accepted by some DFA
 
-???+ success "Proof. if $A$ and $B$ is regular, so is $A\cup B$"
+???+ success "Proof. if $A$ and $B$ are regular, so is $A\cup B$"
     思路：合并两个接收 $A$ 和 $B$ 的 DFA
 
     $\exists M_A=(K_A, \Sigma, \delta_A, s_A, F_A)\text{ accepts }A$，$\exists M_B=(K_B, \Sigma, \delta_B, s_B, F_B)\text{ accepts }B$
@@ -168,14 +205,29 @@ $$
 
     $\text{then }M\text{ accepts }A\cup B$
 
-???+ success "Proof. if $A$ and $B$ is regular, so is $A\circ B$"
+???+ success "Proof. if $A$ and $B$ are regular, so is $A\circ B$"
     思路：连接两个接收 $A$ 和 $B$ 的 NFA
 
     $\exists M_A=(K_A, \Sigma, \Delta_A, s_A, F_A)\text{ accepts }A$，$\exists M_B=(K_B, \Sigma, \Delta_B, s_B, F_B)\text{ accepts }B$
 
-    <div style="text-align: center; zoom: 1.2;">
-    --8<-- "docs/assets/images/cs/tcs/toc/topic1/proof1.svg:1"
-    </div>
+    \automata\zoom{1.2}
+        \node[initial,initial distance=1cm,state]       (q_0)   {};
+        \node[state,accepting]          at (2,0.7)      (q_1)   {};
+        \node[state,accepting]          at (2,-0.7)     (q_2)   {};
+        \node                           at (1,0)        (dots)  {$\cdots$};
+        \node                           at (1,1.8)              {$M_A$};
+        \draw[rounded corners] (-0.8,-1.4) rectangle (2.8,1.4);
+        
+        \node[initial,state]            at (4.8, 0)     (p_0)   {};
+        \node[state,accepting]          at (6.8,0.7)    (p_1)   {};
+        \node[state,accepting]          at (6.8,-0.7)   (p_2)   {};
+        \node                           at (5.8,0)      (dots)  {$\cdots$};
+        \node                           at (5.8,1.8)            {$M_B$};
+        \draw[rounded corners] (4,-1.4) rectangle (7.6,1.4);
+        
+        \path
+        (q_1)   edge [bend left]        node [above] {e} (p_0)
+        (q_2)   edge [bend right]       node [below] {e} (p_0);
 
     $\text{let }M=(K, \Sigma, \Delta, s, F)$，where:
 
@@ -186,14 +238,24 @@ $$
 
     $\text{then }M\text{ accepts }A\circ B$
 
-???+ success "Proof. if $A$ and $B$ is regular, so is $A^*$"
+???+ success "Proof. if $A$ and $B$ are regular, so is $A^*$"
     思路：让一个接收 $A$ 的 NFA 自己进行循环
 
     $\exists M_A=(K_A, \Sigma, \Delta_A, s_A, F_A)\text{ accepts }A$
 
-    <div style="text-align: center; zoom: 1.2;">
-    --8<-- "docs/assets/images/cs/tcs/toc/topic1/proof2.svg:1"
-    </div>
+    \automata\zoom{1.2}
+        \node[initial,state,accepting]  at (-2, 0)  (q)     {};
+        \node[initial,state]                        (q_0)   {};
+        \node[state,accepting]          at (2,0.7)  (q_1)   {};
+        \node[state,accepting]          at (2,-0.7) (q_2)   {};
+        \node                           at (1,0)    (dots)  {$\cdots$};
+        \node                           at (1,1.8)          {$M_A$};
+        \draw[rounded corners] (-0.8,-1.4) rectangle (2.8,1.4);
+        
+        \path
+        (q)     edge                node         {e} (q_0)
+        (q_1)   edge [bend right]   node [above] {e} (q_0)
+        (q_2)   edge [bend left]    node [below] {e} (q_0);
 
     !!! warning "注意"
         $A^*$ 包括空串，所以要保证初始状态也是接受状态。但同时又不能让 $M_A$ 的初始状态变为接受状态，也不能让其初始状态通过 $e$-transition 到达接受状态，否则如果 $M_A$ 途中返回初始状态，就可能导致接受了其他不该接受的字符串。所以要新建一个初始状态 $s$，通过 $e$-transition 到达 $s_A$，且 $s$ 也是接受状态。
