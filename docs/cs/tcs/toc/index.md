@@ -9,4 +9,4 @@
 
 ## Table of Contents
 
-- [语言与自动机](topic1/)
+- [语言、自动机与正则表达式](topic1/)
