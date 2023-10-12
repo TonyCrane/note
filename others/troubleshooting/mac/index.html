@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1898,7 +1898,7 @@ var _hmt = _hmt || [];
 <li>从网上直接下载的<span class="heti-skip"><span class="heti-spacing"> </span>.app<span class="heti-spacing"> </span></span>可能直接双击或者右键都打不开，命令行<span class="heti-skip"><span class="heti-spacing"> </span>open<span class="heti-spacing"> </span></span>的话显示以下信息
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>The application cannot be opened for an unexpected reason, error=Error Domain=RBSRequestErrorDomain Code=5 "Launch failed." UserInfo={NSLocalizedFailureReason=Launch failed., NSUnderlyingError=0x600000f6d470 {Error Domain=NSPOSIXErrorDomain Code=111 "Unknown error: 111" UserInfo={NSLocalizedDescription=Launchd job spawn failed}}}
 </code></pre></div></li>
-<li>原因可能是<span class="heti-skip"><span class="heti-spacing"> </span>.app<span class="heti-spacing"> </span></span>的权限设置不正确（例如多了写权限等），<code>sudo chmod -R 755 /Applications/&lt;app&gt;.app</code> 即可解决</li>
+<li>原因可能是<span class="heti-skip"><span class="heti-spacing"> </span>.app<span class="heti-spacing"> </span></span>的权限设置不正确（例如多了写权限等<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<code>sudo chmod -R 755 /Applications/&lt;app&gt;.app</code> 即可解决</li>
 </ul>
 </li>
 </ul>
@@ -1921,7 +1921,7 @@ var _hmt = _hmt || [];
 <p>可以在当前连接<span class="heti-skip"><span class="heti-spacing"> </span>wifi<span class="heti-spacing"> </span></span>设置的<span class="heti-skip"><span class="heti-spacing"> </span>DNS<span class="heti-spacing"> </span></span>一项将新增一个<span class="heti-skip"><span class="heti-spacing"> </span>8.8.8.8<span class="heti-spacing"> </span></span>即可解决。</p>
 <h2 id="_4">有关磁盘<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="_5">移动硬盘异常退出无法再次挂载<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>大概就是移动硬盘突然断连，然后重新插入的时候看不到磁盘。在系统磁盘工具里可以看到一块未装载的磁盘（<code>diskutil list</code> 也可以看到），但是无法挂载（<span>com.apple.DiskManagement.disenter<span class="heti-spacing"> </span></span>错误<span><span class="heti-spacing"> </span>0</span>）。</p>
+<p>大概就是移动硬盘突然断连，然后重新插入的时候看不到磁盘。在系统磁盘工具里可以看到一块未装载的磁盘（<code>diskutil list</code> 也可以看到<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，但是无法挂载（<span>com.apple.DiskManagement.disenter<span class="heti-spacing"> </span></span>错误<span><span class="heti-spacing"> </span>0</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>解决方案来自<a href="https://www.xiaocrab.net/post/macos-exfat-diskmanagementdisenter-error-0/"><span><span class="heti-spacing"> </span>https://www.xiaocrab.net/post/macos-exfat-diskmanagementdisenter-error-0/</span></a></p>
 <p>首先 <code>ps aux | grep fsck</code>，检查是否有<span class="heti-skip"><span class="heti-spacing"> </span>fsck<span class="heti-spacing"> </span></span>程序，这是对磁盘进行检查修复的程序，可能是这里卡住了。然后 <code>sudo pkill -f fsck</code> 中断进程。接着会弹出 “<span>macOS<span class="heti-spacing"> </span></span>无法修复磁盘” 的警告，这时硬盘可以装载上，不过是只读的。</p>
 <p>下一步是在<span class="heti-skip"><span class="heti-spacing"> </span>mac<span class="heti-spacing"> </span></span>上正常弹出这个磁盘，然后插到<span class="heti-skip"><span class="heti-spacing"> </span>Windows<span class="heti-spacing"> </span></span>上，资源管理器打开磁盘，右键，选择 “属性”，然后选择 “工具” 选项卡，点击 “检查”，然后点击 “修复”，等待修复完成。然后再插回<span class="heti-skip"><span class="heti-spacing"> </span>mac<span class="heti-spacing"> </span></span>上，就可以正常挂载读写了。</p>

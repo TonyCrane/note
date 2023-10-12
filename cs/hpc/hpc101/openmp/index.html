@@ -984,7 +984,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2024,8 +2024,8 @@ var _hmt = _hmt || [];
 <li>共享存储体系结构上的一个并行编程模型</li>
 <li>适用于<span><span class="heti-spacing"> </span>SMP</span>（Symmetric Multi-Processor）共享内存多处理系统和多核处理器体系结构</li>
 </ul>
-<p>三类主要<span><span class="heti-spacing"> </span>API</span>（表现为编译制导指令，但实际上仍为<span><span class="heti-spacing"> </span>API</span>）：编译器指令、运行时库函数、环境变量</p>
-<p>传统上，我们利用<span class="heti-skip"><span class="heti-spacing"> </span>OpenMP<span class="heti-spacing"> </span></span>进行单机器<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>优化（可跨处理器），不过在较新的<span class="heti-skip"><span class="heti-spacing"> </span>OpenMP<span class="heti-spacing"> </span></span>版本的中，你甚至可以直接使用<span class="heti-skip"><span class="heti-spacing"> </span>OpenMP<span class="heti-spacing"> </span></span>将代码优化到<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>等异构计算设备上</p>
+<p>三类主要<span><span class="heti-spacing"> </span>API</span>（表现为编译制导指令，但实际上仍为<span><span class="heti-spacing"> </span>API</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：编译器指令、运行时库函数、环境变量</p>
+<p>传统上，我们利用<span class="heti-skip"><span class="heti-spacing"> </span>OpenMP<span class="heti-spacing"> </span></span>进行单机器<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>优化（可跨处理器<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，不过在较新的<span class="heti-skip"><span class="heti-spacing"> </span>OpenMP<span class="heti-spacing"> </span></span>版本的中，你甚至可以直接使用<span class="heti-skip"><span class="heti-spacing"> </span>OpenMP<span class="heti-spacing"> </span></span>将代码优化到<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>等异构计算设备上</p>
 <h3 id="openmp_2"><span>OpenMP<span class="heti-spacing"> </span></span>编程模型<a class="headerlink" href="#openmp_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>采用共享内存模型</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/openmp/model.png"><img alt="" src="/assets/images/hpc/hpc101/openmp/model.png"/></a></p>
@@ -2038,13 +2038,13 @@ var _hmt = _hmt || [];
 <h3 id="_1">并行性<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>几个概念：</p>
 <ul>
-<li><strong>进程</strong>：并发执行的程序在执行过程中分配和管理资源的基本单位（动态的），作为竞争计算机系统资源的基本单位</li>
-<li><strong>线程</strong>：进程的一个执行单元（独立运行），进程的内核调度实体（“轻量级进程”）</li>
+<li><strong>进程</strong>：并发执行的程序在执行过程中分配和管理资源的基本单位（动态的<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，作为竞争计算机系统资源的基本单位</li>
+<li><strong>线程</strong>：进程的一个执行单元（独立运行<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，进程的内核调度实体（“轻量级进程”）</li>
 <li><strong>协程</strong>：比线程更轻量级的存在，一个线程可以有多个协程（类似于不带返回值的子函数）</li>
 </ul>
 <p>关于线程和进程：</p>
 <ul>
-<li>进程之间地址空间为独立（<span>CPU<span class="heti-spacing"> </span></span>保护模式）；线程之间共享本进程的地址空间（IO，CPU，内存亦如是）</li>
+<li>进程之间地址空间为独立（<span>CPU<span class="heti-spacing"> </span></span>保护模式<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>；线程之间共享本进程的地址空间（IO，CPU，内存亦如是）</li>
 <li>进程的程序入口执行开销大，当要进行频繁切换时，使用线程好于使用进程</li>
 <li>由于地址空间等资源隔离，多进程时当一个进程挂掉并不会导致整个任务挂掉</li>
 <li>如果要求同时进行并且又要共享某些变量的并发操作，只能用线程不能用进程</li>
@@ -2066,7 +2066,7 @@ var _hmt = _hmt || [];
 <li><code class="highlight"><span class="kt">int</span><span class="w"> </span><span class="n">omp_get_num_threads</span><span class="p">()</span><span class="w"></span></code>：获取总线程数</li>
 <li><code class="highlight"><span class="kt">double</span><span class="w"> </span><span class="n">omp_get_wtime</span><span class="p">()</span><span class="w"></span></code>：获取时间，常用于计算线程内语句执行时间</li>
 </ul>
-<p><span>OpenMP<span class="heti-spacing"> </span></span>会读取环境变量<strong><span class="heti-skip"><span class="heti-spacing"> </span>OMP_NUM_THREADS<span class="heti-spacing"> </span></span></strong>来决定创建的线程数</p>
+<p><span>OpenMP<span class="heti-spacing"> </span></span>会读取环境变量 <strong>OMP_NUM_THREADS</strong> 来决定创建的线程数</p>
 <h3 id="_3">常见制导语句<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>也就是编译器指令，一些常用的：</p>
 <ul>
@@ -2111,7 +2111,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <ul>
-<li><span>for<span class="heti-spacing"> </span></span>循环中不能包含<span><span class="heti-spacing"> </span>break</span>（会报错），且必须包含<span><span class="heti-spacing"> </span>"int i =</span> <em>xxx</em>"</li>
+<li><span>for<span class="heti-spacing"> </span></span>循环中不能包含<span><span class="heti-spacing"> </span>break</span>（会报错<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，且必须包含<span><span class="heti-spacing"> </span>"int i =</span> <em>xxx</em>"</li>
 <li><span>parallel<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>for<span class="heti-spacing"> </span></span>可以合起来写作一行 <code class="highlight"><span class="cp">#pragma omp parallel for</span></code></li>
 </ul>
 <h4 id="_5">条件并行<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>

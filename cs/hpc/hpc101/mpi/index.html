@@ -1045,7 +1045,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2141,7 +2141,7 @@ var _hmt = _hmt || [];
 </div>
 <h2 id="mpi_1"><span>MPI<span class="heti-spacing"> </span></span>简介<a class="headerlink" href="#mpi_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>MPI（Message-Passing Interface）是一组用于并行应用进程间的通信的接口。目前最新的标准为<span><span class="heti-spacing"> </span>MPI-4.0</span>（2021.6.9）</p>
-<p>有很多实现，比如<span><span class="heti-spacing"> </span>OpenMPI</span>、IntelMPI（集成在<span class="heti-skip"><span class="heti-spacing"> </span>Intel oneAPI<span class="heti-spacing"> </span></span>套件中）、MPICH、<span>MVAPICH<span class="heti-spacing"> </span></span>等</p>
+<p>有很多实现，比如<span><span class="heti-spacing"> </span>OpenMPI</span>、IntelMPI（集成在<span class="heti-skip"><span class="heti-spacing"> </span>Intel oneAPI<span class="heti-spacing"> </span></span>套件中<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、MPICH、<span>MVAPICH<span class="heti-spacing"> </span></span>等</p>
 <ul>
 <li><span>OpenMP<span class="heti-spacing"> </span></span>工作在统一内存上，即任意一个处理器都可以直接访问任意一块内存</li>
 <li><span>MPI<span class="heti-spacing"> </span></span>工作在分布式内存上，即一组处理器共用一块内存，不能直接访问其他地方的内存，但可以通过网络进行数据的传输</li>
@@ -2189,9 +2189,9 @@ var _hmt = _hmt || [];
 </ul>
 <h2 id="_1">点对点通信<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p><span>mpirun<span class="heti-spacing"> </span></span>会启动多个进程，且进程之间内存互相不共享。需要在进程之间传递数据则需要进行通信，两个进程之间的通信就是点对点通信（Point-to-Point Communication）</p>
-<p><span>MPI<span class="heti-spacing"> </span></span>的通信过程大致需要通过两个数组（即<span><span class="heti-spacing"> </span>buffer</span>），一个存储发送数据，一个存储接收数据，通过调用一系列函数即可实现进程之间的通信</p>
+<p><span>MPI<span class="heti-spacing"> </span></span>的通信过程大致需要通过两个数组（即<span><span class="heti-spacing"> </span>buffer</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，一个存储发送数据，一个存储接收数据，通过调用一系列函数即可实现进程之间的通信</p>
 <p>调用通信函数后，通信设备（通常是网络）就需要负责把信息传递到正确的地方，也就是某个进程的某个接收<span><span class="heti-spacing"> </span>buffer</span></p>
-<p>有时候<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>需要传递很多不同的消息给<span><span class="heti-spacing"> </span>B</span>。为了让<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>能比较方便地区分不同的消息，<span>MPI<span class="heti-spacing"> </span></span>运行发送者和接受者额外地指定一些信息<span><span class="heti-spacing"> </span>ID</span>（正式名称是标签，tags）。当<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>只要求接收某种特定标签的信息的时候，其他的不是这个标签的信息会先被缓存起来，等到<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>需要的时候才会给<span><span class="heti-spacing"> </span>B</span></p>
+<p>有时候<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>需要传递很多不同的消息给<span><span class="heti-spacing"> </span>B</span>。为了让<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>能比较方便地区分不同的消息，<span>MPI<span class="heti-spacing"> </span></span>运行发送者和接受者额外地指定一些信息<span><span class="heti-spacing"> </span>ID</span>（正式名称是标签，tags<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。当<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>只要求接收某种特定标签的信息的时候，其他的不是这个标签的信息会先被缓存起来，等到<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>需要的时候才会给<span><span class="heti-spacing"> </span>B</span></p>
 <h3 id="_2">基础通信函数<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <h4 id="mpi_send">MPI_Send<a class="headerlink" href="#mpi_send" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">MPI_Send</span><span class="p">(</span><span class="w"></span>
@@ -2240,7 +2240,7 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <h2 id="_3">集合通信<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>当需要进行进程之间一对多、多对一或多对多通信时（如划分任务、收集结果），使用多个<span class="heti-skip"><span class="heti-spacing"> </span>Send/Recv<span class="heti-spacing"> </span></span>不方便，可以使用集合通（Collective Communication）</p>
+<p>当需要进行进程之间一对多、多对一或多对多通信时（如划分任务、收集结果<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，使用多个<span class="heti-skip"><span class="heti-spacing"> </span>Send/Recv<span class="heti-spacing"> </span></span>不方便，可以使用集合通（Collective Communication）</p>
 <h3 id="barrier">Barrier<a class="headerlink" href="#barrier" title="Permanent link">¶</a></h3>
 <p></p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">MPI_Barrier</span><span class="p">(</span><span class="n">MPI_Comm</span><span class="w"> </span><span class="n">comm</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>

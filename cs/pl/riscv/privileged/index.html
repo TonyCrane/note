@@ -1042,7 +1042,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2131,11 +2131,11 @@ var _hmt = _hmt || [];
 <p>参考：</p>
 <ul>
 <li><a href="https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf">The RISC-V Instruction Set Manual Volume II: Privileged Architecture v.20211203</a></li>
-<li>浙江大学 “计算机系统 Ⅱ “（大二秋冬）课程</li>
+<li>浙江大学 “计算机系统 Ⅱ <heti-adjacent class="heti-adjacent-quarter">“</heti-adjacent>（大二秋冬）课程</li>
 </ul>
 </div>
 <h2 id="_1">特权模式<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p><span>RISC-V<span class="heti-spacing"> </span></span>指令集有三种特权模式，分别是<span><span class="heti-spacing"> </span>Machine</span>（M）、Supervisor（S）和<span><span class="heti-spacing"> </span>User</span>（U），除此之外还有<span><span class="heti-spacing"> </span>Hypervisor</span>（H）模式，不过貌似不常用。</p>
+<p><span>RISC-V<span class="heti-spacing"> </span></span>指令集有三种特权模式，分别是<span><span class="heti-spacing"> </span>Machine</span>（M<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、Supervisor（S）和<span><span class="heti-spacing"> </span>User</span>（U<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，除此之外还有<span><span class="heti-spacing"> </span>Hypervisor</span>（H）模式，不过貌似不常用。</p>
 <table>
 <thead>
 <tr>
@@ -2174,18 +2174,18 @@ var _hmt = _hmt || [];
 </table>
 <ul>
 <li><span>M<span class="heti-spacing"> </span></span>模式是对硬件操作的抽象，有最高级别的权限。</li>
-<li><span>S<span class="heti-spacing"> </span></span>模式介于<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>模式和<span class="heti-skip"><span class="heti-spacing"> </span>U<span class="heti-spacing"> </span></span>模式之间，在操作系统中对应于内核态（Kernel）。当用户需要内核资源时，向内核申请，并切换到内核态进行处理。</li>
+<li><span>S<span class="heti-spacing"> </span></span>模式介于<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>模式和<span class="heti-skip"><span class="heti-spacing"> </span>U<span class="heti-spacing"> </span></span>模式之间，在操作系统中对应于内核态（Kernel<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。当用户需要内核资源时，向内核申请，并切换到内核态进行处理。</li>
 <li><span>U<span class="heti-spacing"> </span></span>模式用于执行用户程序，在操作系统中对应于用户态，有最低级别的权限。</li>
 </ul>
 <p>简单嵌入式系统应该至少有<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>模式，安全的嵌入式系统至少要有<span><span class="heti-spacing"> </span>M</span>、<span>U<span class="heti-spacing"> </span></span>两个模式，<span>Unix-like<span class="heti-spacing"> </span></span>操作系统至少要有<span><span class="heti-spacing"> </span>M</span>、S、<span>U<span class="heti-spacing"> </span></span>三个模式。</p>
 <p>特权模式用来分离、保护不同的运行环境。试图在低特权模式下执行高特权模式的指令会导致异常。</p>
-<p>一个<span><span class="heti-spacing"> </span>hart</span>（RISC-V hardware thread，指<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>处理器的一个执行单元）一般在<span class="heti-skip"><span class="heti-spacing"> </span>U<span class="heti-spacing"> </span></span>模式下运行应用程序，直到遇到<span><span class="heti-spacing"> </span>trap</span>（比如系统调用、时间中断等），这时<span class="heti-skip"><span class="heti-spacing"> </span>hart<span class="heti-spacing"> </span></span>会切换到更高特权级的<span><span class="heti-spacing"> </span>trap handler</span>，执行完后再切换回低权限模式继续执行。</p>
-<p>除此之外，<span>RISC-V<span class="heti-spacing"> </span></span>还规定了<span><span class="heti-spacing"> </span>Debug mode</span>（D-mode），用于调试，它比<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>模式有更高的权限，有一些只有<span class="heti-skip"><span class="heti-spacing"> </span>D<span class="heti-spacing"> </span></span>模式才可以访问的<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>寄存器，也会保留一些物理地址空间。</p>
+<p>一个<span><span class="heti-spacing"> </span>hart</span>（RISC-V hardware thread，指<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>处理器的一个执行单元）一般在<span class="heti-skip"><span class="heti-spacing"> </span>U<span class="heti-spacing"> </span></span>模式下运行应用程序，直到遇到<span><span class="heti-spacing"> </span>trap</span>（比如系统调用、时间中断等<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，这时<span class="heti-skip"><span class="heti-spacing"> </span>hart<span class="heti-spacing"> </span></span>会切换到更高特权级的<span><span class="heti-spacing"> </span>trap handler</span>，执行完后再切换回低权限模式继续执行。</p>
+<p>除此之外，<span>RISC-V<span class="heti-spacing"> </span></span>还规定了<span><span class="heti-spacing"> </span>Debug mode</span>（D-mode<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，用于调试，它比<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>模式有更高的权限，有一些只有<span class="heti-skip"><span class="heti-spacing"> </span>D<span class="heti-spacing"> </span></span>模式才可以访问的<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>寄存器，也会保留一些物理地址空间。</p>
 <h2 id="csrs">控制和状态寄存器（CSRs）<a class="headerlink" href="#csrs" title="Permanent link">¶</a></h2>
 <p><span>CSR<span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V CPU<span class="heti-spacing"> </span></span>中的一系列特殊寄存器，能够反映和控制<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>当前的状态和执行机制。</p>
-<p><span>RISC-V<span class="heti-spacing"> </span></span>给<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>分配了<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位的地址空间（csr[11:0])，可以容纳最多<span class="heti-skip"><span class="heti-spacing"> </span>4096<span class="heti-spacing"> </span></span>个<span><span class="heti-spacing"> </span>CSR</span>，其中<span class="heti-skip"><span class="heti-spacing"> </span>csr[11:10]<span class="heti-spacing"> </span></span>表示寄存器的读写权限（<span>00/01/10<span class="heti-spacing"> </span></span>均表示可读可写，<span>11<span class="heti-spacing"> </span></span>表示只读），<span>csr[9:8]<span class="heti-spacing"> </span></span>表示可以访问该寄存器的最低特权级。相关权限一般表示为三位字母，第一个字母表示最低特权级，后两个字母表示读写权限（RW/RO）。</p>
-<p>访问不存在的<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>会导致<span><span class="heti-spacing"> </span>illegal instruction exception</span>，访问更高级的<span><span class="heti-spacing"> </span>CSR</span>、或者写入只读<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>也会导致该异常。一个可读可写的寄存器也可能会有只读的位，但这时写入只读位会被忽略（而不会导致异常）。</p>
-<p><span>CSR<span class="heti-spacing"> </span></span>还分有标准和非标准两类（Standard/Custom），其中<span class="heti-skip"><span class="heti-spacing"> </span>Custom CSR<span class="heti-spacing"> </span></span>在未来标准中也不会被占用。它们是：</p>
+<p><span>RISC-V<span class="heti-spacing"> </span></span>给<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>分配了<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位的地址空间（csr[11:0])，可以容纳最多<span class="heti-skip"><span class="heti-spacing"> </span>4096<span class="heti-spacing"> </span></span>个<span><span class="heti-spacing"> </span>CSR</span>，其中<span class="heti-skip"><span class="heti-spacing"> </span>csr[11:10]<span class="heti-spacing"> </span></span>表示寄存器的读写权限（<span>00/01/10<span class="heti-spacing"> </span></span>均表示可读可写，<span>11<span class="heti-spacing"> </span></span>表示只读<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>csr[9:8]<span class="heti-spacing"> </span></span>表示可以访问该寄存器的最低特权级。相关权限一般表示为三位字母，第一个字母表示最低特权级，后两个字母表示读写权限（RW/RO<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>访问不存在的<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>会导致<span><span class="heti-spacing"> </span>illegal instruction exception</span>，访问更高级的<span><span class="heti-spacing"> </span>CSR</span>、或者写入只读<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>也会导致该异常。一个可读可写的寄存器也可能会有只读的位，但这时写入只读位会被忽略（而不会导致异常<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p><span>CSR<span class="heti-spacing"> </span></span>还分有标准和非标准两类（Standard/Custom<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，其中<span class="heti-skip"><span class="heti-spacing"> </span>Custom CSR<span class="heti-spacing"> </span></span>在未来标准中也不会被占用。它们是：</p>
 <ul>
 <li>0x800~0x8FF (1000 xxxx) URW、0xCC0~0xCFF (1100 11xx) URO</li>
 <li>0x5C0~0x5FF (0101 11xx) SRW、0x9C0~0x9FF (1001 11xx) SRW、0xDC0~0xDFF (1101 11xx) SRO</li>
@@ -2195,7 +2195,7 @@ var _hmt = _hmt || [];
 <p>针对<span class="heti-skip"><span class="heti-spacing"> </span>D<span class="heti-spacing"> </span></span>模式有一些保留的<span><span class="heti-spacing"> </span>CSR</span>，<span>0x7A0~0x7AF<span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>模式可以访问的读写<span><span class="heti-spacing"> </span>CSR</span>，<span>0x7B0~0x7BF<span class="heti-spacing"> </span></span>是只有<span class="heti-skip"><span class="heti-spacing"> </span>D<span class="heti-spacing"> </span></span>模式可以访问的读写<span><span class="heti-spacing"> </span>CSR</span>。</p>
 <h3 id="csr-zicsr"><span>CSR<span class="heti-spacing"> </span></span>指令（<span>Zicsr<span class="heti-spacing"> </span></span>扩展）<a class="headerlink" href="#csr-zicsr" title="Permanent link">¶</a></h3>
 <p><span>Zicsr<span class="heti-spacing"> </span></span>扩展中规定了一系列关于访问<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>的指令，使用特权级的话一定要实现该扩展。</p>
-<p><span>CSR<span class="heti-spacing"> </span></span>指令都使用<span class="heti-skip"><span class="heti-spacing"> </span>I<span class="heti-spacing"> </span></span>型指令，其中<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位的立即数部分表示<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>的地址，<span>funct3<span class="heti-spacing"> </span></span>低<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>位用来编码读<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>改<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>写（read-modify-write）操作、高<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>位表示是否来自立即数（如果来自立即数则<span class="heti-skip"><span class="heti-spacing"> </span>rs1<span class="heti-spacing"> </span></span>部分表示一个<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>位无符号立即数），<span>opcode<span class="heti-spacing"> </span></span>都是<span><span class="heti-spacing"> </span>SYSTEM</span>（1110011）。</p>
+<p><span>CSR<span class="heti-spacing"> </span></span>指令都使用<span class="heti-skip"><span class="heti-spacing"> </span>I<span class="heti-spacing"> </span></span>型指令，其中<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>位的立即数部分表示<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>的地址，<span>funct3<span class="heti-spacing"> </span></span>低<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>位用来编码读<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>改<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>写（read-modify-write）操作、高<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>位表示是否来自立即数（如果来自立即数则<span class="heti-skip"><span class="heti-spacing"> </span>rs1<span class="heti-spacing"> </span></span>部分表示一个<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>位无符号立即数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>opcode<span class="heti-spacing"> </span></span>都是<span><span class="heti-spacing"> </span>SYSTEM</span>（1110011<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <div class="card">
 <div class="card-header" style="display: flex;justify-content: space-between;">
 <span>csrrw</span>
@@ -2270,7 +2270,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：csrrs rd, csr, rs1</li>
 <li><strong>指令作用</strong>：读取<span class="heti-skip"><span class="heti-spacing"> </span>csr<span class="heti-spacing"> </span></span>原值到<span><span class="heti-spacing"> </span>rd</span>，将<span class="heti-skip"><span class="heti-spacing"> </span>rs1<span class="heti-spacing"> </span></span>值与<span class="heti-skip"><span class="heti-spacing"> </span>csr<span class="heti-spacing"> </span></span>进行按位或运算后存入<span><span class="heti-spacing"> </span>csr</span></li>
-<li><strong>注意</strong>：如果<span class="heti-skip"><span class="heti-spacing"> </span>rs1<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>x0</span>，则不会写入<span><span class="heti-spacing"> </span>csr</span>（但一定会读），如果某位不可写则忽略该位</li>
+<li><strong>注意</strong>：如果<span class="heti-skip"><span class="heti-spacing"> </span>rs1<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>x0</span>，则不会写入<span><span class="heti-spacing"> </span>csr</span>（但一定会读<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如果某位不可写则忽略该位</li>
 </ul>
 </div>
 </div>
@@ -2309,7 +2309,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：csrrc rd, csr, rs1</li>
 <li><strong>指令作用</strong>：将<span class="heti-skip"><span class="heti-spacing"> </span>csr<span class="heti-spacing"> </span></span>原值存入<span><span class="heti-spacing"> </span>rd</span>，将<span class="heti-skip"><span class="heti-spacing"> </span>rs1<span class="heti-spacing"> </span></span>中为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>的位在<span class="heti-skip"><span class="heti-spacing"> </span>csr<span class="heti-spacing"> </span></span>中对应位置<span><span class="heti-spacing"> </span>0</span></li>
-<li><strong>注意</strong>：如果<span class="heti-skip"><span class="heti-spacing"> </span>rs1<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>x0</span>，则不会写入<span><span class="heti-spacing"> </span>csr</span>（但一定会读），如果某位不可写则忽略该位</li>
+<li><strong>注意</strong>：如果<span class="heti-skip"><span class="heti-spacing"> </span>rs1<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>x0</span>，则不会写入<span><span class="heti-spacing"> </span>csr</span>（但一定会读<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如果某位不可写则忽略该位</li>
 </ul>
 </div>
 </div>
@@ -2387,7 +2387,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：csrrs rd, csr, uimm</li>
 <li><strong>指令作用</strong>：读取<span class="heti-skip"><span class="heti-spacing"> </span>csr<span class="heti-spacing"> </span></span>原值到<span><span class="heti-spacing"> </span>rd</span>，将<span class="heti-skip"><span class="heti-spacing"> </span>uimm<span class="heti-spacing"> </span></span>的值零扩展到<span class="heti-skip"><span class="heti-spacing"> </span>32/64<span class="heti-spacing"> </span></span>位后存入<span><span class="heti-spacing"> </span>csr</span></li>
-<li><strong>注意</strong>：如果<span class="heti-skip"><span class="heti-spacing"> </span>uimm<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>，则不会写入<span><span class="heti-spacing"> </span>csr</span>（但一定会读），如果某位不可写则忽略该位</li>
+<li><strong>注意</strong>：如果<span class="heti-skip"><span class="heti-spacing"> </span>uimm<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>，则不会写入<span><span class="heti-spacing"> </span>csr</span>（但一定会读<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如果某位不可写则忽略该位</li>
 </ul>
 </div>
 </div>
@@ -2426,7 +2426,7 @@ var _hmt = _hmt || [];
 <ul>
 <li><strong>指令格式</strong>：csrrc rd, csr, uimm</li>
 <li><strong>指令作用</strong>：将<span class="heti-skip"><span class="heti-spacing"> </span>csr<span class="heti-spacing"> </span></span>原值存入<span><span class="heti-spacing"> </span>rd</span>，将<span class="heti-skip"><span class="heti-spacing"> </span>uimm<span class="heti-spacing"> </span></span>的值零扩展到<span class="heti-skip"><span class="heti-spacing"> </span>32/64<span class="heti-spacing"> </span></span>位后为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>的位在<span class="heti-skip"><span class="heti-spacing"> </span>csr<span class="heti-spacing"> </span></span>中对应位置<span><span class="heti-spacing"> </span>0</span></li>
-<li><strong>注意</strong>：如果<span class="heti-skip"><span class="heti-spacing"> </span>uimm<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>，则不会写入<span><span class="heti-spacing"> </span>csr</span>（但一定会读），如果某位不可写则忽略该位</li>
+<li><strong>注意</strong>：如果<span class="heti-skip"><span class="heti-spacing"> </span>uimm<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>，则不会写入<span><span class="heti-spacing"> </span>csr</span>（但一定会读<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，如果某位不可写则忽略该位</li>
 </ul>
 </div>
 </div>
@@ -2949,9 +2949,9 @@ var _hmt = _hmt || [];
 <h3 id="csr_1"><span>CSR<span class="heti-spacing"> </span></span>字段缩写规范<a class="headerlink" href="#csr_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>后面在定义各个<span class="heti-skip"><span class="heti-spacing"> </span>CSR<span class="heti-spacing"> </span></span>字段的时候会出现一些缩写：</p>
 <ul>
-<li><strong>WPRI</strong>（reserved Writes Preserve values, Reads Ignore values）：写保留，读忽略</li>
-<li><strong>WLRL</strong>（Write/Read Only Legal values）：只能写<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>读合法值（不合法的时候推荐但不必须抛出异常）</li>
-<li><strong>WARL</strong>（Write Any values, Read Legal values）：写任意值，读合法值</li>
+<li><strong>WPRI</strong>（reserved Writes Preserve values, Reads Ignore values<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：写保留，读忽略</li>
+<li><strong>WLRL</strong>（Write/Read Only Legal values<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：只能写<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>读合法值（不合法的时候推荐但不必须抛出异常）</li>
+<li><strong>WARL</strong>（Write Any values, Read Legal values<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：写任意值，读合法值</li>
 </ul>
 <h2 id="machine_1"><span>Machine<span class="heti-spacing"> </span></span>模式<a class="headerlink" href="#machine_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="m-csrs"><span>M<span class="heti-spacing"> </span></span>模式<span><span class="heti-spacing"> </span>CSRs</span><a class="headerlink" href="#m-csrs" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -3035,7 +3035,7 @@ var _hmt = _hmt || [];
 </ul>
 <h4 id="mepc-mcause">mepc &amp; mcause<a class="headerlink" href="#mepc-mcause" title="Permanent link">¶</a></h4>
 <p><span>mepc<span class="heti-spacing"> </span></span>用于保存<span class="heti-skip"><span class="heti-spacing"> </span>trap<span class="heti-spacing"> </span></span>发生时的指令地址。</p>
-<p><span>mcause<span class="heti-spacing"> </span></span>用于保存<span class="heti-skip"><span class="heti-spacing"> </span>trap<span class="heti-spacing"> </span></span>发生的原因（上面规定）：</p>
+<p><span>mcause<span class="heti-spacing"> </span></span>用于保存<span class="heti-skip"><span class="heti-spacing"> </span>trap<span class="heti-spacing"> </span></span>发生的原因（上面规定<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
 <ul>
 <li><span class="csr-bit">31 / 63</span> Interrupt：为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>时表示是中断，为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>时表示是异常</li>
 <li><span class="csr-bit">[30:0] / [62:0]</span> <span class="csr-behav">WLRL</span> Code：中断<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>异常码（以值的方式存储，而不是对应位）</li>
@@ -3048,7 +3048,7 @@ var _hmt = _hmt || [];
 </ul>
 <h3 id="m"><span>M<span class="heti-spacing"> </span></span>模式内存映射寄存器<a class="headerlink" href="#m" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>RISC-V<span class="heti-spacing"> </span></span>特权级规范规定了两个<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>模式内存映射寄存器，分别是<span class="heti-skip"><span class="heti-spacing"> </span>mtime<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>mtimecmp</span>。</p>
-<p><span>mtime<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>RV64<span class="heti-spacing"> </span></span>中都是<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位的。<span>mtime<span class="heti-spacing"> </span></span>应该由机器实现，以固定频率递增。当<span class="heti-skip"><span class="heti-spacing"> </span>mtime<span class="heti-spacing"> </span></span>的值大于等于<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>时，要触发<span><span class="heti-spacing"> </span>machine timer interrupt</span>（当<span class="heti-skip"><span class="heti-spacing"> </span>mie<span class="heti-spacing"> </span></span>寄存器中的<span class="heti-skip"><span class="heti-spacing"> </span>MTIE<span class="heti-spacing"> </span></span>位为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>时）。</p>
+<p><span>mtime<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>在<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>RV64<span class="heti-spacing"> </span></span>中都是<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位的。<span>mtime<span class="heti-spacing"> </span></span>应该由机器实现，以固定频率递增。当<span class="heti-skip"><span class="heti-spacing"> </span>mtime<span class="heti-spacing"> </span></span>的值大于等于<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>时，要触发<span><span class="heti-spacing"> </span>machine timer interrupt</span>（当<span class="heti-skip"><span class="heti-spacing"> </span>mie<span class="heti-spacing"> </span></span>寄存器中的<span class="heti-skip"><span class="heti-spacing"> </span>MTIE<span class="heti-spacing"> </span></span>位为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>时<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>在<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>的默认设置中，<span>mtime<span class="heti-spacing"> </span></span>的地址位于<span><span class="heti-spacing"> </span>0x200bff8</span>，<span>mtimecmp<span class="heti-spacing"> </span></span>的地址位于<span><span class="heti-spacing"> </span>0x2004000</span>。</p>
@@ -3402,22 +3402,22 @@ var _hmt = _hmt || [];
 </ul>
 <p>中断响应程序的入口地址由<span class="heti-skip"><span class="heti-spacing"> </span>mtvec<span class="heti-spacing"> </span></span>寄存器指定，如前面写到的，它分为两种模式：</p>
 <ul>
-<li>直接模式（Direct），所有<span class="heti-skip"><span class="heti-spacing"> </span>trap<span class="heti-spacing"> </span></span>都跳转到<span class="heti-skip"><span class="heti-spacing"> </span>mtvec<span class="heti-spacing"> </span></span>寄存器指定的地址进行处理</li>
-<li>向量化模式（Vectored），中断将根据中断类型跳转到不同偏移位置的中断响应程序，异常仍使用同一个响应程序</li>
+<li>直接模式（Direct<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所有<span class="heti-skip"><span class="heti-spacing"> </span>trap<span class="heti-spacing"> </span></span>都跳转到<span class="heti-skip"><span class="heti-spacing"> </span>mtvec<span class="heti-spacing"> </span></span>寄存器指定的地址进行处理</li>
+<li>向量化模式（Vectored<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，中断将根据中断类型跳转到不同偏移位置的中断响应程序，异常仍使用同一个响应程序</li>
 </ul>
 <p>当中断发生时，<span>CPU<span class="heti-spacing"> </span></span>会：</p>
 <ul>
 <li>将发生异常的指令（或下一条指令）的地址保存到<span class="heti-skip"><span class="heti-spacing"> </span>mepc<span class="heti-spacing"> </span></span>寄存器</li>
 <li>将中断类型码保存到<span class="heti-skip"><span class="heti-spacing"> </span>mcause<span class="heti-spacing"> </span></span>寄存器</li>
 <li>如果中断带有附加信息，将其保存到<span class="heti-skip"><span class="heti-spacing"> </span>mtval<span class="heti-spacing"> </span></span>寄存器</li>
-<li>如果是外部引发的中断，令<span><span class="heti-spacing"> </span>mstatus[MPIE] = mstatus[MIE]</span>（保存），然后令<span><span class="heti-spacing"> </span>mstatus[MIE] = 0</span>（关闭中断）</li>
+<li>如果是外部引发的中断，令<span><span class="heti-spacing"> </span>mstatus[MPIE] = mstatus[MIE]</span>（保存<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，然后令<span><span class="heti-spacing"> </span>mstatus[MIE] = 0</span>（关闭中断）</li>
 <li>将当前特权模式保存到<span class="heti-skip"><span class="heti-spacing"> </span>mstatus[MPP]<span class="heti-spacing"> </span></span>中</li>
 <li>将当前特权模式设置为<span class="heti-skip"><span class="heti-spacing"> </span>Machine<span class="heti-spacing"> </span></span>模式</li>
 <li>根据<span class="heti-skip"><span class="heti-spacing"> </span>mtvec<span class="heti-spacing"> </span></span>寄存器的设置，跳转到对应中断响应程序</li>
 </ul>
 <p>中断处理结束后要使用<span class="heti-skip"><span class="heti-spacing"> </span>mret<span class="heti-spacing"> </span></span>指令进行返回，它会：</p>
 <ul>
-<li>令<span><span class="heti-spacing"> </span>mstatus[MIE] = mstatus[MPIE]</span>（恢复），然后令<span><span class="heti-spacing"> </span>mstatus[MPIE] = 1</span></li>
+<li>令<span><span class="heti-spacing"> </span>mstatus[MIE] = mstatus[MPIE]</span>（恢复<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，然后令<span><span class="heti-spacing"> </span>mstatus[MPIE] = 1</span></li>
 <li>将当前特权模式设置为<span class="heti-skip"><span class="heti-spacing"> </span>mstatus[MPP]<span class="heti-spacing"> </span></span>中保存的值</li>
 <li>将<span class="heti-skip"><span class="heti-spacing"> </span>mstatus[MPP]<span class="heti-spacing"> </span></span>设置为<span class="heti-skip"><span class="heti-spacing"> </span>U<span class="heti-spacing"> </span></span>模式</li>
 <li>将<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>值设置为<span class="heti-skip"><span class="heti-spacing"> </span>mepc<span class="heti-spacing"> </span></span>值，即跳转回中断前的程序</li>

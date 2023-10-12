@@ -918,7 +918,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1902,7 +1902,7 @@ var _hmt = _hmt || [];
 <h2 id="32"><span>32<span class="heti-spacing"> </span></span>位移位相加有符号乘法器<a class="headerlink" href="#32" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="_3">思路及代码<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>移位相加乘法器的原理就是进行位数次循环，每次循环检查<span class="heti-skip"><span class="heti-spacing"> </span>multiplier<span class="heti-spacing"> </span></span>的最低位，如果是<span><span class="heti-spacing"> </span>1</span>，将乘法结果加上<span><span class="heti-spacing"> </span>multiplicand</span>，是<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>就不进行这个操作，之后将<span class="heti-skip"><span class="heti-spacing"> </span>multiplicand<span class="heti-spacing"> </span></span>左移一位，<span>multiplier<span class="heti-spacing"> </span></span>右移一位然后继续循环。</p>
-<p>在<span class="heti-skip"><span class="heti-spacing"> </span>verilog<span class="heti-spacing"> </span></span>中可以使用<span class="heti-skip"><span class="heti-spacing"> </span>always @(*)<span class="heti-spacing"> </span></span>来创建一个串行运行的块，直接在其中按照移位相加的逻辑进行运算即可。并且要先判断一下正负，如果是负的（最高位为<span><span class="heti-spacing"> </span>1</span>）则要先取反加一（即取绝对值），并且也要判断结果的正负。代码：
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>verilog<span class="heti-spacing"> </span></span>中可以使用<span class="heti-skip"><span class="heti-spacing"> </span>always @(*)<span class="heti-spacing"> </span></span>来创建一个串行运行的块，直接在其中按照移位相加的逻辑进行运算即可。并且要先判断一下正负，如果是负的（最高位为<span><span class="heti-spacing"> </span>1</span>）则要先取反加一（即取绝对值<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，并且也要判断结果的正负。代码：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">module</span><span class="w"> </span><span class="n">ShiftAddMultiplier</span><span class="p">(</span><span class="w"></span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">A</span><span class="p">,</span><span class="w"></span>
 <a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">input</span><span class="w"> </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w"> </span><span class="n">B</span><span class="p">,</span><span class="w"></span>

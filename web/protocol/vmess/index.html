@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1879,7 +1879,7 @@ var _hmt = _hmt || [];
 </ul>
 </div>
 <h2 id="vmess_1"><span>VMess<span class="heti-spacing"> </span></span>基础<a class="headerlink" href="#vmess_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p><span>VMess<span class="heti-spacing"> </span></span>通过<span class="heti-skip"><span class="heti-spacing"> </span>uuid<span class="heti-spacing"> </span></span>和时间进行认证，<span>uuid<span class="heti-spacing"> </span></span>可以看成一个<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节的随机数，形如<span><span class="heti-spacing"> </span>43509e50-1164-11ed-861d-0242ac120002</span>（<span>4-2-2-2-6<span class="heti-spacing"> </span></span>字节），几乎完全随机，可以通过<a href="https://www.uuidgenerator.net/"><span class="heti-skip"><span class="heti-spacing"> </span>https://www.uuidgenerator.net/<span class="heti-spacing"> </span></span></a>生成。需要保证客户端和服务端设置的<span class="heti-skip"><span class="heti-spacing"> </span>uuid<span class="heti-spacing"> </span></span>相同，否则无法解密。以及客户端和服务端的时间设置不能偏差太多（<span>90<span class="heti-spacing"> </span></span>秒以内）</p>
+<p><span>VMess<span class="heti-spacing"> </span></span>通过<span class="heti-skip"><span class="heti-spacing"> </span>uuid<span class="heti-spacing"> </span></span>和时间进行认证，<span>uuid<span class="heti-spacing"> </span></span>可以看成一个<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节的随机数，形如<span><span class="heti-spacing"> </span>43509e50-1164-11ed-861d-0242ac120002</span>（<span>4-2-2-2-6<span class="heti-spacing"> </span></span>字节<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，几乎完全随机，可以通过<a href="https://www.uuidgenerator.net/"><span class="heti-skip"><span class="heti-spacing"> </span>https://www.uuidgenerator.net/<span class="heti-spacing"> </span></span></a>生成。需要保证客户端和服务端设置的<span class="heti-skip"><span class="heti-spacing"> </span>uuid<span class="heti-spacing"> </span></span>相同，否则无法解密。以及客户端和服务端的时间设置不能偏差太多（<span>90<span class="heti-spacing"> </span></span>秒以内）</p>
 <ul>
 <li><span>VMess<span class="heti-spacing"> </span></span>是一个无状态协议，即客户端和服务器之间不需要握手即可直接传输数据，每一次数据传输对之前和之后的其它数据传输没有影响</li>
 <li><span>VMess<span class="heti-spacing"> </span></span>的客户端发起一次请求，服务器判断该请求是否来自一个合法的客户端。如验证通过，则转发该请求，并把获得的响应发回给客户端</li>
@@ -1893,7 +1893,7 @@ var _hmt = _hmt || [];
 <p>客户端请求的内容为：</p>
 <ul>
 <li><span>16<span class="heti-spacing"> </span></span>字节<strong>认证信息</strong>（Certification Information）</li>
-<li>不定长（下面解释）<strong>指令部分</strong>（Instruction Part），也称请求头（header）</li>
+<li>不定长（下面解释）<strong>指令部分</strong>（Instruction Part<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，也称请求头（header）</li>
 <li>余下的均是<strong>数据部分</strong>（Data Part）</li>
 </ul>
 <h4 id="_3">认证信息<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
@@ -1971,7 +1971,7 @@ var _hmt = _hmt || [];
 <p>按照上面的规则码好指令之后再经过<span class="heti-skip"><span class="heti-spacing"> </span>AES-128-CFB<span class="heti-spacing"> </span></span>加密，得到相同长度的密文，就是最后要放入包中的指令部分</p>
 <p>解码时根据认证信息得到时间戳进而计算出<span><span class="heti-spacing"> </span>iv</span>，经过<span class="heti-skip"><span class="heti-spacing"> </span>AES-128-CFB<span class="heti-spacing"> </span></span>解密即可</p>
 <h4 id="_5">数据部分<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>数据格式分为基础格式（basic format）和标准格式（standard format）。其中基础格式已经弃用，但为向后兼容所保留，仅支持不加密和<span><span class="heti-spacing"> </span>AES-128-CFB</span>（<span>Sec<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>0x1<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>0x5</span>）</p>
+<p>数据格式分为基础格式（basic format）和标准格式（standard format<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。其中基础格式已经弃用，但为向后兼容所保留，仅支持不加密和<span><span class="heti-spacing"> </span>AES-128-CFB</span>（<span>Sec<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>0x1<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>0x5</span>）</p>
 <p><em>这部分文档也有问题</em></p>
 <h5 id="_6">基础格式<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h5>
 <p>如果指令部分<span class="heti-skip"><span class="heti-spacing"> </span>opt<span class="heti-spacing"> </span></span>中<span class="heti-skip"><span class="heti-spacing"> </span>S<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>，则使用基础格式，数据直接写在数据部分中</p>
@@ -1988,8 +1988,8 @@ var _hmt = _hmt || [];
 <li>当<span class="heti-skip"><span class="heti-spacing"> </span>opt<span class="heti-spacing"> </span></span>中<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>时，<span>L =<span class="heti-spacing"> </span></span>真实长度<span><span class="heti-spacing"> </span>xor mask</span>。这里的<span class="heti-skip"><span class="heti-spacing"> </span>mask<span class="heti-spacing"> </span></span>先采用<span class="heti-skip"><span class="heti-spacing"> </span>Shake128<span class="heti-spacing"> </span></span>根据请求<span><span class="heti-spacing"> </span>iv</span>（即指令部分中的<span><span class="heti-spacing"> </span>iv</span>）生成一个<span><span class="heti-spacing"> </span>RequestMask</span>，然后每次<span class="heti-skip"><span class="heti-spacing"> </span>mask<span class="heti-spacing"> </span></span>为从<span class="heti-skip"><span class="heti-spacing"> </span>RequestMask<span class="heti-spacing"> </span></span>中取两个字节以大端序转为整型，具体后面会详细解释</li>
 </ul>
 </li>
-<li>数据包：根据加密方式进行加密，传输结束时发送空数据包表示结束，需要计算出<span><span class="heti-spacing"> </span>padding_len</span>（后面详细解释），并记<span><span class="heti-spacing"> </span>l = L - padding_len</span><ul>
-<li>不加密（Sec == 0x5）：直接写入<span class="heti-skip"><span class="heti-spacing"> </span>l<span class="heti-spacing"> </span></span>字节明文，后接<span><span class="heti-spacing"> </span>padding</span></li>
+<li>数据包：根据加密方式进行加密，传输结束时发送空数据包表示结束，需要计算出<span><span class="heti-spacing"> </span>padding_len</span>（后面详细解释<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，并记<span><span class="heti-spacing"> </span>l = L - padding_len</span><ul>
+<li>不加密（Sec == 0x5<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：直接写入<span class="heti-skip"><span class="heti-spacing"> </span>l<span class="heti-spacing"> </span></span>字节明文，后接<span><span class="heti-spacing"> </span>padding</span></li>
 <li>AES-128-CFB（Sec == 0x1）<ul>
 <li>前<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>字节为后<span class="heti-skip"><span class="heti-spacing"> </span>l-4<span class="heti-spacing"> </span></span>字节的<span class="heti-skip"><span class="heti-spacing"> </span>fnv1a<span class="heti-spacing"> </span></span>哈希（大端）</li>
 <li>中间<span class="heti-skip"><span class="heti-spacing"> </span>l-4<span class="heti-spacing"> </span></span>字节为<span class="heti-skip"><span class="heti-spacing"> </span>AES-128-CFB<span class="heti-spacing"> </span></span>加密后的密文，<span>key<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>iv<span class="heti-spacing"> </span></span>均是指令部分中的请求<span class="heti-skip"><span class="heti-spacing"> </span>key<span class="heti-spacing"> </span></span>和请求<span><span class="heti-spacing"> </span>iv</span></li>
@@ -1999,7 +1999,7 @@ var _hmt = _hmt || [];
 <li>AES-128-GCM（Sec == 0x3）<ul>
 <li>前<span class="heti-skip"><span class="heti-spacing"> </span>l-16<span class="heti-spacing"> </span></span>字节：<span>AES-128-GCM<span class="heti-spacing"> </span></span>加密后的密文<ul>
 <li><span>key<span class="heti-spacing"> </span></span>为指令部分中的请求<span><span class="heti-spacing"> </span>key</span></li>
-<li><span>iv<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>字节的<span class="heti-skip"><span class="heti-spacing"> </span>count<span class="heti-spacing"> </span></span>拼接上<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>字节的请求<span class="heti-skip"><span class="heti-spacing"> </span>iv<span class="heti-spacing"> </span></span>的第<span><span class="heti-spacing"> </span>3</span>～<span>12<span class="heti-spacing"> </span></span>字节（requestBodyIV[2:12]），其中<span class="heti-skip"><span class="heti-spacing"> </span>count<span class="heti-spacing"> </span></span>从第一个数据包<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>开始，每个数据包增加<span><span class="heti-spacing"> </span>1</span>，编码为<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>字节大端格式</li>
+<li><span>iv<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>字节的<span class="heti-skip"><span class="heti-spacing"> </span>count<span class="heti-spacing"> </span></span>拼接上<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>字节的请求<span class="heti-skip"><span class="heti-spacing"> </span>iv<span class="heti-spacing"> </span></span>的第<span><span class="heti-spacing"> </span>3</span>～<span>12<span class="heti-spacing"> </span></span>字节（requestBodyIV[2:12]<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，其中<span class="heti-skip"><span class="heti-spacing"> </span>count<span class="heti-spacing"> </span></span>从第一个数据包<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>开始，每个数据包增加<span><span class="heti-spacing"> </span>1</span>，编码为<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>字节大端格式</li>
 </ul>
 </li>
 <li>中间<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节：<span>AES-128-GCM<span class="heti-spacing"> </span></span>得到的认证信息</li>

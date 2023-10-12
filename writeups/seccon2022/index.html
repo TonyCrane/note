@@ -856,7 +856,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1885,7 +1885,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>/flag.txt: SECCON{dummy}, ASCII text
 </code></pre></div>
 所以其实如果有回显的话就能直接泄露出 flag 了。但是现在这样只能通过侧信道，可以通过时间长短来判别。既然是通过正则匹配，那么我们理论就可以通过让匹配和不匹配时间产生差别，然后逐字符 leak 出 flag。
-<p>然后就搜了搜<span><span class="heti-spacing"> </span>ReDoS</span>，看不太懂（之后有时间补一补），但是感觉在这里都不太可用，然后四老师给了一个 <code>(.?){0, 1000}</code> 这个正则是可以卡住的。</p>
+<p>然后就搜了搜<span><span class="heti-spacing"> </span>ReDoS</span>，看不太懂（之后有时间补一补<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，但是感觉在这里都不太可用，然后四老师给了一个 <code>(.?){0, 1000}</code> 这个正则是可以卡住的。</p>
 <p>再看<span class="heti-skip"><span class="heti-spacing"> </span>magic<span class="heti-spacing"> </span></span>的格式，对于一个文件类型可以有多次匹配，其层级通过<span class="heti-skip"><span class="heti-spacing"> </span>&gt;<span class="heti-spacing"> </span></span>来表示。例如：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>0 regex pattern1
 <a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>&gt;0x18 regex pattern2 type1
@@ -1921,7 +1921,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-5-20" id="__codelineno-5-20" name="__codelineno-5-20"></a>    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"SECCON</span><span class="se">{{</span><span class="si">{</span><span class="n">flag</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
 </details>
-<p>找队友要了一个日本的延迟小的服务器，跑了一下，得到<span><span class="heti-spacing"> </span>flag:</span><strong><span><span class="heti-spacing"> </span>SECCON{reDo5L1fe}</span></strong></p>
+<p>找队友要了一个日本的延迟小的服务器，跑了一下，得到<span><span class="heti-spacing"> </span>flag:</span> <strong>SECCON{reDo5L1fe}</strong></p>
 <hr/>
 <h2 id="latexipy">latexipy<a class="headerlink" href="#latexipy" title="Permanent link">¶</a></h2>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="https://img.shields.io/badge/-MISC-informational?style=flat-square"><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square"/></a></p>
@@ -1992,7 +1992,7 @@ def solve(a, b, c):
 <a href="#__codelineno-7-30" id="__codelineno-7-30" name="__codelineno-7-30"></a>    spec.loader.exec_module(util.module_from_spec(spec))
 </code></pre></div>
 </details>
-<p>反正就是输入一个函数（只能是单独一个函数，不能有装饰器、类型注解等），然后拼接起来得到一个临时代码文件，然后运行。效果就是利用<span class="heti-skip"><span class="heti-spacing"> </span>v0.1.1<span class="heti-spacing"> </span></span>版本的<span class="heti-skip"><span class="heti-spacing"> </span>latexify<span class="heti-spacing"> </span></span>来讲这个函数转换为<span class="heti-skip"><span class="heti-spacing"> </span>LaTeX<span class="heti-spacing"> </span></span>语法的表示。<span>flag<span class="heti-spacing"> </span></span>在<span><span class="heti-spacing"> </span>/flag.txt</span>，要试图读取它。</p>
+<p>反正就是输入一个函数（只能是单独一个函数，不能有装饰器、类型注解等<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，然后拼接起来得到一个临时代码文件，然后运行。效果就是利用<span class="heti-skip"><span class="heti-spacing"> </span>v0.1.1<span class="heti-spacing"> </span></span>版本的<span class="heti-skip"><span class="heti-spacing"> </span>latexify<span class="heti-spacing"> </span></span>来讲这个函数转换为<span class="heti-skip"><span class="heti-spacing"> </span>LaTeX<span class="heti-spacing"> </span></span>语法的表示。<span>flag<span class="heti-spacing"> </span></span>在<span><span class="heti-spacing"> </span>/flag.txt</span>，要试图读取它。</p>
 <p>翻了<span class="heti-skip"><span class="heti-spacing"> </span>latexify<span class="heti-spacing"> </span></span>的源码，<span>v0.1.1<span class="heti-spacing"> </span></span>的代码很简单，主要就是<span class="heti-skip"><span class="heti-spacing"> </span>core.py<span class="heti-spacing"> </span></span>一个文件里遍历了一遍<span class="heti-skip"><span class="heti-spacing"> </span>ast<span class="heti-spacing"> </span></span>树。没有任何<span class="heti-skip"><span class="heti-spacing"> </span>eval<span class="heti-spacing"> </span></span>之类的、也没有任何调用部件的地方。题目也限制的很死，也没有调用的地方。唯一可能利用的是提供一个<span class="heti-skip"><span class="heti-spacing"> </span>print<span class="heti-spacing"> </span></span>函数试图在打印结果的时候调用，但是它又用的是<span class="heti-skip"><span class="heti-spacing"> </span>__builtins__["print"]<span class="heti-spacing"> </span></span>防止了这一行为。</p>
 <p>想了很多、试了很多、也翻了源码，没做出来。</p>
 <p>赛后看了<span class="heti-skip"><span class="heti-spacing"> </span>discord<span class="heti-spacing"> </span></span>上别人分享的<span><span class="heti-spacing"> </span>payload</span>，很简单，改了一下就是：

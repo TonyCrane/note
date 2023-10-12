@@ -919,7 +919,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1884,7 +1884,7 @@ var _hmt = _hmt || [];
 <p>参考：</p>
 <ul>
 <li><a href="https://github.com/riscv/riscv-isa-manual/releases/download/Priv-v1.12/riscv-privileged-20211203.pdf">The RISC-V Instruction Set Manual Volume II: Privileged Architecture v.20211203</a></li>
-<li>浙江大学 “计算机系统 Ⅲ “（大二春夏）课程</li>
+<li>浙江大学 “计算机系统 Ⅲ <heti-adjacent class="heti-adjacent-quarter">“</heti-adjacent>（大二春夏）课程</li>
 </ul>
 </div>
 <p>操作系统实现虚拟地址需要硬件的支持，需要操作系统向<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>通知设置页表，在访问时<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>再进行地址的翻译。而这些页表的设置操作都是在<span class="heti-skip"><span class="heti-spacing"> </span>Supervisor<span class="heti-spacing"> </span></span>模式下进行设置的，因为<span class="heti-skip"><span class="heti-spacing"> </span>User<span class="heti-spacing"> </span></span>模式不应该关心这些，<span>Machine<span class="heti-spacing"> </span></span>模式直接访问物理地址也不关心。所以关于分页的<span class="heti-skip"><span class="heti-spacing"> </span>ISA<span class="heti-spacing"> </span></span>都在<span class="heti-skip"><span class="heti-spacing"> </span>Supervisor<span class="heti-spacing"> </span></span>里。</p>
@@ -1935,7 +1935,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>PPN：根页表物理页号（Physical Page Number）</li>
 <li>ASID：地址空间<span><span class="heti-spacing"> </span>ID</span>（Address Space ID）</li>
-<li>M（MODE）：分页模式<ul>
+<li>M（MODE<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：分页模式<ul>
 <li>0：<span>Bare<span class="heti-spacing"> </span></span>不进行地址翻译或者保护</li>
 <li>1：<span>Sv32<span class="heti-spacing"> </span></span>采用<span class="heti-skip"><span class="heti-spacing"> </span>Sv32<span class="heti-spacing"> </span></span>模式虚拟地址翻译</li>
 </ul>
@@ -1970,7 +1970,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>PPN：根页表物理页号（Physical Page Number）</li>
 <li>ASID：地址空间<span><span class="heti-spacing"> </span>ID</span>（Address Space ID）</li>
-<li>M（MODE）：分页模式<ul>
+<li>M（MODE<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：分页模式<ul>
 <li>0：<span>Bare<span class="heti-spacing"> </span></span>不进行地址翻译或者保护</li>
 </ul>
 </li>
@@ -2117,20 +2117,20 @@ var _hmt = _hmt || [];
 <p>其中<span class="heti-skip"><span class="heti-spacing"> </span>PPN[1] PPN[0]<span class="heti-spacing"> </span></span>为下一级页表的物理页号<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>物理地址的高<span class="heti-skip"><span class="heti-spacing"> </span>20<span class="heti-spacing"> </span></span>位。剩下的为<span><span class="heti-spacing"> </span>flag</span>：</p>
 <ul>
 <li>RSW：保留位，必须为<span><span class="heti-spacing"> </span>0</span></li>
-<li>A（Accessed）、D（Dirty）：叶页表项是否被访问过、是否被写过（没细看，反正都是<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>就行）</li>
-<li>G（Global）：全局位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则不会被<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>清除（也没细看）</li>
-<li>U（User）：用户位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则允许用户态访问</li>
-<li>X（eXecute）、W（Write）、R（Read）：可执行、可写、可读位<ul>
+<li>A（Accessed<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、D（Dirty<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：叶页表项是否被访问过、是否被写过（没细看，反正都是<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>就行）</li>
+<li>G（Global<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：全局位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则不会被<span class="heti-skip"><span class="heti-spacing"> </span>TLB<span class="heti-spacing"> </span></span>清除（也没细看）</li>
+<li>U（User<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：用户位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则允许用户态访问</li>
+<li>X（eXecute<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、W（Write<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、R（Read<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：可执行、可写、可读位<ul>
 <li><span>RWX<span class="heti-spacing"> </span></span>全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>时表示当前页表项指向下一级页表</li>
 <li><span>W<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1</span>，<span>R<span class="heti-spacing"> </span></span>一定也为<span><span class="heti-spacing"> </span>1</span>（<span>W<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1</span>、<span>R<span class="heti-spacing"> </span></span>为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>是保留状态）</li>
 </ul>
 </li>
-<li>V（Valid）：有效位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则表示该页表项有效，否则在访问时会触发异常</li>
+<li>V（Valid<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：有效位，如果为<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则表示该页表项有效，否则在访问时会触发异常</li>
 </ul>
 <p>地址翻译的流程图为：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv32_light.png#only-light"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv32_light.png#only-light"/></a>
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv32_dark.png#only-dark"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv32_dark.png#only-dark"/></a></p>
-<p>上图是使用二级页表的翻译过程。除此之外还有一种特殊的情况，即也可以使用一级页表（superpage），当第一级页表的<span class="heti-skip"><span class="heti-spacing"> </span>RWX<span class="heti-spacing"> </span></span>不全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>时，表示当前页表项是叶页表项，此时会判断<span class="heti-skip"><span class="heti-spacing"> </span>PPN[0]<span class="heti-spacing"> </span></span>的值，如果不全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>则抛出异常。然后在翻译时<span class="heti-skip"><span class="heti-spacing"> </span>PPN[1]<span class="heti-spacing"> </span></span>保留，<span>VPN[0]<span class="heti-spacing"> </span></span>并入<span><span class="heti-spacing"> </span>page offset</span>：</p>
+<p>上图是使用二级页表的翻译过程。除此之外还有一种特殊的情况，即也可以使用一级页表（superpage<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，当第一级页表的<span class="heti-skip"><span class="heti-spacing"> </span>RWX<span class="heti-spacing"> </span></span>不全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>时，表示当前页表项是叶页表项，此时会判断<span class="heti-skip"><span class="heti-spacing"> </span>PPN[0]<span class="heti-spacing"> </span></span>的值，如果不全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>则抛出异常。然后在翻译时<span class="heti-skip"><span class="heti-spacing"> </span>PPN[1]<span class="heti-spacing"> </span></span>保留，<span>VPN[0]<span class="heti-spacing"> </span></span>并入<span><span class="heti-spacing"> </span>page offset</span>：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv32__light.png#only-light"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv32__light.png#only-light"/></a>
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/pl/riscv/paging/sv32__dark.png#only-dark"><img alt="" src="/assets/images/cs/pl/riscv/paging/sv32__dark.png#only-dark"/></a></p>
 <details class="example" open="open">
@@ -2565,7 +2565,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ul>
-<p>在<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>实际运行中，旧版<span><span class="heti-spacing"> </span>qemu</span>（起码<span class="heti-skip"><span class="heti-spacing"> </span>7.0<span class="heti-spacing"> </span></span>之前）实测会有问题，使用第二种方法的话，即使不进行等值映射，<span>qemu<span class="heti-spacing"> </span></span>也可以正常执行后续指令，但一旦使用<span class="heti-skip"><span class="heti-spacing"> </span>gdb<span class="heti-spacing"> </span></span>单步跟踪，就会在设置<span class="heti-skip"><span class="heti-spacing"> </span>satp<span class="heti-spacing"> </span></span>后立马挂掉（<del>薛定谔的代码</del><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。尚不清楚是什么原因，姑且怀疑是<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>对于指令缓存处理的问题（ps：这里即使调用<span class="heti-skip"><span class="heti-spacing"> </span>fence.i<span class="heti-spacing"> </span></span>清除指令缓存也一样可以执行）。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>实际运行中，旧版<span><span class="heti-spacing"> </span>qemu</span>（起码<span class="heti-skip"><span class="heti-spacing"> </span>7.0<span class="heti-spacing"> </span></span>之前）实测会有问题，使用第二种方法的话，即使不进行等值映射，<span>qemu<span class="heti-spacing"> </span></span>也可以正常执行后续指令，但一旦使用<span class="heti-skip"><span class="heti-spacing"> </span>gdb<span class="heti-spacing"> </span></span>单步跟踪，就会在设置<span class="heti-skip"><span class="heti-spacing"> </span>satp<span class="heti-spacing"> </span></span>后立马挂掉（<del>薛定谔的代码</del><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。尚不清楚是什么原因，姑且怀疑是<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>对于指令缓存处理的问题（ps：这里即使调用<span class="heti-skip"><span class="heti-spacing"> </span>fence.i<span class="heti-spacing"> </span></span>清除指令缓存也一样可以执行<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>相关问题以及一种<span><span class="heti-spacing"> </span>patch</span>：<a href="https://lore.kernel.org/all/7f383fc2.81a2.17f93c0dad7.Coremail.phantom@zju.edu.cn/">[PATCH] target/riscv: Exit current TB after an sfence.vma</a></p>
 <hr/>
 <div class="md-source-file">

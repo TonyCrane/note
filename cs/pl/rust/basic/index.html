@@ -1488,7 +1488,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -3124,7 +3124,7 @@ var _hmt = _hmt || [];
 <p><span>rust<span class="heti-spacing"> </span></span>中可以重复声明同一名称的变量，这会再次分配内存，并完全遮蔽掉前面的同名变量</p>
 <h2 id="_7">基本类型<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="_8">整型<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>i<em>长度</em>（有符号）、u<em>长度</em>（无符号）</p>
+<p>i<em>长度</em>（有符号<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、u<em>长度</em>（无符号）</p>
 <ul>
 <li>i8、i16、i32、i64、i128、u8、u16、u32、u64、u128</li>
 <li>isize、<span>usize<span class="heti-spacing"> </span></span>长度由<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>决定，<span>32<span class="heti-spacing"> </span></span>位<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>则是<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位，<span>64<span class="heti-spacing"> </span></span>位<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>则是<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位</li>
@@ -3171,7 +3171,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>一个<span class="heti-skip"><span class="heti-spacing"> </span>char<span class="heti-spacing"> </span></span>占四个字节（而不是<span class="heti-skip"><span class="heti-spacing"> </span>C/C++<span class="heti-spacing"> </span></span>中的一个字节）</li>
 <li>所有<span class="heti-skip"><span class="heti-spacing"> </span>unicode<span class="heti-spacing"> </span></span>码元都是一个字符</li>
-<li>直接存储<span class="heti-skip"><span class="heti-spacing"> </span>unicode<span class="heti-spacing"> </span></span>值（即<span><span class="heti-spacing"> </span>UCS-4</span>），而不使用<span class="heti-skip"><span class="heti-spacing"> </span>UTF-8<span class="heti-spacing"> </span></span>编码</li>
+<li>直接存储<span class="heti-skip"><span class="heti-spacing"> </span>unicode<span class="heti-spacing"> </span></span>值（即<span><span class="heti-spacing"> </span>UCS-4</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，而不使用<span class="heti-skip"><span class="heti-spacing"> </span>UTF-8<span class="heti-spacing"> </span></span>编码</li>
 </ul>
 <h3 id="_14">单元类型<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
@@ -3200,7 +3200,7 @@ var _hmt = _hmt || [];
 <li>函数名、参数名使用蛇形命名</li>
 <li>必须显式指定参数类型，除了返回<span class="heti-skip"><span class="heti-spacing"> </span>()<span class="heti-spacing"> </span></span>外要显式指定返回值类型</li>
 <li>中途返回使用<span class="heti-skip"><span class="heti-spacing"> </span>return<span class="heti-spacing"> </span></span>关键字（带不带分号均可）</li>
-<li>永不返回的函数类型为<span><span class="heti-spacing"> </span>!</span>（相当于<span class="heti-skip"><span class="heti-spacing"> </span>python<span class="heti-spacing"> </span></span>类型标注中的<span><span class="heti-spacing"> </span>NoReturn</span>），一般用于一定会抛出<span class="heti-skip"><span class="heti-spacing"> </span>panic<span class="heti-spacing"> </span></span>的函数或者无限循环：
+<li>永不返回的函数类型为<span><span class="heti-spacing"> </span>!</span>（相当于<span class="heti-skip"><span class="heti-spacing"> </span>python<span class="heti-spacing"> </span></span>类型标注中的<span><span class="heti-spacing"> </span>NoReturn</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，一般用于一定会抛出<span class="heti-skip"><span class="heti-spacing"> </span>panic<span class="heti-spacing"> </span></span>的函数或者无限循环：
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="k">fn</span> <span class="nf">dead_end</span><span class="p">()</span><span class="w"> </span>-&gt; <span class="o">!</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">    </span><span class="fm">panic!</span><span class="p">(</span><span class="s">"..."</span><span class="p">);</span><span class="w"></span>
 <a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="p">}</span><span class="w"></span>
@@ -3267,7 +3267,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 </code></pre></div>
 函数在返回的时候也会移动所有权，比如上面例子中，print 函数结束后，将 string 移动了出去，赋值给了 s，这时 s 就拿到了返回值的所有权，后面仍可以继续使用。但这要求 s 是 mut 的（因为发生了变化），或者使用变量遮蔽（<code class="highlight"><span class="kd">let</span><span class="w"> </span><span class="n">s</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span><span class="w"></span></code>）
 <h3 id="_21">引用与借用<a class="headerlink" href="#_21" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p><span>rust<span class="heti-spacing"> </span></span>中也有引用的概念，获取一个变量的引用也称为借用（borrowing），使用<span class="heti-skip"><span class="heti-spacing"> </span>&amp;<span class="heti-spacing"> </span></span>来进行引用，<span>*<span class="heti-spacing"> </span></span>来解引用：
+<p><span>rust<span class="heti-spacing"> </span></span>中也有引用的概念，获取一个变量的引用也称为借用（borrowing<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，使用<span class="heti-skip"><span class="heti-spacing"> </span>&amp;<span class="heti-spacing"> </span></span>来进行引用，<span>*<span class="heti-spacing"> </span></span>来解引用：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kd">let</span><span class="w"> </span><span class="n">x</span>: <span class="kt">i32</span> <span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
 <a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="kd">let</span><span class="w"> </span><span class="n">y</span>: <span class="kp">&amp;</span><span class="kt">i32</span> <span class="o">=</span><span class="w"> </span><span class="o">&amp;</span><span class="n">x</span><span class="p">;</span><span class="w"> </span><span class="c1">// 引用类型</span>
 <a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="fm">assert_eq!</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="w"> </span><span class="o">*</span><span class="n">y</span><span class="p">);</span><span class="w"></span>
@@ -3373,7 +3373,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <li>字符串转义<ul>
 <li><span>"\x.."<span class="heti-spacing"> </span></span>十六进制表示，必须在<span class="heti-skip"><span class="heti-spacing"> </span>\x00<span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span>\x7f<span class="heti-spacing"> </span></span>之间</li>
 <li><span>"\u{....}"<span class="heti-spacing"> </span></span>用<span class="heti-skip"><span class="heti-spacing"> </span>codepoint<span class="heti-spacing"> </span></span>表示一个<span class="heti-skip"><span class="heti-spacing"> </span>unicode<span class="heti-spacing"> </span></span>字符</li>
-<li>可以直接换行，但从下一行行首开始就记录文本（也就是不当作缩进忽略），行尾加  不换行，且下一行行首空格忽略</li>
+<li>可以直接换行，但从下一行行首开始就记录文本（也就是不当作缩进忽略<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，行尾加  不换行，且下一行行首空格忽略</li>
 <li>其它转义和其它语言均类似</li>
 <li><span>r"..."<span class="heti-spacing"> </span></span>中的  不参与转义（和<span class="heti-skip"><span class="heti-spacing"> </span>python<span class="heti-spacing"> </span></span>类似）</li>
 <li><span>r#"..."#<span class="heti-spacing"> </span></span>中的双引号不会提前结束字符串（也就相当于不需要转义双引号）</li>
@@ -3427,7 +3427,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <a href="#__codelineno-22-3" id="__codelineno-22-3" name="__codelineno-22-3"></a><span class="w">    </span><span class="o">..</span><span class="n">user1</span><span class="w"> </span><span class="c1">// 必须写在后面</span>
 <a href="#__codelineno-22-4" id="__codelineno-22-4" name="__codelineno-22-4"></a><span class="p">};</span><span class="w"></span>
 </code></pre></div>
-将 user1 除了 email 之外的字段<strong>移动</strong>到 user2 中。因为这是移动，所以发生了所有权的转移，导致 user1.name 后面不能被使用。但因为 u32 实现了 Copy trait，所以 user1.age 仍可以使用。并且 user1.email 所有权并没有转移，仍然可以使用
+将 user1 除了 email 之外的字段<strong>移动</strong>到<span class="heti-skip"><span class="heti-spacing"> </span>user2<span class="heti-spacing"> </span></span>中。因为这是移动，所以发生了所有权的转移，导致<span class="heti-skip"><span class="heti-spacing"> </span>user1.name<span class="heti-spacing"> </span></span>后面不能被使用。但因为<span class="heti-skip"><span class="heti-spacing"> </span>u32<span class="heti-spacing"> </span></span>实现了<span><span class="heti-spacing"> </span>Copy trait</span>，所以<span class="heti-skip"><span class="heti-spacing"> </span>user1.age<span class="heti-spacing"> </span></span>仍可以使用。并且<span class="heti-skip"><span class="heti-spacing"> </span>user1.email<span class="heti-spacing"> </span></span>所有权并没有转移，仍然可以使用
 <h4 id="_29">元组结构体<a class="headerlink" href="#_29" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>可以定义像元组一样没有字段名的结构体：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-23-1" id="__codelineno-23-1" name="__codelineno-23-1"></a><span class="k">struct</span> <span class="nc">Point</span><span class="p">(</span><span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="kt">i32</span><span class="p">,</span><span class="w"> </span><span class="kt">i32</span><span class="p">);</span><span class="w"></span>
@@ -3868,7 +3868,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <a href="#__codelineno-60-20" id="__codelineno-60-20" name="__codelineno-60-20"></a><span class="w">    </span><span class="n">C</span>::<span class="n">func</span><span class="p">(</span><span class="o">&amp;</span><span class="n">c</span><span class="p">);</span><span class="w">    </span><span class="c1">// C 与第一个相同，但显式调用</span>
 <a href="#__codelineno-60-21" id="__codelineno-60-21" name="__codelineno-60-21"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
-<p>这样调用的一个条件是方法的第一个参数是<span><span class="heti-spacing"> </span>self</span>（又叫方法接收器<span><span class="heti-spacing"> </span>receiver</span>），但如果是关联函数的话，就没有这个<span><span class="heti-spacing"> </span>receiver</span>，<span>rust<span class="heti-spacing"> </span></span>也就自然不知道是调用哪个类型实现的特征上的方法</p>
+<p>这样调用的一个条件是方法的第一个参数是<span><span class="heti-spacing"> </span>self</span>（又叫方法接收器<span><span class="heti-spacing"> </span>receiver</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，但如果是关联函数的话，就没有这个<span><span class="heti-spacing"> </span>receiver</span>，<span>rust<span class="heti-spacing"> </span></span>也就自然不知道是调用哪个类型实现的特征上的方法</p>
 <p>这时需要使用完全限定语法：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-61-1" id="__codelineno-61-1" name="__codelineno-61-1"></a><span class="o">&lt;</span><span class="n">Type</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="n">Trait</span><span class="o">&gt;</span>::<span class="n">function</span><span class="p">(</span><span class="n">receiver_if_method</span><span class="p">,</span><span class="w"> </span><span class="n">next_arg</span><span class="p">,</span><span class="w"> </span><span class="o">..</span><span class="p">.);</span><span class="w"></span>
 </code></pre></div>
@@ -3890,7 +3890,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <a href="#__codelineno-62-15" id="__codelineno-62-15" name="__codelineno-62-15"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="trait-trait"><span>trait<span class="heti-spacing"> </span></span>定义中的<span class="heti-skip"><span class="heti-spacing"> </span>trait<span class="heti-spacing"> </span></span>约束<a class="headerlink" href="#trait-trait" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>如果在定义特征<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>的时候需要使用特征<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>的方法，则<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>都要实现（实现了就好，先后无所谓）。在定义<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>的时候就可以在后面加上约束<span><span class="heti-spacing"> </span>B</span>：
+<p>如果在定义特征<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>的时候需要使用特征<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>的方法，则<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>B<span class="heti-spacing"> </span></span>都要实现（实现了就好，先后无所谓<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。在定义<span class="heti-skip"><span class="heti-spacing"> </span>A<span class="heti-spacing"> </span></span>的时候就可以在后面加上约束<span><span class="heti-spacing"> </span>B</span>：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-63-1" id="__codelineno-63-1" name="__codelineno-63-1"></a><span class="k">trait</span><span class="w"> </span><span class="n">A</span>: <span class="nc">B</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a href="#__codelineno-63-2" id="__codelineno-63-2" name="__codelineno-63-2"></a><span class="w">    </span><span class="o">..</span><span class="p">.</span><span class="w"></span>
 <a href="#__codelineno-63-3" id="__codelineno-63-3" name="__codelineno-63-3"></a><span class="p">}</span><span class="w"></span>
@@ -3997,7 +3997,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 </li>
 </ul>
 <h3 id="_46">方法调用时的强制类型转换<a class="headerlink" href="#_46" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>例如在调用<span class="heti-skip"><span class="heti-spacing"> </span>a.func()<span class="heti-spacing"> </span></span>时（<span>a<span class="heti-spacing"> </span></span>的类型为<span><span class="heti-spacing"> </span>T</span>），编译器会进行以下操作</p>
+<p>例如在调用<span class="heti-skip"><span class="heti-spacing"> </span>a.func()<span class="heti-spacing"> </span></span>时（<span>a<span class="heti-spacing"> </span></span>的类型为<span><span class="heti-spacing"> </span>T</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，编译器会进行以下操作</p>
 <ol>
 <li>尝试值方法调用，即<span><span class="heti-spacing"> </span>T::func(a)</span></li>
 <li>如果上一步无法完成，则尝试引用方法调用，即<ul>
@@ -4005,7 +4005,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <li>&lt;&amp;mut T&gt;::func(a)</li>
 </ul>
 </li>
-<li>如果上一步仍然无法完成，则试着解引用<span><span class="heti-spacing"> </span>T</span>，如果<span class="heti-skip"><span class="heti-spacing"> </span>T<span class="heti-spacing"> </span></span>满足<span><span class="heti-spacing"> </span>Deref&lt;Target = U&gt;</span>，即<span class="heti-skip"><span class="heti-spacing"> </span>T<span class="heti-spacing"> </span></span>可以被解引用为<span><span class="heti-spacing"> </span>U</span>，则编译器会使用<span class="heti-skip"><span class="heti-spacing"> </span>U<span class="heti-spacing"> </span></span>类型尝试调用（从<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>开始同样的步骤），称为解引用方法调用</li>
+<li>如果上一步仍然无法完成，则试着解引用<span><span class="heti-spacing"> </span>T</span>，如果<span class="heti-skip"><span class="heti-spacing"> </span>T<span class="heti-spacing"> </span></span>满足<span><span class="heti-spacing"> </span>Deref&lt;Target = U&gt;</span>，即<span class="heti-skip"><span class="heti-spacing"> </span>T<span class="heti-spacing"> </span></span>可以被解引用为<span><span class="heti-spacing"> </span>U</span>，则编译器会使用<span class="heti-skip"><span class="heti-spacing"> </span>U<span class="heti-spacing"> </span></span>类型尝试调用（从<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>开始同样的步骤<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，称为解引用方法调用</li>
 <li>如果<span class="heti-skip"><span class="heti-spacing"> </span>T<span class="heti-spacing"> </span></span>不能被解引用，且<span class="heti-skip"><span class="heti-spacing"> </span>T<span class="heti-spacing"> </span></span>是一个定长类型，则编译器会尝试将<span class="heti-skip"><span class="heti-spacing"> </span>T<span class="heti-spacing"> </span></span>转为不定长类型（例如<span class="heti-skip"><span class="heti-spacing"> </span>[i32; 2]<span class="heti-spacing"> </span></span>转为<span><span class="heti-spacing"> </span>[i32]</span>）</li>
 <li>如果上面都不行，则不能通过编译</li>
 </ol>
@@ -4021,7 +4021,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <li>尝试解引用<span><span class="heti-spacing"> </span>array</span>，变为<span class="heti-skip"><span class="heti-spacing"> </span>Box&lt;[T; 3]&gt;<span class="heti-spacing"> </span></span>类型，对其调用<span><span class="heti-spacing"> </span>.index(0)</span></li>
 <li>Box&lt;[T; 3]&gt;、&amp;Box&lt;[T; 3]&gt;、<span>&amp;mut Box&lt;[T; 3]&gt;<span class="heti-spacing"> </span></span>都没有实现<span><span class="heti-spacing"> </span>Index</span>，无法调用</li>
 <li>解引用<span><span class="heti-spacing"> </span>Box&lt;[T; 3]&gt;</span>，得到<span><span class="heti-spacing"> </span>[T; 3]</span></li>
-<li><span>[T; 3]<span class="heti-spacing"> </span></span>也没有实现<span><span class="heti-spacing"> </span>Index</span>（只有数组切片才可以通过索引访问），引用、解引用都不行</li>
+<li><span>[T; 3]<span class="heti-spacing"> </span></span>也没有实现<span><span class="heti-spacing"> </span>Index</span>（只有数组切片才可以通过索引访问<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，引用、解引用都不行</li>
 <li>将定长<span class="heti-skip"><span class="heti-spacing"> </span>[T; 3]<span class="heti-spacing"> </span></span>转为不定长<span><span class="heti-spacing"> </span>[T]</span>，也就是数组切片，它实现了<span><span class="heti-spacing"> </span>Index</span>，可以调用<span class="heti-skip"><span class="heti-spacing"> </span>.index(0)<span class="heti-spacing"> </span></span>方法</li>
 </ol>
 </details>
@@ -4194,7 +4194,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <li><span>src/main.rs<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>src/lib.rs<span class="heti-spacing"> </span></span>称为<span><span class="heti-spacing"> </span>crate root</span></li>
 <li>模块使用<span class="heti-skip"><span class="heti-spacing"> </span>::<span class="heti-spacing"> </span></span>逐级访问<ul>
 <li><span>crate<span class="heti-spacing"> </span></span>指根，使用<span class="heti-skip"><span class="heti-spacing"> </span>crate<span class="heti-spacing"> </span></span>也就相当于使用绝对路径</li>
-<li><span>super<span class="heti-spacing"> </span></span>指父模块（上一级），相当于文件系统中的<span><span class="heti-spacing"> </span>..</span></li>
+<li><span>super<span class="heti-spacing"> </span></span>指父模块（上一级<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，相当于文件系统中的<span><span class="heti-spacing"> </span>..</span></li>
 <li><span>self<span class="heti-spacing"> </span></span>指自身模块</li>
 </ul>
 </li>
@@ -4627,7 +4627,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <li>有时编译器可以自动推测生命周期，不需要显示标注</li>
 <li>消除规则（推测规则）<ul>
 <li>默认情况下每一个引用参数都会获得一个独自的生命周期</li>
-<li>如果只有一个输入生命周期（参数的生命周期，即只有一个引用类型参数），则该生命周期会被赋给所有输出生命周期</li>
+<li>如果只有一个输入生命周期（参数的生命周期，即只有一个引用类型参数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，则该生命周期会被赋给所有输出生命周期</li>
 <li>如果存在多个输入生命周期，但其中一个是 <code class="highlight"><span class="o">&amp;</span><span class="bp">self</span><span class="w"></span></code> 或 <code class="highlight"><span class="o">&amp;</span><span class="k">mut</span><span class="w"> </span><span class="bp">self</span><span class="w"></span></code>，则<span class="heti-skip"><span class="heti-spacing"> </span>self<span class="heti-spacing"> </span></span>的生命周期会被赋给所有输出生命周期</li>
 </ul>
 </li>
@@ -4893,7 +4893,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 </li>
 <li>定长类型与不定长类型<ul>
 <li>定长类型自动实现<span><span class="heti-spacing"> </span>Sized trait</span>，并且在使用泛型的时候会自动添加<span class="heti-skip"><span class="heti-spacing"> </span>Sized<span class="heti-spacing"> </span></span>约束</li>
-<li>不定长类型（动态大小类型，DST），包括切片、str、特征等（<span>Vec<span class="heti-spacing"> </span></span>等集合类型是定长的，因为在栈上存储的信息定长）<ul>
+<li>不定长类型（动态大小类型，DST<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，包括切片、str、特征等（<span>Vec<span class="heti-spacing"> </span></span>等集合类型是定长的，因为在栈上存储的信息定长）<ul>
 <li><span>DST<span class="heti-spacing"> </span></span>无法单独使用，只能通过引用或者<span class="heti-skip"><span class="heti-spacing"> </span>Box<span class="heti-spacing"> </span></span>来间接使用，如将特征封装为特征对象</li>
 <li><span>?Size<span class="heti-spacing"> </span></span>特征表示既有可能是固定大小类型也有可能是<span><span class="heti-spacing"> </span>DST</span>：
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-130-1" id="__codelineno-130-1" name="__codelineno-130-1"></a><span class="k">fn</span> <span class="nf">func</span><span class="o">&lt;</span><span class="n">T</span>: <span class="o">?</span><span class="nb">Sized</span><span class="o">&gt;</span><span class="p">(</span><span class="n">t</span>: <span class="kp">&amp;</span><span class="nc">T</span><span class="p">)</span><span class="w"> </span><span class="p">{}</span><span class="w"></span>
@@ -5094,7 +5094,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 </ul>
 <h3 id="rc-arc"><span>Rc<span class="heti-spacing"> </span></span>与<span><span class="heti-spacing"> </span>Arc</span><a class="headerlink" href="#rc-arc" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
-<li><span>Rc<span class="heti-spacing"> </span></span>即引用计数（reference counting），记录一个数据被引用的次数来确定数据是否被使用，当引用次数归零，则清理释放</li>
+<li><span>Rc<span class="heti-spacing"> </span></span>即引用计数（reference counting<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，记录一个数据被引用的次数来确定数据是否被使用，当引用次数归零，则清理释放</li>
 <li>使用<span class="heti-skip"><span class="heti-spacing"> </span>clone<span class="heti-spacing"> </span></span>来复制智能指针并增加引用计数
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-145-1" id="__codelineno-145-1" name="__codelineno-145-1"></a><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">rc</span>::<span class="n">Rc</span><span class="w"></span>
 <a href="#__codelineno-145-2" id="__codelineno-145-2" name="__codelineno-145-2"></a><span class="kd">let</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">Rc</span>::<span class="n">new</span><span class="p">(</span><span class="nb">String</span>::<span class="n">from</span><span class="p">(</span><span class="s">"..."</span><span class="p">));</span><span class="w"></span>
@@ -5107,7 +5107,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 </li>
 <li><span>Rc<span class="heti-spacing"> </span></span>在离开作用域时会被释放，并将引用数据的计数减一</li>
 <li><span>Rc<span class="heti-spacing"> </span></span>是指向底层数据的不可变引用，无法通过它来修改数据</li>
-<li><span>Rc<span class="heti-spacing"> </span></span>只能用在同一线程内部，多线程之间共享需要使用<span><span class="heti-spacing"> </span>Arc</span>（Atomic Rc），其<span class="heti-skip"><span class="heti-spacing"> </span>api<span class="heti-spacing"> </span></span>一致但是线程安全的，不过效率会有所降低<ul>
+<li><span>Rc<span class="heti-spacing"> </span></span>只能用在同一线程内部，多线程之间共享需要使用<span><span class="heti-spacing"> </span>Arc</span>（Atomic Rc<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，其<span class="heti-skip"><span class="heti-spacing"> </span>api<span class="heti-spacing"> </span></span>一致但是线程安全的，不过效率会有所降低<ul>
 <li>需要 <code class="highlight"><span class="k">use</span><span class="w"> </span><span class="n">std</span>::<span class="n">sync</span>::<span class="n">Arc</span><span class="w"></span></code></li>
 </ul>
 </li>
@@ -5443,7 +5443,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <li>裸指针不能保证指向合法的内存</li>
 <li>裸指针可以是<span><span class="heti-spacing"> </span>null</span></li>
 <li>裸指针没有实现任何自动的回收（drop）</li>
-<li>裸指针可以使用加减法（对地址操作），但是这不会考虑单元大小，建议对裸指针调用<span class="heti-skip"><span class="heti-spacing"> </span>.add<span class="heti-spacing"> </span></span>方法（会自动乘单元大小）</li>
+<li>裸指针可以使用加减法（对地址操作<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，但是这不会考虑单元大小，建议对裸指针调用<span class="heti-skip"><span class="heti-spacing"> </span>.add<span class="heti-spacing"> </span></span>方法（会自动乘单元大小）</li>
 </ul>
 </li>
 <li>创建裸指针<ul>
@@ -5516,7 +5516,7 @@ String 存储在堆上，为 y 赋值本应拷贝地址作浅复制，但这样�
 <li>从<span class="heti-skip"><span class="heti-spacing"> </span>rust<span class="heti-spacing"> </span></span>代码生成<span><span class="heti-spacing"> </span>c bindings</span>：<a href="https://github.com/eqrion/cbindgen"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> eqrion/cbindgen</a></li>
 </ul>
 </li>
-<li>与<span class="heti-skip"><span class="heti-spacing"> </span>C++<span class="heti-spacing"> </span></span>代码交互（是安全的）：<a href="https://github.com/dtolnay/cxx"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> dtolnay/cxx</a></li>
+<li>与<span class="heti-skip"><span class="heti-spacing"> </span>C++<span class="heti-spacing"> </span></span>代码交互（是安全的<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：<a href="https://github.com/dtolnay/cxx"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> dtolnay/cxx</a></li>
 </ul>
 </li>
 </ul>

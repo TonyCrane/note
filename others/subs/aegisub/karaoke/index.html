@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1856,7 +1856,7 @@ var _hmt = _hmt || [];
 <p>有<span><span class="heti-spacing"> </span>\k \kf</span>（同<span><span class="heti-spacing"> </span>\K</span>）<span>\ko<span class="heti-spacing"> </span></span>三种行内特效标签，一句打好的<span class="heti-skip"><span class="heti-spacing"> </span>k<span class="heti-spacing"> </span></span>轴类似如下格式：</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>{\k56}a{\k55}b{\k56}c{\k55}d{\k56}e{\k55}f{\k56}g{\k55}h{\k56}i
 </code></pre></div>
-<p>被<span class="heti-skip"><span class="heti-spacing"> </span>\k<span class="heti-spacing"> </span></span>系列特效标签分隔的称为音节（syllable），每个音节前面的<span class="heti-skip"><span class="heti-spacing"> </span>{\k&lt;number&gt;}<span class="heti-spacing"> </span></span>表示该音节持续的时间，以厘秒（百分之一秒）为单位。这个轴可以使用<span class="heti-skip"><span class="heti-spacing"> </span>Aegisub<span class="heti-spacing"> </span></span>带的卡拉<span class="heti-skip"><span class="heti-spacing"> </span>OK<span class="heti-spacing"> </span></span>模式来打。</p>
+<p>被<span class="heti-skip"><span class="heti-spacing"> </span>\k<span class="heti-spacing"> </span></span>系列特效标签分隔的称为音节（syllable<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，每个音节前面的<span class="heti-skip"><span class="heti-spacing"> </span>{\k&lt;number&gt;}<span class="heti-spacing"> </span></span>表示该音节持续的时间，以厘秒（百分之一秒）为单位。这个轴可以使用<span class="heti-skip"><span class="heti-spacing"> </span>Aegisub<span class="heti-spacing"> </span></span>带的卡拉<span class="heti-skip"><span class="heti-spacing"> </span>OK<span class="heti-spacing"> </span></span>模式来打。</p>
 <p>默认的三种<span class="heti-skip"><span class="heti-spacing"> </span>k<span class="heti-spacing"> </span></span>标签的效果如下：</p>
 <ul>
 <li><span>\k<span class="heti-spacing"> </span></span>已经开始的音节显示为主要颜色，未开始的音节显示为次要颜色（突变）</li>
@@ -1881,7 +1881,7 @@ var _hmt = _hmt || [];
 <li><span>Effect<span class="heti-spacing"> </span></span>部分为空且不是注释行</li>
 <li><span>Effect<span class="heti-spacing"> </span></span>部分为<span class="heti-skip"><span class="heti-spacing"> </span>karaoke<span class="heti-spacing"> </span></span>或者<span><span class="heti-spacing"> </span>Karaoke</span>，不论是不是注释行</li>
 </ul>
-<p>也就是说在执行<span class="heti-skip"><span class="heti-spacing"> </span>kara-templater<span class="heti-spacing"> </span></span>脚本时，会先收集字幕中的全部<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>code</span>，然后处理按照上述规则匹配的行，对于每一个需要处理的行按顺序依次执行<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>code</span>（顺序就是在文件中出现的顺序），对于<span class="heti-skip"><span class="heti-spacing"> </span>code<span class="heti-spacing"> </span></span>就放到<span class="heti-skip"><span class="heti-spacing"> </span>lua<span class="heti-spacing"> </span></span>环境中执行，对于<span><span class="heti-spacing"> </span>template</span>：</p>
+<p>也就是说在执行<span class="heti-skip"><span class="heti-spacing"> </span>kara-templater<span class="heti-spacing"> </span></span>脚本时，会先收集字幕中的全部<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>code</span>，然后处理按照上述规则匹配的行，对于每一个需要处理的行按顺序依次执行<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>或<span><span class="heti-spacing"> </span>code</span>（顺序就是在文件中出现的顺序<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，对于<span class="heti-skip"><span class="heti-spacing"> </span>code<span class="heti-spacing"> </span></span>就放到<span class="heti-skip"><span class="heti-spacing"> </span>lua<span class="heti-spacing"> </span></span>环境中执行，对于<span><span class="heti-spacing"> </span>template</span>：</p>
 <ul>
 <li>生成一个新的行，特效标记为<span><span class="heti-spacing"> </span>fx</span>，将原字幕中的<span class="heti-skip"><span class="heti-spacing"> </span>k<span class="heti-spacing"> </span></span>标签逐个替换为<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>行内容</li>
 <li>处理好后将原字幕行标记为注释，将特效设置为<span><span class="heti-spacing"> </span>karaoke</span></li>
@@ -1889,7 +1889,7 @@ var _hmt = _hmt || [];
 <p>这样的效果就是再次执行脚本的时候所有特效为<span class="heti-skip"><span class="heti-spacing"> </span>fx<span class="heti-spacing"> </span></span>的行会被删除，然后特效为<span class="heti-skip"><span class="heti-spacing"> </span>karaoke<span class="heti-spacing"> </span></span>的注释行会用来生成新的<span class="heti-skip"><span class="heti-spacing"> </span>fx<span class="heti-spacing"> </span></span>行，以达到更新的效果。</p>
 <h2 id="_2">特效模板详细用法<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="_3">模板修饰语<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>只有<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>code<span class="heti-spacing"> </span></span>两种还是太少了，但作为基本功能还是够的（一个实际替换，一个作准备）。所以加了修饰语的概念，让这二者的效果有了更多种的变化。</p>
+<p>只有<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>code<span class="heti-spacing"> </span></span>两种还是太少了，但作为基本功能还是够的（一个实际替换，一个作准备<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。所以加了修饰语的概念，让这二者的效果有了更多种的变化。</p>
 <p>在没有修饰语的情况下，<span>template<span class="heti-spacing"> </span></span>默认带<span><span class="heti-spacing"> </span>syl</span>，<span>code<span class="heti-spacing"> </span></span>默认带<span><span class="heti-spacing"> </span>once</span>。</p>
 <dl>
 <dt><strong>once</strong></dt>
@@ -2053,7 +2053,7 @@ var _hmt = _hmt || [];
 </details>
 </dd>
 <dt><strong>all</strong></dt>
-<dd><span>code<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>都可用，表示在筛选匹配的字幕行时无视样式，即把特效模板用在所有行上（而不仅是相同样式的行上）。</dd>
+<dd><span>code<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>都可用，表示在筛选匹配的字幕行时无视样式，即把特效模板用在所有行上（而不仅是相同样式的行上<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</dd>
 <dt><strong>char</strong></dt>
 <dd>一般用于<span><span class="heti-spacing"> </span>template</span>，表示每个字符生成一个新行，并在开头添加模板内容。<span>template syl char<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>template char<span class="heti-spacing"> </span></span>效果一样。</dd>
 <dt><strong>fx <em>name</em></strong></dt>
@@ -2298,7 +2298,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="p">}</span>
 <a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="n">tenv</span><span class="p">.</span><span class="n">tenv</span> <span class="o">=</span> <span class="n">tenv</span>
 </code></pre></div>
-<p>即<span class="heti-skip"><span class="heti-spacing"> </span>string math<span class="heti-spacing"> </span></span>两个常用的标准库直接加载进去了。剩下<span class="heti-skip"><span class="heti-spacing"> </span>_G<span class="heti-spacing"> </span></span>表示全局变量（类似<span><span class="heti-spacing"> </span>python globals()</span>），可以通过<span class="heti-skip"><span class="heti-spacing"> </span>_G.xxx<span class="heti-spacing"> </span></span>访问更多标准库或者<span class="heti-skip"><span class="heti-spacing"> </span>Aegisub<span class="heti-spacing"> </span></span>的库，比如可以调用<span class="heti-skip"><span class="heti-spacing"> </span>_G.util.interpolate_color<span class="heti-spacing"> </span></span>来生成插值渐变色。还有一个<span class="heti-skip"><span class="heti-spacing"> </span>tenv<span class="heti-spacing"> </span></span>表示自己。</p>
+<p>即<span class="heti-skip"><span class="heti-spacing"> </span>string math<span class="heti-spacing"> </span></span>两个常用的标准库直接加载进去了。剩下<span class="heti-skip"><span class="heti-spacing"> </span>_G<span class="heti-spacing"> </span></span>表示全局变量（类似<span><span class="heti-spacing"> </span>python globals()</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，可以通过<span class="heti-skip"><span class="heti-spacing"> </span>_G.xxx<span class="heti-spacing"> </span></span>访问更多标准库或者<span class="heti-skip"><span class="heti-spacing"> </span>Aegisub<span class="heti-spacing"> </span></span>的库，比如可以调用<span class="heti-skip"><span class="heti-spacing"> </span>_G.util.interpolate_color<span class="heti-spacing"> </span></span>来生成插值渐变色。还有一个<span class="heti-skip"><span class="heti-spacing"> </span>tenv<span class="heti-spacing"> </span></span>表示自己。</p>
 <p>接下来<span class="heti-skip"><span class="heti-spacing"> </span>apply_templates<span class="heti-spacing"> </span></span>函数中定义了一系列函数，可以在<span class="heti-skip"><span class="heti-spacing"> </span>template<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>code<span class="heti-spacing"> </span></span>中使用，定义方法大概是：</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="n">tenv</span><span class="p">.</span><span class="n">retime</span> <span class="o">=</span> <span class="kr">function</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">addstart</span><span class="p">,</span> <span class="n">addend</span><span class="p">)</span>
 <a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>    <span class="p">...</span>

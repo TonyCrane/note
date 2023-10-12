@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1895,12 +1895,12 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <h3 id="_3">合并图片流<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p><span>Aegisub<span class="heti-spacing"> </span></span>在搞跟踪的时候需要导出时间范围内的视频切片，但我这里直接切视频不太好使（因为默认有<span class="heti-skip"><span class="heti-spacing"> </span>crf<span class="heti-spacing"> </span></span>参数，我目前的<span class="heti-skip"><span class="heti-spacing"> </span>ffmpeg<span class="heti-spacing"> </span></span>没配置这个），另一种方式是导出范围内的系列图片，这样是可以的，只是需要后续再用<span class="heti-skip"><span class="heti-spacing"> </span>ffmpeg<span class="heti-spacing"> </span></span>拼一下：</p>
+<p><span>Aegisub<span class="heti-spacing"> </span></span>在搞跟踪的时候需要导出时间范围内的视频切片，但我这里直接切视频不太好使（因为默认有<span class="heti-skip"><span class="heti-spacing"> </span>crf<span class="heti-spacing"> </span></span>参数，我目前的<span class="heti-skip"><span class="heti-spacing"> </span>ffmpeg<span class="heti-spacing"> </span></span>没配置这个<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，另一种方式是导出范围内的系列图片，这样是可以的，只是需要后续再用<span class="heti-skip"><span class="heti-spacing"> </span>ffmpeg<span class="heti-spacing"> </span></span>拼一下：</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>$ ffmpeg -r <span class="m">23</span>.976 -f image2 -i <span class="s2">"...-%05d.jpg"</span> -vcodec libx264 clip.mp4
 </code></pre></div>
 <h2 id="ffprobe">ffprobe<a class="headerlink" href="#ffprobe" title="Permanent link">¶</a></h2>
 <h3 id="_4">提取关键帧<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p><span>Aegisub<span class="heti-spacing"> </span></span>可以载入关键帧文件显示在音频中，方便打轴时对关键帧。这个文件可以用<span class="heti-skip"><span class="heti-spacing"> </span>Aegisub<span class="heti-spacing"> </span></span>导出，也可以用<span class="heti-skip"><span class="heti-spacing"> </span>ffprobe<span class="heti-spacing"> </span></span>逐帧读取帧类型，筛选关键帧输出索引。需要注意的是一些源的关键帧分布并非在画面切换的位置，所以可以先用<span class="heti-skip"><span class="heti-spacing"> </span>ffmpeg<span class="heti-spacing"> </span></span>无参数压到<span><span class="heti-spacing"> </span>mp4</span>（<code>ffmpeg -i &lt;origin_video&gt; output.mp4</code>），这样筛选出的关键帧一般就是画面切换的位置了。</p>
+<p><span>Aegisub<span class="heti-spacing"> </span></span>可以载入关键帧文件显示在音频中，方便打轴时对关键帧。这个文件可以用<span class="heti-skip"><span class="heti-spacing"> </span>Aegisub<span class="heti-spacing"> </span></span>导出，也可以用<span class="heti-skip"><span class="heti-spacing"> </span>ffprobe<span class="heti-spacing"> </span></span>逐帧读取帧类型，筛选关键帧输出索引。需要注意的是一些源的关键帧分布并非在画面切换的位置，所以可以先用<span class="heti-skip"><span class="heti-spacing"> </span>ffmpeg<span class="heti-spacing"> </span></span>无参数压到<span><span class="heti-spacing"> </span>mp4</span>（<code>ffmpeg -i &lt;origin_video&gt; output.mp4</code><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，这样筛选出的关键帧一般就是画面切换的位置了。</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>$ ffprobe -i output.mp4 -select_streams v -show_frames -show_entries <span class="nv">frame</span><span class="o">=</span>pict_type -of csv <span class="p">|</span> sed -n <span class="s1">'3,$p'</span> <span class="p">|</span> grep -n I <span class="p">|</span> cut -d <span class="s1">':'</span> -f <span class="m">1</span> &gt; tmp.txt
 </code></pre></div>
 <ul>
@@ -1909,7 +1909,7 @@ var _hmt = _hmt || [];
 <li><code>grep -n I</code> 筛选关键帧出现的位置</li>
 <li><code>cut -d ':' -f 1</code> 仅保留<span class="heti-skip"><span class="heti-spacing"> </span>grep -n<span class="heti-spacing"> </span></span>输出的行号（也就是帧号）</li>
 </ul>
-<p><span>Aegisub<span class="heti-spacing"> </span></span>加载之前需要在开头加上关键帧文件信息（以及刚才删掉的第<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>帧）：</p>
+<p><span>Aegisub<span class="heti-spacing"> </span></span>加载之前需要在开头加上关键帧文件信息（以及刚才删掉的第<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>帧<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a># keyframe format v1
 <a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>fps 0
 <a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>0

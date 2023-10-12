@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1881,7 +1881,7 @@ var _hmt = _hmt || [];
 <p class="admonition-title">Abstract</p>
 <p>浙江大学 “密码学” 课程相关知识笔记</p>
 <p>这里的内容主要是针对于密码学这门课的。由于一系列原因，这门课的目的其实是进行代码实践，而不偏重于理论。更多关于密码学的理论知识等如果我会写的话后续会加在<span class="heti-skip"><span class="heti-spacing"> </span>CTF<span class="heti-spacing"> </span></span>部分的笔记里。</p>
-<p>课程主要内容是古典密码、哈希算法（md5、sha1）、分组加密模式（ecb、cbc、cfb）、流密码（rc4）、四大加密算法（DES、AES、RSA、ECC）。笔记主要是期末复习的时候写的总结，并不全面。</p>
+<p>课程主要内容是古典密码、哈希算法（md5、sha1<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、分组加密模式（ecb、cbc、cfb<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、流密码（rc4<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、四大加密算法（DES、AES、RSA、ECC<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。笔记主要是期末复习的时候写的总结，并不全面。</p>
 <p>参考：</p>
 <ul>
 <li>图灵班课程学习指南：<a href="https://zju-turing.github.io/TuringCourses/major_mandatory/cryptography/">密码学</a></li>
@@ -2001,7 +2001,7 @@ var _hmt = _hmt || [];
 <h2 id="_6">哈希算法<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <ul>
 <li>md5<ul>
-<li><span>message<span class="heti-spacing"> </span></span>任意长（<span>0<span class="heti-spacing"> </span></span>也可以），<span>digest<span class="heti-spacing"> </span></span>固定<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节（<span>128<span class="heti-spacing"> </span></span>位）</li>
+<li><span>message<span class="heti-spacing"> </span></span>任意长（<span>0<span class="heti-spacing"> </span></span>也可以<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>digest<span class="heti-spacing"> </span></span>固定<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节（<span>128<span class="heti-spacing"> </span></span>位）</li>
 <li>分块填充<ul>
 <li>每块<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>字节（<span>512<span class="heti-spacing"> </span></span>位）</li>
 <li>填充至保证最后一块长度为<span class="heti-skip"><span class="heti-spacing"> </span>56<span class="heti-spacing"> </span></span>字节（留出<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>字节存储<span class="heti-skip"><span class="heti-spacing"> </span>message<span class="heti-spacing"> </span></span>长度）<ul>
@@ -2057,7 +2057,7 @@ var _hmt = _hmt || [];
 </li>
 <li>CBC：密文块链接模式<ul>
 <li>每块加密前将明文块与前一块密文块异或<ul>
-<li>与第一块明文块异或的称为<span><span class="heti-spacing"> </span>IV</span>（Initialization Vector），长度要等宽</li>
+<li>与第一块明文块异或的称为<span><span class="heti-spacing"> </span>IV</span>（Initialization Vector<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，长度要等宽</li>
 </ul>
 </li>
 <li><span class="arithmatex">\(C_i=\mathrm{enc}(P_i\oplus C_{i-1}), P_i=\mathrm{dec}(C_i)\oplus C_{i-1}\)</span></li>
@@ -2122,7 +2122,7 @@ var _hmt = _hmt || [];
 <ul>
 <li>块加密算法，每次明文八字节密文八字节，密钥<span class="heti-skip"><span class="heti-spacing"> </span>64<span class="heti-spacing"> </span></span>位（<span>56<span class="heti-spacing"> </span></span>位有效、<span>8<span class="heti-spacing"> </span></span>位校验）</li>
 <li>存在的问题：密钥太短，差分攻击可以缩短工作量，<span>sbox<span class="heti-spacing"> </span></span>设计规则没有公开</li>
-<li>主要流程：初始置换（ip）、<span>16<span class="heti-spacing"> </span></span>轮迭代（<span>f<span class="heti-spacing"> </span></span>函数）、逆初始置换（fp/ip-1）</li>
+<li>主要流程：初始置换（ip<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、<span>16<span class="heti-spacing"> </span></span>轮迭代（<span>f<span class="heti-spacing"> </span></span>函数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、逆初始置换（fp/ip-1）</li>
 <li>初始置换：<ul>
 <li>64 bit -&gt; 64 bit</li>
 <li>如：ip[0] = 58，初始第<span class="heti-skip"><span class="heti-spacing"> </span>58<span class="heti-spacing"> </span></span>位为置换后第<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>位</li>
@@ -2228,7 +2228,7 @@ var _hmt = _hmt || [];
 </li>
 <li><span><span class="arithmatex">\(GF(2^8)\)</span><span class="heti-spacing"> </span></span>上每个多项式都可以表示为一个<span class="heti-skip"><span class="heti-spacing"> </span>8<span class="heti-spacing"> </span></span>位二进制数</li>
 <li>加法：二进制异或</li>
-<li>乘法：多项式乘法（注意加是异或），模<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^8 + x^4 + x^3 + x + 1\)</span></span><ul>
+<li>乘法：多项式乘法（注意加是异或<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，模<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^8 + x^4 + x^3 + x + 1\)</span></span><ul>
 <li>手工计算，长除法算模</li>
 <li>农夫算法
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">p</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="c1">// 结果</span>
@@ -2246,8 +2246,8 @@ var _hmt = _hmt || [];
 <ul>
 <li>每次<span class="heti-skip"><span class="heti-spacing"> </span>128<span class="heti-spacing"> </span></span>位（<span>16<span class="heti-spacing"> </span></span>字节）分组，密钥长度<span class="heti-skip"><span class="heti-spacing"> </span>128/192/256<span class="heti-spacing"> </span></span>位（<span>16/24/32<span class="heti-spacing"> </span></span>字节）</li>
 <li>每一块明文转为<span class="heti-skip"><span class="heti-spacing"> </span>4*4<span class="heti-spacing"> </span></span>的矩阵，<span class="arithmatex">\(\mathbf{S}_{i\bmod 4, i/4} = \mathbf{byte}_i\)</span>（从上到下从左到右）</li>
-<li>进行多轮加密（<span>128<span class="heti-spacing"> </span></span>位密钥进行<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>轮），每轮都有一个密钥，也是<span class="heti-skip"><span class="heti-spacing"> </span>4*4<span class="heti-spacing"> </span></span>矩阵</li>
-<li>加密过程（<span>p<span class="heti-spacing"> </span></span>为明文矩阵，<span>k<span class="heti-spacing"> </span></span>为密钥矩阵）：
+<li>进行多轮加密（<span>128<span class="heti-spacing"> </span></span>位密钥进行<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>轮<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，每轮都有一个密钥，也是<span class="heti-skip"><span class="heti-spacing"> </span>4*4<span class="heti-spacing"> </span></span>矩阵</li>
+<li>加密过程（<span>p<span class="heti-spacing"> </span></span>为明文矩阵，<span>k<span class="heti-spacing"> </span></span>为密钥矩阵<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">char</span><span class="w"> </span><span class="n">a</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mh">0x03</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x01</span><span class="p">,</span><span class="w"> </span><span class="mh">0x02</span><span class="p">};</span><span class="w"></span>
 <a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="n">AddRoundKey</span><span class="p">(</span><span class="n">p</span><span class="p">,</span><span class="w"> </span><span class="n">k</span><span class="p">);</span><span class="w"></span>
 <a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mi">10</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -2276,7 +2276,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><span>MixColumn<span class="heti-spacing"> </span></span>列混淆<ul>
-<li>取出矩阵的每一列，作为一个多项式（低位在上），与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a(x)\)</span><span class="heti-spacing"> </span></span>相乘，再模<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^4 + 1\)</span></span><ul>
+<li>取出矩阵的每一列，作为一个多项式（低位在上<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，与<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a(x)\)</span><span class="heti-spacing"> </span></span>相乘，再模<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^4 + 1\)</span></span><ul>
 <li>加密时<span><span class="heti-spacing"> </span><span class="arithmatex">\(a(x) = 3x^3 + x^2 + x + 2\)</span> [0x03, 0x01, 0x01, 0x02]</span></li>
 <li>解密时<span><span class="heti-spacing"> </span><span class="arithmatex">\(a(x) = 11x^3 + 13x^2 + 9x + 14\)</span> [0x0B, 0x0D, 0x09, 0x0E]</span></li>
 <li>模<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x^4 + 1\)</span><span class="heti-spacing"> </span></span>就相当于把超过<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>次的项都减去<span><span class="heti-spacing"> </span><span class="arithmatex">\(x^4\)</span></span></li>

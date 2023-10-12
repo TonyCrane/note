@@ -985,7 +985,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2032,16 +2032,16 @@ var _hmt = _hmt || [];
 <li>Streaming Multi-processor &lt;-&gt; Thread block</li>
 <li>CUDA core &lt;-&gt; Thread</li>
 </ul>
-<p><span>GPU<span class="heti-spacing"> </span></span>编程模型是<span><span class="heti-spacing"> </span>SPMD</span>（Single Program Multiple Data，单代码多数据），也就是<span><span class="heti-spacing"> </span>MultiThreaded</span></p>
+<p><span>GPU<span class="heti-spacing"> </span></span>编程模型是<span><span class="heti-spacing"> </span>SPMD</span>（Single Program Multiple Data，单代码多数据<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，也就是<span><span class="heti-spacing"> </span>MultiThreaded</span></p>
 <p>以以下代码为例</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&lt;</span><span class="w"> </span><span class="n">N</span><span class="p">;</span><span class="w"> </span><span class="o">++</span><span class="n">i</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="n">C</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">B</span><span class="p">[</span><span class="n">i</span><span class="p">];</span><span class="w"></span>
 <a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <ul>
-<li><strong>SISD</strong>（单指令单数据）：每层循环是<span><span class="heti-spacing"> </span>load load add store</span>，循环<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>次</li>
-<li><strong>SIMD</strong>（单指令多数据）：利用<span class="heti-skip"><span class="heti-spacing"> </span>SIMD<span class="heti-spacing"> </span></span>指令，减少循环次数，一次指令执行多次循环，<span>load<span class="heti-spacing"> </span></span>多个数、<span>add<span class="heti-spacing"> </span></span>多次、<span>store<span class="heti-spacing"> </span></span>多次</li>
-<li><strong>SPMD</strong>（单代码多数据）：执行时分为多个<span><span class="heti-spacing"> </span>thread</span>，每个<span class="heti-skip"><span class="heti-spacing"> </span>thread<span class="heti-spacing"> </span></span>处理一次循环的数据</li>
+<li><strong>SISD</strong>（单指令单数据<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：每层循环是<span><span class="heti-spacing"> </span>load load add store</span>，循环<span class="heti-skip"><span class="heti-spacing"> </span>N<span class="heti-spacing"> </span></span>次</li>
+<li><strong>SIMD</strong>（单指令多数据<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：利用<span class="heti-skip"><span class="heti-spacing"> </span>SIMD<span class="heti-spacing"> </span></span>指令，减少循环次数，一次指令执行多次循环，<span>load<span class="heti-spacing"> </span></span>多个数、<span>add<span class="heti-spacing"> </span></span>多次、<span>store<span class="heti-spacing"> </span></span>多次</li>
+<li><strong>SPMD</strong>（单代码多数据<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：执行时分为多个<span><span class="heti-spacing"> </span>thread</span>，每个<span class="heti-skip"><span class="heti-spacing"> </span>thread<span class="heti-spacing"> </span></span>处理一次循环的数据</li>
 </ul>
 <h2 id="cuda">CUDA<a class="headerlink" href="#cuda" title="Permanent link">¶</a></h2>
 <p><span>nvidia-smi<span class="heti-spacing"> </span></span>命令查看<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>信息</p>
@@ -2102,7 +2102,7 @@ var _hmt = _hmt || [];
 <p>结构示意图：</p>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/gpu/img2_light.png#only-light"><img alt="" src="/assets/images/hpc/hpc101/gpu/img2_light.png#only-light"/></a>
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/gpu/img2_dark.png#only-dark"><img alt="" src="/assets/images/hpc/hpc101/gpu/img2_dark.png#only-dark"/></a></p>
-<p>每个线程（Thread）中都运行一份核函数中内容，多个线程组成一个线程块（Thread Block），与核函数启动关联的所有块组成网格（Grid）</p>
+<p>每个线程（Thread）中都运行一份核函数中内容，多个线程组成一个线程块（Thread Block<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，与核函数启动关联的所有块组成网格（Grid）</p>
 <p>启动核函数时进行的配置就是<span><span class="heti-spacing"> </span>&lt;&lt;&lt;</span><em>线程块数</em>, <em>每个块中线程数</em>&gt;&gt;&gt;，其中每块中线程数一般最大为<span><span class="heti-spacing"> </span>1024</span></p>
 <h4 id="_4">线程层次结构变量<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>在核函数中可以直接访问<span class="heti-skip"><span class="heti-spacing"> </span>CUDA<span class="heti-spacing"> </span></span>提供的线程层次结构变量，常用的有：</p>
@@ -2121,7 +2121,7 @@ var _hmt = _hmt || [];
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/gpu/img3_dark.png#only-dark"><img alt="" src="/assets/images/hpc/hpc101/gpu/img3_dark.png#only-dark"/></a></p>
 <p>但这是理想情况，有两种特殊情况需要处理：</p>
 <ol>
-<li>总线程数多于要处理的数据数（或者说循环次数），则这样做会访问到非法内存</li>
+<li>总线程数多于要处理的数据数（或者说循环次数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，则这样做会访问到非法内存</li>
 <li>总线程数少于要处理的数据数，则这样做会存在没有执行的循环</li>
 </ol>
 <p>对于第一种，只需要在计算得到<span class="heti-skip"><span class="heti-spacing"> </span>i<span class="heti-spacing"> </span></span>之后与总数<span class="heti-skip"><span class="heti-spacing"> </span>n<span class="heti-spacing"> </span></span>比较，如果<span class="heti-skip"><span class="heti-spacing"> </span>i &lt; n<span class="heti-spacing"> </span></span>则执行，否则在这个线程内什么都不做</p>
@@ -2160,7 +2160,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="p">}</span><span class="w"></span>
 </code></pre></div>
 <h3 id="_7">错误处理<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>许多<span class="heti-skip"><span class="heti-spacing"> </span>CUDA<span class="heti-spacing"> </span></span>函数会返回类型为<strong><span class="heti-skip"><span class="heti-spacing"> </span>cudaError_t<span class="heti-spacing"> </span></span></strong>的值，来用于后续检查调用函数时是否发生了错误，没有错误的值为<strong><span><span class="heti-spacing"> </span>cudaSuccess</span></strong>，如果有错误，可以通过<strong><span class="heti-skip"><span class="heti-spacing"> </span>cudaGetErrorString<span class="heti-spacing"> </span></span></strong>来获取错误的具体内容。以<span class="heti-skip"><span class="heti-spacing"> </span>cudaMallocManaged<span class="heti-spacing"> </span></span>为例：
+<p>许多<span class="heti-skip"><span class="heti-spacing"> </span>CUDA<span class="heti-spacing"> </span></span>函数会返回类型为 <strong>cudaError_t</strong> 的值，来用于后续检查调用函数时是否发生了错误，没有错误的值为 <strong>cudaSuccess</strong>，如果有错误，可以通过 <strong>cudaGetErrorString</strong> 来获取错误的具体内容。以<span class="heti-skip"><span class="heti-spacing"> </span>cudaMallocManaged<span class="heti-spacing"> </span></span>为例：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="n">cudaError_t</span><span class="w"> </span><span class="n">err</span><span class="p">;</span><span class="w"></span>
 <a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="n">err</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">cudaMallocManaged</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">N</span><span class="p">);</span><span class="w"></span>
 <a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">err</span><span class="w"> </span><span class="o">!=</span><span class="w"> </span><span class="n">cudaSuccess</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
@@ -2195,13 +2195,13 @@ var _hmt = _hmt || [];
 </code></pre></div>
 <h3 id="_8">分配内存<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>C<span class="heti-spacing"> </span></span>分配内存使用的是<span class="heti-skip"><span class="heti-spacing"> </span>malloc<span class="heti-spacing"> </span></span>函数，但通过<span class="heti-skip"><span class="heti-spacing"> </span>malloc<span class="heti-spacing"> </span></span>得到的内存只能在<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>中访问</p>
-<p>需要在<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>中同时访问某内存，需要通过<strong><span class="heti-skip"><span class="heti-spacing"> </span>cudaMallocManaged<span class="heti-spacing"> </span></span></strong>函数来分配，即：
+<p>需要在<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>中同时访问某内存，需要通过 <strong>cudaMallocManaged</strong> 函数来分配，即：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">a</span><span class="p">;</span><span class="w"></span>
 <a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="kt">size_t</span><span class="w"> </span><span class="n">size</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">);</span><span class="w"></span>
 <a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="n">a</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="o">*</span><span class="p">)</span><span class="n">malloc</span><span class="p">(</span><span class="n">size</span><span class="p">)</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">cudaMallocManaged</span><span class="p">(</span><span class="o">&amp;</span><span class="n">a</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span>
 </code></pre></div>
-然后释放内存时使用 <strong>cudaFree</strong> 代替 free，即 cudaFree(a)
-<p>注意：利用<span class="heti-skip"><span class="heti-spacing"> </span>cudaMallocManaged<span class="heti-spacing"> </span></span>分配的内存可以在<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>中使用（后面会说），利用<span class="heti-skip"><span class="heti-spacing"> </span>cudaMalloc<span class="heti-spacing"> </span></span>分配的内存只可以在<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>中使用</p>
+然后释放内存时使用 <strong>cudaFree</strong> 代替<span><span class="heti-spacing"> </span>free</span>，即<span><span class="heti-spacing"> </span>cudaFree(a)</span>
+<p>注意：利用<span class="heti-skip"><span class="heti-spacing"> </span>cudaMallocManaged<span class="heti-spacing"> </span></span>分配的内存可以在<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>中使用（后面会说<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，利用<span class="heti-skip"><span class="heti-spacing"> </span>cudaMalloc<span class="heti-spacing"> </span></span>分配的内存只可以在<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>中使用</p>
 <h3 id="nsys"><span>nsys<span class="heti-spacing"> </span></span>性能分析<a class="headerlink" href="#nsys" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>nsys（Nsight System）是<span class="heti-skip"><span class="heti-spacing"> </span>CUDA<span class="heti-spacing"> </span></span>工具包附带的性能分析器，可以执行程序并生成包含<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>活动、<span>CUDA API<span class="heti-spacing"> </span></span>调用、内存活动等信息的报告，也可以通过<span class="heti-skip"><span class="heti-spacing"> </span>GUI<span class="heti-spacing"> </span></span>查看时间轴</p>
 <p><span>nsys<span class="heti-spacing"> </span></span>使用只需要指定<span class="heti-skip"><span class="heti-spacing"> </span>nvcc<span class="heti-spacing"> </span></span>编译好的可执行文件即可：
@@ -2223,7 +2223,7 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="n">cudaDeviceProp</span><span class="w"> </span><span class="n">props</span><span class="p">;</span><span class="w"></span>
 <a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="n">cudaGetDeviceProperties</span><span class="p">(</span><span class="o">&amp;</span><span class="n">props</span><span class="p">,</span><span class="w"> </span><span class="n">deviceId</span><span class="p">);</span><span class="w"></span>
 </code></pre></div>
-其中 <strong>cudaGetDevice</strong> 获取设备 id，<strong>cudaDeviceProp</strong> 为属性的结构类型，<strong>cudaGetDeviceProperties</strong> 根据设备 id 获取具体属性
+其中 <strong>cudaGetDevice</strong> 获取设备<span><span class="heti-spacing"> </span>id</span>，<strong>cudaDeviceProp</strong> 为属性的结构类型，<strong>cudaGetDeviceProperties</strong> 根据设备<span class="heti-skip"><span class="heti-spacing"> </span>id<span class="heti-spacing"> </span></span>获取具体属性
 <p>所有属性见：<a href="https://docs.nvidia.com/cuda/cuda-runtime-api/structcudaDeviceProp.html"><span>NVIDIA CUDA<span class="heti-spacing"> </span></span>运行时文档</a></p>
 <p>结合上面，一般设置块数和线程数使用：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-13-1" id="__codelineno-13-1" name="__codelineno-13-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">deviceId</span><span class="p">;</span><span class="w"></span>
@@ -2242,15 +2242,15 @@ var _hmt = _hmt || [];
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/gpu/img5_dark.png#only-dark"><img alt="" src="/assets/images/hpc/hpc101/gpu/img5_dark.png#only-dark"/></a></p>
 <ul>
 <li>刚开始时分配的内存不在<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>上也不在<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>上</li>
-<li>哪一方先访问，会造成一个页错误（page fault），然后将需要的内存迁移到自己身上</li>
+<li>哪一方先访问，会造成一个页错误（page fault<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，然后将需要的内存迁移到自己身上</li>
 <li>另一方访问时也会造成页错误，然后再将需要的内存迁移到自己身上</li>
 </ul>
 <p>数据从主机到设备的迁移记为<span><span class="heti-spacing"> </span>HtoD</span>，从设备到主机的迁移记为<span><span class="heti-spacing"> </span>DtoH</span>，通过<span class="heti-skip"><span class="heti-spacing"> </span>nsys<span class="heti-spacing"> </span></span>可以看到这些转移操作</p>
 <p>在稀疏访问模式情况下，这样可以按需迁移内存，尤其是在多个<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>加速系统中，这样的按需迁移会有显著优势</p>
 <p>有时可以将内存初始化放在<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>中进行，这样<span class="heti-skip"><span class="heti-spacing"> </span>UM<span class="heti-spacing"> </span></span>会先迁移到<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>中，然后驻留在<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>里进行后面的计算操作，这样可以减少在主机和设备之间的迁移次数，提高效率</p>
 <h4 id="_11">异步内存预取<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p>但在某些情况下（比如需要连续大片内存），则预先将内存迁移出来可以规避页错误，并且减少按需内存迁移的成本</p>
-<p><span>CUDA<span class="heti-spacing"> </span></span>可通过<strong><span class="heti-skip"><span class="heti-spacing"> </span>cudaMemPrefetchAsync<span class="heti-spacing"> </span></span></strong>函数来将<span class="heti-skip"><span class="heti-spacing"> </span>UM<span class="heti-spacing"> </span></span>预取到某一设备中，比如：
+<p>但在某些情况下（比如需要连续大片内存<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，则预先将内存迁移出来可以规避页错误，并且减少按需内存迁移的成本</p>
+<p><span>CUDA<span class="heti-spacing"> </span></span>可通过 <strong>cudaMemPrefetchAsync</strong> 函数来将<span class="heti-skip"><span class="heti-spacing"> </span>UM<span class="heti-spacing"> </span></span>预取到某一设备中，比如：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-14-1" id="__codelineno-14-1" name="__codelineno-14-1"></a><span class="kt">int</span><span class="w"> </span><span class="n">deviceId</span><span class="p">;</span><span class="w"></span>
 <a href="#__codelineno-14-2" id="__codelineno-14-2" name="__codelineno-14-2"></a><span class="n">cudaGetDevice</span><span class="p">(</span><span class="o">&amp;</span><span class="n">deviceId</span><span class="p">);</span><span class="w"></span>
 <a href="#__codelineno-14-3" id="__codelineno-14-3" name="__codelineno-14-3"></a>
@@ -2263,7 +2263,7 @@ cudaMemPrefetchAsync 需要提供 UM 的指针、大小、以及要预取到的�
 <p>一些手动内存管理的<span class="heti-skip"><span class="heti-spacing"> </span>CUDA<span class="heti-spacing"> </span></span>函数：</p>
 <ul>
 <li><strong>cudaMalloc</strong>：直接为<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>分配内存，防止出现<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>分页错误，但是<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>无法访问得到的内存指针</li>
-<li><strong>cudaMallocHost</strong>：直接为<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>分配内存，称为固定内存（pinned memory）或页锁定内存（page-locked memory），允许将内存异步拷贝到<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>或从<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>异步拷贝回来。但固定内存过多会干扰<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>性能。释放时使用<strong><span><span class="heti-spacing"> </span>cudaFreeHost</span></strong></li>
+<li><strong>cudaMallocHost</strong>：直接为<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>分配内存，称为固定内存（pinned memory）或页锁定内存（page-locked memory<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，允许将内存异步拷贝到<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>或从<span class="heti-skip"><span class="heti-spacing"> </span>GPU<span class="heti-spacing"> </span></span>异步拷贝回来。但固定内存过多会干扰<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>性能。释放时使用 <strong>cudaFreeHost</strong></li>
 <li><strong>cudaMemcpy</strong>：主机与设备之间拷贝内存</li>
 <li><strong>cudaMemcpyAsync</strong>：主机与设备之间异步拷贝内存</li>
 </ul>
@@ -2301,7 +2301,7 @@ cudaMemPrefetchAsync 需要提供 UM 的指针、大小、以及要预取到的�
 <a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/hpc/hpc101/gpu/img6_dark.png#only-dark"><img alt="" src="/assets/images/hpc/hpc101/gpu/img6_dark.png#only-dark"/></a></p>
 <p>核函数在各流中执行的情况也可以通过<span class="heti-skip"><span class="heti-spacing"> </span>nsys<span class="heti-spacing"> </span></span>可视化分析看出来</p>
 <h4 id="_13">创建、使用、销毁非默认流<a class="headerlink" href="#_13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
-<p><span>CUDA<span class="heti-spacing"> </span></span>中流的类型为<strong><span><span class="heti-spacing"> </span>cudaStream_t</span></strong>，并且利用<strong><span class="heti-skip"><span class="heti-spacing"> </span>cudaStreamCreate<span class="heti-spacing"> </span></span></strong>创建非默认流，然后作为第四个执行配置参数传给核函数。在使用后利用<strong><span class="heti-skip"><span class="heti-spacing"> </span>cudaStreamDestroy<span class="heti-spacing"> </span></span></strong>销毁流。一个例子：
+<p><span>CUDA<span class="heti-spacing"> </span></span>中流的类型为 <strong>cudaStream_t</strong>，并且利用 <strong>cudaStreamCreate</strong> 创建非默认流，然后作为第四个执行配置参数传给核函数。在使用后利用 <strong>cudaStreamDestroy</strong> 销毁流。一个例子：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-16-1" id="__codelineno-16-1" name="__codelineno-16-1"></a><span class="n">cudaStream_t</span><span class="w"> </span><span class="n">stream</span><span class="p">;</span><span class="w"></span>
 <a href="#__codelineno-16-2" id="__codelineno-16-2" name="__codelineno-16-2"></a><span class="n">cudaStreamCreate</span><span class="p">(</span><span class="o">&amp;</span><span class="n">stream</span><span class="p">);</span><span class="w"></span>
 <a href="#__codelineno-16-3" id="__codelineno-16-3" name="__codelineno-16-3"></a><span class="n">kernel</span><span class="o">&lt;&lt;&lt;</span><span class="n">number_of_blocks</span><span class="p">,</span><span class="w"> </span><span class="n">threads_per_block</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span><span class="w"> </span><span class="n">stream</span><span class="o">&gt;&gt;&gt;</span><span class="p">();</span><span class="w"></span>

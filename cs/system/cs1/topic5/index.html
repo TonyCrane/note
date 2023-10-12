@@ -1042,7 +1042,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2213,7 +2213,7 @@ var _hmt = _hmt || [];
 </code></pre></div>
 <p>可见操作数越多，指令越复杂但程序包含的指令条数少；操作数越多，指令越简单，指令执行越快，但程序包含的指令条数也会越多</p>
 <h3 id="_13">寻址模式<a class="headerlink" href="#_13" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>在指令执行的过程中，如何获取操作数取决于指令的寻址模式。寻址模式指定了一个在实际访问操作数之前，解释或调整指令地址字段的规则，用这个规则可以生成操作数的有效地址（effective address）。</p>
+<p>在指令执行的过程中，如何获取操作数取决于指令的寻址模式。寻址模式指定了一个在实际访问操作数之前，解释或调整指令地址字段的规则，用这个规则可以生成操作数的有效地址（effective address<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>寻址模式可以指定到常数、寄存器和内存地址。高效的寻址模式设计可以减少指令的长度。下面是一些常见的寻址模式</p>
 <h4 id="_14">立即数寻址<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>立即数寻址（immediate addressing）即操作数就在指令当中，也就是指令中有一个操作数字段就代表了这个常数本身而不是地址。</p>
@@ -2228,8 +2228,8 @@ var _hmt = _hmt || [];
 <h4 id="_17">变址寻址与基址寻址<a class="headerlink" href="#_17" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>二者很相似，都是将寄存器值与地址加起来的和作为实际要访问的地址</p>
 <ul>
-<li>变址寻址（indexed addressing），寄存器保存的是偏移地址，指令中地址保存的是基地址</li>
-<li>基址寻址（based addressing），寄存器保存的是基地址，指令中地址是偏移地址</li>
+<li>变址寻址（indexed addressing<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，寄存器保存的是偏移地址，指令中地址保存的是基地址</li>
+<li>基址寻址（based addressing<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，寄存器保存的是基地址，指令中地址是偏移地址</li>
 </ul>
 <p>总结：</p>
 <table>
@@ -2294,9 +2294,9 @@ var _hmt = _hmt || [];
 <h4 id="_20">指令编码<a class="headerlink" href="#_20" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>指令编码的长度有几种</p>
 <ul>
-<li>变长（Variable）：每条指令的长度都不一定</li>
-<li>定长（Fixed）：所有指令都是同一长度</li>
-<li>混合（Hybrid）：有多种指令的长度</li>
+<li>变长（Variable<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：每条指令的长度都不一定</li>
+<li>定长（Fixed<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：所有指令都是同一长度</li>
+<li>混合（Hybrid<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：有多种指令的长度</li>
 </ul>
 <p>一般如果代码的大小最重要的话选择变长指令，如果是执行表现最重要的话选择定长指令。而一些为了兼容，可能会选择混合长度指令</p>
 <h3 id="risc-cisc"><span>RISC<span class="heti-spacing"> </span></span>与<span><span class="heti-spacing"> </span>CISC</span><a class="headerlink" href="#risc-cisc" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -2361,7 +2361,7 @@ var _hmt = _hmt || [];
 <li>栈结构，Stack（1960s ~ 1970s）</li>
 <li>存储器到存储器结构，Memory-Memory（1970s ~ 1980s）</li>
 <li>寄存器到存储器结构，Register-Memory（<span>1970s<span class="heti-spacing"> </span></span>至今，如<span><span class="heti-spacing"> </span>x86</span>）</li>
-<li>寄存器到寄存器结构，Register-Register（<span>1960s<span class="heti-spacing"> </span></span>至今，如<span><span class="heti-spacing"> </span>MIPS</span>），又称装载<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>存储结构（Load/Store）</li>
+<li>寄存器到寄存器结构，Register-Register（<span>1960s<span class="heti-spacing"> </span></span>至今，如<span><span class="heti-spacing"> </span>MIPS</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，又称装载<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>存储结构（Load/Store）</li>
 </ul>
 <p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/topic5/addr_arch.png"><img alt="" src="/assets/images/cs/system/cs1/topic5/addr_arch.png"/></a></p>
 <h4 id="_22">栈结构<a class="headerlink" href="#_22" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>

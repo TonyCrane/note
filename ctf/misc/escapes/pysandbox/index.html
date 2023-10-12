@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2018,12 +2018,12 @@ var _hmt = _hmt || [];
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="nb">eval</span><span class="p">(</span><span class="n">expression</span><span class="p">[,</span> <span class="nb">globals</span><span class="p">[,</span> <span class="nb">locals</span><span class="p">]])</span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="n">exec</span><span class="p">(</span><span class="n">expression</span><span class="p">[,</span> <span class="nb">globals</span><span class="p">[,</span> <span class="nb">locals</span><span class="p">]])</span>
 </code></pre></div>
-<p>可以看出它们的用法大体相似，参数有要执行的表达式 <code>expression</code>，全局变量 <code>globals</code>（必须是字典），局部变量 <code>locals</code>（任意<span><span class="heti-spacing"> </span>mapping object</span>，一般也是字典）</p>
+<p>可以看出它们的用法大体相似，参数有要执行的表达式 <code>expression</code>，全局变量 <code>globals</code>（必须是字典<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，局部变量 <code>locals</code>（任意<span><span class="heti-spacing"> </span>mapping object</span>，一般也是字典）</p>
 <p>不同的是 <code>eval</code> 把表达式计算出来，把结果返回，并不会影响当前环境<br/>
 而 <code>exec</code> 把表达式作为py语句来执行，可以进行赋值等操作（题目里 <code>exec</code> 不常见）</p>
 <h3 id="eval-exec_1"><span>eval<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>exec<span class="heti-spacing"> </span></span>如何构造沙箱<a class="headerlink" href="#eval-exec_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>可以看出，<span>eval<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>exec<span class="heti-spacing"> </span></span>都包含参数<span><span class="heti-spacing"> </span>globals locals</span>，可以指定它们为空字典使其访问不到全局变量和局部变量</p>
-<p>而比较特别的就是 <code>__builtins__</code> ，即内置函数。如果<span class="heti-skip"><span class="heti-spacing"> </span>globals<span class="heti-spacing"> </span></span>中没有键<strong><span><span class="heti-spacing"> </span>builtins</span></strong> ，则会自动将其插入，而看文档<a href="https://docs.python.org/3/library/functions.html"><span class="heti-skip"><span class="heti-spacing"> </span>https://docs.python.org/3/library/functions.html<span class="heti-spacing"> </span></span></a>可以发现其中有函数 <code>open</code> 和 <code>__import__</code> 可以用来干坏事，所以一般会传入<span class="heti-skip"><span class="heti-spacing"> </span>globals<span class="heti-spacing"> </span></span>为 <code>{'__builtins__': {}}</code> 使其无法使用内置函数</p>
+<p>而比较特别的就是 <code>__builtins__</code> ，即内置函数。如果<span class="heti-skip"><span class="heti-spacing"> </span>globals<span class="heti-spacing"> </span></span>中没有键 <strong>builtins</strong> ，则会自动将其插入，而看文档<a href="https://docs.python.org/3/library/functions.html"><span class="heti-skip"><span class="heti-spacing"> </span>https://docs.python.org/3/library/functions.html<span class="heti-spacing"> </span></span></a>可以发现其中有函数 <code>open</code> 和 <code>__import__</code> 可以用来干坏事，所以一般会传入<span class="heti-skip"><span class="heti-spacing"> </span>globals<span class="heti-spacing"> </span></span>为 <code>{'__builtins__': {}}</code> 使其无法使用内置函数</p>
 <h3 id="astliteral_eval">ast.literal_eval<a class="headerlink" href="#astliteral_eval" title="Permanent link">¶</a></h3>
 <p>即使<span class="heti-skip"><span class="heti-spacing"> </span>eval<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>exec<span class="heti-spacing"> </span></span>给了这样的限制，那肯定还是会有漏洞的（不然就没这篇文章了）<br/>
 那有没有更安全的 eval？</p>

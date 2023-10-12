@@ -856,7 +856,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2188,7 +2188,7 @@ var _hmt = _hmt || [];
 </details>
 <p>第一次接触<span class="heti-skip"><span class="heti-spacing"> </span>solana<span class="heti-spacing"> </span></span>题目，所以逐步解析一下：</p>
 <ul>
-<li>创建一个<span class="heti-skip"><span class="heti-spacing"> </span>builder<span class="heti-spacing"> </span></span>并获取用户合约以及题目合约（<span>ChallengeBuilder<span class="heti-spacing"> </span></span>来自<span><span class="heti-spacing"> </span>sol-ctf-framework</span>）：
+<li>创建一个<span class="heti-skip"><span class="heti-spacing"> </span>builder<span class="heti-spacing"> </span></span>并获取用户合约以及题目合约（<span>ChallengeBuilder<span class="heti-spacing"> </span></span>来自<span><span class="heti-spacing"> </span>sol-ctf-framework</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="kd">let</span><span class="w"> </span><span class="k">mut</span><span class="w"> </span><span class="n">builder</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ChallengeBuilder</span>::<span class="n">try_from</span><span class="p">(</span><span class="n">socket</span><span class="p">.</span><span class="n">try_clone</span><span class="p">().</span><span class="n">unwrap</span><span class="p">()).</span><span class="n">unwrap</span><span class="p">();</span><span class="w"></span>
 <a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>
 <a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="c1">// load programs</span>
@@ -2217,7 +2217,7 @@ var _hmt = _hmt || [];
 <li>这里需要了解的一个是<span class="heti-skip"><span class="heti-spacing"> </span>solana<span class="heti-spacing"> </span></span>的账户分为一般账户和<span><span class="heti-spacing"> </span>PDA</span>（Program Derived Address）<ul>
 <li><span>PDA<span class="heti-spacing"> </span></span>一般是由程序生成用来记录数据的</li>
 <li><span>PDA<span class="heti-spacing"> </span></span>的计算是根据<span class="heti-skip"><span class="heti-spacing"> </span>seed<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>program_id</span>（也就是程序的<span><span class="heti-spacing"> </span>pubkey</span>）做哈希来生成的</li>
-<li>但是<span class="heti-skip"><span class="heti-spacing"> </span>PDA<span class="heti-spacing"> </span></span>要保证不是可用的<span><span class="heti-spacing"> </span>Pubkey</span>（这个还没理解），所以<span class="heti-skip"><span class="heti-spacing"> </span>hash<span class="heti-spacing"> </span></span>的时候要再加一个参数<span><span class="heti-spacing"> </span>bump</span>：pda = hash(seed, bump, program_id)</li>
+<li>但是<span class="heti-skip"><span class="heti-spacing"> </span>PDA<span class="heti-spacing"> </span></span>要保证不是可用的<span><span class="heti-spacing"> </span>Pubkey</span>（这个还没理解<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所以<span class="heti-skip"><span class="heti-spacing"> </span>hash<span class="heti-spacing"> </span></span>的时候要再加一个参数<span><span class="heti-spacing"> </span>bump</span>：pda = hash(seed, bump, program_id)</li>
 <li>寻找一个<span class="heti-skip"><span class="heti-spacing"> </span>PDA<span class="heti-spacing"> </span></span>的时候会从<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>到<span class="heti-skip"><span class="heti-spacing"> </span>256<span class="heti-spacing"> </span></span>枚举<span><span class="heti-spacing"> </span>bump</span>，第一个可以生成有效<span class="heti-skip"><span class="heti-spacing"> </span>PDA<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>bump<span class="heti-spacing"> </span></span>称为<span><span class="heti-spacing"> </span>canonical bump</span>，而且一般就使用这个<span><span class="heti-spacing"> </span>PDA</span></li>
 <li>所以根据相同<span><span class="heti-spacing"> </span>seed</span>、相同<span class="heti-skip"><span class="heti-spacing"> </span>program_id<span class="heti-spacing"> </span></span>生成的<span class="heti-skip"><span class="heti-spacing"> </span>PDA<span class="heti-spacing"> </span></span>也是相同的。<span>Pubkey::find_program_address<span class="heti-spacing"> </span></span>做的就是这个，它的第一个参数是<span><span class="heti-spacing"> </span>seed</span>、第二个参数是<span><span class="heti-spacing"> </span>program_id</span></li>
 </ul>
@@ -2225,7 +2225,7 @@ var _hmt = _hmt || [];
 <li>所以<span class="heti-skip"><span class="heti-spacing"> </span>reserve<span class="heti-spacing"> </span></span>是一个由<span class="heti-skip"><span class="heti-spacing"> </span>RESERVE seed<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>program_pubkey<span class="heti-spacing"> </span></span>生成的<span><span class="heti-spacing"> </span>PDA</span></li>
 </ul>
 </li>
-<li>为<span class="heti-skip"><span class="heti-spacing"> </span>account<span class="heti-spacing"> </span></span>增加初始<span><span class="heti-spacing"> </span>lamports</span>（钱）：
+<li>为<span class="heti-skip"><span class="heti-spacing"> </span>account<span class="heti-spacing"> </span></span>增加初始<span><span class="heti-spacing"> </span>lamports</span>（钱<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：
     <div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="k">const</span><span class="w"> </span><span class="n">TARGET_AMT</span>: <span class="kt">u64</span> <span class="o">=</span><span class="w"> </span><span class="mi">60_000</span><span class="p">;</span><span class="w"></span>
 <a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="k">const</span><span class="w"> </span><span class="n">INIT_BAL</span>: <span class="kt">u64</span> <span class="o">=</span><span class="w"> </span><span class="mi">50</span><span class="p">;</span><span class="w"></span>
 <a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="k">const</span><span class="w"> </span><span class="n">RESERVE_BAL</span>: <span class="kt">u64</span> <span class="o">=</span><span class="w"> </span><span class="mi">1_000_000</span><span class="p">;</span><span class="w"></span>
@@ -2373,7 +2373,7 @@ var _hmt = _hmt || [];
 <p>还是详细解析一下：</p>
 <h3 id="_1">题目合约<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>anchor lang<span class="heti-spacing"> </span></span>的语法看起来就是把处理函数封装在一个<span class="heti-skip"><span class="heti-spacing"> </span>mod<span class="heti-spacing"> </span></span>中然后用 <code class="highlight"><span class="cp">#[program]</span><span class="w"></span></code> 宏来处理。</p>
-<p>这个<span class="heti-skip"><span class="heti-spacing"> </span>mod<span class="heti-spacing"> </span></span>中的每个函数都会被处理成一个指令，它们第一个参数都是一个<span class="heti-skip"><span class="heti-spacing"> </span>Context<span class="heti-spacing"> </span></span>泛型，其依赖的是针对每种指令的结构体<span><span class="heti-spacing"> </span>Accounts</span>（即<span><span class="heti-spacing"> </span>Context</span><accounts>），然后在函数内部可以利用<span class="heti-skip"><span class="heti-spacing"> </span>ctx.accounts.?<span class="heti-spacing"> </span></span>来获取对应结构体中的各个<span><span class="heti-spacing"> </span>account</span>。</accounts></p>
+<p>这个<span class="heti-skip"><span class="heti-spacing"> </span>mod<span class="heti-spacing"> </span></span>中的每个函数都会被处理成一个指令，它们第一个参数都是一个<span class="heti-skip"><span class="heti-spacing"> </span>Context<span class="heti-spacing"> </span></span>泛型，其依赖的是针对每种指令的结构体<span><span class="heti-spacing"> </span>Accounts</span>（即<span><span class="heti-spacing"> </span>Context</span><accounts><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，然后在函数内部可以利用<span class="heti-skip"><span class="heti-spacing"> </span>ctx.accounts.?<span class="heti-spacing"> </span></span>来获取对应结构体中的各个<span><span class="heti-spacing"> </span>account</span>。</accounts></p>
 <p>结构体的定义会使用 <code class="highlight"><span class="cp">#[derive(Accounts)]</span><span class="w"></span></code> 宏来进行处理。其中成员也可以使用 <code class="highlight"><span class="cp">#[account()]</span><span class="w"></span></code> 宏进行限定，如果输入不满足限定则会报错，具体写法和意义可以看官方文档。</p>
 <h4 id="initialize">Initialize<a class="headerlink" href="#initialize" title="Permanent link">¶</a></h4>
 <ul>

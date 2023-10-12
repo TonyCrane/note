@@ -986,7 +986,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2142,13 +2142,13 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 <p>所以向<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>取整：</p>
 <div style="text-align: center">(x &lt; 0 ? (x + (1 &lt;&lt; k) - 1) : x) &gt;&gt; k</div>
 <h2 id="_14">浮点数表示法<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>前面的整型都是一种定点数（fixed point），即小数点的位置是固定的（固定在末尾），它的缺点是范围固定</p>
+<p>前面的整型都是一种定点数（fixed point<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，即小数点的位置是固定的（固定在末尾<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，它的缺点是范围固定</p>
 <p>而浮点数（floating point）的小数点位置则不是固定的，它使用<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x*2^y\)</span><span class="heti-spacing"> </span></span>的形式来表示一个数<br/>
 也因此可以表示很大或者很小的数</p>
 <p>常用的浮点数表示方法是由<span class="heti-skip"><span class="heti-spacing"> </span>IEEE 754<span class="heti-spacing"> </span></span>标准指定的</p>
 <p><span>IEEE<span class="heti-spacing"> </span></span>浮点数表示法都通过<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(V=(-1)^s\times M\times 2^E\)</span><span class="heti-spacing"> </span></span>的形式来表示，其中：</p>
 <ul>
-<li><span class="arithmatex">\(s\)</span>：符号（sign），<span>1<span class="heti-spacing"> </span></span>则表示是负数，<span>0<span class="heti-spacing"> </span></span>则表示是正数</li>
+<li><span class="arithmatex">\(s\)</span>：符号（sign<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>1<span class="heti-spacing"> </span></span>则表示是负数，<span>0<span class="heti-spacing"> </span></span>则表示是正数</li>
 <li><span class="arithmatex">\(M\)</span>：尾数（mantissa）或称有效数字（significand）</li>
 <li><span class="arithmatex">\(E\)</span>：指数（exponent）</li>
 </ul>
@@ -2160,15 +2160,15 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 </ul>
 <p>并且有两种最常见的格式，即：</p>
 <ul>
-<li>单精度（single-precision floating-point），<span class="arithmatex">\(k=8\)</span>，<span class="arithmatex">\(n=23\)</span>，<span>32<span class="heti-spacing"> </span></span>位（<span>4<span class="heti-spacing"> </span></span>字节）存储</li>
-<li>双精度（double-precision floating-point），<span class="arithmatex">\(k=11\)</span>，<span class="arithmatex">\(n=52\)</span>，<span>64<span class="heti-spacing"> </span></span>位（<span>8<span class="heti-spacing"> </span></span>字节）存储</li>
+<li>单精度（single-precision floating-point<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span class="arithmatex">\(k=8\)</span>，<span class="arithmatex">\(n=23\)</span>，<span>32<span class="heti-spacing"> </span></span>位（<span>4<span class="heti-spacing"> </span></span>字节）存储</li>
+<li>双精度（double-precision floating-point<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span class="arithmatex">\(k=11\)</span>，<span class="arithmatex">\(n=52\)</span>，<span>64<span class="heti-spacing"> </span></span>位（<span>8<span class="heti-spacing"> </span></span>字节）存储</li>
 </ul>
 <p><span>IEEE<span class="heti-spacing"> </span></span>浮点数值还有三种形式，下面分别描述</p>
 <h3 id="_15">规约形式<a class="headerlink" href="#_15" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>这种形式下的阶码不全为<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>也不全为<span><span class="heti-spacing"> </span>1</span>，是最常见的形式<br/>
 这种形式下的 <span class="arithmatex">\(s\)</span> 直接表示正负，而 <span class="arithmatex">\(E\)</span>、<span class="arithmatex">\(M\)</span> 的规则：</p>
 <ul>
-<li><span><span class="arithmatex">\(E\)</span><span class="heti-spacing"> </span></span>通过<strong>移码</strong>（biased）表示成<strong>阶码</strong><span><span class="heti-spacing"> </span><span class="arithmatex">\([e_{k-1}\cdots e_1e_0]\)</span></span>，移位<span><span class="heti-spacing"> </span><span class="arithmatex">\(Bias = 2^{k-1}-1\)</span></span>，<span class="arithmatex">\(E = e - Bias\)</span>（其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(e\)</span><span class="heti-spacing"> </span></span>为将阶码转为无符号整型的值），这可以使阶码部分范围从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([1, 2^k-2]\)</span><span class="heti-spacing"> </span></span>变为<span><span class="heti-spacing"> </span><span class="arithmatex">\([-2^{k-1}+2, 2^{k-1}-1]\)</span></span></li>
+<li><span><span class="arithmatex">\(E\)</span><span class="heti-spacing"> </span></span>通过<strong>移码</strong>（biased）表示成<strong>阶码</strong> <span class="arithmatex">\([e_{k-1}\cdots e_1e_0]\)</span>，移位<span><span class="heti-spacing"> </span><span class="arithmatex">\(Bias = 2^{k-1}-1\)</span></span>，<span class="arithmatex">\(E = e - Bias\)</span>（其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(e\)</span><span class="heti-spacing"> </span></span>为将阶码转为无符号整型的值<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，这可以使阶码部分范围从<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\([1, 2^k-2]\)</span><span class="heti-spacing"> </span></span>变为<span><span class="heti-spacing"> </span><span class="arithmatex">\([-2^{k-1}+2, 2^{k-1}-1]\)</span></span></li>
 <li><span class="arithmatex">\(M = 1+f\)</span>，其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(f = 0.f_{n-1}\cdots f_1f_0\in[0, 1)\)</span></span>，因此<span><span class="heti-spacing"> </span><span class="arithmatex">\(M=1.f_{n-1}\cdots f_1f_0\in[1, 2)\)</span></span></li>
 </ul>
 <p>计算后再通过<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(V = (-1)^s\times M\times 2^E\)</span><span class="heti-spacing"> </span></span>即可计算出所表示的值</p>
@@ -2218,15 +2218,15 @@ x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 <li>分数部分不全为<span><span class="heti-spacing"> </span>0</span>，表示<span><span class="heti-spacing"> </span>NaN</span></li>
 </ul>
 <h3 id="_18">舍入<a class="headerlink" href="#_18" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>舍入（rounding）有四种：向偶舍入（round-to-even）、向<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>舍入（round-toward-zero）、向下舍入（round-down）、向上舍入（round-up）<br/>
+<p>舍入（rounding）有四种：向偶舍入（round-to-even<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、向<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>舍入（round-toward-zero<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、向下舍入（round-down<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>、向上舍入（round-up）<br/>
 默认是 round-to-even</p>
 <p>如果有一个二进制小数：X...XX.Y...Yabcd...，要舍入到<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>的位置</p>
 <ul>
 <li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>小于<span><span class="heti-spacing"> </span>100</span><sub><span><span class="heti-spacing"> </span>2</span></sub>，则直接舍去<span><span class="heti-spacing"> </span>bcd</span></li>
 <li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>大于<span><span class="heti-spacing"> </span>100</span><sub><span><span class="heti-spacing"> </span>2</span></sub>，则向<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>进一位</li>
 <li>如果<span class="heti-skip"><span class="heti-spacing"> </span>bcd<span class="heti-spacing"> </span></span>等于<span><span class="heti-spacing"> </span>100</span><sub><span><span class="heti-spacing"> </span>2</span></sub><ul>
-<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>（偶），则舍去<span><span class="heti-spacing"> </span>bcd</span></li>
-<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1</span>（奇），则向<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>进一位</li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>0</span>（偶<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，则舍去<span><span class="heti-spacing"> </span>bcd</span></li>
+<li>如果<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>1</span>（奇<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，则向<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>进一位</li>
 </ul>
 </li>
 </ul>

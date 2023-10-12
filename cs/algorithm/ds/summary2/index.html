@@ -972,7 +972,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2051,14 +2051,14 @@ var _hmt = _hmt || [];
 <h3 id="_5">堆排序<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>使用堆结构来进行排序</li>
-<li>算法一：将数组中的元素依次插入到堆中（可以是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(O(N)\)</span><span class="heti-spacing"> </span></span>线性建堆），然后依次从堆中取出最小元素<ul>
+<li>算法一：将数组中的元素依次插入到堆中（可以是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(O(N)\)</span><span class="heti-spacing"> </span></span>线性建堆<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，然后依次从堆中取出最小元素<ul>
 <li>复杂度<span><span class="heti-spacing"> </span><span class="arithmatex">\(O(N\log N)\)</span></span></li>
 <li>但是空间消耗翻倍了</li>
 </ul>
 </li>
 <li>算法二：<ul>
 <li>以线性时间建最大堆（PercolateDown）</li>
-<li>将堆顶元素与最后一个元素交换（相当于删除最大元素），然后进行<span><span class="heti-spacing"> </span>PercolateDown</span></li>
+<li>将堆顶元素与最后一个元素交换（相当于删除最大元素<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，然后进行<span><span class="heti-spacing"> </span>PercolateDown</span></li>
 <li>依此循环，<span>N-1<span class="heti-spacing"> </span></span>次删除后得到一个从小到大的序列
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">heapSort</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">arr</span><span class="p">[],</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">n</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
 <a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">n</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">2</span><span class="p">;</span><span class="w"> </span><span class="n">i</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"> </span><span class="o">--</span><span class="n">i</span><span class="p">)</span><span class="w"> </span>
@@ -2130,7 +2130,7 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 <h3 id="_7">快速排序<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>已知的实际运行最快的排序算法</li>
-<li>选择一个基准元素（枢轴<span><span class="heti-spacing"> </span>pivot</span>），将数组分成两个子数组，左边的元素都小于等于基准元素，右边的元素都大于等于基准元素，然后对两个子数组进行快排、合并</li>
+<li>选择一个基准元素（枢轴<span><span class="heti-spacing"> </span>pivot</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，将数组分成两个子数组，左边的元素都小于等于基准元素，右边的元素都大于等于基准元素，然后对两个子数组进行快排、合并</li>
 <li>选取<span><span class="heti-spacing"> </span>pivot</span><ul>
 <li>错误方法：pivot = arr[0]（对于排好序的数组仍会消耗<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(O(N^2)\)</span><span class="heti-spacing"> </span></span>的时间）</li>
 <li>安全方法：pivot = random element in arr<ul>
@@ -2142,7 +2142,7 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 </li>
 <li><del>划分策略</del>（看不懂<span class="heti-skip"><span class="heti-spacing"> </span>PPT<span class="heti-spacing"> </span></span>在干什么）</li>
 <li>小数组<ul>
-<li>对于小的<span><span class="heti-spacing"> </span><span class="arithmatex">\(N\)</span></span>（<span class="arithmatex">\(N\leq 20\)</span>），快速排序慢于插入排序</li>
+<li>对于小的<span><span class="heti-spacing"> </span><span class="arithmatex">\(N\)</span></span>（<span class="arithmatex">\(N\leq 20\)</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，快速排序慢于插入排序</li>
 <li>可以在递归到<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(N\)</span><span class="heti-spacing"> </span></span>较小的情况下改为插入排序</li>
 </ul>
 </li>
@@ -2159,7 +2159,7 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 </ul>
 <h3 id="_9">基数排序<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
-<li>从低位（LSD，Least Significant Digit）到高位（MSB），对每一位进行进行排序</li>
+<li>从低位（LSD，Least Significant Digit）到高位（MSB<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，对每一位进行进行排序</li>
 <li>例如对<span class="heti-skip"><span class="heti-spacing"> </span>64, 8, 216, 512, 27, 729, 0, 1, 343, 125<span class="heti-spacing"> </span></span>进行排序<ul>
 <li>第一轮，按个位数排序<ul>
 <li>0, 1, 512, 343, 64, 125, 216, 27, 8, 729</li>
@@ -2200,9 +2200,9 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 <li>关键字也称为标识符（identifier）</li>
 </ul>
 </li>
-<li>通常用一个数组来实现，也可以有多个槽（slot），即多个关键字对应同一个位置时，将不同关键字存在同一个位置的不同槽中</li>
+<li>通常用一个数组来实现，也可以有多个槽（slot<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，即多个关键字对应同一个位置时，将不同关键字存在同一个位置的不同槽中</li>
 <li>对于标识符<span><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span></span>，定义一个哈希函数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(x)\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>在哈希表<span class="heti-skip"><span class="heti-spacing"> </span>ht[]<span class="heti-spacing"> </span></span>中的位置（索引）</li>
-<li>设哈希表<span class="heti-skip"><span class="heti-spacing"> </span>ht<span class="heti-spacing"> </span></span>的大小为<span><span class="heti-spacing"> </span><span class="arithmatex">\(b\)</span></span>（即<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(x)\)</span><span class="heti-spacing"> </span></span>值域为<span><span class="heti-spacing"> </span><span class="arithmatex">\([0, b-1]\)</span></span>），最多有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s\)</span><span class="heti-spacing"> </span></span>个槽，则定义以下值：<ul>
+<li>设哈希表<span class="heti-skip"><span class="heti-spacing"> </span>ht<span class="heti-spacing"> </span></span>的大小为<span><span class="heti-spacing"> </span><span class="arithmatex">\(b\)</span></span>（即<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(f(x)\)</span><span class="heti-spacing"> </span></span>值域为<span><span class="heti-spacing"> </span><span class="arithmatex">\([0, b-1]\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，最多有<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(s\)</span><span class="heti-spacing"> </span></span>个槽，则定义以下值：<ul>
 <li><span><span class="arithmatex">\(T\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x\)</span><span class="heti-spacing"> </span></span>可能的不同值个数</li>
 <li><span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>表示<span class="heti-skip"><span class="heti-spacing"> </span>ht<span class="heti-spacing"> </span></span>中所有不同标识符的个数</li>
 <li>标识符密度定义为<span><span class="heti-spacing"> </span><span class="arithmatex">\(n/T\)</span></span></li>
@@ -2311,7 +2311,7 @@ T(N) &amp;= 2T(\frac{N}{2}) + O(N)\\
 <ul>
 <li>即增量函数的选择为<span><span class="heti-spacing"> </span><span class="arithmatex">\(f(i) = i\)</span></span></li>
 <li>即冲突了就往后一个一个找，直到找到空的为止</li>
-<li>会导致聚集（clustering），即一旦发生了冲突，那么后面的元素都会聚集在一起，搜索次数会变得非常大<ul>
+<li>会导致聚集（clustering<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，即一旦发生了冲突，那么后面的元素都会聚集在一起，搜索次数会变得非常大<ul>
 <li>使用线性探测的探测次数对于插入和不成功查找来说约为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\dfrac{1}{2}\left(1+\dfrac{1}{(1-\lambda)^2}\right)\)</span></span></li>
 <li>对于成功的查找来说则需要<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\dfrac{1}{2}\left(1+\dfrac{1}{1-\lambda}\right)\)</span><span class="heti-spacing"> </span></span>次</li>
 </ul>

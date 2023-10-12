@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -1846,7 +1846,7 @@ var _hmt = _hmt || [];
 <blockquote>
 <p>Gas cost increases for state access opcodes</p>
 </blockquote>
-<p>包含在柏林硬分叉当中，修改了几个和状态读取、地址访问、状态修改相关的字节码的<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>消耗规则（降低受<span class="heti-skip"><span class="heti-spacing"> </span>DoS<span class="heti-spacing"> </span></span>攻击风险）。</p>
+<p>包含在柏林硬分叉当中，修改了几个和状态读取、地址访问、状态修改相关的字节码的<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>消耗规则（降低受<span class="heti-skip"><span class="heti-spacing"> </span>DoS<span class="heti-spacing"> </span></span>攻击风险<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>在执行交易时，维护两个集合 <code class="highlight"><span class="n">accessed_addresses</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">Address</span><span class="p">]</span></code>、 <code class="highlight"><span class="n">accessed_storage_keys</span><span class="p">:</span> <span class="n">Set</span><span class="p">[</span><span class="n">Tuple</span><span class="p">[</span><span class="n">Address</span><span class="p">,</span> <span class="n">Bytes32</span><span class="p">]]</span></code>，分别记录访问过的地址和访问过的存储键。</p>
 <p>交易执行开始时初始化：</p>
 <ul>
@@ -1854,7 +1854,7 @@ var _hmt = _hmt || [];
 <li><span>accessed_storage_keys<span class="heti-spacing"> </span></span>为空</li>
 </ul>
 <h3 id="storage">读取<span><span class="heti-spacing"> </span>storage</span><a class="headerlink" href="#storage" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>对于<span class="heti-skip"><span class="heti-spacing"> </span>CALL<span class="heti-spacing"> </span></span>系列、<span>BALANCE<span class="heti-spacing"> </span></span>以及<span class="heti-skip"><span class="heti-spacing"> </span>EXT<span class="heti-spacing"> </span></span>系列字节码（原<span><span class="heti-spacing"> </span>gas 700</span>）：</p>
+<p>对于<span class="heti-skip"><span class="heti-spacing"> </span>CALL<span class="heti-spacing"> </span></span>系列、<span>BALANCE<span class="heti-spacing"> </span></span>以及<span class="heti-skip"><span class="heti-spacing"> </span>EXT<span class="heti-spacing"> </span></span>系列字节码（原<span><span class="heti-spacing"> </span>gas 700</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
 <ul>
 <li>如果访问的目的地址不在<span class="heti-skip"><span class="heti-spacing"> </span>accessed_addresses<span class="heti-spacing"> </span></span>中，则<ul>
 <li>消耗<span><span class="heti-spacing"> </span>COLD_ACCOUNT_ACCESS_COST = 2600 gas</span>（冷读取）</li>
@@ -1866,7 +1866,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ul>
-<p>对于<span><span class="heti-spacing"> </span>SLOAD</span>（原<span><span class="heti-spacing"> </span>gas 800</span>）：</p>
+<p>对于<span><span class="heti-spacing"> </span>SLOAD</span>（原<span><span class="heti-spacing"> </span>gas 800</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
 <ul>
 <li>如果<span class="heti-skip"><span class="heti-spacing"> </span>(address, storage_key)<span class="heti-spacing"> </span></span>对不在<span class="heti-skip"><span class="heti-spacing"> </span>accessed_storage_keys<span class="heti-spacing"> </span></span>中，则<ul>
 <li>消耗<span><span class="heti-spacing"> </span>COLD_SLOAD_COST = 2100 gas</span></li>
@@ -1880,7 +1880,7 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <h3 id="storage_1">写入<span><span class="heti-spacing"> </span>storage</span><a class="headerlink" href="#storage_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
-<p>对于<span><span class="heti-spacing"> </span>SSTORE</span>（原<span><span class="heti-spacing"> </span>gas 5000</span>）：</p>
+<p>对于<span><span class="heti-spacing"> </span>SSTORE</span>（原<span><span class="heti-spacing"> </span>gas 5000</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
 <ul>
 <li>如果<span class="heti-skip"><span class="heti-spacing"> </span>(address, storage_key)<span class="heti-spacing"> </span></span>对不在<span class="heti-skip"><span class="heti-spacing"> </span>accessed_storage_keys<span class="heti-spacing"> </span></span>中，则<ul>
 <li>消耗<span><span class="heti-spacing"> </span>COLD_SSTORE_COST = 2100 gas</span></li>

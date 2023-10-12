@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2013,7 +2013,7 @@ This program is no longer needed. Find it and terminate it.</p>
 <a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1"># (482, '66.249.73.135')</span>
 </code></pre></div>
 所以请求最多的 ip 就是 66.249.73.135。
-<p>当然题目的意思是通过<span class="heti-skip"><span class="heti-spacing"> </span>shell<span class="heti-spacing"> </span></span>命令直接来做。可以<span class="heti-skip"><span class="heti-spacing"> </span>cat<span class="heti-spacing"> </span></span>然后<span class="heti-skip"><span class="heti-spacing"> </span>cut<span class="heti-spacing"> </span></span>来取出<span><span class="heti-spacing"> </span>ip</span>，然后<span class="heti-skip"><span class="heti-spacing"> </span>sort | uniq -c<span class="heti-spacing"> </span></span>来统计次数（要先<span><span class="heti-spacing"> </span>sort</span>，<span>uniq<span class="heti-spacing"> </span></span>只会统计相邻的重复行），之后在<span class="heti-skip"><span class="heti-spacing"> </span>sort<span class="heti-spacing"> </span></span>一下，最后一行就是要的了：
+<p>当然题目的意思是通过<span class="heti-skip"><span class="heti-spacing"> </span>shell<span class="heti-spacing"> </span></span>命令直接来做。可以<span class="heti-skip"><span class="heti-spacing"> </span>cat<span class="heti-spacing"> </span></span>然后<span class="heti-skip"><span class="heti-spacing"> </span>cut<span class="heti-spacing"> </span></span>来取出<span><span class="heti-spacing"> </span>ip</span>，然后<span class="heti-skip"><span class="heti-spacing"> </span>sort | uniq -c<span class="heti-spacing"> </span></span>来统计次数（要先<span><span class="heti-spacing"> </span>sort</span>，<span>uniq<span class="heti-spacing"> </span></span>只会统计相邻的重复行<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，之后在<span class="heti-skip"><span class="heti-spacing"> </span>sort<span class="heti-spacing"> </span></span>一下，最后一行就是要的了：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>$ cat /home/admin/access.log | cut -d ' ' -f 1 | sort | uniq -c | sort | tail -n 1
 <a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>    482 66.249.73.135
 </code></pre></div>

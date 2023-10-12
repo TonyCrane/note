@@ -857,7 +857,7 @@ var _hmt = _hmt || [];
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../../../cs/tcs/toc/topic1/">
-        语言与自动机
+        语言、自动机与正则表达式
       </a>
 </li>
 </ul>
@@ -2020,7 +2020,7 @@ var _hmt = _hmt || [];
 <li><a href="https://geth.ethereum.org/">geth</a>：交互工具</li>
 </ul>
 <h2 id="_3">账户<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>以太坊中的账户（Account）分为两类，分别是外部账户（Externally Owned Account, EOA）和合约账户（Contract Account）。</p>
+<p>以太坊中的账户（Account）分为两类，分别是外部账户（Externally Owned Account, EOA）和合约账户（Contract Account<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <ul>
 <li>外部账户<ul>
 <li>由人创建的，相当于钱包，可以存储以太币，发送交易等</li>
@@ -2036,7 +2036,7 @@ var _hmt = _hmt || [];
 <li>合约账户是由外部账户通过交易创建的账户，其中包含合约代码</li>
 <li>合约地址<ul>
 <li><span>CREATE<span class="heti-spacing"> </span></span>操作码：通过创建者地址、交易的<span class="heti-skip"><span class="heti-spacing"> </span>nonce<span class="heti-spacing"> </span></span>值共同计算<span class="heti-skip"><span class="heti-spacing"> </span>keccak256<span class="heti-spacing"> </span></span>哈希得到</li>
-<li><span>CREATE2<span class="heti-spacing"> </span></span>操作码（君士坦丁堡硬分叉后）：通过创建者地址、盐值、合约创建代码计算得到</li>
+<li><span>CREATE2<span class="heti-spacing"> </span></span>操作码（君士坦丁堡硬分叉后<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：通过创建者地址、盐值、合约创建代码计算得到</li>
 </ul>
 </li>
 <li>合约账户同样也可以存储、拥有以太币</li>
@@ -2104,7 +2104,7 @@ var _hmt = _hmt || [];
 <h3 id="_8">交易手续费<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>每笔交易都需要支付一定的手续费，来补偿执行时的计算开销，同时也会支付给矿工作为打包交易的奖励。</p>
 <p>手续费不是由以太币直接计算的，而是通过<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>来作为单位，通过<span class="heti-skip"><span class="heti-spacing"> </span>gasPrice<span class="heti-spacing"> </span></span>与以太币进行换算。</p>
-<p><span>gasPrice<span class="heti-spacing"> </span></span>是一单位<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>对应的以太币价值（<span>wei<span class="heti-spacing"> </span></span>为单位），<span>gasLimit<span class="heti-spacing"> </span></span>是交易发送者愿意为这笔交易支付的最大<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>数量。在交易执行时，会消耗<span><span class="heti-spacing"> </span>gas</span>，如果消耗的<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>数量小于<span><span class="heti-spacing"> </span>gasLimit</span>，则交易成功执行，矿工会收取实际消耗的<span class="heti-skip"><span class="heti-spacing"> </span>gas * gasPrice<span class="heti-spacing"> </span></span>的手续费；如果执行过程中消耗的<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>超过了<span><span class="heti-spacing"> </span>gasLimit</span>，则交易失败，会回滚（revert）到交易执行前的状态，同时矿工会收取<span class="heti-skip"><span class="heti-spacing"> </span>gasLimit * gasPrice<span class="heti-spacing"> </span></span>的手续费。</p>
+<p><span>gasPrice<span class="heti-spacing"> </span></span>是一单位<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>对应的以太币价值（<span>wei<span class="heti-spacing"> </span></span>为单位<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，<span>gasLimit<span class="heti-spacing"> </span></span>是交易发送者愿意为这笔交易支付的最大<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>数量。在交易执行时，会消耗<span><span class="heti-spacing"> </span>gas</span>，如果消耗的<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>数量小于<span><span class="heti-spacing"> </span>gasLimit</span>，则交易成功执行，矿工会收取实际消耗的<span class="heti-skip"><span class="heti-spacing"> </span>gas * gasPrice<span class="heti-spacing"> </span></span>的手续费；如果执行过程中消耗的<span class="heti-skip"><span class="heti-spacing"> </span>gas<span class="heti-spacing"> </span></span>超过了<span><span class="heti-spacing"> </span>gasLimit</span>，则交易失败，会回滚（revert）到交易执行前的状态，同时矿工会收取<span class="heti-skip"><span class="heti-spacing"> </span>gasLimit * gasPrice<span class="heti-spacing"> </span></span>的手续费。</p>
 <h2 id="_9">合约<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>合约账户和创建合约、调用合约的交易在前面已经说过了。下面是一些关于合约的实现、原理等内容。</p>
 <h3 id="_10">编写合约<a class="headerlink" href="#_10" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -2113,7 +2113,7 @@ var _hmt = _hmt || [];
 <p>总之可以使用<span class="heti-skip"><span class="heti-spacing"> </span>Remix IDE<span class="heti-spacing"> </span></span>来进行合约的编写、编译、部署、调试等操作。</p>
 <h3 id="_11">合约的创建<a class="headerlink" href="#_11" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>前面说到了合约要通过交易来进行创建，这个交易的<span class="heti-skip"><span class="heti-spacing"> </span>to<span class="heti-spacing"> </span></span>字段应该为空，且<span class="heti-skip"><span class="heti-spacing"> </span>data<span class="heti-spacing"> </span></span>字段为编译后的合约字节码。</p>
-<p>在执行交易时，这个<span class="heti-skip"><span class="heti-spacing"> </span>data<span class="heti-spacing"> </span></span>字段的内容会被放在<span class="heti-skip"><span class="heti-spacing"> </span>EVM<span class="heti-spacing"> </span></span>上执行，它可以是任意可执行的字节码，遇到<span class="heti-skip"><span class="heti-spacing"> </span>return<span class="heti-spacing"> </span></span>指令直接返回，也可以返回结果（且有回显）。</p>
+<p>在执行交易时，这个<span class="heti-skip"><span class="heti-spacing"> </span>data<span class="heti-spacing"> </span></span>字段的内容会被放在<span class="heti-skip"><span class="heti-spacing"> </span>EVM<span class="heti-spacing"> </span></span>上执行，它可以是任意可执行的字节码，遇到<span class="heti-skip"><span class="heti-spacing"> </span>return<span class="heti-spacing"> </span></span>指令直接返回，也可以返回结果（且有回显<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
 <p>一般的合约字节码会分为两个部分，即<span class="heti-skip"><span class="heti-spacing"> </span>creationCode<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>runtimeCode</span>。它们是拼接在一起的一个整体。在<span class="heti-skip"><span class="heti-spacing"> </span>EVM<span class="heti-spacing"> </span></span>运行字节码时，先执行<span class="heti-skip"><span class="heti-spacing"> </span>creationCode<span class="heti-spacing"> </span></span>部分，其作用是运行构建函数、设置合约初始状态，然后返回<span><span class="heti-spacing"> </span>runtimeCode</span>，这个将会被部署到链上代码区。之后在链上存储的就只是<span class="heti-skip"><span class="heti-spacing"> </span>runtimeCode<span class="heti-spacing"> </span></span>部分，也是调用时会执行的实际部分。</p>
 <p>如果合约的构建函数是<span class="heti-skip"><span class="heti-spacing"> </span>payable<span class="heti-spacing"> </span></span>的，那么可以在创建交易的时候通过<span class="heti-skip"><span class="heti-spacing"> </span>value<span class="heti-spacing"> </span></span>字段来附带以太币，这些以太币会被转移到合约账户中。如果不是<span class="heti-skip"><span class="heti-spacing"> </span>payable<span class="heti-spacing"> </span></span>但创建时向其转账了，那么这条交易会<span><span class="heti-spacing"> </span>revert</span>。</p>
 <h3 id="_12">合约的调用<a class="headerlink" href="#_12" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -2160,7 +2160,7 @@ var _hmt = _hmt || [];
 <li>tx.origin：交易的发起者（整条调用链最开头的账户）</li>
 </ul>
 <h2 id="_14">存储<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<p>以太坊会为合约提供一个存储空间，其存储相当于一个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(2^{256}\)</span><span class="heti-spacing"> </span></span>大小的数组，数组中每个元素称为插槽（slot），每个插槽的大小是<span class="heti-skip"><span class="heti-spacing"> </span>256<span class="heti-spacing"> </span></span>位，也就是<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>字节。整体容量非常巨大，但存储是稀疏的，即只会存储有值的插槽。</p>
+<p>以太坊会为合约提供一个存储空间，其存储相当于一个<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(2^{256}\)</span><span class="heti-spacing"> </span></span>大小的数组，数组中每个元素称为插槽（slot<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，每个插槽的大小是<span class="heti-skip"><span class="heti-spacing"> </span>256<span class="heti-spacing"> </span></span>位，也就是<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>字节。整体容量非常巨大，但存储是稀疏的，即只会存储有值的插槽。</p>
 <p><span>Solidity<span class="heti-spacing"> </span></span>规定了合约内变量的存储方式，大致是：</p>
 <ul>
 <li>单个值类型<ul>
