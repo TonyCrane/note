@@ -8,21 +8,6 @@ counter: True
 !!! abstract
     理论计算机科学导引第一至第四周课程内容
 
-<style>
-path[stroke="#000"], g[stroke="#000"] {
-    stroke: var(--md-default-fg-color);
-}
-path[stroke="#fff"], g[stroke="#fff"] {
-    stroke: var(--md-default-bg-color);
-}
-path[fill="#fff"] {
-    fill: var(--md-default-bg-color);
-}
-path:not([fill]) {
-    fill: var(--md-default-fg-color);
-}
-</style>
-
 ## 前言
 
 - 问题分类
@@ -297,7 +282,7 @@ $$
             (q_n_2) edge      node    {$a_{n-1}$}   (q_n_1)
             (q_n_1) edge      node    {$a_n$}       (q_n);
     
-    因为自动机只有 $p$ 个状态，但 $n$ 又不小于 $p$，所以一定存在 $0\leq i < j\leq p$，使得 $q_i$ 和 $q_j$ 是同一状态。这样这个自动机就可以转化为：
+    因为自动机只有 $p$ 个状态，但 $n$ 又不小于 $p$，所以一定存在 $0\leq i < j\leq p$，使得 $q_i$ 和 $q_j$ 是同一状态。这样这条路径就可以转化为：
 
     \automata
         \node[initial,state]                (q_0)   {$q_0$};
@@ -307,7 +292,7 @@ $$
         \path
             (q_0)   edge                node    {$x=a_1\cdots a_i$}     (q_i)
             (q_i)   edge [loop above]   node    {$y=a_{i+1}\cdots a_j$} (q_i)
-            (q_i)   edge                node    {$z=a_{j+1}\cdots a_j$} (q_n);
+            (q_i)   edge                node    {$z=a_{j+1}\cdots a_n$} (q_n);
     
     因此 $xy^kz\in L$、$|y|=j-1\geq 1$、$|xy|=j\leq p$ 都满足。
 
