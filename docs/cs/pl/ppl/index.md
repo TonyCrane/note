@@ -10,3 +10,4 @@
 ## Table of Contents
 
 - [Lambda 演算](topic1/)
+- [抽象语法树与归纳法](topic2/)
