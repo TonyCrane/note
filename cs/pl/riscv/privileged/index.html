@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/cs/pl/riscv/privileged/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>RISC-V 特权级 ISA - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -35,17 +35,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -2149,36 +2149,36 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="center">等级</th>
-<th align="center">编码</th>
-<th align="center">名称</th>
-<th align="center">缩写</th>
+<th style="text-align: center;">等级</th>
+<th style="text-align: center;">编码</th>
+<th style="text-align: center;">名称</th>
+<th style="text-align: center;">缩写</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">0</td>
-<td align="center">00</td>
-<td align="center">User/Application</td>
-<td align="center">U</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">00</td>
+<td style="text-align: center;">User/Application</td>
+<td style="text-align: center;">U</td>
 </tr>
 <tr>
-<td align="center">1</td>
-<td align="center">01</td>
-<td align="center">Supervisor</td>
-<td align="center">S</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">01</td>
+<td style="text-align: center;">Supervisor</td>
+<td style="text-align: center;">S</td>
 </tr>
 <tr>
-<td align="center">2</td>
-<td align="center">10</td>
-<td align="center">Hypervisor</td>
-<td align="center">H</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">Hypervisor</td>
+<td style="text-align: center;">H</td>
 </tr>
 <tr>
-<td align="center">3</td>
-<td align="center">11</td>
-<td align="center">Machine</td>
-<td align="center">M</td>
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">Machine</td>
+<td style="text-align: center;">M</td>
 </tr>
 </tbody>
 </table>
@@ -2445,38 +2445,38 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">伪代码</th>
-<th align="left">原指令</th>
+<th style="text-align: left;">伪代码</th>
+<th style="text-align: left;">原指令</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">csrr rd, csr</td>
-<td align="left">csrrs rd, csr, x0</td>
+<td style="text-align: left;">csrr rd, csr</td>
+<td style="text-align: left;">csrrs rd, csr, x0</td>
 </tr>
 <tr>
-<td align="left">csrw csr, rs1</td>
-<td align="left">csrrw x0, csr, rs1</td>
+<td style="text-align: left;">csrw csr, rs1</td>
+<td style="text-align: left;">csrrw x0, csr, rs1</td>
 </tr>
 <tr>
-<td align="left">csrwi csr, uimm</td>
-<td align="left">csrrwi x0, csr, uimm</td>
+<td style="text-align: left;">csrwi csr, uimm</td>
+<td style="text-align: left;">csrrwi x0, csr, uimm</td>
 </tr>
 <tr>
-<td align="left">csrs csr, rs1</td>
-<td align="left">csrrs x0, csr, rs1</td>
+<td style="text-align: left;">csrs csr, rs1</td>
+<td style="text-align: left;">csrrs x0, csr, rs1</td>
 </tr>
 <tr>
-<td align="left">csrsi csr, uimm</td>
-<td align="left">csrrsi x0, csr, uimm</td>
+<td style="text-align: left;">csrsi csr, uimm</td>
+<td style="text-align: left;">csrrsi x0, csr, uimm</td>
 </tr>
 <tr>
-<td align="left">csrc csr, rs1</td>
-<td align="left">csrrc x0, csr, rs1</td>
+<td style="text-align: left;">csrc csr, rs1</td>
+<td style="text-align: left;">csrrc x0, csr, rs1</td>
 </tr>
 <tr>
-<td align="left">csrci csr, uimm</td>
-<td align="left">csrrci x0, csr, uimm</td>
+<td style="text-align: left;">csrci csr, uimm</td>
+<td style="text-align: left;">csrrci x0, csr, uimm</td>
 </tr>
 </tbody>
 </table>
@@ -2486,78 +2486,78 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0x001</td>
-<td align="left">URW</td>
-<td align="left">fflags</td>
-<td align="left">浮点异常标志</td>
+<td style="text-align: left;">0x001</td>
+<td style="text-align: left;">URW</td>
+<td style="text-align: left;">fflags</td>
+<td style="text-align: left;">浮点异常标志</td>
 </tr>
 <tr>
-<td align="left">0x002</td>
-<td align="left">URW</td>
-<td align="left">frm</td>
-<td align="left">浮点舍入模式</td>
+<td style="text-align: left;">0x002</td>
+<td style="text-align: left;">URW</td>
+<td style="text-align: left;">frm</td>
+<td style="text-align: left;">浮点舍入模式</td>
 </tr>
 <tr>
-<td align="left">0x003</td>
-<td align="left">URW</td>
-<td align="left">fcsr</td>
-<td align="left">浮点控制寄存器</td>
+<td style="text-align: left;">0x003</td>
+<td style="text-align: left;">URW</td>
+<td style="text-align: left;">fcsr</td>
+<td style="text-align: left;">浮点控制寄存器</td>
 </tr>
 <tr>
-<td align="left">0xC00</td>
-<td align="left">URO</td>
-<td align="left">cycle</td>
-<td align="left">时钟周期计数器（<span>rdcycle<span class="heti-spacing"> </span></span>指令读取）</td>
+<td style="text-align: left;">0xC00</td>
+<td style="text-align: left;">URO</td>
+<td style="text-align: left;">cycle</td>
+<td style="text-align: left;">时钟周期计数器（<span>rdcycle<span class="heti-spacing"> </span></span>指令读取）</td>
 </tr>
 <tr>
-<td align="left">0xC01</td>
-<td align="left">URO</td>
-<td align="left">time</td>
-<td align="left">计时器（<span>rdtime<span class="heti-spacing"> </span></span>指令读取）</td>
+<td style="text-align: left;">0xC01</td>
+<td style="text-align: left;">URO</td>
+<td style="text-align: left;">time</td>
+<td style="text-align: left;">计时器（<span>rdtime<span class="heti-spacing"> </span></span>指令读取）</td>
 </tr>
 <tr>
-<td align="left">0xC02</td>
-<td align="left">URO</td>
-<td align="left">instret</td>
-<td align="left">指令计数器（<span>rdinstret<span class="heti-spacing"> </span></span>指令读取）</td>
+<td style="text-align: left;">0xC02</td>
+<td style="text-align: left;">URO</td>
+<td style="text-align: left;">instret</td>
+<td style="text-align: left;">指令计数器（<span>rdinstret<span class="heti-spacing"> </span></span>指令读取）</td>
 </tr>
 <tr>
-<td align="left">0xC03-0xC1F</td>
-<td align="left">URO</td>
-<td align="left">hpmcounter3-31</td>
-<td align="left">性能计数器</td>
+<td style="text-align: left;">0xC03-0xC1F</td>
+<td style="text-align: left;">URO</td>
+<td style="text-align: left;">hpmcounter3-31</td>
+<td style="text-align: left;">性能计数器</td>
 </tr>
 <tr>
-<td align="left">0xC80</td>
-<td align="left">URO</td>
-<td align="left">cycleh</td>
-<td align="left">时钟周期计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0xC80</td>
+<td style="text-align: left;">URO</td>
+<td style="text-align: left;">cycleh</td>
+<td style="text-align: left;">时钟周期计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 <tr>
-<td align="left">0xC81</td>
-<td align="left">URO</td>
-<td align="left">timeh</td>
-<td align="left">计时器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0xC81</td>
+<td style="text-align: left;">URO</td>
+<td style="text-align: left;">timeh</td>
+<td style="text-align: left;">计时器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 <tr>
-<td align="left">0xC82</td>
-<td align="left">URO</td>
-<td align="left">instreth</td>
-<td align="left">指令计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0xC82</td>
+<td style="text-align: left;">URO</td>
+<td style="text-align: left;">instreth</td>
+<td style="text-align: left;">指令计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 <tr>
-<td align="left">0xC83-0xC9F</td>
-<td align="left">URO</td>
-<td align="left">hpmcounter3h-31h</td>
-<td align="left">性能计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0xC83-0xC9F</td>
+<td style="text-align: left;">URO</td>
+<td style="text-align: left;">hpmcounter3h-31h</td>
+<td style="text-align: left;">性能计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 </tbody>
 </table>
@@ -2565,84 +2565,84 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0x100</td>
-<td align="left">SRW</td>
-<td align="left">sstatus</td>
-<td align="left"><span>Supervisor<span class="heti-spacing"> </span></span>状态寄存器</td>
+<td style="text-align: left;">0x100</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">sstatus</td>
+<td style="text-align: left;"><span>Supervisor<span class="heti-spacing"> </span></span>状态寄存器</td>
 </tr>
 <tr>
-<td align="left">0x104</td>
-<td align="left">SRW</td>
-<td align="left">sie</td>
-<td align="left"><span>Supervisor<span class="heti-spacing"> </span></span>中断使能寄存器</td>
+<td style="text-align: left;">0x104</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">sie</td>
+<td style="text-align: left;"><span>Supervisor<span class="heti-spacing"> </span></span>中断使能寄存器</td>
 </tr>
 <tr>
-<td align="left">0x105</td>
-<td align="left">SRW</td>
-<td align="left">stvec</td>
-<td align="left"><span>Supervisor<span class="heti-spacing"> </span></span>中断向量寄存器</td>
+<td style="text-align: left;">0x105</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">stvec</td>
+<td style="text-align: left;"><span>Supervisor<span class="heti-spacing"> </span></span>中断向量寄存器</td>
 </tr>
 <tr>
-<td align="left">0x106</td>
-<td align="left">SRW</td>
-<td align="left">scounteren</td>
-<td align="left"><span>Supervisor<span class="heti-spacing"> </span></span>性能计数器使能寄存器</td>
+<td style="text-align: left;">0x106</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">scounteren</td>
+<td style="text-align: left;"><span>Supervisor<span class="heti-spacing"> </span></span>性能计数器使能寄存器</td>
 </tr>
 <tr>
-<td align="left">0x10A</td>
-<td align="left">SRW</td>
-<td align="left">senvcfg</td>
-<td align="left"><span>Supervisor<span class="heti-spacing"> </span></span>环境配置寄存器</td>
+<td style="text-align: left;">0x10A</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">senvcfg</td>
+<td style="text-align: left;"><span>Supervisor<span class="heti-spacing"> </span></span>环境配置寄存器</td>
 </tr>
 <tr>
-<td align="left">0x140</td>
-<td align="left">SRW</td>
-<td align="left">sscratch</td>
-<td align="left"><span>Supervisor trap handler<span class="heti-spacing"> </span></span>临时寄存器</td>
+<td style="text-align: left;">0x140</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">sscratch</td>
+<td style="text-align: left;"><span>Supervisor trap handler<span class="heti-spacing"> </span></span>临时寄存器</td>
 </tr>
 <tr>
-<td align="left">0x141</td>
-<td align="left">SRW</td>
-<td align="left">sepc</td>
-<td align="left"><span>Supervisor exception pc<span class="heti-spacing"> </span></span>寄存器</td>
+<td style="text-align: left;">0x141</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">sepc</td>
+<td style="text-align: left;"><span>Supervisor exception pc<span class="heti-spacing"> </span></span>寄存器</td>
 </tr>
 <tr>
-<td align="left">0x142</td>
-<td align="left">SRW</td>
-<td align="left">scause</td>
-<td align="left"><span>Supervisor trap<span class="heti-spacing"> </span></span>原因寄存器</td>
+<td style="text-align: left;">0x142</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">scause</td>
+<td style="text-align: left;"><span>Supervisor trap<span class="heti-spacing"> </span></span>原因寄存器</td>
 </tr>
 <tr>
-<td align="left">0x143</td>
-<td align="left">SRW</td>
-<td align="left">stval</td>
-<td align="left"><span>Supervisor trap<span class="heti-spacing"> </span></span>值寄存器</td>
+<td style="text-align: left;">0x143</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">stval</td>
+<td style="text-align: left;"><span>Supervisor trap<span class="heti-spacing"> </span></span>值寄存器</td>
 </tr>
 <tr>
-<td align="left">0x144</td>
-<td align="left">SRW</td>
-<td align="left">sip</td>
-<td align="left"><span>Supervisor<span class="heti-spacing"> </span></span>中断挂起寄存器</td>
+<td style="text-align: left;">0x144</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">sip</td>
+<td style="text-align: left;"><span>Supervisor<span class="heti-spacing"> </span></span>中断挂起寄存器</td>
 </tr>
 <tr>
-<td align="left">0x180</td>
-<td align="left">SRW</td>
-<td align="left">satp</td>
-<td align="left"><span>Supervisor<span class="heti-spacing"> </span></span>地址翻译寄存器</td>
+<td style="text-align: left;">0x180</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">satp</td>
+<td style="text-align: left;"><span>Supervisor<span class="heti-spacing"> </span></span>地址翻译寄存器</td>
 </tr>
 <tr>
-<td align="left">0x5A8</td>
-<td align="left">SRW</td>
-<td align="left">scontext</td>
-<td align="left"><span>Supervisor<span class="heti-spacing"> </span></span>模式上下文寄存器</td>
+<td style="text-align: left;">0x5A8</td>
+<td style="text-align: left;">SRW</td>
+<td style="text-align: left;">scontext</td>
+<td style="text-align: left;"><span>Supervisor<span class="heti-spacing"> </span></span>模式上下文寄存器</td>
 </tr>
 </tbody>
 </table>
@@ -2652,42 +2652,42 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0xF11</td>
-<td align="left">MRO</td>
-<td align="left">mvendorid</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>厂商<span><span class="heti-spacing"> </span>ID</span></td>
+<td style="text-align: left;">0xF11</td>
+<td style="text-align: left;">MRO</td>
+<td style="text-align: left;">mvendorid</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>厂商<span><span class="heti-spacing"> </span>ID</span></td>
 </tr>
 <tr>
-<td align="left">0xF12</td>
-<td align="left">MRO</td>
-<td align="left">marchid</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>架构<span><span class="heti-spacing"> </span>ID</span></td>
+<td style="text-align: left;">0xF12</td>
+<td style="text-align: left;">MRO</td>
+<td style="text-align: left;">marchid</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>架构<span><span class="heti-spacing"> </span>ID</span></td>
 </tr>
 <tr>
-<td align="left">0xF13</td>
-<td align="left">MRO</td>
-<td align="left">mimpid</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>实现<span><span class="heti-spacing"> </span>ID</span></td>
+<td style="text-align: left;">0xF13</td>
+<td style="text-align: left;">MRO</td>
+<td style="text-align: left;">mimpid</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>实现<span><span class="heti-spacing"> </span>ID</span></td>
 </tr>
 <tr>
-<td align="left">0xF14</td>
-<td align="left">MRO</td>
-<td align="left">mhartid</td>
-<td align="left">Machine hart ID</td>
+<td style="text-align: left;">0xF14</td>
+<td style="text-align: left;">MRO</td>
+<td style="text-align: left;">mhartid</td>
+<td style="text-align: left;">Machine hart ID</td>
 </tr>
 <tr>
-<td align="left">0xF15</td>
-<td align="left">MRO</td>
-<td align="left">mconfigptr</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>配置数据结构体指针</td>
+<td style="text-align: left;">0xF15</td>
+<td style="text-align: left;">MRO</td>
+<td style="text-align: left;">mconfigptr</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>配置数据结构体指针</td>
 </tr>
 </tbody>
 </table>
@@ -2697,60 +2697,60 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0x300</td>
-<td align="left">MRW</td>
-<td align="left">mstatus</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>状态寄存器</td>
+<td style="text-align: left;">0x300</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mstatus</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>状态寄存器</td>
 </tr>
 <tr>
-<td align="left">0x301</td>
-<td align="left">MRW</td>
-<td align="left">misa</td>
-<td align="left"><span>Machine ISA<span class="heti-spacing"> </span></span>与扩展寄存器</td>
+<td style="text-align: left;">0x301</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">misa</td>
+<td style="text-align: left;"><span>Machine ISA<span class="heti-spacing"> </span></span>与扩展寄存器</td>
 </tr>
 <tr>
-<td align="left">0x302</td>
-<td align="left">MRW</td>
-<td align="left">medeleg</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>异常委托寄存器</td>
+<td style="text-align: left;">0x302</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">medeleg</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>异常委托寄存器</td>
 </tr>
 <tr>
-<td align="left">0x303</td>
-<td align="left">MRW</td>
-<td align="left">mideleg</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>中断委托寄存器</td>
+<td style="text-align: left;">0x303</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mideleg</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>中断委托寄存器</td>
 </tr>
 <tr>
-<td align="left">0x304</td>
-<td align="left">MRW</td>
-<td align="left">mie</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>中断使能寄存器</td>
+<td style="text-align: left;">0x304</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mie</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>中断使能寄存器</td>
 </tr>
 <tr>
-<td align="left">0x305</td>
-<td align="left">MRW</td>
-<td align="left">mtvec</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>中断向量寄存器</td>
+<td style="text-align: left;">0x305</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mtvec</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>中断向量寄存器</td>
 </tr>
 <tr>
-<td align="left">0x306</td>
-<td align="left">MRW</td>
-<td align="left">mcounteren</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>性能计数器使能寄存器</td>
+<td style="text-align: left;">0x306</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mcounteren</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>性能计数器使能寄存器</td>
 </tr>
 <tr>
-<td align="left">0x310</td>
-<td align="left">MRW</td>
-<td align="left">mstatush</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>状态寄存器附加部分（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0x310</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mstatush</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>状态寄存器附加部分（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 </tbody>
 </table>
@@ -2760,54 +2760,54 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0x340</td>
-<td align="left">MRW</td>
-<td align="left">mscratch</td>
-<td align="left"><span>Machine trap handler<span class="heti-spacing"> </span></span>临时寄存器</td>
+<td style="text-align: left;">0x340</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mscratch</td>
+<td style="text-align: left;"><span>Machine trap handler<span class="heti-spacing"> </span></span>临时寄存器</td>
 </tr>
 <tr>
-<td align="left">0x341</td>
-<td align="left">MRW</td>
-<td align="left">mepc</td>
-<td align="left"><span>Machine exception pc<span class="heti-spacing"> </span></span>寄存器</td>
+<td style="text-align: left;">0x341</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mepc</td>
+<td style="text-align: left;"><span>Machine exception pc<span class="heti-spacing"> </span></span>寄存器</td>
 </tr>
 <tr>
-<td align="left">0x342</td>
-<td align="left">MRW</td>
-<td align="left">mcause</td>
-<td align="left"><span>Machine trap<span class="heti-spacing"> </span></span>原因寄存器</td>
+<td style="text-align: left;">0x342</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mcause</td>
+<td style="text-align: left;"><span>Machine trap<span class="heti-spacing"> </span></span>原因寄存器</td>
 </tr>
 <tr>
-<td align="left">0x343</td>
-<td align="left">MRW</td>
-<td align="left">mtval</td>
-<td align="left"><span>Machine trap<span class="heti-spacing"> </span></span>值寄存器</td>
+<td style="text-align: left;">0x343</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mtval</td>
+<td style="text-align: left;"><span>Machine trap<span class="heti-spacing"> </span></span>值寄存器</td>
 </tr>
 <tr>
-<td align="left">0x344</td>
-<td align="left">MRW</td>
-<td align="left">mip</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>中断挂起寄存器</td>
+<td style="text-align: left;">0x344</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mip</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>中断挂起寄存器</td>
 </tr>
 <tr>
-<td align="left">0x34A</td>
-<td align="left">MRW</td>
-<td align="left">mtinst</td>
-<td align="left"><span>Machine trap<span class="heti-spacing"> </span></span>指令寄存器</td>
+<td style="text-align: left;">0x34A</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mtinst</td>
+<td style="text-align: left;"><span>Machine trap<span class="heti-spacing"> </span></span>指令寄存器</td>
 </tr>
 <tr>
-<td align="left">0x34B</td>
-<td align="left">MRW</td>
-<td align="left">mtval2</td>
-<td align="left"><span>Machine trap<span class="heti-spacing"> </span></span>值寄存器</td>
+<td style="text-align: left;">0x34B</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mtval2</td>
+<td style="text-align: left;"><span>Machine trap<span class="heti-spacing"> </span></span>值寄存器</td>
 </tr>
 </tbody>
 </table>
@@ -2817,36 +2817,36 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0x30A</td>
-<td align="left">MRW</td>
-<td align="left">menvcfg</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>环境配置寄存器</td>
+<td style="text-align: left;">0x30A</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">menvcfg</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>环境配置寄存器</td>
 </tr>
 <tr>
-<td align="left">0x31A</td>
-<td align="left">MRW</td>
-<td align="left">menvcfgh</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>环境配置寄存器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0x31A</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">menvcfgh</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>环境配置寄存器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 <tr>
-<td align="left">0x747</td>
-<td align="left">MRW</td>
-<td align="left">mseccfg</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>安全配置寄存器</td>
+<td style="text-align: left;">0x747</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mseccfg</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>安全配置寄存器</td>
 </tr>
 <tr>
-<td align="left">0x757</td>
-<td align="left">MRW</td>
-<td align="left">mseccfgh</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>安全配置寄存器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0x757</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mseccfgh</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>安全配置寄存器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 </tbody>
 </table>
@@ -2856,24 +2856,24 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0x3A0-0x3AF</td>
-<td align="left">MRW</td>
-<td align="left">pmpcfg0-15</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>物理内存保护配置寄存器（奇数只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0x3A0-0x3AF</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">pmpcfg0-15</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>物理内存保护配置寄存器（奇数只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 <tr>
-<td align="left">0x3B0-0x3BF</td>
-<td align="left">MRW</td>
-<td align="left">pmpaddr0-15</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>物理内存保护地址寄存器</td>
+<td style="text-align: left;">0x3B0-0x3BF</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">pmpaddr0-15</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>物理内存保护地址寄存器</td>
 </tr>
 </tbody>
 </table>
@@ -2883,48 +2883,48 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0xB00</td>
-<td align="left">MRW</td>
-<td align="left">mcycle</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>时钟周期计数器</td>
+<td style="text-align: left;">0xB00</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mcycle</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>时钟周期计数器</td>
 </tr>
 <tr>
-<td align="left">0xB02</td>
-<td align="left">MRW</td>
-<td align="left">minstret</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>指令计数器</td>
+<td style="text-align: left;">0xB02</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">minstret</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>指令计数器</td>
 </tr>
 <tr>
-<td align="left">0xB03-0xB1F</td>
-<td align="left">MRW</td>
-<td align="left">mhpmcounter3-31</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>性能计数器</td>
+<td style="text-align: left;">0xB03-0xB1F</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mhpmcounter3-31</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>性能计数器</td>
 </tr>
 <tr>
-<td align="left">0xB80</td>
-<td align="left">MRW</td>
-<td align="left">mcycleh</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>时钟周期计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0xB80</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mcycleh</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>时钟周期计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 <tr>
-<td align="left">0xB82</td>
-<td align="left">MRW</td>
-<td align="left">minstreth</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>指令计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0xB82</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">minstreth</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>指令计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 <tr>
-<td align="left">0xB83-0xB9F</td>
-<td align="left">MRW</td>
-<td align="left">mhpmcounter3h-31h</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>性能计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
+<td style="text-align: left;">0xB83-0xB9F</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mhpmcounter3h-31h</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>性能计数器高<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>位（只有<span class="heti-skip"><span class="heti-spacing"> </span>RV32<span class="heti-spacing"> </span></span>有）</td>
 </tr>
 </tbody>
 </table>
@@ -2934,24 +2934,24 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">编号</th>
-<th align="left">权限</th>
-<th align="left">名称</th>
-<th align="left">说明</th>
+<th style="text-align: left;">编号</th>
+<th style="text-align: left;">权限</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">0x320</td>
-<td align="left">MRW</td>
-<td align="left">mcounterinhibit</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>性能计数器禁止寄存器</td>
+<td style="text-align: left;">0x320</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mcounterinhibit</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>性能计数器禁止寄存器</td>
 </tr>
 <tr>
-<td align="left">0x323-0x33F</td>
-<td align="left">MRW</td>
-<td align="left">mhpmevent3-31</td>
-<td align="left"><span>Machine<span class="heti-spacing"> </span></span>性能计数器事件选择寄存器</td>
+<td style="text-align: left;">0x323-0x33F</td>
+<td style="text-align: left;">MRW</td>
+<td style="text-align: left;">mhpmevent3-31</td>
+<td style="text-align: left;"><span>Machine<span class="heti-spacing"> </span></span>性能计数器事件选择寄存器</td>
 </tr>
 </tbody>
 </table>

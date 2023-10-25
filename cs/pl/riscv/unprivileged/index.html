@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/cs/pl/riscv/unprivileged/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>RISC-V 非特权级 ISA - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -35,17 +35,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -2186,90 +2186,90 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="center">寄存器</th>
-<th align="center"><span>ABI<span class="heti-spacing"> </span></span>名称</th>
-<th align="left">用途描述</th>
-<th align="center">saver</th>
+<th style="text-align: center;">寄存器</th>
+<th style="text-align: center;"><span>ABI<span class="heti-spacing"> </span></span>名称</th>
+<th style="text-align: left;">用途描述</th>
+<th style="text-align: center;">saver</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">x0</td>
-<td align="center">zero</td>
-<td align="left">硬件<span><span class="heti-spacing"> </span>0</span></td>
-<td align="center"></td>
+<td style="text-align: center;">x0</td>
+<td style="text-align: center;">zero</td>
+<td style="text-align: left;">硬件<span><span class="heti-spacing"> </span>0</span></td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
-<td align="center">x1</td>
-<td align="center">ra</td>
-<td align="left">返回地址（return address）</td>
-<td align="center">caller</td>
+<td style="text-align: center;">x1</td>
+<td style="text-align: center;">ra</td>
+<td style="text-align: left;">返回地址（return address）</td>
+<td style="text-align: center;">caller</td>
 </tr>
 <tr>
-<td align="center">x2</td>
-<td align="center">sp</td>
-<td align="left">栈指针（stack pointer）</td>
-<td align="center">callee</td>
+<td style="text-align: center;">x2</td>
+<td style="text-align: center;">sp</td>
+<td style="text-align: left;">栈指针（stack pointer）</td>
+<td style="text-align: center;">callee</td>
 </tr>
 <tr>
-<td align="center">x3</td>
-<td align="center">gp</td>
-<td align="left">全局指针（global pointer）</td>
-<td align="center"></td>
+<td style="text-align: center;">x3</td>
+<td style="text-align: center;">gp</td>
+<td style="text-align: left;">全局指针（global pointer）</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
-<td align="center">x4</td>
-<td align="center">tp</td>
-<td align="left">线程指针（thread pointer）</td>
-<td align="center"></td>
+<td style="text-align: center;">x4</td>
+<td style="text-align: center;">tp</td>
+<td style="text-align: left;">线程指针（thread pointer）</td>
+<td style="text-align: center;"></td>
 </tr>
 <tr>
-<td align="center">x5</td>
-<td align="center">t0</td>
-<td align="left">临时变量<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>备用链接寄存器（alternate link reg）</td>
-<td align="center">caller</td>
+<td style="text-align: center;">x5</td>
+<td style="text-align: center;">t0</td>
+<td style="text-align: left;">临时变量<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>备用链接寄存器（alternate link reg）</td>
+<td style="text-align: center;">caller</td>
 </tr>
 <tr>
-<td align="center">x6-7</td>
-<td align="center">t1-2</td>
-<td align="left">临时变量</td>
-<td align="center">caller</td>
+<td style="text-align: center;">x6-7</td>
+<td style="text-align: center;">t1-2</td>
+<td style="text-align: left;">临时变量</td>
+<td style="text-align: center;">caller</td>
 </tr>
 <tr>
-<td align="center">x8</td>
-<td align="center">s0/fp</td>
-<td align="left">需要保存的寄存器<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>帧指针（frame pointer）</td>
-<td align="center">callee</td>
+<td style="text-align: center;">x8</td>
+<td style="text-align: center;">s0/fp</td>
+<td style="text-align: left;">需要保存的寄存器<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>帧指针（frame pointer）</td>
+<td style="text-align: center;">callee</td>
 </tr>
 <tr>
-<td align="center">x9</td>
-<td align="center">s1</td>
-<td align="left">需要保存的寄存器</td>
-<td align="center">callee</td>
+<td style="text-align: center;">x9</td>
+<td style="text-align: center;">s1</td>
+<td style="text-align: left;">需要保存的寄存器</td>
+<td style="text-align: center;">callee</td>
 </tr>
 <tr>
-<td align="center">x10-11</td>
-<td align="center">a0-1</td>
-<td align="left">函数参数<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>返回值</td>
-<td align="center">caller</td>
+<td style="text-align: center;">x10-11</td>
+<td style="text-align: center;">a0-1</td>
+<td style="text-align: left;">函数参数<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>返回值</td>
+<td style="text-align: center;">caller</td>
 </tr>
 <tr>
-<td align="center">x12-17</td>
-<td align="center">a2-7</td>
-<td align="left">函数参数</td>
-<td align="center">caller</td>
+<td style="text-align: center;">x12-17</td>
+<td style="text-align: center;">a2-7</td>
+<td style="text-align: left;">函数参数</td>
+<td style="text-align: center;">caller</td>
 </tr>
 <tr>
-<td align="center">x18-27</td>
-<td align="center">s2-11</td>
-<td align="left">需要保存的寄存器</td>
-<td align="center">callee</td>
+<td style="text-align: center;">x18-27</td>
+<td style="text-align: center;">s2-11</td>
+<td style="text-align: left;">需要保存的寄存器</td>
+<td style="text-align: center;">callee</td>
 </tr>
 <tr>
-<td align="center">x28-31</td>
-<td align="center">t3-6</td>
-<td align="left">临时变量</td>
-<td align="center">caller</td>
+<td style="text-align: center;">x28-31</td>
+<td style="text-align: center;">t3-6</td>
+<td style="text-align: left;">临时变量</td>
+<td style="text-align: center;">caller</td>
 </tr>
 </tbody>
 </table>
@@ -4042,156 +4042,156 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">伪指令</th>
-<th align="left">实际指令</th>
-<th align="left">意义</th>
+<th style="text-align: left;">伪指令</th>
+<th style="text-align: left;">实际指令</th>
+<th style="text-align: left;">意义</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">la/lla rd, symbol</td>
-<td align="left">auipc rd, delta[31 : 12] + delta[11]<br/>addi rd, rd, delta[11:0]</td>
-<td align="left">加载绝对地址<br/>delta = symbol - pc</td>
+<td style="text-align: left;">la/lla rd, symbol</td>
+<td style="text-align: left;">auipc rd, delta[31 : 12] + delta[11]<br/>addi rd, rd, delta[11:0]</td>
+<td style="text-align: left;">加载绝对地址<br/>delta = symbol - pc</td>
 </tr>
 <tr>
-<td align="left">l{b|h|w} rd, symbol</td>
-<td align="left">auipc rd, delta[31 : 12] + delta[11]<br/>l{b|h|w} rd, delta[11:0](rd)</td>
-<td align="left">加载全局变量</td>
+<td style="text-align: left;">l{b|h|w} rd, symbol</td>
+<td style="text-align: left;">auipc rd, delta[31 : 12] + delta[11]<br/>l{b|h|w} rd, delta[11:0](rd)</td>
+<td style="text-align: left;">加载全局变量</td>
 </tr>
 <tr>
-<td align="left">s{b|h|w} rd, symbol, rt</td>
-<td align="left">auipc rt, delta[31 : 12] + delta[11]<br/>s{b|h|w} rd, delta[11:0](rt)</td>
-<td align="left">保存全局变量</td>
+<td style="text-align: left;">s{b|h|w} rd, symbol, rt</td>
+<td style="text-align: left;">auipc rt, delta[31 : 12] + delta[11]<br/>s{b|h|w} rd, delta[11:0](rt)</td>
+<td style="text-align: left;">保存全局变量</td>
 </tr>
 <tr>
-<td align="left">nop</td>
-<td align="left">addi x0, x0, 0</td>
-<td align="left"></td>
+<td style="text-align: left;">nop</td>
+<td style="text-align: left;">addi x0, x0, 0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">li rd, imm</td>
-<td align="left">...</td>
-<td align="left">将立即数加载到<span class="heti-skip"><span class="heti-spacing"> </span>rd<span class="heti-spacing"> </span></span>中</td>
+<td style="text-align: left;">li rd, imm</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">将立即数加载到<span class="heti-skip"><span class="heti-spacing"> </span>rd<span class="heti-spacing"> </span></span>中</td>
 </tr>
 <tr>
-<td align="left">mov rd, rs</td>
-<td align="left">addi rd, rs, 0</td>
-<td align="left">从<span class="heti-skip"><span class="heti-spacing"> </span>rs<span class="heti-spacing"> </span></span>拷贝到<span><span class="heti-spacing"> </span>rd</span></td>
+<td style="text-align: left;">mov rd, rs</td>
+<td style="text-align: left;">addi rd, rs, 0</td>
+<td style="text-align: left;">从<span class="heti-skip"><span class="heti-spacing"> </span>rs<span class="heti-spacing"> </span></span>拷贝到<span><span class="heti-spacing"> </span>rd</span></td>
 </tr>
 <tr>
-<td align="left">not rd, rs</td>
-<td align="left">xori rd, rs, -1</td>
-<td align="left"><span>rd = ~rs<span class="heti-spacing"> </span></span>按位取反</td>
+<td style="text-align: left;">not rd, rs</td>
+<td style="text-align: left;">xori rd, rs, -1</td>
+<td style="text-align: left;"><span>rd = ~rs<span class="heti-spacing"> </span></span>按位取反</td>
 </tr>
 <tr>
-<td align="left">neg rd, rs</td>
-<td align="left">sub rd, x0, rs</td>
-<td align="left">rd = -rs</td>
+<td style="text-align: left;">neg rd, rs</td>
+<td style="text-align: left;">sub rd, x0, rs</td>
+<td style="text-align: left;">rd = -rs</td>
 </tr>
 <tr>
-<td align="left">seqz rd, rs</td>
-<td align="left">sltiu rd, rs, 1</td>
-<td align="left">set rd if rs == 0</td>
+<td style="text-align: left;">seqz rd, rs</td>
+<td style="text-align: left;">sltiu rd, rs, 1</td>
+<td style="text-align: left;">set rd if rs == 0</td>
 </tr>
 <tr>
-<td align="left">snez rd, rs</td>
-<td align="left">sltu rd, x0, rs</td>
-<td align="left">set rd if rs != 0</td>
+<td style="text-align: left;">snez rd, rs</td>
+<td style="text-align: left;">sltu rd, x0, rs</td>
+<td style="text-align: left;">set rd if rs != 0</td>
 </tr>
 <tr>
-<td align="left">sltz rd, rs</td>
-<td align="left">slt rd, rs, x0</td>
-<td align="left">set rd if rs &lt; 0</td>
+<td style="text-align: left;">sltz rd, rs</td>
+<td style="text-align: left;">slt rd, rs, x0</td>
+<td style="text-align: left;">set rd if rs &lt; 0</td>
 </tr>
 <tr>
-<td align="left">sgtz rd, rs</td>
-<td align="left">slt rd, x0, rs</td>
-<td align="left">set rd if rs &gt; 0</td>
+<td style="text-align: left;">sgtz rd, rs</td>
+<td style="text-align: left;">slt rd, x0, rs</td>
+<td style="text-align: left;">set rd if rs &gt; 0</td>
 </tr>
 <tr>
-<td align="left">beqz rs, offset</td>
-<td align="left">beq rs, x0, offset</td>
-<td align="left">branch if rs == 0</td>
+<td style="text-align: left;">beqz rs, offset</td>
+<td style="text-align: left;">beq rs, x0, offset</td>
+<td style="text-align: left;">branch if rs == 0</td>
 </tr>
 <tr>
-<td align="left">bnez rs, offset</td>
-<td align="left">bne rs, x0, offset</td>
-<td align="left">branch if rs != 0</td>
+<td style="text-align: left;">bnez rs, offset</td>
+<td style="text-align: left;">bne rs, x0, offset</td>
+<td style="text-align: left;">branch if rs != 0</td>
 </tr>
 <tr>
-<td align="left">blez rs, offset</td>
-<td align="left">bge x0, rs, offset</td>
-<td align="left">branch if rs &lt;= 0</td>
+<td style="text-align: left;">blez rs, offset</td>
+<td style="text-align: left;">bge x0, rs, offset</td>
+<td style="text-align: left;">branch if rs &lt;= 0</td>
 </tr>
 <tr>
-<td align="left">bgez rs, offset</td>
-<td align="left">bge rs, x0, offset</td>
-<td align="left">branch if rs &gt;= 0</td>
+<td style="text-align: left;">bgez rs, offset</td>
+<td style="text-align: left;">bge rs, x0, offset</td>
+<td style="text-align: left;">branch if rs &gt;= 0</td>
 </tr>
 <tr>
-<td align="left">bltz rs, offset</td>
-<td align="left">blt rs, x0, offset</td>
-<td align="left">branch if rs &lt; 0</td>
+<td style="text-align: left;">bltz rs, offset</td>
+<td style="text-align: left;">blt rs, x0, offset</td>
+<td style="text-align: left;">branch if rs &lt; 0</td>
 </tr>
 <tr>
-<td align="left">bgtz rs, offset</td>
-<td align="left">blt x0, rs, offset</td>
-<td align="left">branch if rs &gt; 0</td>
+<td style="text-align: left;">bgtz rs, offset</td>
+<td style="text-align: left;">blt x0, rs, offset</td>
+<td style="text-align: left;">branch if rs &gt; 0</td>
 </tr>
 <tr>
-<td align="left">bgt rs, rt, offset</td>
-<td align="left">blt rt, rs, offset</td>
-<td align="left">branch if rs &gt; rt</td>
+<td style="text-align: left;">bgt rs, rt, offset</td>
+<td style="text-align: left;">blt rt, rs, offset</td>
+<td style="text-align: left;">branch if rs &gt; rt</td>
 </tr>
 <tr>
-<td align="left">ble rs, rt, offset</td>
-<td align="left">bge rt, rs, offset</td>
-<td align="left">branch if rs &lt;= rt</td>
+<td style="text-align: left;">ble rs, rt, offset</td>
+<td style="text-align: left;">bge rt, rs, offset</td>
+<td style="text-align: left;">branch if rs &lt;= rt</td>
 </tr>
 <tr>
-<td align="left">bgtu rs, rt, offset</td>
-<td align="left">bltu rt, rs, offset</td>
-<td align="left">branch if &gt; unsigned</td>
+<td style="text-align: left;">bgtu rs, rt, offset</td>
+<td style="text-align: left;">bltu rt, rs, offset</td>
+<td style="text-align: left;">branch if &gt; unsigned</td>
 </tr>
 <tr>
-<td align="left">bleu rs, rt, offset</td>
-<td align="left">bgeu rt, rs, offset</td>
-<td align="left">branch if &lt;= unsigned</td>
+<td style="text-align: left;">bleu rs, rt, offset</td>
+<td style="text-align: left;">bgeu rt, rs, offset</td>
+<td style="text-align: left;">branch if &lt;= unsigned</td>
 </tr>
 <tr>
-<td align="left">j offset</td>
-<td align="left">jal x0, offset</td>
-<td align="left">无条件跳转，不存返回地址</td>
+<td style="text-align: left;">j offset</td>
+<td style="text-align: left;">jal x0, offset</td>
+<td style="text-align: left;">无条件跳转，不存返回地址</td>
 </tr>
 <tr>
-<td align="left">jal offset</td>
-<td align="left">jal x1, offset</td>
-<td align="left">无条件跳转，返回地址存到<span><span class="heti-spacing"> </span>x1</span></td>
+<td style="text-align: left;">jal offset</td>
+<td style="text-align: left;">jal x1, offset</td>
+<td style="text-align: left;">无条件跳转，返回地址存到<span><span class="heti-spacing"> </span>x1</span></td>
 </tr>
 <tr>
-<td align="left">jr rs</td>
-<td align="left">jalr x0, 0(rs)</td>
-<td align="left">无条件跳转到<span class="heti-skip"><span class="heti-spacing"> </span>rs<span class="heti-spacing"> </span></span>位置，忽略返回地址</td>
+<td style="text-align: left;">jr rs</td>
+<td style="text-align: left;">jalr x0, 0(rs)</td>
+<td style="text-align: left;">无条件跳转到<span class="heti-skip"><span class="heti-spacing"> </span>rs<span class="heti-spacing"> </span></span>位置，忽略返回地址</td>
 </tr>
 <tr>
-<td align="left">jalr rs</td>
-<td align="left">jalr x1, 0(rs)</td>
-<td align="left">无条件跳转到<span class="heti-skip"><span class="heti-spacing"> </span>rs<span class="heti-spacing"> </span></span>位置，存返回地址</td>
+<td style="text-align: left;">jalr rs</td>
+<td style="text-align: left;">jalr x1, 0(rs)</td>
+<td style="text-align: left;">无条件跳转到<span class="heti-skip"><span class="heti-spacing"> </span>rs<span class="heti-spacing"> </span></span>位置，存返回地址</td>
 </tr>
 <tr>
-<td align="left">ret</td>
-<td align="left">jalr x0, 0(x1)</td>
-<td align="left">通过返回地址<span class="heti-skip"><span class="heti-spacing"> </span>x1<span class="heti-spacing"> </span></span>返回</td>
+<td style="text-align: left;">ret</td>
+<td style="text-align: left;">jalr x0, 0(x1)</td>
+<td style="text-align: left;">通过返回地址<span class="heti-skip"><span class="heti-spacing"> </span>x1<span class="heti-spacing"> </span></span>返回</td>
 </tr>
 <tr>
-<td align="left">call offset</td>
-<td align="left">auipc x1, offset[31 : 12] + offset[11]<br/>jalr x1, offset[11:0](x1)</td>
-<td align="left">远调用</td>
+<td style="text-align: left;">call offset</td>
+<td style="text-align: left;">auipc x1, offset[31 : 12] + offset[11]<br/>jalr x1, offset[11:0](x1)</td>
+<td style="text-align: left;">远调用</td>
 </tr>
 <tr>
-<td align="left">tail offset</td>
-<td align="left">auipc x6, offset[31 : 12] + offset[11]<br/>jalr x0, offset[11:0](x6)</td>
-<td align="left">忽略返回地址远调用</td>
+<td style="text-align: left;">tail offset</td>
+<td style="text-align: left;">auipc x6, offset[31 : 12] + offset[11]<br/>jalr x0, offset[11:0](x6)</td>
+<td style="text-align: left;">忽略返回地址远调用</td>
 </tr>
 </tbody>
 </table>
@@ -4834,28 +4834,28 @@ var _hmt = _hmt || [];
 <h2 id="zicsr"><span>Zicsr<span class="heti-spacing"> </span></span>扩展<a class="headerlink" href="#zicsr" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>见<a href="../privileged/#csr-zicsr">特权级部分<span class="heti-skip"><span class="heti-spacing"> </span>&gt;<span class="heti-spacing"> </span></span>控制和状态寄存器（CSRs）<span>&gt; CSR<span class="heti-spacing"> </span></span>指令（<span>Zicsr<span class="heti-spacing"> </span></span>扩展）</a></p>
 <h2 id="_16">汇编代码<a class="headerlink" href="#_16" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="na">.text</span><span class="w"></span>
-<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="na">.align</span><span class="w"> </span><span class="mi">2</span><span class="w"></span>
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="na">.globl</span><span class="w"> </span><span class="no">main</span><span class="w"></span>
-<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nl">main:</span><span class="w"></span>
-<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-16</span><span class="w"></span>
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="nf">sw</span><span class="w"> </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nf">lui</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="nv">%hi</span><span class="p">(</span><span class="no">string1</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="nv">%lo</span><span class="p">(</span><span class="no">string1</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="nf">lui</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="nv">%hi</span><span class="p">(</span><span class="no">string2</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="nv">%lo</span><span class="p">(</span><span class="no">string2</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="nf">call</span><span class="w"> </span><span class="no">printf</span><span class="w"></span>
-<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="nf">lw</span><span class="w"> </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span><span class="w"></span>
-<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="nf">li</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="w"></span>
-<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="nf">ret</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="w">    </span><span class="na">.text</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="na">.align</span><span class="w"> </span><span class="mi">2</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="na">.globl</span><span class="w"> </span><span class="no">main</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nl">main:</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">-16</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="nf">sw</span><span class="w"> </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="nf">lui</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="nv">%hi</span><span class="p">(</span><span class="no">string1</span><span class="p">)</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="nv">%lo</span><span class="p">(</span><span class="no">string1</span><span class="p">)</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="nf">lui</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="nv">%hi</span><span class="p">(</span><span class="no">string2</span><span class="p">)</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="no">a1</span><span class="p">,</span><span class="w"> </span><span class="nv">%lo</span><span class="p">(</span><span class="no">string2</span><span class="p">)</span>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="nf">call</span><span class="w"> </span><span class="no">printf</span>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="nf">lw</span><span class="w"> </span><span class="no">ra</span><span class="p">,</span><span class="w"> </span><span class="mi">12</span><span class="p">(</span><span class="no">sp</span><span class="p">)</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="nf">addi</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="no">sp</span><span class="p">,</span><span class="w"> </span><span class="mi">16</span>
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="w">    </span><span class="nf">li</span><span class="w"> </span><span class="no">a0</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
+<a href="#__codelineno-0-15" id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="w">    </span><span class="nf">ret</span>
 <a href="#__codelineno-0-16" id="__codelineno-0-16" name="__codelineno-0-16"></a>
-<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span><span class="w"></span>
-<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="na">.balign</span><span class="w"> </span><span class="mi">4</span><span class="w"></span>
-<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="nl">string1:</span><span class="w"></span>
-<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="na">.string</span><span class="w"> </span><span class="s">"Hello, %s!\n"</span><span class="w"></span>
-<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="nl">string2:</span><span class="w"></span>
-<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="na">.string</span><span class="w"> </span><span class="s">"world"</span><span class="w"></span>
+<a href="#__codelineno-0-17" id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="w">    </span><span class="na">.section</span><span class="w"> </span><span class="no">.rodata</span>
+<a href="#__codelineno-0-18" id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="w">    </span><span class="na">.balign</span><span class="w"> </span><span class="mi">4</span>
+<a href="#__codelineno-0-19" id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="nl">string1:</span>
+<a href="#__codelineno-0-20" id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="w">    </span><span class="na">.string</span><span class="w"> </span><span class="s">"Hello, %s!\n"</span>
+<a href="#__codelineno-0-21" id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="nl">string2:</span>
+<a href="#__codelineno-0-22" id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="w">    </span><span class="na">.string</span><span class="w"> </span><span class="s">"world"</span>
 </code></pre></div>
 <ul>
 <li>.text：进入代码段</li>

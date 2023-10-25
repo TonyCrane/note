@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/ctf/misc/forensics/mem/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>内存取证 - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -35,17 +35,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -1871,40 +1871,40 @@ var _hmt = _hmt || [];
 <h3 id="profile">系统版本与<span><span class="heti-spacing"> </span>profile</span><a class="headerlink" href="#profile" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>volatility<span class="heti-spacing"> </span></span>的话直接无脑梭就完事了，<span>Windows<span class="heti-spacing"> </span></span>的话有内置<span class="heti-skip"><span class="heti-spacing"> </span>profile<span class="heti-spacing"> </span></span>可以直接梭，<span>Linux<span class="heti-spacing"> </span></span>的话要先找一下版本然后构造对应<span><span class="heti-spacing"> </span>profile</span></p>
 <p>查看系统版本：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>volatility -f &lt;file&gt; imageinfo
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>imageinfo
 </code></pre></div>
 <h3 id="windows"><span>Windows<span class="heti-spacing"> </span></span>取证一把梭<a class="headerlink" href="#windows" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>进程相关：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; pslist
-<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; psxview
-<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; psscan
-<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; pstree
-<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; memdump -p &lt;PID&gt; --dump-dir<span class="o">=</span>./
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>pslist
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>psxview
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>psscan
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>pstree
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>memdump<span class="w"> </span>-p<span class="w"> </span>&lt;PID&gt;<span class="w"> </span>--dump-dir<span class="o">=</span>./
 </code></pre></div>
 <p>命令相关：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; cmdscan
-<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; consoles
-<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; cmdline
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>cmdscan
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>consoles
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>cmdline
 </code></pre></div>
 <p>文件相关：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; filescan
-<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; filescan &gt; files.txt
-<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; dumpfiles -Q &lt;virtual addr&gt; --dump-dir<span class="o">=</span>./ <span class="c1"># 由 filescan 结果来定</span>
-<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; mftparser &gt; mftparser.txt <span class="c1"># 一些 filescan 搜不出来/被删了的可以尝试 mtfparser</span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>filescan
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>filescan<span class="w"> </span>&gt;<span class="w"> </span>files.txt
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>dumpfiles<span class="w"> </span>-Q<span class="w"> </span>&lt;virtual<span class="w"> </span>addr&gt;<span class="w"> </span>--dump-dir<span class="o">=</span>./<span class="w"> </span><span class="c1"># 由 filescan 结果来定</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>mftparser<span class="w"> </span>&gt;<span class="w"> </span>mftparser.txt<span class="w"> </span><span class="c1"># 一些 filescan 搜不出来/被删了的可以尝试 mtfparser</span>
 </code></pre></div>
 <p>其它一堆操作：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; envars
-<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; netscan
-<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; connscan
-<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; svcscan
-<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; privs
-<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; hivelist
-<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; printkey -K <span class="s2">"SAM\Domains\Account\Users\Names"</span>
-<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; iehistory
-<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; notepad
-<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; editbox
-<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; userassist
-<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>volatility -f &lt;file&gt; --profile<span class="o">=</span>&lt;profile&gt; clipboard -v
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>envars
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>netscan
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>connscan
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>svcscan
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>privs
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>hivelist
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>printkey<span class="w"> </span>-K<span class="w"> </span><span class="s2">"SAM\Domains\Account\Users\Names"</span>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>iehistory
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>notepad
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>editbox
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>userassist
+<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a>volatility<span class="w"> </span>-f<span class="w"> </span>&lt;file&gt;<span class="w"> </span>--profile<span class="o">=</span>&lt;profile&gt;<span class="w"> </span>clipboard<span class="w"> </span>-v
 </code></pre></div>
 <h3 id="linux"><span>Linux<span class="heti-spacing"> </span></span>取证<a class="headerlink" href="#linux" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>Linux<span class="heti-spacing"> </span></span>首先需要构造一下<span><span class="heti-spacing"> </span>profile</span>。<span>volatility3 -f<span class="heti-spacing"> </span></span><file><span>banners<span class="heti-spacing"> </span></span>可以检测当前<span class="heti-skip"><span class="heti-spacing"> </span>Linux<span class="heti-spacing"> </span></span>版本。</file></p>

@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/cs/system/cs2/lab5/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>系统 II lab5 - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -35,17 +35,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -1955,16 +1955,16 @@ var _hmt = _hmt || [];
 <h2 id="_2">代码编写<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="lab5"><span>lab5<span class="heti-spacing"> </span></span>提供修改<a class="headerlink" href="#lab5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>按照实验手册和<span class="heti-skip"><span class="heti-spacing"> </span>repo<span class="heti-spacing"> </span></span>中提供的代码进行修改。即将<span><span class="heti-spacing"> </span>puti</span>、<span>puts<span class="heti-spacing"> </span></span>换为<span><span class="heti-spacing"> </span>printk</span>，需要额外修改<span><span class="heti-spacing"> </span>init/main.c</span>：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"printk.h"</span><span class="cp"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"printk.h"</span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">();</span><span class="w"></span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="k">extern</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">test</span><span class="p">();</span>
 <a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>
-<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">start_kernel</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">" ZJU Computer System II</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="kt">int</span><span class="w"> </span><span class="nf">start_kernel</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">"%d"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="n">printk</span><span class="p">(</span><span class="s">" ZJU Computer System II</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
 <a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="n">test</span><span class="p">();</span><span class="w"> </span><span class="c1">// DO NOT DELETE !!!</span>
-<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="p">}</span>
 </code></pre></div>
 <p>以及根据指导修改<span><span class="heti-spacing"> </span>init/test.c</span>、vmlinux.lds、head.S，这里不再赘述。</p>
 <h3 id="heads"><span>head.S<span class="heti-spacing"> </span></span>开启异常处理<a class="headerlink" href="#heads" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -2045,45 +2045,45 @@ var _hmt = _hmt || [];
 <h3 id="trapc"><span>trap.c<span class="heti-spacing"> </span></span>实现异常处理函数<a class="headerlink" href="#trapc" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>需要通过<span class="heti-skip"><span class="heti-spacing"> </span>scause<span class="heti-spacing"> </span></span>判断<span class="heti-skip"><span class="heti-spacing"> </span>trap<span class="heti-spacing"> </span></span>类型，如果是时钟中断，则打印信息并调用<span class="heti-skip"><span class="heti-spacing"> </span>clock_set_next_event()<span class="heti-spacing"> </span></span>函数。</p>
 <p>根据手册，时钟中断时<span class="heti-skip"><span class="heti-spacing"> </span>scause<span class="heti-spacing"> </span></span>的最高位为<span><span class="heti-spacing"> </span>1</span>（Interrupt<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，剩余位表示的值（Exception Code）为<span><span class="heti-spacing"> </span>5</span>（Supervisor timer interrupt<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所以在函数里这样判断即可：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"clock.h"</span><span class="cp"></span>
-<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"printk.h"</span><span class="cp"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"clock.h"</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="cp">#include</span><span class="w"> </span><span class="cpf">"printk.h"</span>
 <a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a>
-<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="kt">void</span><span class="w"> </span><span class="nf">trap_handler</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">scause</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">sepc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">scause</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">scause</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x7FFFFFFFFFFFFFFF</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">        </span><span class="n">printk</span><span class="p">(</span><span class="s">"[S] Supervisor Mode Timer Interrupt</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">        </span><span class="n">clock_set_next_event</span><span class="p">();</span><span class="w"></span>
-<a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="kt">void</span><span class="w"> </span><span class="nf">trap_handler</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">scause</span><span class="p">,</span><span class="w"> </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">sepc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">((</span><span class="n">scause</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">63</span><span class="p">)</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="p">(</span><span class="n">scause</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0x7FFFFFFFFFFFFFFF</span><span class="p">)</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">5</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">        </span><span class="n">printk</span><span class="p">(</span><span class="s">"[S] Supervisor Mode Timer Interrupt</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">        </span><span class="n">clock_set_next_event</span><span class="p">();</span>
+<a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">        </span><span class="k">return</span><span class="p">;</span>
+<a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="p">}</span>
 </code></pre></div>
 <p>以及为了使用<span class="heti-skip"><span class="heti-spacing"> </span>clock.c<span class="heti-spacing"> </span></span>中的<span class="heti-skip"><span class="heti-spacing"> </span>clock_set_next_event<span class="heti-spacing"> </span></span>函数，还需要编写一个<span class="heti-skip"><span class="heti-spacing"> </span>clock.h<span class="heti-spacing"> </span></span>头文件：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a><span class="cp">#ifndef _CLOCK_H</span>
 <a href="#__codelineno-10-2" id="__codelineno-10-2" name="__codelineno-10-2"></a><span class="cp">#define _CLOCK_H</span>
-<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">clock_set_next_event</span><span class="p">();</span><span class="w"></span>
+<a href="#__codelineno-10-3" id="__codelineno-10-3" name="__codelineno-10-3"></a><span class="kt">void</span><span class="w"> </span><span class="nf">clock_set_next_event</span><span class="p">();</span>
 <a href="#__codelineno-10-4" id="__codelineno-10-4" name="__codelineno-10-4"></a><span class="cp">#endif</span>
 </code></pre></div>
 <h3 id="clockc"><span>clock.c<span class="heti-spacing"> </span></span>实现中断相关函数<a class="headerlink" href="#clockc" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>get_cycles<span class="heti-spacing"> </span></span>函数通过内联汇编调用<span class="heti-skip"><span class="heti-spacing"> </span>rdtime<span class="heti-spacing"> </span></span>即可：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">get_cycles</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">time</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="k">asm</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">        </span><span class="s">"rdtime %[time]"</span><span class="w"></span>
-<a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">time</span><span class="p">]</span><span class="w"> </span><span class="s">"=r"</span><span class="w"> </span><span class="p">(</span><span class="n">time</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"memory"</span><span class="w"></span>
-<a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">time</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="p">}</span><span class="w"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-11-1" id="__codelineno-11-1" name="__codelineno-11-1"></a><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="nf">get_cycles</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-11-2" id="__codelineno-11-2" name="__codelineno-11-2"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">time</span><span class="p">;</span>
+<a href="#__codelineno-11-3" id="__codelineno-11-3" name="__codelineno-11-3"></a><span class="w">    </span><span class="k">asm</span><span class="w"> </span><span class="k">volatile</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-11-4" id="__codelineno-11-4" name="__codelineno-11-4"></a><span class="w">        </span><span class="s">"rdtime %[time]"</span>
+<a href="#__codelineno-11-5" id="__codelineno-11-5" name="__codelineno-11-5"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="n">time</span><span class="p">]</span><span class="w"> </span><span class="s">"=r"</span><span class="w"> </span><span class="p">(</span><span class="n">time</span><span class="p">)</span>
+<a href="#__codelineno-11-6" id="__codelineno-11-6" name="__codelineno-11-6"></a><span class="w">        </span><span class="o">:</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="s">"memory"</span>
+<a href="#__codelineno-11-7" id="__codelineno-11-7" name="__codelineno-11-7"></a><span class="w">    </span><span class="p">);</span>
+<a href="#__codelineno-11-8" id="__codelineno-11-8" name="__codelineno-11-8"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="n">time</span><span class="p">;</span>
+<a href="#__codelineno-11-9" id="__codelineno-11-9" name="__codelineno-11-9"></a><span class="p">}</span>
 </code></pre></div>
 <p><span>clock_set_next_event<span class="heti-spacing"> </span></span>函数里计算出<span class="heti-skip"><span class="heti-spacing"> </span>next_time<span class="heti-spacing"> </span></span>直接调用<span class="heti-skip"><span class="heti-spacing"> </span>sbi_set_timer<span class="heti-spacing"> </span></span>即可：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">clock_set_next_event</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">next_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_cycles</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TIMECLOCK</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">    </span><span class="n">sbi_set_timer</span><span class="p">(</span><span class="n">next_time</span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="p">}</span><span class="w"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-12-1" id="__codelineno-12-1" name="__codelineno-12-1"></a><span class="kt">void</span><span class="w"> </span><span class="nf">clock_set_next_event</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-12-2" id="__codelineno-12-2" name="__codelineno-12-2"></a><span class="w">    </span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">long</span><span class="w"> </span><span class="n">next_time</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">get_cycles</span><span class="p">()</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">TIMECLOCK</span><span class="p">;</span>
+<a href="#__codelineno-12-3" id="__codelineno-12-3" name="__codelineno-12-3"></a><span class="w">    </span><span class="n">sbi_set_timer</span><span class="p">(</span><span class="n">next_time</span><span class="p">);</span>
+<a href="#__codelineno-12-4" id="__codelineno-12-4" name="__codelineno-12-4"></a><span class="p">}</span>
 </code></pre></div>
 <h3 id="_3">运行结果<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>make run<span class="heti-spacing"> </span></span>结果输出正确：</p>
 <div style="text-align: center;">
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab5/img1.png"><img src="/assets/images/cs/system/cs2/lab5/img1.png" style="margin: 0 auto;" width="100%"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs2/lab5/img1.png"><img src="/assets/images/cs/system/cs2/lab5/img1.png" style="margin: 0 auto;" width="100%"/></a>
 </div>
 <h2 id="_4">思考题<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <h3 id="opensbi-midelegmedeleg">解释<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>输出<span><span class="heti-spacing"> </span>MIDELEG</span>、<span>MEDELEG<span class="heti-spacing"> </span></span>含义<a class="headerlink" href="#opensbi-midelegmedeleg" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -2092,7 +2092,7 @@ var _hmt = _hmt || [];
 <h3 id="timecycle-0">机器启动后<span><span class="heti-spacing"> </span>time</span>、<span>cycle<span class="heti-spacing"> </span></span>寄存器分别是从<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>开始计时的吗？<a class="headerlink" href="#timecycle-0" title="Permanent link">¶</a></h3>
 <p><span>make debug<span class="heti-spacing"> </span></span>启动，<span>gdb<span class="heti-spacing"> </span></span>连接后直接输出<span class="heti-skip"><span class="heti-spacing"> </span>time<span class="heti-spacing"> </span></span>寄存器和<span class="heti-skip"><span class="heti-spacing"> </span>cycle<span class="heti-spacing"> </span></span>寄存器的值，可见<span class="heti-skip"><span class="heti-spacing"> </span>time<span class="heti-spacing"> </span></span>值为<span><span class="heti-spacing"> </span>0</span>，<span>cycle<span class="heti-spacing"> </span></span>不为<span><span class="heti-spacing"> </span>0</span>：</p>
 <div style="text-align: center;">
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/lab5/img2.png"><img src="/assets/images/cs/system/cs2/lab5/img2.png" style="margin: 0 auto;" width="70%"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs2/lab5/img2.png"><img src="/assets/images/cs/system/cs2/lab5/img2.png" style="margin: 0 auto;" width="70%"/></a>
 </div>
 <p><span>time<span class="heti-spacing"> </span></span>在开始时需要为<span><span class="heti-spacing"> </span>0</span>，来记录启动时间。<span>cycle<span class="heti-spacing"> </span></span>不需要为<span><span class="heti-spacing"> </span>0</span>，因为其用处不大。</p>
 <h3 id="_5">谈谈如何在一台不支持乘除法指令扩展的处理器上执行乘除法指令<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>

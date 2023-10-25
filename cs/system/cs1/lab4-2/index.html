@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/cs/system/cs1/lab4-2/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>系统 I lab4-2 - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -35,17 +35,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -2038,7 +2038,7 @@ var _hmt = _hmt || [];
 <p>首先反编译出<span class="heti-skip"><span class="heti-spacing"> </span>.text<span class="heti-spacing"> </span></span>段，发现其中<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>函数部分就是依次调用了<span class="heti-skip"><span class="heti-spacing"> </span>read_student<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>read_key<span class="heti-spacing"> </span></span>函数，所以需要看这两个函数的汇编代码</p>
 <p>通过分析得到两个函数的帧栈布局：</p>
 <div style="text-align: center;">
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/key_frame.jpg"><img src="/assets/images/cs/system/cs1/lab4-2/key_frame.jpg" style="margin: 0 auto;" width="90%"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/key_frame.jpg"><img src="/assets/images/cs/system/cs1/lab4-2/key_frame.jpg" style="margin: 0 auto;" width="90%"/></a>
 </div>
 <p><span>read_student<span class="heti-spacing"> </span></span>函数有一行：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>   104a6:   35e9                    jal 10370 &lt;exit@plt&gt;
@@ -2091,19 +2091,19 @@ var _hmt = _hmt || [];
 循环变量 -24(s0) 从 0 到 9，循环体中一次次取出 number[i] 并累加到 -20(s0) 中，最后将 -32(s0) 即输入与得到的结果 -20(s0) 相比较，判断是否相等，所以要输入的 key 也就是 number 数组的和，得到 3+2+1+0+1+&lt;隐私喵&gt; = ? 也就是我的学号对应的 key，填进去答案正确
 <h2 id="buffer-overflow">Buffer Overflow<a class="headerlink" href="#buffer-overflow" title="Permanent link">¶</a></h2>
 <p><span>bof.c<span class="heti-spacing"> </span></span>文件中的<span class="heti-skip"><span class="heti-spacing"> </span>hear<span class="heti-spacing"> </span></span>函数因为使用<span class="heti-skip"><span class="heti-spacing"> </span>gets<span class="heti-spacing"> </span></span>函数导致存在缓冲区溢出漏洞
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">hear</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">stu_id</span><span class="p">){</span><span class="w"></span>
-<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'N'</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'Y'</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="n">LENGTH</span><span class="p">];</span><span class="w"></span>
-<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">str</span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p1</span><span class="o">==</span><span class="n">p2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Wow [%u] you successfully overflow me!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">stu_id</span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"[%u], you can`t hack me,please try again!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">stu_id</span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">    </span><span class="p">}</span><span class="w"></span>
-<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="p">}</span><span class="w"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">hear</span><span class="p">(</span><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">stu_id</span><span class="p">){</span>
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">p1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'N'</span><span class="p">;</span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">p2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sc">'Y'</span><span class="p">;</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="kt">char</span><span class="w"> </span><span class="n">str</span><span class="p">[</span><span class="n">LENGTH</span><span class="p">];</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="n">gets</span><span class="p">(</span><span class="n">str</span><span class="p">);</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">p1</span><span class="o">==</span><span class="n">p2</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"Wow [%u] you successfully overflow me!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">stu_id</span><span class="p">);</span>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="n">printf</span><span class="p">(</span><span class="s">"[%u], you can`t hack me,please try again!</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">stu_id</span><span class="p">);</span>
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="p">}</span>
 </code></pre></div>
 很显然，目标是通过输入 str 利用缓冲区溢出来修改局部变量 p1、p2，使其相等
 <h3 id="_2">编译与反编译<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -2147,14 +2147,14 @@ var _hmt = _hmt || [];
 首先通过 addi sp,sp,-48 开辟了 hear 的函数栈空间，然后存入 ra 与 s0（返回地址与前帧指针），再赋值了帧指针 s0，将参数 a0（stu_id，32 位无符号整数）存入 -36(s0)，将 "N"(78) 放入 -17(s0)、"Y"(89) 放入 -18(s0)。然后将 s0-28 赋值给 a5 和 a0，并调用 gets 函数，也就说明从 s0-28 开始的 10 个字节空间是 str。最后取出 -17(s0) -18(s0) 并比较，然后是一系列控制输出的操作。最后取出存下的 ra 和 s0，再清除栈空间，然后返回。
 <p>所以这个函数帧栈的布局如下：</p>
 <div style="text-align: center;">
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bof_frame.jpg"><img src="/assets/images/cs/system/cs1/lab4-2/bof_frame.jpg" style="margin: 0 auto;" width="60%"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bof_frame.jpg"><img src="/assets/images/cs/system/cs1/lab4-2/bof_frame.jpg" style="margin: 0 auto;" width="60%"/></a>
 </div>
 <h3 id="payload">构造<span><span class="heti-spacing"> </span>payload</span><a class="headerlink" href="#payload" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>gets<span class="heti-spacing"> </span></span>函数并不会检查输入长度，而且输入是从小地址向大地址扩展，因为<span class="heti-skip"><span class="heti-spacing"> </span>str<span class="heti-spacing"> </span></span>与<span class="heti-skip"><span class="heti-spacing"> </span>p1 p2<span class="heti-spacing"> </span></span>都是连着的，所以只要输入<span class="heti-skip"><span class="heti-spacing"> </span>12<span class="heti-spacing"> </span></span>个字符，并且最后两个字符相同则会更改<span class="heti-skip"><span class="heti-spacing"> </span>p1 p2<span class="heti-spacing"> </span></span>使其相等<heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（注意这里不能输入<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>个任意字符加一个<span><span class="heti-spacing"> </span>"N"</span>，因为<span class="heti-skip"><span class="heti-spacing"> </span>gets<span class="heti-spacing"> </span></span>一个字符串会在结尾加上<span class="heti-skip"><span class="heti-spacing"> </span>"\0"<span class="heti-spacing"> </span></span>也就是<span><span class="heti-spacing"> </span>0</span>，改变<span class="heti-skip"><span class="heti-spacing"> </span>p1<span class="heti-spacing"> </span></span>变成了<span><span class="heti-spacing"> </span>0</span>，不会再等于<span><span class="heti-spacing"> </span>"N"</span>）
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bof_success.jpeg"><img alt="" src="/assets/images/cs/system/cs1/lab4-2/bof_success.jpeg"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bof_success.jpeg"><img alt="" src="/assets/images/cs/system/cs1/lab4-2/bof_success.jpeg"/></a></p>
 <h3 id="_4">成功溢出但段错误<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>如果<span class="heti-skip"><span class="heti-spacing"> </span>str<span class="heti-spacing"> </span></span>溢出的过多导致改变了前帧指针（s0-8）或返回地址（s0-4）就可能会导致后续的操作中因为前帧指针改变导致栈指针位置错误或返回不成功，出现段错误，所以只需要足够多任意字符（保证<span class="heti-skip"><span class="heti-spacing"> </span>p1 p2<span class="heti-spacing"> </span></span>相等）就可以达到成功溢出但是段错误的结果：
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bof_segfault.jpeg"><img alt="" src="/assets/images/cs/system/cs1/lab4-2/bof_segfault.jpeg"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bof_segfault.jpeg"><img alt="" src="/assets/images/cs/system/cs1/lab4-2/bof_segfault.jpeg"/></a></p>
 <h2 id="bonus-heap-overflow">Bonus: Heap Overflow<a class="headerlink" href="#bonus-heap-overflow" title="Permanent link">¶</a></h2>
 <h3 id="_5">反编译分析汇编代码<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>objdump<span class="heti-spacing"> </span></span>反编译后发现有很多<span class="heti-skip"><span class="heti-spacing"> </span>target_<span class="heti-spacing"> </span></span>函数，找到我的学号<span class="heti-skip"><span class="heti-spacing"> </span>&lt;<span class="heti-spacing"> </span></span>隐私喵<span class="heti-skip"><span class="heti-spacing"> </span>&gt;<span class="heti-spacing"> </span></span>对应的地址<span><span class="heti-spacing"> </span>0x00010ddc</span>。也看到了<span class="heti-skip"><span class="heti-spacing"> </span>say_goodbye<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>repeat_words<span class="heti-spacing"> </span></span>以及<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>函数。下面主要分析<span class="heti-skip"><span class="heti-spacing"> </span>main<span class="heti-spacing"> </span></span>函数及其对应帧栈：</p>
@@ -2195,7 +2195,7 @@ var _hmt = _hmt || [];
 </code></pre></div>
 <p>先通过<span class="heti-skip"><span class="heti-spacing"> </span>fgets<span class="heti-spacing"> </span></span>函数读取至多<span class="heti-skip"><span class="heti-spacing"> </span>50<span class="heti-spacing"> </span></span>个字节的内容到<span><span class="heti-spacing"> </span>-20(s0)</span>（第一个堆空间）中。然后取出<span class="heti-skip"><span class="heti-spacing"> </span>-20(s0)<span class="heti-spacing"> </span></span>的内容作为参数间接调用<span class="heti-skip"><span class="heti-spacing"> </span>-24(s0)<span class="heti-spacing"> </span></span>的前<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>字节位置的函数。再取出<span><span class="heti-spacing"> </span>id_str</span>（存在全局变量中的学号）作为参数间接调用第二个堆空间的后<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>字节位置的函数。</p>
 <p>最后<span class="heti-skip"><span class="heti-spacing"> </span>free<span class="heti-spacing"> </span></span>两个堆空间并<span><span class="heti-spacing"> </span>exit</span>。最终整个函数的帧栈和调用流程如下图：
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bonus_frame.jpg"><img alt="" src="/assets/images/cs/system/cs1/lab4-2/bonus_frame.jpg"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bonus_frame.jpg"><img alt="" src="/assets/images/cs/system/cs1/lab4-2/bonus_frame.jpg"/></a></p>
 <h3 id="_7">漏洞分析<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>很明显，<span>fgets<span class="heti-spacing"> </span></span>读取至多<span class="heti-skip"><span class="heti-spacing"> </span>50<span class="heti-spacing"> </span></span>字节的内容到第一个堆空间，但是该堆空间只申请了<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>字节的大小，因此可能会造成堆溢出。并且这个堆空间是先申请的，下一个存有函数地址的堆空间正好在其下方（大地址方向<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所以<span class="heti-skip"><span class="heti-spacing"> </span>fgets<span class="heti-spacing"> </span></span>溢出的输入可以直接覆盖第二个堆空间的内容，使得其中存的地址发生改变，进而劫持控制流到<span class="heti-skip"><span class="heti-spacing"> </span>target<span class="heti-spacing"> </span></span>函数。</p>
 <h3 id="_8">漏洞利用<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
@@ -2224,12 +2224,12 @@ var _hmt = _hmt || [];
 <h4 id="payload_1">构造<span><span class="heti-spacing"> </span>payload</span><a class="headerlink" href="#payload_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <p>因为<span class="heti-skip"><span class="heti-spacing"> </span>prev_size<span class="heti-spacing"> </span></span>是空闲状态可以随意使用，所以只需要在溢出时绕过第二个堆块的<span class="heti-skip"><span class="heti-spacing"> </span>size<span class="heti-spacing"> </span></span>就好了，整个堆的结构和利用方式如下：</p>
 <div style="text-align: center;">
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bonus_heap.jpg"><img src="/assets/images/cs/system/cs1/lab4-2/bonus_heap.jpg" style="margin: 0 auto;" width="60%"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bonus_heap.jpg"><img src="/assets/images/cs/system/cs1/lab4-2/bonus_heap.jpg" style="margin: 0 auto;" width="60%"/></a>
 </div>
 <p>即先使用<span class="heti-skip"><span class="heti-spacing"> </span>28<span class="heti-spacing"> </span></span>个任意字符占满第一个堆的<span class="heti-skip"><span class="heti-spacing"> </span>data<span class="heti-spacing"> </span></span>和第二个堆的<span><span class="heti-spacing"> </span>prev_size</span>，再补上第二个堆的<span><span class="heti-spacing"> </span>size</span>，然后接想要被调用的地址（即我的学号对应的<span class="heti-skip"><span class="heti-spacing"> </span>target<span class="heti-spacing"> </span></span>地址<span><span class="heti-spacing"> </span>0x00010ddc</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。最后防止第二个函数指针被破坏导致异常退出，再补上一个<span class="heti-skip"><span class="heti-spacing"> </span>say_goodbye<span class="heti-spacing"> </span></span>的函数地址<span><span class="heti-spacing"> </span>0x00010fbc</span>，这样字符串结尾的<span class="heti-skip"><span class="heti-spacing"> </span>"\0"<span class="heti-spacing"> </span></span>就会被放在这个堆块的外面，不会对程序运行造成影响</p>
 <p>所以<span class="heti-skip"><span class="heti-spacing"> </span>payload<span class="heti-spacing"> </span></span>就是<span><span class="heti-spacing"> </span>"AAAAAAAAAAAAAAAAAAAAAAAAAAAA</span>
 \x11\x00\x00\x00\xdc\x0d\x01\x00\xbc\x0f\x01\x00"（注意小端序）
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bonus_success.jpg"><img alt="" src="/assets/images/cs/system/cs1/lab4-2/bonus_success.jpg"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab4-2/bonus_success.jpg"><img alt="" src="/assets/images/cs/system/cs1/lab4-2/bonus_success.jpg"/></a></p>
 <hr/>
 <div class="md-source-file">
 <small>

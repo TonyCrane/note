@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/writeups/rctf2022/" rel="canonical"/>
 <link href="../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>RCTF 2022 - 鹤翔万里的笔记本</title>
 <link href="../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -34,17 +34,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -1815,7 +1815,7 @@ var _hmt = _hmt || [];
 </div>
 <hr/>
 <h2 id="k999">K999<a class="headerlink" href="#k999" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="https://img.shields.io/badge/-MISC-informational?style=flat-square"><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="https://img.shields.io/badge/-MISC-informational?style=flat-square"><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square"/></a></p>
 <p>一个游戏，手打基本打不动，逆向<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>看<span class="heti-skip"><span class="heti-spacing"> </span>exe<span class="heti-spacing"> </span></span>可以知道这是一个用<span class="heti-skip"><span class="heti-spacing"> </span>lua love<span class="heti-spacing"> </span></span>引擎写的游戏。其<span class="heti-skip"><span class="heti-spacing"> </span>lua<span class="heti-spacing"> </span></span>源码会直接以<span class="heti-skip"><span class="heti-spacing"> </span>zip<span class="heti-spacing"> </span></span>的形式附加在<span class="heti-skip"><span class="heti-spacing"> </span>exe<span class="heti-spacing"> </span></span>末尾，所以提取出来解压即可得到游戏源码。</p>
 <p>可以很明显的发现有一个<span class="heti-skip"><span class="heti-spacing"> </span>flag.lua<span class="heti-spacing"> </span></span>的文件，里面有一些解密相关代码，在<span class="heti-skip"><span class="heti-spacing"> </span>main.lua<span class="heti-spacing"> </span></span>里面可以看到胜利之后有输出的代码：</p>
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="kr">if</span> <span class="n">world</span><span class="p">.</span><span class="n">KillenemyCount</span> <span class="o">&gt;=</span> <span class="mi">999</span> <span class="kr">then</span>
@@ -1853,7 +1853,7 @@ var _hmt = _hmt || [];
 <p>得到<span><span class="heti-spacing"> </span>flag:</span> <strong>RCTF{1_Rea11y_Want_t0_Y0ur_H0use}</strong></p>
 <hr/>
 <h2 id="ez_alient">ez_alient<a class="headerlink" href="#ez_alient" title="Permanent link">¶</a></h2>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="https://img.shields.io/badge/-MISC-informational?style=flat-square"><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="https://img.shields.io/badge/-MISC-informational?style=flat-square"><img alt="" src="https://img.shields.io/badge/-MISC-informational?style=flat-square"/></a></p>
 <p>看起来是经典的<span class="heti-skip"><span class="heti-spacing"> </span>python<span class="heti-spacing"> </span></span>外星人打飞机游戏，有一个图片文件夹，可以发现<span class="heti-skip"><span class="heti-spacing"> </span>alien.bmp<span class="heti-spacing"> </span></span>末尾有<span><span class="heti-spacing"> </span>pwd="N0bOdy_l0ves_Me"</span>，是压缩包密码。</p>
 <p>解压后是<span class="heti-skip"><span class="heti-spacing"> </span>python<span class="heti-spacing"> </span></span>打包好的可执行文件，用<span class="heti-skip"><span class="heti-spacing"> </span>pyinstxtractor+uncompyle6<span class="heti-spacing"> </span></span>可以解出源码，可以发现<span class="heti-skip"><span class="heti-spacing"> </span>alien_invasion.py<span class="heti-spacing"> </span></span>里面存在一个没用的变量<span><span class="heti-spacing"> </span>s="VTJreE0yNWpNdz09"</span>，二次<span class="heti-skip"><span class="heti-spacing"> </span>base64<span class="heti-spacing"> </span></span>解码可以得到<span><span class="heti-spacing"> </span>"Si13nc3"</span>。</p>
 <p>除此之外还有<span class="heti-skip"><span class="heti-spacing"> </span>PYZ-00.pyz<span class="heti-spacing"> </span></span>文件，同样解包并反编译可以得到其他部分源码，可以发现更多没用的变量：</p>

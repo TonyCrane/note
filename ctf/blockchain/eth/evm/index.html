@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/ctf/blockchain/eth/evm/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>以太坊虚拟机 - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -35,17 +35,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -1961,219 +1961,219 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">01</td>
-<td align="left">ADD</td>
-<td align="left">a, b</td>
-<td align="left">a + b</td>
-<td align="left"></td>
+<td style="text-align: left;">01</td>
+<td style="text-align: left;">ADD</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a + b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">02</td>
-<td align="left">MUL</td>
-<td align="left">a, b</td>
-<td align="left">a * b</td>
-<td align="left"></td>
+<td style="text-align: left;">02</td>
+<td style="text-align: left;">MUL</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a * b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">03</td>
-<td align="left">SUB</td>
-<td align="left">a, b</td>
-<td align="left">a - b</td>
-<td align="left"></td>
+<td style="text-align: left;">03</td>
+<td style="text-align: left;">SUB</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a - b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">04</td>
-<td align="left">DIV</td>
-<td align="left">a, b</td>
-<td align="left">a // b</td>
-<td align="left"><span>uint256<span class="heti-spacing"> </span></span>除法</td>
+<td style="text-align: left;">04</td>
+<td style="text-align: left;">DIV</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a // b</td>
+<td style="text-align: left;"><span>uint256<span class="heti-spacing"> </span></span>除法</td>
 </tr>
 <tr>
-<td align="left">05</td>
-<td align="left">SDIV</td>
-<td align="left">a, b</td>
-<td align="left">a // b</td>
-<td align="left"><span>int256<span class="heti-spacing"> </span></span>除法</td>
+<td style="text-align: left;">05</td>
+<td style="text-align: left;">SDIV</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a // b</td>
+<td style="text-align: left;"><span>int256<span class="heti-spacing"> </span></span>除法</td>
 </tr>
 <tr>
-<td align="left">06</td>
-<td align="left">MOD</td>
-<td align="left">a, b</td>
-<td align="left">a % b</td>
-<td align="left"><span>uint256<span class="heti-spacing"> </span></span>取模</td>
+<td style="text-align: left;">06</td>
+<td style="text-align: left;">MOD</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a % b</td>
+<td style="text-align: left;"><span>uint256<span class="heti-spacing"> </span></span>取模</td>
 </tr>
 <tr>
-<td align="left">07</td>
-<td align="left">SMOD</td>
-<td align="left">a, b</td>
-<td align="left">a % b</td>
-<td align="left"><span>int256<span class="heti-spacing"> </span></span>取模</td>
+<td style="text-align: left;">07</td>
+<td style="text-align: left;">SMOD</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a % b</td>
+<td style="text-align: left;"><span>int256<span class="heti-spacing"> </span></span>取模</td>
 </tr>
 <tr>
-<td align="left">08</td>
-<td align="left">ADDMOD</td>
-<td align="left">a, b, c</td>
-<td align="left">(a + b) % c</td>
-<td align="left"></td>
+<td style="text-align: left;">08</td>
+<td style="text-align: left;">ADDMOD</td>
+<td style="text-align: left;">a, b, c</td>
+<td style="text-align: left;">(a + b) % c</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">09</td>
-<td align="left">MULMOD</td>
-<td align="left">a, b, c</td>
-<td align="left">(a * b) % c</td>
-<td align="left"></td>
+<td style="text-align: left;">09</td>
+<td style="text-align: left;">MULMOD</td>
+<td style="text-align: left;">a, b, c</td>
+<td style="text-align: left;">(a * b) % c</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">0a</td>
-<td align="left">EXP</td>
-<td align="left">a, b</td>
-<td align="left">a ** b</td>
-<td align="left"></td>
+<td style="text-align: left;">0a</td>
+<td style="text-align: left;">EXP</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a ** b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">0b</td>
-<td align="left">SIGNEXTEND</td>
-<td align="left">b, x</td>
-<td align="left">signextend(x, b)</td>
-<td align="left">将<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>从<span class="heti-skip"><span class="heti-spacing"> </span>(b+1)*8<span class="heti-spacing"> </span></span>位符号扩展到<span class="heti-skip"><span class="heti-spacing"> </span>256<span class="heti-spacing"> </span></span>位</td>
+<td style="text-align: left;">0b</td>
+<td style="text-align: left;">SIGNEXTEND</td>
+<td style="text-align: left;">b, x</td>
+<td style="text-align: left;">signextend(x, b)</td>
+<td style="text-align: left;">将<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>从<span class="heti-skip"><span class="heti-spacing"> </span>(b+1)*8<span class="heti-spacing"> </span></span>位符号扩展到<span class="heti-skip"><span class="heti-spacing"> </span>256<span class="heti-spacing"> </span></span>位</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">10</td>
-<td align="left">LT</td>
-<td align="left">a, b</td>
-<td align="left">a &lt; b</td>
-<td align="left"></td>
+<td style="text-align: left;">10</td>
+<td style="text-align: left;">LT</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a &lt; b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">11</td>
-<td align="left">GT</td>
-<td align="left">a, b</td>
-<td align="left">a &gt; b</td>
-<td align="left"></td>
+<td style="text-align: left;">11</td>
+<td style="text-align: left;">GT</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a &gt; b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">12</td>
-<td align="left">SLT</td>
-<td align="left">a, b</td>
-<td align="left">a &lt; b</td>
-<td align="left"><span>int256<span class="heti-spacing"> </span></span>比较</td>
+<td style="text-align: left;">12</td>
+<td style="text-align: left;">SLT</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a &lt; b</td>
+<td style="text-align: left;"><span>int256<span class="heti-spacing"> </span></span>比较</td>
 </tr>
 <tr>
-<td align="left">13</td>
-<td align="left">SGT</td>
-<td align="left">a, b</td>
-<td align="left">a &gt; b</td>
-<td align="left"><span>int256<span class="heti-spacing"> </span></span>比较</td>
+<td style="text-align: left;">13</td>
+<td style="text-align: left;">SGT</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a &gt; b</td>
+<td style="text-align: left;"><span>int256<span class="heti-spacing"> </span></span>比较</td>
 </tr>
 <tr>
-<td align="left">14</td>
-<td align="left">EQ</td>
-<td align="left">a, b</td>
-<td align="left">a == b</td>
-<td align="left"></td>
+<td style="text-align: left;">14</td>
+<td style="text-align: left;">EQ</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a == b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">15</td>
-<td align="left">ISZERO</td>
-<td align="left">a</td>
-<td align="left">a == 0</td>
-<td align="left"></td>
+<td style="text-align: left;">15</td>
+<td style="text-align: left;">ISZERO</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">a == 0</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">16</td>
-<td align="left">AND</td>
-<td align="left">a, b</td>
-<td align="left">a &amp; b</td>
-<td align="left"></td>
+<td style="text-align: left;">16</td>
+<td style="text-align: left;">AND</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a &amp; b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">17</td>
-<td align="left">OR</td>
-<td align="left">a, b</td>
-<td align="left">a | b</td>
-<td align="left"></td>
+<td style="text-align: left;">17</td>
+<td style="text-align: left;">OR</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a | b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">18</td>
-<td align="left">XOR</td>
-<td align="left">a, b</td>
-<td align="left">a ^ b</td>
-<td align="left"></td>
+<td style="text-align: left;">18</td>
+<td style="text-align: left;">XOR</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">a ^ b</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">19</td>
-<td align="left">NOT</td>
-<td align="left">a</td>
-<td align="left">~a</td>
-<td align="left"></td>
+<td style="text-align: left;">19</td>
+<td style="text-align: left;">NOT</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">~a</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">1a</td>
-<td align="left">BYTE</td>
-<td align="left">i, x</td>
-<td align="left">x[i]</td>
-<td align="left">取<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>的第<span class="heti-skip"><span class="heti-spacing"> </span>i<span class="heti-spacing"> </span></span>个字节（从高位算）</td>
+<td style="text-align: left;">1a</td>
+<td style="text-align: left;">BYTE</td>
+<td style="text-align: left;">i, x</td>
+<td style="text-align: left;">x[i]</td>
+<td style="text-align: left;">取<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>的第<span class="heti-skip"><span class="heti-spacing"> </span>i<span class="heti-spacing"> </span></span>个字节（从高位算）</td>
 </tr>
 <tr>
-<td align="left">1b</td>
-<td align="left">SHL</td>
-<td align="left">a, b</td>
-<td align="left">b &lt;&lt; a</td>
-<td align="left"></td>
+<td style="text-align: left;">1b</td>
+<td style="text-align: left;">SHL</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">b &lt;&lt; a</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">1c</td>
-<td align="left">SHR</td>
-<td align="left">a, b</td>
-<td align="left">b &gt;&gt; a</td>
-<td align="left">逻辑右移</td>
+<td style="text-align: left;">1c</td>
+<td style="text-align: left;">SHR</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">b &gt;&gt; a</td>
+<td style="text-align: left;">逻辑右移</td>
 </tr>
 <tr>
-<td align="left">1d</td>
-<td align="left">SAR</td>
-<td align="left">a, b</td>
-<td align="left">b &gt;&gt; a</td>
-<td align="left">算数右移</td>
+<td style="text-align: left;">1d</td>
+<td style="text-align: left;">SAR</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">b &gt;&gt; a</td>
+<td style="text-align: left;">算数右移</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">20</td>
-<td align="left">SHA3</td>
-<td align="left">offset, length</td>
-<td align="left">keccak256(mem[offset:offset+length])</td>
+<td style="text-align: left;">20</td>
+<td style="text-align: left;">SHA3</td>
+<td style="text-align: left;">offset, length</td>
+<td style="text-align: left;">keccak256(mem[offset:offset+length])</td>
 </tr>
 </tbody>
 </table>
@@ -2182,230 +2182,230 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">30</td>
-<td align="left">ADDRESS</td>
-<td align="left"></td>
-<td align="left">address</td>
-<td align="left">当前合约地址</td>
+<td style="text-align: left;">30</td>
+<td style="text-align: left;">ADDRESS</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;">当前合约地址</td>
 </tr>
 <tr>
-<td align="left">31</td>
-<td align="left">BALANCE</td>
-<td align="left">addr</td>
-<td align="left">addr.balance</td>
-<td align="left"></td>
+<td style="text-align: left;">31</td>
+<td style="text-align: left;">BALANCE</td>
+<td style="text-align: left;">addr</td>
+<td style="text-align: left;">addr.balance</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">32</td>
-<td align="left">ORIGIN</td>
-<td align="left"></td>
-<td align="left">tx.origin</td>
-<td align="left"></td>
+<td style="text-align: left;">32</td>
+<td style="text-align: left;">ORIGIN</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">tx.origin</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">33</td>
-<td align="left">CALLER</td>
-<td align="left"></td>
-<td align="left">msg.sender</td>
-<td align="left"></td>
+<td style="text-align: left;">33</td>
+<td style="text-align: left;">CALLER</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">msg.sender</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">34</td>
-<td align="left">CALLVALUE</td>
-<td align="left"></td>
-<td align="left">msg.value</td>
-<td align="left"></td>
+<td style="text-align: left;">34</td>
+<td style="text-align: left;">CALLVALUE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">msg.value</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">35</td>
-<td align="left">CALLDATALOAD</td>
-<td align="left">i</td>
-<td align="left">msg.data[i:i+32]</td>
-<td align="left"></td>
+<td style="text-align: left;">35</td>
+<td style="text-align: left;">CALLDATALOAD</td>
+<td style="text-align: left;">i</td>
+<td style="text-align: left;">msg.data[i:i+32]</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">36</td>
-<td align="left">CALLDATASIZE</td>
-<td align="left"></td>
-<td align="left">len(msg.data)</td>
-<td align="left"></td>
+<td style="text-align: left;">36</td>
+<td style="text-align: left;">CALLDATASIZE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">len(msg.data)</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">38</td>
-<td align="left">CODESIZE</td>
-<td align="left"></td>
-<td align="left">len(this.code)</td>
-<td align="left"></td>
+<td style="text-align: left;">38</td>
+<td style="text-align: left;">CODESIZE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">len(this.code)</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">3a</td>
-<td align="left">GASPRICE</td>
-<td align="left"></td>
-<td align="left">tx.gasprice</td>
-<td align="left"></td>
+<td style="text-align: left;">3a</td>
+<td style="text-align: left;">GASPRICE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">tx.gasprice</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">3b</td>
-<td align="left">EXTCODESIZE</td>
-<td align="left">addr</td>
-<td align="left">len(addr.code)</td>
-<td align="left"></td>
+<td style="text-align: left;">3b</td>
+<td style="text-align: left;">EXTCODESIZE</td>
+<td style="text-align: left;">addr</td>
+<td style="text-align: left;">len(addr.code)</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">3d</td>
-<td align="left">RETURNDATASIZE</td>
-<td align="left"></td>
-<td align="left">len(returndata)</td>
-<td align="left">上一次调用的返回数据长度</td>
+<td style="text-align: left;">3d</td>
+<td style="text-align: left;">RETURNDATASIZE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">len(returndata)</td>
+<td style="text-align: left;">上一次调用的返回数据长度</td>
 </tr>
 <tr>
-<td align="left">3f</td>
-<td align="left">EXTCODEHASH</td>
-<td align="left">addr</td>
-<td align="left">keccak256(addr.code)</td>
-<td align="left">地址不存在则返回<span><span class="heti-spacing"> </span>0</span></td>
+<td style="text-align: left;">3f</td>
+<td style="text-align: left;">EXTCODEHASH</td>
+<td style="text-align: left;">addr</td>
+<td style="text-align: left;">keccak256(addr.code)</td>
+<td style="text-align: left;">地址不存在则返回<span><span class="heti-spacing"> </span>0</span></td>
 </tr>
 <tr>
-<td align="left">40</td>
-<td align="left">BLOCKHASH</td>
-<td align="left">number</td>
-<td align="left">block.blockHash(blockNumber)</td>
-<td align="left"></td>
+<td style="text-align: left;">40</td>
+<td style="text-align: left;">BLOCKHASH</td>
+<td style="text-align: left;">number</td>
+<td style="text-align: left;">block.blockHash(blockNumber)</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">41</td>
-<td align="left">COINBASE</td>
-<td align="left"></td>
-<td align="left">block.coinbase</td>
-<td align="left"></td>
+<td style="text-align: left;">41</td>
+<td style="text-align: left;">COINBASE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">block.coinbase</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">42</td>
-<td align="left">TIMESTAMP</td>
-<td align="left"></td>
-<td align="left">block.timestamp</td>
-<td align="left"></td>
+<td style="text-align: left;">42</td>
+<td style="text-align: left;">TIMESTAMP</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">block.timestamp</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">43</td>
-<td align="left">NUMBER</td>
-<td align="left"></td>
-<td align="left">block.number</td>
-<td align="left"></td>
+<td style="text-align: left;">43</td>
+<td style="text-align: left;">NUMBER</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">block.number</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">44</td>
-<td align="left">DIFFICULTY</td>
-<td align="left"></td>
-<td align="left">block.difficulty</td>
-<td align="left"></td>
+<td style="text-align: left;">44</td>
+<td style="text-align: left;">DIFFICULTY</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">block.difficulty</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">45</td>
-<td align="left">GASLIMIT</td>
-<td align="left"></td>
-<td align="left">block.gaslimit</td>
-<td align="left"></td>
+<td style="text-align: left;">45</td>
+<td style="text-align: left;">GASLIMIT</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">block.gaslimit</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">46</td>
-<td align="left">CHAINID</td>
-<td align="left"></td>
-<td align="left">chainid</td>
-<td align="left"></td>
+<td style="text-align: left;">46</td>
+<td style="text-align: left;">CHAINID</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">chainid</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">47</td>
-<td align="left">SELFBALANCE</td>
-<td align="left"></td>
-<td align="left">this.balance</td>
-<td align="left"></td>
+<td style="text-align: left;">47</td>
+<td style="text-align: left;">SELFBALANCE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">this.balance</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">48</td>
-<td align="left">BASEFEE</td>
-<td align="left"></td>
-<td align="left">block.basefee</td>
-<td align="left"></td>
+<td style="text-align: left;">48</td>
+<td style="text-align: left;">BASEFEE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">block.basefee</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">37</td>
-<td align="left">CALLDATACOPY</td>
-<td align="left">memOffset, dataOffset, length</td>
-<td align="left">mem[memOffset:memOffset+length] = msg.data[dataOffset:dataOffset+length]</td>
+<td style="text-align: left;">37</td>
+<td style="text-align: left;">CALLDATACOPY</td>
+<td style="text-align: left;">memOffset, dataOffset, length</td>
+<td style="text-align: left;">mem[memOffset:memOffset+length] = msg.data[dataOffset:dataOffset+length]</td>
 </tr>
 <tr>
-<td align="left">39</td>
-<td align="left">CODECOPY</td>
-<td align="left">memOffset, codeOffset, length</td>
-<td align="left">mem[memOffset:memOffset+length] = this.code[codeOffset:codeOffset+length]</td>
+<td style="text-align: left;">39</td>
+<td style="text-align: left;">CODECOPY</td>
+<td style="text-align: left;">memOffset, codeOffset, length</td>
+<td style="text-align: left;">mem[memOffset:memOffset+length] = this.code[codeOffset:codeOffset+length]</td>
 </tr>
 <tr>
-<td align="left">3c</td>
-<td align="left">EXTCODECOPY</td>
-<td align="left">addr, memOffset, codeOffset, length</td>
-<td align="left">mem[memOffset:memOffset+length] = addr.code[codeOffset:codeOffset+length]</td>
+<td style="text-align: left;">3c</td>
+<td style="text-align: left;">EXTCODECOPY</td>
+<td style="text-align: left;">addr, memOffset, codeOffset, length</td>
+<td style="text-align: left;">mem[memOffset:memOffset+length] = addr.code[codeOffset:codeOffset+length]</td>
 </tr>
 <tr>
-<td align="left">3e</td>
-<td align="left">RETURNDATACOPY</td>
-<td align="left">memOffset, dataOffset, length</td>
-<td align="left">mem[memOffset:memOffset+length] = returndata[dataOffset:dataOffset+length]</td>
+<td style="text-align: left;">3e</td>
+<td style="text-align: left;">RETURNDATACOPY</td>
+<td style="text-align: left;">memOffset, dataOffset, length</td>
+<td style="text-align: left;">mem[memOffset:memOffset+length] = returndata[dataOffset:dataOffset+length]</td>
 </tr>
 </tbody>
 </table>
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">58</td>
-<td align="left">PC</td>
-<td align="left"></td>
-<td align="left">pc</td>
-<td align="left">当前指令的位置</td>
+<td style="text-align: left;">58</td>
+<td style="text-align: left;">PC</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">pc</td>
+<td style="text-align: left;">当前指令的位置</td>
 </tr>
 <tr>
-<td align="left">59</td>
-<td align="left">MSIZE</td>
-<td align="left"></td>
-<td align="left">mem.length</td>
-<td align="left">内存大小</td>
+<td style="text-align: left;">59</td>
+<td style="text-align: left;">MSIZE</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">mem.length</td>
+<td style="text-align: left;">内存大小</td>
 </tr>
 <tr>
-<td align="left">5a</td>
-<td align="left">GAS</td>
-<td align="left"></td>
-<td align="left">gas</td>
-<td align="left">剩余<span><span class="heti-spacing"> </span>gas</span></td>
+<td style="text-align: left;">5a</td>
+<td style="text-align: left;">GAS</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">gas</td>
+<td style="text-align: left;">剩余<span><span class="heti-spacing"> </span>gas</span></td>
 </tr>
 </tbody>
 </table>
@@ -2419,55 +2419,55 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">50</td>
-<td align="left">POP</td>
-<td align="left">a</td>
-<td align="left"></td>
-<td align="left"></td>
+<td style="text-align: left;">50</td>
+<td style="text-align: left;">POP</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">51</td>
-<td align="left">MLOAD</td>
-<td align="left">offset</td>
-<td align="left">mem[offset:offset+32]</td>
-<td align="left"></td>
+<td style="text-align: left;">51</td>
+<td style="text-align: left;">MLOAD</td>
+<td style="text-align: left;">offset</td>
+<td style="text-align: left;">mem[offset:offset+32]</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">52</td>
-<td align="left">MSTORE</td>
-<td align="left">offset, value</td>
-<td align="left"></td>
-<td align="left">mem[offset:offset+32] = value</td>
+<td style="text-align: left;">52</td>
+<td style="text-align: left;">MSTORE</td>
+<td style="text-align: left;">offset, value</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">mem[offset:offset+32] = value</td>
 </tr>
 <tr>
-<td align="left">53</td>
-<td align="left">MSTORE8</td>
-<td align="left">offset, value</td>
-<td align="left"></td>
-<td align="left">mem[offset] = value</td>
+<td style="text-align: left;">53</td>
+<td style="text-align: left;">MSTORE8</td>
+<td style="text-align: left;">offset, value</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">mem[offset] = value</td>
 </tr>
 <tr>
-<td align="left">54</td>
-<td align="left">SLOAD</td>
-<td align="left">key</td>
-<td align="left">storage[key]</td>
-<td align="left"></td>
+<td style="text-align: left;">54</td>
+<td style="text-align: left;">SLOAD</td>
+<td style="text-align: left;">key</td>
+<td style="text-align: left;">storage[key]</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">55</td>
-<td align="left">SSTORE</td>
-<td align="left">key, value</td>
-<td align="left"></td>
-<td align="left">storage[key] = value</td>
+<td style="text-align: left;">55</td>
+<td style="text-align: left;">SSTORE</td>
+<td style="text-align: left;">key, value</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">storage[key] = value</td>
 </tr>
 </tbody>
 </table>
@@ -2475,41 +2475,41 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">60</td>
-<td align="left">PUSH1</td>
-<td align="left"></td>
-<td align="left">uint8</td>
-<td align="left">压入一个<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>字节的值</td>
+<td style="text-align: left;">60</td>
+<td style="text-align: left;">PUSH1</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">uint8</td>
+<td style="text-align: left;">压入一个<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>字节的值</td>
 </tr>
 <tr>
-<td align="left">61</td>
-<td align="left">PUSH2</td>
-<td align="left"></td>
-<td align="left">uint16</td>
-<td align="left">压入一个<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>字节的值</td>
+<td style="text-align: left;">61</td>
+<td style="text-align: left;">PUSH2</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">uint16</td>
+<td style="text-align: left;">压入一个<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>字节的值</td>
 </tr>
 <tr>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
 </tr>
 <tr>
-<td align="left">7f</td>
-<td align="left">PUSH32</td>
-<td align="left"></td>
-<td align="left">uint256</td>
-<td align="left">压入一个<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>字节的值</td>
+<td style="text-align: left;">7f</td>
+<td style="text-align: left;">PUSH32</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">uint256</td>
+<td style="text-align: left;">压入一个<span class="heti-skip"><span class="heti-spacing"> </span>32<span class="heti-spacing"> </span></span>字节的值</td>
 </tr>
 </tbody>
 </table>
@@ -2517,83 +2517,83 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">80</td>
-<td align="left">DUP1</td>
-<td align="left">a</td>
-<td align="left">a, a</td>
-<td align="left">将栈顶数据复制一份到栈顶</td>
+<td style="text-align: left;">80</td>
+<td style="text-align: left;">DUP1</td>
+<td style="text-align: left;">a</td>
+<td style="text-align: left;">a, a</td>
+<td style="text-align: left;">将栈顶数据复制一份到栈顶</td>
 </tr>
 <tr>
-<td align="left">81</td>
-<td align="left">DUP2</td>
-<td align="left">_, a</td>
-<td align="left">a, _, a</td>
-<td align="left">复制栈上第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个数据到栈顶</td>
+<td style="text-align: left;">81</td>
+<td style="text-align: left;">DUP2</td>
+<td style="text-align: left;">_, a</td>
+<td style="text-align: left;">a, _, a</td>
+<td style="text-align: left;">复制栈上第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个数据到栈顶</td>
 </tr>
 <tr>
-<td align="left">82</td>
-<td align="left">DUP3</td>
-<td align="left">_, _, a</td>
-<td align="left">a, _, _, a</td>
-<td align="left">复制栈上第<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个数据到栈顶</td>
+<td style="text-align: left;">82</td>
+<td style="text-align: left;">DUP3</td>
+<td style="text-align: left;">_, _, a</td>
+<td style="text-align: left;">a, _, _, a</td>
+<td style="text-align: left;">复制栈上第<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个数据到栈顶</td>
 </tr>
 <tr>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
 </tr>
 <tr>
-<td align="left">8f</td>
-<td align="left">DUP16</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">复制栈上第<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>个数据到栈顶</td>
+<td style="text-align: left;">8f</td>
+<td style="text-align: left;">DUP16</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">复制栈上第<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>个数据到栈顶</td>
 </tr>
 <tr>
-<td align="left">90</td>
-<td align="left">SWAP1</td>
-<td align="left">a, b</td>
-<td align="left">b, a</td>
-<td align="left">交换栈顶两个数据</td>
+<td style="text-align: left;">90</td>
+<td style="text-align: left;">SWAP1</td>
+<td style="text-align: left;">a, b</td>
+<td style="text-align: left;">b, a</td>
+<td style="text-align: left;">交换栈顶两个数据</td>
 </tr>
 <tr>
-<td align="left">91</td>
-<td align="left">SWAP2</td>
-<td align="left">a, _, b</td>
-<td align="left">b, _, a</td>
-<td align="left">交换栈上第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个数据和栈顶数据</td>
+<td style="text-align: left;">91</td>
+<td style="text-align: left;">SWAP2</td>
+<td style="text-align: left;">a, _, b</td>
+<td style="text-align: left;">b, _, a</td>
+<td style="text-align: left;">交换栈上第<span class="heti-skip"><span class="heti-spacing"> </span>2<span class="heti-spacing"> </span></span>个数据和栈顶数据</td>
 </tr>
 <tr>
-<td align="left">92</td>
-<td align="left">SWAP3</td>
-<td align="left">a, _, _, b</td>
-<td align="left">b, _, _, a</td>
-<td align="left">交换栈上第<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个数据和栈顶数据</td>
+<td style="text-align: left;">92</td>
+<td style="text-align: left;">SWAP3</td>
+<td style="text-align: left;">a, _, _, b</td>
+<td style="text-align: left;">b, _, _, a</td>
+<td style="text-align: left;">交换栈上第<span class="heti-skip"><span class="heti-spacing"> </span>3<span class="heti-spacing"> </span></span>个数据和栈顶数据</td>
 </tr>
 <tr>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
 </tr>
 <tr>
-<td align="left">9f</td>
-<td align="left">SWAP16</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">交换栈上第<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>个数据和栈顶数据</td>
+<td style="text-align: left;">9f</td>
+<td style="text-align: left;">SWAP16</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">交换栈上第<span class="heti-skip"><span class="heti-spacing"> </span>16<span class="heti-spacing"> </span></span>个数据和栈顶数据</td>
 </tr>
 </tbody>
 </table>
@@ -2602,34 +2602,34 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">56</td>
-<td align="left">JUMP</td>
-<td align="left">dest</td>
-<td align="left"></td>
-<td align="left">跳转到<span class="heti-skip"><span class="heti-spacing"> </span>dest<span class="heti-spacing"> </span></span>位置</td>
+<td style="text-align: left;">56</td>
+<td style="text-align: left;">JUMP</td>
+<td style="text-align: left;">dest</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">跳转到<span class="heti-skip"><span class="heti-spacing"> </span>dest<span class="heti-spacing"> </span></span>位置</td>
 </tr>
 <tr>
-<td align="left">57</td>
-<td align="left">JUMPI</td>
-<td align="left">dest, cond</td>
-<td align="left"></td>
-<td align="left">如果<span class="heti-skip"><span class="heti-spacing"> </span>cond<span class="heti-spacing"> </span></span>非<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>则跳转到<span class="heti-skip"><span class="heti-spacing"> </span>dest<span class="heti-spacing"> </span></span>位置</td>
+<td style="text-align: left;">57</td>
+<td style="text-align: left;">JUMPI</td>
+<td style="text-align: left;">dest, cond</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">如果<span class="heti-skip"><span class="heti-spacing"> </span>cond<span class="heti-spacing"> </span></span>非<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>则跳转到<span class="heti-skip"><span class="heti-spacing"> </span>dest<span class="heti-spacing"> </span></span>位置</td>
 </tr>
 <tr>
-<td align="left">5b</td>
-<td align="left">JUMPDEST</td>
-<td align="left"></td>
-<td align="left"></td>
-<td align="left">标记一个跳转目标</td>
+<td style="text-align: left;">5b</td>
+<td style="text-align: left;">JUMPDEST</td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;"></td>
+<td style="text-align: left;">标记一个跳转目标</td>
 </tr>
 </tbody>
 </table>
@@ -2638,36 +2638,36 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">a0</td>
-<td align="left">LOG0</td>
-<td align="left">offset, length</td>
-<td align="left">LOG0(mem[offset:offset+length])</td>
+<td style="text-align: left;">a0</td>
+<td style="text-align: left;">LOG0</td>
+<td style="text-align: left;">offset, length</td>
+<td style="text-align: left;">LOG0(mem[offset:offset+length])</td>
 </tr>
 <tr>
-<td align="left">a1</td>
-<td align="left">LOG1</td>
-<td align="left">offset, length, topic0</td>
-<td align="left">LOG1(mem[offset:offset+length], topic0)</td>
+<td style="text-align: left;">a1</td>
+<td style="text-align: left;">LOG1</td>
+<td style="text-align: left;">offset, length, topic0</td>
+<td style="text-align: left;">LOG1(mem[offset:offset+length], topic0)</td>
 </tr>
 <tr>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
-<td align="left">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
+<td style="text-align: left;">...</td>
 </tr>
 <tr>
-<td align="left">a4</td>
-<td align="left">LOG4</td>
-<td align="left">offset, length, topic0~3</td>
-<td align="left">LOG4(mem[offset:offset+length], topic0~3)</td>
+<td style="text-align: left;">a4</td>
+<td style="text-align: left;">LOG4</td>
+<td style="text-align: left;">offset, length, topic0~3</td>
+<td style="text-align: left;">LOG4(mem[offset:offset+length], topic0~3)</td>
 </tr>
 </tbody>
 </table>
@@ -2676,27 +2676,27 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">f0</td>
-<td align="left">CREATE</td>
-<td align="left">value, offset, length</td>
-<td align="left">address</td>
-<td align="left"></td>
+<td style="text-align: left;">f0</td>
+<td style="text-align: left;">CREATE</td>
+<td style="text-align: left;">value, offset, length</td>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;"></td>
 </tr>
 <tr>
-<td align="left">f5</td>
-<td align="left">CREATE2</td>
-<td align="left">value, offset, length, salt</td>
-<td align="left">address</td>
-<td align="left"></td>
+<td style="text-align: left;">f5</td>
+<td style="text-align: left;">CREATE2</td>
+<td style="text-align: left;">value, offset, length, salt</td>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;"></td>
 </tr>
 </tbody>
 </table>
@@ -2717,36 +2717,36 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">栈输出</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">栈输出</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">f1</td>
-<td align="left">CALL</td>
-<td align="left">gas, to, value, argsOffset, argsLength, retOffset, retLength</td>
-<td align="left">success</td>
+<td style="text-align: left;">f1</td>
+<td style="text-align: left;">CALL</td>
+<td style="text-align: left;">gas, to, value, argsOffset, argsLength, retOffset, retLength</td>
+<td style="text-align: left;">success</td>
 </tr>
 <tr>
-<td align="left">f2</td>
-<td align="left">CALLCODE</td>
-<td align="left">gas, to, value, argsOffset, argsLength, retOffset, retLength</td>
-<td align="left">success</td>
+<td style="text-align: left;">f2</td>
+<td style="text-align: left;">CALLCODE</td>
+<td style="text-align: left;">gas, to, value, argsOffset, argsLength, retOffset, retLength</td>
+<td style="text-align: left;">success</td>
 </tr>
 <tr>
-<td align="left">f4</td>
-<td align="left">DELEGATECALL</td>
-<td align="left">gas, to, argsOffset, argsLength, retOffset, retLength</td>
-<td align="left">success</td>
+<td style="text-align: left;">f4</td>
+<td style="text-align: left;">DELEGATECALL</td>
+<td style="text-align: left;">gas, to, argsOffset, argsLength, retOffset, retLength</td>
+<td style="text-align: left;">success</td>
 </tr>
 <tr>
-<td align="left">fa</td>
-<td align="left">STATICCALL</td>
-<td align="left">gas, to, argsOffset, argsLength, retOffset, retLength</td>
-<td align="left">success</td>
+<td style="text-align: left;">fa</td>
+<td style="text-align: left;">STATICCALL</td>
+<td style="text-align: left;">gas, to, argsOffset, argsLength, retOffset, retLength</td>
+<td style="text-align: left;">success</td>
 </tr>
 </tbody>
 </table>
@@ -2755,24 +2755,24 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">f3</td>
-<td align="left">RETURN</td>
-<td align="left">offset, length</td>
-<td align="left">return mem[offset:offset+length]</td>
+<td style="text-align: left;">f3</td>
+<td style="text-align: left;">RETURN</td>
+<td style="text-align: left;">offset, length</td>
+<td style="text-align: left;">return mem[offset:offset+length]</td>
 </tr>
 <tr>
-<td align="left">fd</td>
-<td align="left">REVERT</td>
-<td align="left">offset, length</td>
-<td align="left">revert mem[offset:offset+length]</td>
+<td style="text-align: left;">fd</td>
+<td style="text-align: left;">REVERT</td>
+<td style="text-align: left;">offset, length</td>
+<td style="text-align: left;">revert mem[offset:offset+length]</td>
 </tr>
 </tbody>
 </table>
@@ -2781,18 +2781,18 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="left">字节码</th>
-<th align="left">名称</th>
-<th align="left">栈输入</th>
-<th align="left">描述</th>
+<th style="text-align: left;">字节码</th>
+<th style="text-align: left;">名称</th>
+<th style="text-align: left;">栈输入</th>
+<th style="text-align: left;">描述</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="left">ff</td>
-<td align="left">SELFDESTRUCT</td>
-<td align="left">address</td>
-<td align="left">selfdestruct(address)</td>
+<td style="text-align: left;">ff</td>
+<td style="text-align: left;">SELFDESTRUCT</td>
+<td style="text-align: left;">address</td>
+<td style="text-align: left;">selfdestruct(address)</td>
 </tr>
 </tbody>
 </table>

@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/cs/system/cs1/lab5-2/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>系统 I lab5-2 - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -35,17 +35,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -1923,20 +1923,20 @@ var _hmt = _hmt || [];
 <p><strong>直接以<span class="heti-skip"><span class="heti-spacing"> </span>bonus<span class="heti-spacing"> </span></span>为目标进行设计，完成这<span class="heti-skip"><span class="heti-spacing"> </span>22<span class="heti-spacing"> </span></span>个指令</strong>：lw sw bne beq jal lui addi add slt slti andi ori and or sll xori slli srli srl auipc sltu jalr</p>
 <h3 id="_3">明确目标<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>目标即编写<span class="heti-skip"><span class="heti-spacing"> </span>lab5-1<span class="heti-spacing"> </span></span>中给出的<span class="heti-skip"><span class="heti-spacing"> </span>Control.v<span class="heti-spacing"> </span></span>中的<span class="heti-skip"><span class="heti-spacing"> </span>Control<span class="heti-spacing"> </span></span>模块的编写，其功能就是接收指令并译码，解析出一系列数据通路中会用到的值。其输入输出部分：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">module</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">op_code</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">funct3</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">funct7_5</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">pc_src</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">reg_write</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">alu_src_b</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">alu_op</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">mem_to_reg</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">mem_write</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">branch</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">b_type</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">auipc</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="p">);</span><span class="w"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">module</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">op_code</span><span class="p">,</span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">funct3</span><span class="p">,</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">funct7_5</span><span class="p">,</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">pc_src</span><span class="p">,</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">reg_write</span><span class="p">,</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">alu_src_b</span><span class="p">,</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">alu_op</span><span class="p">,</span>
+<a href="#__codelineno-0-9" id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">mem_to_reg</span><span class="p">,</span>
+<a href="#__codelineno-0-10" id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">mem_write</span><span class="p">,</span>
+<a href="#__codelineno-0-11" id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">branch</span><span class="p">,</span>
+<a href="#__codelineno-0-12" id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">b_type</span><span class="p">,</span>
+<a href="#__codelineno-0-13" id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="w">    </span><span class="k">output</span><span class="w">          </span><span class="n">auipc</span><span class="p">;</span>
+<a href="#__codelineno-0-14" id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="p">);</span>
 </code></pre></div>
 输入为 RISC-V 32 位指令的三个部分，op_code 为低 7 位的操作码，funct3 为 inst[14:12] 的功能部分，funct7_5 为 funct7 的第五位也就是 inst[30]
 <p>输出为译码得到的一些结果：</p>
@@ -1963,136 +1963,136 @@ var _hmt = _hmt || [];
 <table>
 <thead>
 <tr>
-<th align="center">opcode</th>
-<th align="center">指令</th>
-<th align="center">ps</th>
-<th align="center">rw</th>
-<th align="center">as</th>
-<th align="center">op</th>
-<th align="center">mtr</th>
-<th align="center">mw</th>
-<th align="center">b</th>
-<th align="center">bt</th>
-<th align="center">auipc</th>
+<th style="text-align: center;">opcode</th>
+<th style="text-align: center;">指令</th>
+<th style="text-align: center;">ps</th>
+<th style="text-align: center;">rw</th>
+<th style="text-align: center;">as</th>
+<th style="text-align: center;">op</th>
+<th style="text-align: center;">mtr</th>
+<th style="text-align: center;">mw</th>
+<th style="text-align: center;">b</th>
+<th style="text-align: center;">bt</th>
+<th style="text-align: center;">auipc</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td align="center">0000011</td>
-<td align="center">lw</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">ADD</td>
-<td align="center">11</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center">0</td>
+<td style="text-align: center;">0000011</td>
+<td style="text-align: center;">lw</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">11</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr>
-<td align="center">0100011</td>
-<td align="center">sw</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">ADD</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center">0</td>
+<td style="text-align: center;">0100011</td>
+<td style="text-align: center;">sw</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr>
-<td align="center">0010011</td>
-<td align="center">addi slti xori ori<br/>andi slli srli</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">-</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center">0</td>
+<td style="text-align: center;">0010011</td>
+<td style="text-align: center;">addi slti xori ori<br/>andi slli srli</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr>
-<td align="center">1100011</td>
-<td align="center">bne beq</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">XOR</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">-</td>
-<td align="center">0</td>
+<td style="text-align: center;">1100011</td>
+<td style="text-align: center;">bne beq</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">XOR</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr>
-<td align="center">1101111</td>
-<td align="center">jal</td>
-<td align="center">10</td>
-<td align="center">1</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">10</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center">0</td>
+<td style="text-align: center;">1101111</td>
+<td style="text-align: center;">jal</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr>
-<td align="center">0110111</td>
-<td align="center">lui</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center"></td>
-<td align="center"></td>
-<td align="center">10</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center">0</td>
+<td style="text-align: center;">0110111</td>
+<td style="text-align: center;">lui</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr>
-<td align="center">0110011</td>
-<td align="center">add slt and or<br/>sll srl sltu</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">0</td>
-<td align="center">-</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center">0</td>
+<td style="text-align: center;">0110011</td>
+<td style="text-align: center;">add slt and or<br/>sll srl sltu</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">-</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
 </tr>
 <tr>
-<td align="center">0010111</td>
-<td align="center">auipc</td>
-<td align="center">0</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">ADD</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center">1</td>
+<td style="text-align: center;">0010111</td>
+<td style="text-align: center;">auipc</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">1</td>
 </tr>
 <tr>
-<td align="center">1100111</td>
-<td align="center">jalr</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">1</td>
-<td align="center">ADD</td>
-<td align="center">10</td>
-<td align="center">0</td>
-<td align="center">0</td>
-<td align="center"></td>
-<td align="center">0</td>
+<td style="text-align: center;">1100111</td>
+<td style="text-align: center;">jalr</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">ADD</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">0</td>
 </tr>
 </tbody>
 </table>
@@ -2100,12 +2100,12 @@ var _hmt = _hmt || [];
 <p>对于<span class="heti-skip"><span class="heti-spacing"> </span>0010011<span class="heti-spacing"> </span></span>的一系列<span class="heti-skip"><span class="heti-spacing"> </span>I<span class="heti-spacing"> </span></span>型指令，需要通过判断<span class="heti-skip"><span class="heti-spacing"> </span>funct3<span class="heti-spacing"> </span></span>来确定<span><span class="heti-spacing"> </span>alu_op</span>。对于<span class="heti-skip"><span class="heti-spacing"> </span>0110011<span class="heti-spacing"> </span></span>的一系列<span class="heti-skip"><span class="heti-spacing"> </span>R<span class="heti-spacing"> </span></span>型指令，可以直接使用<span class="heti-skip"><span class="heti-spacing"> </span>{funct7_5, funct3}<span class="heti-spacing"> </span></span>作为<span><span class="heti-spacing"> </span>alu_op</span>。对于<span class="heti-skip"><span class="heti-spacing"> </span>bne<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>beq</span>，其<span class="heti-skip"><span class="heti-spacing"> </span>b_type<span class="heti-spacing"> </span></span>就是<span><span class="heti-spacing"> </span>~funct3[0]</span>。</p>
 <h3 id="_5">控制单元模块代码<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>通过前面的分析，可以直接写出控制单元的代码：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="no">`timescale</span><span class="w"> </span><span class="mh">1</span><span class="n">ns</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mh">1</span><span class="n">ps</span><span class="w"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="no">`timescale</span><span class="w"> </span><span class="mh">1</span><span class="n">ns</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mh">1</span><span class="n">ps</span>
 <a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>
-<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">module</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">op_code</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">funct3</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">input</span><span class="w">               </span><span class="n">funct7_5</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="k">module</span><span class="w"> </span><span class="n">Control</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="p">[</span><span class="mh">6</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">op_code</span><span class="p">,</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="k">input</span><span class="w">       </span><span class="p">[</span><span class="mh">2</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">funct3</span><span class="p">,</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">    </span><span class="k">input</span><span class="w">               </span><span class="n">funct7_5</span><span class="p">,</span>
 <a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">  </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">pc_src</span><span class="p">,</span><span class="w">     </span><span class="c1">// 00 pc+4 01 JALR 10 JAL</span>
 <a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">reg_write</span><span class="p">,</span><span class="w">  </span><span class="c1">// 1 写入寄存器</span>
 <a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">alu_src_b</span><span class="p">,</span><span class="w">  </span><span class="c1">// 0 来自寄存器 1 来自立即数</span>
@@ -2115,78 +2115,78 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">branch</span><span class="p">,</span><span class="w">     </span><span class="c1">// 1 是 branch 0 不是</span>
 <a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">b_type</span><span class="p">,</span><span class="w">     </span><span class="c1">// 1 是 beq 0 是 bne</span>
 <a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">    </span><span class="k">output</span><span class="w"> </span><span class="kt">reg</span><span class="w">          </span><span class="n">auipc</span><span class="w">       </span><span class="c1">// 1 是 auipc 指令</span>
-<a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="no">`include</span><span class="w"> </span><span class="s">"AluOp.vh"</span><span class="w"></span>
-<a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
-<a href="#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="n">pc_src</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">        </span><span class="n">reg_write</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">        </span><span class="n">alu_src_b</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">        </span><span class="n">alu_op</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">funct7_5</span><span class="p">,</span><span class="w"> </span><span class="n">funct3</span><span class="p">};</span><span class="w"></span>
-<a href="#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">        </span><span class="n">mem_to_reg</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-24" id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">        </span><span class="n">mem_write</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-25" id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">        </span><span class="n">branch</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-26" id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">        </span><span class="n">b_type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-27" id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">        </span><span class="n">auipc</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="p">);</span>
+<a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">    </span><span class="no">`include</span><span class="w"> </span><span class="s">"AluOp.vh"</span>
+<a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-1-19" id="__codelineno-1-19" name="__codelineno-1-19"></a><span class="w">        </span><span class="n">pc_src</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a href="#__codelineno-1-20" id="__codelineno-1-20" name="__codelineno-1-20"></a><span class="w">        </span><span class="n">reg_write</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a href="#__codelineno-1-21" id="__codelineno-1-21" name="__codelineno-1-21"></a><span class="w">        </span><span class="n">alu_src_b</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a href="#__codelineno-1-22" id="__codelineno-1-22" name="__codelineno-1-22"></a><span class="w">        </span><span class="n">alu_op</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="n">funct7_5</span><span class="p">,</span><span class="w"> </span><span class="n">funct3</span><span class="p">};</span>
+<a href="#__codelineno-1-23" id="__codelineno-1-23" name="__codelineno-1-23"></a><span class="w">        </span><span class="n">mem_to_reg</span><span class="w">  </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a href="#__codelineno-1-24" id="__codelineno-1-24" name="__codelineno-1-24"></a><span class="w">        </span><span class="n">mem_write</span><span class="w">   </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a href="#__codelineno-1-25" id="__codelineno-1-25" name="__codelineno-1-25"></a><span class="w">        </span><span class="n">branch</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a href="#__codelineno-1-26" id="__codelineno-1-26" name="__codelineno-1-26"></a><span class="w">        </span><span class="n">b_type</span><span class="w">      </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
+<a href="#__codelineno-1-27" id="__codelineno-1-27" name="__codelineno-1-27"></a><span class="w">        </span><span class="n">auipc</span><span class="w">       </span><span class="o">=</span><span class="w"> </span><span class="mh">0</span><span class="p">;</span>
 <a href="#__codelineno-1-28" id="__codelineno-1-28" name="__codelineno-1-28"></a>
-<a href="#__codelineno-1-29" id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">op_code</span><span class="p">)</span><span class="w"></span>
+<a href="#__codelineno-1-29" id="__codelineno-1-29" name="__codelineno-1-29"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">op_code</span><span class="p">)</span>
 <a href="#__codelineno-1-30" id="__codelineno-1-30" name="__codelineno-1-30"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b0000011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// lw</span>
-<a href="#__codelineno-1-31" id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-32" id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">                </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b11</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-33" id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-31" id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span>
+<a href="#__codelineno-1-32" id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">                </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b11</span><span class="p">;</span>
+<a href="#__codelineno-1-33" id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w">            </span><span class="k">end</span>
 <a href="#__codelineno-1-34" id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b0100011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// sw</span>
-<a href="#__codelineno-1-35" id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">                </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w">   </span><span class="n">mem_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-36" id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-35" id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">                </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w">   </span><span class="n">mem_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a href="#__codelineno-1-36" id="__codelineno-1-36" name="__codelineno-1-36"></a><span class="w">            </span><span class="k">end</span>
 <a href="#__codelineno-1-37" id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b0010011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// addi slti xori ori andi slli srli </span>
 <a href="#__codelineno-1-38" id="__codelineno-1-38" name="__codelineno-1-38"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span>
-<a href="#__codelineno-1-39" id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">funct3</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-1-40" id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b000</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-41" id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b010</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SLT</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-42" id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b100</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XOR</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-43" id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b110</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OR</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-44" id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b111</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AND</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-45" id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b001</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SLL</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-46" id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b101</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
-<a href="#__codelineno-1-47" id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">funct7_5</span><span class="p">)</span><span class="w">   </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SRA</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-48" id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="w">                        </span><span class="k">else</span><span class="w">            </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SRL</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-49" id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="w">                    </span><span class="k">end</span><span class="w"></span>
-<a href="#__codelineno-1-50" id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="w">                </span><span class="k">endcase</span><span class="w"></span>
-<a href="#__codelineno-1-51" id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-39" id="__codelineno-1-39" name="__codelineno-1-39"></a><span class="w">                </span><span class="k">case</span><span class="w"> </span><span class="p">(</span><span class="n">funct3</span><span class="p">)</span>
+<a href="#__codelineno-1-40" id="__codelineno-1-40" name="__codelineno-1-40"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b000</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span>
+<a href="#__codelineno-1-41" id="__codelineno-1-41" name="__codelineno-1-41"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b010</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SLT</span><span class="p">;</span>
+<a href="#__codelineno-1-42" id="__codelineno-1-42" name="__codelineno-1-42"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b100</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XOR</span><span class="p">;</span>
+<a href="#__codelineno-1-43" id="__codelineno-1-43" name="__codelineno-1-43"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b110</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">OR</span><span class="p">;</span>
+<a href="#__codelineno-1-44" id="__codelineno-1-44" name="__codelineno-1-44"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b111</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">AND</span><span class="p">;</span>
+<a href="#__codelineno-1-45" id="__codelineno-1-45" name="__codelineno-1-45"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b001</span><span class="o">:</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SLL</span><span class="p">;</span>
+<a href="#__codelineno-1-46" id="__codelineno-1-46" name="__codelineno-1-46"></a><span class="w">                    </span><span class="mh">3</span><span class="mb">'b101</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-1-47" id="__codelineno-1-47" name="__codelineno-1-47"></a><span class="w">                        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">funct7_5</span><span class="p">)</span><span class="w">   </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SRA</span><span class="p">;</span>
+<a href="#__codelineno-1-48" id="__codelineno-1-48" name="__codelineno-1-48"></a><span class="w">                        </span><span class="k">else</span><span class="w">            </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">SRL</span><span class="p">;</span>
+<a href="#__codelineno-1-49" id="__codelineno-1-49" name="__codelineno-1-49"></a><span class="w">                    </span><span class="k">end</span>
+<a href="#__codelineno-1-50" id="__codelineno-1-50" name="__codelineno-1-50"></a><span class="w">                </span><span class="k">endcase</span>
+<a href="#__codelineno-1-51" id="__codelineno-1-51" name="__codelineno-1-51"></a><span class="w">            </span><span class="k">end</span>
 <a href="#__codelineno-1-52" id="__codelineno-1-52" name="__codelineno-1-52"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b1100011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// bne beq</span>
-<a href="#__codelineno-1-53" id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w">                </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XOR</span><span class="p">;</span><span class="w">   </span><span class="n">branch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">b_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">funct3</span><span class="p">[</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
-<a href="#__codelineno-1-54" id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-53" id="__codelineno-1-53" name="__codelineno-1-53"></a><span class="w">                </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">XOR</span><span class="p">;</span><span class="w">   </span><span class="n">branch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">b_type</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">~</span><span class="n">funct3</span><span class="p">[</span><span class="mh">0</span><span class="p">];</span>
+<a href="#__codelineno-1-54" id="__codelineno-1-54" name="__codelineno-1-54"></a><span class="w">            </span><span class="k">end</span>
 <a href="#__codelineno-1-55" id="__codelineno-1-55" name="__codelineno-1-55"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b1101111</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// jal</span>
-<a href="#__codelineno-1-56" id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="w">                </span><span class="n">pc_src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b10</span><span class="p">;</span><span class="w"> </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b10</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-57" id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-56" id="__codelineno-1-56" name="__codelineno-1-56"></a><span class="w">                </span><span class="n">pc_src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b10</span><span class="p">;</span><span class="w"> </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b10</span><span class="p">;</span>
+<a href="#__codelineno-1-57" id="__codelineno-1-57" name="__codelineno-1-57"></a><span class="w">            </span><span class="k">end</span>
 <a href="#__codelineno-1-58" id="__codelineno-1-58" name="__codelineno-1-58"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b0110111</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// lui</span>
-<a href="#__codelineno-1-59" id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b01</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-60" id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-59" id="__codelineno-1-59" name="__codelineno-1-59"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b01</span><span class="p">;</span>
+<a href="#__codelineno-1-60" id="__codelineno-1-60" name="__codelineno-1-60"></a><span class="w">            </span><span class="k">end</span>
 <a href="#__codelineno-1-61" id="__codelineno-1-61" name="__codelineno-1-61"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b0110011</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// add slt and or sll srl sltu</span>
-<a href="#__codelineno-1-62" id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-63" id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-62" id="__codelineno-1-62" name="__codelineno-1-62"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a href="#__codelineno-1-63" id="__codelineno-1-63" name="__codelineno-1-63"></a><span class="w">            </span><span class="k">end</span>
 <a href="#__codelineno-1-64" id="__codelineno-1-64" name="__codelineno-1-64"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b0010111</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// auipc</span>
-<a href="#__codelineno-1-65" id="__codelineno-1-65" name="__codelineno-1-65"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-66" id="__codelineno-1-66" name="__codelineno-1-66"></a><span class="w">                </span><span class="n">auipc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-67" id="__codelineno-1-67" name="__codelineno-1-67"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-65" id="__codelineno-1-65" name="__codelineno-1-65"></a><span class="w">                </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w">  </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span>
+<a href="#__codelineno-1-66" id="__codelineno-1-66" name="__codelineno-1-66"></a><span class="w">                </span><span class="n">auipc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span>
+<a href="#__codelineno-1-67" id="__codelineno-1-67" name="__codelineno-1-67"></a><span class="w">            </span><span class="k">end</span>
 <a href="#__codelineno-1-68" id="__codelineno-1-68" name="__codelineno-1-68"></a><span class="w">            </span><span class="mh">7</span><span class="mb">'b1100111</span><span class="o">:</span><span class="w"> </span><span class="k">begin</span><span class="w">   </span><span class="c1">// jalr</span>
-<a href="#__codelineno-1-69" id="__codelineno-1-69" name="__codelineno-1-69"></a><span class="w">                </span><span class="n">pc_src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b01</span><span class="p">;</span><span class="w"> </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b10</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-70" id="__codelineno-1-70" name="__codelineno-1-70"></a><span class="w">                </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-71" id="__codelineno-1-71" name="__codelineno-1-71"></a><span class="w">            </span><span class="k">end</span><span class="w"></span>
-<a href="#__codelineno-1-72" id="__codelineno-1-72" name="__codelineno-1-72"></a><span class="w">        </span><span class="k">endcase</span><span class="w"></span>
-<a href="#__codelineno-1-73" id="__codelineno-1-73" name="__codelineno-1-73"></a><span class="w">    </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-1-69" id="__codelineno-1-69" name="__codelineno-1-69"></a><span class="w">                </span><span class="n">pc_src</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b01</span><span class="p">;</span><span class="w"> </span><span class="n">reg_write</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">mem_to_reg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">2</span><span class="mb">'b10</span><span class="p">;</span>
+<a href="#__codelineno-1-70" id="__codelineno-1-70" name="__codelineno-1-70"></a><span class="w">                </span><span class="n">alu_src_b</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mh">1</span><span class="p">;</span><span class="w"> </span><span class="n">alu_op</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">ADD</span><span class="p">;</span>
+<a href="#__codelineno-1-71" id="__codelineno-1-71" name="__codelineno-1-71"></a><span class="w">            </span><span class="k">end</span>
+<a href="#__codelineno-1-72" id="__codelineno-1-72" name="__codelineno-1-72"></a><span class="w">        </span><span class="k">endcase</span>
+<a href="#__codelineno-1-73" id="__codelineno-1-73" name="__codelineno-1-73"></a><span class="w">    </span><span class="k">end</span>
 <a href="#__codelineno-1-74" id="__codelineno-1-74" name="__codelineno-1-74"></a>
-<a href="#__codelineno-1-75" id="__codelineno-1-75" name="__codelineno-1-75"></a><span class="k">endmodule</span><span class="w"></span>
+<a href="#__codelineno-1-75" id="__codelineno-1-75" name="__codelineno-1-75"></a><span class="k">endmodule</span>
 </code></pre></div>
 <h3 id="_6">其它文件中的修改<a class="headerlink" href="#_6" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p><span>ImmGen<span class="heti-spacing"> </span></span>模块在上一次<span class="heti-skip"><span class="heti-spacing"> </span>lab<span class="heti-spacing"> </span></span>中就实现了对于这<span class="heti-skip"><span class="heti-spacing"> </span>22<span class="heti-spacing"> </span></span>个指令的识别，不需要更改。<span>SCPU<span class="heti-spacing"> </span></span>模块中只需要添加一个<span class="heti-skip"><span class="heti-spacing"> </span>wire auipc<span class="heti-spacing"> </span></span>然后连接<span class="heti-skip"><span class="heti-spacing"> </span>Control<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>Datapath<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>auipc<span class="heti-spacing"> </span></span>接口即可。<span>Core<span class="heti-spacing"> </span></span>模块及更高层的无需更改。</p>
 <p>因为<span class="heti-skip"><span class="heti-spacing"> </span>sll slli srl srli<span class="heti-spacing"> </span></span>这些移位的指令移的位数都是取低<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>位，所以需要改一下<span class="heti-skip"><span class="heti-spacing"> </span>ALU<span class="heti-spacing"> </span></span>的代码，使其进行<span class="heti-skip"><span class="heti-spacing"> </span>SLL<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>SRL</span>（包括<span><span class="heti-spacing"> </span>SRA</span>）时取<span class="heti-skip"><span class="heti-spacing"> </span>b[4:0]<span class="heti-spacing"> </span></span>进行运算，即：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">...</span><span class="w"></span>
-<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
-<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="nl">SLL:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
-<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
-<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="nl">SRL:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
-<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="nl">SRA:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span><span class="w"></span>
-<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="p">...</span><span class="w"></span>
-<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">...</span><span class="w"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">...</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="p">...</span>
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span><span class="nl">SLL:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">    </span><span class="p">...</span>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">    </span><span class="nl">SRL:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span><span class="nl">SRA:</span><span class="w"> </span><span class="n">res</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="o">&gt;&gt;&gt;</span><span class="w"> </span><span class="n">b</span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">];</span>
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="p">...</span>
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="p">...</span>
 </code></pre></div>
 <p><span>Datapath<span class="heti-spacing"> </span></span>需要进行一些更改：</p>
 <ul>
@@ -2194,129 +2194,129 @@ var _hmt = _hmt || [];
 <li><span>PC<span class="heti-spacing"> </span></span>的选择器输入对<span class="heti-skip"><span class="heti-spacing"> </span>jal<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>jalr<span class="heti-spacing"> </span></span>进行区分，<span>jalr<span class="heti-spacing"> </span></span>对应的地址（即四路选择器的第二路）为<span class="heti-skip"><span class="heti-spacing"> </span>ALU<span class="heti-spacing"> </span></span>的结果，<span>jal<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>branch<span class="heti-spacing"> </span></span>对应的地址（三四路）仍为<span><span class="heti-spacing"> </span>pc+imm</span></li>
 </ul>
 <p>更改后的<span class="heti-skip"><span class="heti-spacing"> </span>Datapath<span class="heti-spacing"> </span></span>模块：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="no">`timescale</span><span class="w"> </span><span class="mh">1</span><span class="n">ns</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mh">1</span><span class="n">ps</span><span class="w"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="no">`timescale</span><span class="w"> </span><span class="mh">1</span><span class="n">ns</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mh">1</span><span class="n">ps</span>
 <a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>
-<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">module</span><span class="w"> </span><span class="n">Datapath</span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">clk</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">rst</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">pc_src</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">reg_write</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">alu_src_b</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">branch</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">b_type</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">auipc</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">alu_op</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">mem_to_reg</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">inst_in</span><span class="p">,</span><span class="w"></span>
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="k">module</span><span class="w"> </span><span class="n">Datapath</span><span class="p">(</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">clk</span><span class="p">,</span>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">rst</span><span class="p">,</span>
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">pc_src</span><span class="p">,</span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">reg_write</span><span class="p">,</span>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">alu_src_b</span><span class="p">,</span>
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">branch</span><span class="p">,</span>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">b_type</span><span class="p">,</span>
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">    </span><span class="k">input</span><span class="w">           </span><span class="n">auipc</span><span class="p">,</span>
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">3</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">alu_op</span><span class="p">,</span>
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">1</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">mem_to_reg</span><span class="p">,</span>
+<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">inst_in</span><span class="p">,</span>
 <a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">data_in</span><span class="p">,</span><span class="w">  </span>
 <a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">addr_out</span><span class="p">,</span><span class="w"> </span>
 <a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">data_out</span><span class="p">,</span><span class="w"> </span>
-<a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc_out</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">debug_reg_addr</span><span class="p">,</span><span class="w"></span>
-<a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">debug_reg</span><span class="w"></span>
-<a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">    </span><span class="kt">reg</span><span class="w">     </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc_next</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-24" id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">write_data</span><span class="p">,</span><span class="w"> </span><span class="n">read_data_1</span><span class="p">,</span><span class="w"> </span><span class="n">read_data_2</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-25" id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">alu_data_1</span><span class="p">,</span><span class="w"> </span><span class="n">alu_data_2</span><span class="p">,</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-26" id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">    </span><span class="kt">wire</span><span class="w">            </span><span class="n">alu_zero</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-27" id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">imm</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-28" id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">jal_addr</span><span class="p">,</span><span class="w"> </span><span class="n">jalr_addr</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc_out</span><span class="p">,</span>
+<a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">    </span><span class="k">input</span><span class="w">   </span><span class="p">[</span><span class="mh">4</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">   </span><span class="n">debug_reg_addr</span><span class="p">,</span>
+<a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">    </span><span class="k">output</span><span class="w">  </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">debug_reg</span>
+<a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="p">);</span>
+<a href="#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">    </span><span class="kt">reg</span><span class="w">     </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc</span><span class="p">;</span>
+<a href="#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">pc_next</span><span class="p">;</span>
+<a href="#__codelineno-3-24" id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">write_data</span><span class="p">,</span><span class="w"> </span><span class="n">read_data_1</span><span class="p">,</span><span class="w"> </span><span class="n">read_data_2</span><span class="p">;</span>
+<a href="#__codelineno-3-25" id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">alu_data_1</span><span class="p">,</span><span class="w"> </span><span class="n">alu_data_2</span><span class="p">,</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span>
+<a href="#__codelineno-3-26" id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">    </span><span class="kt">wire</span><span class="w">            </span><span class="n">alu_zero</span><span class="p">;</span>
+<a href="#__codelineno-3-27" id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">imm</span><span class="p">;</span>
+<a href="#__codelineno-3-28" id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">    </span><span class="kt">wire</span><span class="w">    </span><span class="p">[</span><span class="mh">31</span><span class="o">:</span><span class="mh">0</span><span class="p">]</span><span class="w">  </span><span class="n">jal_addr</span><span class="p">,</span><span class="w"> </span><span class="n">jalr_addr</span><span class="p">;</span>
 <a href="#__codelineno-3-29" id="__codelineno-3-29" name="__codelineno-3-29"></a>
-<a href="#__codelineno-3-30" id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">pc_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-31" id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">addr_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-32" id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">data_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_data_2</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-3-30" id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">pc_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="p">;</span>
+<a href="#__codelineno-3-31" id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">addr_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span>
+<a href="#__codelineno-3-32" id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">data_out</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">read_data_2</span><span class="p">;</span>
 <a href="#__codelineno-3-33" id="__codelineno-3-33" name="__codelineno-3-33"></a>
-<a href="#__codelineno-3-34" id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">posedge</span><span class="w"> </span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
-<a href="#__codelineno-3-35" id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
-<a href="#__codelineno-3-36" id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">            </span><span class="n">pc</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32</span><span class="mb">'b0</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-37" id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">        </span><span class="k">end</span><span class="w"></span>
-<a href="#__codelineno-3-38" id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span><span class="w"></span>
-<a href="#__codelineno-3-39" id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">            </span><span class="n">pc</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pc_next</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-40" id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="w">        </span><span class="k">end</span><span class="w"></span>
-<a href="#__codelineno-3-41" id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="w">    </span><span class="k">end</span><span class="w"></span>
+<a href="#__codelineno-3-34" id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">    </span><span class="k">always</span><span class="w"> </span><span class="p">@(</span><span class="k">posedge</span><span class="w"> </span><span class="n">clk</span><span class="w"> </span><span class="k">or</span><span class="w"> </span><span class="k">posedge</span><span class="w"> </span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-3-35" id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">        </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rst</span><span class="p">)</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-3-36" id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">            </span><span class="n">pc</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="mh">32</span><span class="mb">'b0</span><span class="p">;</span>
+<a href="#__codelineno-3-37" id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">        </span><span class="k">end</span>
+<a href="#__codelineno-3-38" id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="w">        </span><span class="k">else</span><span class="w"> </span><span class="k">begin</span>
+<a href="#__codelineno-3-39" id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">            </span><span class="n">pc</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="n">pc_next</span><span class="p">;</span>
+<a href="#__codelineno-3-40" id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="w">        </span><span class="k">end</span>
+<a href="#__codelineno-3-41" id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="w">    </span><span class="k">end</span>
 <a href="#__codelineno-3-42" id="__codelineno-3-42" name="__codelineno-3-42"></a>
-<a href="#__codelineno-3-43" id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="w">    </span><span class="n">Regs</span><span class="w"> </span><span class="n">regs</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-3-44" id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="w">        </span><span class="p">.</span><span class="n">clk</span><span class="p">(</span><span class="n">clk</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-45" id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">        </span><span class="p">.</span><span class="n">rst</span><span class="p">(</span><span class="n">rst</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-46" id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="w">        </span><span class="p">.</span><span class="n">we</span><span class="p">(</span><span class="n">reg_write</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-47" id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="w">        </span><span class="p">.</span><span class="n">read_addr_1</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">19</span><span class="o">:</span><span class="mh">15</span><span class="p">]),</span><span class="w"></span>
-<a href="#__codelineno-3-48" id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="w">        </span><span class="p">.</span><span class="n">read_addr_2</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">24</span><span class="o">:</span><span class="mh">20</span><span class="p">]),</span><span class="w"></span>
-<a href="#__codelineno-3-49" id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="w">        </span><span class="p">.</span><span class="n">write_addr</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">7</span><span class="p">]),</span><span class="w"></span>
-<a href="#__codelineno-3-50" id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="w">        </span><span class="p">.</span><span class="n">write_data</span><span class="p">(</span><span class="n">write_data</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-51" id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="w">        </span><span class="p">.</span><span class="n">read_data_1</span><span class="p">(</span><span class="n">read_data_1</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-52" id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="w">        </span><span class="p">.</span><span class="n">read_data_2</span><span class="p">(</span><span class="n">read_data_2</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-53" id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="w">        </span><span class="p">.</span><span class="n">debug_reg_addr</span><span class="p">(</span><span class="n">debug_reg_addr</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-54" id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="w">        </span><span class="p">.</span><span class="n">debug_reg</span><span class="p">(</span><span class="n">debug_reg</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-3-55" id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-3-43" id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="w">    </span><span class="n">Regs</span><span class="w"> </span><span class="n">regs</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-3-44" id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="w">        </span><span class="p">.</span><span class="n">clk</span><span class="p">(</span><span class="n">clk</span><span class="p">),</span>
+<a href="#__codelineno-3-45" id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">        </span><span class="p">.</span><span class="n">rst</span><span class="p">(</span><span class="n">rst</span><span class="p">),</span>
+<a href="#__codelineno-3-46" id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="w">        </span><span class="p">.</span><span class="n">we</span><span class="p">(</span><span class="n">reg_write</span><span class="p">),</span>
+<a href="#__codelineno-3-47" id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="w">        </span><span class="p">.</span><span class="n">read_addr_1</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">19</span><span class="o">:</span><span class="mh">15</span><span class="p">]),</span>
+<a href="#__codelineno-3-48" id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="w">        </span><span class="p">.</span><span class="n">read_addr_2</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">24</span><span class="o">:</span><span class="mh">20</span><span class="p">]),</span>
+<a href="#__codelineno-3-49" id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="w">        </span><span class="p">.</span><span class="n">write_addr</span><span class="p">(</span><span class="n">inst_in</span><span class="p">[</span><span class="mh">11</span><span class="o">:</span><span class="mh">7</span><span class="p">]),</span>
+<a href="#__codelineno-3-50" id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="w">        </span><span class="p">.</span><span class="n">write_data</span><span class="p">(</span><span class="n">write_data</span><span class="p">),</span>
+<a href="#__codelineno-3-51" id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="w">        </span><span class="p">.</span><span class="n">read_data_1</span><span class="p">(</span><span class="n">read_data_1</span><span class="p">),</span>
+<a href="#__codelineno-3-52" id="__codelineno-3-52" name="__codelineno-3-52"></a><span class="w">        </span><span class="p">.</span><span class="n">read_data_2</span><span class="p">(</span><span class="n">read_data_2</span><span class="p">),</span>
+<a href="#__codelineno-3-53" id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="w">        </span><span class="p">.</span><span class="n">debug_reg_addr</span><span class="p">(</span><span class="n">debug_reg_addr</span><span class="p">),</span>
+<a href="#__codelineno-3-54" id="__codelineno-3-54" name="__codelineno-3-54"></a><span class="w">        </span><span class="p">.</span><span class="n">debug_reg</span><span class="p">(</span><span class="n">debug_reg</span><span class="p">)</span>
+<a href="#__codelineno-3-55" id="__codelineno-3-55" name="__codelineno-3-55"></a><span class="w">    </span><span class="p">);</span>
 <a href="#__codelineno-3-56" id="__codelineno-3-56" name="__codelineno-3-56"></a>
-<a href="#__codelineno-3-57" id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="w">    </span><span class="n">ImmGen</span><span class="w"> </span><span class="n">immgen</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-3-58" id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">        </span><span class="p">.</span><span class="n">inst</span><span class="p">(</span><span class="n">inst_in</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-59" id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="w">        </span><span class="p">.</span><span class="n">imm</span><span class="p">(</span><span class="n">imm</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-3-60" id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-3-57" id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="w">    </span><span class="n">ImmGen</span><span class="w"> </span><span class="n">immgen</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-3-58" id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">        </span><span class="p">.</span><span class="n">inst</span><span class="p">(</span><span class="n">inst_in</span><span class="p">),</span>
+<a href="#__codelineno-3-59" id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="w">        </span><span class="p">.</span><span class="n">imm</span><span class="p">(</span><span class="n">imm</span><span class="p">)</span>
+<a href="#__codelineno-3-60" id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="w">    </span><span class="p">);</span>
 <a href="#__codelineno-3-61" id="__codelineno-3-61" name="__codelineno-3-61"></a>
-<a href="#__codelineno-3-62" id="__codelineno-3-62" name="__codelineno-3-62"></a><span class="w">    </span><span class="n">Mux2x32</span><span class="w"> </span><span class="n">mux2x32_1</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-3-63" id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">read_data_1</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-64" id="__codelineno-3-64" name="__codelineno-3-64"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">pc</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-65" id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">auipc</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-66" id="__codelineno-3-66" name="__codelineno-3-66"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">alu_data_1</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-3-67" id="__codelineno-3-67" name="__codelineno-3-67"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-3-62" id="__codelineno-3-62" name="__codelineno-3-62"></a><span class="w">    </span><span class="n">Mux2x32</span><span class="w"> </span><span class="n">mux2x32_1</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-3-63" id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">read_data_1</span><span class="p">),</span>
+<a href="#__codelineno-3-64" id="__codelineno-3-64" name="__codelineno-3-64"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">pc</span><span class="p">),</span>
+<a href="#__codelineno-3-65" id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">auipc</span><span class="p">),</span>
+<a href="#__codelineno-3-66" id="__codelineno-3-66" name="__codelineno-3-66"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">alu_data_1</span><span class="p">)</span>
+<a href="#__codelineno-3-67" id="__codelineno-3-67" name="__codelineno-3-67"></a><span class="w">    </span><span class="p">);</span>
 <a href="#__codelineno-3-68" id="__codelineno-3-68" name="__codelineno-3-68"></a>
-<a href="#__codelineno-3-69" id="__codelineno-3-69" name="__codelineno-3-69"></a><span class="w">    </span><span class="n">Mux2x32</span><span class="w"> </span><span class="n">mux2x32_2</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-3-70" id="__codelineno-3-70" name="__codelineno-3-70"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">read_data_2</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-71" id="__codelineno-3-71" name="__codelineno-3-71"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">imm</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-72" id="__codelineno-3-72" name="__codelineno-3-72"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">alu_src_b</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-73" id="__codelineno-3-73" name="__codelineno-3-73"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">alu_data_2</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-3-74" id="__codelineno-3-74" name="__codelineno-3-74"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-3-69" id="__codelineno-3-69" name="__codelineno-3-69"></a><span class="w">    </span><span class="n">Mux2x32</span><span class="w"> </span><span class="n">mux2x32_2</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-3-70" id="__codelineno-3-70" name="__codelineno-3-70"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">read_data_2</span><span class="p">),</span>
+<a href="#__codelineno-3-71" id="__codelineno-3-71" name="__codelineno-3-71"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">imm</span><span class="p">),</span>
+<a href="#__codelineno-3-72" id="__codelineno-3-72" name="__codelineno-3-72"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">alu_src_b</span><span class="p">),</span>
+<a href="#__codelineno-3-73" id="__codelineno-3-73" name="__codelineno-3-73"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">alu_data_2</span><span class="p">)</span>
+<a href="#__codelineno-3-74" id="__codelineno-3-74" name="__codelineno-3-74"></a><span class="w">    </span><span class="p">);</span>
 <a href="#__codelineno-3-75" id="__codelineno-3-75" name="__codelineno-3-75"></a>
-<a href="#__codelineno-3-76" id="__codelineno-3-76" name="__codelineno-3-76"></a><span class="w">    </span><span class="n">ALU</span><span class="w"> </span><span class="n">alu</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-3-77" id="__codelineno-3-77" name="__codelineno-3-77"></a><span class="w">        </span><span class="p">.</span><span class="n">a</span><span class="p">(</span><span class="n">alu_data_1</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-78" id="__codelineno-3-78" name="__codelineno-3-78"></a><span class="w">        </span><span class="p">.</span><span class="n">b</span><span class="p">(</span><span class="n">alu_data_2</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-79" id="__codelineno-3-79" name="__codelineno-3-79"></a><span class="w">        </span><span class="p">.</span><span class="n">alu_op</span><span class="p">(</span><span class="n">alu_op</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-80" id="__codelineno-3-80" name="__codelineno-3-80"></a><span class="w">        </span><span class="p">.</span><span class="n">res</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-81" id="__codelineno-3-81" name="__codelineno-3-81"></a><span class="w">        </span><span class="p">.</span><span class="n">zero</span><span class="p">(</span><span class="n">alu_zero</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-3-82" id="__codelineno-3-82" name="__codelineno-3-82"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-3-76" id="__codelineno-3-76" name="__codelineno-3-76"></a><span class="w">    </span><span class="n">ALU</span><span class="w"> </span><span class="n">alu</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-3-77" id="__codelineno-3-77" name="__codelineno-3-77"></a><span class="w">        </span><span class="p">.</span><span class="n">a</span><span class="p">(</span><span class="n">alu_data_1</span><span class="p">),</span>
+<a href="#__codelineno-3-78" id="__codelineno-3-78" name="__codelineno-3-78"></a><span class="w">        </span><span class="p">.</span><span class="n">b</span><span class="p">(</span><span class="n">alu_data_2</span><span class="p">),</span>
+<a href="#__codelineno-3-79" id="__codelineno-3-79" name="__codelineno-3-79"></a><span class="w">        </span><span class="p">.</span><span class="n">alu_op</span><span class="p">(</span><span class="n">alu_op</span><span class="p">),</span>
+<a href="#__codelineno-3-80" id="__codelineno-3-80" name="__codelineno-3-80"></a><span class="w">        </span><span class="p">.</span><span class="n">res</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span>
+<a href="#__codelineno-3-81" id="__codelineno-3-81" name="__codelineno-3-81"></a><span class="w">        </span><span class="p">.</span><span class="n">zero</span><span class="p">(</span><span class="n">alu_zero</span><span class="p">)</span>
+<a href="#__codelineno-3-82" id="__codelineno-3-82" name="__codelineno-3-82"></a><span class="w">    </span><span class="p">);</span>
 <a href="#__codelineno-3-83" id="__codelineno-3-83" name="__codelineno-3-83"></a>
-<a href="#__codelineno-3-84" id="__codelineno-3-84" name="__codelineno-3-84"></a><span class="w">    </span><span class="n">Mux4x32</span><span class="w"> </span><span class="n">mux4x32</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-3-85" id="__codelineno-3-85" name="__codelineno-3-85"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-86" id="__codelineno-3-86" name="__codelineno-3-86"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">imm</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-87" id="__codelineno-3-87" name="__codelineno-3-87"></a><span class="w">        </span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-88" id="__codelineno-3-88" name="__codelineno-3-88"></a><span class="w">        </span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">data_in</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-89" id="__codelineno-3-89" name="__codelineno-3-89"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">mem_to_reg</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-90" id="__codelineno-3-90" name="__codelineno-3-90"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">write_data</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-3-91" id="__codelineno-3-91" name="__codelineno-3-91"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
+<a href="#__codelineno-3-84" id="__codelineno-3-84" name="__codelineno-3-84"></a><span class="w">    </span><span class="n">Mux4x32</span><span class="w"> </span><span class="n">mux4x32</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-3-85" id="__codelineno-3-85" name="__codelineno-3-85"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span>
+<a href="#__codelineno-3-86" id="__codelineno-3-86" name="__codelineno-3-86"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">imm</span><span class="p">),</span>
+<a href="#__codelineno-3-87" id="__codelineno-3-87" name="__codelineno-3-87"></a><span class="w">        </span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="p">),</span>
+<a href="#__codelineno-3-88" id="__codelineno-3-88" name="__codelineno-3-88"></a><span class="w">        </span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">data_in</span><span class="p">),</span>
+<a href="#__codelineno-3-89" id="__codelineno-3-89" name="__codelineno-3-89"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">mem_to_reg</span><span class="p">),</span>
+<a href="#__codelineno-3-90" id="__codelineno-3-90" name="__codelineno-3-90"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">write_data</span><span class="p">)</span>
+<a href="#__codelineno-3-91" id="__codelineno-3-91" name="__codelineno-3-91"></a><span class="w">    </span><span class="p">);</span>
 <a href="#__codelineno-3-92" id="__codelineno-3-92" name="__codelineno-3-92"></a>
-<a href="#__codelineno-3-93" id="__codelineno-3-93" name="__codelineno-3-93"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">jal_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">imm</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-3-94" id="__codelineno-3-94" name="__codelineno-3-94"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">jalr_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span><span class="w"></span>
+<a href="#__codelineno-3-93" id="__codelineno-3-93" name="__codelineno-3-93"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">jal_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">imm</span><span class="p">;</span>
+<a href="#__codelineno-3-94" id="__codelineno-3-94" name="__codelineno-3-94"></a><span class="w">    </span><span class="k">assign</span><span class="w"> </span><span class="n">jalr_addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">alu_result</span><span class="p">;</span>
 <a href="#__codelineno-3-95" id="__codelineno-3-95" name="__codelineno-3-95"></a>
-<a href="#__codelineno-3-96" id="__codelineno-3-96" name="__codelineno-3-96"></a><span class="w">    </span><span class="n">MuxPC</span><span class="w"> </span><span class="n">mux_pc</span><span class="w"> </span><span class="p">(</span><span class="w"></span>
-<a href="#__codelineno-3-97" id="__codelineno-3-97" name="__codelineno-3-97"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-98" id="__codelineno-3-98" name="__codelineno-3-98"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">jalr_addr</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-99" id="__codelineno-3-99" name="__codelineno-3-99"></a><span class="w">        </span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">jal_addr</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-100" id="__codelineno-3-100" name="__codelineno-3-100"></a><span class="w">        </span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">jal_addr</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-101" id="__codelineno-3-101" name="__codelineno-3-101"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">pc_src</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-102" id="__codelineno-3-102" name="__codelineno-3-102"></a><span class="w">        </span><span class="p">.</span><span class="n">branch</span><span class="p">(</span><span class="n">branch</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-103" id="__codelineno-3-103" name="__codelineno-3-103"></a><span class="w">        </span><span class="p">.</span><span class="n">b_type</span><span class="p">(</span><span class="n">b_type</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-104" id="__codelineno-3-104" name="__codelineno-3-104"></a><span class="w">        </span><span class="p">.</span><span class="n">alu_res</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span><span class="w"></span>
-<a href="#__codelineno-3-105" id="__codelineno-3-105" name="__codelineno-3-105"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">pc_next</span><span class="p">)</span><span class="w"></span>
-<a href="#__codelineno-3-106" id="__codelineno-3-106" name="__codelineno-3-106"></a><span class="w">    </span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-3-107" id="__codelineno-3-107" name="__codelineno-3-107"></a><span class="k">endmodule</span><span class="w"></span>
+<a href="#__codelineno-3-96" id="__codelineno-3-96" name="__codelineno-3-96"></a><span class="w">    </span><span class="n">MuxPC</span><span class="w"> </span><span class="n">mux_pc</span><span class="w"> </span><span class="p">(</span>
+<a href="#__codelineno-3-97" id="__codelineno-3-97" name="__codelineno-3-97"></a><span class="w">        </span><span class="p">.</span><span class="n">I0</span><span class="p">(</span><span class="n">pc</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="mh">4</span><span class="p">),</span>
+<a href="#__codelineno-3-98" id="__codelineno-3-98" name="__codelineno-3-98"></a><span class="w">        </span><span class="p">.</span><span class="n">I1</span><span class="p">(</span><span class="n">jalr_addr</span><span class="p">),</span>
+<a href="#__codelineno-3-99" id="__codelineno-3-99" name="__codelineno-3-99"></a><span class="w">        </span><span class="p">.</span><span class="n">I2</span><span class="p">(</span><span class="n">jal_addr</span><span class="p">),</span>
+<a href="#__codelineno-3-100" id="__codelineno-3-100" name="__codelineno-3-100"></a><span class="w">        </span><span class="p">.</span><span class="n">I3</span><span class="p">(</span><span class="n">jal_addr</span><span class="p">),</span>
+<a href="#__codelineno-3-101" id="__codelineno-3-101" name="__codelineno-3-101"></a><span class="w">        </span><span class="p">.</span><span class="n">s</span><span class="p">(</span><span class="n">pc_src</span><span class="p">),</span>
+<a href="#__codelineno-3-102" id="__codelineno-3-102" name="__codelineno-3-102"></a><span class="w">        </span><span class="p">.</span><span class="n">branch</span><span class="p">(</span><span class="n">branch</span><span class="p">),</span>
+<a href="#__codelineno-3-103" id="__codelineno-3-103" name="__codelineno-3-103"></a><span class="w">        </span><span class="p">.</span><span class="n">b_type</span><span class="p">(</span><span class="n">b_type</span><span class="p">),</span>
+<a href="#__codelineno-3-104" id="__codelineno-3-104" name="__codelineno-3-104"></a><span class="w">        </span><span class="p">.</span><span class="n">alu_res</span><span class="p">(</span><span class="n">alu_result</span><span class="p">),</span>
+<a href="#__codelineno-3-105" id="__codelineno-3-105" name="__codelineno-3-105"></a><span class="w">        </span><span class="p">.</span><span class="n">o</span><span class="p">(</span><span class="n">pc_next</span><span class="p">)</span>
+<a href="#__codelineno-3-106" id="__codelineno-3-106" name="__codelineno-3-106"></a><span class="w">    </span><span class="p">);</span>
+<a href="#__codelineno-3-107" id="__codelineno-3-107" name="__codelineno-3-107"></a><span class="k">endmodule</span>
 </code></pre></div>
 <p>这样修改后整个单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>就完整正确连接了</p>
 <h2 id="_7">仿真测试<a class="headerlink" href="#_7" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>与<span class="heti-skip"><span class="heti-spacing"> </span>lab5-1<span class="heti-spacing"> </span></span>同理，载入<span class="heti-skip"><span class="heti-spacing"> </span>lab10_all.coe<span class="heti-spacing"> </span></span>文件，选择<span class="heti-skip"><span class="heti-spacing"> </span>Core_tb.sv<span class="heti-spacing"> </span></span>为目标进行仿真测试，再通过调整得到全部中间变量（寄存器组值、<span>ALU<span class="heti-spacing"> </span></span>输入输出、<span>Mux<span class="heti-spacing"> </span></span>输入输出等）得到仿真波形：
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/sim_wave.png"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/sim_wave.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/sim_wave.png"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/sim_wave.png"/></a></p>
 <p>以及<span class="heti-skip"><span class="heti-spacing"> </span>pc<span class="heti-spacing"> </span></span>和寄存器的波形数据：
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/sim_pc_regs.png"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/sim_pc_regs.png"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/sim_pc_regs.png"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/sim_pc_regs.png"/></a></p>
 <p>通过仔细分析每一条汇编指令与所有值的变化、寄存器的变化可以看出<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>按照给出的指令正确运行了。行为均与<span class="heti-skip"><span class="heti-spacing"> </span>lab5-1<span class="heti-spacing"> </span></span>一致。</p>
 <h2 id="_8">上板验证<a class="headerlink" href="#_8" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>在<span class="heti-skip"><span class="heti-spacing"> </span>vivado<span class="heti-spacing"> </span></span>中<span class="heti-skip"><span class="heti-spacing"> </span>disable<span class="heti-spacing"> </span></span>掉<span class="heti-skip"><span class="heti-spacing"> </span>Control_sim.v<span class="heti-spacing"> </span></span>文件（即使用<span class="heti-skip"><span class="heti-spacing"> </span>Control.v<span class="heti-spacing"> </span></span>和<span><span class="heti-spacing"> </span>Control.edf</span>）然后通过<span><span class="heti-spacing"> </span>Top.</span>‌<span>sv<span class="heti-spacing"> </span></span>中顶层模块生成比特流，写入<span class="heti-skip"><span class="heti-spacing"> </span>FPGA<span class="heti-spacing"> </span></span>开发版即可进行上板验证。</p>
 <p>通过单步运行，观察<span><span class="heti-spacing"> </span>pc</span>、inst、寄存器值可以确定上板也没有任何问题。行为均与<span class="heti-skip"><span class="heti-spacing"> </span>lab5-1<span class="heti-spacing"> </span></span>一致。</p>
 <h2 id="bonus">Bonus<a class="headerlink" href="#bonus" title="Permanent link">¶</a></h2>
 <p><span>Bonus<span class="heti-spacing"> </span></span>范围的指令在前面设计控制单元的时候就已经考虑了，所以只需要测试这些指令即可。简单写了一个包含这些指令的<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>汇编文件：
-</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="na">.section</span><span class="w"> </span><span class="no">.text</span><span class="w"></span>
-<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="na">.globl</span><span class="w"> </span><span class="no">_start</span><span class="w"></span>
-<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nl">_start:</span><span class="w"></span>
+</p><div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="na">.section</span><span class="w"> </span><span class="no">.text</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="na">.globl</span><span class="w"> </span><span class="no">_start</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="nl">_start:</span>
 <a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x1</span><span class="p">,</span><span class="w">     </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">123</span><span class="w">     </span><span class="c1"># x1 = 123    </span>
 <a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">    </span><span class="nf">andi</span><span class="w">    </span><span class="no">x2</span><span class="p">,</span><span class="w">     </span><span class="no">x1</span><span class="p">,</span><span class="w">     </span><span class="mi">456</span><span class="w">     </span><span class="c1"># x2 = 72</span>
 <a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">    </span><span class="nf">ori</span><span class="w">     </span><span class="no">x3</span><span class="p">,</span><span class="w">     </span><span class="no">x2</span><span class="p">,</span><span class="w">     </span><span class="mi">789</span><span class="w">     </span><span class="c1"># x3 = 861</span>
@@ -2333,8 +2333,8 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">    </span><span class="nf">sltu</span><span class="w">    </span><span class="no">x12</span><span class="p">,</span><span class="w">    </span><span class="no">x11</span><span class="p">,</span><span class="w">    </span><span class="no">x12</span><span class="w">     </span><span class="c1"># x12 = 1</span>
 <a href="#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">    </span><span class="nf">jalr</span><span class="w">    </span><span class="no">x13</span><span class="p">,</span><span class="w">    </span><span class="mi">63</span><span class="p">(</span><span class="no">x12</span><span class="p">)</span><span class="w">         </span><span class="c1"># x13 = 60</span>
 <a href="#__codelineno-4-19" id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x14</span><span class="p">,</span><span class="w">    </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">1</span><span class="w">       </span><span class="c1"># won't exec</span>
-<a href="#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nl">Label:</span><span class="w"></span>
-<a href="#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x15</span><span class="p">,</span><span class="w">    </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">1</span><span class="w"></span>
+<a href="#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="nl">Label:</span>
+<a href="#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">    </span><span class="nf">addi</span><span class="w">    </span><span class="no">x15</span><span class="p">,</span><span class="w">    </span><span class="no">x0</span><span class="p">,</span><span class="w">     </span><span class="mi">1</span>
 </code></pre></div>
 使用 riscv32-unknown-linux-gnu-c++ -nostdlib -nostdinc -static -g bonus.s -o bonus.elf -march=rv32i -mabi=ilp32 来编译出指令集在 RV32I 范围内的 ELF 文件，再 objdump：
 <div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>00010074 &lt;_start&gt;:
@@ -2364,12 +2364,12 @@ var _hmt = _hmt || [];
 <a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>07b00093, 1c80f113, 31516193, 0011f233, 0ea00293, 005262b3, 00229333, 07b34393, 00439413, 00845493, 00245533, 00fff597, fff00613, 00c5b633, 03f606e7, 00100713, 00100793;
 </code></pre></div>
 载入 ROM 内，进行仿真，得到波形以及寄存器内容变化：
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/bonus_wave.png"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/bonus_wave.png"/></a>
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/bonus_reg.png"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/bonus_reg.png"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/bonus_wave.png"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/bonus_wave.png"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/bonus_reg.png"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/bonus_reg.png"/></a>
 <p>通过分析<span><span class="heti-spacing"> </span>pc</span>、中间值等以及和汇编代码实际效果（注释里写了）对比，可以发现这些<span class="heti-skip"><span class="heti-spacing"> </span>bonus<span class="heti-spacing"> </span></span>指令都正常执行了。上板测试也没有问题。</p>
 <h2 id="cpu_1">附：单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>设计图<a class="headerlink" href="#cpu_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
 <p>实际使用的单周期<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>设计图如下：
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/graph.jpg"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/graph.jpg"/></a></p>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs1/lab5-2/graph.jpg"><img alt="" src="/assets/images/cs/system/cs1/lab5-2/graph.jpg"/></a></p>
 <hr/>
 <div class="md-source-file">
 <small>

@@ -6,7 +6,7 @@
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
 <link href="https://note.tonycrane.cc/cs/system/cs2/topic4/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
-<meta content="mkdocs-1.3.1, mkdocs-material-8.1.4" name="generator"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
 <title>进程与线程 - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
@@ -35,17 +35,17 @@ var _hmt = _hmt || [];
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
 <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-            html.glightbox-open { overflow: initial; height: 100%; }
-            .gslide-title { margin-top: 0px; user-select: text; }
-            .gslide-desc { color: #666; user-select: text; }
-            .gslide-image img { background: white; }
-            
-                .gscrollbar-fixer { padding-right: 15px; }
-                .gdesc-inner { font-size: 0.75rem; }
-                body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-                body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-                body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-                </style><script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
 <script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
@@ -2145,8 +2145,8 @@ var _hmt = _hmt || [];
 </li>
 </ul>
 <p>通过<span class="heti-skip"><span class="heti-spacing"> </span>cat /proc/$pid/maps<span class="heti-spacing"> </span></span>可以查看进程的虚拟内存布局。</p>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img1_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic4/img1_light.png#only-light"/></a>
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img1_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic4/img1_dark.png#only-dark"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img1_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic4/img1_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img1_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic4/img1_dark.png#only-dark"/></a></p>
 <h3 id="_4">进程的状态<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>新建（new<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：进程正在被创建</li>
@@ -2155,19 +2155,19 @@ var _hmt = _hmt || [];
 <li>就绪（ready<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：进程已经准备好，等待被<span class="heti-skip"><span class="heti-spacing"> </span>CPU<span class="heti-spacing"> </span></span>执行</li>
 <li>终止（terminated<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：进程已经终止</li>
 </ul>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img2_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic4/img2_light.png#only-light"/></a>
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img2_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic4/img2_dark.png#only-dark"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img2_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic4/img2_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img2_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic4/img2_dark.png#only-dark"/></a></p>
 <h3 id="_5">进程控制块<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <p>进程控制块（Process Control Block，PCB）是操作系统为每一个进程维护的数据结构。</p>
 <p><span>Linux<span class="heti-spacing"> </span></span>中通过<span class="heti-skip"><span class="heti-spacing"> </span>task_struct<span class="heti-spacing"> </span></span>结构体来存储，内容：</p>
 <ul>
-<li><code class="highlight"><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span><span class="w"></span></code>：进程号</li>
-<li><code class="highlight"><span class="kt">long</span><span class="w"> </span><span class="n">state</span><span class="w"></span></code>：进程状态</li>
-<li><code class="highlight"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">time_slice</span><span class="w"></span></code>：时间片</li>
-<li><code class="highlight"><span class="k">struct</span><span class="w"> </span><span class="nc">task_struct</span><span class="w"> </span><span class="o">*</span><span class="n">parent</span><span class="w"></span></code>：父进程</li>
-<li><code class="highlight"><span class="k">struct</span><span class="w"> </span><span class="nc">list_head</span><span class="w"> </span><span class="n">children</span><span class="w"></span></code>：子进程</li>
-<li><code class="highlight"><span class="k">struct</span><span class="w"> </span><span class="nc">files_struct</span><span class="w"> </span><span class="o">*</span><span class="n">files</span><span class="w"></span></code>：打开的文件</li>
-<li><code class="highlight"><span class="k">struct</span><span class="w"> </span><span class="nc">mm_struct</span><span class="w"> </span><span class="o">*</span><span class="n">mm</span><span class="w"></span></code>：进程的内存空间</li>
+<li><code class="highlight"><span class="kt">pid_t</span><span class="w"> </span><span class="n">pid</span></code>：进程号</li>
+<li><code class="highlight"><span class="kt">long</span><span class="w"> </span><span class="n">state</span></code>：进程状态</li>
+<li><code class="highlight"><span class="kt">unsigned</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">time_slice</span></code>：时间片</li>
+<li><code class="highlight"><span class="k">struct</span><span class="w"> </span><span class="nc">task_struct</span><span class="w"> </span><span class="o">*</span><span class="n">parent</span></code>：父进程</li>
+<li><code class="highlight"><span class="k">struct</span><span class="w"> </span><span class="nc">list_head</span><span class="w"> </span><span class="n">children</span></code>：子进程</li>
+<li><code class="highlight"><span class="k">struct</span><span class="w"> </span><span class="nc">files_struct</span><span class="w"> </span><span class="o">*</span><span class="n">files</span></code>：打开的文件</li>
+<li><code class="highlight"><span class="k">struct</span><span class="w"> </span><span class="nc">mm_struct</span><span class="w"> </span><span class="o">*</span><span class="n">mm</span></code>：进程的内存空间</li>
 <li>……</li>
 <li>pc、寄存器等</li>
 </ul>
@@ -2244,8 +2244,8 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 </ul>
-<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img3_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic4/img3_light.png#only-light"/></a>
-<a class="glightbox" data-desc-position="bottom" data-height="auto" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img3_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic4/img3_dark.png#only-dark"/></a></p>
+<p><a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img3_light.png#only-light"><img alt="" src="/assets/images/cs/system/cs2/topic4/img3_light.png#only-light"/></a>
+<a class="glightbox" data-desc-position="bottom" data-height="auto" data-type="image" data-width="80%" href="/assets/images/cs/system/cs2/topic4/img3_dark.png#only-dark"><img alt="" src="/assets/images/cs/system/cs2/topic4/img3_dark.png#only-dark"/></a></p>
 <h3 id="_9">进程创建<a class="headerlink" href="#_9" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <ul>
 <li>操作系统提供了一系列系统调用来进行进程的创建</li>
@@ -2335,7 +2335,7 @@ var _hmt = _hmt || [];
 </ul>
 <h4 id="posix"><span>POSIX<span class="heti-spacing"> </span></span>共享内存<a class="headerlink" href="#posix" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h4>
 <ul>
-<li>通过 <code class="highlight"><span class="n">shm_open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">O_CREAT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_RDWR</span><span class="p">,</span><span class="w"> </span><span class="mo">0666</span><span class="p">)</span><span class="w"></span></code> 创建共享内存<ul>
+<li>通过 <code class="highlight"><span class="n">shm_open</span><span class="p">(</span><span class="n">name</span><span class="p">,</span><span class="w"> </span><span class="n">O_CREAT</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">O_RDWR</span><span class="p">,</span><span class="w"> </span><span class="mo">0666</span><span class="p">)</span></code> 创建共享内存<ul>
 <li><span>name<span class="heti-spacing"> </span></span>是共享内存的名字</li>
 <li><span>O_CREAT<span class="heti-spacing"> </span></span>表示如果不存在则创建</li>
 <li><span>O_RDWR<span class="heti-spacing"> </span></span>表示可读可写</li>
@@ -2343,8 +2343,8 @@ var _hmt = _hmt || [];
 <li>返回一个文件描述符（shm_fd）</li>
 </ul>
 </li>
-<li>通过 <code class="highlight"><span class="n">ftruncate</span><span class="p">(</span><span class="n">shm_fd</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">)</span><span class="w"></span></code> 设置共享内存的大小</li>
-<li>通过 <code class="highlight"><span class="n">mmap</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">PROT_READ</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PROT_WRITE</span><span class="p">,</span><span class="w"> </span><span class="n">MAP_SHARED</span><span class="p">,</span><span class="w"> </span><span class="n">shm_fd</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"></span></code> 将共享内存映射到进程的地址空间<ul>
+<li>通过 <code class="highlight"><span class="n">ftruncate</span><span class="p">(</span><span class="n">shm_fd</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">)</span></code> 设置共享内存的大小</li>
+<li>通过 <code class="highlight"><span class="n">mmap</span><span class="p">(</span><span class="nb">NULL</span><span class="p">,</span><span class="w"> </span><span class="n">size</span><span class="p">,</span><span class="w"> </span><span class="n">PROT_READ</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="n">PROT_WRITE</span><span class="p">,</span><span class="w"> </span><span class="n">MAP_SHARED</span><span class="p">,</span><span class="w"> </span><span class="n">shm_fd</span><span class="p">,</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span></code> 将共享内存映射到进程的地址空间<ul>
 <li><span>PROT_READ<span class="heti-spacing"> </span></span>表示可读、<span>PROT_WRITE<span class="heti-spacing"> </span></span>表示可写</li>
 <li>返回一个指向共享内存的指针（shm_ptr）</li>
 <li>之后便可以通过<span class="heti-skip"><span class="heti-spacing"> </span>shm_ptr<span class="heti-spacing"> </span></span>来读写共享内存</li>
@@ -2542,24 +2542,24 @@ var _hmt = _hmt || [];
 <li>使用<span><span class="heti-spacing"> </span>TLS</span><ul>
 <li>通过<span><span class="heti-spacing"> </span>pthread</span>：<ul>
 <li>在每个线程执行的函数中可以调用<span class="heti-skip"><span class="heti-spacing"> </span>pthread_setspecific()<span class="heti-spacing"> </span></span>来设置<span><span class="heti-spacing"> </span>TLS</span>，<span>pthread_getspecific()<span class="heti-spacing"> </span></span>来获取<span><span class="heti-spacing"> </span>TLS</span>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">pthread_key_t</span><span class="w"> </span><span class="n">key</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="n">pthread_key_t</span><span class="w"> </span><span class="n">key</span><span class="p">;</span>
 <a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a>
-<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">exec_in_thread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">args_in</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span><span class="w"></span>
-<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="o">*</span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="n">pthread_setspecific</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">tl</span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">exec_in_thread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">args_in</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="kt">int</span><span class="w"> </span><span class="o">*</span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">malloc</span><span class="p">(</span><span class="k">sizeof</span><span class="p">(</span><span class="kt">int</span><span class="p">));</span>
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="w">    </span><span class="o">*</span><span class="n">tl</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a><span class="w">    </span><span class="n">pthread_setspecific</span><span class="p">(</span><span class="n">key</span><span class="p">,</span><span class="w"> </span><span class="n">tl</span><span class="p">);</span>
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="p">}</span>
 </code></pre></div></li>
 </ul>
 </li>
 <li>通过<span class="heti-skip"><span class="heti-spacing"> </span>__thread<span class="heti-spacing"> </span></span>关键字<ul>
 <li>将变量声明为<span><span class="heti-spacing"> </span>__thread</span>，则这个变量就是<span><span class="heti-spacing"> </span>TLS</span>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">__thread</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="n">__thread</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">x</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mi">3</span><span class="p">;</span>
 <a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a>
-<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">exec_in_thread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">args_in</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
-<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span><span class="w"></span>
-<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span><span class="w"></span>
-<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">}</span><span class="w"></span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="nf">exec_in_thread</span><span class="p">(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">args_in</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="n">x</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mi">1</span><span class="p">;</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="n">printf</span><span class="p">(</span><span class="s">"%d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">x</span><span class="p">);</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="p">}</span>
 </code></pre></div></li>
 </ul>
 </li>
@@ -2619,7 +2619,7 @@ var _hmt = _hmt || [];
 </ul>
 </li>
 <li><span>Linux<span class="heti-spacing"> </span></span>通过<span class="heti-skip"><span class="heti-spacing"> </span>clone<span class="heti-spacing"> </span></span>系统调用来创建<span><span class="heti-spacing"> </span>LWP</span>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">clone</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">fn</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">child_stack</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">);</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="kt">int</span><span class="w"> </span><span class="nf">clone</span><span class="p">(</span><span class="kt">int</span><span class="w"> </span><span class="p">(</span><span class="o">*</span><span class="n">fn</span><span class="p">)(</span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="p">),</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">child_stack</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">flags</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">arg</span><span class="p">);</span>
 </code></pre></div><ul>
 <li><span>clone<span class="heti-spacing"> </span></span>比<span class="heti-skip"><span class="heti-spacing"> </span>fork<span class="heti-spacing"> </span></span>更通用，<span>fork<span class="heti-spacing"> </span></span>可以通过<span class="heti-skip"><span class="heti-spacing"> </span>clone<span class="heti-spacing"> </span></span>来实现</li>
 </ul>
