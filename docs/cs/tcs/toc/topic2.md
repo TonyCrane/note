@@ -6,7 +6,7 @@ counter: True
 # 上下文无关语言
 
 !!! abstract
-    理论计算机科学导引第五至第？周课程内容
+    理论计算机科学导引第五至第六周课程内容
 
 ## 上下文无关文法
 
@@ -84,12 +84,12 @@ counter: True
 
         CNF：$S_0\to S,\ A\to a,\ B\to b,\ S\to a\ |\ b\ |\ AC\ |\ BD\ |\ AA\ |\ BB$
 
-### Pushdown Automata
+## Pushdown Automata
 
 - 下推自动机（Pushdown Automata, PDA）是 NFA 的一个扩展
     - 在 NFA 基础上加了一个额外的栈结构，并在状态转移时会进行栈操作
     - PDA 可以和 CFG 等价
-- 形式化定义，一个 PDA 是一个六元组 $P=(K, \Gamma, \Sigma, \Delta, s, F)$
+- 形式化定义，一个 PDA 是一个六元组 $P=(K, \Sigma, \Gamma, \Delta, s, F)$
     - 其中 $K, \Sigma, s, F$ 的含义和 NFA 中的相同
     - $\Gamma$: stack alphabet，即栈里面会出现的符号集合
     - $\Delta$: transition relation, a **finite** subset of $(K\times (\Sigma\cup\{e\})\times \Gamma^*)\times (K\times\Gamma^*)$
@@ -114,7 +114,7 @@ counter: True
         - 如果是空栈或者栈顶是 1，则 push 1
         - 否则（即栈顶是 0），pop
 
-    所以对应的 PDA $P=(K, \Gamma, \Sigma, \Delta, s, F)$：
+    所以对应的 PDA $P=(K, \Sigma, \Gamma, \Delta, s, F)$：
 
     - $K=\{q\},\ s=q,\ F=\{q\},\ \Sigma = \Gamma = \{0, 1\}$
     
@@ -128,3 +128,155 @@ counter: True
     $$
 
     如上即可通过一个状态和四个转移规则来达到，利用了 NFA “猜测”的特性（并且注意任何时候匹配到了都要 pop，除非匹配 $e$，以及 push $e$ 相当于不变即仅 pop）
+
+### Simple PDA
+
+定义一个更简单的 PDA 形式用于方便后续证明。
+
+A PDA $P=(K, \Sigma, \Gamma, \Delta, s, F)$ is simple, if:
+
+1. $|F| = 1$：只有一个接受状态
+2. for each transition $\big((p, a, \alpha), (q, \beta)\big)\in\Delta$, either
+    - $\alpha=e$ and $|\beta|=1$ or 
+    - $|\alpha|=1$ and $\beta=e$
+    - （就是要么 pop 一个字符，要么 push 一个字符）
+
+??? success "证明任意 PDA 都有等价 simple PDA"
+    思路就是如果有多步的 push pop 操作，就进行拆分：
+
+    - 如果 $|F|\neq 1$，新建一个接受状态 $f'$
+        - $\forall q\in F$，新建转移 $\big((q, e, e), (f', e)\big)$
+        - 令 $F = \{f'\}$
+    - 如果不满足只 push/pop 一个字符的条件，假设当前不满足的转移是 $\big((p, a, \alpha), (q, \beta)\big)$，依次
+        1. 如果 $|\alpha|\geq 1$ 且 $|\beta|\geq 1$（同时 push/pop 了）
+            - 新建状态 $r$，将原转移替换为 $\big((p, a, \alpha), (r, e)\big),\ \big((r, e, e), (q, \beta)\big)$
+        2. 如果 $|\alpha| > 1$ 且 $\beta = e$（不止 pop 了一个字符）
+            - 假设 $\alpha = c_1\cdots c_k, k\geq 2$
+            - 新建状态 $r_1, \cdots, r_{k-1}$
+            - 将原转移替换为 $\big((p, a, c_1), (r_1, e)\big),\ \big((r_1, e, c_2), (r_2, e)\big),\ \cdots,\ \big((r_{k-1}, e, c_k), (q, e)\big)$
+        3. 如果 $\alpha = e$ 且 $|\beta| > 1$（不止 push 了一个字符）
+            - 和第二条类似，拆分成 $k$ 步 push
+        4. 如果 $\alpha = \beta = e$（没 push 也没 pop）
+            - 新建状态 $r$，任取 $b\in\Gamma$，将原规则替换为 $\big((p, a, e), (r, b)\big),\ \big((r, e, b), (q, e)\big)$
+
+### PDA 与 CFG 等价
+
+分两个部分证明：
+
+#### CFG -> PDA
+
+对任意 CFG $G$，存在 PDA $M$ 使得 $L(M)=L(G)$，证明思路：
+
+- 在栈中从 $S$ 开始非确定性地进行字符串的生成
+- 将生成的内容和输入比较
+- 如果匹配则接受
+
+Given $G=(V, \Sigma, S, R)\Rightarrow P=(K, \Sigma, \Gamma, \Delta, s, F)$, s.t. $L(P)=L(G)$:
+
+- $K=\{s, f\},\ s=s,\ F=\{f\},\ \Gamma = V$
+- $\Delta$ 由以下部分组成：
+    - $\big((s, e, e), (f, S)\big)$：起始先 push 进 $S$
+    - $\big((f, a, a), (f, e)\big),\forall a\in\Sigma$：匹配到输入串则 pop
+    - $\big((f, e, A), (f, u)\big),\forall (A, u)\in R$：对于所有规则进行生成，非确定自动机会“猜测”
+
+#### PDA -> CFG
+
+前面证明了任意 PDA -> simple PDA，所以只需要证明 simple PDA -> CFG 即可。
+
+Given $P=(K, \Sigma, \Gamma, \Delta, s, F)$ is simple $\Rightarrow G=(V, \Sigma, S, R)$, s.t. $L(P)=L(G)$:
+
+- 设立一系列非终结符号：$\{A_{pq}: (p, q)\in K\times K\}$，表示从状态 $p$ 到状态 $q$ 的路径
+    - 设立的目标：$A_{pq}\Rightarrow^* w\in\Sigma^*$ iff $(p, w, e)\vdash_P^*(q, e, e)$
+- 起始符号：$S=A_{sf}$
+    - 因为 $s\in L(P)$ iff $(s, w, e)\vdash_P^*(f, e, e)$
+- 转移关系 $R$
+    - $\forall p\in K$，$A_{pp}\to e$
+    - $\forall p, q, r\in K$，有以下两种情况：
+        - 如果在从 $p$ 转移到 $q$ 的过程中出现了一个时刻在状态 $r$ 且栈是空的
+            - $A_{pq}\to A_{pr}A_{rq}, \forall r\in K$
+        - 如果过程中没有出现过任何一次栈为空的情况
+            - 注意到第一步和最后一步有对应关系，假设第一步读取 $a$ 并 push $\alpha$，最后一步读取 $b$ 并 pop $\alpha$，所以可以添加以下转移：
+            - $A_{pq}\to aA_{p'q'}b, \forall\big((p, a, e), (p', \alpha)\big), \big((q', b, \alpha), (q, e)\big)\in\Delta\text{ for some }\alpha\in\Gamma$
+
+这样就出现了一个类似 DP 的情况，可以证明 $A_{pq}\Rightarrow^* w\in\Sigma^*$ iff $(p, w, e)\vdash_P^*(q, e, e)$：
+
+- 左推右：by induction on length of derivation from $A_{pq}$ to $w$
+- 右推左：by induction on number of steps of computation
+
+## CFL 性质
+
+### Closure Properties
+
+PDA 可以定义一个 CFL，所以根据 PDA 的结构，CFL 有以下性质：
+
+如果 $A$ 和 $B$ 是 CFL，则 $A\cup B, A\circ B, A^*$ 也是 CFL，但 $A\cap B, \overline{A}$ 不一定是 CFL。简单证明：设 $G_A=(V_A,\Sigma,S_A,R_A), G_B=(V_B,\Sigma,S_B,R_B)$，则：
+
+- $G_{A\cup B}$：规则 $S\to S_A\ |\ S_B$
+- $G_{A\circ B}$：规则 $S\to S_AS_B$
+- $G_{A^*}$：规则 $S\to e\ |\ SS_A$
+
+针对 $\cap, \overline{A}$，可以构造反例：
+
+- $A=\{a^ib^jc^k:i=j\}, B=\{a^ib^jc^k:j=k\}$ 都是 context-free 的
+- $A\cap B = \{a^nb^nc^n:n\geq 0\}$ 不是 context-free 的（后面会通过 pumping theorem 证明）
+- $A\cap B = \overline{\overline{A}\cup\overline{B}}$，所以 $\cap$ 不封闭则 $\overline{A}$ 也不封闭
+
+### Pumping Theorem for CFL
+
+类似正则语言的 pumping theorem，CFL 也有一个相似的定理：
+
+- 令 $L$ 为一个 CFL
+- 则存在一个整数 $p\geq 1$（称为 pumping length）
+- 使得对于所有长度不小于 $p$ 的字符串 $w\in L$
+- 都可以将 $w$ 分解为五个部分 $w=uvxyz$ 满足：
+    1. 对于任意 $i\geq 0$，有 $uv^ixy^iz\in L$
+    2. $|v| + |y| > 0$
+    3. $|vxy| \leq p$
+
+证明思路：非终结符号一共有 $V-\Sigma$ 是有限的，但生成的字符串可以是无限长的，所以生成过程产生的 parse tree 中一定会有重复的非终结符 $Q$，简单画成如下：
+
+<div style="text-align: center;">
+    <img src="/assets/images/cs/tcs/toc/topic2/img1.light.png#only-light" width="30%" style="margin: 0 auto;">
+    <img src="/assets/images/cs/tcs/toc/topic2/img1.dark.png#only-dark" width="30%" style="margin: 0 auto;">
+</div>
+
+即一层一层从上到下生成，最终推导生成 $uvxyz$，可见一定有以下结论：
+
+- $S\Rightarrow^* uQz,\ Q\Rightarrow^* vQy,\ Q\Rightarrow^* x$
+- 因此有 $uv^ixy^iz\in L$
+
+??? success "具体的证明"
+    $L$ 是 CFL，则存在 CFG $G=(V,\Sigma, S, R)$ 生成它。令 $b=\max\{|u|:(A,u)\in R\}$ 即所有规则里右侧最长的，称 $\mathrm{fanout}\leq b$。也可以知道在如上的 parse tree 中，一个节点最多有 $b$ 个子节点。
+
+    我们已知如果一棵树有 $\mathrm{fanout}\leq b$ 且有 $n$ 个叶节点，则它的高度不小于 $\log_bn$。所以我们令 pumping length $p=b^{|V-\Sigma|+1}$，这样取长度不小于 $p$ 的字符串 $w\in L$，令 $T$ 是生成 $w$ 的且**有最少节点数**的 parse tree。此时字符串中的所有符号都是叶节点，那 $T$ 的高度就不小于 $\log_bp=|V-\Sigma|+1$。所以有如下结论：
+
+    - 在最长的一条路径上，有：
+        - $\text{\#edges}\geq |V-\Sigma|+1$
+        - $\text{\#nodes}\geq |V-\Sigma|+2$
+        - $\text{\#non-terminals}\geq |V-\Sigma|+1$
+    - 所以在这条路径上一定有至少一个非终结符号出现了至少两次，我们取**最低的一对**为 $Q$
+
+    接下来是三条结论：
+
+    1. $uv^ixy^iz\in L$ 显然
+    2. $|v|+|y| > 0$
+        - 唯一不成立的情况是 $v=y=e$，假设是这种情况，所以 $w=uxz$
+        - 这样就能找到一棵比 $T$ 节点数更少的 parse tree（少个 $Q$），与假设矛盾
+    3. $|vxy|\leq p$
+        - 只考虑从上面的 $Q$ 开始的子树 
+            - 如果可以证明其高度不大于 $|V-\Sigma|+1$
+            - 就可以证明 $|vxy|=\text{\#leaves}\leq b^{h+1}\leq b^{|V-\Sigma|+1}=p$
+        - 这里子树的高度就是 $QQa$ 这条路径的长度
+            - 因为我们假设了 $QQ$ 是最低的一对
+            - 所以这条路径上不会再存在其他重复的非终结符号
+            - 因为非终结符号只有 $|V-\Sigma|$ 个，所以路径长度不会超过 $|V-\Sigma|+1$
+
+??? example "证明 $L=\{a^nb^nc^n:n\geq 0\}$ 不是 context-free 的"
+    反证法，假设 $L$ 是 CFL，令 $p$ 为其 pumping length，取 $w=a^pb^pc^p$，则可以拆分 $w=uvxyz$。
+
+    根据 pumping theorem，$|vxy|\leq p$，所以有以下两种情况：
+
+    - $vxy$ 只包含 $b$：则 $uv^0xy^0z=uxz$ 中 $b$ 的数量就会比 $a,c$ 都少，所以不在 $L$ 中
+    - $vxy$ 中包含 $a,c$ 中的某一个（另一个一定不会在其中）：则 $uv^0xy^0z=uxz$ 中 $a,c$ 的数量就会不平衡，所以不在 $L$ 中
+
+    与第一条矛盾，所以 $L$ 不是 CFL。
