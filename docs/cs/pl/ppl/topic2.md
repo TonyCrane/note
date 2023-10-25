@@ -6,7 +6,7 @@ comment: True
 # 抽象语法树与归纳法
 
 !!! abstract
-    编程语言原理第三至第五周课程内容
+    编程语言原理第三至第六周课程内容
 
     由于大翁老师这部分上课吹水非常严重，所以就基本只看了 slide，但是 slide 质量又非常捉急，~~全是字全是话~~，很多都是一个定义写一两页，看半天发现其实屁都没说，我反正就直接抄下来了。我甚至怀疑里面有很多的错误，但也就这样了，姑且认为这些定义都不重要（
 
@@ -54,15 +54,15 @@ comment: True
     - 变量序列 $x_1, \cdots, x_k$ 在 abt a 中是约束的
     - $\text{let }x\text{ be }a_1\text{ in }a_2$ 就是 $\mathrm{let}(a_1; x.a_2)$ 这个形式表明 $x$ 在 $a_2$ 是约束的
         - $\mathrm{let}()$ 的结果是一个 ast
-    - 将 $x_1, \cdots, x_n$ 表示为 $\vec{x}$，则 $x_1, \cdots, x_n.a$ 表示为 $\vec{x}.a$
+    - 将 $x_1, \cdots, x_n$ 表示为 $\overrightarrow{x}$，则 $x_1, \cdots, x_n.a$ 表示为 $\overrightarrow{x}.a$
     - 运算符被赋予形如 $(v_1, \cdots, v_n)s$ 的泛化元数（generalized arity），这个形式规定了类别为 $s、带 $n$ 个价（valence）为 $v_1, \cdots, v_n$ 的参数的运算符
         - 价 $v$ 的形式为 $s_1, \cdots, s_k.s$，指定了参数的类别以及所绑定的变量的数量和类别
-        - 变量序列 $\vec{x}$ 属于类别 $\vec{s}$，是因为这两个向量有相同的长度 $k$，并且对每一个 $1\leq i\leq k$ 都有变量 $x_i$ 属于类别 $s_i$
+        - 变量序列 $\overrightarrow{x}$ 属于类别 $\overrightarrow{s}$，是因为这两个向量有相同的长度 $k$，并且对每一个 $1\leq i\leq k$ 都有变量 $x_i$ 属于类别 $s_i$
 - 抽象绑定树的族
     - 固定一个类别集合 $S$ 和一个按其泛化元数索引的运算符的不相交集族 $O$，对给定的一族不相交的变量集合 $X$，抽象绑定树的族（abt 的 $B[X]$） 的定义与 $A[X]$ 类似，但是其中的 $X$ 在定义中是不固定的，而是当进入抽象子的作用域时会发生变化
     - 定义满足如下条件的闭合的最小集族：
         - 如果 $x\in X_s$，则 $x\in B[X]$
-        - 对任意元数为 $(\vec{s_1}, \cdots, \vec{s_n}.s_n)$ 的运算符 $o$，如果 $a_1\in B[X, \vec{x_1}]_{s_1}, \cdots$，且 $a_n\in B[X, \vec{x_n}]_{s_n}$，则 $o(\vec{x_1}.a_1; \cdots; \vec{x_n}a_n)\in B[X]_s$
+        - 对任意元数为 $(\overrightarrow{s_1}, \cdots, \overrightarrow{s_n}.s_n)$ 的运算符 $o$，如果 $a_1\in B[X, \overrightarrow{x_1}]_{s_1}, \cdots$，且 $a_n\in B[X, \overrightarrow{x_n}]_{s_n}$，则 $o(\overrightarrow{x_1}.a_1; \cdots; \overrightarrow{x_n}a_n)\in B[X]_s$
 - $\alpha$ 等价关系
     - $a =_\alpha b$ 表示 $a$ 和 $b$ 在不考虑约束变量名的选择下是相同的
     - 称 $a$ 和 $b$ 互为 $\alpha$ 变体（$\alpha$-variant）
@@ -73,9 +73,9 @@ comment: True
 
 - 判断（judgment）：关于某种类别的一棵或多棵 abt 的陈述
     - 一些判断的例子：
-        - $n\ nat$：$n$ 是一个自然数
+        - $n\ \mathrm{nat}$：$n$ 是一个自然数
         - $n_1 + n_2 = n$：$n$ 是 $n_1$ 和 $n_2$ 的和
-        - $\tau\ type$：$\tau$ 是一个类型
+        - $\tau\ \mathrm{type}$：$\tau$ 是一个类型
         - $e:\tau$：表达式 $e$ 具有类型 $\tau$
         - $e\Downarrow v$：表达式 $e$ 的值为 $v$
     - 判断的作用：
@@ -96,40 +96,40 @@ comment: True
     - 前提（premise）：分子；结论（conclusion）：分母
     - 公理（axiom）：没有前提；正常规则（proper rule）：有前提
 - 归纳定义例子：
-    - $-nat$：$\dfrac{}{zero\ nat}, \dfrac{a\ nat}{succ(a)\ nat}$
-    - $-tree$：$\dfrac{}{empty\ tree}, \dfrac{a_1\ tree\ \ a_2\ tree}{node(a_1; a_2)\ tree}$
-    - $a\ is\ b$（两棵 abt 相等）：$\dfrac{}{zero\ is\ zero}, \dfrac{a\ is\ b}{succ(a)\ is\ succ(b)}$
+    - $-\mathrm{nat}$：$\dfrac{}{\mathsf{zero}\ \mathrm{nat}}, \dfrac{a\ \mathrm{nat}}{\mathrm{succ}(a)\ \mathrm{nat}}$
+    - $-\mathrm{tree}$：$\dfrac{}{\mathsf{empty}\ \mathrm{tree}}, \dfrac{a_1\ \mathrm{tree}\ \ a_2\ \mathrm{tree}}{\mathrm{node}(a_1; a_2)\ \mathrm{tree}}$
+    - $a\ \mathrm{is}\ b$（两棵 abt 相等）：$\dfrac{}{\mathsf{zero}\ \mathrm{is}\ \mathsf{zero}}, \dfrac{a\ \mathrm{is}\ b}{\mathrm{succ}(a)\ \mathrm{is}\ \mathrm{succ}(b)}$
 - 规则模式（rule scheme）：以上的定义都是有限的判断，但可以推出无限的规则，这样的有限的模式称为规则模式
 - 规则模块的实例：为规则中对象的每一个选择确定的一条规则
 - 两种归纳定义：
     - 迭代（iteration）归纳定义：一个归纳定义建立在另一个归纳定义之上
-        - e.g. $\dfrac{}{nil\ list}, \dfrac{a\ nat\ \ b\ list}{cons(a; b)\ list}$
+        - e.g. $\dfrac{}{\mathsf{nil}\ \mathrm{list}}, \dfrac{a\ \mathrm{nat}\ \ b\ \mathrm{list}}{\mathrm{cons}(a; b)\ \mathrm{list}}$
     - 联立（simultaneous）归纳定义（相互归纳定义）：所有的判断形式的规则是由整个规则集合同时定义的
-        - e.g. $\dfrac{}{zero\ even}, \dfrac{b\ odd}{succ(b)\ even}, \dfrac{a\ even}{succ(a)\ odd}$
+        - e.g. $\dfrac{}{\mathsf{zero}\ \mathrm{even}}, \dfrac{b\ \mathrm{odd}}{\mathrm{succ}(b)\ \mathrm{even}}, \dfrac{a\ \mathrm{even}}{\mathrm{succ}(a)\ \mathrm{odd}}$
 - 用规则定义函数
     - 通过对输入输出的关系的图做归纳定义来定义函数，然后证明这个关系在给定关系时唯一确定输出
 
 ??? example "加法函数的规则定义"
-    $sum(a; b; c)$ 表示 $c$ 是 $a$ 与 $b$ 的和，给出如下定义：
+    $\mathrm{sum}(a; b; c)$ 表示 $c$ 是 $a$ 与 $b$ 的和，给出如下定义：
 
     $$
-    \dfrac{b\ nat}{sum(zero; b; b)}, \dfrac{sum(a; b; c)}{sum(succ(a); b; succ(c))}
+    \dfrac{b\ \mathrm{nat}}{\mathrm{sum}(\mathsf{zero}; b; b)}, \dfrac{\mathrm{sum}(a; b; c)}{\mathrm{sum}(\mathrm{succ}(a); b; \mathrm{succ}(c))}
     $$
 
-    需要证明对于任意 $a\ nat$ 和 $b\ nat$ 都存在唯一的 $c$ 符合 $sum(a; b; c)$：
+    需要证明对于任意 $a\ \mathrm{nat}$ 和 $b\ \mathrm{nat}$ 都存在唯一的 $c$ 符合 $\mathrm{sum}(a; b; c)$：
 
-    - 存在性：如果 $a\ nat$ 且 $b\ nat$ 则存在 $c$ 使得 $sum(a; b; c)$
-        - 设 $P(a\ nat)$ 的含义为“对于任意 $b\ nat$ 存在 $c$ 使得 $sum(a; b; c)$
-        - 当 $a=zero$ 时，根据第一个规则显然成立，此时 $c=b$
-        - 假设 $P(a\ nat)$ 成立，需要证明 $P(succ(a)\ nat)$ 成立
-            - 因为 $P(a\ nat)$，因此对于这个 $b$ 存在 $c'$ 使得 $sum(a; b; c')$，根据第二个规则有 $sum(succ(a); b; succ(c'))$，因此可令 $c=succ(c')$
-    - 唯一性：如果 $sum(a; b; c_1)$ 与 $sum(a; b; c_2)$，则 $c_1=c_2\ nat$
-        - 当 $a=zero$ 时，根据第一个规则有 $c_1 = b = c_2$
-        - 设 $sum(a; b; c_1), a=succ(a'), c_1=succ(c_1')$，如果 $sum(a; b; c_2)$，根据第二个规则有 $sum(succ(a'); b; succ(c_1'))$，即 $sum(a; b; c_1)，因为它们来源于同一条规则，所以 $c_1 = c_2$
+    - 存在性：如果 $a\ \mathrm{nat}$ 且 $b\ \mathrm{nat}$ 则存在 $c$ 使得 $\mathrm{sum}(a; b; c)$
+        - 设 $P(a\ \mathrm{nat})$ 的含义为“对于任意 $b\ \mathrm{nat}$ 存在 $c$ 使得 $\mathrm{sum}(a; b; c)$
+        - 当 $a=\mathsf{zero}$ 时，根据第一个规则显然成立，此时 $c=b$
+        - 假设 $P(a\ \mathrm{nat})$ 成立，需要证明 $P(\mathrm{succ}(a)\ \mathrm{nat})$ 成立
+            - 因为 $P(a\ \mathrm{nat})$，因此对于这个 $b$ 存在 $c'$ 使得 $\mathrm{sum}(a; b; c')$，根据第二个规则有 $\mathrm{sum}(\mathrm{succ}(a); b; \mathrm{succ}(c'))$，因此可令 $c=\mathrm{succ}(c')$
+    - 唯一性：如果 $\mathrm{sum}(a; b; c_1)$ 与 $\mathrm{sum}(a; b; c_2)$，则 $c_1=c_2\ \mathrm{nat}$
+        - 当 $a=\mathsf{zero}$ 时，根据第一个规则有 $c_1 = b = c_2$
+        - 设 $\mathrm{sum}(a; b; c_1), a=\mathrm{succ}(a'), c_1=\mathrm{succ}(c_1')$，如果 $\mathrm{sum}(a; b; c_2)$，根据第二个规则有 $\mathrm{sum}(\mathrm{succ}(a'); b; \mathrm{succ}(c_1'))$，即 $\mathrm{sum}(a; b; c_1)，因为它们来源于同一条规则，所以 $c_1 = c_2$
 
 - 模式
     - 一条判断中，有一些参数是由另外参数决定的，称为判断的模式声明
-    - e.g. 加法函数 $sum(a; b; c)$
+    - e.g. 加法函数 $\mathrm{sum}(a; b; c)$
         - $c$ 由 $a, b$ 决定，所以它具有模式 $(\forall, \forall, \exists)$
         - 如果 $c$ 是唯一的，就写作 $(\forall, \forall, \exists !)$
         - 如果 $c$ 不一定存在（最多一个），写作 $(\forall, \forall, \exists\leq 1)$
@@ -148,3 +148,20 @@ comment: True
 - 推导方向：
     - 前向链接（forwarding chaining）、自底向上构造（bottom-up construction）：从公理开始，没有方向的
     - 反向链接（backwarding chaining）、自顶向下构造（top-down construction）：从结论开始，是目标导向的
+
+## 假言判断与一般性判断
+
+!!! warning "大翁老师好像没讲，但后面会用到一些记法，看的 [xyx 的笔记](https://xuan-insr.github.io/pl/ppl_notes/3_Hypothetical_and_General_Judgments/)"
+
+- 前面如 $a\ \mathrm{nat}$ 的判断称为基本判断（basic judgement）
+- 假言判断（hypothetical judgement）：假设（hypothesis）和结论（conclusion）之间的蕴含关系（entailment）
+    - 设 $\Gamma = \{J_1, \cdots, J_k\}$ 为若干基本判断的集合，$R$ 为一个规则集合，$J$ 为基本判断
+    - 可导性判断（derivability judgement）：$\Gamma\vdash_R J$，表示根据 $R$ 如果 $\Gamma$ 成立，则 $J$ 成立
+        - $\Gamma_1\vdash_R \Gamma_2$ 表示 $\Gamma_1\vdash_R J, \forall J\in\Gamma_2$
+        - $\vdash_R J$ 表示 $J$ 可直接从 $R$ 中推导
+        - 有自反性、弱化、传递性
+    - 可纳性判断（admissible judgement）：$\Gamma\vDash_R J$，表示如果 $\Gamma$ 可由 $R$ 推导，则 $J$ 也可以
+        - 也有自反性、弱化、传递性
+- 一般性判断（general judgement）：
+    - 对于 $\Gamma\vdash_R J$，将 $\Gamma$ 中用到的变量记为 $X$，则可记为 $\Gamma\vdash_R^X J$
+    - 将 $X$ 拆分，$\Gamma$ 中自由变量记为 $Y$，其他记为 $X$，则可记 $Y\ |\ \Gamma\vdash_R^X J$
