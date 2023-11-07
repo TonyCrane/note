@@ -1901,7 +1901,13 @@ function buttonHandler(i) {
 function produce_time() {
     let time = document.getElementsByClassName("item-actions");
     for (let i = 0; i < time.length; i++) {
-        let date = new Date(parseInt(time[i].innerHTML) * 1000);
+        let timestamp;
+        if (time[i].innerHTML.tagName !== undefined) {
+            timestamp = time[i].innerHTML.innerHTML;
+        } else {
+            timestamp = time[i].innerHTML;
+        }
+        let date = new Date(parseInt(timestamp) * 1000);
         let now = new Date();
         let diff = now.getTime() - date.getTime();
         let years = Math.floor(diff / (24 * 3600 * 1000 * 365));
