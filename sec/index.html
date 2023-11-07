@@ -1863,8 +1863,8 @@ function produce_time() {
     let time = document.getElementsByClassName("item-actions");
     for (let i = 0; i < time.length; i++) {
         let timestamp;
-        if (time[i].innerHTML.tagName !== undefined) {
-            timestamp = time[i].innerHTML.innerHTML;
+        if (time[i].childElementCount > 0) {
+            timestamp = time[i].children[0].innerHTML;
         } else {
             timestamp = time[i].innerHTML;
         }
