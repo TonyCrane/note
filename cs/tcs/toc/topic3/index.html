@@ -1,0 +1,2100 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
+<link href="https://note.tonycrane.cc/cs/tcs/toc/topic3/" rel="canonical"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
+<title>图灵机理论基础 - 鹤翔万里的笔记本</title>
+<link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
+<link href="../../../../css/svg_extra.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../../../css/timeline.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css" rel="stylesheet"/>
+<link href="../../../../css/tasklist.css" rel="stylesheet"/>
+<link href="../../../../css/custom.css" rel="stylesheet"/>
+<link href="../../../../css/card.css" rel="stylesheet"/>
+<link href="../../../../css/flink.css" rel="stylesheet"/>
+<link href="../../../../css/changelog_extra.css" rel="stylesheet"/>
+<link href="/css/counter.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c273de7f67d992cb6aef08c3ddf09bb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<script src="../../../../js/scheme.js" type="text/javascript"></script>
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#_1">
+            跳转至
+          </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="鹤翔万里的笔记本" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="鹤翔万里的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            鹤翔万里的笔记本
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              图灵机理论基础
+            
+          </span>
+</div>
+</div>
+</div>
+<div class="md-header__options">
+<div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+<a class="light-mode" href="javascript:toggleScheme();" title="Light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"></path></svg>
+</a>
+<a class="dark-mode" href="javascript:toggleScheme();" title="Dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"></path></svg>
+</a>
+<a class="system-mode" href="javascript:toggleScheme();" title="System preference">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07 19.07 3.5m-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13.51 1.67m-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87.4 1.31M19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35-2.53-2.2m4.33-2.7 1.15-2.77 2.2 2.54-3.35.23m1.15-4.96-1.14-2.78 3.34.24-2.2 2.54M9.63 18.93l2.77 1.15-2.53 2.19-.24-3.34z"></path></svg>
+</a>
+<a class="unknown-mode" href="javascript:toggleScheme();" title="Unknown scheme">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"></path></svg>
+</a>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TonyCrane/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../../">
+        Computer Science
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../sec/">
+        Security
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../web/">
+        Web
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../ctf/">
+        CTF
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../writeups/">
+        Writeups
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../others/">
+        Others
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="鹤翔万里的笔记本" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="鹤翔万里的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
+</a>
+    鹤翔万里的笔记本
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TonyCrane/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../..">Home</a>
+<label for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../changelog/">
+        更新记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../links/">
+        友链
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../">Computer Science</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Computer Science" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/">编程语言 &amp; ISA</a>
+<label for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="编程语言 &amp; ISA" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          编程语言 &amp; ISA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" id="__nav_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2">
+          C/C++
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="C/C++" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+          C/C++
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/c_cpp/c/">
+        C 语言杂项
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/c_cpp/oop/">
+        C++ 面向对象
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/python/">Python</a>
+<label for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Python" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/python/basic/">
+        Python 基础语法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/python/numpy/">
+        NumPy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/python/pil/">
+        PIL
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" id="__nav_2_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/rust/">Rust</a>
+<label for="__nav_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Rust" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Rust
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/rust/basic/">
+        Rust 基础语法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/rust/misc/">
+        Rust 杂项随记
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/haskell/">
+        Haskell
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/chisel/">
+        Chisel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/asm/">
+        x86 汇编语言
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_8" id="__nav_2_2_8" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/riscv/">RISC-V ISA</a>
+<label for="__nav_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="RISC-V ISA" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+          RISC-V ISA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/riscv/unprivileged/">
+        RISC-V 非特权级 ISA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/riscv/privileged/">
+        RISC-V 特权级 ISA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/riscv/paging/">
+        RISC-V 页表相关
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_9" id="__nav_2_2_9" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../pl/ppl/">编程语言原理</a>
+<label for="__nav_2_2_9">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="编程语言原理" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_9">
+<span class="md-nav__icon md-icon"></span>
+          编程语言原理
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/ppl/topic1/">
+        Lambda 演算
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/ppl/topic2/">
+        抽象语法树与归纳法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/ppl/topic3/">
+        静态语义与动态语义
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../pl/ppl/topic4/">
+        函数与递归
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../system/">计算机系统</a>
+<label for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../system/cs1/">计算机系统 I</a>
+<label for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 I" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 I
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic1/">
+        数据的表示
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic2/">
+        数字逻辑电路基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic3/">
+        组合逻辑电路设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic4/">
+        时序逻辑电路设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic5/">
+        指令集体系结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic6/">
+        处理器
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_8" id="__nav_2_3_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_2_8">
+          系统 I 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 I 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_2_8">
+<span class="md-nav__icon md-icon"></span>
+          系统 I 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab1-1/">
+        系统 I lab1-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab1-2/">
+        系统 I lab1-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab2-1/">
+        系统 I lab2-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab2-2/">
+        系统 I lab2-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab3/">
+        系统 I lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab4-1/">
+        系统 I lab4-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab4-2/">
+        系统 I lab4-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab5-1/">
+        系统 I lab5-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab5-2/">
+        系统 I lab5-2
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../system/cs2/">计算机系统 II</a>
+<label for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 II" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 II
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic1/">
+        流水线 CPU
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic2/">
+        操作系统简介
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic3/">
+        操作系统结构及系统调用
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic4/">
+        进程与线程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic5/">
+        CPU 调度
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic6/">
+        进程同步
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3_8">
+          系统 II 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 II 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_3_8">
+<span class="md-nav__icon md-icon"></span>
+          系统 II 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab1/">
+        系统 II lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab2/">
+        系统 II lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab3/">
+        系统 II lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab4/">
+        系统 II lab4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab5/">
+        系统 II lab5
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab6/">
+        系统 II lab6
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab7/">
+        系统 II lab7
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" id="__nav_2_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../system/cs3/">计算机系统 III</a>
+<label for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 III" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 III
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/topic1/">
+        系统量化研究方法
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4_3" id="__nav_2_3_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_4_3">
+          系统 III 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 III 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_4_3">
+<span class="md-nav__icon md-icon"></span>
+          系统 III 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/lab1/">
+        系统 III lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/lab2/">
+        系统 III lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/lab3/">
+        系统 III lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/lab4/">
+        系统 III lab4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/lab5/">
+        系统 III lab5
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/pa/">
+        ICS PA 实验纪实
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+          算法相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="算法相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          算法相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../algorithm/ds/">数据结构基础</a>
+<label for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="数据结构基础" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+          数据结构基础
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/topic1/">
+        算法分析基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/summary1/">
+        基础数据结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/summary2/">
+        排序与哈希
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+          人工智能相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="人工智能相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          人工智能相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ai/basic/">
+        人工智能基础
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+          高性能计算相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="高性能计算相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          高性能计算相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../hpc/hpc101/">HPC 101 超算小学期</a>
+<label for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="HPC 101 超算小学期" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+          HPC 101 超算小学期
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/vectorized/">
+        向量化计算
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/gpu/">
+        GPU 编程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/openmp/">
+        OpenMP 基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/mpi/">
+        MPI 基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/ml/">
+        机器学习基础
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+          理论计算机相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="理论计算机相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          理论计算机相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" id="__nav_2_7_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../">计算理论</a>
+<label for="__nav_2_7_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算理论" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_1">
+<span class="md-nav__icon md-icon"></span>
+          计算理论
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../topic1/">
+        语言、自动机与正则表达式
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../topic2/">
+        上下文无关语言
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          图灵机理论基础
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        图灵机理论基础
+      </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    图灵机
+  </a>
+<nav aria-label="图灵机" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    基本定义
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+    构建图灵机
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    图灵机功能
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
+          零散知识点
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="零散知识点" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          零散知识点
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../regex/">
+        正则表达式
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../unicode/">
+        Unicode
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../analysis/">源码剖析</a>
+<label for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="源码剖析" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          源码剖析
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/mkdocs/">
+        mkdocs 源码剖析
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../tools/">工具相关</a>
+<label for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="工具相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+          工具相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/toolbox/">
+        工具收集
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_3" id="__nav_2_10_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10_3">
+          命令行工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="命令行工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_10_3">
+<span class="md-nav__icon md-icon"></span>
+          命令行工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git/">
+        Git 命令备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/shell/">
+        Shell 命令备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/docker/">
+        Docker 相关备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gdb/">
+        gdb 相关备忘
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_4" id="__nav_2_10_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10_4">
+          CI 工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="CI 工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_10_4">
+<span class="md-nav__icon md-icon"></span>
+          CI 工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/action/">
+        GitHub Action
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_5" id="__nav_2_10_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10_5">
+          站点生成工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="站点生成工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_10_5">
+<span class="md-nav__icon md-icon"></span>
+          站点生成工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/mkdocs/">
+        mkdocs 使用记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/hexo/">
+        hexo 使用记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/sphinx/">
+        sphinx 使用记录
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/">Security</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Security" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/crypto/">密码学</a>
+</div>
+<nav aria-label="密码学" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          密码学
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/softsec/">软件安全</a>
+<label for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="软件安全" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          软件安全
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab1/">
+        软件安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab2/">
+        软件安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab3/">
+        软件安全 lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab4/">
+        软件安全 lab4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/final/">
+        软件安全 final lab
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_4">
+          漏洞复现
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="漏洞复现" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          漏洞复现
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/vulns/log4j/">
+        log4j 漏洞复现
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../web/">Web</a>
+<label for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Web" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Web
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../web/protocol/">网络协议</a>
+<label for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="网络协议" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          网络协议
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/protocol/vmess/">
+        VMess
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          排版写作规范
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="排版写作规范" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          排版写作规范
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/typesetting/clreq/">
+        中文排版需求
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/typesetting/tech/">
+        中文技术文档风格指南
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/svg/">
+        SVG
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/">CTF</a>
+<label for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="CTF" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          CTF
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2">
+          misc
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="misc" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+          misc
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_1" id="__nav_5_2_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/steg/">隐写术</a>
+<label for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="隐写术" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+          隐写术
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/steg/image/">
+        图片隐写
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/steg/audio/">
+        音频隐写
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" id="__nav_5_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/escapes/">沙箱逃逸</a>
+<label for="__nav_5_2_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="沙箱逃逸" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_2">
+<span class="md-nav__icon md-icon"></span>
+          沙箱逃逸
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/escapes/pysandbox/">
+        Python 沙箱逃逸
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_3" id="__nav_5_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/forensics/">取证</a>
+<label for="__nav_5_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="取证" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_3">
+<span class="md-nav__icon md-icon"></span>
+          取证
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/forensics/mem/">
+        内存取证
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_4" id="__nav_5_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2_4">
+          编码/密码类
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="编码/密码类" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_4">
+<span class="md-nav__icon md-icon"></span>
+          编码/密码类
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/coding/">
+        编码及古典密码
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/qrcode/">
+        QRCode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/esolang/">
+        Esolang
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5" id="__nav_5_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/">Blockchain</a>
+<label for="__nav_5_2_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Blockchain" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Blockchain
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5_2" id="__nav_5_2_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/eth/">Ethereum</a>
+<label for="__nav_5_2_5_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Ethereum" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_2_5_2">
+<span class="md-nav__icon md-icon"></span>
+          Ethereum
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/basic/">
+        以太坊基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/evm/">
+        以太坊虚拟机
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/solidity/">
+        Solidity 语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/yul/">
+        Yul 语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/vuln/">
+        常见合约漏洞攻击手段
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/erc/">
+        ERC 标准
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/eip/">
+        其余重要 EIPs
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5_3" id="__nav_5_2_5_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/solana/">Solana</a>
+</div>
+<nav aria-label="Solana" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_2_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Solana
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3">
+          pwn
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="pwn" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+          pwn
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" id="__nav_5_3_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/pwn/stack/">栈漏洞利用</a>
+</div>
+<nav aria-label="栈漏洞利用" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_1">
+<span class="md-nav__icon md-icon"></span>
+          栈漏洞利用
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" id="__nav_5_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/pwn/heap/">堆漏洞利用</a>
+</div>
+<nav aria-label="堆漏洞利用" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_2">
+<span class="md-nav__icon md-icon"></span>
+          堆漏洞利用
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../writeups/">Writeups</a>
+<label for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Writeups" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Training" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/ethernaut/">
+        Ethernaut
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/SecurityInnovation/">
+        Security Innovation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sadservers/">
+        SadServers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/AAA/">
+        🔒 AAA School Bus
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3">
+          2021
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2021" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+          2021
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sysu_msc_puzzle/">
+        SYSU MSC Puzzle 2021
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/hackergame2021/">
+        USTC Hackergame 2021
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/d0g3/">
+        第四届“安洵杯”
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/bytectf2021_final/">
+        ByteCTF 2021 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sctf2021/">
+        SCTF 2021
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2022" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/vnctf2022/">
+        VNCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/tqlctf2022/">
+        TQLCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/susctf2022/">
+        SUSCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/d3ctf2022/">
+        D3CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/%2Actf2022/">
+        *CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/mrctf2022/">
+        MRCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/qwb2022/">
+        强网杯 2022 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/tctf2022/">
+        TCTF/0CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/hackergame2022/">
+        USTC Hackergame 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/n1ctf2022/">
+        N1CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/seccon2022/">
+        SECCON 2022 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/rctf2022/">
+        RCTF 2022
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+          2023
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2023" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          2023
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/seccon2022final/">
+        SECCON 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/xctf2022final/">
+        XCTF 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/midnight2023/">
+        MidnightSun 2023 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/aliyunctf2023/">
+        AliyunCTF 2023
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/ciscn2023/">
+        CISCN 2023 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/seccon2023/">
+        SECCON 2023 Quals
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/">Others</a>
+<label for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Others" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Others
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/notes/">
+        课程笔记
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" id="__nav_7_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/subs/">字幕制作系列</a>
+<label for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="字幕制作系列" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+          字幕制作系列
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/subs/ass/">
+        ass 标签
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/subs/aegisub/automation/">
+        Aegisub 自动化
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/subs/aegisub/karaoke/">
+        Aegisub 卡拉 OK 模板
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/subs/ffmpeg/">
+        ffmpeg 套件杂记
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" id="__nav_7_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/troubleshooting/">TroubleShooting</a>
+<label for="__nav_7_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="TroubleShooting" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_4">
+<span class="md-nav__icon md-icon"></span>
+          TroubleShooting
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/troubleshooting/mac/">
+        macOS TroubleShooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    图灵机
+  </a>
+<nav aria-label="图灵机" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    基本定义
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_4">
+    构建图灵机
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_5">
+    图灵机功能
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<script defer="" src="/js/toc.js"></script>
+<link href="/css/fold_toc.css" rel="stylesheet"/>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/TonyCrane/note/tree/master/docs/cs/tcs/toc/topic3.md" title="编辑此页">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="_1">图灵机理论基础<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>1799<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>6<span class="heti-spacing"> </span></span>分钟</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>理论计算机科学导引第八至第？周课程内容</p>
+</div>
+<h2 id="_2">图灵机<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<h3 id="_3">基本定义<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>一个“纸带”，一个读写头可进行单元格的左右移动和符号的读写<ul>
+<li>特殊符号<span><span class="heti-spacing"> </span><span class="arithmatex">\(\rhd\)</span></span>（left end symbol）表示纸带的最左侧，无法覆盖</li>
+<li>特殊符号<span><span class="heti-spacing"> </span><span class="arithmatex">\(⌴\)</span></span>（black symbol）表示纸带这个位置是一个空格子</li>
+</ul>
+</li>
+<li>一个图灵机定义为一个五元组<span><span class="heti-spacing"> </span><span class="arithmatex">\(M=(K, \Sigma, \delta, s, H)\)</span></span><ul>
+<li><span class="arithmatex">\(K\)</span>：状态的有限集合</li>
+<li><span class="arithmatex">\(\Sigma\)</span>：纸带上可以出现的符号（包括<span><span class="heti-spacing"> </span><span class="arithmatex">\(\rhd⌴\)</span></span>）</li>
+<li><span class="arithmatex">\(s\in K\)</span>：起始状态</li>
+<li><span class="arithmatex">\(H\subseteq K\)</span>：停机状态（halting state）的集合</li>
+<li><span class="arithmatex">\(\delta\colon(K-H)\times\Sigma\rightarrow K\times(\{\leftarrow, \rightarrow\}\cup (\Sigma-\{\rhd\}))\)</span>：转移函数，其中：<ul>
+<li><span class="arithmatex">\((K-H)\)</span>：非停机状态，停机状态无法再转移</li>
+<li><span class="arithmatex">\(\Sigma\)</span>：读写头读到的符号</li>
+<li><span class="arithmatex">\(\{\leftarrow, \rightarrow\}\)</span>：读写头向左<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>右移动</li>
+<li><span class="arithmatex">\((\Sigma-\{\rhd\})\)</span>：读写头写入的符号，不能写入<span><span class="heti-spacing"> </span><span class="arithmatex">\(\rhd\)</span></span></li>
+<li>需要满足<span><span class="heti-spacing"> </span><span class="arithmatex">\(\forall q\in K, \delta(q, \rhd)=(p, \rightarrow)\)</span> for some <span class="arithmatex">\(p\)</span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>configuration：<span class="arithmatex">\(K\times\rhd(\Sigma-\{\rhd\})\times(\{e\}\cup(\Sigma-\{\rhd\})^*(\Sigma-\{\rhd, ⌴\}))\)</span><ul>
+<li><span class="arithmatex">\(\rhd(\Sigma-\{\rhd\})\)</span>：纸带上到读写头为止的部分，<span><span class="arithmatex">\(\rhd\)</span><span class="heti-spacing"> </span></span>开头，最后一个为读写头指向的位置</li>
+<li><span class="arithmatex">\(\{e\}\)</span>：读写头右侧没有非空格子的话就是<span><span class="heti-spacing"> </span><span class="arithmatex">\(e\)</span></span></li>
+<li><span class="arithmatex">\((\Sigma-\{\rhd\})^*(\Sigma-\{\rhd, ⌴\})\)</span>：读写头右侧的非空格子</li>
+<li>e.g. <span class="arithmatex">\((q, \rhd⌴ab, a)\)</span>，等价可以写为<span><span class="heti-spacing"> </span><span class="arithmatex">\((q, \rhd⌴a\underline{b}a)\)</span></span>（下划线表示读写头指向的位置）</li>
+<li>初始<span><span class="heti-spacing"> </span>configuration</span>：<span class="arithmatex">\((s, ?)\)</span>，纸带内容不同场合有不同约定</li>
+<li>停机<span><span class="heti-spacing"> </span>configuration</span>：<span class="arithmatex">\((h, ?), h\in H\)</span>，纸带内容无所谓</li>
+</ul>
+</li>
+<li>yields in one step / yields<ul>
+<li><span class="arithmatex">\((q_1, \rhd w_1\underline{a_1}u_1)\vdash_M(q_2, \rhd w_2\underline{a_2}u_2)\)</span> if:<ul>
+<li><span class="arithmatex">\(\delta(q_1, a_1) = (q_2, a_2),\ w_1=w_2,\ u_1=u_2\)</span>：写的情况</li>
+<li><span class="arithmatex">\(\delta(q_1, a_1) = (q_2, \leftarrow),\ w_1=w_2a_2,\ u_2 = a_1u_1\)</span>：左移的情况<ul>
+<li>特殊情况：if <span class="arithmatex">\(a_1 = ⌴\)</span> and <span class="arithmatex">\(u_1=e\)</span>, <span class="arithmatex">\(u_2=e\)</span></li>
+</ul>
+</li>
+<li><span class="arithmatex">\(\delta(q_1, a_1) = (q_2, \rightarrow),\ w_2=w_1a_1,\ u_1 = u_2a_2\)</span>：右移的情况</li>
+</ul>
+</li>
+<li><span>yields<span class="heti-spacing"> </span></span>还是相等或者<span class="heti-skip"><span class="heti-spacing"> </span>yield<span class="heti-spacing"> </span></span>一步或更多步</li>
+</ul>
+</li>
+</ul>
+<h3 id="_4">构建图灵机<a class="headerlink" href="#_4" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>basic machines<ul>
+<li>symbol writing machine <span class="arithmatex">\(M_a\)</span>，记为<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\)</span></span><ul>
+<li>效果：如果当前位置可写，就写入<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\)</span></span>，如果当前位置是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\rhd\)</span><span class="heti-spacing"> </span></span>就右移一位再写入<span><span class="heti-spacing"> </span><span class="arithmatex">\(a\)</span></span></li>
+<li>定义<span><span class="heti-spacing"> </span><span class="arithmatex">\(M_a=(\{s, h\}, \Sigma, \delta, s, \{h\})\)</span></span>，其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\delta\)</span><span class="heti-spacing"> </span></span>定义为：<ul>
+<li><span class="arithmatex">\(\delta(s, b) = (h, a)\)</span> for each <span class="arithmatex">\(b\in\Sigma-\{\rhd\}\)</span></li>
+<li><span class="arithmatex">\(\delta(s, \rhd) = (s, \rightarrow)\)</span></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><span>head moving machine <span class="arithmatex">\(M_\leftarrow, M_\rightarrow\)</span><span class="heti-spacing"> </span></span>分别记为<span><span class="heti-spacing"> </span><span class="arithmatex">\(L, R\)</span></span><ul>
+<li>效果：读写头向左<span class="heti-skip"><span class="heti-spacing"> </span>/<span class="heti-spacing"> </span></span>右移动一位（左移的话如果当前位置是<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\rhd\)</span><span class="heti-spacing"> </span></span>就停机）</li>
+<li>定义<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(M_\leftarrow\)</span><span class="heti-spacing"> </span></span>类似<span><span class="heti-spacing"> </span><span class="arithmatex">\(M_a\)</span></span>，将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(a\)</span><span class="heti-spacing"> </span></span>替换为<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\leftarrow\)</span><span class="heti-spacing"> </span></span>即可</li>
+<li>定义<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(M_\rightarrow\)</span><span class="heti-spacing"> </span></span>更为简单，不需要考虑<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\rhd\)</span><span class="heti-spacing"> </span></span>的情况</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>采用一个新的表示方法，用来连接图灵机的作用构成更复杂的图灵机</p>
+<p></p><div style="text-align: center; zoom: 1.5;"><!-- This file was generated by dvisvgm 2.13.3 --><svg height="60.545455pt" version="1.1" viewbox="-72.000004 -71.999998 76.428453 60.545455" width="76.428453pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M4.174346 0V-.308842H3.855542C2.958904-.308842 2.929016-.418431 2.929016-.787049V-6.37609C2.929016-6.615193 2.929016-6.635118 2.699875-6.635118C2.082192-5.997509 1.205479-5.997509 .886675-5.997509V-5.688667C1.085928-5.688667 1.673724-5.688667 2.191781-5.947696V-.787049C2.191781-.428394 2.161893-.308842 1.265255-.308842H.946451V0C1.295143-.029888 2.161893-.029888 2.560399-.029888S3.825654-.029888 4.174346 0Z" id="g0-82"></path><path d="M4.582814-3.188045C4.582814-3.985056 4.533001-4.782067 4.184309-5.519303C3.726027-6.475716 2.909091-6.635118 2.49066-6.635118C1.892902-6.635118 1.165629-6.37609 .757161-5.449564C.438356-4.762142 .388543-3.985056 .388543-3.188045C.388543-2.440847 .428394-1.544209 .836862-.787049C1.265255 .019925 1.992528 .219178 2.480697 .219178C3.01868 .219178 3.775841 .009963 4.214197-.936488C4.533001-1.62391 4.582814-2.400996 4.582814-3.188045ZM3.755915-3.307597C3.755915-2.560399 3.755915-1.882939 3.646326-1.24533C3.496887-.298879 2.929016 0 2.480697 0C2.092154 0 1.504359-.249066 1.325031-1.205479C1.215442-1.803238 1.215442-2.719801 1.215442-3.307597C1.215442-3.945205 1.215442-4.60274 1.295143-5.140722C1.484433-6.326276 2.231631-6.41594 2.480697-6.41594C2.809465-6.41594 3.466999-6.236613 3.656289-5.250311C3.755915-4.692403 3.755915-3.935243 3.755915-3.307597Z" id="g0-121"></path><path d="M2.336239-4.435367C2.336239-4.623661 2.322291-4.630635 2.127024-4.630635C1.680697-4.191283 1.046077-4.184309 .760149-4.184309V-3.93325C.927522-3.93325 1.387796-3.93325 1.771357-4.128518V-.571856C1.771357-.341719 1.771357-.251059 1.073973-.251059H.808966V0C.934496-.006974 1.792279-.027895 2.050311-.027895C2.266501-.027895 3.145205-.006974 3.29863 0V-.251059H3.033624C2.336239-.251059 2.336239-.341719 2.336239-.571856V-4.435367Z" id="g2-49"></path><path d="M3.521793-1.26924H3.284682C3.263761-1.115816 3.194022-.704359 3.103362-.63462C3.047572-.592777 2.510585-.592777 2.412951-.592777H1.129763C1.862017-1.241345 2.106102-1.436613 2.524533-1.764384C3.040598-2.175841 3.521793-2.608219 3.521793-3.270735C3.521793-4.11457 2.782565-4.630635 1.889913-4.630635C1.025156-4.630635 .439352-4.02391 .439352-3.382316C.439352-3.02665 .739228-2.991781 .808966-2.991781C.976339-2.991781 1.17858-3.110336 1.17858-3.361395C1.17858-3.486924 1.129763-3.731009 .767123-3.731009C.983313-4.226152 1.457534-4.379577 1.785305-4.379577C2.48269-4.379577 2.84533-3.835616 2.84533-3.270735C2.84533-2.66401 2.412951-2.182814 2.189788-1.931756L.509091-.27198C.439352-.209215 .439352-.195268 .439352 0H3.312578L3.521793-1.26924Z" id="g2-50"></path><path d="M1.903861-2.329265C2.447821-2.329265 2.838356-1.952677 2.838356-1.206476C2.838356-.341719 2.336239-.083686 1.931756-.083686C1.652802-.083686 1.039103-.160399 .746202-.571856C1.073973-.585803 1.150685-.81594 1.150685-.962391C1.150685-1.185554 .983313-1.345953 .767123-1.345953C.571856-1.345953 .376588-1.227397 .376588-.941469C.376588-.285928 1.101868 .139477 1.945704 .139477C2.915068 .139477 3.584558-.509091 3.584558-1.206476C3.584558-1.750436 3.138232-2.294396 2.371108-2.454795C3.103362-2.719801 3.368369-3.242839 3.368369-3.668244C3.368369-4.219178 2.733748-4.630635 1.959651-4.630635S.592777-4.254047 .592777-3.696139C.592777-3.459029 .746202-3.326526 .955417-3.326526C1.171606-3.326526 1.311083-3.486924 1.311083-3.682192C1.311083-3.884433 1.171606-4.030884 .955417-4.044832C1.199502-4.351681 1.680697-4.428394 1.93873-4.428394C2.252553-4.428394 2.691905-4.274969 2.691905-3.668244C2.691905-3.375342 2.594271-3.054545 2.412951-2.838356C2.182814-2.57335 1.987547-2.559402 1.638854-2.538481C1.464508-2.524533 1.45056-2.524533 1.415691-2.517559C1.401743-2.517559 1.345953-2.503611 1.345953-2.426899C1.345953-2.329265 1.408717-2.329265 1.527273-2.329265H1.903861Z" id="g2-51"></path><path d="M9.225405-6.03736C9.315068-6.396015 9.334994-6.495641 10.082192-6.495641C10.311333-6.495641 10.400996-6.495641 10.400996-6.694894C10.400996-6.804483 10.30137-6.804483 10.132005-6.804483H8.816936C8.557908-6.804483 8.547945-6.804483 8.428394-6.615193L4.79203-.936488L4.014944-6.575342C3.985056-6.804483 3.965131-6.804483 3.706102-6.804483H2.34122C2.15193-6.804483 2.042341-6.804483 2.042341-6.615193C2.042341-6.495641 2.132005-6.495641 2.331258-6.495641C2.460772-6.495641 2.6401-6.485679 2.759651-6.475716C2.919054-6.455791 2.978829-6.425903 2.978829-6.316314C2.978829-6.276463 2.968867-6.246575 2.938979-6.127024L1.673724-1.05604C1.574097-.657534 1.404732-.33873 .597758-.308842C.547945-.308842 .418431-.298879 .418431-.119552C.418431-.029888 .478207 0 .557908 0C.876712 0 1.225405-.029888 1.554172-.029888C1.892902-.029888 2.251557 0 2.580324 0C2.630137 0 2.759651 0 2.759651-.199253C2.759651-.308842 2.650062-.308842 2.580324-.308842C2.012453-.318804 1.902864-.518057 1.902864-.747198C1.902864-.816936 1.912827-.86675 1.942715-.976339L3.297634-6.405978H3.307597L4.164384-.229141C4.184309-.109589 4.194271 0 4.313823 0C4.423412 0 4.483188-.109589 4.533001-.179328L8.557908-6.485679H8.56787L7.143213-.777086C7.043587-.388543 7.023661-.308842 6.236613-.308842C6.067248-.308842 5.957659-.308842 5.957659-.119552C5.957659 0 6.07721 0 6.107098 0C6.386052 0 7.063512-.029888 7.342466-.029888C7.750934-.029888 8.179328 0 8.587796 0C8.647572 0 8.777086 0 8.777086-.199253C8.777086-.308842 8.687422-.308842 8.498132-.308842C8.129514-.308842 7.85056-.308842 7.85056-.488169C7.85056-.52802 7.85056-.547945 7.900374-.727273L9.225405-6.03736Z" id="g1-77"></path></defs><g id="page1"><g stroke-miterlimit="10" transform="translate(-44.978806,-60.861795)scale(0.996264,-0.996264)"><g fill="#000" stroke="#000"><g stroke-width="0.4"><g stroke-width="0.7"><g transform="translate(-7.09377,-2.66667)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-44.978806,-60.861795)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-44.978806" xlink:href="#g1-77" y="-60.861795"></use><use x="-35.313645" xlink:href="#g2-49" y="-59.367414"></use></g></g></g></g><path d="M -22.82253 0.0 L -12.9387 0.0" fill="none"></path><g transform="translate(-15.03816,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(-25.12253,0.0)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-44.978806,-60.861795)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"></g></g></g></g><g transform="translate(32.90623,-2.66667)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-44.978806,-60.861795)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-44.978806" xlink:href="#g1-77" y="-60.861795"></use><use x="-35.313645" xlink:href="#g2-50" y="-59.367414"></use></g></g></g></g><g transform="translate(-7.09377,-42.66667)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-44.978806,-60.861795)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-44.978806" xlink:href="#g1-77" y="-60.861795"></use><use x="-35.313645" xlink:href="#g2-51" y="-59.367414"></use></g></g></g></g><path d="M 9.89253 0.0 L 27.0613 0.0" fill="none"></path><g transform="translate(24.96184,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(17.5,2.51997)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-44.978806,-60.861795)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-44.978806" xlink:href="#g0-121" y="-60.861795"></use></g></g></g></g><path d="M 0.0 -9.89253 L 0.0 -27.0613" fill="none"></path><g transform="matrix(0.0,-1.0,1.0,0.0,0.0,-24.96184)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(2.3,-23.33)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-44.978806,-60.861795)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-44.978806" xlink:href="#g0-82" y="-60.861795"></use></g></g></g></g></g></g></g></g></g></svg></div>
+<ul>
+<li>首先执行图灵机<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(M_1\)</span><span class="heti-spacing"> </span></span>直到停机</li>
+<li>检查停机状态时当前读写头指向的位置<ul>
+<li>如果是<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>则执行<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(M_2\)</span><span class="heti-spacing"> </span></span>直到停机</li>
+<li>如果是<span class="heti-skip"><span class="heti-spacing"> </span>1<span class="heti-spacing"> </span></span>则执行<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(M_3\)</span><span class="heti-spacing"> </span></span>直到停机</li>
+<li>否则直接停机</li>
+</ul>
+</li>
+<li>一些特殊的表示：<ul>
+<li><span class="arithmatex">\(&gt;\!\!R\overset{\Sigma}{\longrightarrow} R\)</span>，或记为<span><span class="heti-spacing"> </span><span class="arithmatex">\(&gt;\!\!RR, &gt;\!\!R^2\)</span></span>，右移两格</li>
+<li><span class="arithmatex">\(&gt;\!\!R\overset{a\neq ⌴}{\longrightarrow}Ra\)</span>，右移，如果不为空则<span class="heti-skip"><span class="heti-spacing"> </span>copy<span class="heti-spacing"> </span></span>到右侧格子</li>
+<li><span><span class="arithmatex">\(&gt;\!\!R\)</span><span class="heti-spacing"> </span></span>指向自身，箭头上是<span><span class="heti-spacing"> </span><span class="arithmatex">\(\bar{⌴}\)</span></span>（表示非空格<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，作用是移动到右侧第一个空格的位置，记为<span><span class="heti-spacing"> </span><span class="arithmatex">\(R_{⌴}\)</span></span></li>
+<li><span><span class="arithmatex">\(&gt;\!\!R\)</span><span class="heti-spacing"> </span></span>指向自身，箭头上是<span><span class="heti-spacing"> </span><span class="arithmatex">\(⌴\)</span></span>，作用是移动到右侧第一个非空格的位置，记为<span><span class="heti-spacing"> </span><span class="arithmatex">\(R_{\bar{⌴}}\)</span></span></li>
+<li>同理有记法<span><span class="heti-spacing"> </span><span class="arithmatex">\(L_{⌴}, L_{\bar{⌴}}\)</span></span></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<details class="example">
+<summary>构建<span><span class="heti-spacing"> </span>left shifting machine <span class="arithmatex">\(S_\leftarrow\)</span></span></summary>
+<p>效果是对于任意<span><span class="heti-spacing"> </span><span class="arithmatex">\(w\in(\Sigma-\{\rhd, ⌴\})^*\)</span></span>，将<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\rhd⌴⌴w\underline{⌴}\)</span><span class="heti-spacing"> </span></span>变为<span><span class="heti-spacing"> </span><span class="arithmatex">\(\rhd⌴w\underline{⌴}\)</span></span></p>
+<p></p><div style="text-align: center; zoom: 1.5;"><!-- This file was generated by dvisvgm 2.13.3 --><svg height="57.545405pt" version="1.1" viewbox="-72.000004 -72.000004 126.148324 57.545405" width="126.148324pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M6.844334-3.257783C6.993773-3.257783 7.183064-3.257783 7.183064-3.457036S6.993773-3.656289 6.854296-3.656289H.886675C.747198-3.656289 .557908-3.656289 .557908-3.457036S.747198-3.257783 .896638-3.257783H6.844334ZM6.854296-1.325031C6.993773-1.325031 7.183064-1.325031 7.183064-1.524284S6.993773-1.723537 6.844334-1.723537H.896638C.747198-1.723537 .557908-1.723537 .557908-1.524284S.747198-1.325031 .886675-1.325031H6.854296Z" id="g2-61"></path><path d="M6.276463-6.744707C6.356164-6.884184 6.356164-6.90411 6.356164-6.933998C6.356164-7.003736 6.296389-7.13325 6.156912-7.13325C6.03736-7.13325 6.007472-7.073474 5.937733-6.933998L1.464508 1.763387C1.384807 1.902864 1.384807 1.92279 1.384807 1.952677C1.384807 2.032379 1.454545 2.15193 1.58406 2.15193C1.703611 2.15193 1.733499 2.092154 1.803238 1.952677L6.276463-6.744707Z" id="g0-54"></path><path d="M6.027397-5.599004C6.027397-5.778331 6.027397-5.957659 5.828144-5.957659S5.628892-5.778331 5.628892-5.599004V-.398506H1.006227V-5.599004C1.006227-5.778331 1.006227-5.957659 .806974-5.957659S.607721-5.778331 .607721-5.599004V-.358655C.607721-.039851 .647572 0 .966376 0H5.668742C5.997509 0 6.027397-.029888 6.027397-.358655V-5.599004Z" id="g0-116"></path><path d="M3.726027-6.027397C3.815691-6.386052 3.845579-6.495641 4.782067-6.495641C5.080946-6.495641 5.160648-6.495641 5.160648-6.684932C5.160648-6.804483 5.051059-6.804483 5.001245-6.804483C4.672478-6.804483 3.855542-6.774595 3.526775-6.774595C3.227895-6.774595 2.500623-6.804483 2.201743-6.804483C2.132005-6.804483 2.012453-6.804483 2.012453-6.60523C2.012453-6.495641 2.102117-6.495641 2.291407-6.495641C2.311333-6.495641 2.500623-6.495641 2.669988-6.475716C2.849315-6.455791 2.938979-6.445828 2.938979-6.316314C2.938979-6.276463 2.929016-6.246575 2.899128-6.127024L1.564134-.777086C1.464508-.388543 1.444583-.308842 .657534-.308842C.488169-.308842 .388543-.308842 .388543-.109589C.388543 0 .478207 0 .657534 0H5.270237C5.50934 0 5.519303 0 5.579078-.169365L6.366127-2.321295C6.405978-2.430884 6.405978-2.450809 6.405978-2.460772C6.405978-2.500623 6.37609-2.570361 6.286426-2.570361S6.1868-2.520548 6.117061-2.361146C5.778331-1.444583 5.339975-.308842 3.616438-.308842H2.67995C2.540473-.308842 2.520548-.308842 2.460772-.318804C2.361146-.328767 2.331258-.33873 2.331258-.418431C2.331258-.448319 2.331258-.468244 2.381071-.647572L3.726027-6.027397Z" id="g1-76"></path><path d="M3.73599-6.117061C3.795766-6.356164 3.825654-6.455791 4.014944-6.485679C4.104608-6.495641 4.423412-6.495641 4.622665-6.495641C5.330012-6.495641 6.435866-6.495641 6.435866-5.50934C6.435866-5.17061 6.276463-4.483188 5.88792-4.094645C5.628892-3.835616 5.100872-3.516812 4.204234-3.516812H3.088418L3.73599-6.117061ZM5.17061-3.387298C6.176837-3.606476 7.362391-4.303861 7.362391-5.310087C7.362391-6.166874 6.465753-6.804483 5.160648-6.804483H2.321295C2.122042-6.804483 2.032379-6.804483 2.032379-6.60523C2.032379-6.495641 2.122042-6.495641 2.311333-6.495641C2.331258-6.495641 2.520548-6.495641 2.689913-6.475716C2.86924-6.455791 2.958904-6.445828 2.958904-6.316314C2.958904-6.276463 2.948941-6.246575 2.919054-6.127024L1.58406-.777086C1.484433-.388543 1.464508-.308842 .67746-.308842C.498132-.308842 .408468-.308842 .408468-.109589C.408468 0 .52802 0 .547945 0C.826899 0 1.524284-.029888 1.803238-.029888S2.789539 0 3.068493 0C3.148194 0 3.267746 0 3.267746-.199253C3.267746-.308842 3.178082-.308842 2.988792-.308842C2.620174-.308842 2.34122-.308842 2.34122-.488169C2.34122-.547945 2.361146-.597758 2.371108-.657534L3.028643-3.297634H4.214197C5.120797-3.297634 5.300125-2.739726 5.300125-2.391034C5.300125-2.241594 5.220423-1.932752 5.160648-1.703611C5.090909-1.424658 5.001245-1.05604 5.001245-.856787C5.001245 .219178 6.196762 .219178 6.326276 .219178C7.173101 .219178 7.521793-.787049 7.521793-.926526C7.521793-1.046077 7.412204-1.046077 7.402242-1.046077C7.312578-1.046077 7.292653-.976339 7.272727-.9066C7.023661-.169365 6.595268 0 6.366127 0C6.03736 0 5.967621-.219178 5.967621-.607721C5.967621-.916563 6.027397-1.424658 6.067248-1.743462C6.087173-1.882939 6.107098-2.072229 6.107098-2.211706C6.107098-2.978829 5.439601-3.287671 5.17061-3.387298Z" id="g1-82"></path><path d="M3.716065-3.765878C3.536737-4.134496 3.247821-4.403487 2.799502-4.403487C1.633873-4.403487 .398506-2.938979 .398506-1.484433C.398506-.547945 .946451 .109589 1.723537 .109589C1.92279 .109589 2.420922 .069738 3.01868-.637609C3.098381-.219178 3.447073 .109589 3.92528 .109589C4.273973 .109589 4.503113-.119552 4.662516-.438356C4.83188-.797011 4.961395-1.404732 4.961395-1.424658C4.961395-1.524284 4.871731-1.524284 4.841843-1.524284C4.742217-1.524284 4.732254-1.484433 4.702366-1.344956C4.533001-.697385 4.353674-.109589 3.945205-.109589C3.676214-.109589 3.646326-.368618 3.646326-.56787C3.646326-.787049 3.666252-.86675 3.775841-1.305106C3.88543-1.723537 3.905355-1.823163 3.995019-2.201743L4.353674-3.596513C4.423412-3.875467 4.423412-3.895392 4.423412-3.935243C4.423412-4.104608 4.303861-4.204234 4.134496-4.204234C3.895392-4.204234 3.745953-3.985056 3.716065-3.765878ZM3.068493-1.185554C3.01868-1.006227 3.01868-.986301 2.86924-.816936C2.430884-.268991 2.022416-.109589 1.743462-.109589C1.24533-.109589 1.105853-.657534 1.105853-1.046077C1.105853-1.544209 1.424658-2.769614 1.653798-3.227895C1.96264-3.815691 2.410959-4.184309 2.809465-4.184309C3.457036-4.184309 3.596513-3.367372 3.596513-3.307597S3.576588-3.188045 3.566625-3.138232L3.068493-1.185554Z" id="g1-97"></path></defs><g id="page1"><g stroke-miterlimit="10" transform="translate(-45.687817,-48.990237)scale(0.996264,-0.996264)"><g fill="#000" stroke="#000"><g stroke-width="0.4"><g stroke-width="0.7"><g transform="translate(-6.73613,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-45.687817" xlink:href="#g1-76" y="-48.990237"></use><use x="-38.90767" xlink:href="#g0-116" y="-48.990237"></use></g></g></g></g><path d="M -22.11086 0.0 L -12.22704 0.0" fill="none"></path><g transform="translate(-14.32649,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(-24.41086,0.0)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"></g></g></g></g><g transform="translate(24.61768,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-45.687817" xlink:href="#g1-82" y="-48.990237"></use></g></g></g></g><g transform="translate(72.14409,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-45.687817" xlink:href="#g0-116" y="-48.990237"></use><use x="-39.046035" xlink:href="#g1-76" y="-48.990237"></use><use x="-32.265888" xlink:href="#g1-97" y="-48.990237"></use><use x="-26.999734" xlink:href="#g1-82" y="-48.990237"></use></g></g></g></g><g transform="translate(25.04996,-31.8694)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-45.687817" xlink:href="#g1-76" y="-48.990237"></use></g></g></g></g><path d="M 9.18086 0.0 L 18.5575 0.0" fill="none"></path><g transform="translate(16.45804,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(15.39226,2.3)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"></g></g></g></g><path d="M 35.30182 0.0 L 67.15976 0.0" fill="none"></path><g transform="translate(65.0603,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(40.11098,4.24443)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-45.687817" xlink:href="#g1-97" y="-48.990237"></use><use x="-37.65433" xlink:href="#g0-54" y="-48.990237"></use><use x="-37.65433" xlink:href="#g2-61" y="-48.990237"></use><use x="-27.13825" xlink:href="#g0-116" y="-48.990237"></use></g></g></g></g><path d="M 28.45274 -6.84908 L 28.45274 -18.89417" fill="none"></path><g transform="matrix(0.0,-1.0,1.0,0.0,28.45274,-16.79471)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(30.75275,-17.17249)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-45.687817" xlink:href="#g0-116" y="-48.990237"></use></g></g></g></g><path d="M 75.6187 11.60698 C 62.98979 22.79605 41.68149 19.6264 34.44856 7.84248" fill="none"></path><g transform="matrix(-0.52309,-0.8522,0.8522,-0.52309,35.54675,9.63164)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(55.11095,15.71509)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-45.687817,-48.990237)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"></g></g></g></g></g></g></g></g></g></svg></div>
+<p>最右侧的图灵机<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(⌴LaR\)</span><span class="heti-spacing"> </span></span>表示先清空当前格，然后左移，将刚读取到的字符写入，然后再右移回来</p>
+</details>
+<h3 id="_5">图灵机功能<a class="headerlink" href="#_5" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<ul>
+<li>Recognize language<ul>
+<li>图灵机基础上补加一个集合<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(\Sigma_0\subseteq \Sigma-\{\rhd, ⌴\}\)</span><span class="heti-spacing"> </span></span>表示输入的字符集</li>
+<li>定义起始<span class="heti-skip"><span class="heti-spacing"> </span>configuration<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span><span class="arithmatex">\((s, \rhd\underline{⌴}w)\)</span></span>，其中<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(w\)</span><span class="heti-spacing"> </span></span>为输入字符串</li>
+<li>半判定（semidecides）<ul>
+<li><span class="arithmatex">\(M\)</span> semidecides <span class="arithmatex">\(L(M)=\{w\in\Sigma_0^*: (s, \rhd\underline{⌴}w)\vdash_M^*(h, \rhd u)\}\)</span>，其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(h\in H, u\in\Sigma^*\)</span></span></li>
+<li>语言中的字符串会停机，不属于语言的字符串不停机</li>
+<li>“半”的原因：判定时间很长的话不知道到底最后会不会停机</li>
+</ul>
+</li>
+<li>判定（decides）<ul>
+<li>令<span><span class="heti-spacing"> </span><span class="arithmatex">\(M=(K, \Sigma_0, \Sigma, \delta, s, \{y, n\})\)</span></span>，<span class="arithmatex">\(M\)</span> decides a language <span class="arithmatex">\(L\subseteq \Sigma_0^*\)</span> if:<ul>
+<li><span class="arithmatex">\(\forall w\in L\)</span>, <span class="arithmatex">\((s, \rhd\underline{⌴}w)\vdash_M^*(y, \cdots)\)</span>，称<span><span class="heti-spacing"> </span><span class="arithmatex">\(M\)</span> accepts <span class="arithmatex">\(w\)</span></span></li>
+<li><span class="arithmatex">\(\forall w\in \Sigma_0^*-L\)</span>, <span class="arithmatex">\((s, \rhd\underline{⌴}w)\vdash_M^*(n, \cdots)\)</span>，称<span><span class="heti-spacing"> </span><span class="arithmatex">\(M\)</span> rejects <span class="arithmatex">\(w\)</span></span></li>
+</ul>
+</li>
+<li>不管接不接受都会停机，只不过停机的状态不同</li>
+</ul>
+</li>
+<li>有图灵机判定一个语言，则称这个语言是<span class="heti-skip"><span class="heti-spacing"> </span>recursive / decidable<span class="heti-spacing"> </span></span>的</li>
+<li>有图灵机半判定一个语言，则称这个语言是<span class="heti-skip"><span class="heti-spacing"> </span>recursively enumerable / recognizable<span class="heti-spacing"> </span></span>的</li>
+<li>定理：如果一个语言是<span class="heti-skip"><span class="heti-spacing"> </span>recursive<span class="heti-spacing"> </span></span>的，则它是<span class="heti-skip"><span class="heti-spacing"> </span>recursively enumerable<span class="heti-spacing"> </span></span>的<ul>
+<li>给<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(n\)</span><span class="heti-spacing"> </span></span>的停机状态变成一个循环不停机的状态就可以</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Compute function<ul>
+<li>对于<span><span class="heti-spacing"> </span><span class="arithmatex">\(w\in\Sigma_0^*\)</span></span>，如果<span><span class="heti-spacing"> </span><span class="arithmatex">\((s, \rhd\underline{⌴}w)\vdash_M^*(h, \rhd\underline{⌴}y)\)</span></span>（其中<span><span class="heti-spacing"> </span><span class="arithmatex">\(h\in H, y\in\Sigma_0^*\)</span></span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，则称<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(y=M(w)\)</span><span class="heti-spacing"> </span></span>为图灵机在输入<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(w\)</span><span class="heti-spacing"> </span></span>时的输出</li>
+<li>对于任意函数<span><span class="heti-spacing"> </span><span class="arithmatex">\(f\colon\Sigma_0^*\rightarrow\Sigma_0^*\)</span></span>，如果存在图灵机<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(M\)</span><span class="heti-spacing"> </span></span>使得<span><span class="heti-spacing"> </span><span class="arithmatex">\(M(w)=f(w)\)</span></span>，则称<ul>
+<li><span class="arithmatex">\(M\)</span> computes <span class="arithmatex">\(f\)</span></li>
+<li><span><span class="arithmatex">\(f\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>recursive / computable<span class="heti-spacing"> </span></span>的</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<details class="example" open="open">
+<summary>证明<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(L=\{a^nb^nc^n:n\geq 0\}\)</span><span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>recursive<span class="heti-spacing"> </span></span>的</summary>
+<p>构造图灵机，思路：每次从左到右依次删一组<span><span class="heti-spacing"> </span>abc</span>，改为<span><span class="heti-spacing"> </span>x</span>，然后检测最后是否都是<span><span class="heti-spacing"> </span>x</span>：</p>
+<p></p><div style="text-align: center; zoom: 1.5;"><!-- This file was generated by dvisvgm 2.13.3 --><svg height="104.842072pt" version="1.1" viewbox="-72.000004 -72.000005 184.828832 104.842072" width="184.828832pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M6.027397-5.599004C6.027397-5.778331 6.027397-5.957659 5.828144-5.957659S5.628892-5.778331 5.628892-5.599004V-.398506H1.006227V-5.599004C1.006227-5.778331 1.006227-5.957659 .806974-5.957659S.607721-5.778331 .607721-5.599004V-.358655C.607721-.039851 .647572 0 .966376 0H5.668742C5.997509 0 6.027397-.029888 6.027397-.358655V-5.599004Z" id="g0-116"></path><path d="M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z" id="g1-59"></path><path d="M3.726027-6.027397C3.815691-6.386052 3.845579-6.495641 4.782067-6.495641C5.080946-6.495641 5.160648-6.495641 5.160648-6.684932C5.160648-6.804483 5.051059-6.804483 5.001245-6.804483C4.672478-6.804483 3.855542-6.774595 3.526775-6.774595C3.227895-6.774595 2.500623-6.804483 2.201743-6.804483C2.132005-6.804483 2.012453-6.804483 2.012453-6.60523C2.012453-6.495641 2.102117-6.495641 2.291407-6.495641C2.311333-6.495641 2.500623-6.495641 2.669988-6.475716C2.849315-6.455791 2.938979-6.445828 2.938979-6.316314C2.938979-6.276463 2.929016-6.246575 2.899128-6.127024L1.564134-.777086C1.464508-.388543 1.444583-.308842 .657534-.308842C.488169-.308842 .388543-.308842 .388543-.109589C.388543 0 .478207 0 .657534 0H5.270237C5.50934 0 5.519303 0 5.579078-.169365L6.366127-2.321295C6.405978-2.430884 6.405978-2.450809 6.405978-2.460772C6.405978-2.500623 6.37609-2.570361 6.286426-2.570361S6.1868-2.520548 6.117061-2.361146C5.778331-1.444583 5.339975-.308842 3.616438-.308842H2.67995C2.540473-.308842 2.520548-.308842 2.460772-.318804C2.361146-.328767 2.331258-.33873 2.331258-.418431C2.331258-.448319 2.331258-.468244 2.381071-.647572L3.726027-6.027397Z" id="g1-76"></path><path d="M3.73599-6.117061C3.795766-6.356164 3.825654-6.455791 4.014944-6.485679C4.104608-6.495641 4.423412-6.495641 4.622665-6.495641C5.330012-6.495641 6.435866-6.495641 6.435866-5.50934C6.435866-5.17061 6.276463-4.483188 5.88792-4.094645C5.628892-3.835616 5.100872-3.516812 4.204234-3.516812H3.088418L3.73599-6.117061ZM5.17061-3.387298C6.176837-3.606476 7.362391-4.303861 7.362391-5.310087C7.362391-6.166874 6.465753-6.804483 5.160648-6.804483H2.321295C2.122042-6.804483 2.032379-6.804483 2.032379-6.60523C2.032379-6.495641 2.122042-6.495641 2.311333-6.495641C2.331258-6.495641 2.520548-6.495641 2.689913-6.475716C2.86924-6.455791 2.958904-6.445828 2.958904-6.316314C2.958904-6.276463 2.948941-6.246575 2.919054-6.127024L1.58406-.777086C1.484433-.388543 1.464508-.308842 .67746-.308842C.498132-.308842 .408468-.308842 .408468-.109589C.408468 0 .52802 0 .547945 0C.826899 0 1.524284-.029888 1.803238-.029888S2.789539 0 3.068493 0C3.148194 0 3.267746 0 3.267746-.199253C3.267746-.308842 3.178082-.308842 2.988792-.308842C2.620174-.308842 2.34122-.308842 2.34122-.488169C2.34122-.547945 2.361146-.597758 2.371108-.657534L3.028643-3.297634H4.214197C5.120797-3.297634 5.300125-2.739726 5.300125-2.391034C5.300125-2.241594 5.220423-1.932752 5.160648-1.703611C5.090909-1.424658 5.001245-1.05604 5.001245-.856787C5.001245 .219178 6.196762 .219178 6.326276 .219178C7.173101 .219178 7.521793-.787049 7.521793-.926526C7.521793-1.046077 7.412204-1.046077 7.402242-1.046077C7.312578-1.046077 7.292653-.976339 7.272727-.9066C7.023661-.169365 6.595268 0 6.366127 0C6.03736 0 5.967621-.219178 5.967621-.607721C5.967621-.916563 6.027397-1.424658 6.067248-1.743462C6.087173-1.882939 6.107098-2.072229 6.107098-2.211706C6.107098-2.978829 5.439601-3.287671 5.17061-3.387298Z" id="g1-82"></path><path d="M3.716065-3.765878C3.536737-4.134496 3.247821-4.403487 2.799502-4.403487C1.633873-4.403487 .398506-2.938979 .398506-1.484433C.398506-.547945 .946451 .109589 1.723537 .109589C1.92279 .109589 2.420922 .069738 3.01868-.637609C3.098381-.219178 3.447073 .109589 3.92528 .109589C4.273973 .109589 4.503113-.119552 4.662516-.438356C4.83188-.797011 4.961395-1.404732 4.961395-1.424658C4.961395-1.524284 4.871731-1.524284 4.841843-1.524284C4.742217-1.524284 4.732254-1.484433 4.702366-1.344956C4.533001-.697385 4.353674-.109589 3.945205-.109589C3.676214-.109589 3.646326-.368618 3.646326-.56787C3.646326-.787049 3.666252-.86675 3.775841-1.305106C3.88543-1.723537 3.905355-1.823163 3.995019-2.201743L4.353674-3.596513C4.423412-3.875467 4.423412-3.895392 4.423412-3.935243C4.423412-4.104608 4.303861-4.204234 4.134496-4.204234C3.895392-4.204234 3.745953-3.985056 3.716065-3.765878ZM3.068493-1.185554C3.01868-1.006227 3.01868-.986301 2.86924-.816936C2.430884-.268991 2.022416-.109589 1.743462-.109589C1.24533-.109589 1.105853-.657534 1.105853-1.046077C1.105853-1.544209 1.424658-2.769614 1.653798-3.227895C1.96264-3.815691 2.410959-4.184309 2.809465-4.184309C3.457036-4.184309 3.596513-3.367372 3.596513-3.307597S3.576588-3.188045 3.566625-3.138232L3.068493-1.185554Z" id="g1-97"></path><path d="M2.381071-6.804483C2.381071-6.814446 2.381071-6.914072 2.251557-6.914072C2.022416-6.914072 1.295143-6.834371 1.036115-6.814446C.956413-6.804483 .846824-6.794521 .846824-6.615193C.846824-6.495641 .936488-6.495641 1.085928-6.495641C1.564134-6.495641 1.58406-6.425903 1.58406-6.326276C1.58406-6.256538 1.494396-5.917808 1.444583-5.708593L.627646-2.460772C.508095-1.96264 .468244-1.803238 .468244-1.454545C.468244-.508095 .996264 .109589 1.733499 .109589C2.909091 .109589 4.134496-1.374844 4.134496-2.809465C4.134496-3.716065 3.606476-4.403487 2.809465-4.403487C2.351183-4.403487 1.942715-4.11457 1.643836-3.805729L2.381071-6.804483ZM1.444583-3.038605C1.504359-3.257783 1.504359-3.277709 1.594022-3.387298C2.082192-4.034869 2.530511-4.184309 2.789539-4.184309C3.148194-4.184309 3.417186-3.88543 3.417186-3.247821C3.417186-2.660025 3.088418-1.514321 2.909091-1.135741C2.580324-.468244 2.122042-.109589 1.733499-.109589C1.39477-.109589 1.066002-.37858 1.066002-1.115816C1.066002-1.305106 1.066002-1.494396 1.225405-2.122042L1.444583-3.038605Z" id="g1-98"></path><path d="M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z" id="g1-99"></path><path d="M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z" id="g1-110"></path><path d="M3.327522-3.008717C3.387298-3.267746 3.616438-4.184309 4.313823-4.184309C4.363636-4.184309 4.60274-4.184309 4.811955-4.054795C4.533001-4.004981 4.333748-3.755915 4.333748-3.516812C4.333748-3.35741 4.443337-3.16812 4.712329-3.16812C4.931507-3.16812 5.250311-3.347447 5.250311-3.745953C5.250311-4.26401 4.662516-4.403487 4.323786-4.403487C3.745953-4.403487 3.39726-3.875467 3.277709-3.646326C3.028643-4.303861 2.49066-4.403487 2.201743-4.403487C1.165629-4.403487 .597758-3.118306 .597758-2.86924C.597758-2.769614 .697385-2.769614 .71731-2.769614C.797011-2.769614 .826899-2.789539 .846824-2.879203C1.185554-3.935243 1.843088-4.184309 2.181818-4.184309C2.371108-4.184309 2.719801-4.094645 2.719801-3.516812C2.719801-3.20797 2.550436-2.540473 2.181818-1.145704C2.022416-.52802 1.673724-.109589 1.235367-.109589C1.175592-.109589 .946451-.109589 .737235-.239103C.986301-.288917 1.205479-.498132 1.205479-.777086C1.205479-1.046077 .986301-1.125778 .836862-1.125778C.537983-1.125778 .288917-.86675 .288917-.547945C.288917-.089664 .787049 .109589 1.225405 .109589C1.882939 .109589 2.241594-.587796 2.271482-.647572C2.391034-.278954 2.749689 .109589 3.347447 .109589C4.373599 .109589 4.941469-1.175592 4.941469-1.424658C4.941469-1.524284 4.851806-1.524284 4.821918-1.524284C4.732254-1.524284 4.712329-1.484433 4.692403-1.414695C4.363636-.348692 3.686177-.109589 3.367372-.109589C2.978829-.109589 2.819427-.428394 2.819427-.767123C2.819427-.986301 2.879203-1.205479 2.988792-1.643836L3.327522-3.008717Z" id="g1-120"></path><path d="M4.841843-3.795766C4.881694-3.935243 4.881694-3.955168 4.881694-4.024907C4.881694-4.204234 4.742217-4.293898 4.592777-4.293898C4.493151-4.293898 4.333748-4.234122 4.244085-4.084682C4.224159-4.034869 4.144458-3.726027 4.104608-3.5467C4.034869-3.287671 3.965131-3.01868 3.905355-2.749689L3.457036-.956413C3.417186-.806974 2.988792-.109589 2.331258-.109589C1.823163-.109589 1.713574-.547945 1.713574-.916563C1.713574-1.374844 1.882939-1.992528 2.221669-2.86924C2.381071-3.277709 2.420922-3.387298 2.420922-3.58655C2.420922-4.034869 2.102117-4.403487 1.603985-4.403487C.657534-4.403487 .288917-2.958904 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.789539 .56787-2.948941C.836862-3.88543 1.235367-4.184309 1.574097-4.184309C1.653798-4.184309 1.823163-4.184309 1.823163-3.865504C1.823163-3.616438 1.723537-3.35741 1.653798-3.16812C1.255293-2.11208 1.075965-1.544209 1.075965-1.075965C1.075965-.18929 1.703611 .109589 2.291407 .109589C2.67995 .109589 3.01868-.059776 3.297634-.33873C3.16812 .179328 3.048568 .667497 2.650062 1.195517C2.391034 1.534247 2.012453 1.823163 1.554172 1.823163C1.414695 1.823163 .966376 1.793275 .797011 1.404732C.956413 1.404732 1.085928 1.404732 1.225405 1.285181C1.325031 1.195517 1.424658 1.066002 1.424658 .876712C1.424658 .56787 1.155666 .52802 1.05604 .52802C.826899 .52802 .498132 .687422 .498132 1.175592C.498132 1.673724 .936488 2.042341 1.554172 2.042341C2.580324 2.042341 3.606476 1.135741 3.88543 .009963L4.841843-3.795766Z" id="g1-121"></path></defs><g id="page1"><g stroke-miterlimit="10" transform="translate(-48.010892,-22.450342)scale(0.996264,-0.996264)"><g fill="#000" stroke="#000"><g stroke-width="0.4"><g stroke-width="0.7"><g transform="translate(-3.83507,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-82" y="-22.450342"></use></g></g></g></g><path d="M -19.77907 0.0 L -9.89525 0.0" fill="none"></path><g transform="translate(-11.9947,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(-22.07907,0.0)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"></g></g></g></g><g transform="translate(43.3073,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-120" y="-22.450342"></use><use x="-42.31696" xlink:href="#g1-82" y="-22.450342"></use></g></g></g></g><g transform="translate(93.3073,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-120" y="-22.450342"></use><use x="-42.31696" xlink:href="#g1-82" y="-22.450342"></use></g></g></g></g><g transform="translate(140.40623,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-120" y="-22.450342"></use><use x="-42.31696" xlink:href="#g1-76" y="-22.450342"></use><use x="-35.536813" xlink:href="#g0-116" y="-22.450342"></use></g></g></g></g><g transform="translate(-2.6308,-51.18056)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-121" y="-22.450342"></use></g></g></g></g><g transform="translate(46.99883,-52.15277)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-110" y="-22.450342"></use></g></g></g></g><path d="M 6.84908 0.0 L 37.78297 0.0" fill="none"></path><g transform="translate(35.68352,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(21.19617,2.3)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-97" y="-22.450342"></use></g></g></g></g><path d="M 0.0 -6.84908 L 0.0 -41.15407" fill="none"></path><g transform="matrix(0.0,-1.0,1.0,0.0,0.0,-39.05461)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(2.3,-28.30244)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g0-116" y="-22.450342"></use></g></g></g></g><path d="M 4.84302 -4.84302 L 44.03053 -44.03053" fill="none"></path><g transform="matrix(0.7071,-0.7071,0.7071,0.7071,42.546,-42.546)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(27.81375,-21.2693)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-98" y="-22.450342"></use><use x="-43.735258" xlink:href="#g1-59" y="-22.450342"></use><use x="-39.30745" xlink:href="#g1-99" y="-22.450342"></use></g></g></g></g><path d="M -1.77246 6.6157 C -5.45451 20.35722 5.45451 20.35722 2.81956 10.524" fill="none"></path><g transform="matrix(-0.25879,-0.96593,0.96593,-0.25879,3.36287,12.55193)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(-2.85764,19.22182)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-120" y="-22.450342"></use></g></g></g></g><path d="M 59.17085 0.0 L 87.78297 0.0" fill="none"></path><g transform="translate(85.68352,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(72.85417,2.3)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-98" y="-22.450342"></use></g></g></g></g><path d="M 50.0 -9.17085 L 50.0 -41.55788" fill="none"></path><g transform="matrix(0.0,-1.0,1.0,0.0,50.0,-39.45842)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(52.3,-28.69302)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-99" y="-22.450342"></use><use x="-43.699496" xlink:href="#g1-59" y="-22.450342"></use><use x="-39.271688" xlink:href="#g0-116" y="-22.450342"></use></g></g></g></g><path d="M 47.6267 8.85823 C 43.79414 23.16154 56.20586 23.16154 53.42041 12.76653" fill="none"></path><g transform="matrix(-0.25879,-0.96593,0.96593,-0.25879,53.96371,14.79445)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(42.27718,23.83012)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-97" y="-22.450342"></use><use x="-42.744738" xlink:href="#g1-59" y="-22.450342"></use><use x="-38.31693" xlink:href="#g1-120" y="-22.450342"></use></g></g></g></g><path d="M 109.17085 0.0 L 135.21095 0.0" fill="none"></path><g transform="translate(133.1115,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(121.55022,2.3)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-99" y="-22.450342"></use></g></g></g></g><path d="M 93.51523 -6.48477 L 55.96947 -44.03053" fill="none"></path><g transform="matrix(-0.7071,-0.7071,0.7071,-0.7071,57.454,-42.546)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(75.96538,-34.1902)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g0-116" y="-22.450342"></use></g></g></g></g><path d="M 97.6267 8.85823 C 93.79414 23.16154 106.20586 23.16154 103.42041 12.76653" fill="none"></path><g transform="matrix(-0.25879,-0.96593,0.96593,-0.25879,103.96371,14.79445)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(92.77429,23.83014)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-98" y="-22.450342"></use><use x="-43.735258" xlink:href="#g1-59" y="-22.450342"></use><use x="-39.30745" xlink:href="#g1-120" y="-22.450342"></use></g></g></g></g><path d="M 142.45197 8.99529 C 106.60292 49.43547 38.00378 47.57277 6.29628 7.63216" fill="none"></path><g transform="matrix(-0.62172,-0.78316,0.78316,-0.62172,7.60155,9.27635)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(72.58429,35.85828)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.450342)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"></g></g></g></g></g></g></g></g></g></svg></div>
+<p>但这种情况会接受<span><span class="heti-spacing"> </span><span class="arithmatex">\(abcabc\)</span></span>，所以需要删<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(abc\)</span><span class="heti-spacing"> </span></span>之后分别变为<span><span class="heti-spacing"> </span><span class="arithmatex">\(xyz\)</span></span>，然后再检测：</p>
+<p></p><div style="text-align: center; zoom: 1.5;"><!-- This file was generated by dvisvgm 2.13.3 --><svg height="104.734396pt" version="1.1" viewbox="-72.000004 -72.000003 184.539387 104.734396" width="184.539387pt" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"><defs><path d="M5.56812-5.04807C5.56812-5.200498 5.56812-5.379826 5.379826-5.379826C5.182565-5.379826 5.182565-5.209465 5.182565-5.04807V-.385554H.950436V-5.04807C.950436-5.200498 .950436-5.379826 .762142-5.379826C.564882-5.379826 .564882-5.209465 .564882-5.04807V-.331756C.564882-.044832 .600747 0 .896638 0H5.236364C5.523288 0 5.56812-.026899 5.56812-.331756V-5.04807Z" id="g0-116"></path><path d="M6.027397-5.599004C6.027397-5.778331 6.027397-5.957659 5.828144-5.957659S5.628892-5.778331 5.628892-5.599004V-.398506H1.006227V-5.599004C1.006227-5.778331 1.006227-5.957659 .806974-5.957659S.607721-5.778331 .607721-5.599004V-.358655C.607721-.039851 .647572 0 .966376 0H5.668742C5.997509 0 6.027397-.029888 6.027397-.358655V-5.599004Z" id="g2-116"></path><path d="M1.63188-.143462C1.63188 .152428 1.63188 .887671 .968369 1.524284C.91457 1.578082 .91457 1.587049 .91457 1.622914C.91457 1.685679 .977335 1.730511 1.031133 1.730511C1.129763 1.730511 1.85604 1.031133 1.85604-.017933C1.85604-.573848 1.65878-.968369 1.273225-.968369C.968369-.968369 .789041-.735243 .789041-.484184S.968369 0 1.273225 0C1.407721 0 1.542217-.044832 1.63188-.143462Z" id="g1-59"></path><path d="M3.425156-3.407223C3.254795-3.730012 2.976837-3.963138 2.57335-3.963138C1.53325-3.963138 .376588-2.725778 .376588-1.353923C.376588-.367621 1.004234 .09863 1.604981 .09863C2.187796 .09863 2.663014-.385554 2.806476-.555915C2.905106-.062765 3.353425 .09863 3.640349 .09863C3.900374 .09863 4.124533-.017933 4.321793-.394521C4.483188-.690411 4.608717-1.246326 4.608717-1.282192C4.608717-1.327024 4.581818-1.389788 4.492154-1.389788C4.384558-1.389788 4.375592-1.344956 4.339726-1.174595C4.142466-.394521 3.945205-.125529 3.667248-.125529C3.443088-.125529 3.38929-.340722 3.38929-.537983C3.38929-.708344 3.434122-.887671 3.514819-1.201494L3.738979-2.125031C3.801743-2.349191 3.963138-3.021669 3.999004-3.156164C4.034869-3.281694 4.088667-3.496887 4.088667-3.523786C4.088667-3.667248 3.972105-3.783811 3.81071-3.783811C3.694147-3.783811 3.469988-3.71208 3.425156-3.407223ZM2.842341-1.093898C2.797509-.923537 2.797509-.91457 2.654047-.744209C2.331258-.358655 1.963636-.125529 1.63188-.125529C1.192528-.125529 1.0401-.582814 1.0401-.968369C1.0401-1.407721 1.300125-2.438854 1.515318-2.86924C1.802242-3.407223 2.214695-3.738979 2.57335-3.738979C3.174097-3.738979 3.308593-3.021669 3.308593-2.958904C3.308593-2.914072 3.29066-2.860274 3.281694-2.824408L2.842341-1.093898Z" id="g1-97"></path><path d="M2.142964-5.917808C2.178829-6.043337 2.178829-6.06127 2.178829-6.097136C2.178829-6.177833 2.125031-6.222665 2.044334-6.222665C1.918804-6.222665 1.129763-6.150934 .950436-6.133001C.860772-6.124035 .762142-6.115068 .762142-5.96264C.762142-5.846077 .860772-5.846077 1.004234-5.846077C1.425654-5.846077 1.425654-5.783313 1.425654-5.702615C1.425654-5.648817 1.425654-5.630884 1.362889-5.388792L.887671-3.496887C.762142-2.99477 .645579-2.537484 .546949-2.116065C.484184-1.891905 .42142-1.622914 .42142-1.33599C.42142-.564882 .851806 .09863 1.622914 .09863C2.67198 .09863 3.819676-1.165629 3.819676-2.510585C3.819676-3.425156 3.254795-3.963138 2.582316-3.963138C2.125031-3.963138 1.730511-3.649315 1.524284-3.452055L2.142964-5.917808ZM1.398755-2.940971C1.649813-3.299626 2.107098-3.738979 2.564384-3.738979C2.985803-3.738979 3.156164-3.317559 3.156164-2.896139C3.156164-2.492653 2.905106-1.380822 2.627148-.905604C2.295392-.331756 1.900872-.125529 1.622914-.125529C1.174595-.125529 .995268-.573848 .995268-1.031133C.995268-1.344956 1.058032-1.587049 1.264259-2.402989L1.398755-2.940971Z" id="g1-98"></path><path d="M3.604483-3.425156C3.263761-3.416189 3.084433-3.156164 3.084433-2.932005C3.084433-2.67198 3.317559-2.609215 3.425156-2.609215C3.604483-2.609215 3.927273-2.761644 3.927273-3.183064C3.927273-3.658281 3.452055-3.963138 2.833375-3.963138C1.613948-3.963138 .385554-2.725778 .385554-1.43462C.385554-.537983 .986301 .09863 1.891905 .09863C3.236862 .09863 3.990037-.833873 3.990037-.950436C3.990037-1.004234 3.927273-1.075965 3.864508-1.075965C3.819676-1.075965 3.81071-1.066999 3.730012-.968369C3.19203-.304857 2.37609-.125529 1.909838-.125529C1.407721-.125529 1.075965-.457285 1.075965-1.102864C1.075965-1.488418 1.246326-2.37609 1.604981-2.949938C1.811208-3.272727 2.27746-3.738979 2.842341-3.738979C3.012702-3.738979 3.38929-3.703113 3.604483-3.425156Z" id="g1-99"></path><path d="M4.411457-3.622416C4.079701-3.559651 3.981071-3.272727 3.981071-3.138232C3.981071-2.96787 4.1066-2.815442 4.33076-2.815442C4.581818-2.815442 4.82391-3.030635 4.82391-3.344458C4.82391-3.756912 4.375592-3.963138 3.954172-3.963138C3.416189-3.963138 3.102366-3.48792 2.99477-3.299626C2.824408-3.738979 2.429888-3.963138 1.999502-3.963138C1.0401-3.963138 .52005-2.815442 .52005-2.582316C.52005-2.501619 .582814-2.47472 .645579-2.47472C.726276-2.47472 .753176-2.519552 .771108-2.57335C1.049066-3.461021 1.640847-3.738979 1.981569-3.738979C2.241594-3.738979 2.47472-3.568618 2.47472-3.147198C2.47472-2.824408 2.089166-1.389788 1.972603-.959402C1.900872-.681445 1.63188-.125529 1.13873-.125529C.959402-.125529 .771108-.188294 .681445-.242092C.923537-.286924 1.102864-.493151 1.102864-.726276C1.102864-.950436 .932503-1.049066 .762142-1.049066C.502117-1.049066 .268991-.824907 .268991-.52005C.268991-.080697 .753176 .09863 1.129763 .09863C1.649813 .09863 1.95467-.331756 2.089166-.573848C2.313325 .017933 2.842341 .09863 3.084433 .09863C4.052802 .09863 4.563885-1.066999 4.563885-1.282192C4.563885-1.327024 4.536986-1.389788 4.447323-1.389788C4.348692-1.389788 4.339726-1.353923 4.294894-1.219427C4.097634-.573848 3.577584-.125529 3.111333-.125529C2.851308-.125529 2.609215-.286924 2.609215-.71731C2.609215-.91457 2.734745-1.407721 2.815442-1.748443C2.851308-1.909838 3.0934-2.878207 3.111333-2.940971C3.218929-3.263761 3.48792-3.738979 3.945205-3.738979C4.1066-3.738979 4.276961-3.71208 4.411457-3.622416Z" id="g1-120"></path><path d="M4.501121-3.452055C4.510087-3.496887 4.52802-3.550685 4.52802-3.604483C4.52802-3.721046 4.447323-3.864508 4.250062-3.864508C4.133499-3.864508 3.972105-3.792777 3.900374-3.622416C3.891407-3.58655 3.801743-3.218929 3.747945-3.021669L3.299626-1.228394C3.227895-.968369 3.227895-.950436 3.209963-.869738C3.200996-.833873 2.824408-.125529 2.178829-.125529C1.622914-.125529 1.622914-.690411 1.622914-.860772C1.622914-1.264259 1.739477-1.703611 2.125031-2.707846C2.196762-2.914072 2.25056-3.039601 2.25056-3.209963C2.25056-3.649315 1.918804-3.963138 1.479452-3.963138C.61868-3.963138 .260025-2.689913 .260025-2.582316C.260025-2.501619 .32279-2.47472 .385554-2.47472C.484184-2.47472 .493151-2.528518 .529016-2.645081C.71731-3.308593 1.075965-3.738979 1.452553-3.738979C1.667746-3.738979 1.667746-3.568618 1.667746-3.443088C1.667746-3.29066 1.63188-3.129265 1.551183-2.914072C1.129763-1.802242 1.0132-1.425654 1.0132-.995268C1.0132 0 1.820174 .09863 2.15193 .09863C2.591283 .09863 2.905106-.134496 3.066501-.29589C2.949938 .161395 2.851308 .564882 2.501619 1.0132C2.232628 1.371856 1.873973 1.613948 1.479452 1.613948C1.228394 1.613948 .932503 1.524284 .806974 1.273225C1.282192 1.273225 1.344956 .878705 1.344956 .789041C1.344956 .591781 1.201494 .466252 1.004234 .466252C.789041 .466252 .502117 .636613 .502117 1.049066C.502117 1.515318 .91457 1.838107 1.479452 1.838107C2.394022 1.838107 3.371357 1.058032 3.631382 .008966L4.501121-3.452055Z" id="g1-121"></path><path d="M1.246326-.762142C1.43462-.986301 1.927771-1.43462 2.313325-1.75741C2.976837-2.322291 3.183064-2.519552 3.299626-2.645081C4.034869-3.353425 4.276961-3.81071 4.276961-3.864508C4.276961-3.873474 4.276961-3.963138 4.160399-3.963138C4.079701-3.963138 4.061768-3.936239 4.016936-3.864508C3.900374-3.685181 3.658281-3.299626 3.353425-3.299626C3.174097-3.299626 3.057534-3.398257 2.851308-3.631382C2.636115-3.864508 2.465753-3.963138 2.232628-3.963138C1.542217-3.963138 1.120797-3.138232 1.120797-2.914072C1.120797-2.887173 1.13873-2.815442 1.23736-2.815442C1.327024-2.815442 1.353923-2.86924 1.362889-2.896139C1.53325-3.326526 2.062267-3.326526 2.133998-3.326526C2.340224-3.326526 2.555417-3.263761 2.752677-3.19203C3.111333-3.075467 3.263761-3.075467 3.398257-3.075467C3.120299-2.761644 2.618182-2.331258 2.0533-1.847073C1.604981-1.461519 1.327024-1.192528 1.129763-.995268C.798007-.645579 .394521-.09863 .394521 0C.394521 .062765 .439352 .09863 .511083 .09863C.591781 .09863 .609714 .062765 .654545 .008966C1.004234-.529016 1.33599-.564882 1.43462-.564882C1.65878-.564882 1.784309-.430386 1.981569-.19726C2.187796 .026899 2.385056 .09863 2.564384 .09863C3.48792 .09863 4.025903-1.049066 4.025903-1.291158C4.025903-1.371856 3.963138-1.398755 3.900374-1.398755C3.81071-1.398755 3.792777-1.33599 3.774844-1.300125C3.532752-.636613 2.896139-.537983 2.663014-.537983C2.492653-.537983 2.313325-.582814 2.044334-.672478C1.865006-.726276 1.649813-.789041 1.461519-.789041C1.371856-.789041 1.282192-.771108 1.246326-.762142Z" id="g1-122"></path><path d="M2.022416-.009963C2.022416-.667497 1.77335-1.05604 1.384807-1.05604C1.05604-1.05604 .856787-.806974 .856787-.52802C.856787-.259029 1.05604 0 1.384807 0C1.504359 0 1.633873-.039851 1.733499-.129514C1.763387-.14944 1.77335-.159402 1.783313-.159402S1.803238-.14944 1.803238-.009963C1.803238 .727273 1.454545 1.325031 1.125778 1.653798C1.016189 1.763387 1.016189 1.783313 1.016189 1.8132C1.016189 1.882939 1.066002 1.92279 1.115816 1.92279C1.225405 1.92279 2.022416 1.155666 2.022416-.009963Z" id="g3-59"></path><path d="M3.726027-6.027397C3.815691-6.386052 3.845579-6.495641 4.782067-6.495641C5.080946-6.495641 5.160648-6.495641 5.160648-6.684932C5.160648-6.804483 5.051059-6.804483 5.001245-6.804483C4.672478-6.804483 3.855542-6.774595 3.526775-6.774595C3.227895-6.774595 2.500623-6.804483 2.201743-6.804483C2.132005-6.804483 2.012453-6.804483 2.012453-6.60523C2.012453-6.495641 2.102117-6.495641 2.291407-6.495641C2.311333-6.495641 2.500623-6.495641 2.669988-6.475716C2.849315-6.455791 2.938979-6.445828 2.938979-6.316314C2.938979-6.276463 2.929016-6.246575 2.899128-6.127024L1.564134-.777086C1.464508-.388543 1.444583-.308842 .657534-.308842C.488169-.308842 .388543-.308842 .388543-.109589C.388543 0 .478207 0 .657534 0H5.270237C5.50934 0 5.519303 0 5.579078-.169365L6.366127-2.321295C6.405978-2.430884 6.405978-2.450809 6.405978-2.460772C6.405978-2.500623 6.37609-2.570361 6.286426-2.570361S6.1868-2.520548 6.117061-2.361146C5.778331-1.444583 5.339975-.308842 3.616438-.308842H2.67995C2.540473-.308842 2.520548-.308842 2.460772-.318804C2.361146-.328767 2.331258-.33873 2.331258-.418431C2.331258-.448319 2.331258-.468244 2.381071-.647572L3.726027-6.027397Z" id="g3-76"></path><path d="M3.73599-6.117061C3.795766-6.356164 3.825654-6.455791 4.014944-6.485679C4.104608-6.495641 4.423412-6.495641 4.622665-6.495641C5.330012-6.495641 6.435866-6.495641 6.435866-5.50934C6.435866-5.17061 6.276463-4.483188 5.88792-4.094645C5.628892-3.835616 5.100872-3.516812 4.204234-3.516812H3.088418L3.73599-6.117061ZM5.17061-3.387298C6.176837-3.606476 7.362391-4.303861 7.362391-5.310087C7.362391-6.166874 6.465753-6.804483 5.160648-6.804483H2.321295C2.122042-6.804483 2.032379-6.804483 2.032379-6.60523C2.032379-6.495641 2.122042-6.495641 2.311333-6.495641C2.331258-6.495641 2.520548-6.495641 2.689913-6.475716C2.86924-6.455791 2.958904-6.445828 2.958904-6.316314C2.958904-6.276463 2.948941-6.246575 2.919054-6.127024L1.58406-.777086C1.484433-.388543 1.464508-.308842 .67746-.308842C.498132-.308842 .408468-.308842 .408468-.109589C.408468 0 .52802 0 .547945 0C.826899 0 1.524284-.029888 1.803238-.029888S2.789539 0 3.068493 0C3.148194 0 3.267746 0 3.267746-.199253C3.267746-.308842 3.178082-.308842 2.988792-.308842C2.620174-.308842 2.34122-.308842 2.34122-.488169C2.34122-.547945 2.361146-.597758 2.371108-.657534L3.028643-3.297634H4.214197C5.120797-3.297634 5.300125-2.739726 5.300125-2.391034C5.300125-2.241594 5.220423-1.932752 5.160648-1.703611C5.090909-1.424658 5.001245-1.05604 5.001245-.856787C5.001245 .219178 6.196762 .219178 6.326276 .219178C7.173101 .219178 7.521793-.787049 7.521793-.926526C7.521793-1.046077 7.412204-1.046077 7.402242-1.046077C7.312578-1.046077 7.292653-.976339 7.272727-.9066C7.023661-.169365 6.595268 0 6.366127 0C6.03736 0 5.967621-.219178 5.967621-.607721C5.967621-.916563 6.027397-1.424658 6.067248-1.743462C6.087173-1.882939 6.107098-2.072229 6.107098-2.211706C6.107098-2.978829 5.439601-3.287671 5.17061-3.387298Z" id="g3-82"></path><path d="M3.716065-3.765878C3.536737-4.134496 3.247821-4.403487 2.799502-4.403487C1.633873-4.403487 .398506-2.938979 .398506-1.484433C.398506-.547945 .946451 .109589 1.723537 .109589C1.92279 .109589 2.420922 .069738 3.01868-.637609C3.098381-.219178 3.447073 .109589 3.92528 .109589C4.273973 .109589 4.503113-.119552 4.662516-.438356C4.83188-.797011 4.961395-1.404732 4.961395-1.424658C4.961395-1.524284 4.871731-1.524284 4.841843-1.524284C4.742217-1.524284 4.732254-1.484433 4.702366-1.344956C4.533001-.697385 4.353674-.109589 3.945205-.109589C3.676214-.109589 3.646326-.368618 3.646326-.56787C3.646326-.787049 3.666252-.86675 3.775841-1.305106C3.88543-1.723537 3.905355-1.823163 3.995019-2.201743L4.353674-3.596513C4.423412-3.875467 4.423412-3.895392 4.423412-3.935243C4.423412-4.104608 4.303861-4.204234 4.134496-4.204234C3.895392-4.204234 3.745953-3.985056 3.716065-3.765878ZM3.068493-1.185554C3.01868-1.006227 3.01868-.986301 2.86924-.816936C2.430884-.268991 2.022416-.109589 1.743462-.109589C1.24533-.109589 1.105853-.657534 1.105853-1.046077C1.105853-1.544209 1.424658-2.769614 1.653798-3.227895C1.96264-3.815691 2.410959-4.184309 2.809465-4.184309C3.457036-4.184309 3.596513-3.367372 3.596513-3.307597S3.576588-3.188045 3.566625-3.138232L3.068493-1.185554Z" id="g3-97"></path><path d="M2.381071-6.804483C2.381071-6.814446 2.381071-6.914072 2.251557-6.914072C2.022416-6.914072 1.295143-6.834371 1.036115-6.814446C.956413-6.804483 .846824-6.794521 .846824-6.615193C.846824-6.495641 .936488-6.495641 1.085928-6.495641C1.564134-6.495641 1.58406-6.425903 1.58406-6.326276C1.58406-6.256538 1.494396-5.917808 1.444583-5.708593L.627646-2.460772C.508095-1.96264 .468244-1.803238 .468244-1.454545C.468244-.508095 .996264 .109589 1.733499 .109589C2.909091 .109589 4.134496-1.374844 4.134496-2.809465C4.134496-3.716065 3.606476-4.403487 2.809465-4.403487C2.351183-4.403487 1.942715-4.11457 1.643836-3.805729L2.381071-6.804483ZM1.444583-3.038605C1.504359-3.257783 1.504359-3.277709 1.594022-3.387298C2.082192-4.034869 2.530511-4.184309 2.789539-4.184309C3.148194-4.184309 3.417186-3.88543 3.417186-3.247821C3.417186-2.660025 3.088418-1.514321 2.909091-1.135741C2.580324-.468244 2.122042-.109589 1.733499-.109589C1.39477-.109589 1.066002-.37858 1.066002-1.115816C1.066002-1.305106 1.066002-1.494396 1.225405-2.122042L1.444583-3.038605Z" id="g3-98"></path><path d="M3.945205-3.785803C3.785803-3.785803 3.646326-3.785803 3.506849-3.646326C3.347447-3.496887 3.327522-3.327522 3.327522-3.257783C3.327522-3.01868 3.506849-2.909091 3.696139-2.909091C3.985056-2.909091 4.254047-3.148194 4.254047-3.5467C4.254047-4.034869 3.785803-4.403487 3.078456-4.403487C1.733499-4.403487 .408468-2.978829 .408468-1.574097C.408468-.67746 .986301 .109589 2.022416 .109589C3.447073 .109589 4.283935-.946451 4.283935-1.066002C4.283935-1.125778 4.224159-1.195517 4.164384-1.195517C4.11457-1.195517 4.094645-1.175592 4.034869-1.09589C3.247821-.109589 2.161893-.109589 2.042341-.109589C1.414695-.109589 1.145704-.597758 1.145704-1.195517C1.145704-1.603985 1.344956-2.570361 1.683686-3.188045C1.992528-3.755915 2.540473-4.184309 3.088418-4.184309C3.427148-4.184309 3.805729-4.054795 3.945205-3.785803Z" id="g3-99"></path><path d="M.876712-.587796C.846824-.438356 .787049-.209215 .787049-.159402C.787049 .019925 .926526 .109589 1.075965 .109589C1.195517 .109589 1.374844 .029888 1.444583-.169365C1.454545-.18929 1.574097-.657534 1.633873-.9066L1.853051-1.803238C1.912827-2.022416 1.972603-2.241594 2.022416-2.470735C2.062267-2.6401 2.141968-2.929016 2.15193-2.968867C2.30137-3.277709 2.82939-4.184309 3.775841-4.184309C4.224159-4.184309 4.313823-3.815691 4.313823-3.486924C4.313823-2.86924 3.825654-1.594022 3.666252-1.165629C3.576588-.936488 3.566625-.816936 3.566625-.707347C3.566625-.239103 3.915318 .109589 4.383562 .109589C5.32005 .109589 5.688667-1.344956 5.688667-1.424658C5.688667-1.524284 5.599004-1.524284 5.569116-1.524284C5.469489-1.524284 5.469489-1.494396 5.419676-1.344956C5.220423-.667497 4.891656-.109589 4.403487-.109589C4.234122-.109589 4.164384-.209215 4.164384-.438356C4.164384-.687422 4.254047-.926526 4.343711-1.145704C4.533001-1.673724 4.951432-2.769614 4.951432-3.337484C4.951432-4.004981 4.523039-4.403487 3.805729-4.403487C2.909091-4.403487 2.420922-3.765878 2.251557-3.536737C2.201743-4.094645 1.793275-4.403487 1.334994-4.403487S.687422-4.014944 .587796-3.835616C.428394-3.496887 .288917-2.909091 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.779577 .577833-2.998755C.747198-3.706102 .946451-4.184309 1.305106-4.184309C1.504359-4.184309 1.613948-4.054795 1.613948-3.726027C1.613948-3.516812 1.58406-3.407223 1.454545-2.889166L.876712-.587796Z" id="g3-110"></path><path d="M3.327522-3.008717C3.387298-3.267746 3.616438-4.184309 4.313823-4.184309C4.363636-4.184309 4.60274-4.184309 4.811955-4.054795C4.533001-4.004981 4.333748-3.755915 4.333748-3.516812C4.333748-3.35741 4.443337-3.16812 4.712329-3.16812C4.931507-3.16812 5.250311-3.347447 5.250311-3.745953C5.250311-4.26401 4.662516-4.403487 4.323786-4.403487C3.745953-4.403487 3.39726-3.875467 3.277709-3.646326C3.028643-4.303861 2.49066-4.403487 2.201743-4.403487C1.165629-4.403487 .597758-3.118306 .597758-2.86924C.597758-2.769614 .697385-2.769614 .71731-2.769614C.797011-2.769614 .826899-2.789539 .846824-2.879203C1.185554-3.935243 1.843088-4.184309 2.181818-4.184309C2.371108-4.184309 2.719801-4.094645 2.719801-3.516812C2.719801-3.20797 2.550436-2.540473 2.181818-1.145704C2.022416-.52802 1.673724-.109589 1.235367-.109589C1.175592-.109589 .946451-.109589 .737235-.239103C.986301-.288917 1.205479-.498132 1.205479-.777086C1.205479-1.046077 .986301-1.125778 .836862-1.125778C.537983-1.125778 .288917-.86675 .288917-.547945C.288917-.089664 .787049 .109589 1.225405 .109589C1.882939 .109589 2.241594-.587796 2.271482-.647572C2.391034-.278954 2.749689 .109589 3.347447 .109589C4.373599 .109589 4.941469-1.175592 4.941469-1.424658C4.941469-1.524284 4.851806-1.524284 4.821918-1.524284C4.732254-1.524284 4.712329-1.484433 4.692403-1.414695C4.363636-.348692 3.686177-.109589 3.367372-.109589C2.978829-.109589 2.819427-.428394 2.819427-.767123C2.819427-.986301 2.879203-1.205479 2.988792-1.643836L3.327522-3.008717Z" id="g3-120"></path><path d="M4.841843-3.795766C4.881694-3.935243 4.881694-3.955168 4.881694-4.024907C4.881694-4.204234 4.742217-4.293898 4.592777-4.293898C4.493151-4.293898 4.333748-4.234122 4.244085-4.084682C4.224159-4.034869 4.144458-3.726027 4.104608-3.5467C4.034869-3.287671 3.965131-3.01868 3.905355-2.749689L3.457036-.956413C3.417186-.806974 2.988792-.109589 2.331258-.109589C1.823163-.109589 1.713574-.547945 1.713574-.916563C1.713574-1.374844 1.882939-1.992528 2.221669-2.86924C2.381071-3.277709 2.420922-3.387298 2.420922-3.58655C2.420922-4.034869 2.102117-4.403487 1.603985-4.403487C.657534-4.403487 .288917-2.958904 .288917-2.86924C.288917-2.769614 .388543-2.769614 .408468-2.769614C.508095-2.769614 .518057-2.789539 .56787-2.948941C.836862-3.88543 1.235367-4.184309 1.574097-4.184309C1.653798-4.184309 1.823163-4.184309 1.823163-3.865504C1.823163-3.616438 1.723537-3.35741 1.653798-3.16812C1.255293-2.11208 1.075965-1.544209 1.075965-1.075965C1.075965-.18929 1.703611 .109589 2.291407 .109589C2.67995 .109589 3.01868-.059776 3.297634-.33873C3.16812 .179328 3.048568 .667497 2.650062 1.195517C2.391034 1.534247 2.012453 1.823163 1.554172 1.823163C1.414695 1.823163 .966376 1.793275 .797011 1.404732C.956413 1.404732 1.085928 1.404732 1.225405 1.285181C1.325031 1.195517 1.424658 1.066002 1.424658 .876712C1.424658 .56787 1.155666 .52802 1.05604 .52802C.826899 .52802 .498132 .687422 .498132 1.175592C.498132 1.673724 .936488 2.042341 1.554172 2.042341C2.580324 2.042341 3.606476 1.135741 3.88543 .009963L4.841843-3.795766Z" id="g3-121"></path><path d="M1.325031-.826899C1.863014-1.404732 2.15193-1.653798 2.510585-1.96264C2.510585-1.972603 3.128269-2.500623 3.486924-2.859278C4.433375-3.785803 4.652553-4.26401 4.652553-4.303861C4.652553-4.403487 4.562889-4.403487 4.542964-4.403487C4.473225-4.403487 4.443337-4.383562 4.393524-4.293898C4.094645-3.815691 3.88543-3.656289 3.646326-3.656289S3.287671-3.805729 3.138232-3.975093C2.948941-4.204234 2.779577-4.403487 2.450809-4.403487C1.703611-4.403487 1.24533-3.476961 1.24533-3.267746C1.24533-3.217933 1.275218-3.158157 1.364882-3.158157S1.474471-3.20797 1.494396-3.267746C1.683686-3.726027 2.261519-3.73599 2.34122-3.73599C2.550436-3.73599 2.739726-3.666252 2.968867-3.58655C3.367372-3.437111 3.476961-3.437111 3.73599-3.437111C3.377335-3.008717 2.540473-2.291407 2.351183-2.132005L1.454545-1.295143C.777086-.627646 .428394-.059776 .428394 .009963C.428394 .109589 .52802 .109589 .547945 .109589C.627646 .109589 .647572 .089664 .707347-.019925C.936488-.368618 1.235367-.637609 1.554172-.637609C1.783313-.637609 1.882939-.547945 2.132005-.259029C2.30137-.049813 2.480697 .109589 2.769614 .109589C3.755915 .109589 4.333748-1.155666 4.333748-1.424658C4.333748-1.474471 4.293898-1.524284 4.214197-1.524284C4.124533-1.524284 4.104608-1.464508 4.07472-1.39477C3.845579-.747198 3.20797-.557908 2.879203-.557908C2.67995-.557908 2.500623-.617684 2.291407-.687422C1.952677-.816936 1.803238-.856787 1.594022-.856787C1.574097-.856787 1.414695-.856787 1.325031-.826899Z" id="g3-122"></path></defs><g id="page1"><g stroke-miterlimit="10" transform="translate(-48.010892,-22.558016)scale(0.996264,-0.996264)"><g fill="#000" stroke="#000"><g stroke-width="0.4"><g stroke-width="0.7"><g transform="translate(-3.83507,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-82" y="-22.558016"></use></g></g></g></g><path d="M -19.77907 0.0 L -9.89525 0.0" fill="none"></path><g transform="translate(-11.9947,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(-22.07907,0.0)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"></g></g></g></g><g transform="translate(43.3073,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-120" y="-22.558016"></use><use x="-42.31696" xlink:href="#g3-82" y="-22.558016"></use></g></g></g></g><g transform="translate(93.53413,-2.44444)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-121" y="-22.558016"></use><use x="-42.768949" xlink:href="#g3-82" y="-22.558016"></use></g></g></g></g><g transform="translate(140.71872,-3.41666)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-122" y="-22.558016"></use><use x="-42.939608" xlink:href="#g3-76" y="-22.558016"></use><use x="-36.159461" xlink:href="#g2-116" y="-22.558016"></use></g></g></g></g><g transform="translate(-2.6308,-51.18056)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-121" y="-22.558016"></use></g></g></g></g><g transform="translate(46.99883,-52.15277)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-110" y="-22.558016"></use></g></g></g></g><path d="M 6.84908 0.0 L 37.78297 0.0" fill="none"></path><g transform="translate(35.68352,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(21.19617,2.3)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-97" y="-22.558016"></use></g></g></g></g><path d="M 0.0 -6.84908 L 0.0 -41.15407" fill="none"></path><g transform="matrix(0.0,-1.0,1.0,0.0,0.0,-39.05461)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(-8.96669,-28.30244)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g2-116" y="-22.558016"></use></g></g></g></g><path d="M 1.77246 -6.6157 C 8.14426 -29.2946 21.96153 -42.78224 41.83633 -47.85098" fill="none"></path><g transform="matrix(0.96895,-0.24707,0.24707,0.96895,39.80208,-47.33228)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(19.4097,-29.8812)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g1-98" y="-22.558016"></use><use x="-44.061834" xlink:href="#g1-59" y="-22.558016"></use><use x="-39.966109" xlink:href="#g1-99" y="-22.558016"></use><use x="-35.976588" xlink:href="#g1-59" y="-22.558016"></use><use x="-31.880863" xlink:href="#g1-121" y="-22.558016"></use><use x="-27.020658" xlink:href="#g1-59" y="-22.558016"></use><use x="-22.924933" xlink:href="#g1-122" y="-22.558016"></use></g></g></g></g><path d="M -1.77246 6.6157 C -5.45451 20.35722 5.45451 20.35722 2.81956 10.524" fill="none"></path><g transform="matrix(-0.25879,-0.96593,0.96593,-0.25879,3.36287,12.55193)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(-2.85764,19.22182)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-120" y="-22.558016"></use></g></g></g></g><path d="M 59.17085 0.0 L 87.4651 0.0" fill="none"></path><g transform="translate(85.36565,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(72.69524,2.3)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-98" y="-22.558016"></use></g></g></g></g><path d="M 50.0 -9.17085 L 50.0 -41.55788" fill="none"></path><g transform="matrix(0.0,-1.0,1.0,0.0,50.0,-39.45842)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(52.3,-28.69302)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-99" y="-22.558016"></use><use x="-43.699496" xlink:href="#g3-59" y="-22.558016"></use><use x="-39.271688" xlink:href="#g2-116" y="-22.558016"></use><use x="-32.629906" xlink:href="#g3-59" y="-22.558016"></use><use x="-28.202098" xlink:href="#g3-120" y="-22.558016"></use><use x="-22.508166" xlink:href="#g3-59" y="-22.558016"></use><use x="-18.080358" xlink:href="#g3-122" y="-22.558016"></use></g></g></g></g><path d="M 47.6267 8.85823 C 43.79414 23.16154 56.20586 23.16154 53.42041 12.76653" fill="none"></path><g transform="matrix(-0.25879,-0.96593,0.96593,-0.25879,53.96371,14.79445)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(42.50401,23.83012)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-97" y="-22.558016"></use><use x="-42.744738" xlink:href="#g3-59" y="-22.558016"></use><use x="-38.31693" xlink:href="#g3-121" y="-22.558016"></use></g></g></g></g><path d="M 109.48872 0.0 L 135.50148 0.0" fill="none"></path><g transform="translate(133.40202,0.0)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(121.85442,2.3)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-99" y="-22.558016"></use></g></g></g></g><path d="M 97.54443 -9.1654 C 90.93634 -30.74312 77.20296 -43.53745 58.18039 -47.91982" fill="none"></path><g transform="matrix(-0.97444,-0.22447,0.22447,-0.97444,60.22618,-47.44856)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(84.44678,-42.37631)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g0-116" y="-22.558016"></use><use x="-41.867305" xlink:href="#g1-59" y="-22.558016"></use><use x="-37.77158" xlink:href="#g1-97" y="-22.558016"></use><use x="-32.889573" xlink:href="#g1-59" y="-22.558016"></use><use x="-28.793848" xlink:href="#g1-120" y="-22.558016"></use><use x="-23.570391" xlink:href="#g1-59" y="-22.558016"></use><use x="-19.474666" xlink:href="#g1-121" y="-22.558016"></use></g></g></g></g><path d="M 97.54443 9.16527 C 93.57906 23.96428 106.42094 23.96428 103.50267 13.07356" fill="none"></path><g transform="matrix(-0.25879,-0.96593,0.96593,-0.25879,104.04597,15.10149)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(93.08679,24.50894)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"><use x="-48.010892" xlink:href="#g3-98" y="-22.558016"></use><use x="-43.735258" xlink:href="#g3-59" y="-22.558016"></use><use x="-39.30745" xlink:href="#g3-122" y="-22.558016"></use></g></g></g></g><path d="M 142.6387 8.77274 C 106.80852 49.3274 38.11978 47.57408 6.30028 7.629" fill="none"></path><g transform="matrix(-0.62303,-0.78212,0.78212,-0.62303,7.60829,9.27103)"><g stroke-dasharray="none" stroke-dashoffset="0.0"> <g stroke-linejoin="round"> <path d=" M 4.84563 0.0 L 0.96873 1.46368 L 2.24945 0.0 L 0.96873 -1.46368 Z  "></path> </g> </g></g><g transform="translate(72.72824,35.79042)"><g stroke="#000" stroke-width="0.2" transform="scale(-1.00375,1.00375)translate(-48.010892,-22.558016)scale(-1,-1)"><g fill="#000"><g stroke="#000" stroke-width="0.2"></g></g></g></g></g></g></g></g></g></svg></div>
+</details>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年11月8日 23:40:32</span>
+<br/>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年11月8日 23:40:32</span>
+</small>
+</div>
+<script async="" crossorigin="anonymous" data-category="General" data-category-id="DIC_kwDOGnfbUc4CPrf4" data-emit-metadata="0" data-input-position="bottom" data-lang="zh-CN" data-mapping="pathname" data-reactions-enabled="1" data-repo="TonyCrane/note" data-repo-id="R_kgDOGnfbUQ" data-theme="light" src="https://giscus.app/client.js">
+</script>
+<script>
+                      if (document.querySelector("body").getAttribute("data-md-color-scheme") === "slate") {
+                        var giscus = document.querySelector("script[src*=giscus]")
+                        giscus.setAttribute("data-theme", "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css") 
+                      }
+                    </script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+              回到页面顶部
+            </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: 上下文无关语言" class="md-footer__link md-footer__link--prev" href="../topic2/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                上一页
+              </span>
+              上下文无关语言
+            </div>
+</div>
+</a>
+<a aria-label="下一页: 正则表达式" class="md-footer__link md-footer__link--next" href="../../../regex/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                下一页
+              </span>
+              正则表达式
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2022-2023 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
+</div>
+  
+  
+    Powered by
+    <a href="https://www.mkdocs.org/" rel="noopener" target="_blank">
+      MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material
+    </a>
+    modified by
+    <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">
+      TonyCrane
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/TonyCrane/" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://blog.tonycrane.cc/" rel="noopener" target="_blank" title="blog.tonycrane.cc">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg>
+</a>
+<a class="md-social__link" href="https://tonycrane.cc/" rel="noopener" target="_blank" title="tonycrane.cc">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../../../js/katex.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
