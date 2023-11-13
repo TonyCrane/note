@@ -6,7 +6,7 @@ comment: True
 # 函数与递归
 
 !!! abstract
-    编程语言原理第八周至第？周课程内容
+    编程语言原理第八周至第九周课程内容
 
 ## 函数
 
@@ -42,6 +42,10 @@ comment: True
     - 引理 8.4（保持性，preservation）：如果 $e:\tau$ 且 $e\mapsto e'$ 那么 $e':\tau$
     - 引理 8.5（范式，canonical forms）：如果 $e:\mathrm{arr}(\tau_1; \tau_2)$ 且 $e\text{ val}$ 那么对于满足 $x:\tau_1\vdash e_2:\tau_2$ 的变量 $x$ 和表达式 $e_2$ 有 $e=\lambda(x:\tau_1)e_2$
     - 引理 8.6（进展性，progress）：如果 $e:\tau$ 则要么 $e\text{ val}$ 要么存在 $e'$ 使得 $e\mapsto e'$
+- 动态语义
+    - $\dfrac{e_1\mapsto e_1'}{\mathrm{ap}(e_1; e_2)\mapsto\mathrm{ap}(e_1'; e_2)}$
+    - $\left[\dfrac{e_1\text{ val}\quad e_2\mapsto e_2'}{\mathrm{ap}(e_1; e_2)\mapsto\mathrm{ap}(e_1; e_2')}\right]$（如果是 lazy 计算则不需要这个）
+    - $\dfrac{[e_2\text{ val}]}{\mathrm{ap}(\mathrm{lam}\{\tau\}(x.e); e_2)\mapsto [e_2/x]e}$（同样，如果是 lazy 则不需要分子方括号中内容）
 
 ### 动态作用域
 
@@ -72,3 +76,66 @@ g()
     - 再计算 $\Big(\lambda(f:\mathrm{num}\rightarrow\mathrm{num}).\ \big(\lambda(x:\mathrm{num}).\ f(0)\big)\big(7\big)\Big)\Big(e\Big)$
         - 静态作用域求值下将 $f$ 代换为 $e$，这样 $f(0)$ 得到了 42 然后此时 $(\lambda(x:\mathrm{num}).\ 42)(7)$ 的值仍为 42
         - 动态作用域求值下最终 $x=0, y=7$ 所以结果为 7
+
+## 高阶递归系统
+### 补充知识
+
+- 函数 $f\ A\rightarrow B$，是一种集合的映射关系
+- 部分函数（partial function）：$\forall a\in A$ 有 $f(a)=\emptyset$ 或 $b$，当 $f(a)=b$ 时记作 $f(a)\downarrow$
+- 全函数（total function）：$\forall a\in A$ 都有 $f(a)\downarrow$，可记为 $f:A\rightarrow B$
+- 非终止性，有些情况下函数计算会无限递归，这种情况就是非终止的
+    - 加上一个特殊元素 $\bot$ 表示非终止
+    - 严格的（strict）：如果接受一个非终止的输入，计算仍然不会终止，即 $f(\bot)=\bot$；否则称之为不严格的（non-strict）
+- 定义两种运算：
+    - 合成运算：令 $h(x_1, \cdots, x_n) = f(g_1(x_1, \cdots, x_n), \cdots, g_k(x_1, \cdots, x_n))$，称 $h$ 是由 $f$ 和 $g_1,\cdots g_k$ 经过合成运算得到的
+        - 其中 $f$ 和 $g_i$ 都是部分函数
+    - 原始递归运算：
+        - 设 $f$ 是 $n$ 元全函数，$g$ 是 $n+2$ 元全函数
+        - 令 $h(x_1, \cdots, x_n, 0) = f(x_1, \cdots, x_n)$
+        - 令 $h(x_1, \cdots, x_n, t+1) = g(t, h(x_1, \cdots, x_n, t), x_1, \cdots, x_n)$
+        - 称 $h$ 是由 $f$ 和 $g$ 经过原始递归运算得到的
+
+### Gödel's System T
+
+- 以 $\mathrm{nat}$ 为类型的语言 T，语法：
+    - $\mathsf{Typ}\ \tau ::= \mathrm{nat}$ 自然数类型 / $\mathrm{arr}(\tau_1; \tau_2)$ 函数类型
+    - $\mathsf{Exp}\ e ::= x$ 变量 / $\mathrm{z}$ 零 / $\mathrm{s}(e)$ 后继
+        - Church 自然数定义，$\overline{n}$ 表示 $s(\cdots s(z))$ 作用 $n$ 次
+    - $\mathsf{Exp}\ e ::= \mathrm{lam}\{\tau\}(x.e)$ 函数抽象（参数为 $\tau$ 类型的 $x$，返回值为 $e$
+    - $\mathsf{Exp}\ e ::= \mathrm{ap}(e_1; e_2)$ 函数应用
+    - $\mathsf{Exp}\ e ::= \mathrm{rec}\{e_0; x.y.e_1\}(e)$ 递归
+        - $x.y.e_1$ 表示 $e_1$ 有两个绑定变量 $x$ 和 $y$
+        - $\mathrm{rec}\{e_0; x.y.e_1\}(e)$ 表示
+            - $e$ 为 0 时返回 $e_0$
+            - $e$ 为 $\mathrm{s}(n)$ 时返回 $e_1(n, \mathrm{rec}\{e_0; x.y.e_1\}(n))$
+        - *书上的抽象描述 $\mathrm{rec}\ e\{\mathrm{z}\hookrightarrow e_0\ |\ \mathrm{s}(x)\text{ with }y\hookrightarrow e_1\}$
+            - 大括号里带 | 相当于 switch，判断 $e$ 的值是 $\mathrm{z}$ 还是 $\mathrm{s}(x)$
+            - $\hookrightarrow$ 称为 lead to，表示如果是左侧，则结果是右侧
+            - $\mathrm{s}(x)\text{ with }y$ 是一个整体，表示匹配到 $x,y$ 作为 $e_1$ 的绑定变量
+- 静态语义，大部分都和之前差不多
+    - 递归：$\dfrac{\Gamma\vdash e:\mathrm{nat}\quad\Gamma\vdash e_0:\tau\quad\Gamma, x:\mathrm{nat}, y:\tau\vdash e_1:\tau}{\Gamma\vdash\mathrm{rec}\{e_0; x.y.e_1\}(e):\tau}$
+- 动态语义
+    - 闭值：$\dfrac{}{\mathrm{z}\text{ val}},\ \dfrac{[e\text{ val}]}{\mathrm{s}(e)\text{ val}},\ \dfrac{}{\mathrm{lam}\{\tau\}(x.e)\text{ val}}$
+        - 其中方括号表示如果是 eager 计算则需要，如果是 lazy 则不需要
+    - 递归相关动态语义转换规则：
+        - $\dfrac{e\mapsto e'}{\mathrm{rec}\{e_0; x.y.e_1\}(e)\mapsto\mathrm{rec}\{e_0; x.y.e_1\}(e')}$
+        - $\dfrac{}{\mathrm{rec}\{e_0; x.y.e_1\}(\mathrm{z})\mapsto e_0}$
+        - $\dfrac{\mathrm{s}(e)\text{ val}}{\mathrm{rec}\{e_0; x.y.e_1\}(\mathrm{s}(e))\mapsto [e,\mathrm{rec}\{e_0; x.y.e_1\}(e)/x,y]e_1}$
+- 同时有之前的引理成立，包括安全性（保持性和进展性同时成立）
+
+???+ example "OCaml 中利用 System T 定义加倍函数"
+    ```ocaml
+    type nat = Z | S of nat;;
+    let rec double a = match a with
+        | Z -> Z
+        | S x -> let y = double x in S (S y);;
+    ```
+
+    写成 T 语言的形式就是 $\lambda\{\mathrm{nat}\}(e.\mathrm{rec}\{\mathrm{z}; x.y.\mathrm{s}(\mathrm{s}(y))\}(e))$
+
+    - 这里绑定变量 $x$ 实际没有用，所以可以用迭代式来替换，即 $\mathrm{iter}\{e_0, y.e_1\}(e)$（就是把 $x$ 删了）
+
+### 可定义性
+
+- $f:\mathbb{N}\rightarrow\mathbb{N}$ 是可定义的 <=> 存在一个 $\mathrm{nat}\rightarrow\mathrm{nat}$ 的表达式 $e_f$，使得当应用于表示参数 $n\in\mathbb{N}$ 时，函数应用在定义上等于 $f(n)\in\mathbb{N}$ 所对应的数
+    - $e_f(\overline{n})\equiv\overline{f(n)}:\mathrm{nat}$
