@@ -6,7 +6,7 @@ counter: True
 # 图灵机理论基础
 
 !!! abstract
-    理论计算机科学导引第八至第？周课程内容
+    理论计算机科学导引第八至第九周课程内容
 
 ## 图灵机
 
@@ -229,88 +229,3 @@ Theorem. Every NTM can be simulated by DTM.
             - 没停机则开始新的一轮，采用不同的第三条纸带内容
     - e.g. 第三条纸带内容为 $\rhd⌴0$ 则只向左一步，$\rhd⌴010$ 则走左右左三步再检测是否停机
 
-## Church-Turing Thesis
-
-Intuition of algorithms equals (deterministic) Turing machine that halts on every input. 即算法本质上就是图灵机。算法用来解决（判定）问题，而图灵机可以判定语言，二者是等价的。
-
-### 编码与判定问题
-
-- Any finite set can be encoded
-- A finite collection of finite sets can be encoded
-    - FA, PDA, CFG, REX, TM 都可以被编码
-- 对于 $O$，我们用 $\texttt{"}O\texttt{"}$ 表示其编码
-- decide problem <=> recursive languages
-
-???+ example "判定问题 $R_1$"
-    $A_{\text{DFA}}=\{\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}: D\text{ is a DFA that accpets }w\}$
-
-    设计一个图灵机 $M_{R_1}$ 判定这个问题，输入为 $\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}$
-
-    0. 默认的判断（以后不再重复写）
-        1. 如果输入是非法的，则 reject
-        2. 如果输入是合法的，则进行解码，得到 $D$ 和 $w$
-    1. run $D$ on $w$
-    2. if $D$ ends with final ($D$ accept $w$)
-    3. &emsp;&emsp;accept $\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}$
-    4. else
-    5. &emsp;&emsp;reject
-
-???+ example "判定问题 $R_2$"
-    $A_{\text{NFA}}$，即 NFA $N$ 是否接受字符串 $w$
-
-    $M_{R_2}$ = on input $\texttt{"}N\texttt{"}\texttt{"}w\texttt{"}$
-
-    1. $N$ -> an equivalent DFA $D$
-    2. run $M_{R_1}$ on $\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}$
-    3. return the result of $M_{R_1}$
-
-    $\texttt{"}N\texttt{"}\texttt{"}w\texttt{"}\in A_{\text{NFA}}$ <=> $\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}\in A_{\text{DFA}}$ 称为 a reduction from $A_{\text{NFA}}$ to $A_{\text{DFA}}$，即规约
-
-??? example "判定问题 $R_3$ ($A_{\text{REX}}$)"
-    $A_{\text{REX}}=\{\texttt{"}R\texttt{"}\texttt{"}w\texttt{"}: R\text{ is a regular expression that generates }w\}$
-
-    $M_{R_3}$ = on input $\texttt{"}R\texttt{"}\texttt{"}w\texttt{"}$
-
-    1. $R$ -> an equivalent NFA $N$
-    2. run $M_{R_2}$ on $\texttt{"}N\texttt{"}\texttt{"}w\texttt{"}$
-    3. return the result of $M_{R_2}$
-
-??? example "判定问题 $R_4$ ($E_{\text{DFA}}$)"
-    $E_{\text{DFA}}=\{\texttt{"}D\texttt{"}: D\text{ is a DFA with }L(D)=\emptyset\}$
-
-    $M_{R_4}$ = on input $\texttt{"}D\texttt{"}$
-
-    1. if $D$ has no final state
-    2. &emsp;&emsp;accept
-    3. else
-    4. &emsp;&emsp;"conceptually" do BFS in the diagram
-    5. &emsp;&emsp;if there is a path from $s$ to a final state
-    6. &emsp;&emsp;&emsp;&emsp;reject
-    7. &emsp;&emsp;else
-    8. &emsp;&emsp;&emsp;&emsp;accept
-
-??? example "判定问题 $R_5$ ($EQ_{\text{DFA}}$)"
-    $EQ_{\text{DFA}} = \{\texttt{"}D_1\texttt{"}\texttt{"}D_2\texttt{"}: D_1\text{ and }D_2\text{ are two DFAs with }L(D_1)=L(D_2)\}$
-
-    Hint:
-
-    - 对称差 $A\oplus B=\{x\in A\cup B\text{ and }x\notin A\cap B\}=A\cup B - A\cap B$
-        - $A\oplus B = (A\cup B)\cap(\overline{A\cap B}) = (A\cup B)\cap(\overline{A}\cup\overline{B})$
-    - $A=B$ iff $A\oplus B = \emptyset$（可以借此规约至 $R_4$）
-
-    $M_{R_5}$ = on input $\texttt{"}D_1\texttt{"}\texttt{"}D_2\texttt{"}$
-
-    1. construct $D_3$ with $L(D_3) = L(D_1)\oplus L(D_2)$
-    2. run $M_{R_4}$ on $\texttt{"}D_3\texttt{"}$
-    3. return the result of $M_{R_4}$
-
-- 规约定义：
-    - $A,B$ are languages over some alphabet $\Sigma$
-    - A reduction from $A$ to $B$ is a recursive function $f\colon \Sigma^*\rightarrow\Sigma^*$
-    - s.t. for $x\in\Sigma^*$, $x\in A$ iff $f(x)\in B$
-- Theorem. If $B$ is recursive, and exists a reduction $f$ from $A$ to $B$, then $A$ is recursive.
-    - Proof. $\exist M_B$ decides $B$, $M_A$ = on input $x$:
-        1. compute $f(x)$
-        2. run $M_B$ on $\texttt{"}f(x)\texttt{"}$
-        3. return the result of $M_B$
-- $A$ 的判定难度小于等于 $B$，所以 $A$ 可以规约到 $B$ 也可以记为 $A\leq B$
