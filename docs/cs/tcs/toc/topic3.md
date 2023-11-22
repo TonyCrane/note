@@ -163,3 +163,154 @@ counter: True
                     edge [bend left=30]     node [font=\small]  {$\sqcup,a,x,y$}    (q_5)
                     edge [loop above]       node                {$b,z$}             (q_2)
             (q_3)   edge [bend right]       node                {}                  (q_0);
+
+## 变种图灵机
+
+一些扩展形式的图灵机，有更方便的功能，但实际上都可以用标准图灵机来实现同样效果
+
+- multiple tapes 多带图灵机
+    - 有 $k$ 条纸带，每次根据 $k$ 个读写头的信息进行判断
+        - $\delta\colon (K-H)\times\Sigma^k\rightarrow K\times ((\Sigma-\{\rhd\})\cup \{\leftarrow, \rightarrow\})$
+    - 💡转换为标准图灵机的 idea
+        - 比如有三个纸带 $\rhd a\underline{b}a⌴$，$\rhd ba\underline{a}⌴$，$\rhd \underline{b}a⌴$
+        - 则构建纸带 $\rhd (ab\underline{b})(\underline{b}aa)(a\underline{a}⌴)(⌴⌴⌴)$
+        - 每次读取所有带下划线的符号，再进行判断/更改
+- two-way infinite tape 纸带两侧都无限长的图灵机
+    - 💡可以用双带图灵机模拟，也就可以用标准图灵机模拟
+- multiple head 多读写头图灵机
+    - 💡用下划线标记每个头的位置，然后每次扫描所有头
+- 2-dimensional tape 二维纸带图灵机
+    - 💡从左上角开始沿反对角线编号，延展成一维纸带
+- random access 随机访问图灵机
+    - 每次移动读写头可以不止一步
+    - 💡将多步移动拆成多次单步移动即可
+- non-deterministic TM 非确定性图灵机（NTM）
+    - 见下
+
+### 非确定性图灵机
+
+- 定义为一个五元组 $(K, \Sigma, \Delta, s, H)$
+    - $K, \Sigma, s, H$ 和确定性图灵机一样
+    - $\Delta$: a finite subset of $\big((K-H)\times\Sigma\big)\times\big(K\times((\Sigma-\{\rhd\})\cup\{\leftarrow,\rightarrow\})\big)$
+- configuration、$\vdash_M$、$\vdash_M^*$ 和确定性图灵机定义完全相同
+- 定义 $\vdash_M^N$ 为执行 $N$ 步可以到达
+- 半判定：
+    - 给定 NTM $M$ 其输入符号集为 $\Sigma_0$
+    - $M$ semidecides $L\subseteq \Sigma_0^*$ if for any $w\in\Sigma_0^*$, $w\in L$ iff $(s, \rhd\underline{⌴}w)\vdash_M^*(h,\cdots)$ for some $h\in H$
+    - 如果 $w\in L$ 则 NTM 有分支可以停机，否则没有分支可以停机
+- 判定：
+    - 令 $M=(K,\Sigma,\Delta,s,\{y,n\})$，输入符号集 $\Sigma_0$
+    - $M$ decides a language $L\subseteq \Sigma_0^*$ if
+        - for any $w\in\Sigma_0^*$, exists a natural number $N$, s.t. no configuration $c$ satisfying $(s, \rhd\underline{⌴}w)\vdash_M^N c$
+            - 说明在 $N$ 步内都可以停机，非确定产生的树高度小于 $N$
+        - $w\in L$ iff $(s, \rhd\underline{⌴}w)\vdash_M^*(y,\cdots)$
+            - 非确定执行的树上有一条分支可以停机到 $y$ 状态
+
+??? example "构造 NTM 判定所有合数（非质数）的二进制编码构成的语言"
+    利用 NTM 可以“猜测”的特性，目标是猜测有没有两个数相乘等于输入。
+
+    假设输入字符串为 $w$，则先猜测两个数，得到 $\rhd⌴w⌴p⌴q$，然后将 $p$ 和 $q$ 相乘，如果等于 $w$ 则停机到 $y$，否则停机到 $n$，满足第二个条件。
+
+    因为 $p,q$ 都小于 $w$，所以猜测是有限的，而且都可以有限步停机，满足第一个条件。
+
+Theorem. Every NTM can be simulated by DTM.
+
+- Proof Sketch（以半判定为例）
+    - Idea：NTM 执行时的多种选择会生成一颗树，DTM 要做的是 BFS 搜索这棵树直到找到停机状态
+    - 用 3-tape DTM 来模拟 NTM
+        - 第一条用来装输入 $\rhd⌴w$
+        - 第二条用来模拟 NTM $N$（在树上向下走）
+        - 第三条用来枚举“提示”，指导第二条纸带里面在树上怎么走
+    - 步骤：
+        - 每一轮开始时将第一条纸带 copy 到第二条纸带上
+        - 更新第三条纸带，指挥第二条纸带模拟 NTM 的树时每一步该采用哪个转换
+        - 第三条纸带内容都读取结束后，判定第二条纸带上模拟的位置是否停机
+            - 如果停机则结束
+            - 没停机则开始新的一轮，采用不同的第三条纸带内容
+    - e.g. 第三条纸带内容为 $\rhd⌴0$ 则只向左一步，$\rhd⌴010$ 则走左右左三步再检测是否停机
+
+## Church-Turing Thesis
+
+Intuition of algorithms equals (deterministic) Turing machine that halts on every input. 即算法本质上就是图灵机。算法用来解决（判定）问题，而图灵机可以判定语言，二者是等价的。
+
+### 编码与判定问题
+
+- Any finite set can be encoded
+- A finite collection of finite sets can be encoded
+    - FA, PDA, CFG, REX, TM 都可以被编码
+- 对于 $O$，我们用 $\texttt{"}O\texttt{"}$ 表示其编码
+- decide problem <=> recursive languages
+
+???+ example "判定问题 $R_1$"
+    $A_{\text{DFA}}=\{\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}: D\text{ is a DFA that accpets }w\}$
+
+    设计一个图灵机 $M_{R_1}$ 判定这个问题，输入为 $\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}$
+
+    0. 默认的判断（以后不再重复写）
+        1. 如果输入是非法的，则 reject
+        2. 如果输入是合法的，则进行解码，得到 $D$ 和 $w$
+    1. run $D$ on $w$
+    2. if $D$ ends with final ($D$ accept $w$)
+    3. &emsp;&emsp;accept $\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}$
+    4. else
+    5. &emsp;&emsp;reject
+
+???+ example "判定问题 $R_2$"
+    $A_{\text{NFA}}$，即 NFA $N$ 是否接受字符串 $w$
+
+    $M_{R_2}$ = on input $\texttt{"}N\texttt{"}\texttt{"}w\texttt{"}$
+
+    1. $N$ -> an equivalent DFA $D$
+    2. run $M_{R_1}$ on $\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}$
+    3. return the result of $M_{R_1}$
+
+    $\texttt{"}N\texttt{"}\texttt{"}w\texttt{"}\in A_{\text{NFA}}$ <=> $\texttt{"}D\texttt{"}\texttt{"}w\texttt{"}\in A_{\text{DFA}}$ 称为 a reduction from $A_{\text{NFA}}$ to $A_{\text{DFA}}$，即规约
+
+??? example "判定问题 $R_3$ ($A_{\text{REX}}$)"
+    $A_{\text{REX}}=\{\texttt{"}R\texttt{"}\texttt{"}w\texttt{"}: R\text{ is a regular expression that generates }w\}$
+
+    $M_{R_3}$ = on input $\texttt{"}R\texttt{"}\texttt{"}w\texttt{"}$
+
+    1. $R$ -> an equivalent NFA $N$
+    2. run $M_{R_2}$ on $\texttt{"}N\texttt{"}\texttt{"}w\texttt{"}$
+    3. return the result of $M_{R_2}$
+
+??? example "判定问题 $R_4$ ($E_{\text{DFA}}$)"
+    $E_{\text{DFA}}=\{\texttt{"}D\texttt{"}: D\text{ is a DFA with }L(D)=\emptyset\}$
+
+    $M_{R_4}$ = on input $\texttt{"}D\texttt{"}$
+
+    1. if $D$ has no final state
+    2. &emsp;&emsp;accept
+    3. else
+    4. &emsp;&emsp;"conceptually" do BFS in the diagram
+    5. &emsp;&emsp;if there is a path from $s$ to a final state
+    6. &emsp;&emsp;&emsp;&emsp;reject
+    7. &emsp;&emsp;else
+    8. &emsp;&emsp;&emsp;&emsp;accept
+
+??? example "判定问题 $R_5$ ($EQ_{\text{DFA}}$)"
+    $EQ_{\text{DFA}} = \{\texttt{"}D_1\texttt{"}\texttt{"}D_2\texttt{"}: D_1\text{ and }D_2\text{ are two DFAs with }L(D_1)=L(D_2)\}$
+
+    Hint:
+
+    - 对称差 $A\oplus B=\{x\in A\cup B\text{ and }x\notin A\cap B\}=A\cup B - A\cap B$
+        - $A\oplus B = (A\cup B)\cap(\overline{A\cap B}) = (A\cup B)\cap(\overline{A}\cup\overline{B})$
+    - $A=B$ iff $A\oplus B = \emptyset$（可以借此规约至 $R_4$）
+
+    $M_{R_5}$ = on input $\texttt{"}D_1\texttt{"}\texttt{"}D_2\texttt{"}$
+
+    1. construct $D_3$ with $L(D_3) = L(D_1)\oplus L(D_2)$
+    2. run $M_{R_4}$ on $\texttt{"}D_3\texttt{"}$
+    3. return the result of $M_{R_4}$
+
+- 规约定义：
+    - $A,B$ are languages over some alphabet $\Sigma$
+    - A reduction from $A$ to $B$ is a recursive function $f\colon \Sigma^*\rightarrow\Sigma^*$
+    - s.t. for $x\in\Sigma^*$, $x\in A$ iff $f(x)\in B$
+- Theorem. If $B$ is recursive, and exists a reduction $f$ from $A$ to $B$, then $A$ is recursive.
+    - Proof. $\exist M_B$ decides $B$, $M_A$ = on input $x$:
+        1. compute $f(x)$
+        2. run $M_B$ on $\texttt{"}f(x)\texttt{"}$
+        3. return the result of $M_B$
+- $A$ 的判定难度小于等于 $B$，所以 $A$ 可以规约到 $B$ 也可以记为 $A\leq B$
