@@ -21,6 +21,8 @@
     - Midnight Sun CTF 2023 Quals: midnight2023/
     - AliyunCTF 2023: aliyunctf2023/
     - CISCN 2023 Quals: ciscn2023/
+    - SECCON CTF 2023 Quals: seccon2023/
+    - TPCTF 2023: tpctf2023/
 - "2022":
     - VNCTF 2022: vnctf2022/
     - TQLCTF 2022: tqlctf2022/
