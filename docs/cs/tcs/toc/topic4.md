@@ -174,7 +174,7 @@ Intuition of algorithms equals (deterministic) Turing machine that halts on ever
 
 根据 Corollary 2. 和 Lemma 3. 我们知道图灵机的集合是可列的，但语言的集合是不可列的，所以一定存在一些语言是不能被图灵机判定的，也就是非 recursively enumerable 的。
 
-### 停机问题
+## 停机问题
 
 现定义语言 $H=\{\texttt{"}M\texttt{"}\texttt{"}w\texttt{"}: M\text{ is a TM that halts on }w\}$，即判定图灵机 $M$ 是否在输入 $w$ 上停机。
 
@@ -229,6 +229,8 @@ Intuition of algorithms equals (deterministic) Turing machine that halts on ever
 
 ### 停机问题相关判定问题
 
+!!! warning "注意以下判断问题都是不可判定的"
+
 !!! success "如果 $A\leq B$，且 $A$ 是非 recursive 的，则 $B$ 也非 recursive"
 
 ???+ example "判定问题 $A_1 = \{\texttt{"}M\texttt{"}: M\text{ is a TM that halts on }e\}$"
@@ -275,5 +277,161 @@ Intuition of algorithms equals (deterministic) Turing machine that halts on ever
 ??? example "判定问题 $CF_\text{TM}=\{\texttt{"}M\texttt{"}: M\text{ is a TM with }L(M)\text{ is context-free}\}$"
     同上，$\emptyset$ 也是 context-free 的，所以同样可以规约 $H\leq CF_\text{TM}$。
 
-??? example "判定问题 $REC_\text{TM}=\{\texttt{"}M\texttt{"}: M\text{ is a TM with }L(M)\text{ is recursive}\}"
+??? example "判定问题 $REC_\text{TM}=\{\texttt{"}M\texttt{"}: M\text{ is a TM with }L(M)\text{ is recursive}\}$"
     同上，$\emptyset$ 也是 recursive 的，所以同样可以规约 $H\leq REC_\text{TM}$。
+
+### 上述判定问题的统一化
+
+前面可以利用停机问题规约证明不可判定的问题都可以表示为 $R(P) = \{\texttt{"}M\texttt{"}: M\text{ is a TM with }L(M)\text{ having property }P\}$，其中 $P$ 可以是例如 regular / context free / recursive 等，或者说明 $L(M)=\Sigma^*$（即在任意输入上停机）或 $e\in L(M)$（即在空串上停机）等。这些情况下问题 $R(P)$ 都是不可判定的。
+
+???+ success "Rice's Theorem"
+    令 $\mathcal{L}(P)$ 为具有性质 $P$ 的所有 recursively enumerable 语言的集合，则 $R(P)$ 可以表示为 $\{\texttt{"}M\texttt{"}: M\text{ is a TM with }L(M)\in\mathcal{L}(P)\}$，则有：
+
+    - 如果 $\mathcal{L}(P)=\emptyset$ 或 $\mathcal{L}(P)$ 包含所有 recursively enumerable 语言
+        - 则 $R(P)$ 是 recursive 的
+    - 如果 $\mathcal{L}(P)$ 是所有 recursively enumerable 语言的非空真子集
+        - 则 $R(P)$ 不是 recursive 的（即是不可判定的）
+
+    ??? tip "Proof"
+        case 1. $\emptyset\notin\mathcal{L}(P)$
+        :   意味着 $\exist A\in\mathcal{L}(P)$ 且 $A\neq\emptyset$，所以可以构造图灵机 $M_A$ 半判定 $A$。接下来尝试规约 $H\leq R(P)$（前者图灵机为 $M_H$，后者为 $M_R$）。
+
+            构造图灵机 $M_H$ = on input $\texttt{"}M\texttt{"}\texttt{"}w\texttt{"}$:
+
+            1. construct a TM $M^*$ = on input $x$:
+                1. run $M$ on $w$
+                2. run $M_A$ on $x$
+            2. run $M_R$ on $\texttt{"}M^*\texttt{"}$
+            3. return the result of $M_R$
+
+            构造的图灵机 $M^*$ 的语言有两种情况：
+
+            - 当 $M^*$ 在第一行停机时，$L(M^*) = L(M_A) = A\in\mathcal{L}(P)$
+            - 当 $M^*$ 在第一行不停机时，$L(M^*) = \emptyset\notin\mathcal{L}(P)$
+
+            所以停机问题可以规约至 $R(P)$，所以 $R(P)$ 是非 recursive 的。
+        
+        case 2. $\emptyset\in\mathcal{L}(P)$
+        :   有 $\emptyset\notin\overline{\mathcal{L}(P)}$，根据 case 1. 可以知道 $\overline{R(P)}$ 是非 recursive 的，所以 $R(P)$ 也是非 recursive 的。
+
+### 证明是否可判定的方法
+
+- 证明可判定（recursive）：
+    - 通过定义证明，即构建一个图灵机来判定
+    - 通过规约证明，只需要证明当前语言 $A\leq$ 一个已知的 recursive 语言
+- 证明不可判定：
+    - 通过对角化（diagonalization）的技巧证明，即证明 $H$ 不可判定的方法
+    - 通过规约证明，只需要证明一个已知的不可判定的语言 $\leq$ 当前语言 $A$ 即可
+- 证明可半判定（recursively enumerable）：
+    - 通过定义证明，即构建一个图灵机来半判定
+    - 通过规约证明，只需要证明当前语言 $A\leq$ 一个已知的 recursively enumerable 语言 
+
+??? example "证明 $A=\{\texttt{"}M\texttt{"}: M\text{ is a TM that halts on some input}\}$ 是 recursively enumerable 的"
+    将所有输入的字符串按照长度降序排列为 $s_1, s_2, \cdots$，idea 是对每个串同时并行跑图灵机，直到有一个输入停机，这就半判定了。不过因为字符串可能是无穷多的，所以当然没办法并行跑无穷个图灵机。解决方案是将二维无穷结构一维化，即先对 $s_1$ 跑一步，没停机就对 $s_1$ 和 $s_2$ 都跑两步，没停机就对 $s_1, s_2, s_3$ 都跑三步，以此类推。这样就可以保证每个串都会被跑到，假设在 $s_j$ 的第 $k$ 步停机的话，则跑 $\max(j, k)$ 步即可。 
+
+    即定义图灵机 $M_A$ = on input $\texttt{"}M\texttt{"}$:
+
+    1. for $i = 1, 2,\cdots$
+    2. &emsp;&emsp;for $s = s_1, s_2, \cdots, s_i$
+    3. &emsp;&emsp;&emsp;&emsp;run $M$ on $s$ for $i$ steps
+    4. &emsp;&emsp;&emsp;&emsp;if $M$ halts on $s$ within $i$ steps
+    5. &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;halt
+
+- 证明不可半判定：
+    - 通过规约，证明一个已知的非 recursively enumerable 语言 $\leq$ 当前语言 $A$
+    - 通过如下定理
+
+???+ success "Theorem 3. 如果 $A$ 和 $\overline{A}$ 都可半判定，则 $A$ 可判定"
+    Proof. 假设 $M_1$ 和 $M_2$ 分别半判定 $A$ 和 $\overline{A}$，则构造图灵机 $M$ = on input $x$:
+
+    1. run $M_1$ and $M_2$ on $x$ in parallel
+    2. if $M_1$ halts
+    3. &emsp;&emsp;accept $x$
+    4. else // if $M_2$ halts
+    5. &emsp;&emsp;reject $x$
+
+    因为 $A$ 和 $\overline{A}$ 都可半判定，所以在一个输入上 $M_1$ 和 $M_2$ 有且仅有一个会停机，这样就可以构造 $M$ 来判定 $A$。
+
+    所以如果 $H$ 是 recursively enumerable 但又不是 recursive 的，那么 $\overline{H}$ 一定是非 recursively enumerable 的。
+
+    因此我们也知道：
+
+    - recursive 在 $\cup,\ \cap,\ \overline{\phantom{A}},\ \circ,\ ^*$ 下都是封闭的
+    - recursively enumerable 在 $\cup,\ \cap,\ \circ,\ ^*$ 下是封闭的，但 $\overline{\phantom{A}}$ 下不封闭
+
+## 自输出程序问题
+
+接下来看一个问题：写一个程序，它可以输出自己的代码。即图灵机 $M$ 会在它的纸带上写下 $\texttt{"}M\texttt{"}$。
+
+- 做法是将 $M$ 分成 $A, B$ 两个部分
+    - $A$ 会在纸带上写 $\texttt{"}B\texttt{"}$
+    - $B$ 会在纸带上写 $\texttt{"}A\texttt{"}$ 并且交换 $\texttt{"}A\texttt{"}\texttt{"}B\texttt{"}$ 的位置
+- 接下来要解决 $B$ 执行时需要依靠于 $A$ 的编码的问题
+    - 令函数 $q(w)=\texttt{"}M_w\texttt{"}$，其中 $M_w$ 是一个图灵机，它会在纸带上写下 $w$，然后停机
+        - 这个函数 $q$ 是可计算的（computable）的，因为可以直接构造图灵机 $M_w$ = on input $x$:
+            1. write $x$ on the tape
+            2. halt
+        - 这意味着只要有一个程序的输出，我们就可以构造一个输出它的图灵机
+    - 所以接下来构造图灵机 $B$ = on input $w$:
+        1. compute $q(w)$
+        2. write $q(w)\cdot w$ on the tape
+    - 这样 $B$ 已经确定且不依靠 $A$ 本身，$A$ 可以输出 $B$，然后 $B$ 根据 $A$ 的输出构造出其图灵机，再输出，就不存在无限递归的问题了
+
+这个算法可以引出一个定理：
+
+???+ success "Recursion Theorem"
+    给定任意图灵机 $T$，都能找到图灵机 $R$ 使得对于任意字符串 $w$，在 $R$ 上计算 $w$ 等价于在 $T$ 上计算 $\texttt{"}R\texttt{"}w$。
+
+    ??? tip "Proof"
+        构造 $R$ 为三段程序 $A, B, T$ 的拼接，在输入 $w$ 时：
+
+        - $A$ 在纸带上输出 $\texttt{"}B\texttt{"}\texttt{"}T\texttt{"}$
+            - 这之后的纸带为 $w\texttt{"}B\texttt{"}\texttt{"}T\texttt{"}$，其中 $w$ 是输入
+        - $B$ 在纸带上输出 $\texttt{"}A\texttt{"}$，然后重排纸带上的几个部分为 $\texttt{"}A\texttt{"}\texttt{"}B\texttt{"}\texttt{"}T\texttt{"}w$，即 $\texttt{"}R\texttt{"}w$
+        - $T$ 即给定的任意图灵机
+            - 此时运行 $T$ 的输入就是 $\texttt{"}R\texttt{"}w$
+    
+    这意味着一个图灵机可以在运行的时候可以得到自身的编码，即如下图灵机是合法的，$M$ = on input $x$:
+
+    1. obtain $\texttt{"}M\texttt{"}$
+    2. ...
+
+???+ example "利用 Recursion Theorem 证明停机问题不可判定"
+    假设 $H$ 是可判定的，则存在 $M_H$ 判定 $H$。接下来构造图灵机 $R$ = on input $w$:
+
+    1. obtain $\texttt{"}R\texttt{"}$
+    2. run $M_H$ on $\texttt{"}R\texttt{"}w$
+    3. if $M_H$ accepts $\texttt{"}R\texttt{"}w$
+    4. &emsp;&emsp;looping forever
+    5. else // $M_H$ rejects $\texttt{"}R\texttt{"}w$
+    6. &emsp;&emsp;halt
+
+    意思就是如果第三行成立，那么就说明 $M_H$ 认为 $R$ 在 $w$ 上停机，所以接下来会进入第四行死循环，导致 $R$ 在 $w$ 上并没有停机。否则第五行成立，说明 $M_H$ 认为 $R$ 在 $w$ 上不停机，但接下来第六行又会停机。产生了矛盾，所以假设并不成立。
+
+## 图灵机枚举字符串
+
+接下来给图灵机再扩充两个功能：
+
+- 对于某些状态 $q$，令 $L=\{w:(s, \rhd\underline{⌴})\vdash_M^*(q, \rhd\underline{⌴}w)\}$
+    - 即从空的开始状态执行，收集到 $q$ 时纸带上出现的字符串的集合构成语言 $L$
+- 则称语言 $L$ 是图灵可枚举的（Turing enumerable）
+- 称 $M$ enumerates $L$
+
+???+ success "Theorem 4. 语言 $L$ 是图灵可枚举的当且仅当它是递归可枚举的（recursively enumerable）"
+    Proof. 如果 $L$ 是有限的则显然成立，下面考虑 $L$ 是无限的情况。
+
+    - 左推右，如果 $L$ 图灵可枚举，则存在 $M$ enumerates $L$，目标则是构造 $M'$ 半判定 $L$
+        - 构造图灵机 $M'$ = on input $x$:
+            1. run $M$ to enumerate $L$
+            2. for every string $s$ enumerated by $M$
+            3. &emsp;&emsp;if $s=x$
+            4. &emsp;&emsp;&emsp;&emsp;halt
+    - 右推左，如果 $L$ 递归可枚举，则存在 $M$ 半判定 $L$，目标则是构造 $M'$ enumerates $L$
+        - 构造方法类似前面证明 $A=\{\texttt{"}M\texttt{"}: M\text{ is a TM that halts on some input}\}$ 可半判定的例子
+
+- 令 $M$ 是可以判定 $L$ 的图灵机
+- 如果只要 $(q, \rhd\underline{⌴}w_1)\vdash_M^+(q, \rhd\underline{⌴}w_2)$，就有 $w_2$ 在 $w_1$ 的字典序（lexicographical order）后
+- 则称 $M$ lexicographically enumerates $L$，称 $L$ 是字典序可枚举的（lexicographically enumerable）
+
+??? success "Theorem 5. 语言 $L$ 是字典序可枚举的当且仅当它是可判定的"
+    证明方式类似 Theorem 4.
