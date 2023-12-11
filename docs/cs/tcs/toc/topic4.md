@@ -6,7 +6,7 @@ counter: True
 # 判定问题
 
 !!! abstract
-    理论计算机科学导引第九至第十周课程内容
+    理论计算机科学导引第九至第十一周课程内容
 
 ## Church-Turing Thesis
 

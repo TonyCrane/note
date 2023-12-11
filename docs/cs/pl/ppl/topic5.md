@@ -74,3 +74,58 @@ comment: True
         - $\tau\text{ opt} = \mathrm{unit} + \tau$
         - $\mathrm{null} = l\cdot\langle\rangle,\ \mathrm{just}(e) = r\cdot e$
         - $\mathrm{ifnull}\ e\{\mathrm{null}\hookrightarrow e_1\ |\ \mathrm{just}(x)\hookrightarrow e_2\} = \mathrm{case}\ e\{l\cdot \underline{\ \ }\hookrightarrow e_1\ |\ r\cdot x_2\hookrightarrow e_2\}$
+
+## 无限数据类型
+### 泛型编程
+
+- 类型算子：$t.\tau$，表示 $\tau$ 类型中存在一个没有确定的类型 $t$，是其他类型要作用的位置
+    - 比如存在 $f\colon \rho\to\rho'$，以及 $\tau=\mathrm{bool}\times t$
+    - 则 $f$ 可以扩展为 $\mathrm{bool}\times\rho\to\mathrm{bool}\times\rho'$
+- 多项式类型算子：由类型变量 $t$，类型 $\mathrm{void}, \mathrm{unit}$ 以及类型构造器 $+, \times$ 构成的类型算子
+    - 断言：$t.\tau\text{ poly}$
+    - 泛型扩展：$\mathsf{Exp}\ e := \mathrm{map}\{t.\tau\}(x.e')(e)$
+    - 静态语义：$\dfrac{t.\tau\text{ poly}\quad\Gamma,x:\rho\vdash e':\rho'\quad\Gamma\vdash e:[\rho/t]\tau}{\Gamma\vdash\mathrm{map}\{t.\tau\}(x.e')(e):[\rho'/t]\tau}$
+    - 例如 $t.\tau$ 为 $t.(\mathrm{unit}+\mathrm{bool}\times t)$，$x.e$ 为 $x.\mathrm{s}(x)$
+        - 则 $\mathrm{map}\{t.\tau\}(x.e)(r\cdot\langle\mathrm{true}, n\rangle)\mapsto^* r\cdot\langle\mathrm{true}, n + 1\rangle$
+- 正类型算子
+    - 正出现：类型变量出现在值域中，负出现：类型变量出现在定义域中
+    - $t.\tau_1\to\tau_2$ 是正类型算子，当且仅当 $t$ 不出现在 $\tau_1$ 中且  $t.\tau_2$ 是正类型算子
+
+### 归纳类型与余归纳类型
+
+- 都是递归类型，归纳类型（inductive）对应类型的最小解，余归纳类型（coinductive）对应类型的最大解
+    - 如果指定了函数在归纳类型的每种引⼊形式上的⾏为，就为这个类型的所有值定义了函数的⾏为。这样的函数称为迭代式（iterator）
+    - 余归纳类型的元素对消去形式的有限次复合做出正确的响应⾏为，这样的元素称为⽣成器（generator）
+- 归纳类型的元素是对其引入形式进行有限次复合得到的
+- 归纳类型的例子：数据集 $A$ 上的有限表集：
+    - 基础情况：$\mathrm{nil}$ 是有限表
+    - 迭代规则：如果 $a\in A$ 且 $\sigma$ 是有限表，则 $\mathrm{cons}(a, \sigma)$ 是有限表
+    - 最小化条件：除此之外，有限表集中不含其它元素
+- 余归纳类型的例子：数据集 $A$ 上的无限表集（流）：
+    - 迭代规则：如果 $a\in A$ 且 $\sigma$ 是无限表，则 $\mathrm{cons}(a, \sigma)$ 是无限表
+    - 最大化条件：数据集 $A$ 上的无限表集是满足迭代规则的最大集合
+- 观察算子：
+    - $\mathrm{head}(\mathrm{cons}(a, \sigma)) = a$
+    - $\mathrm{tail}(\mathrm{cons}(a, \sigma)) = \sigma$
+- 归纳类型上的函数：
+    - $\mathrm{length}(\mathrm{nil}) = 0$
+    - $\mathrm{length}(\mathrm{cons}(a, \sigma)) = 1 + \mathrm{length}(\sigma)$
+- 余归纳类型上的函数
+    - 有函数 $f\colon A\to A$，定义 $\mathrm{ext}(f)$ 把 $f$ 作用在无限表的每一个元素得到新的无限表 $\mathrm{ext}(f)(\sigma)$
+        - $\mathrm{head}(\mathrm{ext}(f)(\sigma)) = f(\mathrm{head}(\sigma))$
+        - $\mathrm{tail}(\mathrm{ext}(f)(\sigma)) = \mathrm{ext}(f)(\mathrm{tail}(\sigma))$
+    - $\mathrm{odd}$ 应用在无限表上，忽略所有偶数位置上的元素，将剩余元素按原来次序形成新表
+- 互模拟（bisimulation）：即两个表等价，即 head 相等，tail 互模拟
+    - $\mathrm{merge}$ 表示依次从两个表轮流取元素生成表
+        - 则 $\mathrm{merge}(\mathrm{odd}(\sigma), \mathrm{even}(\sigma))$ 和 $\sigma$ 互模拟
+- 自然数类型作为归纳类型：
+    - $\dfrac{\Gamma\vdash e:\mathrm{unit}+\mathrm{nat}}{\Gamma\vdash\mathrm{fold}_\mathrm{nat}(e):\mathrm{nat}}$, $\dfrac{\Gamma, x:\mathrm{unit}+\tau\vdash e_1:\tau\quad\Gamma\vdash e_2:\mathrm{nat}}{\Gamma\vdash\mathrm{rec}_\mathrm{nat}(x.e_1;e_2):\tau}$
+    - $\mathrm{z} = \mathrm{fold}_\mathrm{nat}(l\cdot\langle\rangle)$, $\mathrm{s}(e) = \mathrm{fold}_\mathrm{nat}(r\cdot e)$
+- 余归纳类型：自然数的流类型
+    - 每个元素要在所有之前的元素被计算出来之后才能被计算出来
+    - 流的引入形式和自然数的消去形式是对偶的
+    - $\mathrm{hd}(\mathrm{gen}_\mathrm{stream}\ x\text{ is }e\text{ in }\langle\mathrm{hd}\hookrightarrow e_1, \mathrm{tl}\hookrightarrow e_2\rangle) \mapsto [e/x]e_1$
+    - $\mathrm{tl}(\mathrm{gen}_\mathrm{stream}\ x\text{ is } e\text{ in }\langle\mathrm{hd}\hookrightarrow e_1, \mathrm{tl}\hookrightarrow e_2\rangle)$
+        - $\mapsto \mathrm{gen}_\mathrm{stream}\ x\text{ is }[e/x]e_2\text{ in }\langle\mathrm{hd}\hookrightarrow e_1, \mathrm{tl}\hookrightarrow e_2\rangle$
+
+<!-- ## 变量类型 -->

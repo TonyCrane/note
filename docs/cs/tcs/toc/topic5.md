@@ -1,0 +1,126 @@
+---
+comment: True
+counter: True
+---
+
+# 函数可计算性
+
+!!! abstract
+    理论计算机科学导引第十二至第？周课程内容
+
+从函数的角度来看图灵机的判定性。考虑数值函数 $f\colon\mathbb{N}^k\to\mathbb{N}$，图灵机 $M$ computes $f$ if for any $n_1, \cdots, n_k\in\mathbb{N}$:
+
+$$
+M(\mathrm{bin}(n_1), \cdots, \mathrm{bin}(n_k)) = \mathrm{bin}(f(n_1, \cdots, n_k))
+$$
+
+## 原始递归函数
+
+- basic functions
+    - zero function: $\mathrm{zero}(n_1, n_2, \cdots, n_k) = 0$
+    - identity function: $\mathrm{id}_{kj}(n_1, n_2, \cdots, n_k) = n_j$
+    - successor function: $\mathrm{succ}(n) = n+1$
+- basic functions 都是可计算的
+- 两种操作：
+    - composition: 
+        - $g\colon\mathbb{N}^k\to\mathbb{N}$, $h_1, \cdots, h_k\colon\mathbb{N}^l\to\mathbb{N}$
+        - => $f(n_1, \cdots, n_l) = g(h_1(n_1, \cdots, n_l), \cdots, h_k(n_1, \cdots, n_l))$
+    - recursive definition:
+        - $g\colon\mathbb{N}^{k}\to\mathbb{N}$, $h\colon\mathbb{N}^{k+2}\to\mathbb{N}$
+        - $f\colon\mathbb{N}^{k+1}\to\mathbb{N}$, $\begin{cases}f(n_1, \cdots, n_k, 0) = g(n_1, \cdots, n_k) \\ f(n_1, \cdots, n_k, m+1) = h(n_1, \cdots, n_k, m, f(n_1, \cdots, n_k, m))\end{cases}$
+- 定义：由 basic functions 和两种操作组合而成的函数为 primitive recursive functions
+    - 推论：原始递归函数通过两种操作组合形成的函数仍为原始递归函数
+
+???+ example "原始递归函数的例子"
+    $\mathrm{plus2}(n) = n+2$
+    :   $= \mathrm{succ}(\mathrm{succ}(n))$
+
+    $\mathrm{plus}(m, n) = m + n$
+    :   $\begin{cases}\mathrm{plus}(m, 0) = m \\ \mathrm{plus}(m, n+1) = \mathrm{succ}(\mathrm{plus}(m, n)) = \mathrm{succ}(\mathrm{id}_{3,3}(m, n, \mathrm{plus}(m, n)))\end{cases}$
+
+    $\mathrm{mult}(m, n) = m \times n$
+    :   $\begin{cases}\mathrm{mult}(m, 0) = 0 \\ \mathrm{mult}(m, n+1) = \mathrm{plus}(m, \mathrm{mult}(m, n))\end{cases}$
+
+    $\mathrm{exp}(m, n) = m^n$
+    :   $\begin{cases}\mathrm{exp}(m, 0) = 1 \\ \mathrm{exp}(m, n+1) = \mathrm{mult}(m, \mathrm{exp}(m, n))\end{cases}$
+
+    $f(n_1, \cdots, n_k) = C$ 常数函数
+    :   $\underbrace{\mathrm{succ}(\cdots(\mathrm{succ}}_{C\text{ times}}(\mathrm{zero}(n_1, \cdots, n_k))\cdots))$
+
+    $\mathrm{sgn}(n) = \begin{cases}0 & n = 0 \\ 1 & n > 0\end{cases}$
+    :   $\begin{cases}\mathrm{sgn}(0) = 0 \\ \mathrm{sgn}(n+1) = 1\end{cases}$
+
+    $\mathrm{pred}(n) = \begin{cases}0 & n = 0 \\ n-1 & n > 0\end{cases}$
+    :   $\begin{cases}\mathrm{pred}(0) = 0 \\ \mathrm{pred}(n+1) = n = \mathrm{id}_{2,1}(n, \mathrm{pred}(n))\end{cases}$
+
+    $m\sim n = \max\{m-n, 0\}$
+    :   $\begin{cases}m\sim 0 = m \\ m\sim (n+1) = \mathrm{pred}(m\sim n)\end{cases}$
+
+- 如果 $f, g$ 均为原始递归函数，则 $f+g, f - g, f\cdot g$ 均为原始递归函数
+- 函数值只有 0 1 的函数 => predicates
+- 如果两个 predicates $p, q$ 都是原始递归函数，则 $p\land q, p\lor q, \lnot p$ 均为原始递归函数
+    - $\lnot p = 1 - p, p\land q = p\cdot q, p\lor q = \mathrm{positive}(p+q)$
+
+???+ example "predicates 例子"
+    $\mathrm{positive}(n) = \mathrm{sgn}(n)$
+
+    $\mathrm{iszero}(n) = 1 - \mathrm{sgn}(n)$
+
+    $\mathrm{geq}(m, n) = \mathrm{iszero}(n\sim m)$
+
+    $\mathrm{eq}(m, n) = \mathrm{geq}(m, n)\land\mathrm{geq}(n, m)$
+
+- 条件函数 $f(n_1, \cdots, n_k) = \begin{cases}g(n_1, \cdots, n_k) & \text{if }p(n_1, \cdots, n_k)\\ h(n_1, \cdots, n_k) & \text{otherwise}\end{cases}$
+    - 如果 $g, h, p$ 都是原始递归函数，则 $f$ 也是
+    - $f=p\cdot g + (1\sim p)\cdot h$
+
+???+ example "其他复杂原始递归函数例子"
+    $\mathrm{rem}(m, n) = m \% n$
+    :   $\begin{cases}\mathrm{rem}(0, n) = 0 \\ \mathrm{rem}(m+1, n) = \begin{cases}0 & \text{if }m+1\text{ is divisible by }n\\ \mathrm{rem}(m, n) + 1 & \text{otherwise}\end{cases}\end{cases}$
+
+        其中 $m+1$ 被 $n$ 整除当且仅当 $\mathrm{eq}(\mathrm{rem}(m, n), \mathrm{pred}(n))$
+
+    $\mathrm{div}(m, n) = \lfloor m/n\rfloor$（假定 $n\neq 0$）
+    :   $\begin{cases}\mathrm{div}(0, n) = 0 \\ \mathrm{div}(m+1, n) = \begin{cases}\mathrm{div}(m, n) + 1 & \text{if }m+1\text{ is divisible by }n\\ \mathrm{div}(m, n) & \text{otherwise}\end{cases}\end{cases}$
+
+    $\mathrm{digit}(m, n, p) = a_{m-1}$，其中 $n = \cdots+a_{m-1}p^{m-1}+\cdots+a_1p+a_0$（即将 $n$ 用 $p$ 进制表示并取第 $m$ 位）
+    :   $\mathrm{digit}(m, n, p) = \mathrm{div}(\mathrm{rem}(n, p^m), p^{m-1})$
+
+    $\mathrm{sum}_f(m, n) = \sum_{k = 0}^n f(m, k)$
+    :   $\begin{cases}\mathrm{sum}_f(m, 0) = f(m, 0) \\ \mathrm{sum}_f(m, n+1) = \mathrm{sum}_f(m, n) + f(m, \mathrm{succ}(n))\end{cases}$
+
+    $\mathrm{mult}_f(m, n) = \prod_{k = 0}^n f(m, k)$ 同理
+
+    给定一个 primitive recursive predicates $p$，定义 $g_p(n)$（bounded disjunction）为在 $[0, n]$ 中是否存在值使 $p$ 为真，定义 $h_p(n)$（bounded conjunction）为在 $[0, n]$ 中的任意值是否都使得 $p$ 为真
+    :   $g_p(n) = \mathrm{positive}(\sum_{k=0}^n p(k)) = \mathrm{positive}(\mathrm{sum}_p(n))$（第一个参数丢掉了）
+
+        $h_p(n) = \prod_{k=0}^n p(k) = \mathrm{mult}_p(n)$
+
+???+ success "Lemma. 原始递归函数都是可计算的"
+    Proof. basic functions 都是可计算的，且 composition 和 recursive definition 会保留可计算性，所以组合而成的所有原始递归函数都是可计算的。
+
+???+ tip "反之，所有可计算的函数**不**都是原始递归函数"
+    所有的原始递归函数都可以通过类似正则表达式一样的方式来描述，意味着原始递归函数是可以枚举的。所以构造图灵机 $M$ = on input $n$:
+
+    1. enumerate all unary primitive recursive functions $g_1, g_2, \cdots$ to get $g_n$
+    2. compute $g_n(n)$
+    3. return $g_n(n) + 1$
+
+    称 $M$ 这时候 compute $g^*$，但 $g^*\neq g_n$，所以 $g^*$ 不是原始递归函数。
+
+## μ-递归函数
+
+- 在原始递归函数的基础上附加一个操作：minimalization of minimalizable functions
+    - 给定函数 $g\colon\mathbb{N}^{k+1}\to\mathbb{N}$
+    - 令 $f(n_1, \cdots, n_k) = \begin{cases}\text{minimum }m\text{ with }g(n_1, \cdots, n_k, m) = 1 &\text{if exists}\\ 0 &\text{otherwise}\end{cases}$
+    - 称 $f$ is a minimalization of $g$，记作 $\mu m[g(n_1, \cdots, n_k, m) = 1]$
+
+???+ example "μ-递归函数的例子"
+    $\log(m, n) = \lceil\log_{m+2}(n+1)\rceil$
+    :   相当于 $\min\{p:(m+2)^p\geq n+1\}$，即 $\mu p[\mathrm{geq}((m+2)^p, n+1) = 1]$
+
+- 一个函数 $g$ 是 minimalizable 的如果
+    - $g$ 是可计算的
+    - 对于任意 $n_1, \cdots n_k$，都存在 $m\geq 0$ 使得 $g(n_1, \cdots, n_k, m) = 1$
+- minimalization of $g$ is computable if $g$ is minimalizable
+    - 判断一个可计算函数 $g$ 是否是 minimalizable 的是不可判定的（停机问题）
