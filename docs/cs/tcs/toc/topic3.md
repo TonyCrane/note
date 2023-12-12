@@ -26,8 +26,8 @@ counter: True
         - $\{\leftarrow, \rightarrow\}$：读写头向左/右移动
         - $(\Sigma-\{\rhd\})$：读写头写入的符号，不能写入 $\rhd$
         - 需要满足 $\forall q\in K, \delta(q, \rhd)=(p, \rightarrow)$ for some $p$
-- configuration：$K\times\rhd(\Sigma-\{\rhd\})\times(\{e\}\cup(\Sigma-\{\rhd\})^*(\Sigma-\{\rhd, ⌴\}))$
-    - $\rhd(\Sigma-\{\rhd\})$：纸带上到读写头为止的部分，$\rhd$ 开头，最后一个为读写头指向的位置
+- configuration：$K\times\rhd(\Sigma-\{\rhd\})^*\times(\{e\}\cup(\Sigma-\{\rhd\})^*(\Sigma-\{\rhd, ⌴\}))$
+    - $\rhd(\Sigma-\{\rhd\})^*$：纸带上到读写头为止的部分，$\rhd$ 开头，最后一个为读写头指向的位置
     - $\{e\}$：读写头右侧没有非空格子的话就是 $e$
     - $(\Sigma-\{\rhd\})^*(\Sigma-\{\rhd, ⌴\})$：读写头右侧的非空格子
     - e.g. $(q, \rhd⌴ab, a)$，等价可以写为 $(q, \rhd⌴a\underline{b}a)$（下划线表示读写头指向的位置）
@@ -80,7 +80,7 @@ counter: True
     效果是对于任意 $w\in(\Sigma-\{\rhd, ⌴\})^*$，将 $\rhd⌴⌴w\underline{⌴}$ 变为 $\rhd⌴w\underline{⌴}$
 
     \automata[->,>={Stealth[round]},auto,node distance=4em,on grid,semithick,inner sep=2pt,bend angle=50,initial text=,every state/.style={draw=none,minimum size=0pt,inner sep=1pt}]
-        \node[initial,state]    (q_0)                   {$L\sqcup$};
+        \node[initial,state]    (q_0)                   {$L_\sqcup$};
         \node[state]      at (1, 0)      (q_1)    {$R$};
         \node[state]      at (3, 0)      (q_2)     {$\sqcup LaR$};
         \node[state]      at (1, -1)      (q_3)     {$L$};
@@ -148,13 +148,15 @@ counter: True
         \node[state]            (q_1) [right=of q_0]    {$xR$};
         \node[state]            (q_2) [right=of q_1]    {$yR$};
         \node[state]            (q_3) [right=of q_2]    {$zL\sqcup$};
-        \node[state]            (q_4) [below=of q_0]    {$y$};
+        \node[state]            (q_4) [below=of q_0]    {$R$};
         \node[state]            (q_5) [right=of q_4]    {$n$};
+        \node[state]            (q_6) [below=of q_4]    {$R$};
+        \node[state]            (q_7) [right=of q_6]    {$y$};
         
         \path
             (q_0)   edge                    node                {$a$}               (q_1)
-                    edge                    node [swap]         {$\sqcup$}          (q_4)
-                    edge [bend right=30]    node [font=\small]  {$b,c,y,z$}         (q_5)
+                    edge                    node [swap]         {$y$}               (q_4)
+                    edge [bend right=30]    node [font=\small]  {$b,c,z$}           (q_5)
                     edge [loop above]       node                {$x$}               (q_0)
             (q_1)   edge                    node                {$b$}               (q_2)
                     edge                    node                {$c,\sqcup,x,z$}    (q_5)
@@ -162,7 +164,13 @@ counter: True
             (q_2)   edge                    node                {$c$}               (q_3)
                     edge [bend left=30]     node [font=\small]  {$\sqcup,a,x,y$}    (q_5)
                     edge [loop above]       node                {$b,z$}             (q_2)
-            (q_3)   edge [bend right]       node                {}                  (q_0);
+            (q_3)   edge [bend right]       node                {}                  (q_0)
+            (q_4)   edge                    node                {$x$}               (q_5)
+                    edge [loop left]        node                {$y$}               (q_4)
+                    edge                    node [swap]         {$z$}               (q_6)
+            (q_6)   edge                    node                {$x,y$}             (q_5)
+                    edge [loop left]        node                {$z$}               (q_6)
+                    edge                    node                {$\sqcup$}          (q_7);
 
 ## 变种图灵机
 
