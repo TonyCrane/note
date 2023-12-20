@@ -108,14 +108,14 @@ $$
 
     称 $M$ 这时候 compute $g^*$，但 $g^*\neq g_n$，所以 $g^*$ 不是原始递归函数。
 
-## μ-递归函数
+## <span class="heti-skip">μ-递归函数</span>
 
 - 在原始递归函数的基础上附加一个操作：minimalization of minimalizable functions
     - 给定函数 $g\colon\mathbb{N}^{k+1}\to\mathbb{N}$
     - 令 $f(n_1, \cdots, n_k) = \begin{cases}\text{minimum }m\text{ with }g(n_1, \cdots, n_k, m) = 1 &\text{if exists}\\ 0 &\text{otherwise}\end{cases}$
     - 称 $f$ is a minimalization of $g$，记作 $\mu m[g(n_1, \cdots, n_k, m) = 1]$
 
-???+ example "μ-递归函数的例子"
+???+ example "<span class="heti-skip">μ-递归函数</span>的例子"
     $\log(m, n) = \lceil\log_{m+2}(n+1)\rceil$
     :   相当于 $\min\{p:(m+2)^p\geq n+1\}$，即 $\mu p[\mathrm{geq}((m+2)^p, n+1) = 1]$
 
@@ -124,3 +124,77 @@ $$
     - 对于任意 $n_1, \cdots n_k$，都存在 $m\geq 0$ 使得 $g(n_1, \cdots, n_k, m) = 1$
 - minimalization of $g$ is computable if $g$ is minimalizable
     - 判断一个可计算函数 $g$ 是否是 minimalizable 的是不可判定的（停机问题）
+
+???+ success "Theorem. 数值函数 $f$ 是 <span class="heti-skip">μ-递归</span>的当且仅当它可计算"
+    Proof. 左推右，各三个操作都保留可计算性，所以显然。
+
+    右推左，Proof Sketch: $f$ 可计算 => 存在图灵机 $M$ computes $f$ => $(s, \rhd\underline{⌴}n)\vdash_M(q_1, \rhd u_1\underline{a_1}v_1)\vdash_M\cdots\vdash_M(h, \rhd\underline{⌴}f(n))$
+
+    将这个转换过程提取称串 $\rhd⌴sn\!\rhd\!u_1a_1q_1v_1\cdots\rhd\!⌴hf(n)$（把状态放在当前读写头右侧）。通过映射 $\Sigma\cup K\to\{0, \cdots, b-1\}$（其中 $b=|\Sigma\cup K|$）将这个串转换为 $b$ 进制的整数，所以整个的转换过程就是：
+
+    $$
+    n\to\rhd⌴sn\to\rhd⌴sn\!\rhd\!u_1a_1q_1v_1\cdots\rhd\!⌴hf(n)\to\rhd⌴hf(n)\to f(n)
+    $$
+
+    这里每个都是一个 $b$ 进制整数，所以只要证明每一次转换的函数都是 <span class="heti-skip">μ-递归</span>的即可：
+
+    - $n$
+        - $h_1(n) = \rhd⌴s\cdot b^{\log_b n} + n$（在前面添加 $\rhd⌴s$）
+    - $\rhd⌴sn$
+        - $h_2(n) = \mu m[\mathrm{iscomp}(\rhd⌴sn, m)\land\mathrm{ishalted}(m)]$
+            - 找到一个最小的串，使之可以由 $\rhd⌴sn$ 生成，并且最终是停机状态
+            - $\mathrm{iscomp}$ 和 $\mathrm{ishalted}$ 都是原始递归的，但没有证明
+    - $\rhd⌴sn\!\rhd\!u_1a_1q_1v_1\cdots\rhd\!⌴hf(n)$
+        - $h_3(n) = \mathrm{rem}(n, b^{k^*+1})$ 其中 $k^* = \mu k[\mathrm{isdigit}(k, n, b) = \rhd]$
+            - 找到最后一个 $\rhd$ 的位置并取其和其后的部分
+    - $\rhd⌴hf(n)$
+        - $h_4$ 和 $h_3$ 同理，找最后一个 $h$ 的位置并取其后的部分
+    - $f(n)$
+
+## Unrestricted Grammar
+
+!!! warning "应该不属于这一章，但先记在这里了"
+
+- Context-Free Grammar 无上下文，而这里的 Grammar 可以有上下文
+    - 即例如 $uAv\to w$，只有上下文 $uv$ 都匹配了才可以进行替换
+- 一个 Grammar 同样是一个四元组 $G=(V, \Sigma, S, R)$
+    - $V, \Sigma, S$ 定义和 CFG 相同
+    - $R$ is a finite subset of $(V^*(V-\Sigma)V^*)\times V^*$
+        - 对比 CFG 的 $R\subseteq (V-\Sigma)\times V^*$，可见其多了上下文 $V^*$
+    - 同样可以定义 $\Rightarrow_G, \Rightarrow_G^*$ 以及生成语言 $L(G)$
+
+??? example "给出语言 $\{a^nb^nc^n:n\geq 0\}$ 的文法"
+    - $S\to ABCS$：生成 $ABCABC\cdots ABCS$
+    - $BA\to AB,\ CA\to AC,\ CB\to BC$：重排为 $A\cdots AB\cdots BC\cdots CS$
+    - $S\to T_c$：结尾变成标志符
+    - $CT_c\to T_cc,\ BT_c\to BT_b$：向左替换所有的 $C$，并在遇到 $B$ 时变成 $T_b$
+    - $BT_b\to T_bb,\ AT_b\to AT_a$：同理
+    - $AT_a\to T_aa,\ T_a\to e$
+
+???+ success "Theorem. 一个语言可以被某一文法生成当且仅当它可以被某一图灵机半判定"
+    Proof. 左推右，给定文法 $G$ 需要给出一个图灵机 $M$ 半判定 $L(G)$ 即可，所以只需要枚举文法可以生成的所有字符串再进行比较即可。
+
+    右推左，给定图灵机 $M$ 要找文法 $G$ 生成 $L(M)$。图灵机半判定的过程中，纸带上的变化：
+
+    $$
+    \rhd⌴sw\vdash\rhd⌴u_1a_1q_1v_1\vdash\cdots\vdash\rhd⌴h
+    $$
+
+    所以我们期望文法 $G$ 的表现是可以给出如下的替换链：
+
+    $$
+    S\Rightarrow \rhd⌴h\triangle\Rightarrow\cdots\Rightarrow\rhd⌴u_1a_1q_1v_1\triangle\Rightarrow\rhd⌴sw\triangle\Rightarrow w
+    $$
+
+    即从停机状态往前推，一直找到初始状态得到字符串 $w$，并且在中间给每个状态加上一个三角标记结尾。这样我们可以构造 $G$ 的转换规则：
+
+    - $\rhd⌴s\to e,\ \triangle\to e$：将最后字符串的开头结尾去掉
+    - 枚举图灵机的每条转换规则：
+        - 如果 $\delta(q, a) = (p, b)$，即图灵机这条规则在进行写操作
+            - 我们知道此时图灵机在 $uaqv\triangle\vdash_M ubpv\triangle$
+            - 所以逆推回来并去掉无用的上下文得到 $bp\to aq$
+        - 如果 $\delta(q, a) = (p, \rightarrow)$，即读写头右移
+            - 此时图灵机 $uaqbv\triangle\vdash_M uabpv\triangle$
+            - 则添加规则，对于任意 $b\in\Sigma, abp\to aqb$（这里 $a$ 不能去掉，是有用的上下文）
+            - 如果 $b=⌴$ 且 $v=e$，则 $a⌴p\triangle\to aq\triangle$
+        - 如果 $\delta(q, a) = (p, \leftarrow)$，即读写头左移，和右移同理
