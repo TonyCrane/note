@@ -4,25 +4,26 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
-<link href="https://note.tonycrane.cc/others/" rel="canonical"/>
-<link href="../assets/images/favicon.png" rel="icon"/>
+<link href="https://note.tonycrane.cc/cs/pl/ppl/topic6/" rel="canonical"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
-<title>杂七杂八的东西 - 鹤翔万里的笔记本</title>
-<link href="../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
-<link href="../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
-<link href="../css/svg_extra.css" rel="stylesheet"/>
-<link href="../css/heti.css" rel="stylesheet"/>
-<link href="../css/toc_extra.css" rel="stylesheet"/>
-<link href="../css/timeline.css" rel="stylesheet"/>
+<title>递归系统 PCF - 鹤翔万里的笔记本</title>
+<link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
+<link href="../../../../css/svg_extra.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../../../css/timeline.css" rel="stylesheet"/>
 <link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
 <link href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css" rel="stylesheet"/>
 <link href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css" rel="stylesheet"/>
-<link href="../css/tasklist.css" rel="stylesheet"/>
-<link href="../css/custom.css" rel="stylesheet"/>
-<link href="../css/card.css" rel="stylesheet"/>
-<link href="../css/flink.css" rel="stylesheet"/>
-<link href="../css/changelog_extra.css" rel="stylesheet"/>
-<script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<link href="../../../../css/tasklist.css" rel="stylesheet"/>
+<link href="../../../../css/custom.css" rel="stylesheet"/>
+<link href="../../../../css/card.css" rel="stylesheet"/>
+<link href="../../../../css/flink.css" rel="stylesheet"/>
+<link href="../../../../css/changelog_extra.css" rel="stylesheet"/>
+<link href="/css/counter.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
 <script>
 var _hmt = _hmt || [];
 (function() {
@@ -34,7 +35,7 @@ var _hmt = _hmt || [];
 </script>
 <script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
-<link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
         html.glightbox-open { overflow: initial; height: 100%; }
         .gslide-title { margin-top: 0px; user-select: text; }
         .gslide-desc { color: #666; user-select: text; }
@@ -45,15 +46,15 @@ var _hmt = _hmt || [];
             body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
             body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
             body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
-            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
 <body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
-<script src="../js/scheme.js" type="text/javascript"></script>
+<script src="../../../../js/scheme.js" type="text/javascript"></script>
 <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
 <input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
 <input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
 <label class="md-overlay" for="__drawer"></label>
 <div data-md-component="skip">
-<a class="md-skip" href="#_1">
+<a class="md-skip" href="#pcf">
             跳转至
           </a>
 </div>
@@ -61,7 +62,7 @@ var _hmt = _hmt || [];
 </div>
 <header class="md-header" data-md-component="header">
 <nav aria-label="页眉" class="md-header__inner md-grid">
-<a aria-label="鹤翔万里的笔记本" class="md-header__button md-logo" data-md-component="logo" href=".." title="鹤翔万里的笔记本">
+<a aria-label="鹤翔万里的笔记本" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="鹤翔万里的笔记本">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
 </a>
 <label class="md-header__button md-icon" for="__drawer">
@@ -77,7 +78,7 @@ var _hmt = _hmt || [];
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              杂七杂八的东西
+              递归系统 PCF
             
           </span>
 </div>
@@ -146,37 +147,37 @@ var _hmt = _hmt || [];
 <div class="md-tabs__inner md-grid">
 <ul class="md-tabs__list">
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="..">
+<a class="md-tabs__link" href="../../../..">
         Home
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../cs/">
+<a class="md-tabs__link md-tabs__link--active" href="../../../">
         Computer Science
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../sec/">
+<a class="md-tabs__link" href="../../../../sec/">
         Security
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../web/">
+<a class="md-tabs__link" href="../../../../web/">
         Web
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../ctf/">
+<a class="md-tabs__link" href="../../../../ctf/">
         CTF
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link" href="../writeups/">
+<a class="md-tabs__link" href="../../../../writeups/">
         Writeups
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="./">
+<a class="md-tabs__link" href="../../../../others/">
         Others
       </a>
 </li>
@@ -190,7 +191,7 @@ var _hmt = _hmt || [];
 <div class="md-sidebar__inner">
 <nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
 <label class="md-nav__title" for="__drawer">
-<a aria-label="鹤翔万里的笔记本" class="md-nav__button md-logo" data-md-component="logo" href=".." title="鹤翔万里的笔记本">
+<a aria-label="鹤翔万里的笔记本" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="鹤翔万里的笔记本">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
 </a>
     鹤翔万里的笔记本
@@ -209,7 +210,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="..">Home</a>
+<a href="../../../..">Home</a>
 <label for="__nav_1">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -221,22 +222,22 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../changelog/">
+<a class="md-nav__link" href="../../../../changelog/">
         更新记录
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../links/">
+<a class="md-nav__link" href="../../../../links/">
         友链
       </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/">Computer Science</a>
+<a href="../../../">Computer Science</a>
 <label for="__nav_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -247,10 +248,10 @@ var _hmt = _hmt || [];
           Computer Science
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/pl/">编程语言 &amp; ISA</a>
+<a href="../../">编程语言 &amp; ISA</a>
 <label for="__nav_2_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -274,12 +275,12 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/c_cpp/c/">
+<a class="md-nav__link" href="../../c_cpp/c/">
         C 语言杂项
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/c_cpp/oop/">
+<a class="md-nav__link" href="../../c_cpp/oop/">
         C++ 面向对象
       </a>
 </li>
@@ -289,7 +290,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/pl/python/">Python</a>
+<a href="../../python/">Python</a>
 <label for="__nav_2_2_3">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -301,17 +302,17 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/python/basic/">
+<a class="md-nav__link" href="../../python/basic/">
         Python 基础语法
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/python/numpy/">
+<a class="md-nav__link" href="../../python/numpy/">
         NumPy
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/python/pil/">
+<a class="md-nav__link" href="../../python/pil/">
         PIL
       </a>
 </li>
@@ -321,7 +322,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" id="__nav_2_2_4" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/pl/rust/">Rust</a>
+<a href="../../rust/">Rust</a>
 <label for="__nav_2_2_4">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -333,12 +334,12 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/rust/basic/">
+<a class="md-nav__link" href="../../rust/basic/">
         Rust 基础语法
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/rust/misc/">
+<a class="md-nav__link" href="../../rust/misc/">
         Rust 杂项随记
       </a>
 </li>
@@ -346,24 +347,24 @@ var _hmt = _hmt || [];
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/haskell/">
+<a class="md-nav__link" href="../../haskell/">
         Haskell
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/chisel/">
+<a class="md-nav__link" href="../../chisel/">
         Chisel
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/asm/">
+<a class="md-nav__link" href="../../asm/">
         x86 汇编语言
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_8" id="__nav_2_2_8" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/pl/riscv/">RISC-V ISA</a>
+<a href="../../riscv/">RISC-V ISA</a>
 <label for="__nav_2_2_8">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -375,27 +376,27 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/riscv/unprivileged/">
+<a class="md-nav__link" href="../../riscv/unprivileged/">
         RISC-V 非特权级 ISA
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/riscv/privileged/">
+<a class="md-nav__link" href="../../riscv/privileged/">
         RISC-V 特权级 ISA
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/riscv/paging/">
+<a class="md-nav__link" href="../../riscv/paging/">
         RISC-V 页表相关
       </a>
 </li>
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_9" id="__nav_2_2_9" type="checkbox"/>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_9" id="__nav_2_2_9" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/pl/ppl/">编程语言原理</a>
+<a href="../">编程语言原理</a>
 <label for="__nav_2_2_9">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -407,32 +408,33 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/ppl/topic1/">
+<a class="md-nav__link" href="../topic1/">
         Lambda 演算
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/ppl/topic2/">
+<a class="md-nav__link" href="../topic2/">
         抽象语法树与归纳法
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/ppl/topic3/">
+<a class="md-nav__link" href="../topic3/">
         静态语义与动态语义
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/ppl/topic4/">
+<a class="md-nav__link" href="../topic4/">
         函数与递归
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/ppl/topic5/">
+<a class="md-nav__link" href="../topic5/">
         数据类型
       </a>
 </li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../cs/pl/ppl/topic6/">
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<a class="md-nav__link md-nav__link--active" href="./">
         递归系统 PCF
       </a>
 </li>
@@ -445,7 +447,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/system/">计算机系统</a>
+<a href="../../../system/">计算机系统</a>
 <label for="__nav_2_3">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -459,7 +461,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/system/cs1/">计算机系统 I</a>
+<a href="../../../system/cs1/">计算机系统 I</a>
 <label for="__nav_2_3_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -471,32 +473,32 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/topic1/">
+<a class="md-nav__link" href="../../../system/cs1/topic1/">
         数据的表示
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/topic2/">
+<a class="md-nav__link" href="../../../system/cs1/topic2/">
         数字逻辑电路基础
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/topic3/">
+<a class="md-nav__link" href="../../../system/cs1/topic3/">
         组合逻辑电路设计
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/topic4/">
+<a class="md-nav__link" href="../../../system/cs1/topic4/">
         时序逻辑电路设计
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/topic5/">
+<a class="md-nav__link" href="../../../system/cs1/topic5/">
         指令集体系结构
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/topic6/">
+<a class="md-nav__link" href="../../../system/cs1/topic6/">
         处理器
       </a>
 </li>
@@ -513,47 +515,47 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab1-1/">
+<a class="md-nav__link" href="../../../system/cs1/lab1-1/">
         系统 I lab1-1
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab1-2/">
+<a class="md-nav__link" href="../../../system/cs1/lab1-2/">
         系统 I lab1-2
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab2-1/">
+<a class="md-nav__link" href="../../../system/cs1/lab2-1/">
         系统 I lab2-1
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab2-2/">
+<a class="md-nav__link" href="../../../system/cs1/lab2-2/">
         系统 I lab2-2
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab3/">
+<a class="md-nav__link" href="../../../system/cs1/lab3/">
         系统 I lab3
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab4-1/">
+<a class="md-nav__link" href="../../../system/cs1/lab4-1/">
         系统 I lab4-1
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab4-2/">
+<a class="md-nav__link" href="../../../system/cs1/lab4-2/">
         系统 I lab4-2
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab5-1/">
+<a class="md-nav__link" href="../../../system/cs1/lab5-1/">
         系统 I lab5-1
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs1/lab5-2/">
+<a class="md-nav__link" href="../../../system/cs1/lab5-2/">
         系统 I lab5-2
       </a>
 </li>
@@ -566,7 +568,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/system/cs2/">计算机系统 II</a>
+<a href="../../../system/cs2/">计算机系统 II</a>
 <label for="__nav_2_3_3">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -578,32 +580,32 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/topic1/">
+<a class="md-nav__link" href="../../../system/cs2/topic1/">
         流水线 CPU
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/topic2/">
+<a class="md-nav__link" href="../../../system/cs2/topic2/">
         操作系统简介
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/topic3/">
+<a class="md-nav__link" href="../../../system/cs2/topic3/">
         操作系统结构及系统调用
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/topic4/">
+<a class="md-nav__link" href="../../../system/cs2/topic4/">
         进程与线程
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/topic5/">
+<a class="md-nav__link" href="../../../system/cs2/topic5/">
         CPU 调度
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/topic6/">
+<a class="md-nav__link" href="../../../system/cs2/topic6/">
         进程同步
       </a>
 </li>
@@ -620,37 +622,37 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/lab1/">
+<a class="md-nav__link" href="../../../system/cs2/lab1/">
         系统 II lab1
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/lab2/">
+<a class="md-nav__link" href="../../../system/cs2/lab2/">
         系统 II lab2
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/lab3/">
+<a class="md-nav__link" href="../../../system/cs2/lab3/">
         系统 II lab3
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/lab4/">
+<a class="md-nav__link" href="../../../system/cs2/lab4/">
         系统 II lab4
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/lab5/">
+<a class="md-nav__link" href="../../../system/cs2/lab5/">
         系统 II lab5
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/lab6/">
+<a class="md-nav__link" href="../../../system/cs2/lab6/">
         系统 II lab6
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs2/lab7/">
+<a class="md-nav__link" href="../../../system/cs2/lab7/">
         系统 II lab7
       </a>
 </li>
@@ -663,7 +665,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" id="__nav_2_3_4" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/system/cs3/">计算机系统 III</a>
+<a href="../../../system/cs3/">计算机系统 III</a>
 <label for="__nav_2_3_4">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -675,7 +677,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs3/topic1/">
+<a class="md-nav__link" href="../../../system/cs3/topic1/">
         系统量化研究方法
       </a>
 </li>
@@ -692,27 +694,27 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs3/lab1/">
+<a class="md-nav__link" href="../../../system/cs3/lab1/">
         系统 III lab1
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs3/lab2/">
+<a class="md-nav__link" href="../../../system/cs3/lab2/">
         系统 III lab2
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs3/lab3/">
+<a class="md-nav__link" href="../../../system/cs3/lab3/">
         系统 III lab3
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs3/lab4/">
+<a class="md-nav__link" href="../../../system/cs3/lab4/">
         系统 III lab4
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/cs3/lab5/">
+<a class="md-nav__link" href="../../../system/cs3/lab5/">
         系统 III lab5
       </a>
 </li>
@@ -723,7 +725,7 @@ var _hmt = _hmt || [];
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/system/pa/">
+<a class="md-nav__link" href="../../../system/pa/">
         ICS PA 实验纪实
       </a>
 </li>
@@ -745,7 +747,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/algorithm/ds/">数据结构基础</a>
+<a href="../../../algorithm/ds/">数据结构基础</a>
 <label for="__nav_2_4_1">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -757,17 +759,17 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/algorithm/ds/topic1/">
+<a class="md-nav__link" href="../../../algorithm/ds/topic1/">
         算法分析基础
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/algorithm/ds/summary1/">
+<a class="md-nav__link" href="../../../algorithm/ds/summary1/">
         基础数据结构
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/algorithm/ds/summary2/">
+<a class="md-nav__link" href="../../../algorithm/ds/summary2/">
         排序与哈希
       </a>
 </li>
@@ -790,7 +792,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/ai/basic/">
+<a class="md-nav__link" href="../../../ai/basic/">
         人工智能基础
       </a>
 </li>
@@ -812,7 +814,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/hpc/hpc101/">HPC 101 超算小学期</a>
+<a href="../../../hpc/hpc101/">HPC 101 超算小学期</a>
 <label for="__nav_2_6_1">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -824,27 +826,27 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/hpc/hpc101/vectorized/">
+<a class="md-nav__link" href="../../../hpc/hpc101/vectorized/">
         向量化计算
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/hpc/hpc101/gpu/">
+<a class="md-nav__link" href="../../../hpc/hpc101/gpu/">
         GPU 编程
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/hpc/hpc101/openmp/">
+<a class="md-nav__link" href="../../../hpc/hpc101/openmp/">
         OpenMP 基础
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/hpc/hpc101/mpi/">
+<a class="md-nav__link" href="../../../hpc/hpc101/mpi/">
         MPI 基础
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/hpc/hpc101/ml/">
+<a class="md-nav__link" href="../../../hpc/hpc101/ml/">
         机器学习基础
       </a>
 </li>
@@ -869,7 +871,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" id="__nav_2_7_1" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/tcs/toc/">计算理论</a>
+<a href="../../../tcs/toc/">计算理论</a>
 <label for="__nav_2_7_1">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -881,32 +883,32 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tcs/toc/topic1/">
+<a class="md-nav__link" href="../../../tcs/toc/topic1/">
         语言、自动机与正则表达式
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tcs/toc/topic2/">
+<a class="md-nav__link" href="../../../tcs/toc/topic2/">
         上下文无关语言
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tcs/toc/topic3/">
+<a class="md-nav__link" href="../../../tcs/toc/topic3/">
         图灵机理论基础
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tcs/toc/topic4/">
+<a class="md-nav__link" href="../../../tcs/toc/topic4/">
         判定问题
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tcs/toc/topic5/">
+<a class="md-nav__link" href="../../../tcs/toc/topic5/">
         函数可计算性
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tcs/toc/topic6/">
+<a class="md-nav__link" href="../../../tcs/toc/topic6/">
         复杂度理论
       </a>
 </li>
@@ -929,12 +931,12 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/regex/">
+<a class="md-nav__link" href="../../../regex/">
         正则表达式
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/unicode/">
+<a class="md-nav__link" href="../../../unicode/">
         Unicode
       </a>
 </li>
@@ -944,7 +946,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/analysis/">源码剖析</a>
+<a href="../../../analysis/">源码剖析</a>
 <label for="__nav_2_9">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -956,7 +958,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/analysis/mkdocs/">
+<a class="md-nav__link" href="../../../analysis/mkdocs/">
         mkdocs 源码剖析
       </a>
 </li>
@@ -966,7 +968,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../cs/tools/">工具相关</a>
+<a href="../../../tools/">工具相关</a>
 <label for="__nav_2_10">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -978,7 +980,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/toolbox/">
+<a class="md-nav__link" href="../../../tools/toolbox/">
         工具收集
       </a>
 </li>
@@ -995,22 +997,22 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/git/">
+<a class="md-nav__link" href="../../../tools/git/">
         Git 命令备忘
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/shell/">
+<a class="md-nav__link" href="../../../tools/shell/">
         Shell 命令备忘
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/docker/">
+<a class="md-nav__link" href="../../../tools/docker/">
         Docker 相关备忘
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/gdb/">
+<a class="md-nav__link" href="../../../tools/gdb/">
         gdb 相关备忘
       </a>
 </li>
@@ -1030,7 +1032,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/action/">
+<a class="md-nav__link" href="../../../tools/action/">
         GitHub Action
       </a>
 </li>
@@ -1050,17 +1052,17 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/mkdocs/">
+<a class="md-nav__link" href="../../../tools/mkdocs/">
         mkdocs 使用记录
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/hexo/">
+<a class="md-nav__link" href="../../../tools/hexo/">
         hexo 使用记录
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../cs/tools/sphinx/">
+<a class="md-nav__link" href="../../../tools/sphinx/">
         sphinx 使用记录
       </a>
 </li>
@@ -1076,7 +1078,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../sec/">Security</a>
+<a href="../../../../sec/">Security</a>
 <label for="__nav_3">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1090,7 +1092,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../sec/crypto/">密码学</a>
+<a href="../../../../sec/crypto/">密码学</a>
 </div>
 <nav aria-label="密码学" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_3_2">
@@ -1104,7 +1106,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../sec/softsec/">软件安全</a>
+<a href="../../../../sec/softsec/">软件安全</a>
 <label for="__nav_3_3">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1116,27 +1118,27 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/softsec/lab1/">
+<a class="md-nav__link" href="../../../../sec/softsec/lab1/">
         软件安全 lab1
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/softsec/lab2/">
+<a class="md-nav__link" href="../../../../sec/softsec/lab2/">
         软件安全 lab2
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/softsec/lab3/">
+<a class="md-nav__link" href="../../../../sec/softsec/lab3/">
         软件安全 lab3
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/softsec/lab4/">
+<a class="md-nav__link" href="../../../../sec/softsec/lab4/">
         软件安全 lab4
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/softsec/final/">
+<a class="md-nav__link" href="../../../../sec/softsec/final/">
         软件安全 final lab
       </a>
 </li>
@@ -1156,7 +1158,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../sec/vulns/log4j/">
+<a class="md-nav__link" href="../../../../sec/vulns/log4j/">
         log4j 漏洞复现
       </a>
 </li>
@@ -1169,7 +1171,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../web/">Web</a>
+<a href="../../../../web/">Web</a>
 <label for="__nav_4">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1183,7 +1185,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../web/protocol/">网络协议</a>
+<a href="../../../../web/protocol/">网络协议</a>
 <label for="__nav_4_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1195,7 +1197,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../web/protocol/vmess/">
+<a class="md-nav__link" href="../../../../web/protocol/vmess/">
         VMess
       </a>
 </li>
@@ -1215,12 +1217,12 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../web/typesetting/clreq/">
+<a class="md-nav__link" href="../../../../web/typesetting/clreq/">
         中文排版需求
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../web/typesetting/tech/">
+<a class="md-nav__link" href="../../../../web/typesetting/tech/">
         中文技术文档风格指南
       </a>
 </li>
@@ -1228,7 +1230,7 @@ var _hmt = _hmt || [];
 </nav>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../web/svg/">
+<a class="md-nav__link" href="../../../../web/svg/">
         SVG
       </a>
 </li>
@@ -1238,7 +1240,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/">CTF</a>
+<a href="../../../../ctf/">CTF</a>
 <label for="__nav_5">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1264,7 +1266,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_1" id="__nav_5_2_1" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/misc/steg/">隐写术</a>
+<a href="../../../../ctf/misc/steg/">隐写术</a>
 <label for="__nav_5_2_1">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1276,12 +1278,12 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/misc/steg/image/">
+<a class="md-nav__link" href="../../../../ctf/misc/steg/image/">
         图片隐写
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/misc/steg/audio/">
+<a class="md-nav__link" href="../../../../ctf/misc/steg/audio/">
         音频隐写
       </a>
 </li>
@@ -1291,7 +1293,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" id="__nav_5_2_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/misc/escapes/">沙箱逃逸</a>
+<a href="../../../../ctf/misc/escapes/">沙箱逃逸</a>
 <label for="__nav_5_2_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1303,7 +1305,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/misc/escapes/pysandbox/">
+<a class="md-nav__link" href="../../../../ctf/misc/escapes/pysandbox/">
         Python 沙箱逃逸
       </a>
 </li>
@@ -1313,7 +1315,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_3" id="__nav_5_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/misc/forensics/">取证</a>
+<a href="../../../../ctf/misc/forensics/">取证</a>
 <label for="__nav_5_2_3">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1325,7 +1327,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/misc/forensics/mem/">
+<a class="md-nav__link" href="../../../../ctf/misc/forensics/mem/">
         内存取证
       </a>
 </li>
@@ -1345,17 +1347,17 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/misc/coding/">
+<a class="md-nav__link" href="../../../../ctf/misc/coding/">
         编码及古典密码
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/misc/qrcode/">
+<a class="md-nav__link" href="../../../../ctf/misc/qrcode/">
         QRCode
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/misc/esolang/">
+<a class="md-nav__link" href="../../../../ctf/misc/esolang/">
         Esolang
       </a>
 </li>
@@ -1365,7 +1367,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5" id="__nav_5_2_5" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/blockchain/">Blockchain</a>
+<a href="../../../../ctf/blockchain/">Blockchain</a>
 <label for="__nav_5_2_5">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1379,7 +1381,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5_2" id="__nav_5_2_5_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/blockchain/eth/">Ethereum</a>
+<a href="../../../../ctf/blockchain/eth/">Ethereum</a>
 <label for="__nav_5_2_5_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1391,37 +1393,37 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/blockchain/eth/basic/">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/basic/">
         以太坊基础
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/blockchain/eth/evm/">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/evm/">
         以太坊虚拟机
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/blockchain/eth/solidity/">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/solidity/">
         Solidity 语言
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/blockchain/eth/yul/">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/yul/">
         Yul 语言
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/blockchain/eth/vuln/">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/vuln/">
         常见合约漏洞攻击手段
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/blockchain/eth/erc/">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/erc/">
         ERC 标准
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../ctf/blockchain/eth/eip/">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/eip/">
         其余重要 EIPs
       </a>
 </li>
@@ -1431,7 +1433,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5_3" id="__nav_5_2_5_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/blockchain/solana/">Solana</a>
+<a href="../../../../ctf/blockchain/solana/">Solana</a>
 </div>
 <nav aria-label="Solana" class="md-nav" data-md-level="4">
 <label class="md-nav__title" for="__nav_5_2_5_3">
@@ -1463,7 +1465,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" id="__nav_5_3_1" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/pwn/stack/">栈漏洞利用</a>
+<a href="../../../../ctf/pwn/stack/">栈漏洞利用</a>
 </div>
 <nav aria-label="栈漏洞利用" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_3_1">
@@ -1477,7 +1479,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" id="__nav_5_3_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../ctf/pwn/heap/">堆漏洞利用</a>
+<a href="../../../../ctf/pwn/heap/">堆漏洞利用</a>
 </div>
 <nav aria-label="堆漏洞利用" class="md-nav" data-md-level="3">
 <label class="md-nav__title" for="__nav_5_3_2">
@@ -1497,7 +1499,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../writeups/">Writeups</a>
+<a href="../../../../writeups/">Writeups</a>
 <label for="__nav_6">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1521,22 +1523,22 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/ethernaut/">
+<a class="md-nav__link" href="../../../../writeups/ethernaut/">
         Ethernaut
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/SecurityInnovation/">
+<a class="md-nav__link" href="../../../../writeups/SecurityInnovation/">
         Security Innovation
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/sadservers/">
+<a class="md-nav__link" href="../../../../writeups/sadservers/">
         SadServers
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/AAA/">
+<a class="md-nav__link" href="../../../../writeups/AAA/">
         🔒 AAA School Bus
       </a>
 </li>
@@ -1556,27 +1558,27 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/sysu_msc_puzzle/">
+<a class="md-nav__link" href="../../../../writeups/sysu_msc_puzzle/">
         SYSU MSC Puzzle 2021
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/hackergame2021/">
+<a class="md-nav__link" href="../../../../writeups/hackergame2021/">
         USTC Hackergame 2021
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/d0g3/">
+<a class="md-nav__link" href="../../../../writeups/d0g3/">
         第四届“安洵杯”
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/bytectf2021_final/">
+<a class="md-nav__link" href="../../../../writeups/bytectf2021_final/">
         ByteCTF 2021 Final
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/sctf2021/">
+<a class="md-nav__link" href="../../../../writeups/sctf2021/">
         SCTF 2021
       </a>
 </li>
@@ -1596,62 +1598,62 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/vnctf2022/">
+<a class="md-nav__link" href="../../../../writeups/vnctf2022/">
         VNCTF 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/tqlctf2022/">
+<a class="md-nav__link" href="../../../../writeups/tqlctf2022/">
         TQLCTF 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/susctf2022/">
+<a class="md-nav__link" href="../../../../writeups/susctf2022/">
         SUSCTF 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/d3ctf2022/">
+<a class="md-nav__link" href="../../../../writeups/d3ctf2022/">
         D3CTF 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/%2Actf2022/">
+<a class="md-nav__link" href="../../../../writeups/%2Actf2022/">
         *CTF 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/mrctf2022/">
+<a class="md-nav__link" href="../../../../writeups/mrctf2022/">
         MRCTF 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/qwb2022/">
+<a class="md-nav__link" href="../../../../writeups/qwb2022/">
         强网杯 2022 Quals
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/tctf2022/">
+<a class="md-nav__link" href="../../../../writeups/tctf2022/">
         TCTF/0CTF 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/hackergame2022/">
+<a class="md-nav__link" href="../../../../writeups/hackergame2022/">
         USTC Hackergame 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/n1ctf2022/">
+<a class="md-nav__link" href="../../../../writeups/n1ctf2022/">
         N1CTF 2022
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/seccon2022/">
+<a class="md-nav__link" href="../../../../writeups/seccon2022/">
         SECCON 2022 Quals
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/rctf2022/">
+<a class="md-nav__link" href="../../../../writeups/rctf2022/">
         RCTF 2022
       </a>
 </li>
@@ -1671,37 +1673,37 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/seccon2022final/">
+<a class="md-nav__link" href="../../../../writeups/seccon2022final/">
         SECCON 2022 Final
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/xctf2022final/">
+<a class="md-nav__link" href="../../../../writeups/xctf2022final/">
         XCTF 2022 Final
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/midnight2023/">
+<a class="md-nav__link" href="../../../../writeups/midnight2023/">
         MidnightSun 2023 Quals
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/aliyunctf2023/">
+<a class="md-nav__link" href="../../../../writeups/aliyunctf2023/">
         AliyunCTF 2023
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/ciscn2023/">
+<a class="md-nav__link" href="../../../../writeups/ciscn2023/">
         CISCN 2023 Quals
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/seccon2023/">
+<a class="md-nav__link" href="../../../../writeups/seccon2023/">
         SECCON 2023 Quals
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="../writeups/tpctf2023/">
+<a class="md-nav__link" href="../../../../writeups/tpctf2023/">
         TPCTF 2023
       </a>
 </li>
@@ -1711,10 +1713,10 @@ var _hmt = _hmt || [];
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
-<div class="md-nav__link md-nav__link--index md-nav__link--active">
-<a href="./">Others</a>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/">Others</a>
 <label for="__nav_7">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1726,14 +1728,14 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="notes/">
+<a class="md-nav__link" href="../../../../others/notes/">
         课程笔记
       </a>
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" id="__nav_7_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="subs/">字幕制作系列</a>
+<a href="../../../../others/subs/">字幕制作系列</a>
 <label for="__nav_7_3">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1745,22 +1747,22 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="subs/ass/">
+<a class="md-nav__link" href="../../../../others/subs/ass/">
         ass 标签
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="subs/aegisub/automation/">
+<a class="md-nav__link" href="../../../../others/subs/aegisub/automation/">
         Aegisub 自动化
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="subs/aegisub/karaoke/">
+<a class="md-nav__link" href="../../../../others/subs/aegisub/karaoke/">
         Aegisub 卡拉 OK 模板
       </a>
 </li>
 <li class="md-nav__item">
-<a class="md-nav__link" href="subs/ffmpeg/">
+<a class="md-nav__link" href="../../../../others/subs/ffmpeg/">
         ffmpeg 套件杂记
       </a>
 </li>
@@ -1770,7 +1772,7 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" id="__nav_7_4" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="troubleshooting/">TroubleShooting</a>
+<a href="../../../../others/troubleshooting/">TroubleShooting</a>
 <label for="__nav_7_4">
 <span class="md-nav__icon md-icon"></span>
 </label>
@@ -1782,7 +1784,7 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="troubleshooting/mac/">
+<a class="md-nav__link" href="../../../../others/troubleshooting/mac/">
         macOS TroubleShooting
       </a>
 </li>
@@ -1801,17 +1803,6 @@ var _hmt = _hmt || [];
 <div class="md-sidebar__scrollwrap">
 <div class="md-sidebar__inner">
 <nav aria-label="目录" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-        目录
-      </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#table-of-contents">
-    Table of Contents
-  </a>
-</li>
-</ul>
 </nav>
 </div>
 </div>
@@ -1820,165 +1811,36 @@ var _hmt = _hmt || [];
 <link href="/css/fold_toc.css" rel="stylesheet"/>
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
-<a class="md-content__button md-icon" href="https://github.com/TonyCrane/note/tree/master/docs/others/index.md" title="编辑此页">
+<a class="md-content__button md-icon" href="https://github.com/TonyCrane/note/tree/master/docs/cs/pl/ppl/topic6.md" title="编辑此页">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1 id="_1">杂七杂八的东西<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h1 id="pcf">递归系统<span><span class="heti-spacing"> </span>PCF</span><a class="headerlink" href="#pcf" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>25<span class="heti-spacing"> </span></span>个字 </p>
+</div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
-<p>这里归档一些零零碎碎的笔记，还有其它不好分类的东西（？</p>
+<p>编程语言原理第十三周至第十六周课程内容</p>
 </div>
-<h2 id="table-of-contents">Table of Contents<a class="headerlink" href="#table-of-contents" title="Permanent link">¶</a></h2>
-<div class="index-item-wrapper">
-<div class="title-wrapper">
-<button onclick="buttonHandler(0)">
-<span class="twemoji" style="margin-right: 4px; font-size: 0.8em;">
-<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M12.78 6.22a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L3.22 7.28a.75.75 0 0 1 1.06-1.06L8 9.94l3.72-3.72a.75.75 0 0 1 1.06 0z" fill-rule="evenodd"></path></svg>
-</span>笔记
-        </button>
-</div>
-<ul class="content-item-wrapper">
-<li>
-<div class="item-primary"><a href="notes/" target="_self"><span>ZJU<span class="heti-spacing"> </span></span>课程手写笔记汇总</a></div>
-<div class="item-status"></div>
-<div class="item-main-content">
-<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 229 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 1 mins
-            </div>
-<div class="item-metadata">
-<span class="note-tag"></span>
-</div>
-<div class="item-actions">1677235505</div>
-</li>
-</ul>
-<div class="title-wrapper">
-<button onclick="buttonHandler(1)">
-<span class="twemoji" style="margin-right: 4px; font-size: 0.8em;">
-<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M12.78 6.22a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L3.22 7.28a.75.75 0 0 1 1.06-1.06L8 9.94l3.72-3.72a.75.75 0 0 1 1.06 0z" fill-rule="evenodd"></path></svg>
-</span>字幕制作系列
-        </button>
-<span><a href="subs/" target="_self"><span class="twemoji"><svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M10.604 1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1zM3.75 2A1.75 1.75 0 0 0 2 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0 0 14 12.25v-3.5a.75.75 0 0 0-1.5 0v3.5a.25.25 0 0 1-.25.25h-8.5a.25.25 0 0 1-.25-.25v-8.5a.25.25 0 0 1 .25-.25h3.5a.75.75 0 0 0 0-1.5h-3.5z" fill-rule="evenodd"></path></svg></span></a></span>
-</div>
-<ul class="content-item-wrapper">
-<li>
-<div class="item-primary"><a href="subs/ass/" target="_self"><span>ass<span class="heti-spacing"> </span></span>标签</a></div>
-<div class="item-status"></div>
-<div class="item-main-content">
-<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 1373 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 5 mins
-            </div>
-<div class="item-metadata">
-</div>
-<div class="item-actions">1691508495</div>
-</li>
-<li>
-<div class="item-primary"><a href="subs/aegisub/automation/" target="_self"><span>Aegisub<span class="heti-spacing"> </span></span>自动化</a></div>
-<div class="item-status"></div>
-<div class="item-main-content">
-<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 2277 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>33</span> <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 8 mins
-            </div>
-<div class="item-metadata">
-</div>
-<div class="item-actions">1691508495</div>
-</li>
-<li>
-<div class="item-primary"><a href="subs/aegisub/karaoke/" target="_self"><span>Aegisub<span class="heti-spacing"> </span></span>卡拉<span class="heti-skip"><span class="heti-spacing"> </span>OK<span class="heti-spacing"> </span></span>特效模板</a></div>
-<div class="item-status"></div>
-<div class="item-main-content">
-<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 3090 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>14</span> <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 10 mins
-            </div>
-<div class="item-metadata">
-</div>
-<div class="item-actions">1691508495</div>
-</li>
-<li>
-<div class="item-primary"><a href="subs/ffmpeg/" target="_self"><span>ffmpeg<span class="heti-spacing"> </span></span>套件使用杂记</a></div>
-<div class="item-status"></div>
-<div class="item-main-content">
-<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 634 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>6</span> <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 2 mins
-            </div>
-<div class="item-metadata">
-</div>
-<div class="item-actions">1691508495</div>
-</li>
-</ul>
-<div class="title-wrapper">
-<button onclick="buttonHandler(2)">
-<span class="twemoji" style="margin-right: 4px; font-size: 0.8em;">
-<svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M12.78 6.22a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L3.22 7.28a.75.75 0 0 1 1.06-1.06L8 9.94l3.72-3.72a.75.75 0 0 1 1.06 0z" fill-rule="evenodd"></path></svg>
-</span>TroubleShooting
-        </button>
-<span><a href="troubleshooting/" target="_self"><span class="twemoji"><svg viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg"><path d="M10.604 1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1zM3.75 2A1.75 1.75 0 0 0 2 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0 0 14 12.25v-3.5a.75.75 0 0 0-1.5 0v3.5a.25.25 0 0 1-.25.25h-8.5a.25.25 0 0 1-.25-.25v-8.5a.25.25 0 0 1 .25-.25h3.5a.75.75 0 0 0 0-1.5h-3.5z" fill-rule="evenodd"></path></svg></span></a></span>
-</div>
-<ul class="content-item-wrapper">
-<li>
-<div class="item-primary"><a href="troubleshooting/mac/" target="_self">macOS TroubleShooting</a></div>
-<div class="item-status"></div>
-<div class="item-main-content">
-<span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 662 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>5</span> <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 2 mins
-            </div>
-<div class="item-metadata">
-</div>
-<div class="item-actions">1683733808</div>
-</li>
-</ul>
-</div>
-<script>
-function buttonHandler(i) {
-    let content = document.getElementsByClassName("content-item-wrapper")[i];
-    let button = document.getElementsByClassName("title-wrapper")[i].getElementsByTagName("button")[0];
-    if (content.style.display == "none") {
-        content.style.display = "block";
-        button.children[0].children[0].style.transform = "rotate(0deg)";
-    } else {
-        content.style.display = "none";
-        button.children[0].children[0].style.transform = "rotate(-90deg)";
-    }
-}
-function produce_time() {
-    let time = document.getElementsByClassName("item-actions");
-    for (let i = 0; i < time.length; i++) {
-        let timestamp;
-        if (time[i].childElementCount > 0) {
-            timestamp = time[i].children[0].innerHTML;
-        } else {
-            timestamp = time[i].innerHTML;
-        }
-        let date = new Date(parseInt(timestamp) * 1000);
-        let now = new Date();
-        let diff = now.getTime() - date.getTime();
-        let years = Math.floor(diff / (24 * 3600 * 1000 * 365));
-        let months = Math.floor(diff / (24 * 3600 * 1000 * 30));
-        let days = Math.floor(diff / (24 * 3600 * 1000));
-        let hours = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
-        let minutes = Math.floor((diff % (3600 * 1000)) / (60 * 1000));
-        let seconds = Math.floor((diff % (60 * 1000)) / 1000);
-        if (years > 0) {
-            time[i].innerHTML = years + " years ago";
-        } else if (months > 0) {
-            time[i].innerHTML = months + " months ago";
-        } else if (days > 0) {
-            time[i].innerHTML = days + " days ago";
-        } else if (hours > 0) {
-            time[i].innerHTML = hours + " hours ago";
-        } else if (minutes > 0) {
-            time[i].innerHTML = minutes + " minutes ago";
-        } else {
-            time[i].innerHTML = seconds + " seconds ago";
-        }
-    }
-}
-produce_time();
-</script>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2023年10月26日 15:18:20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月16日 16:04:58</span>
 <br/>
         创建日期:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2022年9月18日 17:07:46</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年1月16日 16:04:58</span>
 </small>
 </div>
+<script async="" crossorigin="anonymous" data-category="General" data-category-id="DIC_kwDOGnfbUc4CPrf4" data-emit-metadata="0" data-input-position="bottom" data-lang="zh-CN" data-mapping="pathname" data-reactions-enabled="1" data-repo="TonyCrane/note" data-repo-id="R_kgDOGnfbUQ" data-theme="light" src="https://giscus.app/client.js">
+</script>
+<script>
+                      if (document.querySelector("body").getAttribute("data-md-color-scheme") === "slate") {
+                        var giscus = document.querySelector("script[src*=giscus]")
+                        giscus.setAttribute("data-theme", "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css") 
+                      }
+                    </script>
 </article>
 </div>
 </div>
@@ -1989,7 +1851,7 @@ produce_time();
 </main>
 <footer class="md-footer">
 <nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: TPCTF 2023" class="md-footer__link md-footer__link--prev" href="../writeups/tpctf2023/" rel="prev">
+<a aria-label="上一页: 数据类型" class="md-footer__link md-footer__link--prev" href="../topic5/" rel="prev">
 <div class="md-footer__button md-icon">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
 </div>
@@ -1998,17 +1860,17 @@ produce_time();
 <span class="md-footer__direction">
                 上一页
               </span>
-              TPCTF 2023
+              数据类型
             </div>
 </div>
 </a>
-<a aria-label="下一页: 课程笔记" class="md-footer__link md-footer__link--next" href="notes/" rel="next">
+<a aria-label="下一页: 计算机系统" class="md-footer__link md-footer__link--next" href="../../../system/" rel="next">
 <div class="md-footer__title">
 <div class="md-ellipsis">
 <span class="md-footer__direction">
                 下一页
               </span>
-              课程笔记
+              计算机系统
             </div>
 </div>
 <div class="md-footer__button md-icon">
@@ -2055,9 +1917,9 @@ produce_time();
 <div class="md-dialog" data-md-component="dialog">
 <div class="md-dialog__inner md-typeset"></div>
 </div>
-<script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
-<script src="../assets/javascripts/bundle.289a2a4b.min.js"></script>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
 <script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
-<script src="../js/katex.js"></script>
+<script src="../../../../js/katex.js"></script>
 <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
