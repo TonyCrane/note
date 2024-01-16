@@ -6,7 +6,7 @@ comment: True
 # 数据类型
 
 !!! abstract
-    编程语言原理第十周至第？周课程内容
+    编程语言原理第十周至第十三周课程内容
     
 ## 有限数据类型
 ### 积类型
@@ -128,4 +128,23 @@ comment: True
     - $\mathrm{tl}(\mathrm{gen}_\mathrm{stream}\ x\text{ is } e\text{ in }\langle\mathrm{hd}\hookrightarrow e_1, \mathrm{tl}\hookrightarrow e_2\rangle)$
         - $\mapsto \mathrm{gen}_\mathrm{stream}\ x\text{ is }[e/x]e_2\text{ in }\langle\mathrm{hd}\hookrightarrow e_1, \mathrm{tl}\hookrightarrow e_2\rangle$
 
-<!-- ## 变量类型 -->
+## 多态类型
+
+- 即函数的类型不唯一
+    - 比如 id: 'a -> 'a 恒等函数，不必指定一个特定类型
+- 带类型的 λ 演算
+    - $\Lambda(\alpha)\lambda(x:\alpha)\ x$
+    - 类型应用：$\Lambda(\alpha)\lambda(x:\alpha)\ x[\mathrm{int}]\vdash [\mathrm{int}/\alpha](\lambda(x:\alpha)\ x)=\lambda(x:\text{int})\ x$
+- 多态类型的 F 系统
+    - $\mathsf{Typ}\ \tau ::= t$ 类型变量
+    - $\mathsf{Typ}\ \tau ::= \mathrm{arr}(\tau_1;\tau_2)$ 函数类型 $\tau_1\to\tau_2$
+    - $\mathsf{Typ}\ \tau ::= \mathrm{all}(t.\tau)$ 多态类型（全称类型）$\forall(t.\tau)$
+    - $\mathsf{Exp}\ e ::= x$ 变量
+    - $\mathsf{Exp}\ e ::= \mathrm{lam}\{\tau\}(x.e)$ 函数抽象 $\lambda(x:\tau)\ e$
+    - $\mathsf{Exp}\ e ::= \mathrm{ap}(e_1; e_2)$ 函数应用 $e_1(e_2)$
+    - $\mathsf{Exp}\ e ::= \mathrm{Lam}(t.e)$ 类型抽象 $\Lambda(t)\ e$
+    - $\mathsf{Exp}\ e ::= \mathrm{App}\{\tau\}(e)$ 类型应用 $e[\tau]$
+- 静态语义
+    - 谓言：类型形成 $\Delta\vdash\tau\text{ type}$，定型 $\Delta\Gamma\vdash e:\tau$
+    - 类型形成：$\dfrac{}{\Delta, t\text{ type}\vdash t\text{ type}},\ \dfrac{\Delta, t\text{ type}\vdash\tau\text{ type}}{\Delta\vdash\forall(t.\tau)\text{ type}}$
+    - 算子的类型：$\dfrac{\Delta, t\text{ type}\quad\Gamma\vdash e:\tau}{\Delta\Gamma\vdash\Lambda(t)\ e:\forall(t.\tau)},\ \dfrac{\Delta\Gamma\vdash e:\forall(t.\tau')\quad\Delta\vdash\tau\text{ type}}{\Delta\Gamma\vdash e[\tau]:[\tau/t]\tau'}$

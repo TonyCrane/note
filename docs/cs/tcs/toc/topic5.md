@@ -6,7 +6,7 @@ counter: True
 # 函数可计算性
 
 !!! abstract
-    理论计算机科学导引第十二至第？周课程内容
+    理论计算机科学导引第十二至第十三周课程内容
 
 从函数的角度来看图灵机的判定性。考虑数值函数 $f\colon\mathbb{N}^k\to\mathbb{N}$，图灵机 $M$ computes $f$ if for any $n_1, \cdots, n_k\in\mathbb{N}$:
 
