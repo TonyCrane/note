@@ -160,8 +160,8 @@ $$
 并且乘以常数可以通过移位来进行，比如：
 
 <div style="text-align: center;">
-x * 2<sup>k</sup> = x << k<br/>
-x * 14 = (x << 3) + (x << 2) + (x << 1)
+x * 2<sup>k</sup> = x &lt;&lt; k<br/>
+x * 14 = (x &lt;&lt; 3) + (x &lt;&lt; 2) + (x &lt;&lt; 1)
 </div>
 
 ### 除以二的幂次
