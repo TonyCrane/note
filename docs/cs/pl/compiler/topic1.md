@@ -6,7 +6,7 @@ comment: True
 # 词法分析与语法分析
 
 !!! abstract
-    编译原理第一至第？周课程内容
+    编译原理第一至第六周课程内容
 
 ## 词法分析
 
@@ -170,6 +170,7 @@ DFA 最小化算法：
     - R（Rightmost derivation in reverse）：最右推导的逆（最左规约）
     - k：向前看 k 个 Token 来确定规约（省略时默认为 1）
     - 有 LR(0)、SLR(1)、LR(1)、LALR(1) 等类型
+        - LR(0) < SLR(1) < LALR(1) < LR(1)
     - 所有 LL(k) 文法都是 LR(k) 文法
     - LR 不需要提左公因子，而且可以分析左递归文法
 - 自底向上分析的思路是从输入串规约到开始符号
@@ -401,3 +402,50 @@ DFA 最小化算法：
     - LR 分析过程每一步都应该是最右句型，而如果 $\beta Ax$ 不是任何最右句型的前缀，则不应该按 $A\to \alpha$ 规约
     - 换句话说，Follow 集的条件指要求了可以在某句型出现，但没有保证是**最右句型**
     - 所以使用 SLR(1) 仍然会有冲突的可能，还需要进一步严格规约的条件
+
+#### LR(1) 分析
+
+- LR(1) 项中包含了更多信息来消除一些规约动作
+    - 形式为 $A\to\alpha\ \bullet\ \beta,\ x$，其中 $x$ 为向前看符号（终结符或 \$）
+        - 表示符号栈顶为 $\alpha$，在输入串头部是可以从 $\beta x$ 推导出的串
+- 相较 LR(0) 需要修改闭包的定义，增加条件
+    - LR(0)：$\mathsf{Closure}(I)$ 为对于任意 $I$ 中的 $A\to\alpha\bullet X\beta$，将 $X\to\bullet\ \gamma$ 加入 $I$ 中，直到 $I$ 不变即为其闭包
+    - LR(1)：$\mathsf{Closure}(I)$ 为对于任意 $I$ 中的 $A\to\alpha\bullet X\beta,\ z$，将 $X\to\bullet\ \gamma,\ w$ 加入 $I$ 中，直到 $I$ 不变即为其闭包
+        - 其中 $w\in\mathsf{First}(\beta z)$，$X\to\gamma$ 是文法中的产生式
+    - 起始状态为 $S'\to\bullet\ S\ \$,\ ?$，因为 \$ 不会被移进，所以 ? 是什么无所谓
+- LR(1) 和 LR(0) 的 Goto 基本类似
+- 构造 Action 表的时候，对于项 $A\to\alpha\beta\ \bullet,\ x$，只有下一个输入符号为 $x$ 时才可以规约
+- LR(1) 的局限性：分析表会有非常多的状态，会非常大
+
+#### LALR(1) 分析
+
+- LALR(1) 用来缩减 LR(1) 的状态数量
+- LR(1) DFA 中有很多状态只差了向前看符号，其实可以合并
+- 合并状态的依据：LR(1) 项的 core 相同（即除去 lookahead 的第一个部分）
+    - 比如 $\{(X\to\alpha\ \bullet\ \beta,\ b), (Y\to\gamma\ \bullet\ \delta,\ d)\}$ 的 core 是 $\{X\to\alpha\ \bullet\ \beta, Y\to\gamma\ \bullet\ \delta\}$
+- 根据 LR(1) 的 DFA 构建 LALR(1) 的 DFA：
+    - 选择两个有相同 core 的不同状态
+    - 通过创建一个合并所有项的新状态来合并状态
+    - 添加转移边
+- LALR(1) 的分析表更小，需要更少的内存（一般比 LR(1) 小十倍）
+    - 介于 SLR(1) 和 LR(1) 之间，分析表和 SLR(1) 一样大，但已经可以处理大部分的程序设计语言
+
+### 错误恢复
+
+- 开发者想要知道程序中的全部错误，而不是遇到第一个错误就停止
+- 错误恢复的技术
+    - Local error recovery
+        - 使用 error 符号来表示错误，然后跳到下一个右括号或分号之后继续分析
+            ```text
+            exp -> ( error )
+            exps -> error ; exp
+            ```
+        - 当遇到错误时，采取以下行动：
+            - 弹出栈中的状态，直到栈顶状态包含 $A\to\alpha\ \bullet\ \mathsf{error}\ \beta$
+            - 读入 error 进行转移
+            - 如果 $\alpha$ 为空则直接规约，否则跳过后续输入符号直到可以规约
+    - Global error recovery
+        - 寻找一个插入和删除的最小集合，可以使得修改后的程序是合法的
+    - Burke-Fisher error repair
+        - 在出现问题的位置前不超过 *k* 个 token 中进行单个 token 的插入/删除/替换
+        - 不需要修改 LL(*k*) LR(*k*) LALR 的语法和分析表就可以
