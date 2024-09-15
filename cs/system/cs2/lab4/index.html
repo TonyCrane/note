@@ -7,7 +7,7 @@
 <link href="https://note.tonycrane.cc/cs/system/cs2/lab4/" rel="canonical"/>
 <link href="../../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
-<title>系统 II lab4 - 鹤翔万里的笔记本</title>
+<title>RV64 内核引导 - 鹤翔万里的笔记本</title>
 <link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
 <link href="../../../../css/svg_extra.css" rel="stylesheet"/>
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              系统 II lab4
+              RV64 内核引导
             
           </span>
 </div>
@@ -152,7 +152,7 @@ var _hmt = _hmt || [];
       </a>
 </li>
 <li class="md-tabs__item">
-<a class="md-tabs__link md-tabs__link--active" href="../../../">
+<a class="md-tabs__link" href="../../../">
         Computer Science
       </a>
 </li>
@@ -234,8 +234,8 @@ var _hmt = _hmt || [];
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
 <a href="../../../">Computer Science</a>
 <label for="__nav_2">
@@ -465,8 +465,8 @@ var _hmt = _hmt || [];
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
 <a href="../../">计算机系统</a>
 <label for="__nav_2_3">
@@ -586,8 +586,8 @@ var _hmt = _hmt || [];
 </ul>
 </nav>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
 <a href="../">计算机系统 II</a>
 <label for="__nav_2_3_3">
@@ -630,8 +630,8 @@ var _hmt = _hmt || [];
         进程同步
       </a>
 </li>
-<li class="md-nav__item md-nav__item--active md-nav__item--nested">
-<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
 <label class="md-nav__link" for="__nav_2_3_3_8">
           系统 II 实验部分
           <span class="md-nav__icon md-icon"></span>
@@ -650,107 +650,6 @@ var _hmt = _hmt || [];
 <li class="md-nav__item">
 <a class="md-nav__link" href="../lab2/">
         系统 II lab2
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../lab3/">
-        系统 II lab3
-      </a>
-</li>
-<li class="md-nav__item md-nav__item--active">
-<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
-<label class="md-nav__link md-nav__link--active" for="__toc">
-          系统 II lab4
-          <span class="md-nav__icon md-icon"></span>
-</label>
-<a class="md-nav__link md-nav__link--active" href="./">
-        系统 II lab4
-      </a>
-<nav aria-label="目录" class="md-nav md-nav--secondary">
-<label class="md-nav__title" for="__toc">
-<span class="md-nav__icon md-icon"></span>
-        目录
-      </label>
-<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_1">
-    实验内容
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_2">
-    代码编写
-  </a>
-<nav aria-label="代码编写" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#heads-vmlinuxlds">
-    head.S &amp; vmlinux.lds
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#sbic">
-    sbi.c
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#printc-makefile">
-    print.c &amp; Makefile
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#defsh">
-    defs.h
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_3">
-    运行结果
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_4">
-    思考题
-  </a>
-<nav aria-label="思考题" class="md-nav">
-<ul class="md-nav__list">
-<li class="md-nav__item">
-<a class="md-nav__link" href="#systemmap">
-    观察 System.map 中的地址是否符合预期
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_5">
-    调试观察程序开始时的特权态和中断信息
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#_6">
-    调试观察程序开始时各段内容
-  </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="#c-start_kernel">
-    尝试从汇编代码中给 C 函数 start_kernel 传递参数
-  </a>
-</li>
-</ul>
-</nav>
-</li>
-</ul>
-</nav>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../lab5/">
-        系统 II lab5
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../lab6/">
-        系统 II lab6
       </a>
 </li>
 <li class="md-nav__item">
@@ -803,21 +702,6 @@ var _hmt = _hmt || [];
 <li class="md-nav__item">
 <a class="md-nav__link" href="../../cs3/lab2/">
         系统 III lab2
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../cs3/lab3/">
-        系统 III lab3
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../cs3/lab4/">
-        系统 III lab4
-      </a>
-</li>
-<li class="md-nav__item">
-<a class="md-nav__link" href="../../cs3/lab5/">
-        系统 III lab5
       </a>
 </li>
 </ul>
@@ -1262,8 +1146,23 @@ var _hmt = _hmt || [];
         </label>
 <ul class="md-nav__list" data-md-scrollfix="">
 <li class="md-nav__item">
-<a class="md-nav__link" href="../../../../sec/netsec/topic1/">
-        DDoS 与安全路由
+<a class="md-nav__link" href="../../../../sec/netsec/lab1/">
+        网络安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/netsec/lab2/">
+        网络安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/netsec/lab3/">
+        网络安全 lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/netsec/hw/">
+        网络安全理论作业
       </a>
 </li>
 </ul>
@@ -1271,12 +1170,81 @@ var _hmt = _hmt || [];
 </li>
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
-<label class="md-nav__link" for="__nav_3_5">
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/syssec/">系统安全</a>
+<label for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="系统安全" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          系统安全
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/syssec/lab1/">
+        系统安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/syssec/lab2/">
+        系统安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/syssec/lab3/">
+        系统安全 lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/syssec/project/">
+        eBPF 简介与漏洞分析
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" id="__nav_3_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/iotsec/">无线与物联网安全</a>
+<label for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="无线与物联网安全" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+          无线与物联网安全
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/iotsec/lab1/">
+        物联网安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/iotsec/lab2/">
+        物联网安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/iotsec/lab3/">
+        物联网安全 lab3
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7">
           漏洞复现
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="漏洞复现" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_3_5">
+<label class="md-nav__title" for="__nav_3_7">
 <span class="md-nav__icon md-icon"></span>
           漏洞复现
         </label>
@@ -2238,34 +2206,6 @@ puti 先枚举 0、负数等特殊情况，然后利用取模运算来将数字�
             </a>
 </main>
 <footer class="md-footer">
-<nav aria-label="页脚" class="md-footer__inner md-grid">
-<a aria-label="上一页: 系统 II lab3" class="md-footer__link md-footer__link--prev" href="../lab3/" rel="prev">
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
-</div>
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                上一页
-              </span>
-              系统 II lab3
-            </div>
-</div>
-</a>
-<a aria-label="下一页: 系统 II lab5" class="md-footer__link md-footer__link--next" href="../lab5/" rel="next">
-<div class="md-footer__title">
-<div class="md-ellipsis">
-<span class="md-footer__direction">
-                下一页
-              </span>
-              系统 II lab5
-            </div>
-</div>
-<div class="md-footer__button md-icon">
-<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
-</div>
-</a>
-</nav>
 <div class="md-footer-meta md-typeset">
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
