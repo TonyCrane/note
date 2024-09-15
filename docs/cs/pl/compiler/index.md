@@ -11,3 +11,5 @@
 ## Table of Contents
 
 - [词法分析与语法分析](topic1/)
+
+后面懒得记了，笔记可参考[编译原理课程笔记（All-in-One速通版）- CubicY](https://cubicy.icu/compiler-construction-principles/)
