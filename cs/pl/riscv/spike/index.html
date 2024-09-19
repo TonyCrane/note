@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html class="no-js" lang="zh">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width,initial-scale=1" name="viewport"/>
+<meta content="鹤翔万里（TonyCrane）的笔记本" name="description"/>
+<link href="https://note.tonycrane.cc/cs/pl/riscv/spike/" rel="canonical"/>
+<link href="../../../../assets/images/favicon.png" rel="icon"/>
+<meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
+<title>Spike 工具链相关 - 鹤翔万里的笔记本</title>
+<link href="../../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
+<link href="../../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
+<link href="../../../../css/svg_extra.css" rel="stylesheet"/>
+<link href="../../../../css/heti.css" rel="stylesheet"/>
+<link href="../../../../css/toc_extra.css" rel="stylesheet"/>
+<link href="../../../../css/timeline.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/utils/katex.min.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css" rel="stylesheet"/>
+<link href="https://cdn.tonycrane.cc/lxgw/lxgwscreen.css" rel="stylesheet"/>
+<link href="../../../../css/tasklist.css" rel="stylesheet"/>
+<link href="../../../../css/custom.css" rel="stylesheet"/>
+<link href="../../../../css/card.css" rel="stylesheet"/>
+<link href="../../../../css/flink.css" rel="stylesheet"/>
+<link href="../../../../css/changelog_extra.css" rel="stylesheet"/>
+<link href="/css/counter.css" rel="stylesheet"/>
+<script>__md_scope=new URL("../../../..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "https://hm.baidu.com/hm.js?c273de7f67d992cb6aef08c3ddf09bb2";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+<script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-DYETCPM289"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&gtag("event","search",{search_term:this.value})}),"undefined"!=typeof location$&&location$.subscribe(function(e){gtag("config","G-DYETCPM289",{page_path:e.pathname})})})</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-DYETCPM289"></script>
+<link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
+<body data-md-color-accent="" data-md-color-primary="" data-md-color-scheme="default" dir="ltr">
+<script src="../../../../js/scheme.js" type="text/javascript"></script>
+<script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)</script>
+<input autocomplete="off" class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+<input autocomplete="off" class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+<label class="md-overlay" for="__drawer"></label>
+<div data-md-component="skip">
+<a class="md-skip" href="#spike">
+            跳转至
+          </a>
+</div>
+<div data-md-component="announce">
+</div>
+<header class="md-header" data-md-component="header">
+<nav aria-label="页眉" class="md-header__inner md-grid">
+<a aria-label="鹤翔万里的笔记本" class="md-header__button md-logo" data-md-component="logo" href="../../../.." title="鹤翔万里的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
+</a>
+<label class="md-header__button md-icon" for="__drawer">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"></path></svg>
+</label>
+<div class="md-header__title" data-md-component="header-title">
+<div class="md-header__ellipsis">
+<div class="md-header__topic">
+<span class="md-ellipsis">
+            鹤翔万里的笔记本
+          </span>
+</div>
+<div class="md-header__topic" data-md-component="header-topic">
+<span class="md-ellipsis">
+            
+              Spike 工具链相关
+            
+          </span>
+</div>
+</div>
+</div>
+<div class="md-header__options">
+<div class="md-header-nav__scheme md-header-nav__button md-source__icon md-icon">
+<a class="light-mode" href="javascript:toggleScheme();" title="Light mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"></path></svg>
+</a>
+<a class="dark-mode" href="javascript:toggleScheme();" title="Dark mode">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"></path></svg>
+</a>
+<a class="system-mode" href="javascript:toggleScheme();" title="System preference">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.5 2c-1.79 1.15-3 3.18-3 5.5s1.21 4.35 3.03 5.5C4.46 13 2 10.54 2 7.5A5.5 5.5 0 0 1 7.5 2m11.57 1.5 1.43 1.43L4.93 20.5 3.5 19.07 19.07 3.5m-6.18 2.43L11.41 5 9.97 6l.42-1.7L9 3.24l1.75-.12.58-1.65L12 3.1l1.73.03-1.35 1.13.51 1.67m-3.3 3.61-1.16-.73-1.12.78.34-1.32-1.09-.83 1.36-.09.45-1.29.51 1.27 1.36.03-1.05.87.4 1.31M19 13.5a5.5 5.5 0 0 1-5.5 5.5c-1.22 0-2.35-.4-3.26-1.07l7.69-7.69c.67.91 1.07 2.04 1.07 3.26m-4.4 6.58 2.77-1.15-.24 3.35-2.53-2.2m4.33-2.7 1.15-2.77 2.2 2.54-3.35.23m1.15-4.96-1.14-2.78 3.34.24-2.2 2.54M9.63 18.93l2.77 1.15-2.53 2.19-.24-3.34z"></path></svg>
+</a>
+<a class="unknown-mode" href="javascript:toggleScheme();" title="Unknown scheme">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m15.07 11.25-.9.92C13.45 12.89 13 13.5 13 15h-2v-.5c0-1.11.45-2.11 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41a2 2 0 0 0-2-2 2 2 0 0 0-2 2H8a4 4 0 0 1 4-4 4 4 0 0 1 4 4 3.2 3.2 0 0 1-.93 2.25M13 19h-2v-2h2M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10c0-5.53-4.5-10-10-10z"></path></svg>
+</a>
+</div>
+</div>
+<label class="md-header__button md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+</label>
+<div class="md-search" data-md-component="search" role="dialog">
+<label class="md-search__overlay" for="__search"></label>
+<div class="md-search__inner" role="search">
+<form class="md-search__form" name="search">
+<input aria-label="搜索" autocapitalize="off" autocomplete="off" autocorrect="off" class="md-search__input" data-md-component="search-query" name="query" placeholder="搜索" required="" spellcheck="false" type="text"/>
+<label class="md-search__icon md-icon" for="__search">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"></path></svg>
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</label>
+<nav aria-label="查找" class="md-search__options">
+<button aria-label="清空当前内容" class="md-search__icon md-icon" tabindex="-1" type="reset">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"></path></svg>
+</button>
+</nav>
+</form>
+<div class="md-search__output">
+<div class="md-search__scrollwrap" data-md-scrollfix="">
+<div class="md-search-result" data-md-component="search-result">
+<div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+<ol class="md-search-result__list"></ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="md-header__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TonyCrane/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+</div>
+</nav>
+</header>
+<div class="md-container" data-md-component="container">
+<nav aria-label="标签" class="md-tabs" data-md-component="tabs">
+<div class="md-tabs__inner md-grid">
+<ul class="md-tabs__list">
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../..">
+        Home
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link md-tabs__link--active" href="../../../">
+        Computer Science
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../sec/">
+        Security
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../web/">
+        Web
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../ctf/">
+        CTF
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../writeups/">
+        Writeups
+      </a>
+</li>
+<li class="md-tabs__item">
+<a class="md-tabs__link" href="../../../../others/">
+        Others
+      </a>
+</li>
+</ul>
+</div>
+</nav>
+<main class="md-main" data-md-component="main">
+<div class="md-main__inner md-grid">
+<div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="导航栏" class="md-nav md-nav--primary md-nav--lifted" data-md-level="0">
+<label class="md-nav__title" for="__drawer">
+<a aria-label="鹤翔万里的笔记本" class="md-nav__button md-logo" data-md-component="logo" href="../../../.." title="鹤翔万里的笔记本">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17 4v6l-2-2-2 2V4H9v16h10V4h-2M3 7V5h2V4a2 2 0 0 1 2-2h12c1.05 0 2 .95 2 2v16c0 1.05-.95 2-2 2H7c-1.05 0-2-.95-2-2v-1H3v-2h2v-4H3v-2h2V7H3m2-2v2h2V5H5m0 14h2v-2H5v2m0-6h2v-2H5v2z"></path></svg>
+</a>
+    鹤翔万里的笔记本
+  </label>
+<div class="md-nav__source">
+<a class="md-source" data-md-component="source" href="https://github.com/TonyCrane/note/" title="前往仓库">
+<div class="md-source__icon md-icon">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"></path></svg>
+</div>
+<div class="md-source__repository">
+    TonyCrane/note
+  </div>
+</a>
+</div>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_1" id="__nav_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../..">Home</a>
+<label for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Home" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_1">
+<span class="md-nav__icon md-icon"></span>
+          Home
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../changelog/">
+        更新记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../links/">
+        友链
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2" id="__nav_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../">Computer Science</a>
+<label for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Computer Science" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_2">
+<span class="md-nav__icon md-icon"></span>
+          Computer Science
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2" id="__nav_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../">编程语言 &amp; ISA</a>
+<label for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="编程语言 &amp; ISA" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_2">
+<span class="md-nav__icon md-icon"></span>
+          编程语言 &amp; ISA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_2" id="__nav_2_2_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_2_2">
+          C/C++
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="C/C++" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_2">
+<span class="md-nav__icon md-icon"></span>
+          C/C++
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c_cpp/c/">
+        C 语言杂项
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../c_cpp/oop/">
+        C++ 面向对象
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_3" id="__nav_2_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../python/">Python</a>
+<label for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Python" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_3">
+<span class="md-nav__icon md-icon"></span>
+          Python
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/basic/">
+        Python 基础语法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/numpy/">
+        NumPy
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../python/pil/">
+        PIL
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_4" id="__nav_2_2_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../rust/">Rust</a>
+<label for="__nav_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Rust" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_4">
+<span class="md-nav__icon md-icon"></span>
+          Rust
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rust/basic/">
+        Rust 基础语法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../rust/misc/">
+        Rust 杂项随记
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../haskell/">
+        Haskell
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../chisel/">
+        Chisel
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../asm/">
+        x86 汇编语言
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active md-nav__item--nested">
+<input checked="" class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_8" id="__nav_2_2_8" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../">RISC-V ISA</a>
+<label for="__nav_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="RISC-V ISA" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_8">
+<span class="md-nav__icon md-icon"></span>
+          RISC-V ISA
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../unprivileged/">
+        RISC-V 非特权级 ISA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../privileged/">
+        RISC-V 特权级 ISA
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../paging/">
+        RISC-V 页表相关
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--active">
+<input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+<label class="md-nav__link md-nav__link--active" for="__toc">
+          Spike 工具链相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<a class="md-nav__link md-nav__link--active" href="./">
+        Spike 工具链相关
+      </a>
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    关于工具链
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gdb-sigint">
+    GDB 调试时不断遇到 SIGINT
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#semihosting">
+    Semihosting 相关
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    时钟中断相关
+  </a>
+<nav aria-label="时钟中断相关" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory-mapping-stimecmp">
+    关于 memory-mapping 与 stimecmp
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    参考
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_9" id="__nav_2_2_9" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../ppl/">编程语言原理</a>
+<label for="__nav_2_2_9">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="编程语言原理" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_9">
+<span class="md-nav__icon md-icon"></span>
+          编程语言原理
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ppl/topic1/">
+        Lambda 演算
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ppl/topic2/">
+        抽象语法树与归纳法
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ppl/topic3/">
+        静态语义与动态语义
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ppl/topic4/">
+        函数与递归
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ppl/topic5/">
+        数据类型
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../ppl/topic6/">
+        递归系统 PCF
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_2_10" id="__nav_2_2_10" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../compiler/">编译原理</a>
+<label for="__nav_2_2_10">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="编译原理" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_2_10">
+<span class="md-nav__icon md-icon"></span>
+          编译原理
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../compiler/topic1/">
+        词法分析与语法分析
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3" id="__nav_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../system/">计算机系统</a>
+<label for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_3">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2" id="__nav_2_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../system/cs1/">计算机系统 I</a>
+<label for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 I" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_2">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 I
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic1/">
+        数据的表示
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic2/">
+        数字逻辑电路基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic3/">
+        组合逻辑电路设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic4/">
+        时序逻辑电路设计
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic5/">
+        指令集体系结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/topic6/">
+        处理器
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_2_8" id="__nav_2_3_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_2_8">
+          系统 I 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 I 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_2_8">
+<span class="md-nav__icon md-icon"></span>
+          系统 I 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab1-1/">
+        系统 I lab1-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab1-2/">
+        系统 I lab1-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab2-1/">
+        系统 I lab2-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab2-2/">
+        系统 I lab2-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab3/">
+        系统 I lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab4-1/">
+        系统 I lab4-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab4-2/">
+        系统 I lab4-2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab5-1/">
+        系统 I lab5-1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs1/lab5-2/">
+        系统 I lab5-2
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3" id="__nav_2_3_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../system/cs2/">计算机系统 II</a>
+<label for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 II" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_3">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 II
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic1/">
+        流水线 CPU
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic2/">
+        操作系统简介
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic3/">
+        操作系统结构及系统调用
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic4/">
+        进程与线程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic5/">
+        CPU 调度
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/topic6/">
+        进程同步
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_3_8" id="__nav_2_3_3_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_3_8">
+          系统 II 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 II 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_3_8">
+<span class="md-nav__icon md-icon"></span>
+          系统 II 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab1/">
+        系统 II lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab2/">
+        系统 II lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs2/lab7/">
+        系统 II lab7
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4" id="__nav_2_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../system/cs3/">计算机系统 III</a>
+<label for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算机系统 III" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_3_4">
+<span class="md-nav__icon md-icon"></span>
+          计算机系统 III
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/topic1/">
+        系统量化研究方法
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_3_4_3" id="__nav_2_3_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_3_4_3">
+          系统 III 实验部分
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="系统 III 实验部分" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_2_3_4_3">
+<span class="md-nav__icon md-icon"></span>
+          系统 III 实验部分
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/lab1/">
+        系统 III lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/cs3/lab2/">
+        系统 III lab2
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../system/pa/">
+        ICS PA 实验纪实
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4" id="__nav_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_4">
+          算法相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="算法相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_4">
+<span class="md-nav__icon md-icon"></span>
+          算法相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_4_1" id="__nav_2_4_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../algorithm/ds/">数据结构基础</a>
+<label for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="数据结构基础" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_4_1">
+<span class="md-nav__icon md-icon"></span>
+          数据结构基础
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/topic1/">
+        算法分析基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/summary1/">
+        基础数据结构
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../algorithm/ds/summary2/">
+        排序与哈希
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_5" id="__nav_2_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_5">
+          人工智能相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="人工智能相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_5">
+<span class="md-nav__icon md-icon"></span>
+          人工智能相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../ai/basic/">
+        人工智能基础
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6" id="__nav_2_6" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_6">
+          高性能计算相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="高性能计算相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_6">
+<span class="md-nav__icon md-icon"></span>
+          高性能计算相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_6_1" id="__nav_2_6_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../hpc/hpc101/">HPC 101 超算小学期</a>
+<label for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="HPC 101 超算小学期" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_6_1">
+<span class="md-nav__icon md-icon"></span>
+          HPC 101 超算小学期
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/vectorized/">
+        向量化计算
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/gpu/">
+        GPU 编程
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/openmp/">
+        OpenMP 基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/mpi/">
+        MPI 基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../hpc/hpc101/ml/">
+        机器学习基础
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7" id="__nav_2_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_7">
+          理论计算机相关
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="理论计算机相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_7">
+<span class="md-nav__icon md-icon"></span>
+          理论计算机相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_7_1" id="__nav_2_7_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../tcs/toc/">计算理论</a>
+<label for="__nav_2_7_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="计算理论" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_7_1">
+<span class="md-nav__icon md-icon"></span>
+          计算理论
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tcs/toc/topic1/">
+        语言、自动机与正则表达式
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tcs/toc/topic2/">
+        上下文无关语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tcs/toc/topic3/">
+        图灵机理论基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tcs/toc/topic4/">
+        判定问题
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tcs/toc/topic5/">
+        函数可计算性
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tcs/toc/topic6/">
+        复杂度理论
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_8" id="__nav_2_8" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_8">
+          零散知识点
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="零散知识点" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_8">
+<span class="md-nav__icon md-icon"></span>
+          零散知识点
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../regex/">
+        正则表达式
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../unicode/">
+        Unicode
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_9" id="__nav_2_9" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../analysis/">源码剖析</a>
+<label for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="源码剖析" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_9">
+<span class="md-nav__icon md-icon"></span>
+          源码剖析
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../analysis/mkdocs/">
+        mkdocs 源码剖析
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10" id="__nav_2_10" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../tools/">工具相关</a>
+<label for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="工具相关" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_2_10">
+<span class="md-nav__icon md-icon"></span>
+          工具相关
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/toolbox/">
+        工具收集
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_3" id="__nav_2_10_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10_3">
+          命令行工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="命令行工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_10_3">
+<span class="md-nav__icon md-icon"></span>
+          命令行工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/git/">
+        Git 命令备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/shell/">
+        Shell 命令备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/docker/">
+        Docker 相关备忘
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/gdb/">
+        gdb 相关备忘
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_4" id="__nav_2_10_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10_4">
+          CI 工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="CI 工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_10_4">
+<span class="md-nav__icon md-icon"></span>
+          CI 工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/action/">
+        GitHub Action
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_2_10_5" id="__nav_2_10_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_2_10_5">
+          站点生成工具
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="站点生成工具" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_2_10_5">
+<span class="md-nav__icon md-icon"></span>
+          站点生成工具
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/mkdocs/">
+        mkdocs 使用记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/hexo/">
+        hexo 使用记录
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../tools/sphinx/">
+        sphinx 使用记录
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3" id="__nav_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/">Security</a>
+<label for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Security" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_3">
+<span class="md-nav__icon md-icon"></span>
+          Security
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_2" id="__nav_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/crypto/">密码学</a>
+</div>
+<nav aria-label="密码学" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_2">
+<span class="md-nav__icon md-icon"></span>
+          密码学
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_3" id="__nav_3_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/softsec/">软件安全</a>
+<label for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="软件安全" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_3">
+<span class="md-nav__icon md-icon"></span>
+          软件安全
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab1/">
+        软件安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab2/">
+        软件安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab3/">
+        软件安全 lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/lab4/">
+        软件安全 lab4
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/softsec/final/">
+        软件安全 final lab
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_4" id="__nav_3_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/netsec/">网络安全</a>
+<label for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="网络安全" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_4">
+<span class="md-nav__icon md-icon"></span>
+          网络安全
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/netsec/lab1/">
+        网络安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/netsec/lab2/">
+        网络安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/netsec/lab3/">
+        网络安全 lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/netsec/hw/">
+        网络安全理论作业
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_5" id="__nav_3_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/syssec/">系统安全</a>
+<label for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="系统安全" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_5">
+<span class="md-nav__icon md-icon"></span>
+          系统安全
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/syssec/lab1/">
+        系统安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/syssec/lab2/">
+        系统安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/syssec/lab3/">
+        系统安全 lab3
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/syssec/project/">
+        eBPF 简介与漏洞分析
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_6" id="__nav_3_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../sec/iotsec/">无线与物联网安全</a>
+<label for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="无线与物联网安全" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_6">
+<span class="md-nav__icon md-icon"></span>
+          无线与物联网安全
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/iotsec/lab1/">
+        物联网安全 lab1
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/iotsec/lab2/">
+        物联网安全 lab2
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/iotsec/lab3/">
+        物联网安全 lab3
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_3_7" id="__nav_3_7" type="checkbox"/>
+<label class="md-nav__link" for="__nav_3_7">
+          漏洞复现
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="漏洞复现" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_3_7">
+<span class="md-nav__icon md-icon"></span>
+          漏洞复现
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../sec/vulns/log4j/">
+        log4j 漏洞复现
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4" id="__nav_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../web/">Web</a>
+<label for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Web" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_4">
+<span class="md-nav__icon md-icon"></span>
+          Web
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../web/protocol/">网络协议</a>
+<label for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="网络协议" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          网络协议
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/protocol/vmess/">
+        VMess
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_3">
+          排版写作规范
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="排版写作规范" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+          排版写作规范
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/typesetting/clreq/">
+        中文排版需求
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/typesetting/tech/">
+        中文技术文档风格指南
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../web/svg/">
+        SVG
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" id="__nav_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/">CTF</a>
+<label for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="CTF" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_5">
+<span class="md-nav__icon md-icon"></span>
+          CTF
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2" id="__nav_5_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2">
+          misc
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="misc" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_2">
+<span class="md-nav__icon md-icon"></span>
+          misc
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_1" id="__nav_5_2_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/steg/">隐写术</a>
+<label for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="隐写术" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_1">
+<span class="md-nav__icon md-icon"></span>
+          隐写术
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/steg/image/">
+        图片隐写
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/steg/audio/">
+        音频隐写
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_2" id="__nav_5_2_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/escapes/">沙箱逃逸</a>
+<label for="__nav_5_2_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="沙箱逃逸" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_2">
+<span class="md-nav__icon md-icon"></span>
+          沙箱逃逸
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/escapes/pysandbox/">
+        Python 沙箱逃逸
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_3" id="__nav_5_2_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/misc/forensics/">取证</a>
+<label for="__nav_5_2_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="取证" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_3">
+<span class="md-nav__icon md-icon"></span>
+          取证
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/forensics/mem/">
+        内存取证
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_4" id="__nav_5_2_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_2_4">
+          编码/密码类
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="编码/密码类" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_4">
+<span class="md-nav__icon md-icon"></span>
+          编码/密码类
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/coding/">
+        编码及古典密码
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/qrcode/">
+        QRCode
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/misc/esolang/">
+        Esolang
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5" id="__nav_5_2_5" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/">Blockchain</a>
+<label for="__nav_5_2_5">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Blockchain" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_2_5">
+<span class="md-nav__icon md-icon"></span>
+          Blockchain
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5_2" id="__nav_5_2_5_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/eth/">Ethereum</a>
+<label for="__nav_5_2_5_2">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Ethereum" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_2_5_2">
+<span class="md-nav__icon md-icon"></span>
+          Ethereum
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/basic/">
+        以太坊基础
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/evm/">
+        以太坊虚拟机
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/solidity/">
+        Solidity 语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/yul/">
+        Yul 语言
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/vuln/">
+        常见合约漏洞攻击手段
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/erc/">
+        ERC 标准
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../ctf/blockchain/eth/eip/">
+        其余重要 EIPs
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_2_5_3" id="__nav_5_2_5_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/blockchain/solana/">Solana</a>
+</div>
+<nav aria-label="Solana" class="md-nav" data-md-level="4">
+<label class="md-nav__title" for="__nav_5_2_5_3">
+<span class="md-nav__icon md-icon"></span>
+          Solana
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--section md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3" id="__nav_5_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_5_3">
+          pwn
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="pwn" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_5_3">
+<span class="md-nav__icon md-icon"></span>
+          pwn
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_1" id="__nav_5_3_1" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/pwn/stack/">栈漏洞利用</a>
+</div>
+<nav aria-label="栈漏洞利用" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_1">
+<span class="md-nav__icon md-icon"></span>
+          栈漏洞利用
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5_3_2" id="__nav_5_3_2" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../ctf/pwn/heap/">堆漏洞利用</a>
+</div>
+<nav aria-label="堆漏洞利用" class="md-nav" data-md-level="3">
+<label class="md-nav__title" for="__nav_5_3_2">
+<span class="md-nav__icon md-icon"></span>
+          堆漏洞利用
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6" id="__nav_6" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../writeups/">Writeups</a>
+<label for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Writeups" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_6">
+<span class="md-nav__icon md-icon"></span>
+          Writeups
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_2" id="__nav_6_2" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_2">
+          Training
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="Training" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_2">
+<span class="md-nav__icon md-icon"></span>
+          Training
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/ethernaut/">
+        Ethernaut
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/SecurityInnovation/">
+        Security Innovation
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sadservers/">
+        SadServers
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/AAA/">
+        🔒 AAA School Bus
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_3" id="__nav_6_3" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_3">
+          2021
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2021" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_3">
+<span class="md-nav__icon md-icon"></span>
+          2021
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sysu_msc_puzzle/">
+        SYSU MSC Puzzle 2021
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/hackergame2021/">
+        USTC Hackergame 2021
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/d0g3/">
+        第四届“安洵杯”
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/bytectf2021_final/">
+        ByteCTF 2021 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/sctf2021/">
+        SCTF 2021
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_4" id="__nav_6_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_4">
+          2022
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2022" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_4">
+<span class="md-nav__icon md-icon"></span>
+          2022
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/vnctf2022/">
+        VNCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/tqlctf2022/">
+        TQLCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/susctf2022/">
+        SUSCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/d3ctf2022/">
+        D3CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/%2Actf2022/">
+        *CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/mrctf2022/">
+        MRCTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/qwb2022/">
+        强网杯 2022 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/tctf2022/">
+        TCTF/0CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/hackergame2022/">
+        USTC Hackergame 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/n1ctf2022/">
+        N1CTF 2022
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/seccon2022/">
+        SECCON 2022 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/rctf2022/">
+        RCTF 2022
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_6_5" id="__nav_6_5" type="checkbox"/>
+<label class="md-nav__link" for="__nav_6_5">
+          2023
+          <span class="md-nav__icon md-icon"></span>
+</label>
+<nav aria-label="2023" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_6_5">
+<span class="md-nav__icon md-icon"></span>
+          2023
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/seccon2022final/">
+        SECCON 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/xctf2022final/">
+        XCTF 2022 Final
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/midnight2023/">
+        MidnightSun 2023 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/aliyunctf2023/">
+        AliyunCTF 2023
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/ciscn2023/">
+        CISCN 2023 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/seccon2023/">
+        SECCON 2023 Quals
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../writeups/tpctf2023/">
+        TPCTF 2023
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7" id="__nav_7" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/">Others</a>
+<label for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="Others" class="md-nav" data-md-level="1">
+<label class="md-nav__title" for="__nav_7">
+<span class="md-nav__icon md-icon"></span>
+          Others
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/notes/">
+        课程笔记
+      </a>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_3" id="__nav_7_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/subs/">字幕制作系列</a>
+<label for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="字幕制作系列" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_3">
+<span class="md-nav__icon md-icon"></span>
+          字幕制作系列
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/subs/ass/">
+        ass 标签
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/subs/aegisub/automation/">
+        Aegisub 自动化
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/subs/aegisub/karaoke/">
+        Aegisub 卡拉 OK 模板
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/subs/ffmpeg/">
+        ffmpeg 套件杂记
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_7_4" id="__nav_7_4" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../../others/troubleshooting/">TroubleShooting</a>
+<label for="__nav_7_4">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="TroubleShooting" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_7_4">
+<span class="md-nav__icon md-icon"></span>
+          TroubleShooting
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../../others/troubleshooting/mac/">
+        macOS TroubleShooting
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+<div class="md-sidebar__scrollwrap">
+<div class="md-sidebar__inner">
+<nav aria-label="目录" class="md-nav md-nav--secondary">
+<label class="md-nav__title" for="__toc">
+<span class="md-nav__icon md-icon"></span>
+        目录
+      </label>
+<ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_1">
+    关于工具链
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#gdb-sigint">
+    GDB 调试时不断遇到 SIGINT
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#semihosting">
+    Semihosting 相关
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_2">
+    时钟中断相关
+  </a>
+<nav aria-label="时钟中断相关" class="md-nav">
+<ul class="md-nav__list">
+<li class="md-nav__item">
+<a class="md-nav__link" href="#memory-mapping-stimecmp">
+    关于 memory-mapping 与 stimecmp
+  </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#_3">
+    参考
+  </a>
+</li>
+</ul>
+</nav>
+</div>
+</div>
+</div>
+<script defer="" src="/js/toc.js"></script>
+<link href="/css/fold_toc.css" rel="stylesheet"/>
+<div class="md-content" data-md-component="content">
+<article class="md-content__inner md-typeset">
+<a class="md-content__button md-icon" href="https://github.com/TonyCrane/note/tree/master/docs/cs/pl/riscv/spike.md" title="编辑此页">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
+</a>
+<h1 id="spike"><span>spike<span class="heti-spacing"> </span></span>工具链的调试与时钟中断学习<a class="headerlink" href="#spike" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>3213<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>158<span class="heti-spacing"> </span></span>行代码 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>13<span class="heti-spacing"> </span></span>分钟</p>
+</div>
+<div class="admonition abstract">
+<p class="admonition-title">Abstract</p>
+<p>想探索一下在<span class="heti-skip"><span class="heti-spacing"> </span>OS<span class="heti-spacing"> </span></span>课上写一个指导来让同学们可以像系统一样选择<a href="https://github.com/riscv-software-src/riscv-isa-sim/"><span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span></a>来进行<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V kernel<span class="heti-spacing"> </span></span>调试。当时系统三助教的时候用过，但是<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>是学长改过的<a href="https://github.com/sycuricon/riscv-isa-cosim"><span><span class="heti-spacing"> </span>riscv-isa-cosim</span></a>（加了<span class="heti-skip"><span class="heti-spacing"> </span>CJ<span class="heti-spacing"> </span></span>也就是<span class="heti-skip"><span class="heti-spacing"> </span>difftest<span class="heti-spacing"> </span></span>的部分<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，这个目前已经有段时间没更新了，所以在尝试使用最新版本<span><span class="heti-spacing"> </span>OpenSBI</span>（启用<span class="heti-skip"><span class="heti-spacing"> </span>PIE<span class="heti-spacing"> </span></span>编译）的时候无法加载<span><span class="heti-spacing"> </span>ELF</span>（还不支持<span><span class="heti-spacing"> </span>PIE</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，于是就更换成了最新的<span><span class="heti-spacing"> </span>spike</span>，然后就有了以下的调试过程。</p>
+<p>同步发布在<span><span class="heti-spacing"> </span>blog</span>：<a href="https://blog.tonycrane.cc/p/9188d8c1.html">https://blog.tonycrane.cc/p/9188d8c1.html</a></p>
+<p>本文中出现源码的版本：</p>
+<ul>
+<li>opensbi: c4940a9517486413cd676fc8032bb55f9d4e2778</li>
+<li>riscv-isa-sim: 0cc5ecce053c6dfa44e4a865d2838fc8d7d771dc</li>
+</ul>
+</div>
+<h2 id="_1">关于工具链<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p><span>Spike<span class="heti-spacing"> </span></span>这套东西的逻辑就是，<span>spike<span class="heti-spacing"> </span></span>自身是一个专注于<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>规范的模拟器，而且也模拟了硬件机制，在调试时需要通过<span class="heti-skip"><span class="heti-spacing"> </span>JTAG<span class="heti-spacing"> </span></span>来调试，并且开了一个<span class="heti-skip"><span class="heti-spacing"> </span>remote bitbang<span class="heti-spacing"> </span></span>的端口用来收发指令。然后使用<a href="https://github.com/openocd-org/openocd/"><span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span></a>来连接这个<span class="heti-skip"><span class="heti-spacing"> </span>rbb<span class="heti-spacing"> </span></span>端口进行指令的解析，再开一个端口来供<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>读取这些信息进行调试。</p>
+<p><span>Spike<span class="heti-spacing"> </span></span>是从<span class="heti-skip"><span class="heti-spacing"> </span>repo<span class="heti-spacing"> </span></span>中安装的最新版：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-0-1" id="__codelineno-0-1" name="__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/riscv-software-src/riscv-isa-sim
+<a href="#__codelineno-0-2" id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">cd</span><span class="w"> </span>riscv-isa-sim
+<a href="#__codelineno-0-3" id="__codelineno-0-3" name="__codelineno-0-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>device-tree-compiler<span class="w"> </span>libboost-regex-dev<span class="w"> </span>libboost-system-dev
+<a href="#__codelineno-0-4" id="__codelineno-0-4" name="__codelineno-0-4"></a>mkdir<span class="w"> </span>build
+<a href="#__codelineno-0-5" id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="nb">cd</span><span class="w"> </span>build
+<a href="#__codelineno-0-6" id="__codelineno-0-6" name="__codelineno-0-6"></a>../configure
+<a href="#__codelineno-0-7" id="__codelineno-0-7" name="__codelineno-0-7"></a>make<span class="w"> </span>-j<span class="k">$(</span>nproc<span class="k">)</span>
+<a href="#__codelineno-0-8" id="__codelineno-0-8" name="__codelineno-0-8"></a>sudo<span class="w"> </span>make<span class="w"> </span>install
+</code></pre></div>
+<p><span>OpenOCD<span class="heti-spacing"> </span></span>是直接<span class="heti-skip"><span class="heti-spacing"> </span>apt<span class="heti-spacing"> </span></span>安装的，<span>OpenSBI<span class="heti-spacing"> </span></span>也是<span class="heti-skip"><span class="heti-spacing"> </span>repo<span class="heti-spacing"> </span></span>中的最新版：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/riscv-software-src/opensbi
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>opensbi
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a>mkdir<span class="w"> </span>build
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a>make<span class="w"> </span><span class="nv">O</span><span class="o">=</span>build<span class="w"> </span><span class="nv">CROSS_COMPILE</span><span class="o">=</span>riscv64-linux-gnu-<span class="w"> </span><span class="nv">PLATFORM</span><span class="o">=</span>generic
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="c1"># output: build/platform/generic/firmware/fw_jump.elf</span>
+</code></pre></div>
+<p>然后一些命令：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="nf">spike_run</span><span class="o">:</span><span class="w"> </span><span class="n">all</span>
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span>@echo<span class="w"> </span>Launch<span class="w"> </span>the<span class="w"> </span>spike<span class="w"> </span>......
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">    </span>@spike<span class="w"> </span>--kernel<span class="o">=</span>arch/riscv/boot/Image<span class="w"> </span><span class="k">$(</span>SPIKE_CONFIG<span class="k">)</span>/fw_jump.elf
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="nf">spike_debug</span><span class="o">:</span><span class="w"> </span><span class="n">all</span>
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">    </span>@echo<span class="w"> </span>Launch<span class="w"> </span>the<span class="w"> </span>spike<span class="w"> </span><span class="k">for</span><span class="w"> </span>debug<span class="w"> </span>......
+<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span>@spike<span class="w"> </span>-H<span class="w"> </span>--rbb-port<span class="o">=</span><span class="m">9824</span><span class="w"> </span>--kernel<span class="o">=</span>arch/riscv/boot/Image<span class="w"> </span><span class="k">$(</span>SPIKE_CONFIG<span class="k">)</span>/fw_jump.elf
+<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a>
+<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="nf">spike_bridge</span><span class="o">:</span>
+<a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">    </span>@echo<span class="w"> </span>Launch<span class="w"> </span>the<span class="w"> </span>OpenOCD<span class="w"> </span>......
+<a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">    </span>@openocd<span class="w"> </span>-f<span class="w"> </span><span class="k">$(</span>SPIKE_CONFIG<span class="k">)</span>/spike.cfg
+</code></pre></div>
+<p>其中<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>的配置文件 <code>spike.cfg</code> 如下（最开始的版本<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>adapter<span class="w"> </span>driver<span class="w"> </span>remote_bitbang
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>remote_bitbang_host<span class="w"> </span>localhost
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>remote_bitbang_port<span class="w"> </span><span class="m">9824</span>
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nb">set</span><span class="w"> </span>_CHIPNAME<span class="w"> </span>riscv
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>jtag<span class="w"> </span>newtap<span class="w"> </span><span class="nv">$_CHIPNAME</span><span class="w"> </span>cpu<span class="w"> </span>-irlen<span class="w"> </span><span class="m">5</span><span class="w"> </span>
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="nb">set</span><span class="w"> </span>_TARGETNAME<span class="w"> </span><span class="nv">$_CHIPNAME</span>.cpu
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>target<span class="w"> </span>create<span class="w"> </span><span class="nv">$_TARGETNAME</span><span class="w"> </span>riscv<span class="w"> </span>-chain-position<span class="w"> </span><span class="nv">$_TARGETNAME</span>
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>bindto<span class="w"> </span><span class="m">0</span>.0.0.0
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>gdb_report_data_abort<span class="w"> </span><span class="nb">enable</span>
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>
+<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a>init
+<a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>halt
+</code></pre></div>
+<p><code>make spike_run</code> 就是直接运行<span><span class="heti-spacing"> </span>kernel</span>，<code>make spike_debug</code> 开启调试模式，再另开一个终端跑 <code>make spike_bridge</code> 启动<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>然后就可以用<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>连接了。</p>
+<h2 id="gdb-sigint"><span>GDB<span class="heti-spacing"> </span></span>调试时不断遇到<span><span class="heti-spacing"> </span>SIGINT</span><a class="headerlink" href="#gdb-sigint" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>刚开始的时候<span class="heti-skip"><span class="heti-spacing"> </span>spike_run<span class="heti-spacing"> </span></span>没问题，但是一旦调试起来，连接上后再<span><span class="heti-spacing"> </span>b _start</span>，随后<span class="heti-skip"><span class="heti-spacing"> </span>c<span class="heti-spacing"> </span></span>的话就会在中间多次遇到<span class="heti-skip"><span class="heti-spacing"> </span>SIGINT<span class="heti-spacing"> </span></span>导致调试暂停，即使 <code>handle SIGINT nostop</code> 的话也会看到跑到<span class="heti-skip"><span class="heti-spacing"> </span>_start<span class="heti-spacing"> </span></span>之前一直在忽略<span class="heti-skip"><span class="heti-spacing"> </span>SIGINT<span class="heti-spacing"> </span></span>而且效率极低。</p>
+<p>这个问题调的很痛苦，因为在同一<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>和配置下，用同样<span><span class="heti-spacing"> </span>OpenSBI</span>，使用最新<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>和老的<span class="heti-skip"><span class="heti-spacing"> </span>cosim<span class="heti-spacing"> </span></span>的结果不一样（<span>cosim<span class="heti-spacing"> </span></span>不会<span><span class="heti-spacing"> </span>SIGINT</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>，所以问题就被锁定在<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>身上了。</p>
+<p>起初我认为是<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>添加了<span class="heti-skip"><span class="heti-spacing"> </span>debug triggers<span class="heti-spacing"> </span></span>的问题，因为我是头一次在<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>的输出中看到<span class="heti-skip"><span class="heti-spacing"> </span>sdtrig<span class="heti-spacing"> </span></span>指令集扩展，然后看到了<span><span class="heti-spacing"> </span>4 triggers</span>，但是虽然有 <code>--trigger</code> 参数来指定数量，也不能使它小于<span><span class="heti-spacing"> </span>1</span>。同时即使设定了 <code>--isa=RV64gc</code> 不带任何扩展，也会自动加上<span><span class="heti-spacing"> </span>sdtrig</span>。当时几乎就认定是<span class="heti-skip"><span class="heti-spacing"> </span>trigger<span class="heti-spacing"> </span></span>的问题了，但是后来在<span class="heti-skip"><span class="heti-spacing"> </span>riscv/processor.cc<span class="heti-spacing"> </span></span>中发现了函数 <code>processor_t::take_trigger_action</code>，在这个开头把输出的<span class="heti-skip"><span class="heti-spacing"> </span>trigger<span class="heti-spacing"> </span></span>信息硬性要求输出到<span class="heti-skip"><span class="heti-spacing"> </span>stdout<span class="heti-spacing"> </span></span>中，发现并没有输出：</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">(spike) riscv/processor.cc</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-4-543">543</a></span>
+<span class="normal"><a href="#__codelineno-4-544">544</a></span>
+<span class="normal"><a href="#__codelineno-4-545">545</a></span>
+<span class="normal"><a href="#__codelineno-4-546">546</a></span>
+<span class="normal"><a href="#__codelineno-4-547">547</a></span>
+<span class="normal"><a href="#__codelineno-4-548">548</a></span>
+<span class="normal"><a href="#__codelineno-4-549">549</a></span>
+<span class="normal"><a href="#__codelineno-4-550">550</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-4-543" name="__codelineno-4-543"></a><span class="kt">void</span><span class="w"> </span><span class="nf">processor_t::take_trigger_action</span><span class="p">(</span><span class="n">triggers</span><span class="o">::</span><span class="n">action_t</span><span class="w"> </span><span class="n">action</span><span class="p">,</span><span class="w"> </span><span class="n">reg_t</span><span class="w"> </span><span class="n">breakpoint_tval</span><span class="p">,</span><span class="w"> </span><span class="n">reg_t</span><span class="w"> </span><span class="n">epc</span><span class="p">,</span><span class="w"> </span><span class="kt">bool</span><span class="w"> </span><span class="n">virt</span><span class="p">)</span>
+<a id="__codelineno-4-544" name="__codelineno-4-544"></a><span class="p">{</span>
+<a id="__codelineno-4-545" name="__codelineno-4-545"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">debug</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-546" name="__codelineno-4-546"></a><span class="w">    </span><span class="n">std</span><span class="o">::</span><span class="n">stringstream</span><span class="w"> </span><span class="n">s</span><span class="p">;</span><span class="w"> </span><span class="c1">// first put everything in a string, later send it to output</span>
+<a id="__codelineno-4-547" name="__codelineno-4-547"></a><span class="w">    </span><span class="n">s</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"core "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">dec</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setfill</span><span class="p">(</span><span class="sc">' '</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">setw</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">id</span>
+<a id="__codelineno-4-548" name="__codelineno-4-548"></a><span class="w">      </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">": trigger action "</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">action</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">endl</span><span class="p">;</span>
+<a id="__codelineno-4-549" name="__codelineno-4-549"></a><span class="w">    </span><span class="n">debug_output_log</span><span class="p">(</span><span class="o">&amp;</span><span class="n">s</span><span class="p">);</span>
+<a id="__codelineno-4-550" name="__codelineno-4-550"></a><span class="w">  </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>而且同样我在 <code>processor_t::take_trap</code> 开头把输出也强制打开了，也只能发现在<span class="heti-skip"><span class="heti-spacing"> </span>0x80000000<span class="heti-spacing"> </span></span>之后（屏蔽了这前面的部分，因为<span class="heti-skip"><span class="heti-spacing"> </span>0x1000<span class="heti-spacing"> </span></span>前会有<span class="heti-skip"><span class="heti-spacing"> </span>debug rom<span class="heti-spacing"> </span></span>一直在运行一直在<span><span class="heti-spacing"> </span>trap</span>）只出现过一个<span class="heti-skip"><span class="heti-spacing"> </span>store access fault<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>trap</span>。所以那就能排除掉<span class="heti-skip"><span class="heti-spacing"> </span>trigger<span class="heti-spacing"> </span></span>的问题了。</p>
+<p>接着我从源码安装了<span><span class="heti-spacing"> </span>OpenOCD</span>（v0.12+<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/openocd-org/openocd/
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="nb">cd</span><span class="w"> </span>openocd
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>libtool
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a>./bootstrap
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a>./configure<span class="w"> </span>--enable-remote-bitbang
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a>make
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="c1"># output: src/openocd</span>
+</code></pre></div>
+<p>与本地的<span class="heti-skip"><span class="heti-spacing"> </span>v0.11<span class="heti-spacing"> </span></span>的相比，它运行时多了一些<span><span class="heti-spacing"> </span>error</span>，而且恰巧在每次<span class="heti-skip"><span class="heti-spacing"> </span>SIGINT<span class="heti-spacing"> </span></span>的同时都能看到新增了一条<span><span class="heti-spacing"> </span>error</span>：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a>Warn : Failed to read memory via program buffer.
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a>Error: Failed write (NOP) at 0x7; status=2
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a>Error: Failed write (NOP) at 0x6; status=2
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a>Warn : Failed to read memory via abstract access.
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a>Error: Target riscv.cpu: Failed to read memory (addr=0x0)
+<a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a>Error:   progbuf=failed, sysbus=skipped (unsupported size), abstract=failed
+</code></pre></div>
+<p>我又认为这是<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD+GDB<span class="heti-spacing"> </span></span>在调试时访问<span class="heti-skip"><span class="heti-spacing"> </span>0x0<span class="heti-spacing"> </span></span>处的非法内存导致的，经学长解答，<span>0x0<span class="heti-spacing"> </span></span>开始的这部分是一个<span><span class="heti-spacing"> </span>debug module</span>，在调试的时候是会用到的。在<span class="heti-skip"><span class="heti-spacing"> </span>riscv/sim.cc<span class="heti-spacing"> </span></span>的 <code>sim_t::sim_t</code> 函数中也看到了开头就有一句 <code>bus.add_device(DEBUG_START, &amp;debug_module);</code>，然后我又去翻了翻<span><span class="heti-spacing"> </span>debug module</span>，它在一些指定的位置才放了内存，比如<span class="heti-skip"><span class="heti-spacing"> </span>0x800<span class="heti-spacing"> </span></span>开始放了<span><span class="heti-spacing"> </span>debug rom</span>，<span>0x374<span class="heti-spacing"> </span></span>这里放了<span><span class="heti-spacing"> </span>progbuf</span>，而其他没放的地方访问的时候都会像这样出错。这部分逻辑在<span class="heti-skip"><span class="heti-spacing"> </span>riscv/debug_module.cc<span class="heti-spacing"> </span></span>的 <code>debug_module_t::load</code> 中：</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">(spike) riscv/debug_module.cc</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-125">125</a></span>
+<span class="normal"><a href="#__codelineno-7-126">126</a></span>
+<span class="normal"><a href="#__codelineno-7-127">127</a></span>
+<span class="normal"><a href="#__codelineno-7-128">128</a></span>
+<span class="normal"><a href="#__codelineno-7-129">129</a></span>
+<span class="normal"><a href="#__codelineno-7-130">130</a></span>
+<span class="normal"><a href="#__codelineno-7-131">131</a></span>
+<span class="normal"><a href="#__codelineno-7-132">132</a></span>
+<span class="normal"><a href="#__codelineno-7-133">133</a></span>
+<span class="normal"><a href="#__codelineno-7-134">134</a></span>
+<span class="normal"><a href="#__codelineno-7-135">135</a></span>
+<span class="normal"><a href="#__codelineno-7-136">136</a></span>
+<span class="normal"><a href="#__codelineno-7-137">137</a></span>
+<span class="normal"><a href="#__codelineno-7-138">138</a></span>
+<span class="normal"><a href="#__codelineno-7-139">139</a></span>
+<span class="normal"><a href="#__codelineno-7-140">140</a></span>
+<span class="normal"><a href="#__codelineno-7-141">141</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-125" name="__codelineno-7-125"></a><span class="kt">bool</span><span class="w"> </span><span class="nf">debug_module_t::load</span><span class="p">(</span><span class="n">reg_t</span><span class="w"> </span><span class="n">addr</span><span class="p">,</span><span class="w"> </span><span class="kt">size_t</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="kt">uint8_t</span><span class="o">*</span><span class="w"> </span><span class="n">bytes</span><span class="p">)</span>
+<a id="__codelineno-7-126" name="__codelineno-7-126"></a><span class="p">{</span>
+<a id="__codelineno-7-127" name="__codelineno-7-127"></a><span class="w">  </span><span class="n">addr</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">DEBUG_START</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">addr</span><span class="p">;</span>
+<a id="__codelineno-7-128" name="__codelineno-7-128"></a>
+<a id="__codelineno-7-129" name="__codelineno-7-129"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">addr</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">DEBUG_ROM_ENTRY</span><span class="w"> </span><span class="o">&amp;&amp;</span>
+<a id="__codelineno-7-130" name="__codelineno-7-130"></a><span class="w">      </span><span class="p">(</span><span class="n">addr</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">len</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;=</span><span class="w"> </span><span class="p">(</span><span class="n">DEBUG_ROM_ENTRY</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">debug_rom_raw_len</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-131" name="__codelineno-7-131"></a><span class="w">    </span><span class="n">memcpy</span><span class="p">(</span><span class="n">bytes</span><span class="p">,</span><span class="w"> </span><span class="n">debug_rom_raw</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">addr</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">DEBUG_ROM_ENTRY</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">);</span>
+<a id="__codelineno-7-132" name="__codelineno-7-132"></a><span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nb">true</span><span class="p">;</span>
+<a id="__codelineno-7-133" name="__codelineno-7-133"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-7-134" name="__codelineno-7-134"></a>
+<a id="__codelineno-7-135" name="__codelineno-7-135"></a><span class="w">  </span><span class="p">...</span>
+<a id="__codelineno-7-136" name="__codelineno-7-136"></a>
+<a id="__codelineno-7-137" name="__codelineno-7-137"></a><span class="w">  </span><span class="n">D</span><span class="p">(</span><span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span><span class="w"> </span><span class="s">"ERROR: invalid load from debug module: %zd bytes at 0x%016"</span>
+<a id="__codelineno-7-138" name="__codelineno-7-138"></a><span class="w">          </span><span class="n">PRIx64</span><span class="w"> </span><span class="s">"</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span><span class="w"> </span><span class="n">len</span><span class="p">,</span><span class="w"> </span><span class="n">addr</span><span class="p">));</span>
+<a id="__codelineno-7-139" name="__codelineno-7-139"></a>
+<a id="__codelineno-7-140" name="__codelineno-7-140"></a><span class="w">  </span><span class="k">return</span><span class="w"> </span><span class="nb">false</span><span class="p">;</span>
+<a id="__codelineno-7-141" name="__codelineno-7-141"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>学长说<span class="heti-skip"><span class="heti-spacing"> </span>cosim<span class="heti-spacing"> </span></span>里面屏蔽了<span class="heti-skip"><span class="heti-spacing"> </span>0x0<span class="heti-spacing"> </span></span>这个地址，然后在这个地址的位置放了一个随机数设备来防止读取出问题，但我还是想找到问题所在，所以继续调了。</p>
+<p>将末尾的<span class="heti-skip"><span class="heti-spacing"> </span>D()<span class="heti-spacing"> </span></span>去掉，然后<span class="heti-skip"><span class="heti-spacing"> </span>return true<span class="heti-spacing"> </span></span>就能让所有<span class="heti-skip"><span class="heti-spacing"> </span>0x0 - 0x1000<span class="heti-spacing"> </span></span>的访存合法，再跑一次发现<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>那里确实没有报错了，然后每次都会从<span class="heti-skip"><span class="heti-spacing"> </span>0x0<span class="heti-spacing"> </span></span>开始请求一串内存，这里都会报<span><span class="heti-spacing"> </span>ERROR</span>。但即使<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>没了报错，<span>GDB<span class="heti-spacing"> </span></span>还是会像原先一样隔一阵遇到一个<span><span class="heti-spacing"> </span>SIGINT</span>，所以那这个<span class="heti-skip"><span class="heti-spacing"> </span>SIGINT<span class="heti-spacing"> </span></span>也不是由于<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>读<span class="heti-skip"><span class="heti-spacing"> </span>debug<span class="heti-spacing"> </span></span>信息错误导致的。</p>
+<p>接下来就翻了翻<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>的文档，发现了在<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>相关的<span class="heti-skip"><span class="heti-spacing"> </span>20.2<span class="heti-spacing"> </span></span>节给出了一个简单的<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>调试案例：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a>$ arm-none-eabi-gdb example.elf
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a>(gdb) target extended-remote localhost:3333
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a>Remote debugging using localhost:3333
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a>...
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a>(gdb) monitor reset halt
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a>...
+<a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a>(gdb) load
+<a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a>Loading section .vectors, size 0x100 lma 0x20000000
+<a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a>Loading section .text, size 0x5a0 lma 0x20000100
+<a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a>Loading section .data, size 0x18 lma 0x200006a0
+<a href="#__codelineno-8-11" id="__codelineno-8-11" name="__codelineno-8-11"></a>Start address 0x2000061c, load size 1720
+<a href="#__codelineno-8-12" id="__codelineno-8-12" name="__codelineno-8-12"></a>Transfer rate: 22 KB/sec, 573 bytes/write.
+<a href="#__codelineno-8-13" id="__codelineno-8-13" name="__codelineno-8-13"></a>(gdb) continue
+<a href="#__codelineno-8-14" id="__codelineno-8-14" name="__codelineno-8-14"></a>Continuing.
+<a href="#__codelineno-8-15" id="__codelineno-8-15" name="__codelineno-8-15"></a>...
+</code></pre></div>
+<p>这里多了一句 <code>monitor reset halt</code> 不知道是干什么，然后随手一试，加上这一句之后<span class="heti-skip"><span class="heti-spacing"> </span>SIGINT<span class="heti-spacing"> </span></span>就消失了，可以正常调试了。或者在<span class="heti-skip"><span class="heti-spacing"> </span>spike.cfg<span class="heti-spacing"> </span></span>配置的最后把 <code>halt</code> 改成 <code>reset halt</code> 也可以，因为<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>的 <code>monitor</code> 就相当于发指令给<span><span class="heti-spacing"> </span>OpenOCD</span>。又搜了一些也没找到这样做的理由，听到的说法都是刷新程序，让它好接收后面的断点和调试。所以调了好久最后原因是<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>的配置问题，但为什么<span class="heti-skip"><span class="heti-spacing"> </span>cosim<span class="heti-spacing"> </span></span>的老<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>没遇到问题还是没解决，但已经无所谓了感觉。</p>
+<h2 id="semihosting"><span>Semihosting<span class="heti-spacing"> </span></span>相关<a class="headerlink" href="#semihosting" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>接下来没有<span class="heti-skip"><span class="heti-spacing"> </span>SIGINT<span class="heti-spacing"> </span></span>就可以一直跑起来的，但是并没有断在<span class="heti-skip"><span class="heti-spacing"> </span>_start<span class="heti-spacing"> </span></span>的断点的位置，而是在<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>中的<span><span class="heti-spacing"> </span>ebreak</span>，这个<span class="heti-skip"><span class="heti-spacing"> </span>ebreak<span class="heti-spacing"> </span></span>是在 <code>_semihost_test_vector_next</code> 标号里的，这个是由<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>lib/utils/serial/semihosting.c<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>semihosting_enabled<span class="heti-spacing"> </span></span>函数引入的。学长说是因为<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>并没有支持<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>机制，所以在之前使用的<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>中手动在<span class="heti-skip"><span class="heti-spacing"> </span>semihosting_enabled<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>semihosting_trap<span class="heti-spacing"> </span></span>函数的开头直接<span class="heti-skip"><span class="heti-spacing"> </span>return<span class="heti-spacing"> </span></span>了<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>来<span class="heti-skip"><span class="heti-spacing"> </span>patch<span class="heti-spacing"> </span></span>掉。</p>
+<p>搜了一下<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>相关，这是一个由<span class="heti-skip"><span class="heti-spacing"> </span>arm<span class="heti-spacing"> </span></span>引入的调试方法。因为硬件上通过串口输出还要经过设备时序等一系列，会加重调试负担，所以<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>机制通过将输出等一系列功能交给调试主机来做，这样就不需要硬件串口支持了。只需要在比如<span class="heti-skip"><span class="heti-spacing"> </span>print<span class="heti-spacing"> </span></span>输出的时候调用一下<span class="heti-skip"><span class="heti-spacing"> </span>SVC HLT BKPT<span class="heti-spacing"> </span></span>等可以让调试器接手的指令，然后调试器会安装协议读取要进行的操作等，由调试器来进行输出。</p>
+<p>在<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>上，这样陷入调试器的指令是<span><span class="heti-spacing"> </span>ebreak</span>，但是也只有<span><span class="heti-spacing"> </span>ebreak</span>，无法区分普通<span class="heti-skip"><span class="heti-spacing"> </span>ebreak<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>用的<span><span class="heti-spacing"> </span>ebreak</span>。所以<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>规定，<span>semihosting<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>ebreak<span class="heti-spacing"> </span></span>前后会跟两条特殊的<span class="heti-skip"><span class="heti-spacing"> </span>nop<span class="heti-spacing"> </span></span>指令，形成：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="nf">slli</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">0x1f</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="nf">ebreak</span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="nf">srai</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="no">x0</span><span class="p">,</span><span class="w"> </span><span class="mi">7</span>
+</code></pre></div>
+<p>调试器在遇到<span class="heti-skip"><span class="heti-spacing"> </span>ebreak<span class="heti-spacing"> </span></span>之后可以检查前后两条指令，如果是这样的形式，那么就是<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>ebreak</span>，否则就是普通的<span><span class="heti-spacing"> </span>ebreak</span>。这个是在<span class="heti-skip"><span class="heti-spacing"> </span>RISC-V<span class="heti-spacing"> </span></span>的<a href="https://github.com/riscv-non-isa/riscv-semihosting"><span class="heti-skip"><span class="heti-spacing"> </span>riscv-non-isa/riscv-semihosting<span class="heti-spacing"> </span></span></a>中规定的。</p>
+<p>看了<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>的源码，关于<span class="heti-skip"><span class="heti-spacing"> </span>ebreak<span class="heti-spacing"> </span></span>指令的处理确实没有检查前后两条指令的操作。但转念一想，<span>spike<span class="heti-spacing"> </span></span>作为一个指令模拟器，它就是一个待调试的硬件设备，而真正处理<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>的应该是调试器，而在这套工具链里调试器是<span><span class="heti-spacing"> </span>OpenOCD</span>，所以实际的工作应该在<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>层面，在收到<span class="heti-skip"><span class="heti-spacing"> </span>ebreak<span class="heti-spacing"> </span></span>之后额外检查两条指令。</p>
+<p>经过搜索，<span>OpenOCD<span class="heti-spacing"> </span></span>还真有这么一条指令 <code>arm semihosting enable</code>，也就是<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>里的 <code>monitor arm semihosting enable</code>。跑了这条指令之后<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>就不会再卡在<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>ebreak<span class="heti-spacing"> </span></span>了，因为这部分已经被<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>解析成了<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>请求来特殊处理了，而且<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>输出的<span class="heti-skip"><span class="heti-spacing"> </span>platform console device<span class="heti-spacing"> </span></span>也从<span class="heti-skip"><span class="heti-spacing"> </span>uart8250<span class="heti-spacing"> </span></span>变成了<span><span class="heti-spacing"> </span>semihosting</span>。也因此，输出等操作就由<span class="heti-skip"><span class="heti-spacing"> </span>OpenOCD<span class="heti-spacing"> </span></span>来完成了，而非<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>的串口。所以这时候的内核输出在运行着 <code>make spike_bridge</code> 的终端里，而且这套效率并比不上串口，所以效率很低，以至于效果上是逐个字进行输出。</p>
+<p>所以为了调试效率，还是不启用<span class="heti-skip"><span class="heti-spacing"> </span>semihosting<span class="heti-spacing"> </span></span>为好，但也不用直接<span class="heti-skip"><span class="heti-spacing"> </span>patch<span class="heti-spacing"> </span></span>掉相关逻辑，<span>OpenSBI<span class="heti-spacing"> </span></span>提供了<span class="heti-skip"><span class="heti-spacing"> </span>kconfig<span class="heti-spacing"> </span></span>来进行配置，可以直接：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-10-1" id="__codelineno-10-1" name="__codelineno-10-1"></a>make<span class="w"> </span><span class="nv">PLATFORM</span><span class="o">=</span>generic<span class="w"> </span>menuconfig
+</code></pre></div>
+<p>然后将<span class="heti-skip"><span class="heti-spacing"> </span>Utils and Drivers Support &gt; Serial Device Support &gt; Semihosting support<span class="heti-spacing"> </span></span>关掉再<span class="heti-skip"><span class="heti-spacing"> </span>make<span class="heti-spacing"> </span></span>就好了。</p>
+<h2 id="_2">时钟中断相关<a class="headerlink" href="#_2" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>最后一个问题是<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>运行的<span class="heti-skip"><span class="heti-spacing"> </span>kernel<span class="heti-spacing"> </span></span>的时钟中断周期和<span class="heti-skip"><span class="heti-spacing"> </span>busy loop<span class="heti-spacing"> </span></span>长度都要少一个<span class="heti-skip"><span class="heti-spacing"> </span>0<span class="heti-spacing"> </span></span>才能达到和<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>一样的效果，也就是实际上的时钟频率是<span><span class="heti-spacing"> </span>1_000_000 Hz</span>，不过<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>运行的<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>输出的<span class="heti-skip"><span class="heti-spacing"> </span>platform timer device<span class="heti-spacing"> </span></span>还是都是一样的<span><span class="heti-spacing"> </span>aclint-mtimer @ 10000000Hz</span>。</p>
+<p>找了<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>的源码，对于<span><span class="heti-spacing"> </span>generic platform</span>，<span>timer<span class="heti-spacing"> </span></span>的频率是从设备树中读取的。<span>generic<span class="heti-spacing"> </span></span>使用了<span><span class="heti-spacing"> </span>fdt_timer_mtimer</span>，其中的<span class="heti-skip"><span class="heti-spacing"> </span>cold init<span class="heti-spacing"> </span></span>调用了<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>lib/utils/timer/fdt_timer_mtimer.c<span class="heti-spacing"> </span></span>的 <code>timer_mtimer_cold_init</code> 函数：</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">(opensbi) lib/utils/timer/fdt_timer_mtimer.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-11-33">33</a></span>
+<span class="normal"><a href="#__codelineno-11-34">34</a></span>
+<span class="normal"><a href="#__codelineno-11-35">35</a></span>
+<span class="normal"><a href="#__codelineno-11-36">36</a></span>
+<span class="normal"><a href="#__codelineno-11-37">37</a></span>
+<span class="normal"><a href="#__codelineno-11-38">38</a></span>
+<span class="normal"><a href="#__codelineno-11-39">39</a></span>
+<span class="normal"><a href="#__codelineno-11-40">40</a></span>
+<span class="normal"><a href="#__codelineno-11-41">41</a></span>
+<span class="normal"><a href="#__codelineno-11-42">42</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-11-33" name="__codelineno-11-33"></a><span class="k">static</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="nf">timer_mtimer_cold_init</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="o">*</span><span class="n">fdt</span><span class="p">,</span><span class="w"> </span><span class="kt">int</span><span class="w"> </span><span class="n">nodeoff</span><span class="p">,</span>
+<a id="__codelineno-11-34" name="__codelineno-11-34"></a><span class="w">                  </span><span class="k">const</span><span class="w"> </span><span class="k">struct</span><span class="w"> </span><span class="nc">fdt_match</span><span class="w"> </span><span class="o">*</span><span class="n">match</span><span class="p">)</span>
+<a id="__codelineno-11-35" name="__codelineno-11-35"></a><span class="p">{</span>
+<a id="__codelineno-11-36" name="__codelineno-11-36"></a><span class="w">    </span><span class="p">...</span>
+<a id="__codelineno-11-37" name="__codelineno-11-37"></a>
+<a id="__codelineno-11-38" name="__codelineno-11-38"></a><span class="w">    </span><span class="n">rc</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">fdt_parse_timebase_frequency</span><span class="p">(</span><span class="n">fdt</span><span class="p">,</span><span class="w"> </span><span class="o">&amp;</span><span class="n">mt</span><span class="o">-&gt;</span><span class="n">mtime_freq</span><span class="p">);</span>
+<a id="__codelineno-11-39" name="__codelineno-11-39"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">rc</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-11-40" name="__codelineno-11-40"></a><span class="w">        </span><span class="n">sbi_free</span><span class="p">(</span><span class="n">mtn</span><span class="p">);</span>
+<a id="__codelineno-11-41" name="__codelineno-11-41"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="n">rc</span><span class="p">;</span>
+<a id="__codelineno-11-42" name="__codelineno-11-42"></a><span class="w">    </span><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>这里 <code>fdt_parse_timebase_frequency</code> 就是在读取设备树中的 <code>timebase-frequency</code> 属性，而这个属性在<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>导出时就是<span><span class="heti-spacing"> </span>10_000_000</span>：</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">(spike) riscv/sim.cc</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-12-145">145</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-12-145" name="__codelineno-12-145"></a><span class="w">    </span><span class="n">dts</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">make_dts</span><span class="p">(</span><span class="n">INSNS_PER_RTC_TICK</span><span class="p">,</span><span class="w"> </span><span class="n">CPU_HZ</span><span class="p">,</span><span class="w"> </span><span class="n">cfg</span><span class="p">,</span><span class="w"> </span><span class="n">mems</span><span class="p">,</span><span class="w"> </span><span class="n">device_nodes</span><span class="p">);</span>
+</code></pre></div></td></tr></table></div>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">(spike) riscv/dts.cc</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-13-59">59</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-13-59" name="__codelineno-13-59"></a><span class="w">         </span><span class="s">"    timebase-frequency = &lt;"</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="p">(</span><span class="n">cpu_hz</span><span class="o">/</span><span class="n">insns_per_rtc_tick</span><span class="p">)</span><span class="w"> </span><span class="o">&lt;&lt;</span><span class="w"> </span><span class="s">"&gt;;</span><span class="se">\n</span><span class="s">"</span><span class="p">;</span>
+</code></pre></div></td></tr></table></div>
+<p>这里<span class="heti-skip"><span class="heti-spacing"> </span>CPU_HZ<span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>1_000_000_000</span>，<span>INSNS_PER_RTC_TICK<span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>100</span>，所以<span class="heti-skip"><span class="heti-spacing"> </span>freq<span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>10_000_000<span class="heti-spacing"> </span></span>没错。</p>
+<p>但为什么<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>跑起来实际比这个要慢得多呢，按理说<span class="heti-skip"><span class="heti-spacing"> </span>10_000_000Hz<span class="heti-spacing"> </span></span>的时钟频率，设定<span class="heti-skip"><span class="heti-spacing"> </span>10_000_000<span class="heti-spacing"> </span></span>的时钟中断间隔那出现的就是<span class="heti-skip"><span class="heti-spacing"> </span>1s<span class="heti-spacing"> </span></span>一个，为什么会<span class="heti-skip"><span class="heti-spacing"> </span>10s<span class="heti-spacing"> </span></span>一个。原因在于<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>对于<span class="heti-skip"><span class="heti-spacing"> </span>mtime<span class="heti-spacing"> </span></span>的处理：</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">(spike) riscv/clint.cc</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-14-100">100</a></span>
+<span class="normal"><a href="#__codelineno-14-101">101</a></span>
+<span class="normal"><a href="#__codelineno-14-102">102</a></span>
+<span class="normal"><a href="#__codelineno-14-103">103</a></span>
+<span class="normal"><a href="#__codelineno-14-104">104</a></span>
+<span class="normal"><a href="#__codelineno-14-105">105</a></span>
+<span class="normal"><a href="#__codelineno-14-106">106</a></span>
+<span class="normal"><a href="#__codelineno-14-107">107</a></span>
+<span class="normal"><a href="#__codelineno-14-108">108</a></span>
+<span class="normal"><a href="#__codelineno-14-109">109</a></span>
+<span class="normal"><a href="#__codelineno-14-110">110</a></span>
+<span class="normal"><a href="#__codelineno-14-111">111</a></span>
+<span class="normal"><a href="#__codelineno-14-112">112</a></span>
+<span class="normal"><a href="#__codelineno-14-113">113</a></span>
+<span class="normal"><a href="#__codelineno-14-114">114</a></span>
+<span class="normal"><a href="#__codelineno-14-115">115</a></span>
+<span class="normal"><a href="#__codelineno-14-116">116</a></span>
+<span class="normal"><a href="#__codelineno-14-117">117</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-14-100" name="__codelineno-14-100"></a><span class="kt">void</span><span class="w"> </span><span class="nf">clint_t::tick</span><span class="p">(</span><span class="n">reg_t</span><span class="w"> </span><span class="n">rtc_ticks</span><span class="p">)</span>
+<a id="__codelineno-14-101" name="__codelineno-14-101"></a><span class="p">{</span>
+<a id="__codelineno-14-102" name="__codelineno-14-102"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">real_time</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-103" name="__codelineno-14-103"></a><span class="w">   </span><span class="k">struct</span><span class="w"> </span><span class="nc">timeval</span><span class="w"> </span><span class="n">now</span><span class="p">;</span>
+<a id="__codelineno-14-104" name="__codelineno-14-104"></a><span class="w">   </span><span class="kt">uint64_t</span><span class="w"> </span><span class="n">diff_usecs</span><span class="p">;</span>
+<a id="__codelineno-14-105" name="__codelineno-14-105"></a>
+<a id="__codelineno-14-106" name="__codelineno-14-106"></a><span class="w">   </span><span class="n">gettimeofday</span><span class="p">(</span><span class="o">&amp;</span><span class="n">now</span><span class="p">,</span><span class="w"> </span><span class="nb">NULL</span><span class="p">);</span>
+<a id="__codelineno-14-107" name="__codelineno-14-107"></a><span class="w">   </span><span class="n">diff_usecs</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">now</span><span class="p">.</span><span class="n">tv_sec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">real_time_ref_secs</span><span class="p">)</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="mi">1000000</span><span class="p">)</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="p">(</span><span class="n">now</span><span class="p">.</span><span class="n">tv_usec</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">real_time_ref_usecs</span><span class="p">);</span>
+<a id="__codelineno-14-108" name="__codelineno-14-108"></a><span class="w">   </span><span class="n">mtime</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">diff_usecs</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="n">freq_hz</span><span class="w"> </span><span class="o">/</span><span class="w"> </span><span class="mi">1000000</span><span class="p">;</span>
+<a id="__codelineno-14-109" name="__codelineno-14-109"></a><span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-110" name="__codelineno-14-110"></a><span class="w">    </span><span class="n">mtime</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="n">rtc_ticks</span><span class="p">;</span>
+<a id="__codelineno-14-111" name="__codelineno-14-111"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-14-112" name="__codelineno-14-112"></a>
+<a id="__codelineno-14-113" name="__codelineno-14-113"></a><span class="w">  </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="k">auto</span><span class="o">&amp;</span><span class="w"> </span><span class="p">[</span><span class="n">hart_id</span><span class="p">,</span><span class="w"> </span><span class="n">hart</span><span class="p">]</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">sim</span><span class="o">-&gt;</span><span class="n">get_harts</span><span class="p">())</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-14-114" name="__codelineno-14-114"></a><span class="w">    </span><span class="n">hart</span><span class="o">-&gt;</span><span class="n">state</span><span class="p">.</span><span class="n">time</span><span class="o">-&gt;</span><span class="n">sync</span><span class="p">(</span><span class="n">mtime</span><span class="p">);</span>
+<a id="__codelineno-14-115" name="__codelineno-14-115"></a><span class="w">    </span><span class="n">hart</span><span class="o">-&gt;</span><span class="n">state</span><span class="p">.</span><span class="n">mip</span><span class="o">-&gt;</span><span class="n">backdoor_write_with_mask</span><span class="p">(</span><span class="n">MIP_MTIP</span><span class="p">,</span><span class="w"> </span><span class="n">mtime</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">mtimecmp</span><span class="p">[</span><span class="n">hart_id</span><span class="p">]</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">MIP_MTIP</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-14-116" name="__codelineno-14-116"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-14-117" name="__codelineno-14-117"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p><span>clint<span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>Core Local Interruptor</span>，局部中断器，负责产生软件中断和时钟中断。这里也看得出，在 <code>mtime &gt;= mtimecmp[hard_id]</code> 的时候设置<span class="heti-skip"><span class="heti-spacing"> </span>mip<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>mtip<span class="heti-spacing"> </span></span>位，即告诉<span class="heti-skip"><span class="heti-spacing"> </span>core<span class="heti-spacing"> </span></span>又一个时钟中断在等待处理。</p>
+<p>而<span class="heti-skip"><span class="heti-spacing"> </span>mtime<span class="heti-spacing"> </span></span>更新的逻辑在前面，如果有<span class="heti-skip"><span class="heti-spacing"> </span>real_time<span class="heti-spacing"> </span></span>的情况下，<span>mtime<span class="heti-spacing"> </span></span>按照实际时间更新，假设我们经过了<span class="heti-skip"><span class="heti-spacing"> </span>1s<span class="heti-spacing"> </span></span>的时间，那<span class="heti-skip"><span class="heti-spacing"> </span>diff_usecs<span class="heti-spacing"> </span></span>就是<span><span class="heti-spacing"> </span>1_000_000</span>，所以<span><span class="heti-spacing"> </span>mtime = freq_hz</span>，也就是<span><span class="heti-spacing"> </span>10_000_000</span>，这样<span class="heti-skip"><span class="heti-spacing"> </span>1s<span class="heti-spacing"> </span></span>之后<span class="heti-skip"><span class="heti-spacing"> </span>mtime<span class="heti-spacing"> </span></span>就多了<span><span class="heti-spacing"> </span>10_000_000</span>，如果<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>设置的间隔也是这个，那就是<span class="heti-skip"><span class="heti-spacing"> </span>1s<span class="heti-spacing"> </span></span>一个中断。实际跑起来，如果加上 <code>--real-time-clint</code> 的话，时钟中断确实就<span class="heti-skip"><span class="heti-spacing"> </span>1s<span class="heti-spacing"> </span></span>出现一个了（间隔<span><span class="heti-spacing"> </span>10_000_000</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>那如果不加<span class="heti-skip"><span class="heti-spacing"> </span>real_time<span class="heti-spacing"> </span></span>呢，也就是说为什么之前会出现<span class="heti-skip"><span class="heti-spacing"> </span>10s<span class="heti-spacing"> </span></span>一个中断的情况。我们再次假设<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>的间隔是<span><span class="heti-spacing"> </span>10_000_000</span>，看一下多久会触发，也就是<span class="heti-skip"><span class="heti-spacing"> </span>mtime<span class="heti-spacing"> </span></span>什么时候能多加<span class="heti-skip"><span class="heti-spacing"> </span>10_000_000<span class="heti-spacing"> </span></span>个<span><span class="heti-spacing"> </span>rtc_ticks</span>。因为<span class="heti-skip"><span class="heti-spacing"> </span>INSN_PER_RTC_TICK<span class="heti-spacing"> </span></span>是<span><span class="heti-spacing"> </span>100</span>，所以跑<span class="heti-skip"><span class="heti-spacing"> </span>100<span class="heti-spacing"> </span></span>条指令多一个<span><span class="heti-spacing"> </span>rtc_tick</span>，那触发一次时钟中断就要跑<span class="heti-skip"><span class="heti-spacing"> </span>1_000_000_000<span class="heti-spacing"> </span></span>条指令，也就是说只和跑了多少条指令有关，和实际时间无关，所以体感<span class="heti-skip"><span class="heti-spacing"> </span>10s<span class="heti-spacing"> </span></span>一个中断实际上是纯粹的<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>跑的慢。</p>
+<p>所以为了<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>一样的表现，只需要在<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>运行的时候加上 <code>--real-time-clint</code> 就好了，以及如果有<span class="heti-skip"><span class="heti-spacing"> </span>busy loop<span class="heti-spacing"> </span></span>输出的话还需要按<span class="heti-skip"><span class="heti-spacing"> </span>10<span class="heti-spacing"> </span></span>倍的规模调整一下循环次数。</p>
+<h3 id="memory-mapping-stimecmp">关于<span class="heti-skip"><span class="heti-spacing"> </span>memory-mapping<span class="heti-spacing"> </span></span>与<span><span class="heti-spacing"> </span>stimecmp</span><a class="headerlink" href="#memory-mapping-stimecmp" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
+<p>调试的时候有的时候想要找<span class="heti-skip"><span class="heti-spacing"> </span>mtime<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>的值到底是多少，但是<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>并不能读取这两个寄存器，因为他们两个都是<span class="heti-skip"><span class="heti-spacing"> </span>memory mapping<span class="heti-spacing"> </span></span>的，也就是说他们的实际位置在内存上而非寄存器中。所以我们可以通过读取内存来获取这两个值：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-15-1" id="__codelineno-15-1" name="__codelineno-15-1"></a>p/x<span class="w"> </span><span class="o">{</span>unsigned<span class="w"> </span>long<span class="w"> </span>long<span class="o">}</span>0x2004000<span class="w"> </span><span class="c1"># mtimecmp</span>
+<a href="#__codelineno-15-2" id="__codelineno-15-2" name="__codelineno-15-2"></a>p/x<span class="w"> </span><span class="o">{</span>unsigned<span class="w"> </span>long<span class="w"> </span>long<span class="o">}</span>0x200bff8<span class="w"> </span><span class="c1"># mtime</span>
+</code></pre></div>
+<p><span>Spike<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>都是同样的地址（<span>spike<span class="heti-spacing"> </span></span>相关代码同样可以在<span class="heti-skip"><span class="heti-spacing"> </span>riscv/clint.cc<span class="heti-spacing"> </span></span>中找到，也就是<span class="heti-skip"><span class="heti-spacing"> </span>load<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>store<span class="heti-spacing"> </span></span>两个函数<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<p>但是有些情况下即使设置了<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>也不会发现<span class="heti-skip"><span class="heti-spacing"> </span>0x2004000<span class="heti-spacing"> </span></span>地址上有变化（比如较新的<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>跑最新的<span><span class="heti-spacing"> </span>OpenSBI</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。我们可以通过<span class="heti-skip"><span class="heti-spacing"> </span>sbi<span class="heti-spacing"> </span></span>来调查这个问题，时钟中断的设置是通过调用<span class="heti-skip"><span class="heti-spacing"> </span>sbi_set_timer<span class="heti-spacing"> </span></span>完成的，通过翻<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>源码可以找到这个<span class="heti-skip"><span class="heti-spacing"> </span>set_timer<span class="heti-spacing"> </span></span>的实际处理函数在<span class="heti-skip"><span class="heti-spacing"> </span>lib/sbi/sbi_timer.c<span class="heti-spacing"> </span></span>里：</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">(opensbi) lib/sbi/sbi_timer.c</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-16-132">132</a></span>
+<span class="normal"><a href="#__codelineno-16-133">133</a></span>
+<span class="normal"><a href="#__codelineno-16-134">134</a></span>
+<span class="normal"><a href="#__codelineno-16-135">135</a></span>
+<span class="normal"><a href="#__codelineno-16-136">136</a></span>
+<span class="normal"><a href="#__codelineno-16-137">137</a></span>
+<span class="normal"><a href="#__codelineno-16-138">138</a></span>
+<span class="normal"><a href="#__codelineno-16-139">139</a></span>
+<span class="normal"><a href="#__codelineno-16-140">140</a></span>
+<span class="normal"><a href="#__codelineno-16-141">141</a></span>
+<span class="normal"><a href="#__codelineno-16-142">142</a></span>
+<span class="normal"><a href="#__codelineno-16-143">143</a></span>
+<span class="normal"><a href="#__codelineno-16-144">144</a></span>
+<span class="normal"><a href="#__codelineno-16-145">145</a></span>
+<span class="normal"><a href="#__codelineno-16-146">146</a></span>
+<span class="normal"><a href="#__codelineno-16-147">147</a></span>
+<span class="normal"><a href="#__codelineno-16-148">148</a></span>
+<span class="normal"><a href="#__codelineno-16-149">149</a></span>
+<span class="normal"><a href="#__codelineno-16-150">150</a></span>
+<span class="normal"><a href="#__codelineno-16-151">151</a></span>
+<span class="normal"><a href="#__codelineno-16-152">152</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-16-132" name="__codelineno-16-132"></a><span class="kt">void</span><span class="w"> </span><span class="nf">sbi_timer_event_start</span><span class="p">(</span><span class="n">u64</span><span class="w"> </span><span class="n">next_event</span><span class="p">)</span>
+<a id="__codelineno-16-133" name="__codelineno-16-133"></a><span class="p">{</span>
+<a id="__codelineno-16-134" name="__codelineno-16-134"></a><span class="w">    </span><span class="n">sbi_pmu_ctr_incr_fw</span><span class="p">(</span><span class="n">SBI_PMU_FW_SET_TIMER</span><span class="p">);</span>
+<a id="__codelineno-16-135" name="__codelineno-16-135"></a>
+<a id="__codelineno-16-136" name="__codelineno-16-136"></a><span class="w">    </span><span class="cm">/**</span>
+<a id="__codelineno-16-137" name="__codelineno-16-137"></a><span class="cm">     * Update the stimecmp directly if available. This allows</span>
+<a id="__codelineno-16-138" name="__codelineno-16-138"></a><span class="cm">     * the older software to leverage sstc extension on newer hardware.</span>
+<a id="__codelineno-16-139" name="__codelineno-16-139"></a><span class="cm">     */</span>
+<a id="__codelineno-16-140" name="__codelineno-16-140"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">sbi_hart_has_extension</span><span class="p">(</span><span class="n">sbi_scratch_thishart_ptr</span><span class="p">(),</span><span class="w"> </span><span class="n">SBI_HART_EXT_SSTC</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-141" name="__codelineno-16-141"></a><span class="cp">#if __riscv_xlen == 32</span>
+<a id="__codelineno-16-142" name="__codelineno-16-142"></a><span class="w">        </span><span class="n">csr_write</span><span class="p">(</span><span class="n">CSR_STIMECMP</span><span class="p">,</span><span class="w"> </span><span class="n">next_event</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="mh">0xFFFFFFFF</span><span class="p">);</span>
+<a id="__codelineno-16-143" name="__codelineno-16-143"></a><span class="w">        </span><span class="n">csr_write</span><span class="p">(</span><span class="n">CSR_STIMECMPH</span><span class="p">,</span><span class="w"> </span><span class="n">next_event</span><span class="w"> </span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="mi">32</span><span class="p">);</span>
+<a id="__codelineno-16-144" name="__codelineno-16-144"></a><span class="cp">#else</span>
+<a id="__codelineno-16-145" name="__codelineno-16-145"></a><span class="w">        </span><span class="n">csr_write</span><span class="p">(</span><span class="n">CSR_STIMECMP</span><span class="p">,</span><span class="w"> </span><span class="n">next_event</span><span class="p">);</span>
+<a id="__codelineno-16-146" name="__codelineno-16-146"></a><span class="cp">#endif</span>
+<a id="__codelineno-16-147" name="__codelineno-16-147"></a><span class="w">    </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">timer_dev</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="n">timer_dev</span><span class="o">-&gt;</span><span class="n">timer_event_start</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-16-148" name="__codelineno-16-148"></a><span class="w">        </span><span class="n">timer_dev</span><span class="o">-&gt;</span><span class="n">timer_event_start</span><span class="p">(</span><span class="n">next_event</span><span class="p">);</span>
+<a id="__codelineno-16-149" name="__codelineno-16-149"></a><span class="w">        </span><span class="n">csr_clear</span><span class="p">(</span><span class="n">CSR_MIP</span><span class="p">,</span><span class="w"> </span><span class="n">MIP_STIP</span><span class="p">);</span>
+<a id="__codelineno-16-150" name="__codelineno-16-150"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-16-151" name="__codelineno-16-151"></a><span class="w">    </span><span class="n">csr_set</span><span class="p">(</span><span class="n">CSR_MIE</span><span class="p">,</span><span class="w"> </span><span class="n">MIP_MTIP</span><span class="p">);</span>
+<a id="__codelineno-16-152" name="__codelineno-16-152"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>可以看到这里有一个<span class="heti-skip"><span class="heti-spacing"> </span>if<span class="heti-spacing"> </span></span>逻辑，如果<span class="heti-skip"><span class="heti-spacing"> </span>sbi hart<span class="heti-spacing"> </span></span>有<span class="heti-skip"><span class="heti-spacing"> </span>sstc<span class="heti-spacing"> </span></span>扩展，则写入<span class="heti-skip"><span class="heti-spacing"> </span>stimecmp csr<span class="heti-spacing"> </span></span>寄存器结束，否则调用<span class="heti-skip"><span class="heti-spacing"> </span>timer_dev<span class="heti-spacing"> </span></span>的<span><span class="heti-spacing"> </span>timer_event_start</span>，而<span class="heti-skip"><span class="heti-spacing"> </span>qemu<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>都在使用的<span class="heti-skip"><span class="heti-spacing"> </span>aclint_mtimer<span class="heti-spacing"> </span></span>设备的<span class="heti-skip"><span class="heti-spacing"> </span>timer_event_start<span class="heti-spacing"> </span></span>就是在读取<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>的地址，所以这部分逻辑是设置<span class="heti-skip"><span class="heti-spacing"> </span>0x2004000<span class="heti-spacing"> </span></span>的值的。那么如果<span class="heti-skip"><span class="heti-spacing"> </span>0x2004000<span class="heti-spacing"> </span></span>一直是<span class="heti-skip"><span class="heti-spacing"> </span>-1<span class="heti-spacing"> </span></span>的话，就说明已经走了<span class="heti-skip"><span class="heti-spacing"> </span>sstc<span class="heti-spacing"> </span></span>扩展的<span class="heti-skip"><span class="heti-spacing"> </span>stimecmp<span class="heti-spacing"> </span></span>寄存器了。</p>
+<p><span>Sstc<span class="heti-spacing"> </span></span>扩展是为了解决每次设置时钟中断都需要进入<span class="heti-skip"><span class="heti-spacing"> </span>sbi<span class="heti-spacing"> </span></span>陷入<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>模式设置<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>的值导致效率下降的，这个扩展引入了<span class="heti-skip"><span class="heti-spacing"> </span>stimecmp csr<span class="heti-spacing"> </span></span>寄存器，同时规定只要<span class="heti-skip"><span class="heti-spacing"> </span>mtime &gt;= stimecmp<span class="heti-spacing"> </span></span>直接触发<span class="heti-skip"><span class="heti-spacing"> </span>S<span class="heti-spacing"> </span></span>模式时钟中断。这样就避免了从<span class="heti-skip"><span class="heti-spacing"> </span>memory mapping<span class="heti-spacing"> </span></span>设置<span class="heti-skip"><span class="heti-spacing"> </span>mtimecmp<span class="heti-spacing"> </span></span>再触发<span class="heti-skip"><span class="heti-spacing"> </span>M<span class="heti-spacing"> </span></span>态时钟中断后再通过<span class="heti-skip"><span class="heti-spacing"> </span>mideleg<span class="heti-spacing"> </span></span>转发到<span class="heti-skip"><span class="heti-spacing"> </span>S<span class="heti-spacing"> </span></span>模式的过程，提高了效率。是否启用了<span class="heti-skip"><span class="heti-spacing"> </span>sstc<span class="heti-spacing"> </span></span>可以看<span class="heti-skip"><span class="heti-spacing"> </span>OpenSBI<span class="heti-spacing"> </span></span>输出的<span><span class="heti-spacing"> </span>boot hart isa extensions</span>，如果里面有<span class="heti-skip"><span class="heti-spacing"> </span>sstc<span class="heti-spacing"> </span></span>就说明启用了。</p>
+<p>而<span class="heti-skip"><span class="heti-spacing"> </span>spike<span class="heti-spacing"> </span></span>默认是不开启<span class="heti-skip"><span class="heti-spacing"> </span>sstc<span class="heti-spacing"> </span></span>的，但是它也支持，在上面<span class="heti-skip"><span class="heti-spacing"> </span>clint.cc<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>114<span class="heti-spacing"> </span></span>行可以看到一个 <code>hart-&gt;state.time-&gt;sync(mtime)</code>，这个函数的内容如下：</p>
+<div class="highlight"><table class="highlighttable"><tr><th class="filename" colspan="2"><span class="filename">(spike) riscv/csrs.cc</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-17-1140">1140</a></span>
+<span class="normal"><a href="#__codelineno-17-1141">1141</a></span>
+<span class="normal"><a href="#__codelineno-17-1142">1142</a></span>
+<span class="normal"><a href="#__codelineno-17-1143">1143</a></span>
+<span class="normal"><a href="#__codelineno-17-1144">1144</a></span>
+<span class="normal"><a href="#__codelineno-17-1145">1145</a></span>
+<span class="normal"><a href="#__codelineno-17-1146">1146</a></span>
+<span class="normal"><a href="#__codelineno-17-1147">1147</a></span>
+<span class="normal"><a href="#__codelineno-17-1148">1148</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-17-1140" name="__codelineno-17-1140"></a><span class="kt">void</span><span class="w"> </span><span class="nf">time_counter_csr_t::sync</span><span class="p">(</span><span class="k">const</span><span class="w"> </span><span class="n">reg_t</span><span class="w"> </span><span class="n">val</span><span class="p">)</span><span class="w"> </span><span class="k">noexcept</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-1141" name="__codelineno-17-1141"></a><span class="w">  </span><span class="n">shadow_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">val</span><span class="p">;</span>
+<a id="__codelineno-17-1142" name="__codelineno-17-1142"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="n">proc</span><span class="o">-&gt;</span><span class="n">extension_enabled</span><span class="p">(</span><span class="n">EXT_SSTC</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-17-1143" name="__codelineno-17-1143"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">reg_t</span><span class="w"> </span><span class="n">mip_val</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="n">shadow_val</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">state</span><span class="o">-&gt;</span><span class="n">stimecmp</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">MIP_STIP</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span>
+<a id="__codelineno-17-1144" name="__codelineno-17-1144"></a><span class="w">      </span><span class="p">(</span><span class="n">shadow_val</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="n">state</span><span class="o">-&gt;</span><span class="n">htimedelta</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">()</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="n">state</span><span class="o">-&gt;</span><span class="n">vstimecmp</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">()</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">MIP_VSTIP</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-17-1145" name="__codelineno-17-1145"></a><span class="w">    </span><span class="k">const</span><span class="w"> </span><span class="n">reg_t</span><span class="w"> </span><span class="n">mask</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">((</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">menvcfg</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">MENVCFG_STCE</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">MIP_STIP</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">)</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="p">((</span><span class="n">state</span><span class="o">-&gt;</span><span class="n">henvcfg</span><span class="o">-&gt;</span><span class="n">read</span><span class="p">()</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">HENVCFG_STCE</span><span class="p">)</span><span class="w"> </span><span class="o">?</span><span class="w"> </span><span class="n">MIP_VSTIP</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="mi">0</span><span class="p">);</span>
+<a id="__codelineno-17-1146" name="__codelineno-17-1146"></a><span class="w">    </span><span class="n">state</span><span class="o">-&gt;</span><span class="n">mip</span><span class="o">-&gt;</span><span class="n">backdoor_write_with_mask</span><span class="p">(</span><span class="n">mask</span><span class="p">,</span><span class="w"> </span><span class="n">mip_val</span><span class="p">);</span>
+<a id="__codelineno-17-1147" name="__codelineno-17-1147"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-17-1148" name="__codelineno-17-1148"></a><span class="p">}</span>
+</code></pre></div></td></tr></table></div>
+<p>所以这个<span class="heti-skip"><span class="heti-spacing"> </span>sync<span class="heti-spacing"> </span></span>实际上就是在启用<span class="heti-skip"><span class="heti-spacing"> </span>sstc<span class="heti-spacing"> </span></span>的时候检测是否根据<span class="heti-skip"><span class="heti-spacing"> </span>stimecmp<span class="heti-spacing"> </span></span>触发时钟中断。<span>spike<span class="heti-spacing"> </span></span>上启用<span class="heti-skip"><span class="heti-spacing"> </span>sstc<span class="heti-spacing"> </span></span>需要自己设定<span><span class="heti-spacing"> </span>isa</span>，即加一个 <code>--isa=RV64gc_zicntr_sstc</code>，然后在<span class="heti-skip"><span class="heti-spacing"> </span>GDB<span class="heti-spacing"> </span></span>调试的时候 <code>i r stimecmp</code> 就能查看到<span class="heti-skip"><span class="heti-spacing"> </span>stimecmp<span class="heti-spacing"> </span></span>的值了（<span>qemu<span class="heti-spacing"> </span></span>甚至不让看<span><span class="heti-spacing"> </span>stimecmp</span><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。</p>
+<h2 id="_3">参考<a class="headerlink" href="#_3" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<ul>
+<li><a href="https://openocd.org/doc/html/">https://openocd.org/doc/html/</a></li>
+<li><a href="https://tinylab.org/riscv-semihosting/">https://tinylab.org/riscv-semihosting/</a></li>
+<li><a href="https://blog.csdn.net/luolaihua2018/article/details/127344891">https://blog.csdn.net/luolaihua2018/article/details/127344891</a></li>
+<li><a href="https://zhuanlan.zhihu.com/p/506062424">https://zhuanlan.zhihu.com/p/506062424</a></li>
+</ul>
+<hr/>
+<div class="md-source-file">
+<small>
+    
+      最后更新:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年9月19日 16:25:14</span>
+<br/>
+        创建日期:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年9月19日 16:25:14</span>
+</small>
+</div>
+<script async="" crossorigin="anonymous" data-category="General" data-category-id="DIC_kwDOGnfbUc4CPrf4" data-emit-metadata="0" data-input-position="bottom" data-lang="zh-CN" data-mapping="pathname" data-reactions-enabled="1" data-repo="TonyCrane/note" data-repo-id="R_kgDOGnfbUQ" data-theme="light" src="https://giscus.app/client.js">
+</script>
+<script>
+                      if (document.querySelector("body").getAttribute("data-md-color-scheme") === "slate") {
+                        var giscus = document.querySelector("script[src*=giscus]")
+                        giscus.setAttribute("data-theme", "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css") 
+                      }
+                    </script>
+</article>
+</div>
+</div>
+<a class="md-top md-icon" data-md-component="top" data-md-state="hidden" href="#">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path></svg>
+              回到页面顶部
+            </a>
+</main>
+<footer class="md-footer">
+<nav aria-label="页脚" class="md-footer__inner md-grid">
+<a aria-label="上一页: RISC-V 页表相关" class="md-footer__link md-footer__link--prev" href="../paging/" rel="prev">
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"></path></svg>
+</div>
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                上一页
+              </span>
+              RISC-V 页表相关
+            </div>
+</div>
+</a>
+<a aria-label="下一页: 编程语言原理" class="md-footer__link md-footer__link--next" href="../../ppl/" rel="next">
+<div class="md-footer__title">
+<div class="md-ellipsis">
+<span class="md-footer__direction">
+                下一页
+              </span>
+              编程语言原理
+            </div>
+</div>
+<div class="md-footer__button md-icon">
+<svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"></path></svg>
+</div>
+</a>
+</nav>
+<div class="md-footer-meta md-typeset">
+<div class="md-footer-meta__inner md-grid">
+<div class="md-copyright">
+<div class="md-copyright__highlight">
+      Copyright © 2022-2024 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
+</div>
+  
+  
+    Powered by
+    <a href="https://www.mkdocs.org/" rel="noopener" target="_blank">
+      MkDocs
+    </a>
+    with theme
+    <a href="https://squidfunk.github.io/mkdocs-material/" rel="noopener" target="_blank">
+      Material
+    </a>
+    modified by
+    <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">
+      TonyCrane
+    </a>
+</div>
+<div class="md-social">
+<a class="md-social__link" href="https://github.com/TonyCrane/" rel="noopener" target="_blank" title="github.com">
+<svg viewbox="0 0 496 512" xmlns="http://www.w3.org/2000/svg"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg>
+</a>
+<a class="md-social__link" href="https://blog.tonycrane.cc/" rel="noopener" target="_blank" title="blog.tonycrane.cc">
+<svg viewbox="0 0 448 512" xmlns="http://www.w3.org/2000/svg"><path d="M128.081 415.959c0 35.369-28.672 64.041-64.041 64.041S0 451.328 0 415.959s28.672-64.041 64.041-64.041 64.04 28.673 64.04 64.041zm175.66 47.25c-8.354-154.6-132.185-278.587-286.95-286.95C7.656 175.765 0 183.105 0 192.253v48.069c0 8.415 6.49 15.472 14.887 16.018 111.832 7.284 201.473 96.702 208.772 208.772.547 8.397 7.604 14.887 16.018 14.887h48.069c9.149.001 16.489-7.655 15.995-16.79zm144.249.288C439.596 229.677 251.465 40.445 16.503 32.01 7.473 31.686 0 38.981 0 48.016v48.068c0 8.625 6.835 15.645 15.453 15.999 191.179 7.839 344.627 161.316 352.465 352.465.353 8.618 7.373 15.453 15.999 15.453h48.068c9.034-.001 16.329-7.474 16.005-16.504z"></path></svg>
+</a>
+<a class="md-social__link" href="https://tonycrane.cc/" rel="noopener" target="_blank" title="tonycrane.cc">
+<svg viewbox="0 0 576 512" xmlns="http://www.w3.org/2000/svg"><path d="M280.37 148.26 96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47 488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"></path></svg>
+</a>
+</div>
+</div>
+</div>
+</footer>
+</div>
+<div class="md-dialog" data-md-component="dialog">
+<div class="md-dialog__inner md-typeset"></div>
+</div>
+<script id="__config" type="application/json">{"base": "../../../..", "features": ["content.code.annotate", "navigation.tracking", "navigation.tabs", "navigation.indexes", "navigation.top"], "search": "../../../../assets/javascripts/workers/search.361d90f1.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.config.lang": "ja", "search.config.pipeline": "trimmer, stemmer", "search.config.separator": "[\\uff0c\\u3002]+", "search.placeholder": "\u641c\u7d22", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version.title": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+<script src="../../../../assets/javascripts/bundle.289a2a4b.min.js"></script>
+<script src="https://cdn.tonycrane.cc/utils/katex.min.js"></script>
+<script src="../../../../js/katex.js"></script>
+<script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
