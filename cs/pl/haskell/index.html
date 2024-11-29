@@ -2401,13 +2401,50 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--nested">
 <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_2" id="__nav_4_2" type="checkbox"/>
 <div class="md-nav__link md-nav__link--index">
-<a href="../../../web/protocol/">网络协议</a>
+<a href="../../../web/devops/">网络运维</a>
 <label for="__nav_4_2">
 <span class="md-nav__icon md-icon"></span>
 </label>
 </div>
-<nav aria-label="网络协议" class="md-nav" data-md-level="2">
+<nav aria-label="网络运维" class="md-nav" data-md-level="2">
 <label class="md-nav__title" for="__nav_4_2">
+<span class="md-nav__icon md-icon"></span>
+          网络运维
+        </label>
+<ul class="md-nav__list" data-md-scrollfix="">
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../web/devops/basic/">
+        基本配置与工具
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../web/devops/clash/">
+        Clash 代理配置
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../web/devops/tunnel/">
+        内网穿透与反向代理
+      </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="../../../web/devops/server/">
+        Web 服务器相关
+      </a>
+</li>
+</ul>
+</nav>
+</li>
+<li class="md-nav__item md-nav__item--nested">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
+<div class="md-nav__link md-nav__link--index">
+<a href="../../../web/protocol/">网络协议</a>
+<label for="__nav_4_3">
+<span class="md-nav__icon md-icon"></span>
+</label>
+</div>
+<nav aria-label="网络协议" class="md-nav" data-md-level="2">
+<label class="md-nav__title" for="__nav_4_3">
 <span class="md-nav__icon md-icon"></span>
           网络协议
         </label>
@@ -2421,13 +2458,13 @@ var _hmt = _hmt || [];
 </nav>
 </li>
 <li class="md-nav__item md-nav__item--nested">
-<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_3" id="__nav_4_3" type="checkbox"/>
-<label class="md-nav__link" for="__nav_4_3">
+<input class="md-nav__toggle md-toggle" data-md-toggle="__nav_4_4" id="__nav_4_4" type="checkbox"/>
+<label class="md-nav__link" for="__nav_4_4">
           排版写作规范
           <span class="md-nav__icon md-icon"></span>
 </label>
 <nav aria-label="排版写作规范" class="md-nav" data-md-level="2">
-<label class="md-nav__title" for="__nav_4_3">
+<label class="md-nav__title" for="__nav_4_4">
 <span class="md-nav__icon md-icon"></span>
           排版写作规范
         </label>
@@ -5345,7 +5382,7 @@ getLine 的类型是：
 </code></pre></div>
 所以可以使用类似 pure f &lt;<em>&gt; x &lt;</em><span>&gt; y &lt;*&gt; ...<span class="heti-spacing"> </span></span>来将一个普通多元函数<span class="heti-skip"><span class="heti-spacing"> </span>f<span class="heti-spacing"> </span></span>应用在多个函子上。
 <p>而且<span><span class="heti-spacing"> </span>pure f &lt;</span><em><span>&gt; x<span class="heti-spacing"> </span></span>实际上先将普通函数<span class="heti-skip"><span class="heti-spacing"> </span>f<span class="heti-spacing"> </span></span>放在上下文中，然后执行<span><span class="heti-spacing"> </span>&lt;</span></em><span>&gt;<span class="heti-spacing"> </span></span>时再将其提取出来执行<span><span class="heti-spacing"> </span>fmap</span>，所以它就相当于将普通函数应用在函子<span class="heti-skip"><span class="heti-spacing"> </span>x<span class="heti-spacing"> </span></span>上，即<span><span class="heti-spacing"> </span>fmap f x</span>，也可以写成<span><span class="heti-spacing"> </span>f &lt;$&gt; x</span>。所以常用的写法就是：</p>
-<p style="text-align: center;">f  x  y  ...</p>
+<p style="text-align: center;">f &lt;$&gt; x &lt;*&gt; y &lt;*&gt; ...</p>
 <h4 id="_13">[]<a class="headerlink" href="#_13" title="Permanent link">¶</a></h4>
 <p>列表也是一个应用函子：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-116-1" id="__codelineno-116-1" name="__codelineno-116-1"></a><span class="kr">instance</span><span class="w"> </span><span class="kt">Applicative</span><span class="w"> </span><span class="kt">[]</span><span class="w"> </span><span class="kr">where</span>
@@ -5376,9 +5413,9 @@ getLine 的类型是：
 </code></pre></div>
 <h4 id="-r_1">(-&gt;) r<a class="headerlink" href="#-r_1" title="Permanent link">¶</a></h4>
 <p><span>(-&gt;) r<span class="heti-spacing"> </span></span>同样也是一个应用函子，和函子的分析一样，先来分析它的<span class="heti-skip"><span class="heti-spacing"> </span>&lt;*&gt;<span class="heti-spacing"> </span></span>函数的类型签名：</p>
-<p style="text-align: center;"> :: f (a -&gt; b) -&gt; f a -&gt; f b</p>
+<p style="text-align: center;">&lt;*&gt; :: f (a -&gt; b) -&gt; f a -&gt; f b</p>
 <p>其中<span class="heti-skip"><span class="heti-spacing"> </span>f<span class="heti-spacing"> </span></span>为<span><span class="heti-spacing"> </span>(-&gt;) r</span>，将其代入并替换为中缀：</p>
-<p style="text-align: center;"> :: (r -&gt; a -&gt; b) -&gt; (r -&gt; a) -&gt; (r -&gt; b)</p>
+<p style="text-align: center;">&lt;*&gt; :: (r -&gt; a -&gt; b) -&gt; (r -&gt; a) -&gt; (r -&gt; b)</p>
 <p>可以看出它接收两个函数<span><span class="heti-spacing"> </span>f :: r -&gt; a -&gt; b</span>、g :: r -&gt; a，返回另一个函数<span><span class="heti-spacing"> </span>h :: (r -&gt; b)</span></p>
 <p>那么返回的函数的输入为<span><span class="heti-spacing"> </span>r</span>，输出为<span><span class="heti-spacing"> </span>b</span>，所以先对输入应用函数<span class="heti-skip"><span class="heti-spacing"> </span>g<span class="heti-spacing"> </span></span>得到<span><span class="heti-spacing"> </span>a</span>，然后在对<span class="heti-skip"><span class="heti-spacing"> </span>r<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>a<span class="heti-spacing"> </span></span>应用<span class="heti-skip"><span class="heti-spacing"> </span>f<span class="heti-spacing"> </span></span>得到<span><span class="heti-spacing"> </span>b</span>，所以推测<span class="heti-skip"><span class="heti-spacing"> </span>&lt;*&gt;<span class="heti-spacing"> </span></span>函数的操作就是：</p>
 <p style="text-align: center;">\x -&gt; f x (g x)</p>
@@ -5445,9 +5482,9 @@ t_1\to t_2\to\cdots\to t_n\to t
 f\ \ (t_2\to t_3\to\cdots\to t_n\to t)
 \]</div>
 <p>但是<span class="heti-skip"><span class="heti-spacing"> </span>fmap<span class="heti-spacing"> </span></span>并不能将上下文中的函数应用在上下文中的参数上，于是应用函子的<span class="heti-skip"><span class="heti-spacing"> </span>&lt;*&gt;<span class="heti-spacing"> </span></span>函数提供了这个方法，所以计算<span><span class="heti-spacing"> </span><span class="arithmatex">\([[\ g\ x_1\ x_2\ \cdots\ x_n\ ]]\)</span></span>，只需要：</p>
-<p style="text-align: center;">g  x1  x2  ...  xn</p>
+<p style="text-align: center;">g &lt;$&gt; x1 &lt;*&gt; x2 &lt;*&gt; ... &lt;*&gt; xn</p>
 <p>而<span class="heti-skip"><span class="heti-spacing"> </span>pure<span class="heti-spacing"> </span></span>函数的作用就是将一个不在上下文中的值（函数或参数）提升到上下文中，但不进行其他操作。比如参数<span class="heti-skip"><span class="heti-spacing"> </span><span class="arithmatex">\(x_2\)</span><span class="heti-spacing"> </span></span>如果不在上下文中，需要用<span class="heti-skip"><span class="heti-spacing"> </span>pure<span class="heti-spacing"> </span></span>提升到上下文中才能按上面计算：</p>
-<p style="text-align: center;">g  x1  pure x2  ...  xn</p>
+<p style="text-align: center;">g &lt;$&gt; x1 &lt;*&gt; pure x2 &lt;*&gt; ... &lt;*&gt; xn</p>
 <h3 id="_14">常用函数<a class="headerlink" href="#_14" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h3>
 <h4 id="lifta-lifta2-lifta3">liftA &amp; liftA2 &amp; liftA3<a class="headerlink" href="#lifta-lifta2-lifta3" title="Permanent link">¶</a></h4>
 <p style="text-align: center;">liftA :: Applicative f =&gt; (a -&gt; b) -&gt; f a -&gt; f b</p>
@@ -5477,7 +5514,7 @@ f\ \ (t_2\to t_3\to\cdots\to t_n\to t)
 <a href="#__codelineno-127-16" id="__codelineno-127-16" name="__codelineno-127-16"></a><span class="kt">[]</span>
 </code></pre></div>
 <h4 id="_16">&lt;**&gt;<a class="headerlink" href="#_16" title="Permanent link">¶</a></h4>
-<p style="text-align: center;">() :: Applicative f =&gt; f a -&gt; f (a -&gt; b) -&gt; f b</p>
+<p style="text-align: center;">(&lt;**&gt;) :: Applicative f =&gt; f a -&gt; f (a -&gt; b) -&gt; f b</p>
 <p>接收的参数是<span class="heti-skip"><span class="heti-spacing"> </span>&lt;*&gt;<span class="heti-spacing"> </span></span>反转过来的，即先接收一个参数函子，然后接收一个函数函子，在将其应用返回。但是和<span class="heti-skip"><span class="heti-spacing"> </span>flip(&lt;*&gt;)<span class="heti-spacing"> </span></span>不同，它先取参数函子的每个参数，然后再取函数函子中的函数逐个应用：
 </p><div class="highlight"><pre><span></span><code><a href="#__codelineno-128-1" id="__codelineno-128-1" name="__codelineno-128-1"></a><span class="nf">ghci</span><span class="o">&gt;</span><span class="w"> </span><span class="p">[(</span><span class="o">+</span><span class="mi">1</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="mi">2</span><span class="p">),</span><span class="w"> </span><span class="p">(</span><span class="o">+</span><span class="mi">3</span><span class="p">)]</span><span class="w"> </span><span class="o">&lt;*&gt;</span><span class="w"> </span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">]</span>
 <a href="#__codelineno-128-2" id="__codelineno-128-2" name="__codelineno-128-2"></a><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">5</span><span class="p">]</span>
@@ -5604,7 +5641,7 @@ f\ \ (t_2\to t_3\to\cdots\to t_n\to t)
 它可以转化成：
 <p style="text-align: center;">a &gt;&gt;= \x -&gt; b &gt;&gt;= \y -&gt; c &gt;&gt;= \z -&gt; return (f x y z)</p>
 <p>但是经过观察可以发现，整个语句实际上将函数<span class="heti-skip"><span class="heti-spacing"> </span>f<span class="heti-spacing"> </span></span>应用在了三个上下文中的值上，所以仅用<span class="heti-skip"><span class="heti-spacing"> </span>Applicative<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>&lt;$&gt;<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>&lt;*&gt;<span class="heti-spacing"> </span></span>完全可以实现：</p>
-<p style="text-align: center;">f  a  b  c</p>
+<p style="text-align: center;">f &lt;$&gt; a &lt;*&gt; b &lt;*&gt; c</p>
 <p>而且在运行的时候<span class="heti-skip"><span class="heti-spacing"> </span>Applicative<span class="heti-spacing"> </span></span>的效率会比<span class="heti-skip"><span class="heti-spacing"> </span>Monad<span class="heti-spacing"> </span></span>高，所以<span class="heti-skip"><span class="heti-spacing"> </span>Haskell<span class="heti-spacing"> </span></span>会将<span class="heti-skip"><span class="heti-spacing"> </span>do<span class="heti-spacing"> </span></span>语句尽可能优先转换为<span class="heti-skip"><span class="heti-spacing"> </span>Applicative<span class="heti-spacing"> </span></span>的表示方法然后再计算</p>
 <h3 id="monad-laws">Monad Laws<a class="headerlink" href="#monad-laws" title="Permanent link">¶</a></h3>
 <ol>
