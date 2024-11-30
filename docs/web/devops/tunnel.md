@@ -156,4 +156,4 @@ services:
     }
     ```
 
-这两个机器上运行起 v2ray 后，就可以连接 public 提供的 vmess 服务了，订阅链接可以写 `vmess://<base64>?remarks=ZJU%20...`，其中 base64 是 URL safe base64 编码的 `auto:<uuid_2>@<ip or domain>:<port_2>`，这样就可以在 clash 里使用了，剩余步骤见 [Clash 代理配置](clash.md)。
+这两个机器上运行起 v2ray 后，就可以连接 public 提供的 vmess 服务了，订阅链接可以写 `vmess://<base64>?remarks=ZJU%20...`，其中 base64 是 URL safe base64 编码的 `auto:<uuid_2>@<ip or domain>:<port_2>`，这样就可以在 clash 里使用了，剩余步骤见 [Clash 代理配置](clash.md)。（注意在公网服务器上不能开 TUN 模式）

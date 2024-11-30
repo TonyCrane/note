@@ -160,7 +160,6 @@ TUN 模式在配置一页里面直接点击“开启 TUN 转发”就好了，�
     }
 
     handle_path /api* {
-        rewrite /api{uri} /{uri}
         reverse_proxy localhost:<port>
     }
 
