@@ -36,7 +36,7 @@ services:
 ## ZJU aTrust
 
 !!! info "about aTrust"
-    自 25 年 5 月开始，原来的 RVPN (ZJU Connect) 仅用了大量端口，推荐的 VPN 服务更新到了深信服的另一个软件 aTrust 上，地址为 <https://vpn.zju.edu.cn>。连接后会修改 route 表，对需要内网的地址转发到 atrust 的 utun 接口上。
+    自 25 年 5 月开始，原来的 RVPN (ZJU Connect) 禁用了大量端口，推荐的 VPN 服务更新到了深信服的另一个软件 aTrust 上，地址为 <https://vpn.zju.edu.cn>。连接后会修改 route 表，对需要内网的地址转发到 atrust 的 utun 接口上。
 
     但 atrust 毕竟还是深信服的产品，肯定还是不会想让它跑在本机上，这里是用 docker 部署 atrust socks5 代理的方法。
 
