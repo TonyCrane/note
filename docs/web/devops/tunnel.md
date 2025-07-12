@@ -201,6 +201,73 @@ tailscale 可以实现异地组网，在内网机器上和外部机器上都安�
 
 这样来直接访问内网上自己的服务还是很方便的，不过缺点是手机端 tailscale 会占掉 VPN 连接，这样同时就不能再开其他 vpn 了。
 
+接下来是关于使用 tailscale 实现内网访问的几种方法。
+
+### V2Ray 正向代理
+
+既然通过 tailscale 可以异地组网直接连接到内网服务器上，那么就可以通过 v2ray 的正向代理来通过内网服务器代理访问其他内网地址。利用 docker 部署 v2ray：
+
+```yaml
+services:
+  v2ray:
+    image: v2fly/v2fly-core:latest
+    container_name: v2fly
+    ports:
+      - xxx:xxx # inbound 端口需要填在这里暴露出来
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./v2ray.json:/etc/v2ray.json
+    command: ["run", "-config", "/etc/v2ray.json"]
+    restart: always
+```
+
+v2ray.json 的写法较简单：
+
+```json
+{
+    "inbounds": [{
+        "port": xxx,  // 需要暴露的端口
+        "protocol": "vmess",
+        "settings": {
+            "clients": [{
+                "id": "<uuid>",  // 随机生成的 uuid
+                "alterId": 0
+            }]
+        }
+    }],
+    "outbounds": [{
+        "protocol": "freedom"
+    }]
+}
+```
+
+开启 docker 后就可以通过 tailscale 给的内网服务器的 ip（100.64/9 网段）以及端口来使用代理了，订阅链接还是 `vmess://<base64>?remarks=ZJU%20...` 的格式，其中 base64 是 URL safe base64 编码的 `auto:<uuid>@<tailscale ip>:<port>`。
+
+不过缺点是 clash 开了 TUN 之后这个代理就连不上了，即使 TUN 绕过了 tailscale 的网段还是不行，可能是 clash 的 TUN 和 tailscale 本身冲突了导致的，还没仔细研究过。
+
+### tailscale socks5 代理
+
+通过 tailscale 也可以使用内网机器作为代理访问内网，一种方法为[使用 V2Ray 正向代理](#v2ray_1)，另一种方法是直接使用 tailscale 提供的代理。在内网 Linux 机器上需要修改 tailscaled 的配置文件 /etc/default/tailscaled，添加 FLAGS：
+
+```text
+PORT="41641"
+
+FLAGS="--socks5-server=0.0.0.0:<port> --outbound-http-proxy-listen=0.0.0.0:<port>"
+```
+
+然后 systemctl restart tailscaled 重启服务即可，这样在其他连接了 tailscale 的设备上就可以使用 `tg://socks?server=<tailscale ip>&port=<port>&remarks=ZJU TS` 的代理了。同样 clash 开了 TUN 也不能用了。
+
+### tailscale subnet
+
+tailscale 还可以设置子网路由，允许内网机器作为路由器来访问其他内网地址。在内网机器上需要开启子网路由：
+
+```bash
+sudo tailscale set --advertise-routes=<子网> --accept-dns=false
+```
+
+之后在 tailscale admin 页面上手动批准这个路由，在其他设备上开启 use subnet 就可以直接访问这个子网了，tailscale 会自动添加该子网的路由表。
+
 ## V2Ray 反向代理
 
 如果有一台自己的公网服务器的话，就可以通过 v2ray 的反向代理来搭建一个内网穿透的 vmess 服务节点，然后就可以在任何设备的 clash 里使用了。主要参考[新 V2Ray 白话文指南里的反向代理部分](https://guide.v2fly.org/app/reverse2.html)。
@@ -319,49 +386,3 @@ services:
     ```
 
 这两个机器上运行起 v2ray 后，就可以连接 public 提供的 vmess 服务了，订阅链接可以写 `vmess://<base64>?remarks=ZJU%20...`，其中 base64 是 URL safe base64 编码的 `auto:<uuid_2>@<ip or domain>:<port_2>`，这样就可以在 clash 里使用了，剩余步骤见 [Clash 代理配置](clash.md)。（注意在公网服务器上不能开 TUN 模式）
-
-## V2Ray 正向代理
-
-配合 tailscale 实现的内网代理，适用于仅有内网服务器没有公网 ip 的情况。既然通过 tailscale 可以异地组网直接连接到内网服务器上，那么就可以通过 v2ray 的正向代理来通过内网服务器代理访问其他内网地址。
-
-同样还是利用 docker 部署 v2ray：
-
-```yaml
-```yaml
-services:
-  v2ray:
-    image: v2fly/v2fly-core:latest
-    container_name: v2fly
-    ports:
-      - xxx:xxx # inbound 端口需要填在这里暴露出来
-    environment:
-      - TZ=Asia/Shanghai
-    volumes:
-      - ./v2ray.json:/etc/v2ray.json
-    command: ["run", "-config", "/etc/v2ray.json"]
-    restart: always
-```
-
-v2ray.json 的写法更简单：
-
-```json
-{
-    "inbounds": [{
-        "port": xxx,  // 需要暴露的端口
-        "protocol": "vmess",
-        "settings": {
-            "clients": [{
-                "id": "<uuid>",  // 随机生成的 uuid
-                "alterId": 0
-            }]
-        }
-    }],
-    "outbounds": [{
-        "protocol": "freedom"
-    }]
-}
-```
-
-开启 docker 后就可以通过 tailscale 给的内网服务器的 ip（100.64/9 网段）以及端口来使用代理了，订阅链接还是 `vmess://<base64>?remarks=ZJU%20...` 的格式，其中 base64 是 URL safe base64 编码的 `auto:<uuid>@<tailscale ip>:<port>`。
-
-不过缺点是 clash 开了 TUN 之后这个代理就连不上了，即使 TUN 绕过了 tailscale 的网段还是不行，可能是 clash 的 TUN 和 tailscale 本身冲突了导致的，还没仔细研究过。
