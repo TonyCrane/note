@@ -7,7 +7,7 @@
 <link href="https://note.tonycrane.cc/web/devops/tunnel/" rel="canonical"/>
 <link href="../../../assets/images/favicon.png" rel="icon"/>
 <meta content="mkdocs-1.5.3, mkdocs-material-8.1.4" name="generator"/>
-<title>内网穿透与反向代理 - 鹤翔万里的笔记本</title>
+<title>内网穿透与代理 - 鹤翔万里的笔记本</title>
 <link href="../../../assets/stylesheets/main.bb3983ee.min.css" rel="stylesheet"/>
 <link href="../../../assets/stylesheets/palette.e6a45f82.min.css" rel="stylesheet"/>
 <link href="../../../css/svg_extra.css" rel="stylesheet"/>
@@ -78,7 +78,7 @@ var _hmt = _hmt || [];
 <div class="md-header__topic" data-md-component="header-topic">
 <span class="md-ellipsis">
             
-              内网穿透与反向代理
+              内网穿透与代理
             
           </span>
 </div>
@@ -1306,11 +1306,11 @@ var _hmt = _hmt || [];
 <li class="md-nav__item md-nav__item--active">
 <input class="md-nav__toggle md-toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
 <label class="md-nav__link md-nav__link--active" for="__toc">
-          内网穿透与反向代理
+          内网穿透与代理
           <span class="md-nav__icon md-icon"></span>
 </label>
 <a class="md-nav__link md-nav__link--active" href="./">
-        内网穿透与反向代理
+        内网穿透与代理
       </a>
 <nav aria-label="目录" class="md-nav md-nav--secondary">
 <label class="md-nav__title" for="__toc">
@@ -1324,6 +1324,11 @@ var _hmt = _hmt || [];
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#zju-atrust">
+    ZJU aTrust
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#tailscale">
     tailscale
   </a>
@@ -1331,6 +1336,11 @@ var _hmt = _hmt || [];
 <li class="md-nav__item">
 <a class="md-nav__link" href="#v2ray">
     V2Ray 反向代理
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#v2ray_1">
+    V2Ray 正向代理
   </a>
 </li>
 </ul>
@@ -1976,6 +1986,11 @@ var _hmt = _hmt || [];
   </a>
 </li>
 <li class="md-nav__item">
+<a class="md-nav__link" href="#zju-atrust">
+    ZJU aTrust
+  </a>
+</li>
+<li class="md-nav__item">
 <a class="md-nav__link" href="#tailscale">
     tailscale
   </a>
@@ -1983,6 +1998,11 @@ var _hmt = _hmt || [];
 <li class="md-nav__item">
 <a class="md-nav__link" href="#v2ray">
     V2Ray 反向代理
+  </a>
+</li>
+<li class="md-nav__item">
+<a class="md-nav__link" href="#v2ray_1">
+    V2Ray 正向代理
   </a>
 </li>
 </ul>
@@ -1997,9 +2017,9 @@ var _hmt = _hmt || [];
 <a class="md-content__button md-icon" href="https://github.com/TonyCrane/note/tree/master/docs/web/devops/tunnel.md" title="编辑此页">
 <svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"></path></svg>
 </a>
-<h1 id="_1">内网穿透与反向代理<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
+<h1 id="_1">内网穿透与代理<a class="headerlink" href="#_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h1>
 <div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>681<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>100<span class="heti-spacing"> </span></span>行代码 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11l-3.54-4.71z"></path></svg></span> <span>1<span class="heti-spacing"> </span></span>张图片 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>4<span class="heti-spacing"> </span></span>分钟</p>
+<p><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> 约<span class="heti-skip"><span class="heti-spacing"> </span>1786<span class="heti-spacing"> </span></span>个字 <span class="twemoji"><svg viewbox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>233<span class="heti-spacing"> </span></span>行代码 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11l-3.54-4.71z"></path></svg></span> <span>1<span class="heti-spacing"> </span></span>张图片 <span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> 预计阅读时间<span class="heti-skip"><span class="heti-spacing"> </span>9<span class="heti-spacing"> </span></span>分钟</p>
 </div>
 <div class="admonition abstract">
 <p class="admonition-title">Abstract</p>
@@ -2024,6 +2044,149 @@ var _hmt = _hmt || [];
 </code></pre></div>
 <p>其中<span class="heti-skip"><span class="heti-spacing"> </span>config.toml<span class="heti-spacing"> </span></span>根据<span class="heti-skip"><span class="heti-spacing"> </span>repo<span class="heti-spacing"> </span></span>里的<span class="heti-skip"><span class="heti-spacing"> </span>config.toml.example<span class="heti-spacing"> </span></span>修改即可。开启后配合<span class="heti-skip"><span class="heti-spacing"> </span>ZJU-Rule<span class="heti-spacing"> </span></span>使用可以直接在订阅链接的地方加上一条 <code>tg://socks?server=127.0.0.1&amp;port=1080&amp;remarks=ZJU RVPN</code>，详见<a href="../clash/"><span class="heti-skip"><span class="heti-spacing"> </span>Clash<span class="heti-spacing"> </span></span>代理配置</a>。</p>
 <p>不过因为它走的是<span><span class="heti-spacing"> </span>RVPN</span>，所以同一时刻只能有一个连接，不能在多个设备上同时使用。</p>
+<h2 id="zju-atrust">ZJU aTrust<a class="headerlink" href="#zju-atrust" title="Permanent link">¶</a></h2>
+<div class="admonition info">
+<p class="admonition-title">about aTrust</p>
+<p>自<span class="heti-skip"><span class="heti-spacing"> </span>25<span class="heti-spacing"> </span></span>年<span class="heti-skip"><span class="heti-spacing"> </span>5<span class="heti-spacing"> </span></span>月开始，原来的<span class="heti-skip"><span class="heti-spacing"> </span>RVPN (ZJU Connect)<span class="heti-spacing"> </span></span>仅用了大量端口，推荐的<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>服务更新到了深信服的另一个软件<span class="heti-skip"><span class="heti-spacing"> </span>aTrust<span class="heti-spacing"> </span></span>上，地址为<a href="https://vpn.zju.edu.cn"><span><span class="heti-spacing"> </span>https://vpn.zju.edu.cn</span></a>。连接后会修改<span class="heti-skip"><span class="heti-spacing"> </span>route<span class="heti-spacing"> </span></span>表，对需要内网的地址转发到<span class="heti-skip"><span class="heti-spacing"> </span>atrust<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>utun<span class="heti-spacing"> </span></span>接口上。</p>
+<p>但<span class="heti-skip"><span class="heti-spacing"> </span>atrust<span class="heti-spacing"> </span></span>毕竟还是深信服的产品，肯定还是不会想让它跑在本机上，这里是用<span class="heti-skip"><span class="heti-spacing"> </span>docker<span class="heti-spacing"> </span></span>部署<span class="heti-skip"><span class="heti-spacing"> </span>atrust socks5<span class="heti-spacing"> </span></span>代理的方法。</p>
+</div>
+<p><a href="https://github.com/docker-easyconnect/docker-easyconnect/"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> docker-easyconnect/docker-easyconnect</a> 提供了一个<span class="heti-skip"><span class="heti-spacing"> </span>aTrust<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>docker<span class="heti-spacing"> </span></span>镜像，可以提供<span class="heti-skip"><span class="heti-spacing"> </span>socks5<span class="heti-spacing"> </span></span>代理接口。但其实现方式是直接开图形界面的<span class="heti-skip"><span class="heti-spacing"> </span>aTrust<span class="heti-spacing"> </span></span>客户端进行登录，内包了一个图形界面，所以镜像比较大（2G+<heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。可以使用下面的<span class="heti-skip"><span class="heti-spacing"> </span>compose<span class="heti-spacing"> </span></span>来部署服务：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">services</span><span class="p">:</span>
+<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nt">atrust</span><span class="p">:</span>
+<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hagb/docker-atrust:latest</span>
+<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PASSWORD=123456</span><span class="w"> </span><span class="c1"># vnc 密码</span>
+<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URLWIN=1</span>
+<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nt">devices</span><span class="p">:</span>
+<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/net/tun</span>
+<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="nt">cap_add</span><span class="p">:</span>
+<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_ADMIN</span>
+<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5901:5901</span><span class="w">   </span><span class="c1"># vnc 端口</span>
+<a href="#__codelineno-1-13" id="__codelineno-1-13" name="__codelineno-1-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1080:1080</span><span class="w">   </span><span class="c1"># socks5 端口</span>
+<a href="#__codelineno-1-14" id="__codelineno-1-14" name="__codelineno-1-14"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8888:8888</span><span class="w">   </span><span class="c1"># http 端口</span>
+<a href="#__codelineno-1-15" id="__codelineno-1-15" name="__codelineno-1-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">54631:54631</span><span class="w"> </span><span class="c1"># aTrust 控制端口，可使宿主机 web 访问</span>
+<a href="#__codelineno-1-16" id="__codelineno-1-16" name="__codelineno-1-16"></a><span class="w">    </span><span class="nt">sysctls</span><span class="p">:</span>
+<a href="#__codelineno-1-17" id="__codelineno-1-17" name="__codelineno-1-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">net.ipv4.conf.default.route_localnet=1</span>
+<a href="#__codelineno-1-18" id="__codelineno-1-18" name="__codelineno-1-18"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+</code></pre></div>
+<p>启动后可以通过宿主机浏览器访问<a href="https://vpn.zju.edu.cn"><span class="heti-skip"><span class="heti-spacing"> </span>https://vpn.zju.edu.cn<span class="heti-spacing"> </span></span></a>进行登录，或者通过<span class="heti-skip"><span class="heti-spacing"> </span>vnc<span class="heti-spacing"> </span></span>客户端连接到<span class="heti-skip"><span class="heti-spacing"> </span>vnc://localhost:5901<span class="heti-spacing"> </span></span>打开图形界面进行登录。</p>
+<p>登录后就可以使用<span class="heti-skip"><span class="heti-spacing"> </span>1080<span class="heti-spacing"> </span></span>或者<span class="heti-skip"><span class="heti-spacing"> </span>8888<span class="heti-spacing"> </span></span>端口的代理了，用法和上面的<span class="heti-skip"><span class="heti-spacing"> </span>ZJU Connect<span class="heti-spacing"> </span></span>类似，订阅链接为 <code>tg://socks?server=127.0.0.1&amp;port=1080&amp;remarks=ZJU ATRUST</code>。</p>
+<p>实测如果使用了<span class="heti-skip"><span class="heti-spacing"> </span>ZJU-Rule<span class="heti-spacing"> </span></span>且启用了全局代理，例如<span class="heti-skip"><span class="heti-spacing"> </span>clash<span class="heti-spacing"> </span></span>开启了系统代理的话，需要绕过一些原本被<span class="heti-skip"><span class="heti-spacing"> </span>ZJU-Rule<span class="heti-spacing"> </span></span>判定为内网的地址：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a>DOMAIN-SUFFIX,vpn.zju.edu.cn
+<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a>IP-CIDR,210.32.129.102/32,no-resolve
+<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a>IP-CIDR,210.32.174.64/32,no-resolve
+<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a>IP-CIDR,210.32.3.87/32,no-resolve
+<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a>IP-CIDR,10.3.9.92/31,no-resolve
+<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a>IP-CIDR,10.3.9.94/32,no-resolve
+</code></pre></div>
+<p>这些在我自己部署的<span class="heti-skip"><span class="heti-spacing"> </span>ZJU-Rule<span class="heti-spacing"> </span></span>里已经添加了，<a href="https://github.com/SubConv/ZJU-Rule/pull/4"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> SubConv/ZJU-Rule</a> 也已<span><span class="heti-spacing"> </span>merge</span>，但目前尚不确定还有没有其他需要绕过的地址。</p>
+<details class="note">
+<summary>关于绕过的地址</summary>
+<p>这些是实测下来走内网代理会导致客户端无法使用的地址，后三条可能为隧道用的地址，如果走了内网会导致一直发大量包，建立大量连接导致代理无法使用。</p>
+<p>通过<span class="heti-skip"><span class="heti-spacing"> </span>netstat -nr<span class="heti-spacing"> </span></span>可以查看<span class="heti-skip"><span class="heti-spacing"> </span>aTrust<span class="heti-spacing"> </span></span>修改后的<span class="heti-skip"><span class="heti-spacing"> </span>route<span class="heti-spacing"> </span></span>表，可以确认在<span class="heti-skip"><span class="heti-spacing"> </span>10.0.0.0/8<span class="heti-spacing"> </span></span>网段内需要绕过的地址：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a>10.0.0.1/32        utun9              UGc                 utun9       
+<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a>10.0.0.2/31        utun9              UGc                 utun9       
+<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a>10.0.0.4/30        utun9              UGc                 utun9       
+<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a>10.0.0.8/29        utun9              UGc                 utun9       
+<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a>10.0.0.16/28       utun9              UGc                 utun9       
+<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a>10.0.0.32/27       utun9              UGc                 utun9       
+<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a>10.0.0.64/26       utun9              UGc                 utun9       
+<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a>10.0.0.128/25      utun9              UGc                 utun9       
+<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a>10.0.1/24          utun9              UGc                 utun9       
+<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a>10.0.2/23          utun9              UGc                 utun9       
+<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a>10.0.4/22          utun9              UGc                 utun9       
+<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a>10.0.8/21          utun9              UGc                 utun9       
+<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a>10.0.16/20         utun9              UGc                 utun9       
+<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a>10.0.32/19         utun9              UGc                 utun9       
+<a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a>10.0.64/18         utun9              UGc                 utun9       
+<a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a>10.0.128/17        utun9              UGc                 utun9       
+<a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a>10.1/16            utun9              UGc                 utun9       
+<a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a>10.2/16            utun9              UGc                 utun9       
+<a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a>10.3/21            utun9              UGc                 utun9       
+<a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a>10.3.8/24          utun9              UGc                 utun9       
+<a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a>10.3.9/26          utun9              UGc                 utun9       
+<a href="#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a>10.3.9.64/28       utun9              UGc                 utun9       
+<a href="#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a>10.3.9.80/29       utun9              UGc                 utun9       
+<a href="#__codelineno-3-24" id="__codelineno-3-24" name="__codelineno-3-24"></a>10.3.9.88/30       utun9              UGc                 utun9       
+<a href="#__codelineno-3-25" id="__codelineno-3-25" name="__codelineno-3-25"></a>10.3.9.95/32       utun9              UGc                 utun9       
+<a href="#__codelineno-3-26" id="__codelineno-3-26" name="__codelineno-3-26"></a>10.3.9.96/27       utun9              UGc                 utun9       
+<a href="#__codelineno-3-27" id="__codelineno-3-27" name="__codelineno-3-27"></a>10.3.9.128/25      utun9              UGc                 utun9       
+<a href="#__codelineno-3-28" id="__codelineno-3-28" name="__codelineno-3-28"></a>10.3.10/23         utun9              UGc                 utun9       
+<a href="#__codelineno-3-29" id="__codelineno-3-29" name="__codelineno-3-29"></a>10.3.12/22         utun9              UGc                 utun9       
+<a href="#__codelineno-3-30" id="__codelineno-3-30" name="__codelineno-3-30"></a>10.3.16/20         utun9              UGc                 utun9       
+<a href="#__codelineno-3-31" id="__codelineno-3-31" name="__codelineno-3-31"></a>10.3.32/19         utun9              UGc                 utun9       
+<a href="#__codelineno-3-32" id="__codelineno-3-32" name="__codelineno-3-32"></a>10.3.64/18         utun9              UGc                 utun9       
+<a href="#__codelineno-3-33" id="__codelineno-3-33" name="__codelineno-3-33"></a>10.3.128/17        utun9              UGc                 utun9       
+<a href="#__codelineno-3-34" id="__codelineno-3-34" name="__codelineno-3-34"></a>10.4/14            utun9              UGc                 utun9       
+<a href="#__codelineno-3-35" id="__codelineno-3-35" name="__codelineno-3-35"></a>10.8/13            utun9              UGc                 utun9       
+<a href="#__codelineno-3-36" id="__codelineno-3-36" name="__codelineno-3-36"></a>10.16/12           utun9              UGc                 utun9       
+<a href="#__codelineno-3-37" id="__codelineno-3-37" name="__codelineno-3-37"></a>10.32/11           utun9              UGc                 utun9       
+<a href="#__codelineno-3-38" id="__codelineno-3-38" name="__codelineno-3-38"></a>10.64/10           utun9              UGc                 utun9       
+<a href="#__codelineno-3-39" id="__codelineno-3-39" name="__codelineno-3-39"></a>10.128/11          utun9              UGc                 utun9       
+<a href="#__codelineno-3-40" id="__codelineno-3-40" name="__codelineno-3-40"></a>10.160/12          utun9              UGc                 utun9       
+<a href="#__codelineno-3-41" id="__codelineno-3-41" name="__codelineno-3-41"></a>10.176/13          utun9              UGc                 utun9       
+<a href="#__codelineno-3-42" id="__codelineno-3-42" name="__codelineno-3-42"></a>10.184/14          utun9              UGc                 utun9       
+<a href="#__codelineno-3-43" id="__codelineno-3-43" name="__codelineno-3-43"></a>10.188/15          utun9              UGc                 utun9       
+<a href="#__codelineno-3-44" id="__codelineno-3-44" name="__codelineno-3-44"></a>10.190/18          utun9              UGc                 utun9       
+<a href="#__codelineno-3-45" id="__codelineno-3-45" name="__codelineno-3-45"></a>10.190.64/29       utun9              UGc                 utun9       
+<a href="#__codelineno-3-46" id="__codelineno-3-46" name="__codelineno-3-46"></a>10.190.64.8/31     utun9              UGc                 utun9       
+<a href="#__codelineno-3-47" id="__codelineno-3-47" name="__codelineno-3-47"></a>10.190.126.251/32  utun9              UGc                 utun9       
+<a href="#__codelineno-3-48" id="__codelineno-3-48" name="__codelineno-3-48"></a>10.190.126.252/30  utun9              UGc                 utun9       
+<a href="#__codelineno-3-49" id="__codelineno-3-49" name="__codelineno-3-49"></a>10.190.127/24      utun9              UGc                 utun9       
+<a href="#__codelineno-3-50" id="__codelineno-3-50" name="__codelineno-3-50"></a>10.190.128/17      utun9              UGc                 utun9       
+<a href="#__codelineno-3-51" id="__codelineno-3-51" name="__codelineno-3-51"></a>10.191/16          utun9              UGc                 utun9       
+<a href="#__codelineno-3-52" id="__codelineno-3-52" name="__codelineno-3-52"></a>10.192/11          utun9              UGc                 utun9       
+<a href="#__codelineno-3-53" id="__codelineno-3-53" name="__codelineno-3-53"></a>10.224/12          utun9              UGc                 utun9       
+<a href="#__codelineno-3-54" id="__codelineno-3-54" name="__codelineno-3-54"></a>10.240/13          utun9              UGc                 utun9       
+<a href="#__codelineno-3-55" id="__codelineno-3-55" name="__codelineno-3-55"></a>10.248/14          utun9              UGc                 utun9       
+<a href="#__codelineno-3-56" id="__codelineno-3-56" name="__codelineno-3-56"></a>10.252/15          utun9              UGc                 utun9       
+<a href="#__codelineno-3-57" id="__codelineno-3-57" name="__codelineno-3-57"></a>10.254/16          utun9              UGc                 utun9       
+<a href="#__codelineno-3-58" id="__codelineno-3-58" name="__codelineno-3-58"></a>10.255/17          utun9              UGc                 utun9       
+<a href="#__codelineno-3-59" id="__codelineno-3-59" name="__codelineno-3-59"></a>10.255.128/18      utun9              UGc                 utun9       
+<a href="#__codelineno-3-60" id="__codelineno-3-60" name="__codelineno-3-60"></a>10.255.192/19      utun9              UGc                 utun9       
+<a href="#__codelineno-3-61" id="__codelineno-3-61" name="__codelineno-3-61"></a>10.255.224/20      utun9              UGc                 utun9       
+<a href="#__codelineno-3-62" id="__codelineno-3-62" name="__codelineno-3-62"></a>10.255.240/21      utun9              UGc                 utun9       
+<a href="#__codelineno-3-63" id="__codelineno-3-63" name="__codelineno-3-63"></a>10.255.248/22      utun9              UGc                 utun9       
+<a href="#__codelineno-3-64" id="__codelineno-3-64" name="__codelineno-3-64"></a>10.255.252/23      utun9              UGc                 utun9       
+<a href="#__codelineno-3-65" id="__codelineno-3-65" name="__codelineno-3-65"></a>10.255.254/24      utun9              UGc                 utun9       
+<a href="#__codelineno-3-66" id="__codelineno-3-66" name="__codelineno-3-66"></a>10.255.255/25      utun9              UGc                 utun9       
+<a href="#__codelineno-3-67" id="__codelineno-3-67" name="__codelineno-3-67"></a>10.255.255.128/26  utun9              UGc                 utun9       
+<a href="#__codelineno-3-68" id="__codelineno-3-68" name="__codelineno-3-68"></a>10.255.255.192/27  utun9              UGc                 utun9       
+<a href="#__codelineno-3-69" id="__codelineno-3-69" name="__codelineno-3-69"></a>10.255.255.224/28  utun9              UGc                 utun9       
+<a href="#__codelineno-3-70" id="__codelineno-3-70" name="__codelineno-3-70"></a>10.255.255.240/29  utun9              UGc                 utun9       
+<a href="#__codelineno-3-71" id="__codelineno-3-71" name="__codelineno-3-71"></a>10.255.255.248/30  utun9              UGc                 utun9       
+<a href="#__codelineno-3-72" id="__codelineno-3-72" name="__codelineno-3-72"></a>10.255.255.252/31  utun9              UGc                 utun9       
+<a href="#__codelineno-3-73" id="__codelineno-3-73" name="__codelineno-3-73"></a>10.255.255.254/32  utun9              UGc                 utun9       
+</code></pre></div>
+<p>可以发现<span class="heti-skip"><span class="heti-spacing"> </span>10.3.9.92-94<span class="heti-spacing"> </span></span>三个地址以及<span class="heti-skip"><span class="heti-spacing"> </span>10.190.64.10 - 10.190.126.250<span class="heti-spacing"> </span></span>部分的地址是不在<span class="heti-skip"><span class="heti-spacing"> </span>route<span class="heti-spacing"> </span></span>表里的，需要直连，但后面这个<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>段是什么作用还不清楚，目前看来不会影响<span class="heti-skip"><span class="heti-spacing"> </span>atrust<span class="heti-spacing"> </span></span>使用。</p>
+<p><span>210.32.*<span class="heti-spacing"> </span></span>部分的地址只有少部分标为了内网，<span>210.32.3/129/174.*<span class="heti-spacing"> </span></span>都不在这个范围内。</p>
+</details>
+<p>但<span class="heti-skip"><span class="heti-spacing"> </span>docker-atrust<span class="heti-spacing"> </span></span>这个镜像不能实现自动登录和保活，临时使用手动开启的话还可以接受，如果需要自动登录可以尝试 <a href="https://github.com/kenvix/aTrustLogin"><span class="twemoji"><svg viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02.79-.22 1.65-.33 2.5-.33.85 0 1.71.11 2.5.33 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5C19.14 20.16 22 16.42 22 12A10 10 0 0 0 12 2z"></path></svg></span> kenvix/aTrustLogin</a> 的容器，<span>compose<span class="heti-spacing"> </span></span>如下：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-4-1" id="__codelineno-4-1" name="__codelineno-4-1"></a><span class="nt">services</span><span class="p">:</span>
+<a href="#__codelineno-4-2" id="__codelineno-4-2" name="__codelineno-4-2"></a><span class="w">  </span><span class="nt">atrust</span><span class="p">:</span>
+<a href="#__codelineno-4-3" id="__codelineno-4-3" name="__codelineno-4-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kenvix/docker-atrust-autologin:latest</span>
+<a href="#__codelineno-4-4" id="__codelineno-4-4" name="__codelineno-4-4"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a href="#__codelineno-4-5" id="__codelineno-4-5" name="__codelineno-4-5"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ATRUST_OPTS=--portal_address=https://vpn.zju.edu.cn --username=学号 --password=密码 --cookie_tid=需要获取 --cookie_sig=需要获取</span>
+<a href="#__codelineno-4-6" id="__codelineno-4-6" name="__codelineno-4-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PASSWORD=vnc密码</span>
+<a href="#__codelineno-4-7" id="__codelineno-4-7" name="__codelineno-4-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">URLWIN=1</span>
+<a href="#__codelineno-4-8" id="__codelineno-4-8" name="__codelineno-4-8"></a><span class="w">    </span><span class="nt">devices</span><span class="p">:</span>
+<a href="#__codelineno-4-9" id="__codelineno-4-9" name="__codelineno-4-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/net/tun</span>
+<a href="#__codelineno-4-10" id="__codelineno-4-10" name="__codelineno-4-10"></a><span class="w">    </span><span class="nt">cap_add</span><span class="p">:</span>
+<a href="#__codelineno-4-11" id="__codelineno-4-11" name="__codelineno-4-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NET_ADMIN</span>
+<a href="#__codelineno-4-12" id="__codelineno-4-12" name="__codelineno-4-12"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a href="#__codelineno-4-13" id="__codelineno-4-13" name="__codelineno-4-13"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./data:/root</span>
+<a href="#__codelineno-4-14" id="__codelineno-4-14" name="__codelineno-4-14"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a href="#__codelineno-4-15" id="__codelineno-4-15" name="__codelineno-4-15"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5901:5901</span>
+<a href="#__codelineno-4-16" id="__codelineno-4-16" name="__codelineno-4-16"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1080:1080</span>
+<a href="#__codelineno-4-17" id="__codelineno-4-17" name="__codelineno-4-17"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">8888:8888</span>
+<a href="#__codelineno-4-18" id="__codelineno-4-18" name="__codelineno-4-18"></a><span class="w">    </span><span class="nt">sysctls</span><span class="p">:</span>
+<a href="#__codelineno-4-19" id="__codelineno-4-19" name="__codelineno-4-19"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">net.ipv4.conf.default.route_localnet=1</span>
+<a href="#__codelineno-4-20" id="__codelineno-4-20" name="__codelineno-4-20"></a><span class="w">    </span><span class="nt">shm_size</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">256m</span>
+<a href="#__codelineno-4-21" id="__codelineno-4-21" name="__codelineno-4-21"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unless-stopped</span>
+</code></pre></div>
+<p>这个容器会利用<span class="heti-skip"><span class="heti-spacing"> </span>selenium<span class="heti-spacing"> </span></span>进行网页的自动登录，但<span class="heti-skip"><span class="heti-spacing"> </span>ZJU<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>atrust<span class="heti-spacing"> </span></span>第一次登录需要经过图形验证码，绕过的话需要手动登录一次然后获取<span class="heti-skip"><span class="heti-spacing"> </span>cookie<span class="heti-spacing"> </span></span>里的<span class="heti-skip"><span class="heti-spacing"> </span>tid<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>tid.sig<span class="heti-spacing"> </span></span>字段，填到<span class="heti-skip"><span class="heti-spacing"> </span>compose<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>ATRUST_OPTS<span class="heti-spacing"> </span></span>里（详见<a href="https://github.com/kenvix/aTrustLogin"><span><span class="heti-spacing"> </span>aTrustLogin README</span></a><heti-adjacent class="heti-adjacent-half">）</heti-adjacent>。以及第一次还需要进行手机验证码的输入，这个过程容器没有实现，在等待填写验证码的一步容器<span class="heti-skip"><span class="heti-spacing"> </span>log<span class="heti-spacing"> </span></span>就会提示连接成功，但实际还需要验证码。这里需要手动打开<span class="heti-skip"><span class="heti-spacing"> </span>vnc<span class="heti-spacing"> </span></span>图形界面后输入验证码。</p>
+<p>但实际用下来这个自动登录也不太稳定，在我用的时候出现过莫名其妙密码错误的情况，但实际密码并未填错，怀疑是<span class="heti-skip"><span class="heti-spacing"> </span>cookie<span class="heti-spacing"> </span></span>的问题，而且密码错误有十次的限制，还是有一定风险。并且不像<span><span class="heti-spacing"> </span>zju connect</span>，这个容器需要把登录密码直接写在环境变量里，安全性略低。同时这个镜像比<span class="heti-skip"><span class="heti-spacing"> </span>docker-atrust<span class="heti-spacing"> </span></span>还要大<span><span class="heti-spacing"> </span>1G</span>，综合考虑不推荐。</p>
 <h2 id="tailscale">tailscale<a class="headerlink" href="#tailscale" title="Permanent link">¶</a></h2>
 <p><span>tailscale<span class="heti-spacing"> </span></span>可以实现异地组网，在内网机器上和外部机器上都安装<span class="heti-skip"><span class="heti-spacing"> </span>tailscale<span class="heti-spacing"> </span></span>并登录到同一个账号后，就可以通过<span class="heti-skip"><span class="heti-spacing"> </span>tailscale<span class="heti-spacing"> </span></span>分配的<span class="heti-skip"><span class="heti-spacing"> </span>100.xx.xx.xx<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>互相访问了，不管是否在同一网络环境下。</p>
 <p>这样来直接访问内网上自己的服务还是很方便的，不过缺点是手机端<span class="heti-skip"><span class="heti-spacing"> </span>tailscale<span class="heti-spacing"> </span></span>会占掉<span class="heti-skip"><span class="heti-spacing"> </span>VPN<span class="heti-spacing"> </span></span>连接，这样同时就不能再开其他<span class="heti-skip"><span class="heti-spacing"> </span>vpn<span class="heti-spacing"> </span></span>了。</p>
@@ -2034,113 +2197,149 @@ var _hmt = _hmt || [];
 <p>即校内的服务器<span class="heti-skip"><span class="heti-spacing"> </span>zju<span class="heti-spacing"> </span></span>一个<span class="heti-skip"><span class="heti-spacing"> </span>freedom<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>outbound<span class="heti-spacing"> </span></span>访问内网，一个<span class="heti-skip"><span class="heti-spacing"> </span>vmess<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>outbound<span class="heti-spacing"> </span></span>主动连接到公网服务器；公网服务器一个<span class="heti-skip"><span class="heti-spacing"> </span>inbound<span class="heti-spacing"> </span></span>接收来自<span class="heti-skip"><span class="heti-spacing"> </span>zju<span class="heti-spacing"> </span></span>的连接，并通过<span class="heti-skip"><span class="heti-spacing"> </span>portal<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>bridge<span class="heti-spacing"> </span></span>建立反向代理，另一个<span class="heti-skip"><span class="heti-spacing"> </span>vmess inbound<span class="heti-spacing"> </span></span>接收来自其他设备的连接，这个也就是提供<span class="heti-skip"><span class="heti-spacing"> </span>vmess<span class="heti-spacing"> </span></span>服务的节点。</p>
 <p>我们需要在<span class="heti-skip"><span class="heti-spacing"> </span>zju<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>public<span class="heti-spacing"> </span></span>上部署<span class="heti-skip"><span class="heti-spacing"> </span>v2ray<span class="heti-spacing"> </span></span>服务，然后设备上使用<span class="heti-skip"><span class="heti-spacing"> </span>vmess://<span class="heti-spacing"> </span></span>节点就可以了。</p>
 <p><span>v2ray<span class="heti-spacing"> </span></span>可以使用<span class="heti-skip"><span class="heti-spacing"> </span>docker<span class="heti-spacing"> </span></span>来部署：</p>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-1-1" id="__codelineno-1-1" name="__codelineno-1-1"></a><span class="nt">services</span><span class="p">:</span>
-<a href="#__codelineno-1-2" id="__codelineno-1-2" name="__codelineno-1-2"></a><span class="w">  </span><span class="nt">v2ray</span><span class="p">:</span>
-<a href="#__codelineno-1-3" id="__codelineno-1-3" name="__codelineno-1-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2fly/v2fly-core:latest</span>
-<a href="#__codelineno-1-4" id="__codelineno-1-4" name="__codelineno-1-4"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2fly</span>
-<a href="#__codelineno-1-5" id="__codelineno-1-5" name="__codelineno-1-5"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
-<a href="#__codelineno-1-6" id="__codelineno-1-6" name="__codelineno-1-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx:xxx</span><span class="w"> </span><span class="c1"># inbound 端口需要填在这里暴露出来</span>
-<a href="#__codelineno-1-7" id="__codelineno-1-7" name="__codelineno-1-7"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
-<a href="#__codelineno-1-8" id="__codelineno-1-8" name="__codelineno-1-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span>
-<a href="#__codelineno-1-9" id="__codelineno-1-9" name="__codelineno-1-9"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
-<a href="#__codelineno-1-10" id="__codelineno-1-10" name="__codelineno-1-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./v2ray.json:/etc/v2ray.json</span>
-<a href="#__codelineno-1-11" id="__codelineno-1-11" name="__codelineno-1-11"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"run"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-config"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"/etc/v2ray.json"</span><span class="p p-Indicator">]</span>
-<a href="#__codelineno-1-12" id="__codelineno-1-12" name="__codelineno-1-12"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-5-1" id="__codelineno-5-1" name="__codelineno-5-1"></a><span class="nt">services</span><span class="p">:</span>
+<a href="#__codelineno-5-2" id="__codelineno-5-2" name="__codelineno-5-2"></a><span class="w">  </span><span class="nt">v2ray</span><span class="p">:</span>
+<a href="#__codelineno-5-3" id="__codelineno-5-3" name="__codelineno-5-3"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2fly/v2fly-core:latest</span>
+<a href="#__codelineno-5-4" id="__codelineno-5-4" name="__codelineno-5-4"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2fly</span>
+<a href="#__codelineno-5-5" id="__codelineno-5-5" name="__codelineno-5-5"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a href="#__codelineno-5-6" id="__codelineno-5-6" name="__codelineno-5-6"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx:xxx</span><span class="w"> </span><span class="c1"># inbound 端口需要填在这里暴露出来</span>
+<a href="#__codelineno-5-7" id="__codelineno-5-7" name="__codelineno-5-7"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a href="#__codelineno-5-8" id="__codelineno-5-8" name="__codelineno-5-8"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span>
+<a href="#__codelineno-5-9" id="__codelineno-5-9" name="__codelineno-5-9"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a href="#__codelineno-5-10" id="__codelineno-5-10" name="__codelineno-5-10"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./v2ray.json:/etc/v2ray.json</span>
+<a href="#__codelineno-5-11" id="__codelineno-5-11" name="__codelineno-5-11"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"run"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-config"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"/etc/v2ray.json"</span><span class="p p-Indicator">]</span>
+<a href="#__codelineno-5-12" id="__codelineno-5-12" name="__codelineno-5-12"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
 </code></pre></div>
 <p>主要需要配置的是<span><span class="heti-spacing"> </span>v2ray.json</span></p>
 <details class="example">
 <summary><span>zju<span class="heti-spacing"> </span></span>内网机器上的配置</summary>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-2-1" id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="p">{</span>
-<a href="#__codelineno-2-2" id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="w">    </span><span class="nt">"reverse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-2-3" id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="w">        </span><span class="nt">"bridges"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-2-4" id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="w">            </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bridge"</span><span class="p">,</span>
-<a href="#__codelineno-2-5" id="__codelineno-2-5" name="__codelineno-2-5"></a><span class="w">            </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nas.local"</span><span class="w">   </span><span class="c1">// 随便设置，但要全局统一</span>
-<a href="#__codelineno-2-6" id="__codelineno-2-6" name="__codelineno-2-6"></a><span class="w">        </span><span class="p">}]</span>
-<a href="#__codelineno-2-7" id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="w">    </span><span class="p">},</span>
-<a href="#__codelineno-2-8" id="__codelineno-2-8" name="__codelineno-2-8"></a><span class="w">    </span><span class="nt">"outbounds"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-2-9" id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="w">        </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tunnel"</span><span class="p">,</span>
-<a href="#__codelineno-2-10" id="__codelineno-2-10" name="__codelineno-2-10"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vmess"</span><span class="p">,</span>
-<a href="#__codelineno-2-11" id="__codelineno-2-11" name="__codelineno-2-11"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-2-12" id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="w">            </span><span class="nt">"vnext"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-2-13" id="__codelineno-2-13" name="__codelineno-2-13"></a><span class="w">                </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ip or domain&gt;"</span><span class="p">,</span><span class="w">    </span><span class="c1">// 公网服务器的 ip 或域名</span>
-<a href="#__codelineno-2-14" id="__codelineno-2-14" name="__codelineno-2-14"></a><span class="w">                </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;por</span><span class="kc">t</span><span class="err">_</span><span class="mi">1</span><span class="err">&gt;</span><span class="p">,</span><span class="w">               </span><span class="c1">// 公网服务器的 inbound 端口</span>
-<a href="#__codelineno-2-15" id="__codelineno-2-15" name="__codelineno-2-15"></a><span class="w">                </span><span class="nt">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-2-16" id="__codelineno-2-16" name="__codelineno-2-16"></a><span class="w">                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;uuid_1&gt;"</span><span class="p">,</span><span class="w">           </span><span class="c1">// 随机生成的 uuid</span>
-<a href="#__codelineno-2-17" id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="w">                    </span><span class="nt">"alterId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
-<a href="#__codelineno-2-18" id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="w">                </span><span class="p">}]</span>
-<a href="#__codelineno-2-19" id="__codelineno-2-19" name="__codelineno-2-19"></a><span class="w">            </span><span class="p">}]</span>
-<a href="#__codelineno-2-20" id="__codelineno-2-20" name="__codelineno-2-20"></a><span class="w">        </span><span class="p">}</span>
-<a href="#__codelineno-2-21" id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-2-22" id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="w">        </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="p">,</span>
-<a href="#__codelineno-2-23" id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"freedom"</span><span class="p">,</span>
-<a href="#__codelineno-2-24" id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
-<a href="#__codelineno-2-25" id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="w">    </span><span class="p">}],</span>
-<a href="#__codelineno-2-26" id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="w">    </span><span class="nt">"routing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-2-27" id="__codelineno-2-27" name="__codelineno-2-27"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-2-28" id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field"</span><span class="p">,</span>
-<a href="#__codelineno-2-29" id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="w">            </span><span class="nt">"inboundTag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bridge"</span><span class="p">],</span>
-<a href="#__codelineno-2-30" id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="w">            </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"full:nas.local"</span><span class="p">],</span><span class="w">   </span><span class="c1">// 这里要和前面的 domain 一致</span>
-<a href="#__codelineno-2-31" id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="w">            </span><span class="nt">"outboundTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tunnel"</span>
-<a href="#__codelineno-2-32" id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-2-33" id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field"</span><span class="p">,</span>
-<a href="#__codelineno-2-34" id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="w">            </span><span class="nt">"inboundTag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bridge"</span><span class="p">],</span>
-<a href="#__codelineno-2-35" id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="w">            </span><span class="nt">"outboundTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span>
-<a href="#__codelineno-2-36" id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="w">        </span><span class="p">}]</span>
-<a href="#__codelineno-2-37" id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="w">    </span><span class="p">}</span>
-<a href="#__codelineno-2-38" id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-6-1" id="__codelineno-6-1" name="__codelineno-6-1"></a><span class="p">{</span>
+<a href="#__codelineno-6-2" id="__codelineno-6-2" name="__codelineno-6-2"></a><span class="w">    </span><span class="nt">"reverse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-3" id="__codelineno-6-3" name="__codelineno-6-3"></a><span class="w">        </span><span class="nt">"bridges"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-6-4" id="__codelineno-6-4" name="__codelineno-6-4"></a><span class="w">            </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"bridge"</span><span class="p">,</span>
+<a href="#__codelineno-6-5" id="__codelineno-6-5" name="__codelineno-6-5"></a><span class="w">            </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nas.local"</span><span class="w">   </span><span class="c1">// 随便设置，但要全局统一</span>
+<a href="#__codelineno-6-6" id="__codelineno-6-6" name="__codelineno-6-6"></a><span class="w">        </span><span class="p">}]</span>
+<a href="#__codelineno-6-7" id="__codelineno-6-7" name="__codelineno-6-7"></a><span class="w">    </span><span class="p">},</span>
+<a href="#__codelineno-6-8" id="__codelineno-6-8" name="__codelineno-6-8"></a><span class="w">    </span><span class="nt">"outbounds"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-6-9" id="__codelineno-6-9" name="__codelineno-6-9"></a><span class="w">        </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tunnel"</span><span class="p">,</span>
+<a href="#__codelineno-6-10" id="__codelineno-6-10" name="__codelineno-6-10"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vmess"</span><span class="p">,</span>
+<a href="#__codelineno-6-11" id="__codelineno-6-11" name="__codelineno-6-11"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-12" id="__codelineno-6-12" name="__codelineno-6-12"></a><span class="w">            </span><span class="nt">"vnext"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-6-13" id="__codelineno-6-13" name="__codelineno-6-13"></a><span class="w">                </span><span class="nt">"address"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;ip or domain&gt;"</span><span class="p">,</span><span class="w">    </span><span class="c1">// 公网服务器的 ip 或域名</span>
+<a href="#__codelineno-6-14" id="__codelineno-6-14" name="__codelineno-6-14"></a><span class="w">                </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;por</span><span class="kc">t</span><span class="err">_</span><span class="mi">1</span><span class="err">&gt;</span><span class="p">,</span><span class="w">               </span><span class="c1">// 公网服务器的 inbound 端口</span>
+<a href="#__codelineno-6-15" id="__codelineno-6-15" name="__codelineno-6-15"></a><span class="w">                </span><span class="nt">"users"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-6-16" id="__codelineno-6-16" name="__codelineno-6-16"></a><span class="w">                    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;uuid_1&gt;"</span><span class="p">,</span><span class="w">           </span><span class="c1">// 随机生成的 uuid</span>
+<a href="#__codelineno-6-17" id="__codelineno-6-17" name="__codelineno-6-17"></a><span class="w">                    </span><span class="nt">"alterId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<a href="#__codelineno-6-18" id="__codelineno-6-18" name="__codelineno-6-18"></a><span class="w">                </span><span class="p">}]</span>
+<a href="#__codelineno-6-19" id="__codelineno-6-19" name="__codelineno-6-19"></a><span class="w">            </span><span class="p">}]</span>
+<a href="#__codelineno-6-20" id="__codelineno-6-20" name="__codelineno-6-20"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-6-21" id="__codelineno-6-21" name="__codelineno-6-21"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-22" id="__codelineno-6-22" name="__codelineno-6-22"></a><span class="w">        </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span><span class="p">,</span>
+<a href="#__codelineno-6-23" id="__codelineno-6-23" name="__codelineno-6-23"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"freedom"</span><span class="p">,</span>
+<a href="#__codelineno-6-24" id="__codelineno-6-24" name="__codelineno-6-24"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{}</span>
+<a href="#__codelineno-6-25" id="__codelineno-6-25" name="__codelineno-6-25"></a><span class="w">    </span><span class="p">}],</span>
+<a href="#__codelineno-6-26" id="__codelineno-6-26" name="__codelineno-6-26"></a><span class="w">    </span><span class="nt">"routing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-27" id="__codelineno-6-27" name="__codelineno-6-27"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-6-28" id="__codelineno-6-28" name="__codelineno-6-28"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field"</span><span class="p">,</span>
+<a href="#__codelineno-6-29" id="__codelineno-6-29" name="__codelineno-6-29"></a><span class="w">            </span><span class="nt">"inboundTag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bridge"</span><span class="p">],</span>
+<a href="#__codelineno-6-30" id="__codelineno-6-30" name="__codelineno-6-30"></a><span class="w">            </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"full:nas.local"</span><span class="p">],</span><span class="w">   </span><span class="c1">// 这里要和前面的 domain 一致</span>
+<a href="#__codelineno-6-31" id="__codelineno-6-31" name="__codelineno-6-31"></a><span class="w">            </span><span class="nt">"outboundTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tunnel"</span>
+<a href="#__codelineno-6-32" id="__codelineno-6-32" name="__codelineno-6-32"></a><span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-6-33" id="__codelineno-6-33" name="__codelineno-6-33"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field"</span><span class="p">,</span>
+<a href="#__codelineno-6-34" id="__codelineno-6-34" name="__codelineno-6-34"></a><span class="w">            </span><span class="nt">"inboundTag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"bridge"</span><span class="p">],</span>
+<a href="#__codelineno-6-35" id="__codelineno-6-35" name="__codelineno-6-35"></a><span class="w">            </span><span class="nt">"outboundTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"out"</span>
+<a href="#__codelineno-6-36" id="__codelineno-6-36" name="__codelineno-6-36"></a><span class="w">        </span><span class="p">}]</span>
+<a href="#__codelineno-6-37" id="__codelineno-6-37" name="__codelineno-6-37"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-6-38" id="__codelineno-6-38" name="__codelineno-6-38"></a><span class="p">}</span>
 </code></pre></div>
 </details>
 <details class="example">
 <summary><span>public<span class="heti-spacing"> </span></span>公网服务器上的配置</summary>
-<div class="highlight"><pre><span></span><code><a href="#__codelineno-3-1" id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="p">{</span>
-<a href="#__codelineno-3-2" id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="w">    </span><span class="nt">"reverse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-3-3" id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="w">        </span><span class="nt">"portals"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-3-4" id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="w">            </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portal"</span><span class="p">,</span>
-<a href="#__codelineno-3-5" id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="w">            </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nas.local"</span><span class="w">   </span><span class="c1">// 和 zju 上的 domain 统一</span>
-<a href="#__codelineno-3-6" id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="w">        </span><span class="p">}]</span>
-<a href="#__codelineno-3-7" id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="w">    </span><span class="p">},</span>
-<a href="#__codelineno-3-8" id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="w">    </span><span class="nt">"inbounds"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-3-9" id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="w">        </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tunnel"</span><span class="p">,</span>
-<a href="#__codelineno-3-10" id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;por</span><span class="kc">t</span><span class="err">_</span><span class="mi">2</span><span class="err">&gt;</span><span class="p">,</span><span class="w">           </span><span class="c1">// 提供外部设备连接的端口</span>
-<a href="#__codelineno-3-11" id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vmess"</span><span class="p">,</span>
-<a href="#__codelineno-3-12" id="__codelineno-3-12" name="__codelineno-3-12"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-3-13" id="__codelineno-3-13" name="__codelineno-3-13"></a><span class="w">            </span><span class="nt">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-3-14" id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;uuid_2&gt;"</span><span class="p">,</span><span class="w">   </span><span class="c1">// 新随机生成的 uuid，外部设备用</span>
-<a href="#__codelineno-3-15" id="__codelineno-3-15" name="__codelineno-3-15"></a><span class="w">                </span><span class="nt">"alterId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
-<a href="#__codelineno-3-16" id="__codelineno-3-16" name="__codelineno-3-16"></a><span class="w">            </span><span class="p">}]</span>
-<a href="#__codelineno-3-17" id="__codelineno-3-17" name="__codelineno-3-17"></a><span class="w">        </span><span class="p">}</span>
-<a href="#__codelineno-3-18" id="__codelineno-3-18" name="__codelineno-3-18"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-3-19" id="__codelineno-3-19" name="__codelineno-3-19"></a><span class="w">        </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interconn"</span><span class="p">,</span>
-<a href="#__codelineno-3-20" id="__codelineno-3-20" name="__codelineno-3-20"></a><span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;por</span><span class="kc">t</span><span class="err">_</span><span class="mi">1</span><span class="err">&gt;</span><span class="p">,</span>
-<a href="#__codelineno-3-21" id="__codelineno-3-21" name="__codelineno-3-21"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vmess"</span><span class="p">,</span>
-<a href="#__codelineno-3-22" id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-3-23" id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="w">            </span><span class="nt">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-3-24" id="__codelineno-3-24" name="__codelineno-3-24"></a><span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;uuid_1&gt;"</span><span class="p">,</span><span class="w">   </span><span class="c1">// 同 zju 上的 uuid</span>
-<a href="#__codelineno-3-25" id="__codelineno-3-25" name="__codelineno-3-25"></a><span class="w">                </span><span class="nt">"alterId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
-<a href="#__codelineno-3-26" id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="w">            </span><span class="p">}]</span>
-<a href="#__codelineno-3-27" id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="w">        </span><span class="p">}</span>
-<a href="#__codelineno-3-28" id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="w">    </span><span class="p">}],</span>
-<a href="#__codelineno-3-29" id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="w">    </span><span class="nt">"routing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-3-30" id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
-<a href="#__codelineno-3-31" id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field"</span><span class="p">,</span>
-<a href="#__codelineno-3-32" id="__codelineno-3-32" name="__codelineno-3-32"></a><span class="w">            </span><span class="nt">"inboundTag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"interconn"</span><span class="p">],</span>
-<a href="#__codelineno-3-33" id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="w">            </span><span class="nt">"outboundTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portal"</span>
-<a href="#__codelineno-3-34" id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
-<a href="#__codelineno-3-35" id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field"</span><span class="p">,</span>
-<a href="#__codelineno-3-36" id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="w">            </span><span class="nt">"inboundTag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"tunnel"</span><span class="p">],</span>
-<a href="#__codelineno-3-37" id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="w">            </span><span class="nt">"outboundTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portal"</span>
-<a href="#__codelineno-3-38" id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="w">        </span><span class="p">}]</span>
-<a href="#__codelineno-3-39" id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="w">    </span><span class="p">}</span>
-<a href="#__codelineno-3-40" id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-7-1" id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="p">{</span>
+<a href="#__codelineno-7-2" id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="w">    </span><span class="nt">"reverse"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-3" id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="w">        </span><span class="nt">"portals"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-7-4" id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="w">            </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portal"</span><span class="p">,</span>
+<a href="#__codelineno-7-5" id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">            </span><span class="nt">"domain"</span><span class="p">:</span><span class="w"> </span><span class="s2">"nas.local"</span><span class="w">   </span><span class="c1">// 和 zju 上的 domain 统一</span>
+<a href="#__codelineno-7-6" id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">        </span><span class="p">}]</span>
+<a href="#__codelineno-7-7" id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="p">},</span>
+<a href="#__codelineno-7-8" id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="nt">"inbounds"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-7-9" id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">        </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"tunnel"</span><span class="p">,</span>
+<a href="#__codelineno-7-10" id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;por</span><span class="kc">t</span><span class="err">_</span><span class="mi">2</span><span class="err">&gt;</span><span class="p">,</span><span class="w">           </span><span class="c1">// 提供外部设备连接的端口</span>
+<a href="#__codelineno-7-11" id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vmess"</span><span class="p">,</span>
+<a href="#__codelineno-7-12" id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-13" id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">            </span><span class="nt">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-7-14" id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;uuid_2&gt;"</span><span class="p">,</span><span class="w">   </span><span class="c1">// 新随机生成的 uuid，外部设备用</span>
+<a href="#__codelineno-7-15" id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">                </span><span class="nt">"alterId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<a href="#__codelineno-7-16" id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">            </span><span class="p">}]</span>
+<a href="#__codelineno-7-17" id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-7-18" id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">    </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-19" id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">        </span><span class="nt">"tag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"interconn"</span><span class="p">,</span>
+<a href="#__codelineno-7-20" id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="err">&lt;por</span><span class="kc">t</span><span class="err">_</span><span class="mi">1</span><span class="err">&gt;</span><span class="p">,</span>
+<a href="#__codelineno-7-21" id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vmess"</span><span class="p">,</span>
+<a href="#__codelineno-7-22" id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-23" id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="w">            </span><span class="nt">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-7-24" id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;uuid_1&gt;"</span><span class="p">,</span><span class="w">   </span><span class="c1">// 同 zju 上的 uuid</span>
+<a href="#__codelineno-7-25" id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="w">                </span><span class="nt">"alterId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<a href="#__codelineno-7-26" id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">            </span><span class="p">}]</span>
+<a href="#__codelineno-7-27" id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-7-28" id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="w">    </span><span class="p">}],</span>
+<a href="#__codelineno-7-29" id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="w">    </span><span class="nt">"routing"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-30" id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">        </span><span class="nt">"rules"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-7-31" id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field"</span><span class="p">,</span>
+<a href="#__codelineno-7-32" id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="w">            </span><span class="nt">"inboundTag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"interconn"</span><span class="p">],</span>
+<a href="#__codelineno-7-33" id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="w">            </span><span class="nt">"outboundTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portal"</span>
+<a href="#__codelineno-7-34" id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="w">        </span><span class="p">},</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-7-35" id="__codelineno-7-35" name="__codelineno-7-35"></a><span class="w">            </span><span class="nt">"type"</span><span class="p">:</span><span class="w"> </span><span class="s2">"field"</span><span class="p">,</span>
+<a href="#__codelineno-7-36" id="__codelineno-7-36" name="__codelineno-7-36"></a><span class="w">            </span><span class="nt">"inboundTag"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"tunnel"</span><span class="p">],</span>
+<a href="#__codelineno-7-37" id="__codelineno-7-37" name="__codelineno-7-37"></a><span class="w">            </span><span class="nt">"outboundTag"</span><span class="p">:</span><span class="w"> </span><span class="s2">"portal"</span>
+<a href="#__codelineno-7-38" id="__codelineno-7-38" name="__codelineno-7-38"></a><span class="w">        </span><span class="p">}]</span>
+<a href="#__codelineno-7-39" id="__codelineno-7-39" name="__codelineno-7-39"></a><span class="w">    </span><span class="p">}</span>
+<a href="#__codelineno-7-40" id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="p">}</span>
 </code></pre></div>
 </details>
 <p>这两个机器上运行起<span class="heti-skip"><span class="heti-spacing"> </span>v2ray<span class="heti-spacing"> </span></span>后，就可以连接<span class="heti-skip"><span class="heti-spacing"> </span>public<span class="heti-spacing"> </span></span>提供的<span class="heti-skip"><span class="heti-spacing"> </span>vmess<span class="heti-spacing"> </span></span>服务了，订阅链接可以写 <code>vmess://&lt;base64&gt;?remarks=ZJU%20...</code>，其中<span class="heti-skip"><span class="heti-spacing"> </span>base64<span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>URL safe base64<span class="heti-spacing"> </span></span>编码的 <code>auto:&lt;uuid_2&gt;@&lt;ip or domain&gt;:&lt;port_2&gt;</code>，这样就可以在<span class="heti-skip"><span class="heti-spacing"> </span>clash<span class="heti-spacing"> </span></span>里使用了，剩余步骤见<a href="../clash/"><span class="heti-skip"><span class="heti-spacing"> </span>Clash<span class="heti-spacing"> </span></span>代理配置</a><heti-adjacent class="heti-adjacent-half">。</heti-adjacent>（注意在公网服务器上不能开<span class="heti-skip"><span class="heti-spacing"> </span>TUN<span class="heti-spacing"> </span></span>模式）</p>
+<h2 id="v2ray_1"><span>V2Ray<span class="heti-spacing"> </span></span>正向代理<a class="headerlink" href="#v2ray_1" title="Permanent link"><span><span class="heti-spacing"> </span>¶</span></a></h2>
+<p>配合<span class="heti-skip"><span class="heti-spacing"> </span>tailscale<span class="heti-spacing"> </span></span>实现的内网代理，适用于仅有内网服务器没有公网<span class="heti-skip"><span class="heti-spacing"> </span>ip<span class="heti-spacing"> </span></span>的情况。既然通过<span class="heti-skip"><span class="heti-spacing"> </span>tailscale<span class="heti-spacing"> </span></span>可以异地组网直接连接到内网服务器上，那么就可以通过<span class="heti-skip"><span class="heti-spacing"> </span>v2ray<span class="heti-spacing"> </span></span>的正向代理来通过内网服务器代理访问其他内网地址。</p>
+<p>同样还是利用<span class="heti-skip"><span class="heti-spacing"> </span>docker<span class="heti-spacing"> </span></span>部署<span><span class="heti-spacing"> </span>v2ray</span>：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-8-1" id="__codelineno-8-1" name="__codelineno-8-1"></a><span class="err">```</span><span class="l l-Scalar l-Scalar-Plain">yaml</span>
+<a href="#__codelineno-8-2" id="__codelineno-8-2" name="__codelineno-8-2"></a><span class="l l-Scalar l-Scalar-Plain">services</span><span class="p p-Indicator">:</span>
+<a href="#__codelineno-8-3" id="__codelineno-8-3" name="__codelineno-8-3"></a><span class="w">  </span><span class="nt">v2ray</span><span class="p">:</span>
+<a href="#__codelineno-8-4" id="__codelineno-8-4" name="__codelineno-8-4"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2fly/v2fly-core:latest</span>
+<a href="#__codelineno-8-5" id="__codelineno-8-5" name="__codelineno-8-5"></a><span class="w">    </span><span class="nt">container_name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v2fly</span>
+<a href="#__codelineno-8-6" id="__codelineno-8-6" name="__codelineno-8-6"></a><span class="w">    </span><span class="nt">ports</span><span class="p">:</span>
+<a href="#__codelineno-8-7" id="__codelineno-8-7" name="__codelineno-8-7"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">xxx:xxx</span><span class="w"> </span><span class="c1"># inbound 端口需要填在这里暴露出来</span>
+<a href="#__codelineno-8-8" id="__codelineno-8-8" name="__codelineno-8-8"></a><span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<a href="#__codelineno-8-9" id="__codelineno-8-9" name="__codelineno-8-9"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TZ=Asia/Shanghai</span>
+<a href="#__codelineno-8-10" id="__codelineno-8-10" name="__codelineno-8-10"></a><span class="w">    </span><span class="nt">volumes</span><span class="p">:</span>
+<a href="#__codelineno-8-11" id="__codelineno-8-11" name="__codelineno-8-11"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">./v2ray.json:/etc/v2ray.json</span>
+<a href="#__codelineno-8-12" id="__codelineno-8-12" name="__codelineno-8-12"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">"run"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"-config"</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">"/etc/v2ray.json"</span><span class="p p-Indicator">]</span>
+<a href="#__codelineno-8-13" id="__codelineno-8-13" name="__codelineno-8-13"></a><span class="w">    </span><span class="nt">restart</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">always</span>
+</code></pre></div>
+<p><span>v2ray.json<span class="heti-spacing"> </span></span>的写法更简单：</p>
+<div class="highlight"><pre><span></span><code><a href="#__codelineno-9-1" id="__codelineno-9-1" name="__codelineno-9-1"></a><span class="p">{</span>
+<a href="#__codelineno-9-2" id="__codelineno-9-2" name="__codelineno-9-2"></a><span class="w">    </span><span class="nt">"inbounds"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-9-3" id="__codelineno-9-3" name="__codelineno-9-3"></a><span class="w">        </span><span class="nt">"port"</span><span class="p">:</span><span class="w"> </span><span class="err">xxx</span><span class="p">,</span><span class="w">  </span><span class="c1">// 需要暴露的端口</span>
+<a href="#__codelineno-9-4" id="__codelineno-9-4" name="__codelineno-9-4"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"vmess"</span><span class="p">,</span>
+<a href="#__codelineno-9-5" id="__codelineno-9-5" name="__codelineno-9-5"></a><span class="w">        </span><span class="nt">"settings"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a href="#__codelineno-9-6" id="__codelineno-9-6" name="__codelineno-9-6"></a><span class="w">            </span><span class="nt">"clients"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-9-7" id="__codelineno-9-7" name="__codelineno-9-7"></a><span class="w">                </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"&lt;uuid&gt;"</span><span class="p">,</span><span class="w">  </span><span class="c1">// 随机生成的 uuid</span>
+<a href="#__codelineno-9-8" id="__codelineno-9-8" name="__codelineno-9-8"></a><span class="w">                </span><span class="nt">"alterId"</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span>
+<a href="#__codelineno-9-9" id="__codelineno-9-9" name="__codelineno-9-9"></a><span class="w">            </span><span class="p">}]</span>
+<a href="#__codelineno-9-10" id="__codelineno-9-10" name="__codelineno-9-10"></a><span class="w">        </span><span class="p">}</span>
+<a href="#__codelineno-9-11" id="__codelineno-9-11" name="__codelineno-9-11"></a><span class="w">    </span><span class="p">}],</span>
+<a href="#__codelineno-9-12" id="__codelineno-9-12" name="__codelineno-9-12"></a><span class="w">    </span><span class="nt">"outbounds"</span><span class="p">:</span><span class="w"> </span><span class="p">[{</span>
+<a href="#__codelineno-9-13" id="__codelineno-9-13" name="__codelineno-9-13"></a><span class="w">        </span><span class="nt">"protocol"</span><span class="p">:</span><span class="w"> </span><span class="s2">"freedom"</span>
+<a href="#__codelineno-9-14" id="__codelineno-9-14" name="__codelineno-9-14"></a><span class="w">    </span><span class="p">}]</span>
+<a href="#__codelineno-9-15" id="__codelineno-9-15" name="__codelineno-9-15"></a><span class="p">}</span>
+</code></pre></div>
+<p>开启<span class="heti-skip"><span class="heti-spacing"> </span>docker<span class="heti-spacing"> </span></span>后就可以通过<span class="heti-skip"><span class="heti-spacing"> </span>tailscale<span class="heti-spacing"> </span></span>给的内网服务器的<span><span class="heti-spacing"> </span>ip</span>（<span>100.64/9<span class="heti-spacing"> </span></span>网段）以及端口来使用代理了，订阅链接还是 <code>vmess://&lt;base64&gt;?remarks=ZJU%20...</code> 的格式，其中<span class="heti-skip"><span class="heti-spacing"> </span>base64<span class="heti-spacing"> </span></span>是<span class="heti-skip"><span class="heti-spacing"> </span>URL safe base64<span class="heti-spacing"> </span></span>编码的 <code>auto:&lt;uuid&gt;@&lt;tailscale ip&gt;:&lt;port&gt;</code>。</p>
+<p>不过缺点是<span class="heti-skip"><span class="heti-spacing"> </span>clash<span class="heti-spacing"> </span></span>开了<span class="heti-skip"><span class="heti-spacing"> </span>TUN<span class="heti-spacing"> </span></span>之后这个代理就连不上了，即使<span class="heti-skip"><span class="heti-spacing"> </span>TUN<span class="heti-spacing"> </span></span>绕过了<span class="heti-skip"><span class="heti-spacing"> </span>tailscale<span class="heti-spacing"> </span></span>的网段还是不行，可能是<span class="heti-skip"><span class="heti-spacing"> </span>clash<span class="heti-spacing"> </span></span>的<span class="heti-skip"><span class="heti-spacing"> </span>TUN<span class="heti-spacing"> </span></span>和<span class="heti-skip"><span class="heti-spacing"> </span>tailscale<span class="heti-spacing"> </span></span>本身冲突了导致的，还没仔细研究过。</p>
 <hr/>
 <div class="md-source-file">
 <small>
     
       最后更新:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年12月1日 02:32:34</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2025年7月12日 14:08:52</span>
 <br/>
         创建日期:
         <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-datetime">2024年11月30日 05:30:06</span>
@@ -2195,7 +2394,7 @@ var _hmt = _hmt || [];
 <div class="md-footer-meta__inner md-grid">
 <div class="md-copyright">
 <div class="md-copyright__highlight">
-      Copyright © 2022-2024 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
+      Copyright © 2022-2025 <a href="https://github.com/TonyCrane" rel="noopener" target="_blank">TonyCrane</a>
 </div>
   
   
