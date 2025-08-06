@@ -1,0 +1,136 @@
+:root {
+    --toc-plugin-title-bg: rgba(255, 255, 255, 0.05);
+    --toc-plugin-button-hover: rgba(255, 255, 255, 0.1);
+    --toc-plugin-border: rgba(255, 255, 255, 0.15);
+}
+
+[data-md-color-scheme="default"] {
+    --toc-plugin-title-bg: rgba(0, 0, 0, 0.05);
+    --toc-plugin-button-hover: rgba(0, 0, 0, 0.1);
+    --toc-plugin-border: rgba(0, 0, 0, 0.15);
+}
+
+.index-item-wrapper {
+    border: 1px solid var(--toc-plugin-border);
+    border-radius: 6px;
+}
+.title-wrapper {
+    padding: 10px 14px;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--toc-plugin-title-bg);
+}
+.title-wrapper:first-child {
+    border-top: 0px;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+.title-wrapper button {
+    font-size: 1.12em;
+    color: var(--md-typeset-color);
+    display: flex;
+    align-items: center;
+    padding: 3px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-radius: 6px;
+}
+.title-wrapper button:hover:not(:active) {
+    background-color: var(--toc-plugin-button-hover);
+}
+.title-wrapper button:active {
+    background-color: transparent;
+}
+.content-item-wrapper {
+    margin: 0px !important;
+    padding: 0px !important;
+}
+.content-item-wrapper li {
+    display: grid;
+    grid-template: "selection status primary metadata actions" auto "selection status main-content metadata actions" auto / min-content min-content minmax(7em, 1fr) minmax(0px, max-content) minmax(8em, max-content);
+    gap: 4px;
+    margin-left: 0 !important;
+    margin-bottom: 0 !important;
+}
+.content-item-wrapper li:not(:last-child) {
+    border-bottom: 1px solid var(--toc-plugin-border);
+    border-top-color: var(--toc-plugin-border);
+    border-right-color: var(--toc-plugin-border);
+    border-left-color: var(--toc-plugin-border);
+}
+.item-primary {
+    grid-area: primary;
+    padding-top: 4px;
+}
+.item-primary a {
+    color: var(--md-typeset-color);
+}
+.item-status {
+    grid-area: status;
+    padding-left: 13px;
+}
+.item-main-content {
+    grid-area: main-content;
+    font-size: 0.8em;
+    margin-top: -3px;
+    padding-bottom: 3px;
+    opacity: 0.6;
+}
+.item-metadata {
+    grid-area: metadata;
+    display: flex;
+    align-items: center;
+    padding-right: 4px;
+}
+.note-tag {
+    border: 1px solid #e6ad5b;
+    color: #e6ad5b;
+    border-radius: 0.9em;
+    font-size: 0.9em;
+    padding: 0px 8px;
+}
+.note-tag::before {
+    content: "课程笔记";
+}
+.lab-tag {
+    border: 1px solid #3f6ec6;
+    color: #3f6ec6;
+    border-radius: 0.9em;
+    font-size: 0.9em;
+    padding: 0px 8px;
+    margin-left: 4px;
+}
+.lab-tag::before {
+    content: "实验报告";
+}
+.item-actions, .item-lock {
+    grid-area: actions;
+    padding-right: 14px;
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    justify-content: flex-end;
+}
+@media screen and (max-width: 510px) {
+    .note-tag {
+        border: 5px solid #e6ad5b;
+        color: #e6ad5b;
+        border-radius: 0.9em;
+        font-size: 0.9em;
+        padding: 0px 0px;
+    }
+    .lab-tag {
+        border: 5px solid #3f6ec6;
+        color: #3f6ec6;
+        border-radius: 0.9em;
+        font-size: 0.9em;
+        padding: 0px 0px;
+        margin-left: 4px;
+    }
+    .note-tag::before {
+        content: none;
+    }
+    .lab-tag::before {
+        content: none;
+    }
+}

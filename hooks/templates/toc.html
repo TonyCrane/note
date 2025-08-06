@@ -1,0 +1,85 @@
+<div class="index-item-wrapper">
+    {% for item in items %}
+    <div class="title-wrapper">
+        <button onclick="buttonHandler({{ item.n }})">
+            <span class="twemoji" style="margin-right: 4px; font-size: 0.8em;">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M12.78 6.22a.75.75 0 0 1 0 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L3.22 7.28a.75.75 0 0 1 1.06-1.06L8 9.94l3.72-3.72a.75.75 0 0 1 1.06 0z"></path></svg>
+            </span>{{ item.title }}
+        </button>
+        {% if item.link %}
+        <span><a href="{{ item.link }}" target="_self"><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill-rule="evenodd" d="M10.604 1h4.146a.25.25 0 0 1 .25.25v4.146a.25.25 0 0 1-.427.177L13.03 4.03 9.28 7.78a.75.75 0 0 1-1.06-1.06l3.75-3.75-1.543-1.543A.25.25 0 0 1 10.604 1zM3.75 2A1.75 1.75 0 0 0 2 3.75v8.5c0 .966.784 1.75 1.75 1.75h8.5A1.75 1.75 0 0 0 14 12.25v-3.5a.75.75 0 0 0-1.5 0v3.5a.25.25 0 0 1-.25.25h-8.5a.25.25 0 0 1-.25-.25v-8.5a.25.25 0 0 1 .25-.25h3.5a.75.75 0 0 0 0-1.5h-3.5z"></path></svg></span></a></span>
+        {% endif %}
+    </div>
+    <ul class="content-item-wrapper">
+        {% for content in item.contents %}
+        <li>
+            <div class="item-primary"><a href="{{ content.link }}" target="_self">{{ content.title }}</a></div>
+            <div class="item-status"></div>
+            <div class="item-main-content">
+            <span class="twemoji"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8V2m6.78 1a.69.69 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38-2.5-2.5z"></path></svg></span> {{ content.words }} {% if content.codes != 0 %}<span class="twemoji"><svg viewBox="0 0 640 512" xmlns="http://www.w3.org/2000/svg"><path d="m278.9 511.5-61-17.7c-6.4-1.8-10-8.5-8.2-14.9L346.2 8.7c1.8-6.4 8.5-10 14.9-8.2l61 17.7c6.4 1.8 10 8.5 8.2 14.9L293.8 503.3c-1.9 6.4-8.5 10.1-14.9 8.2zm-114-112.2 43.5-46.4c4.6-4.9 4.3-12.7-.8-17.2L117 256l90.6-79.7c5.1-4.5 5.5-12.3.8-17.2l-43.5-46.4c-4.5-4.8-12.1-5.1-17-.5L3.8 247.2c-5.1 4.7-5.1 12.8 0 17.5l144.1 135.1c4.9 4.6 12.5 4.4 17-.5zm327.2.6 144.1-135.1c5.1-4.7 5.1-12.8 0-17.5L492.1 112.1c-4.8-4.5-12.4-4.3-17 .5L431.6 159c-4.6 4.9-4.3 12.7.8 17.2L523 256l-90.6 79.7c-5.1 4.5-5.5 12.3-.8 17.2l43.5 46.4c4.5 4.9 12.1 5.1 17 .6z"></path></svg></span> <span>{{ content.codes }}</span> {% endif %}<span class="twemoji"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3L12.5 13z"></path></svg></span> {{ content.read_time }} mins
+            </div>
+            <div class="item-metadata">
+                {% if content.note %}
+                <span class="note-tag"></span>
+                {% endif %}
+                {% if content.lab %}
+                <span class="lab-tag"></span>
+                {% endif %}
+            </div>
+            {% if content.lock %}
+            <div class="item-lock">不公开</div>
+            {% else %}
+            <div class="item-actions">{{ content.update_time }}</div>
+            {% endif %}
+        </li>
+        {% endfor %}
+    </ul>
+    {% endfor %}
+</div>
+<script>
+function buttonHandler(i) {
+    let content = document.getElementsByClassName("content-item-wrapper")[i];
+    let button = document.getElementsByClassName("title-wrapper")[i].getElementsByTagName("button")[0];
+    if (content.style.display == "none") {
+        content.style.display = "block";
+        button.children[0].children[0].style.transform = "rotate(0deg)";
+    } else {
+        content.style.display = "none";
+        button.children[0].children[0].style.transform = "rotate(-90deg)";
+    }
+}
+function produce_time() {
+    let time = document.getElementsByClassName("item-actions");
+    for (let i = 0; i < time.length; i++) {
+        let timestamp;
+        if (time[i].childElementCount > 0) {
+            timestamp = time[i].children[0].innerHTML;
+        } else {
+            timestamp = time[i].innerHTML;
+        }
+        let date = new Date(parseInt(timestamp) * 1000);
+        let now = new Date();
+        let diff = now.getTime() - date.getTime();
+        let years = Math.floor(diff / (24 * 3600 * 1000 * 365));
+        let months = Math.floor(diff / (24 * 3600 * 1000 * 30));
+        let days = Math.floor(diff / (24 * 3600 * 1000));
+        let hours = Math.floor((diff % (24 * 3600 * 1000)) / (3600 * 1000));
+        let minutes = Math.floor((diff % (3600 * 1000)) / (60 * 1000));
+        let seconds = Math.floor((diff % (60 * 1000)) / 1000);
+        if (years > 0) {
+            time[i].innerHTML = years + " years ago";
+        } else if (months > 0) {
+            time[i].innerHTML = months + " months ago";
+        } else if (days > 0) {
+            time[i].innerHTML = days + " days ago";
+        } else if (hours > 0) {
+            time[i].innerHTML = hours + " hours ago";
+        } else if (minutes > 0) {
+            time[i].innerHTML = minutes + " minutes ago";
+        } else {
+            time[i].innerHTML = seconds + " seconds ago";
+        }
+    }
+}
+produce_time();
+</script>

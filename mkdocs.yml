@@ -12,6 +12,8 @@ theme:
   icon: 
     logo: material/notebook-outline
   custom_dir: overrides
+  static_templates:
+    - redirection.html
   features:
     - content.code.annotate
     - navigation.tracking
@@ -42,8 +44,8 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.inlinehilite
   - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.tabbed:
       alternate_style: true 
   - pymdownx.tasklist:
@@ -76,9 +78,6 @@ extra:
     property: G-DYETCPM289
 
 extra_css:
-  # - https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css
-  # - https://gcore.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.1.0/style.css
-  # - https://gcore.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
   - https://cdn.tonycrane.cc/utils/katex.min.css
   - https://cdn.tonycrane.cc/jbmono/jetbrainsmono.css
   - https://cdn.tonycrane.cc/lxgw/lxgwscreen.css
@@ -87,17 +86,16 @@ extra_css:
   - css/card.css
   - css/flink.css
   - css/changelog_extra.css
-  # - css/heti.css
+  - css/toc_extra.css
+  - css/svg_extra.css
 
 extra_javascript:
-  # - https://gcore.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js
   - https://cdn.tonycrane.cc/utils/katex.min.js
   - js/katex.js
-  # - js/heti.js
-  # - js/scheme.js # this is in template 'base.html'
 
 plugins:
-  - rss
+  - rss:
+      enabled: !ENV [FULL, false]
   - search
   - glightbox:
       width: 80%
@@ -109,6 +107,7 @@ plugins:
       encrypted_something:
         mkdocs-encrypted-toc: [nav, class]
   - git-revision-date-localized:
+      enabled: !ENV [FULL, false]
       type: datetime
       timezone: Asia/Shanghai
       locale: zh
@@ -119,31 +118,15 @@ plugins:
   - changelog
   - statistics:
       page_check_metadata: comment
-  - toc:
-      ignore_commits:
-        - cs/system/cs1/topic1.md: 859970b504aa527030420ff9fbfffdb1b62d71f1
-  - heti
-  - tikzautomata
-  - linkbackward:
-      wait_time: 0
-      redirections:
-        - /ctf/steg/ -> /ctf/misc/steg/
-        - /ctf/steg/image/ -> /ctf/misc/steg/image/
-        - /ctf/steg/audio/ -> /ctf/misc/steg/audio/
-        - /ctf/escapes/ -> /ctf/misc/escapes/
-        - /ctf/escapes/pysandbox/ -> /ctf/misc/escapes/pysandbox/
-        - /ctf/forensics/ -> /ctf/misc/forensics/
-        - /ctf/forensics/mem/ -> /ctf/misc/forensics/mem/
-        - /ctf/coding/ -> /ctf/misc/coding/
-        - /ctf/qrcode/ -> /ctf/misc/qrcode/
-        - /ctf/esolang/ -> /ctf/misc/esolang/
-        - /cs/pl/c_cpp/ -> /cs/pl/c_cpp/c/
-        - /hpc/ -> /cs/hpc/hpc101/
-        - /hpc/hpc101/vectorized/ -> /cs/hpc/hpc101/vectorized/
-        - /hpc/hpc101/gpu/ -> /cs/hpc/hpc101/gpu/
-        - /hpc/hpc101/openmp/ -> /cs/hpc/hpc101/openmp/
-        - /hpc/hpc101/mpi/ -> /cs/hpc/hpc101/mpi/
-        - /hpc/hpc101/ml/ -> /cs/hpc/hpc101/ml/
+  - heti:
+      enabled: !ENV [FULL, false]
+      disable_serve: false
+
+hooks:
+  - hooks/theme_override.py
+  - hooks/linkbackward.py
+  - hooks/toc.py
+  - hooks/tikzautomata.py
 
 not_in_nav: todo.md
 

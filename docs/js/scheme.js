@@ -5,7 +5,7 @@
       document.querySelector("body").setAttribute("data-md-color-scheme", (e.matches) ? "slate" : "default")
     }
     var frame = document.querySelector(".giscus-frame")
-    var theme = document.querySelector("body").getAttribute("data-md-color-scheme") === "slate" ? "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css" : "light"
+    var theme = document.querySelector("body").getAttribute("data-md-color-scheme") === "slate" ? "transparent_dark" : "light"
     frame.contentWindow.postMessage(
       { giscus: { setConfig: { theme } } },
       "https://giscus.app"
@@ -90,7 +90,7 @@ window.toggleScheme = () => {
   body.setAttribute("data-md-color-scheme", scheme)
 
   var frame = document.querySelector(".giscus-frame")
-  var theme = scheme === "slate" ? "https://gcore.jsdelivr.net/gh/TonyCrane/note/docs/css/giscus.css" : "light"
+  var theme = scheme === "slate" ? "transparent_dark" : "light"
   frame.contentWindow.postMessage(
     { giscus: { setConfig: { theme } } },
     "https://giscus.app"

@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block htmltitle %}
+  {% if page.meta and page.meta.home %}
+    <title>{{ config.site_name }}</title>
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}
+
+{% block styles %}
+  {{ super() }}
+  {% if page.meta and page.meta.counter %}
+    <link rel="stylesheet" href="{{ 'css/counter.css' | url }}">
+  {% endif %}
+{% endblock %}
+
+{% block site_nav %}
+  {% if nav %}
+    <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% if page.meta and page.meta.hide and "navigation" in page.meta.hide %}
+          {% else %}
+            {% include "partials/nav.html" %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+  {% if page.toc and "toc.integrate" not in features %}
+    <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+      <div class="md-sidebar__scrollwrap">
+        <div class="md-sidebar__inner">
+          {% if page.meta and page.meta.hide and "toc" in page.meta.hide %}
+          {% else %}
+            {% include "partials/toc.html" %}
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    <script src="/js/toc.js" defer></script>
+    <link rel="stylesheet" href="/css/fold_toc.css">
+  {% endif %}
+{% endblock %}

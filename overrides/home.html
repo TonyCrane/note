@@ -1,222 +1,81 @@
-{#-
-  This file was automatically generated - do not edit
--#}
-{% import "partials/language.html" as lang with context %}
-<!doctype html>
-<html lang="{{ lang.t('language') }}" class="no-js">
-  <head>
-    {% block site_meta %}
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      {% if page and page.meta and page.meta.description %}
-        <meta name="description" content="{{ page.meta.description }}">
-      {% elif config.site_description %}
-        <meta name="description" content="{{ config.site_description }}">
-      {% endif %}
-      {% if page and page.meta and page.meta.author %}
-        <meta name="author" content="{{ page.meta.author }}">
-      {% elif config.site_author %}
-        <meta name="author" content="{{ config.site_author }}">
-      {% endif %}
-      {% if page.canonical_url %}
-        <link rel="canonical" href="{{ page.canonical_url }}">
-      {% endif %}
-      <link rel="icon" href="{{ config.theme.favicon | url }}">
-      <meta name="generator" content="mkdocs-{{ mkdocs_version }}, mkdocs-material-8.1.4">
-    {% endblock %}
-    {% block htmltitle %}
-      {% if page and page.meta and page.meta.home %}
-        <title>{{ config.site_name }}</title>
-      {% elif page and page.meta and page.meta.title %}
-        <title>{{ page.meta.title }} - {{ config.site_name }}</title>
-      {% elif page and page.title and not page.is_homepage %}
-        <title>{{ page.title | striptags }} - {{ config.site_name }}</title>
-      {% else %}
-        <title>{{ config.site_name }}</title>
-      {% endif %}
-    {% endblock %}
-    {% block styles %}
-      <link rel="stylesheet" href="{{ 'assets/stylesheets/main.bb3983ee.min.css' | url }}">
-      {% if config.theme.palette %}
-        {% set palette = config.theme.palette %}
-        <link rel="stylesheet" href="{{ 'assets/stylesheets/palette.e6a45f82.min.css' | url }}">
-        {% if palette.primary %}
-          {% import "partials/palette.html" as map %}
-          {% set primary = map.primary(
-            palette.primary | replace(" ", "-") | lower
-          ) %}
-          <meta name="theme-color" content="{{ primary }}">
-        {% endif %}
-      {% endif %}
-    {% endblock %}
-    {% block libs %}{% endblock %}
-    {% block fonts %}
-      {% if config.theme.font != false %}
-        {% set font = config.theme.font %}
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family={{
-            font.text | replace(' ', '+') + ':300,400,400i,700%7C' +
-            font.code | replace(' ', '+')
-          }}&display=fallback">
-        <style>:root{--md-text-font:"{{ font.text }}";--md-code-font:"{{ font.code }}"}</style>
-      {% endif %}
-    {% endblock %}
-    {% for path in config["extra_css"] %}
-      <link rel="stylesheet" href="{{ path | url }}">
-    {% endfor %}
-    {% if page and page.meta and page.meta.counter %}
-      <link rel="stylesheet" href="/css/counter.css">
-    {% endif %}
-    {% include "partials/javascripts/base.html" %}
-    {% block analytics %}
-      {% include "partials/integrations/analytics.html" %}
-    {% endblock %}
-    {% block extrahead %}{% endblock %}
-    <link rel="stylesheet" href="css/cards/base.css" />
-    <link rel="stylesheet" href="css/cards/cards.css" />
-    <script type="module" crossorigin src="/assets/cards/index.caca6175.js"></script>
-    <link rel="stylesheet" href="/assets/cards/index.c9fa2768.css">
-  </head>
-  {% set direction = config.theme.direction or lang.t('direction') %}
-  {% if config.theme.palette %}
-    {% set palette = config.theme.palette %}
-    {% if not palette is mapping %}
-      {% set palette = palette | first %}
-    {% endif %}
-    {% set scheme  = palette.scheme  | replace(" ", "-") | lower %}
-    {% set primary = palette.primary | replace(" ", "-") | lower %}
-    {% set accent  = palette.accent  | replace(" ", "-") | lower %}
-    <style>
-      body {
-        background-image: url(/assets/images/home/light.jpg);
+{% extends "main.html" %}
+
+{% block extrahead %}
+  <link rel="stylesheet" href="css/cards/base.css" />
+  <link rel="stylesheet" href="css/cards/cards.css" />
+  <script type="module" crossorigin src="/assets/cards/index.caca6175.js"></script>
+  <link rel="stylesheet" href="/assets/cards/index.c9fa2768.css">
+  <style>
+    body {
+      background-image: url(/assets/images/home/light.jpg);
+      background-size: cover;
+    }
+    body[data-md-color-scheme="slate"] {
+      background-image: url(/assets/images/home/dark.jpg);
+      background-size: cover;
+    }
+    .md-header, .md-tabs, .md-footer, .md-footer-meta {
+      background-color: transparent;
+    }
+    @media screen and (min-width: 1220px) {
+      .sidebar_nav {
+        height: 0 !important;
       }
-      body[data-md-color-scheme="slate"] {
-        background-image: url(/assets/images/home/dark.jpg);
-      }
-    </style>
-    <body dir="{{ direction }}" data-md-color-scheme="{{ scheme }}" data-md-color-primary="{{ primary }}" data-md-color-accent="{{ accent }}" style="background-size: cover;">
-  {% else %}
-    <body dir="{{ direction }}">
-  {% endif %}
-    <script src="{{ 'js/scheme.js' | url }}" type="text/javascript"></script>
-    {% set features = config.theme.features or [] %}
-    {% if not config.theme.palette is mapping %}
-      {% include "partials/javascripts/palette.html" %}
-    {% endif %}
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <style>
-      .md-header, .md-tabs, .md-footer, .md-footer-meta {
-        background-color: transparent;
-      }
-      @media screen and (min-width: 1220px) {
-        .sidebar_nav {
-          height: 0 !important;
-        }
-      }
+    }
+    #app {
+      position: absolute;
+      right: calc(35% - 320px / 2);
+      top: calc(50% - 445.68px / 2);
+    }
+    @media (max-width: 960px) {
       #app {
-        position: absolute;
-        right: calc(35% - 320px / 2);
-        top: calc(50% - 445.68px / 2);
+        display: none;
       }
-      @media (max-width: 960px) {
-        #app {
-          display: none;
-        }
-      }
-    </style>
-    {% block header %}
-      {% include "partials/header.html" %}
-    {% endblock %}
-    <div class="md-container" data-md-component="container">
-      {% block tabs %}
-        {% if not "navigation.tabs.sticky" in features %}
-          {% if "navigation.tabs" in features %}
-            {% include "partials/tabs.html" %}
-          {% endif %}
-        {% endif %}
-      {% endblock %}
-      <div class="md-main" data-md-component="main" style="
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between
-      ">
-        <div class="md-main__inner md-grid home-blank" style="flex-grow: 1;">
-          <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
-            <div class="md-sidebar__scrollwrap sidebar_nav">
-              <div class="md-sidebar__inner">
-                {% if page and page.meta and page.meta.hide and "navigation" in page.meta.hide %}
-                {% else %}
-                  {% include "partials/nav.html" %}
-                {% endif %}
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- modified from https://github.com/simeydotme/pokemon-cards-css/
-             see more at https://github.com/TonyCrane/note-homepage-cards/ -->
-        <div id="app"></div>
-        <div class="md-typeset" style="display: block; background-color: transparent; font-size: 175%;">
-          <div class="md-grid">
-            <div style="margin-left: 0.8rem;">
-              {{ page.content }}
-            </div>
-          </div>
-        </div>
-        <div class="md-footer" style="display: block; background-color: transparent;">
-          <div class="md-footer-meta md-typeset" style="background-color: transparent;">
-            <div class="md-footer-meta__inner md-grid">
-              {% include "partials/copyright.html" %}
-              {% if config.extra.social %}
-                {% include "partials/social.html" %}
-              {% endif %}
-            </div>
-          </div>
+    }
+    .md-main {
+      display: flex;
+      flex-direction: column;
+    }
+    .md-main__inner {
+      flex: 1;
+      display: flex;
+      margin-top: 1.5rem;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      width: 100%;
+    }
+    .md-content {
+      flex-grow: initial;
+    }
+    .md-content__inner {
+      margin: 0 !important;
+    }
+    .md-header--shadow {
+      box-shadow: none !important;
+    }
+  </style>
+{% endblock %}
+
+{% block site_nav %}
+  <div style="flex-grow: 1;">
+    <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+      <div class="md-sidebar__scrollwrap sidebar_nav">
+        <div class="md-sidebar__inner">
+          {% include "partials/nav.html" %}
         </div>
       </div>
     </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
+  </div>
+{% endblock %}
+
+{% block content %}
+  <div id="app"></div>
+  <div class="md-typeset" style="display: block; background-color: transparent; font-size: 125%;">
+    <div class="md-grid">
+      <div style="margin-left: 0.8rem;">
+        {{ page.content }}
+      </div>
     </div>
-    {% block config %}
-      {%- set app = {
-        "base": base_url,
-        "features": features,
-        "translations": {},
-        "search": "assets/javascripts/workers/search.361d90f1.min.js" | url
-      } -%}
-      {%- if config.extra.version -%}
-        {%- set _ = app.update({ "version": config.extra.version }) -%}
-      {%- endif -%}
-      {%- set translations = app.translations -%}
-      {%- for key in [
-        "clipboard.copy",
-        "clipboard.copied",
-        "search.config.lang",
-        "search.config.pipeline",
-        "search.config.separator",
-        "search.placeholder",
-        "search.result.placeholder",
-        "search.result.none",
-        "search.result.one",
-        "search.result.other",
-        "search.result.more.one",
-        "search.result.more.other",
-        "search.result.term.missing",
-        "select.version.title"
-      ] -%}
-        {%- set _ = translations.update({ key: lang.t(key) }) -%}
-      {%- endfor -%}
-      <script id="__config" type="application/json">
-        {{- app | tojson -}}
-      </script>
-    {% endblock %}
-    {% block scripts %}
-      <script src="{{ 'assets/javascripts/bundle.289a2a4b.min.js' | url }}"></script>
-      {% for path in config["extra_javascript"] %}
-        <script src="{{ path | url }}"></script>
-      {% endfor %}
-    {% endblock %}
-  </body>
-</html>
+  </div>
+{% endblock %}
