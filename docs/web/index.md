@@ -22,6 +22,7 @@
 - 排版写作规范:
     - 中文排版需求: typesetting/clreq/
     - 中文技术文档风格指南: typesetting/tech/
-- 前端知识集:
-    - SVG: svg/
+- 前端技术:
+    - CSS: frontend/css/
+    - SVG: frontend/svg/
 {{ END_TOC }}

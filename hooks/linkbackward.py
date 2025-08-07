@@ -31,6 +31,7 @@ REDIRS = [
     ("/hpc/hpc101/openmp/", "/cs/hpc/hpc101/openmp/"),
     ("/hpc/hpc101/mpi/", "/cs/hpc/hpc101/mpi/"),
     ("/hpc/hpc101/ml/", "/cs/hpc/hpc101/ml/"),
+    ("/web/svg/", "/web/frontend/svg/"),
 ]
 
 

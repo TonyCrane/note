@@ -10,7 +10,7 @@
 - [gdb 相关备忘](gdb)
 
 ## CI 工具
-- [GitHub Action 使用方法（**TODO**）](action)
+- [GitHub Action 相关用法](action)
 
 ## 站点生成工具
 - [mkdocs 使用记录](mkdocs)

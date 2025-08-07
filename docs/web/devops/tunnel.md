@@ -205,46 +205,7 @@ tailscale 可以实现异地组网，在内网机器上和外部机器上都安�
 
 ### V2Ray 正向代理
 
-既然通过 tailscale 可以异地组网直接连接到内网服务器上，那么就可以通过 v2ray 的正向代理来通过内网服务器代理访问其他内网地址。利用 docker 部署 v2ray：
-
-```yaml
-services:
-  v2ray:
-    image: v2fly/v2fly-core:latest
-    container_name: v2fly
-    ports:
-      - xxx:xxx # inbound 端口需要填在这里暴露出来
-    environment:
-      - TZ=Asia/Shanghai
-    volumes:
-      - ./v2ray.json:/etc/v2ray.json
-    command: ["run", "-config", "/etc/v2ray.json"]
-    restart: always
-```
-
-v2ray.json 的写法较简单：
-
-```json
-{
-    "inbounds": [{
-        "port": xxx,  // 需要暴露的端口
-        "protocol": "vmess",
-        "settings": {
-            "clients": [{
-                "id": "<uuid>",  // 随机生成的 uuid
-                "alterId": 0
-            }]
-        }
-    }],
-    "outbounds": [{
-        "protocol": "freedom"
-    }]
-}
-```
-
-开启 docker 后就可以通过 tailscale 给的内网服务器的 ip（100.64/9 网段）以及端口来使用代理了，订阅链接还是 `vmess://<base64>?remarks=ZJU%20...` 的格式，其中 base64 是 URL safe base64 编码的 `auto:<uuid>@<tailscale ip>:<port>`。
-
-不过缺点是 clash 开了 TUN 之后这个代理就连不上了，即使 TUN 绕过了 tailscale 的网段还是不行，可能是 clash 的 TUN 和 tailscale 本身冲突了导致的，还没仔细研究过。
+见 [V2Ray 正向代理 > tailscale](#tailscale-proxy)
 
 ### tailscale socks5 代理
 
@@ -386,3 +347,93 @@ services:
     ```
 
 这两个机器上运行起 v2ray 后，就可以连接 public 提供的 vmess 服务了，订阅链接可以写 `vmess://<base64>?remarks=ZJU%20...`，其中 base64 是 URL safe base64 编码的 `auto:<uuid_2>@<ip or domain>:<port_2>`，这样就可以在 clash 里使用了，剩余步骤见 [Clash 代理配置](clash.md)。（注意在公网服务器上不能开 TUN 模式）
+
+## V2Ray 正向代理
+
+适用情况：可连接到内网服务器，想要通过内网服务器代理访问其他内网。
+
+### tailscale {#tailscale-proxy}
+
+既然通过 tailscale 可以异地组网直接连接到内网服务器上，那么就可以通过 v2ray 的正向代理来通过内网服务器代理访问其他内网地址。同样利用 docker 部署 v2ray：
+
+```yaml
+services:
+  v2ray:
+    image: v2fly/v2fly-core:latest
+    container_name: v2fly
+    ports:
+      - xxx:xxx # inbound 端口需要填在这里暴露出来
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./v2ray.json:/etc/v2ray.json
+    command: ["run", "-config", "/etc/v2ray.json"]
+    restart: always
+```
+
+v2ray.json 的写法较简单：
+
+```json
+{
+    "inbounds": [{
+        "port": xxx,  // 需要暴露的端口
+        "protocol": "vmess",
+        "settings": {
+            "clients": [{
+                "id": "<uuid>",  // 随机生成的 uuid
+                "alterId": 0
+            }]
+        }
+    }],
+    "outbounds": [{
+        "protocol": "freedom"
+    }]
+}
+```
+
+开启 docker 后就可以通过 tailscale 给的内网服务器的 ip（100.64/9 网段）以及端口来使用代理了，订阅链接还是 `vmess://<base64>?remarks=ZJU%20...` 的格式，其中 base64 是 URL safe base64 编码的 `auto:<uuid>@<tailscale ip>:<port>`。
+
+不过缺点是 clash 开了 TUN 之后这个代理就连不上了，即使 TUN 绕过了 tailscale 的网段还是不行，可能是 clash 的 TUN 和 tailscale 本身冲突了导致的，还没仔细研究过。
+
+另外 tailscale 提供了 socks5 代理功能和子网功能，因此不推荐使用本方法。
+
+### 通过 IPv6
+
+浙大内网分配的 IPv6 地址是可以通过公网访问的（不过屏蔽了一些端口和协议，比如 22/80/443 端口和 IMCP 协议），如果内网的机器有 IPv6 地址且可以公网访问的话，可以通过 IPv6 直连内网机器正向代理来访问其他内网地址。（但 IPv6 出口疑似有较严限速，不建议大流量使用）
+
+v2ray.json 的配置和上面利用 tailscale 正向代理的配置一样，区别在于开 v2fly docker 的时候要监听 IPv6 地址：
+
+```yaml
+services:
+  v2ray:
+    image: v2fly/v2fly-core:latest
+    container_name: v2fly
+    ports:
+      - "[::]:port:port"
+    environment:
+      - TZ=Asia/Shanghai
+    volumes:
+      - ./v2ray.json:/etc/v2ray.json
+    command: ["run", "-config", "/etc/v2ray.json"]
+    restart: always
+
+networks:
+  v2fly_v6net:
+    enable_ipv6: true
+```
+
+订阅链接同样是 `vmess://<base64>?remarks=ZJU%20...` 的格式，其中 base64 是 URL safe base64 编码的 `auto:<uuid>@<ipv6>:<port>`，`<ipv6>` 部分直接填写 IPv6 地址（不需要加中括号）或解析到该地址的域名即可。
+
+## 返校代理方式总结
+
+| 方式 | Clash | 内网机器 | 公网机器 | 备注 |
+|:--|:--:|:--:|:--:|:--|
+| [EasyConnect 客户端](https://rvpn.zju.edu.cn) |  |  |  | 深信服产品，非常不推荐使用 |
+| [aTrust 客户端](https://vpn.zju.edu.cn) |  |  |  | 深信服产品，不推荐直接使用 |
+| [ZJU Connect](#zju-connect) | ✓ |  |  | 禁用了大部分端口，现不推荐 |
+| [docker aTrust](#zju-atrust) | ✓ |  |  | 需要手动登录，占用较大 |
+| [ZJU Connect beta](https://github.com/Mythologyli/zju-connect/tree/atrust-test) | ✓ |  |  | 使用新协议的测试版，笔者还没用过 |
+| [tailscale socks5](#tailscale-socks5) | ✓ | ✓ |  | 不能开 TUN 使用 |
+| [tailscale subnet](#tailscale-subnet) |  | ✓ |  | 受限于 tailscale DERP 服务器 |
+| [V2Ray 反向代理](#v2ray_1) | ✓ | ✓ | ✓ | 需要公网，但稳定 |
+| [IPv6 连接正向代理](#ipv6) | ✓ | ✓ |  | 需要 IPv6 可直连 |

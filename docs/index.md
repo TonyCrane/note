@@ -1,6 +1,7 @@
 ---
 hide:
     - date
+    - footer
 home: true
 template: home.html
 statistics: true
