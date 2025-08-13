@@ -31,7 +31,19 @@ REDIRS = [
     ("/hpc/hpc101/openmp/", "/cs/hpc/hpc101/openmp/"),
     ("/hpc/hpc101/mpi/", "/cs/hpc/hpc101/mpi/"),
     ("/hpc/hpc101/ml/", "/cs/hpc/hpc101/ml/"),
-    ("/web/svg/", "/web/frontend/svg/"),
+    ("/web/svg/", "/devops/frontend/svg/"),
+    ("/web/", "/devops/"),
+    ("/web/devops/", "/devops/network/"),
+    ("/web/devops/basic/", "/devops/network/basic/"),
+    ("/web/devops/clash/", "/devops/network/clash/"),
+    ("/web/devops/tunnel/", "/devops/network/tunnel/"),
+    ("/web/devops/server/", "/devops/network/server/"),
+    ("/web/protocol/", "/devops/protocol/"),
+    ("/web/protocol/vmess/", "/devops/protocol/vmess/"),
+    ("/web/frontend/css/", "/devops/frontend/css/"),
+    ("/web/frontend/svg/", "/devops/frontend/svg/"),
+    ("/web/typesetting/clreq/", "/devops/typesetting/clreq/"),
+    ("/web/typesetting/tech/", "/devops/typesetting/tech/"),
 ]
 
 
