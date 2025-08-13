@@ -1,18 +1,12 @@
 # 工具相关
 
 !!! abstract
-    一些工具的用法记录，以及命令行工具的备忘命令
+    一些工具的用法记录，更多命令、运维相关工具见 [DevOps > 系统运维](../../devops/system/)
 
-## 命令行工具
-- [Git 命令备忘](git)
-- [Shell 命令备忘](shell)
-- [Docker 相关备忘](docker)
-- [gdb 相关备忘](gdb)
+## Table of Contents
 
-## CI 工具
-- [GitHub Action 相关用法](action)
-
-## 站点生成工具
-- [mkdocs 使用记录](mkdocs)
-- [hexo 使用记录](hexo)
-- [sphinx 使用记录](sphinx)
+- [工具收集](toolbox)
+- 站点生成工具
+    - [mkdocs 使用记录](mkdocs)
+    - [hexo 使用记录](hexo)
+    - [sphinx 使用记录](sphinx)

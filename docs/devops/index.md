@@ -10,6 +10,13 @@
 ## Table of Contents
 
 {{ BEGIN_TOC }}
+- 系统运维:
+    - index: system/
+    - 命令行 shell 配置: system/shell/
+    - Git 相关使用与配置: system/git/
+    - Docker 相关配置与技术: system/docker/
+    - gdb 相关使用备忘: system/gdb/
+    - GitHub Action 基础与运用: system/action/
 - 网络运维:
     - index: network/
     - 基本配置与工具: network/basic/

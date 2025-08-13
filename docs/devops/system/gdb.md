@@ -3,7 +3,7 @@ comment: True
 counter: True
 ---
 
-# gdb 相关备忘
+# gdb 相关使用备忘
 
 !!! abstract
     和 gdb 相关的一些指令备忘、插件安装方式等

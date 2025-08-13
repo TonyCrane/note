@@ -3,7 +3,7 @@ comment: True
 counter: True
 ---
 
-# Shell 命令备忘
+# 命令行 shell 配置
 
 !!! abstract 
     主要是在配置新环境的时候要做的一些事情

@@ -44,6 +44,11 @@ REDIRS = [
     ("/web/frontend/svg/", "/devops/frontend/svg/"),
     ("/web/typesetting/clreq/", "/devops/typesetting/clreq/"),
     ("/web/typesetting/tech/", "/devops/typesetting/tech/"),
+    ("/cs/tools/shell/", "/devops/system/shell/"),
+    ("/cs/tools/git/", "/devops/system/git/"),
+    ("/cs/tools/docker/", "/devops/system/docker/"),
+    ("/cs/tools/gdb/", "/devops/system/gdb/"),
+    ("/cs/tools/action/", "/devops/system/action/"),
 ]
 
 

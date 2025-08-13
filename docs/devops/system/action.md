@@ -3,7 +3,7 @@ comment: True
 counter: True
 ---
 
-# GitHub Actions 相关用法
+# GitHub Actions 基础与运用
 
 !!! abstract
     GitHub Actions workflow 文件的常用写法记录

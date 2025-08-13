@@ -3,7 +3,7 @@ counter: True
 comment: True
 ---
 
-# Git 命令备忘
+# Git 相关使用与配置
 
 !!! abstract
     一些常用/常忘的 git 命令，和基础的配置
