@@ -29,12 +29,9 @@
 - 零散知识点:
     - RegEx 正则表达式: regex/
     - Unicode 统一码: unicode/
-- 工具使用备忘:
+- 工具相关:
     - index: tools/
-    - Git 命令备忘: tools/git/
-    - Shell 命令备忘: tools/shell/
-    - Docker 相关备忘: tools/docker/
-    - gdb 相关备忘: tools/gdb/
+    - 工具收集: tools/toolbox/
     - mkdocs 使用记录: tools/mkdocs/
     - hexo 使用记录: tools/hexo/
     - sphinx 使用记录: tools/sphinx/

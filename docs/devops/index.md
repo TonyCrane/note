@@ -17,6 +17,8 @@
     - Docker 相关配置与技术: system/docker/
     - gdb 相关使用备忘: system/gdb/
     - GitHub Action 基础与运用: system/action/
+    - KVM 虚拟机基本用法: system/kvm/
+    - NAS 配置记录: system/nas/
 - 网络运维:
     - index: network/
     - 基本配置与工具: network/basic/

@@ -10,3 +10,5 @@
 - [Docker 相关配置与技术](docker.md)
 - [gdb 相关使用备忘](gdb.md)
 - [GitHub Action 基础与运用](action.md)
+- [KVM 虚拟机基本用法](kvm.md)
+- [NAS 配置记录](nas.md)
