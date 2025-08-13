@@ -21,14 +21,19 @@ else:
 
 HOOKS_DIR = os.path.dirname(os.path.realpath(__file__))
 TEMPLATE_DIR = os.path.join(HOOKS_DIR, "templates/toc.html")
+IGNORE_DIR = os.path.join(HOOKS_DIR, "..", ".ignored-commits")
 
 with open(TEMPLATE_DIR, "r", encoding="utf-8") as file:
     TEMPLATE = file.read()
 
-IGNORE_COMMITS = [
-    {"cs/system/cs1/topic1.md": "859970b504aa527030420ff9fbfffdb1b62d71f1"},
-]
+# IGNORE_COMMITS = [
+#     {"cs/system/cs1/topic1.md": "859970b504aa527030420ff9fbfffdb1b62d71f1"},
+# ]
 
+with open(IGNORE_DIR, "r", encoding="utf-8") as file:
+    IGNORE_COMMITS = [
+        line.strip() for line in file if line.strip() and not line.startswith("#")
+    ]
 
 def on_page_markdown(
     markdown: str, page: Page, config: MkDocsConfig, files: Files, **kwargs

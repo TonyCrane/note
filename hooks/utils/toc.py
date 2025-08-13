@@ -108,7 +108,7 @@ def get_latest_commit_timestamp(path: str, ignore_commits: list[str]) -> int:
     repo = _get_repo(realpath)
 
     if ignore_commits:
-        commits = repo.log(realpath, format="%H %at")
+        commits = repo.log(realpath, format="%H %at", follow=True)
         commit_timestamp = ""
         for commit in commits.splitlines():
             sha, timestamp = commit.split()
