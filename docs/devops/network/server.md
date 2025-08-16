@@ -299,6 +299,22 @@ site_addr {
 }
 ```
 
+### 插件安装
+
+caddy 可以通过 xcaddy 工具来安装插件，不过逻辑是将插件编译进 caddy 的二进制中，即相当于重新编译 caddy。通过 go 安装 xcaddy：
+
+```shell
+go install github.com/caddyserver/xcaddy/cmd/xcaddy@latest
+```
+
+通过 xcaddy 附带插件构建 caddy：
+
+```shell
+xcaddy build --with github.com/sjtug/caddy2-filter
+```
+
+构建后需要用 ./caddy 手动替换掉 /usr/bin/caddy，或更改 caddy.service。
+
 ### 一些杂项
 
 - handle 和 handle_path 的区别：

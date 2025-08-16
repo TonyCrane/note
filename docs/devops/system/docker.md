@@ -254,3 +254,30 @@ pip install podman-compose
 
 - podman 默认 rootless，普通用户和 root 用户相当于不同的环境（包括拉取下来的本地镜像）
 - 防火墙开关或修改后需要重载网络：`podman network reload -a`
+
+## 其他问题
+
+### 容器内访问 host 端口
+
+容器的端口映射是将容器内的端口映射到 host 上，并不能实现从容器内反向访问 host 端口的服务。而且从 localhost:port 进行访问的话，localhost 仍表示容器本身，而非宿主机。
+
+docker 可以通过添加额外的 host 指向 host-gateway 来实现：
+
+```yaml
+extra_hosts:
+  - "host.docker.internal:host-gateway"
+# 命令：--add-host=host.docker.internal:host-gateway
+```
+
+podman 可以直接使用 `host.containers.internal` 来表示宿主机。
+
+### 空间清理
+
+podman 和 docker 用法一致：
+
+- docker system df：查看占用空间情况（-v 更细致）
+- docker system prune：清理所有已停止容器、未被使用的网络、dangling 镜像、未使用的构建缓存
+- docker image prune：清理 dangling 镜像
+    - 可能会残留 `<none>` 镜像，使用 docker image prune --filter "dangling=true" 删除
+- docker image prune -a：删除所有未被使用的镜像
+ 
