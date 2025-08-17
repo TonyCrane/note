@@ -280,4 +280,33 @@ podman 和 docker 用法一致：
 - docker image prune：清理 dangling 镜像
     - 可能会残留 `<none>` 镜像，使用 docker image prune --filter "dangling=true" 删除
 - docker image prune -a：删除所有未被使用的镜像
- 
+
+### 用户权限问题
+
+rootful 的 podman 会以 root 用户身份运行容器，这样容器内创建的文件的 owner 就都是 root，会很不方便。
+
+一种方法是使用 --user 选项指定用户的 uid 和 gid，或在 compose 文件中：
+
+```yaml
+services:
+  app:
+    user: 1000:1000
+```
+
+但这样的另一个问题就是如果需要访问或修改容器中自带的需要 root 权限的文件，就会权限不足。例如在 [OpenList](https://github.com/OpenListTeam/OpenList) 中，`/opt` 目录在镜像中是 openlist(1001) 用户的，官方给出了可以用 user 修改用户的提示，但用 podman 部署时会出现：
+
+```text
+chown: /opt: Operation not permitted
+su-exec: setgroups(1000): Operation not permitted
+```
+
+说明在容器运行起来之后容器内就是 user 指定的 1000 用户的权限了，导致无法修改 1001 的 owner 到自身。
+
+一个解决方法是利用 uidmap，它的值是冒号分割的三个数，分别是容器内 uid 的起点、映射到主机 uid 的起点以及映射的长度。那么就可以将主机的 1000 用户对应进容器内的 0 也就是 root 用户，这样容器内看是 root 用户，到主机上看就是 1000 普通用户，容器内创建的文件也是普通用户的了：
+
+```yaml
+services:
+  app:
+    user: 0:0         # 容器内是 root(0) 用户
+    uidmap: 0:1000:1  # 将容器内的 0 映射到主机的 1000
+```
