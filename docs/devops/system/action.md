@@ -181,6 +181,33 @@ jobs:
           name: my-artifact
 ```
 
+#### 失败 step 处理
+
+针对某些会失败的 step（例如 run 命令返回值非 0），默认情况会导致后续 steps 不再执行并导致整个 job 失败。为了让后续 steps 继续执行，有两种方法：
+
+1. 使用 continue-on-error：
+
+    ```yaml
+    - name: Run command
+      run: ...
+      continue-on-error: true
+    ```
+
+    - 但这种情况会强制 step 的结果变为 success，如果需要保留错误状态则不能使用这种方法
+
+2. 对后续 steps 增加条件判断：
+
+    ```yaml
+    - name: Run after failed step
+      if: ${{ failure() }}
+      run: ...
+    ```
+
+    - 在前面的 step 有失败的情况下会执行，success() 为在全部成功的情况下执行
+    - 通过 `${{ !cancelled() }}` 或 `${{ failure() || success() }}` 来使 step 运行不被前面的 step 失败状态影响
+    - 如果有额外判断条件可以用 `${{ !cancelled() && <original conditions >}}`
+    - 避免使用 `${{ always() }}` 因为会导致即使取消了运行也仍然会继续
+
 ### 传递 secrets
 
 敏感信息需要在 repo 的设置中添加 secrets，然后通过 `${{ secrets.SECRET_NAME }}` 使用。
@@ -338,4 +365,59 @@ jobs:
         env:    # 默认空格分割（可通过 separator 指定）
           CHANGED_FILES: ${{ steps.changed-files.outputs.all_changed_files }}
         run: ...
+```
+
+## ReviewDog
+
+[:material-github: reviewdog/reviewdog](https://github.com/reviewdog/reviewdog) 可以将 linter 的结果自动上传至 GitHub PR 中，进行自动 review。
+
+一般情况下使用 github-pr-review 这个 reporter 效果最好，和正常 review 一样而且会带修改建议，但要求是从主 repo 运行不能来自 fork 的 repo，解决方法一是使用 pull_request_target trigger（和 comment-pr 一样），或者不做修改的话 reviewdog 会自动转用 logging commands 来进行上报，但效果不佳。
+
+在 Action 中使用可以先配置环境：
+
+```yaml
+- name: Setup reviewdog
+  uses: reviewdog/action-setup@v1.3.2
+  with:
+    reviewdog_version: latest
+```
+
+然后在后续的 run 命令中就可以使用 reviewdog 命令了。除去一些支持 reviewdog rdjson 格式输出的 linter（例如 autocorrect）以外，例如自己编写 linter 的话最方便的用法是采用 errorfmt 的格式，直接从 linter 输出来读取错误信息，例如：
+
+```shell
+<command> | reviewdog \
+  -efm="%f:%l:%t:%m" \
+  -name="<name>" \
+  -reporter=github-pr-review \
+  -level=warning \
+  -fail-level=error
+```
+
+只要前面的命令输出的格式能匹配就可以，efm 表示了匹配的格式，其中 %f 为文件名（从 repo 根目录开始计算），%l 为行号，%t 为错误类型（e/w/i/n 单个字母），%m 为错误消息。name 选项会指定检查的名字，同一 name 的所有问题会汇总到一次 review 里。level 为上报至 review 的等级，fail-level 为如果达到了该等级则会导致命令返回非零（用于让 action step 失败），默认情况下永远返回 0。
+
+在 action 中使用只需要给定环境变量 REVIEWDOG_GITHUB_API_TOKEN，然后设定权限即可：
+
+```yaml
+permissions:
+  checks: write
+  contents: read
+  pull-requests: write
+
+jobs:
+  auto-review:
+    steps:
+      - name: Setup reviewdog
+        uses: reviewdog/action-setup@v1.3.2
+        with:
+          reviewdog_version: latest
+      - name: Run reviewdog
+        env:
+          REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          <command> | reviewdog \
+            -efm="%f:%l:%t:%m" \
+            -name="<name>" \
+            -reporter=github-pr-review \
+            -level=warning \
+            -fail-level=error
 ```
