@@ -50,7 +50,7 @@ $ mkdocs gh-deploy
 - `theme: `  主题样式例如:
     ```yaml
     theme: 
-      name: 'material'     # 使用material主题,需要pip安   装mkdocs-material
+      name: 'material'     # 使用material主题,需要pip安装mkdocs-material
       language: 'zh'       # 使用中文
       icon:
         logo: ...          # 左上角的 logo 
