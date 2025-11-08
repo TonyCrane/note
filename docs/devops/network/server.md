@@ -230,7 +230,15 @@ site_addr4 {
 
 ### TLS 证书
 
-Caddy 会自动为服务申请证书，需要全局配置一下 email，默认配置下就会通过公共的 ACME CA 来进行申请，并将 HTTP 服务自动重定向到 HTTPS 服务。（我目前只在内网服务器上用了 caddy，所以不会涉及到公网证书的问题，还没试过）
+Caddy 会自动为服务申请证书，需要全局配置一下 email，默认配置下就会通过公共的 ACME CA 来进行申请，并将 HTTP 服务自动重定向到 HTTPS 服务。
+
+但含有通配符的证书不能通过 HTTP 验证来申请，不额外配置的话 Caddy 运行中会无法获取证书：
+
+```text
+no solvers available for remaining challenges (configured=[http-01 tls-alpn-01] offered=[dns-01] remaining=[dns-01])
+```
+
+带通配符的只能通过 DNS 验证来申请证书，需要在 <https://caddyserver.com/docs/modules/> 页面上找到对应提供商的 dns.providers 插件，然后根据[下面提到的插件安装方法](#plugins)重新编译 caddy，然后在 Caddyfile 里配置 DNS 验证。
 
 兼容 HTTP 的话需要单独配置新的 site：
 
@@ -299,7 +307,7 @@ site_addr {
 }
 ```
 
-### 插件安装
+### 插件安装 {#plugins}
 
 caddy 可以通过 xcaddy 工具来安装插件，不过逻辑是将插件编译进 caddy 的二进制中，即相当于重新编译 caddy。通过 go 安装 xcaddy：
 
@@ -314,6 +322,20 @@ xcaddy build --with github.com/sjtug/caddy2-filter
 ```
 
 构建后需要用 ./caddy 手动替换掉 /usr/bin/caddy，或更改 caddy.service。
+
+#### CGI 插件
+
+Caddy 通过 [:material-github: aksdb/caddy-cgi](https://github.com/aksdb/caddy-cgi) 插件来支持 CGI 脚本，安装时需要加上 `--with github.com/aksdb/caddy-cgi/v2`。
+
+常用的格式是：
+
+```nginx
+cgi /example.cgi* /path/to/example.cgi {
+    script_name /example.cgi
+}
+```
+
+其中 script_name 的目的是将脚本路径和后面的参数分开，来保证脚本能正确接收到参数，更多用法还是要参考文档。
 
 ### 一些杂项
 
