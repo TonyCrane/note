@@ -148,3 +148,125 @@ cgi /upsstats.cgi* /usr/lib/cgi-bin/apcupsd/upsstats.cgi {
     script_name /upsstats.cgi
 }
 ```
+
+## 自建 Gitea 相关
+
+通过 rootful podman compose 来搭建的 Gitea 服务。
+
+### 配置 SSH 访问
+
+参考 [Gitea 官方文档](https://docs.gitea.com/zh-cn/installation/install-with-docker#ssh-%E5%AE%B9%E5%99%A8%E7%9B%B4%E9%80%9A)
+
+首先要在宿主机上创建 git user (e.g. 1001:1001)，然后为主机 git 用户生成密钥对：
+
+```shell
+sudo -u git ssh-keygen -t rsa -b 4096 -C "Gitea Host Key"
+```
+
+之后需要向 /usr/local/bin/gitea 写入以下内容并赋予执行权限（chmod +x /usr/local/bin/gitea）：
+
+```shell
+ssh -p 2222 -o StrictHostKeyChecking=no git@127.0.0.1 "SSH_ORIGINAL_COMMAND=\"$SSH_ORIGINAL_COMMAND\" $0 $@"
+```
+
+还需要将 git 用户的公钥添加进 git 用户自己的 authorized_keys 中：
+
+```shell
+echo "$(cat /home/git/.ssh/id_rsa.pub)" >> /home/git/.ssh/authorized_keys
+```
+
+然后对于容器：
+
+```yaml
+environment:
+  - USER_UID=1001
+  - USER_GID=1001
+volumes:
+  - /home/git/.ssh/:/data/git/.ssh
+ports:
+  - "127.0.0.1:2222:22" # 与 /user/local/bin/gitea 中的端口同步
+```
+
+再启动即可通过 ssh 的方式访问 repo 了。如果宿主机的 SSH 端口不在 22 的话需要修改 gitea/gitea/conf/app.ini 中 \[server\] 部分的 SSH_PORT，这样在网页中复制 SSH 地址时才会正确。
+
+### Gitea Action Runner 配置
+
+参考 [Gitea 官方文档](https://docs.gitea.com/zh-cn/usage/actions/act-runner#%E4%BD%BF%E7%94%A8-docker-compose-%E8%BF%90%E8%A1%8C-runner)
+
+这里打算在同一个 podman compose 里面运行 runner 容器，然后将宿主机中 git 用户的 podman socket 映射进容器中的 docker socket 来在 rootless podman 容器中运行 job。
+
+podman 和 docker 的 socket 是兼容的，podman 比较特殊的是 rootless 的部分每个用户会有一个自己的 socket，而且默认情况下 systemd 不保留用户 service，在用户退出登陆后会停用 unit，所以需要为 git 用户配置 linger：
+
+```shell
+sudo loginctl enable-linger git
+```
+
+然后需要手动为 git 用户激活 socket，参考 [podman docs](https://github.com/containers/podman/blob/main/docs/tutorials/socket_activation.md#socket-activation-of-the-api-service)：
+
+```shell
+systemctl --user start podman.socket
+ls $XDG_RUNTIME_DIR/podman/podman.sock
+```
+
+这样这个 socket 就会保存在 /run/user/1001/podman/podman.sock 中，但如果直接 sudo su git 进入 git 用户的话运行 systemctl --user 会报错：
+
+```text
+Failed to connect to user scope bus via local transport: $DBUS_SESSION_BUS_ADDRESS and $XDG_RUNTIME_DIR not defined
+```
+
+因为这样进行的登陆不会初始化这两个环境变量，既然前面已经将 git 自己的公钥添加进 authorized_keys 了，那么可以通过 git 用户 ssh git@127.0.0.1 来再次进入 git 用户的 shell，这时就会经过一个登陆过程，然后再运行 systemctl --user start podman.socket 就不会报错了。
+
+然后在 compose 文件中加入一个 service 来运行 runner：
+
+```yaml
+  runner0:
+    image: gitea/act_runner:latest
+    restart: always
+    user: 0:0
+    uidmap: 0:1000:10
+    gidmap: 0:1000:10
+    environment:
+      CONFIG_FILE: /config.yaml
+      GITEA_INSTANCE_URL: "<url>"
+      GITEA_RUNNER_REGISTRATION_TOKEN: "<token>"
+      GITEA_RUNNER_NAME: "runner0"
+    volumes:
+      - ./runner0/config.yaml:/config.yaml
+      - ./runner0/data:/data
+      - /run/user/1001/podman/podman.sock:/var/run/docker.sock
+    depends_on:
+      - server
+```
+
+token 为在 Gitea 网页端生成的 runner 注册 token，默认的 config 通过以下命令获取：
+
+```shell
+sudo podman run --entrypoint="" --rm -it docker.io/gitea/act_runner:latest act_runner generate-config > config.yaml
+```
+
+它可以运行的环境（即 workflow 文件中可以配置的 runs-on 环境）在 config.yaml 中的 runner.labels 部分配置，格式为 `<labels>:docker://<image>`，自带了 ubuntu-latest, ubuntu-22.04, ubuntu-20.04 三个环境，可以添加自定义环境比如 `debian-13:docker://docker.io/node:25-trixie` 之类的。
+
+运行后可以正常注册 runner，但运行测试 job 的时候会有问题，网页端运行 setup 的时候包含报错：
+
+```text
+failed to create container: 'Error response from daemon: make cli opts(): making volume mountpoint for volume /var/run/docker.sock: mkdir /var/run/docker.sock: permission denied'
+```
+
+搜到了相关 issue [gitea/act_runner#223](https://gitea.com/gitea/act_runner/issues/223)，下面评论的解决办法是修改 config 文件，将其中的 container.docker_host 改为 "-"，这样 runner 会使用宿主机的 docker socket，即 podman socket，从而避免权限问题。
+
+接下来的问题是运行到 checkout 步骤的时候会 Could not connect to server，也就是说 job runner 容器中无法连接到主机中的服务，本来以为是防火墙的问题，但关掉也会这样。搜起来是因为 rootless podman 的网络隔离导致的，rootless 会使用 pasta 来配置网络，而非 rootful podman 的 bridge 网络，导致容器解析到的主机地址其实指向容器内部网络而非宿主机网络。
+
+一个解决方案是在 job container 创建时添加额外的 host 将宿主机的域名解析到 host-gateway 上，这样容器内访问宿主机域名的服务就能确保真的是访问宿主机而非容器内网络了。需要修改 runner0/config.yaml 中的 container.options：
+
+```yaml
+container:
+  options: "--add-host=<hostname>:host-gateway"
+```
+
+然后就可以正常使用了。虽然感觉这个解决方法并不优雅，但感觉 rootless podman 的网络部分确实是晦涩难懂，目前没精力再深入研究了。其实还试过用回 pasta 之前的 slirp4netns 作为 rootless 的网络应用，实测可以访问到宿主机服务：
+
+```shell
+podman run -it --network slirp4netns docker.gitea.com/runner-images:ubuntu-latest bash
+```
+
+但在 config 中将 container.network 改为 slirp4netns 后会报错：networks and static ip/mac address can only be used with Bridge mode networking，搜了下看不懂怎么解决，就没再研究了。
