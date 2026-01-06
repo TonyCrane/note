@@ -1,0 +1,62 @@
+[project]
+name = "note"
+version = "0.1.0"
+description = "TonyCrane's Personal Notebook"
+readme = "README.md"
+requires-python = ">=3.10, <4.0"
+dependencies = [
+    "mkdocs",
+    "mkdocs-material~=9.6.16",
+    "mkdocs-material-extensions~=1.3.1",
+    "mkdocs-glightbox~=0.4.0",
+    "rich~=14.1.0",
+
+    # Personal plugins
+    "mkdocs-heti-plugin~=0.1.6",
+    "mkdocs-changelog-plugin~=0.1.3",
+    "mkdocs-statistics-plugin",
+
+    # Personal modified plugins
+    "mkdocs-rss-plugin",
+    "mkdocs-encryptcontent-plugin",
+    "mkdocs-git-revision-date-localized-plugin",
+]
+
+[dependency-groups]
+dev = [
+    "poethepoet",
+]
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+package = false
+index-url = "https://mirrors.zju.edu.cn/pypi/web/simple"
+
+[tool.uv.sources]
+mkdocs = { path = "../mkdocs-toolchain/mkdocs" }
+# mkdocs-heti-plugin = { path = "../mkdocs-toolchain/mkdocs-heti-plugin" }
+# mkdocs-changelog-plugin = { path = "../mkdocs-toolchain/mkdocs-changelog-plugin" }
+mkdocs-statistics-plugin = { path = "../mkdocs-toolchain/mkdocs-statistics-plugin" }
+mkdocs-rss-plugin = { path = "../mkdocs-toolchain/mkdocs-rss-plugin" }
+mkdocs-encryptcontent-plugin = { path = "../mkdocs-toolchain/mkdocs-encryptcontent-plugin" }
+mkdocs-git-revision-date-localized-plugin = { path = "../mkdocs-toolchain/mkdocs-git-revision-date-localized-plugin" }
+
+[tool.setuptools]
+packages = []
+py-modules = []
+include-package-data = false
+
+[tool.poe.tasks]
+# uv run poe <task>
+serve = { shell = "FULL=${FULL:-false} mkdocs serve" }
+full-serve = { shell = "FULL=true mkdocs serve" }
+commit = { sequence = [
+    { cmd = "git add ." },
+    { shell = "git commit -m \"docs: update $(date +%Y-%m-%d)\"" },
+] }
+gh-deploy = { shell = "https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 FULL=true mkdocs gh-deploy" }
+push = { cmd = "git push" }
+publish = { sequence = ["commit", "gh-deploy", "push"] }
