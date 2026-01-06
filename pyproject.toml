@@ -58,5 +58,5 @@ commit = { sequence = [
     { shell = "git commit -m \"docs: update $(date +%Y-%m-%d)\"" },
 ] }
 gh-deploy = { shell = "https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 FULL=true mkdocs gh-deploy" }
-push = { cmd = "git push" }
+push = { cmd = "https_proxy=http://127.0.0.1:7890 http_proxy=http://127.0.0.1:7890 all_proxy=socks5://127.0.0.1:7890 git push" }
 publish = { sequence = ["commit", "gh-deploy", "push"] }
