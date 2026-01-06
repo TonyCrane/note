@@ -36,13 +36,13 @@ package = false
 index-url = "https://mirrors.zju.edu.cn/pypi/web/simple"
 
 [tool.uv.sources]
-mkdocs = { path = "../mkdocs-toolchain/mkdocs" }
-# mkdocs-heti-plugin = { path = "../mkdocs-toolchain/mkdocs-heti-plugin" }
-# mkdocs-changelog-plugin = { path = "../mkdocs-toolchain/mkdocs-changelog-plugin" }
-mkdocs-statistics-plugin = { path = "../mkdocs-toolchain/mkdocs-statistics-plugin" }
-mkdocs-rss-plugin = { path = "../mkdocs-toolchain/mkdocs-rss-plugin" }
-mkdocs-encryptcontent-plugin = { path = "../mkdocs-toolchain/mkdocs-encryptcontent-plugin" }
-mkdocs-git-revision-date-localized-plugin = { path = "../mkdocs-toolchain/mkdocs-git-revision-date-localized-plugin" }
+mkdocs = { path = "../mkdocs-toolchain/mkdocs", editable = true }
+# mkdocs-heti-plugin = { path = "../mkdocs-toolchain/mkdocs-heti-plugin", editable = true }
+# mkdocs-changelog-plugin = { path = "../mkdocs-toolchain/mkdocs-changelog-plugin", editable = true }
+mkdocs-statistics-plugin = { path = "../mkdocs-toolchain/mkdocs-statistics-plugin", editable = true }
+mkdocs-rss-plugin = { path = "../mkdocs-toolchain/mkdocs-rss-plugin", editable = true }
+mkdocs-encryptcontent-plugin = { path = "../mkdocs-toolchain/mkdocs-encryptcontent-plugin", editable = true }
+mkdocs-git-revision-date-localized-plugin = { path = "../mkdocs-toolchain/mkdocs-git-revision-date-localized-plugin", editable = true }
 
 [tool.setuptools]
 packages = []
@@ -51,8 +51,8 @@ include-package-data = false
 
 [tool.poe.tasks]
 # uv run poe <task>
-serve = { shell = "FULL=${FULL:-false} mkdocs serve" }
-full-serve = { shell = "FULL=true mkdocs serve" }
+serve = { shell = "FULL=${FULL:-false} mkdocs serve --livereload" }
+full-serve = { shell = "FULL=true mkdocs serve --livereload" }
 commit = { sequence = [
     { cmd = "git add ." },
     { shell = "git commit -m \"docs: update $(date +%Y-%m-%d)\"" },
