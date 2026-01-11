@@ -34,6 +34,11 @@ debian 上 `sudo apt install network-manager` 即可安装 nmcli 和 nmtui，通
 
 如果修改后 speed 显示 `Unkown!` 可以等一会儿（至少我等一会儿就好了），一直不行的话可能就是不支持，需要再改回去。
 
+!!! llm "来自 GPT 5.2"
+    这类“有时协商到 1000，有时只到 100；一强制就 Unknown! 且断网”的问题，绝大多数是物理层/协商层导致的（线材/水晶头/墙插/交换机端口/EEE 省电/驱动固件）。不要在 autoneg on 的同时强制 speed 1000；很多网卡驱动会进入不一致状态，表现就是 Speed/Duplex: Unknown!（通常等同于链路没起来或协商失败）。
+
+    可以通过 `ethtool -r <interface>` 来让网卡重新协商，这样不需要重启就可以恢复连接。
+
 ## 诊断工具
 ### 连接诊断
 

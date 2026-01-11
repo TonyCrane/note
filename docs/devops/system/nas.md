@@ -89,7 +89,11 @@ macOS 上挂载目录可以直接在访达 > 前往 > 连接服务器…中输�
 
 ## ZFS 相关
 
-目前用的是 ZFS 的 RAID-1，两块机械硬盘互相备份。经历过一次断电导致的磁盘损坏，zpool status 可以看到状态为 DEGRADED，其中坏掉的硬盘状态为 REMOVED。
+目前用的是 ZFS 的 RAID-1，两块机械硬盘互相备份。
+
+### 调盘修复
+
+经历过一次断电导致的磁盘损坏，zpool status 可以看到状态为 DEGRADED，其中坏掉的硬盘状态为 REMOVED。
 
 修复过程：
 
@@ -104,6 +108,29 @@ macOS 上挂载目录可以直接在访达 > 前往 > 连接服务器…中输�
     - 如果新磁盘没格式化，可以在命令后面加上 `-f`
 5. 用 `zpool status` 查看恢复进度，等待 resilvering 完成后会自动上线
     - 期间现有的 DEGRADED pool 也可以正常使用
+
+### 更换磁盘名称
+
+前面这一步修复中存在问题，就是用了 `/dev/sdX` 这样的名称来指定磁盘，但这种名称是会变的，比如重启后可能就变成了 `/dev/sdY` 了，导致 zpool status 出现 DEGRADED，其中这个磁盘状态显示为 FAULTED，且后面会显示 was /dev/sdX。所以最好用 /dev/disk/by-id/ 下的名称来指定磁盘。修改过程：
+
+1. 停止当前 scrub：`sudo zpool scrub -s <pool_name>`
+2. 导出 pool（卸载）：`sudo zpool export <pool_name>`（或者加 -f）
+3. 用新路径重新导入：`sudo zpool import -d /dev/disk/by-id <pool_name>`
+4. 用 `zpool status -P` 确认状态正常且路径已经修改正确
+    - 这里的 status/action 可能会说有 unrecoverable error，而且改了名的盘可能 CKSUM 会有计数
+    - 可以通过 `sudo zpool clear <pool_name>` 来清除错误计数
+    - 然后补跑一次 scrub：`sudo zpool scrub <pool_name>`
+
+!!! llm "来自 GPT 5.2"
+    什么时候才需要再 zpool replace：
+
+    - 只有当 export/import -d /dev/disk/by-id 后，zpool status -P 仍然显示 /dev/sdX，或者某个 vdev 仍然 FAULTED/UNAVAIL，才考虑再用 zpool replace 把旧路径替换为 by-id。
+
+    只有在下面情况才建议 zpool replace（或进一步查硬件）：
+
+    - zpool status 里 CKSUM/READ/WRITE 计数在持续增加（清零后又涨）
+    - scrub 报修复/无法修复错误
+    - dmesg 里有大量 SATA 重置、I/O error（更像线材/供电/接口问题）
 
 ## UPS 相关
 
@@ -270,3 +297,98 @@ podman run -it --network slirp4netns docker.gitea.com/runner-images:ubuntu-lates
 ```
 
 但在 config 中将 container.network 改为 slirp4netns 后会报错：networks and static ip/mac address can only be used with Bridge mode networking，搜了下看不懂怎么解决，就没再研究了。
+
+## Trouble Shooting
+
+### 启动引导无法加载系统盘
+
+通过 grub 进入系统后，出现报错：
+
+```text
+mdadm: No arrays found in config gile or automatically
+mdadm: No arrays found in config gile or automatically
+...
+mdadm: error opening /dev/md?*: No such file or directory
+...
+Gave up waiting for root file system device.
+...
+ALERT!  UUID=<uuid> does not exist.  Dropping to a shell!
+```
+
+然后进入了 initramfs shell，在 shell 中 fdisk -l 看不到系统盘，/dev/ 下也没有这个设备，说明系统盘没有被识别到或者炸了。通过 PE 盘进入 Windows 然后用 DiskGenius 检查，可以发现这块系统盘仍然可以正常读取，且分区表正常，而且 uuid 和启动中未找到的 uuid 一致。
+
+!!! llm "来自 GPT 5.2"
+    你描述的现象（initramfs 里只看到两块机械盘、系统 SSD 完全不枚举；但用 PE/Windows 工具能正常看到 SSD 和 ext4）高度像是 Linux 在早期启动阶段没能驱动你的存储控制器，最常见原因是 BIOS/UEFI 把磁盘控制器模式切到了 Intel RST/RAID/VMD（Windows/PE 仍能识别，Linux 需要 vmd/相应模块，否则 NVMe/SSD 在 initramfs 里直接“消失”），从而导致 root=UUID=... 找不到，进而 Gave up waiting for root file system device。
+
+    ……
+
+    完全没有 /dev/nvme0n1 或类似设备、/proc/partitions 也没有它：就是控制器/模块问题。如果能看到 SSD 和分区，但 blkid 里 UUID 对不上：才是 fstab/grub 配置问题。
+
+经过检查，在 dmesg 中发现：
+
+```shell
+(initramfs) dmesg | grep -Ei 'nvme|vmd|ahci'
+...
+ahci ...: version 3.0
+ahci ...: Found 1 remapped NVMe devices.
+ahci ...: Switch your BIOS from RAID to AHCI mode to use them.
+ahci ...: controller can't do SNTF, turning off CAP_SNTF
+ahci ...: AHCI vers 0001.0301, 32 command slots, 6Gbps, RAID mode
+...
+```
+
+这里说明 BIOS 里把 SATA 模式设置成了 RAID 模式，导致 Linux 内核无法识别 NVMe 设备。将 BIOS 设置（Dell 在 System Configuration -> SATA Operation 中）改为 AHCI 模式后问题解决，系统盘可以正常识别并启动。
+
+??? llm "来自 GPT 5.2 的建议"
+    建议做最小化检查，确保以后重启也稳：
+
+    1. 确认根分区确实按 UUID 挂载（不依赖盘符）
+
+        ```shell
+        findmnt /
+        cat /etc/fstab | grep -v '^\s*#' | sed '/^\s*$/d'
+        blkid | grep -E 'UUID=|PARTUUID='
+        ```
+
+        - findmnt / 应该显示类似 SOURCE=UUID=...（或 /dev/nvme... 也行，但 UUID 更稳）
+        - /etc/fstab 里根分区或 /boot 或 /boot/efi（如有）建议用 UUID=
+
+    2. 更新一次 initramfs 和 grub（可选但推荐）
+
+        ```shell
+        sudo update-initramfs -u -k all
+        sudo update-grub
+        ```
+
+        - 这能把你当前硬件/模块状态固化下来，避免下次内核更新后出现早期启动缺模块的意外。
+
+### 机器重新启动后 BIOS 找不到启动项
+
+断电重启后会显示 No bootable device found，无法进入系统，需要手动进入 BIOS 后手动添加 UEFI 启动项路径为 EFI/debian/grubx64.efi 后才能进入 grub 启动菜单，但修改后断电再重启又会丢失这个启动项。
+
+可以重装 grub 重建一下启动项：
+
+```shell
+sudo apt update
+sudo apt install --reinstall grub-efi-amd64 shim-signed efibootmgr
+sudo grub-install --target=x86_64-efi --efi-directory=/boot/efi --bootloader-id=debian --recheck
+sudo update-grub
+sudo efibootmgr -v # 检查启动项是否存在
+```
+
+!!! llm "来自 GPT 5.2"
+    你这个现象（断电后提示 No bootable device found，进 BIOS 里 UEFI 启动项会丢失，需要手动重新添加指向 \EFI\debian\grubx64.efi）通常有两类原因：
+
+    1. UEFI NVRAM 启动项不持久（断电后丢 Boot#### 条目）：常见于 BIOS Bug、BIOS 设置未保存、或者主板/笔记本的 RTC/CMOS 供电异常（时间也会一起重置）。
+    2. 缺少 UEFI “fallback” 启动路径 \EFI\BOOT\BOOTX64.EFI：就算 NVRAM 条目丢了，固件仍可走兜底路径启动。
+
+所以推荐再拷贝一份 grub 配置到默认路径 EFI/BOOT/BOOTX64.EFI：
+
+```shell
+sudo mkdir -p /boot/efi/EFI/BOOT
+sudo cp -f /boot/efi/EFI/debian/grubx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+# 如果启用了 Secure Boot，可以拷贝 shimx64.efi
+sudo cp -f /boot/efi/EFI/debian/shimx64.efi /boot/efi/EFI/BOOT/BOOTX64.EFI
+```
+
+然后重启进入 BIOS 就可以看到新的名为 debian 的启动项了，之后重启一切正常。
