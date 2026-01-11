@@ -276,3 +276,21 @@ input#mkdocs-content-password {
 .hr-before-source-file:not(:has(+ aside)) {
   display: none;
 }
+
+:root {
+  --md-admonition-icon--llm: url('data:image/svg+xml;charset=utf-8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2a2 2 0 0 1 2 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 0 1 7 7h1a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-1v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-1H2a1 1 0 0 1-1-1v-3a1 1 0 0 1 1-1h1a7 7 0 0 1 7-7h1V5.73c-.6-.34-1-.99-1-1.73a2 2 0 0 1 2-2M7.5 13A2.5 2.5 0 0 0 5 15.5A2.5 2.5 0 0 0 7.5 18a2.5 2.5 0 0 0 2.5-2.5A2.5 2.5 0 0 0 7.5 13m9 0a2.5 2.5 0 0 0-2.5 2.5a2.5 2.5 0 0 0 2.5 2.5a2.5 2.5 0 0 0 2.5-2.5a2.5 2.5 0 0 0-2.5-2.5"/></svg>');
+}
+.md-typeset .admonition.llm,
+.md-typeset details.llm {
+  border-color: #9e9e9e;
+}
+.md-typeset .llm > .admonition-title,
+.md-typeset .llm > summary {
+  background-color: #9e9e9e1a;
+}
+.md-typeset .llm > .admonition-title::before,
+.md-typeset .llm > summary::before {
+  background-color: #9e9e9e;
+  -webkit-mask-image: var(--md-admonition-icon--llm);
+          mask-image: var(--md-admonition-icon--llm);
+}
